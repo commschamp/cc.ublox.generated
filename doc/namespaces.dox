@@ -1,0 +1,18 @@
+/// @namespace ublox
+/// @brief Main namespace for all classes / functions of this protocol library.
+
+/// @namespace ublox::message
+/// @brief Main namespace for all the messages defined in this protocol.
+
+/// @namespace ublox::field
+/// @brief Main namespace for all the stand alone fields defined in this protocol.
+
+/// @namespace ublox::frame
+/// @brief Main namespace for all the frames.
+
+/// @namespace ublox::frame::layer
+/// @brief Main namespace for the custom frame layers.
+
+/// @namespace ublox::frame::checksum
+/// @brief Main namespace for the custom frame layers.
+
