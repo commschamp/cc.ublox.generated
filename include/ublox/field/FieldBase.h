@@ -5,6 +5,7 @@
 
 #include "comms/Field.h"
 #include "comms/options.h"
+#include "ublox/Version.h"
 
 namespace ublox
 {

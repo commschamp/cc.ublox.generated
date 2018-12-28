@@ -3,12 +3,11 @@ project ("ublox")
 
 option (OPT_LIB_ONLY "Install only protocol library, no other libraries/plugings are built/installed." OFF)
 option (OPT_THIS_AND_COMMS_LIBS_ONLY "Install this protocol and COMMS libraries only, no other applications/plugings are built/installed." OFF)
-option (OPT_FULL_SOLUTION "Build and install full solution, including CommsChampion sources." ON)
+option (OPT_FULL_SOLUTION "Build and install full solution, including CommsChampion." ON)
 option (OPT_NO_WARN_AS_ERR "Do NOT treat warning as error" OFF)
-
 option (OPT_NO_CCACHE "Disable use of ccache on UNIX system" OFF)
+
 # Other parameters:
-# OPT_INSTALL_DIR - Custom install directory.
 # OPT_QT_DIR - Path to custom Qt5 install directory.
 # OPT_CC_MAIN_INSTALL_DIR - Path to CommsChampion install directory (if such already built).
 
@@ -16,10 +15,7 @@ if (NOT CMAKE_CXX_STANDARD)
     set (CMAKE_CXX_STANDARD 11)
 endif()
 
-set (INSTALL_DIR ${CMAKE_BINARY_DIR}/install)
-if (NOT "${OPT_INSTALL_DIR}" STREQUAL "")
-    set (INSTALL_DIR "${OPT_INSTALL_DIR}")
-endif ()
+set (INSTALL_DIR ${CMAKE_INSTALL_PREFIX})
 
 include(GNUInstallDirs)
 set (LIB_INSTALL_DIR ${INSTALL_DIR}/${CMAKE_INSTALL_LIBDIR})
@@ -28,11 +24,6 @@ set (INC_INSTALL_DIR ${INSTALL_DIR}/${CMAKE_INSTALL_INCLUDEDIR})
 set (CONFIG_INSTALL_DIR ${INSTALL_DIR}/config)
 set (PLUGIN_INSTALL_DIR ${INSTALL_DIR}/${CMAKE_INSTALL_LIBDIR}/CommsChampion/plugin)
 set (DOC_INSTALL_DIR ${INSTALL_DIR}/${CMAKE_INSTALL_DOCDIR})
-
-install (
-    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ublox
-    DESTINATION ${INC_INSTALL_DIR}
-)
 
 find_package (Doxygen)
 if (DOXYGEN_FOUND)
@@ -53,16 +44,47 @@ if (DOXYGEN_FOUND)
         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif ()
 
+######################################################################
+
+function (define_lib)
+    add_library(ublox INTERFACE)
+
+    target_include_directories(ublox INTERFACE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+    )
+
+    if (TARGET cc::comms AND (NOT OPT_FULL_SOLUTION))
+        target_link_libraries(ublox INTERFACE cc::comms)
+    endif()
+
+    install(TARGETS ublox EXPORT ubloxConfig)
+    install(EXPORT ubloxConfig
+        DESTINATION ${LIB_INSTALL_DIR}/ublox/cmake
+    )
+    install (
+        DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ublox
+        DESTINATION ${INC_INSTALL_DIR}
+    )
+endfunction ()
+
+######################################################################
+
 if (OPT_LIB_ONLY)
+    define_lib()
     return ()
 endif ()
 
 ######################################################################
 
+if (NOT "${OPT_QT_DIR}" STREQUAL "")
+    list (APPEND CMAKE_PREFIX_PATH ${OPT_QT_DIR})
+endif ()
+
 set (CC_EXTERNAL_TGT "comms_champion_external")
 include(ExternalProject)
-macro (externals install_dir build_cc)
-    set (cc_tag "v0.28")
+macro (externals install_dir build_cc deploy_tgt)
+    set (cc_tag "v1.0")
     set (cc_main_dir "${CMAKE_BINARY_DIR}/comms_champion")
     set (cc_src_dir "${cc_main_dir}/src")
     set (cc_bin_dir "${cc_main_dir}/build")
@@ -71,47 +93,76 @@ macro (externals install_dir build_cc)
         set (cc_qt_dir_opt -DCC_QT_DIR=${OPT_QT_DIR})
     endif ()
 
-    if (${build_cc})
-        set (CC_PLUGIN_LIBRARIES "comms_champion")
-        set (CC_COMMS_CHAMPION_FOUND TRUE)
-        set (CC_PLUGIN_LIBRARY_DIRS ${LIB_INSTALL_DIR})
-    else ()
+    if (NOT ${build_cc})
         set (ct_lib_only_opt -DCC_COMMS_LIB_ONLY=ON)
     endif ()
 
+    find_package (Git REQUIRED)
+    if (EXISTS "${cc_src_dir}/.git")
+        execute_process (
+            COMMAND ${GIT_EXECUTABLE} fetch --depth 1
+            WORKING_DIRECTORY ${cc_src_dir}
+        )
+
+        execute_process (
+            COMMAND ${GIT_EXECUTABLE} checkout ${cc_tag}
+            WORKING_DIRECTORY ${cc_src_dir}
+        )
+    else ()
+        execute_process (
+            COMMAND ${CMAKE_COMMAND} -E remove_directory "${cc_src_dir}"
+        )
+
+        execute_process (
+            COMMAND 
+                ${GIT_EXECUTABLE} clone -b ${cc_tag} --depth 1 https://github.com/arobenko/comms_champion.git
+                    ${cc_src_dir}
+            RESULT_VARIABLE git_result
+        )
+
+        if (NOT "${git_result}" STREQUAL "0")
+            message (WARNING "git clone/checkout failed")
+        endif ()
+    endif ()
+
+    set (EXT_CC_INSTALL_DIR ${install_dir})
+    include (${cc_src_dir}/cmake/DefineExternalProjectTargets.cmake)
+
     ExternalProject_Add(
         "${CC_EXTERNAL_TGT}"
-        PREFIX "${cc_bin_dir}"
-        STAMP_DIR "${cc_bin_dir}"
-        GIT_REPOSITORY "https://github.com/arobenko/comms_champion.git"
-        GIT_TAG "${cc_tag}"
+        PREFIX "${cc_main_dir}"
         SOURCE_DIR "${cc_src_dir}"
+        BINARY_DIR "${cc_bin_dir}"
+        INSTALL_DIR "${install_dir}"
         CMAKE_ARGS
-            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCC_INSTALL_DIR=${install_dir}
+            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${install_dir}
             -DCC_NO_UNIT_TESTS=ON -DCC_NO_WARN_AS_ERR=ON -DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}
             -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
             ${cc_qt_dir_opt} ${ct_lib_only_opt}
-        BINARY_DIR "${cc_bin_dir}"
     )
 
-    set (CC_EXTERNAL TRUE)
-    set (CC_COMMS_FOUND TRUE)
-    set (CC_CMAKE_DIR ${LIB_INSTALL_DIR}/cmake)
+    if (${deploy_tgt} AND WIN32 AND (NOT "${OPT_QT_DIR}" STREQUAL ""))
+        message (STATUS "Qt5 deployment is available by building \"deploy_qt\" target")
+        add_custom_target ("deploy_qt"
+            COMMAND ${CMAKE_COMMAND} --build ${cc_bin_dir} --target deploy_qt
+            WORKING_DIRECTORY ${cc_bin_dir}
+        )
 
-    include_directories("${install_dir}/${CMAKE_INSTALL_INCLUDEDIR}")
-    link_directories("${install_dir}/${CMAKE_INSTALL_LIBDIR}")
+        add_dependencies("deploy_qt" ${CC_EXTERNAL_TGT})
+    endif ()
 endmacro()
 
 ######################################################################
 
 if (OPT_THIS_AND_COMMS_LIBS_ONLY)
-    externals(${INSTALL_DIR} FALSE)
+    externals(${INSTALL_DIR} FALSE FALSE)
+    define_lib ()
     return()
 endif ()
 
 while (TRUE)
     if (OPT_FULL_SOLUTION)
-        externals(${INSTALL_DIR} TRUE)
+        externals(${INSTALL_DIR} TRUE TRUE)
         break()
     endif ()
 
@@ -124,36 +175,18 @@ while (TRUE)
 
     if (NOT CC_COMMS_FOUND)
         set (externals_install "${CMAKE_BINARY_DIR}/ext_install")
-        set (build_cc FALSE)
-        if ((NOT OPT_LIB_ONLY) AND (NOT OPT_THIS_AND_COMMS_LIBS_ONLY))
-            set (build_cc TRUE)
-        endif ()
-
-        externals(${externals_install} ${build_cc})
+        externals(${externals_install} TRUE FALSE)
         break()
     endif ()
 
     find_package(CommsChampion NO_MODULE)
-    if (CC_COMMS_FOUND)
-        include_directories(${CC_INCLUDE_DIRS})
-    endif ()
-
-    if (CC_COMMS_CHAMPION_FOUND)
-        link_directories(${CC_PLUGIN_LIBRARY_DIRS})
-        if (CC_PLUGIN_DIR)
-            file (RELATIVE_PATH rel_plugin_install_path "${CC_ROOT_DIR}" "${CC_PLUGIN_DIR}")
-            set (PLUGIN_INSTALL_DIR "${INSTALL_DIR}/${rel_plugin_install_path}")
-        endif()
-    endif ()
-
     break()
 endwhile()
 
-if (NOT "${OPT_QT_DIR}" STREQUAL "")
-    list (APPEND CMAKE_PREFIX_PATH ${OPT_QT_DIR})
-endif ()
+define_lib ()
 
 find_package(Qt5Core)
+find_package(Qt5Widgets)
 
 if ((CMAKE_COMPILER_IS_GNUCC) OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
     set (extra_flags_list
@@ -182,17 +215,11 @@ if ((CMAKE_COMPILER_IS_GNUCC) OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
     string(REPLACE ";" " " extra_flags "${extra_flags_list}")
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${extra_flags}")
 elseif (MSVC)
-    add_definitions( "/wd4503" "/wd4309" "/wd4267" "-D_SCL_SECURE_NO_WARNINGS" "/bigobj")
+    add_definitions("/bigobj")
     if (NOT CC_NO_WARN_AS_ERR)
         add_definitions("/WX")
     endif ()
 endif ()
-
-include_directories(
-    BEFORE
-    ${CMAKE_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}/include
-)
 
 if ((UNIX) AND (NOT OPT_NO_CCACHE))
     find_program(CCACHE_FOUND ccache)
