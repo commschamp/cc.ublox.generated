@@ -374,8 +374,15 @@ function (cc_plugin_all_messages)
     )
 
     add_library (${name} STATIC ${src})
-    target_link_libraries (${name} ${CC_PLUGIN_LIBRARIES})
-    qt5_use_modules(${name} Core)
+    target_link_libraries (${name} PUBLIC ublox cc::comms cc::comms_champion Qt5::Widgets Qt5::Core)
+    target_include_directories (${name} PUBLIC ${CMAKE_SOURCE_DIR})
+    if (CC_COMMS_CHAMPION_FOUND)
+        if (CC_PLUGIN_DIR)
+            file (RELATIVE_PATH rel_plugin_install_path "${CC_ROOT_DIR}" "${CC_PLUGIN_DIR}")
+            set (PLUGIN_INSTALL_DIR "${INSTALL_DIR}/${rel_plugin_install_path}")
+        endif()
+    endif ()
+
     if (OPT_FULL_SOLUTION)
         add_dependencies(${name} ${CC_EXTERNAL_TGT})
     endif ()
@@ -414,12 +421,11 @@ function (cc_plugin protocol)
     endif ()
 
     add_library (${name} MODULE ${src} ${moc})
-    target_link_libraries (${name} ${ALL_MESSAGES_LIB} ${CC_PLUGIN_LIBRARIES} ${extra_link_opts})
+    target_link_libraries (${name} ${ALL_MESSAGES_LIB} cc::comms_champion Qt5::Widgets Qt5::Core ${extra_link_opts})
     if (CMAKE_COMPILER_IS_GNUCC)
         target_compile_options(${name} PRIVATE "-ftemplate-backtrace-limit=0")
     endif ()
 
-    qt5_use_modules (${name} Core)
     install (
         TARGETS ${name}
         DESTINATION ${PLUGIN_INSTALL_DIR})
@@ -437,8 +443,17 @@ if (NOT Qt5Core_FOUND)
     return ()
 endif ()
 
+if (NOT Qt5Widgets_FOUND)
+    message (WARNING "Can NOT compile protocol plugin due to missing QT5 Widgets library")
+    return ()
+endif ()
+
 if (CMAKE_COMPILER_IS_GNUCC)
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-backtrace-limit=0")
+endif ()
+
+if (CC_COMMS_CHAMPION_FOUND)
+    include_directories (${CC_INCLUDE_DIRS})
 endif ()
 
 cc_plugin_all_messages()

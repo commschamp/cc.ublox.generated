@@ -47,6 +47,10 @@
 /// @li @ref ublox::Ublox8ServerInputMessages (from @b ublox/Ublox8ServerInputMessages.h).
 /// @li @ref ublox::Ublox8ClientInputMessages (from @b ublox/Ublox8ClientInputMessages.h).
 ///
+/// @b NOTE, that the frame definition does not exactly follow the recommended
+/// instructions from <b>Protocol Stack Definition Tutorial</b> page of @b COMMS
+/// library documentation. The extra customization (see @ref main_customization below)
+/// is performed by passing options to the layers themselves.
 ///
 /// @section main_customization Customization
 /// Depending on the value of @b customization option passed to the @b commsdsl2comms
@@ -106,6 +110,11 @@
 /// (check for existence of ublox/ServerDefaultOptions.h file) and
 /// ublox::ClientDefaultOptions (check for existence of ublox/ClientDefaultOptions.h file).
 /// These structs suppress generation of unnecessary virtual functions which are not
-/// going to be used. Consiger using this structs as options instead of default
+/// going to be used. Consider using this structs as options instead of default
 /// ublox::DefaultOptions.
+///
+/// In case non-custom &lt;id&gt; layer has been used in schema (files), custom,
+/// application-specific allocation options to it may include
+/// @b comms::option::InPlaceAllocation and/or @b comms::option::SupportGenericMessage.
+/// Please see the documentation of the @b COMMS library itself for more details.
 
