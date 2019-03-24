@@ -57,7 +57,7 @@ struct CfgRateFields
         
     };
     
-    /// @brief Values enumerator for @ref TimeRef field.
+    /// @brief Values enumerator for @ref ublox::message::CfgRateFields::TimeRef field.
     enum class TimeRefVal : std::uint16_t
     {
         UTC = 0, ///< value @b UTC
@@ -69,6 +69,7 @@ struct CfgRateFields
     };
     
     /// @brief Definition of <b>"timeRef"</b> field.
+    /// @see @ref ublox::message::CfgRateFields::TimeRefVal
     struct TimeRef : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

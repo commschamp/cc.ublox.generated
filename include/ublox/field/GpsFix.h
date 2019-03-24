@@ -15,7 +15,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref GpsFix field.
+/// @brief Values enumerator for @ref ublox::field::GpsFix field.
 enum class GpsFixVal : std::uint8_t
 {
     NoFix = 0x00U, ///< value <b>no fix</b>.
@@ -28,6 +28,7 @@ enum class GpsFixVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"gpsFix"</b> field.
+/// @see @ref ublox::field::GpsFixVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
 template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>

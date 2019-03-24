@@ -103,7 +103,7 @@ struct CfgPrtSpiFields
             
         };
         
-        /// @brief Values enumerator for @ref SpiMode field.
+        /// @brief Values enumerator for @ref ublox::message::CfgPrtSpiFields::ModeMembers::SpiMode field.
         enum class SpiModeVal : std::uint8_t
         {
             Mode0 = 0, ///< value <b>Mode 0: CPOL = 0, CPHA = 0</b>.
@@ -114,6 +114,7 @@ struct CfgPrtSpiFields
         };
         
         /// @brief Definition of <b>"spiMode"</b> field.
+        /// @see @ref ublox::message::CfgPrtSpiFields::ModeMembers::SpiModeVal
         struct SpiMode : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

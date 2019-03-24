@@ -182,7 +182,7 @@ struct CfgItfmFields
             
         };
         
-        /// @brief Values enumerator for @ref AntSetting field.
+        /// @brief Values enumerator for @ref ublox::message::CfgItfmFields::Config2Members::AntSetting field.
         enum class AntSettingVal : std::uint8_t
         {
             Unknown = 0, ///< value @b Unknown
@@ -192,6 +192,7 @@ struct CfgItfmFields
         };
         
         /// @brief Definition of <b>"antSetting"</b> field.
+        /// @see @ref ublox::message::CfgItfmFields::Config2Members::AntSettingVal
         struct AntSetting : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

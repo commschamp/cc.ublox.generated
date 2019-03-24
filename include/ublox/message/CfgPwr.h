@@ -58,7 +58,7 @@ struct CfgPwrFields
         
     };
     
-    /// @brief Values enumerator for @ref State field.
+    /// @brief Values enumerator for @ref ublox::message::CfgPwrFields::State field.
     enum class StateVal : std::uint32_t
     {
         Backup = 0x42434B50UL, ///< value @b Backup
@@ -68,6 +68,7 @@ struct CfgPwrFields
     };
     
     /// @brief Definition of <b>"state"</b> field.
+    /// @see @ref ublox::message::CfgPwrFields::StateVal
     struct State : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

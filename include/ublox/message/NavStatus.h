@@ -119,7 +119,7 @@ struct NavStatusFields
             
         };
         
-        /// @brief Values enumerator for @ref MapMatching field.
+        /// @brief Values enumerator for @ref ublox::message::NavStatusFields::FixStatMembers::MapMatching field.
         enum class MapMatchingVal : std::uint8_t
         {
             None = 0, ///< value <b>none</b>.
@@ -130,6 +130,7 @@ struct NavStatusFields
         };
         
         /// @brief Definition of <b>"mapMatching"</b> field.
+        /// @see @ref ublox::message::NavStatusFields::FixStatMembers::MapMatchingVal
         struct MapMatching : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -191,7 +192,7 @@ struct NavStatusFields
     /// @brief Scope for all the member fields of @ref Flags2 bitfield.
     struct Flags2Members
     {
-        /// @brief Values enumerator for @ref PsmState field.
+        /// @brief Values enumerator for @ref ublox::message::NavStatusFields::Flags2Members::PsmState field.
         enum class PsmStateVal : std::uint8_t
         {
             Acquisition = 0, ///< value <b>ACQUISITION</b>.
@@ -202,6 +203,7 @@ struct NavStatusFields
         };
         
         /// @brief Definition of <b>"psmState"</b> field.
+        /// @see @ref ublox::message::NavStatusFields::Flags2Members::PsmStateVal
         struct PsmState : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -237,7 +239,7 @@ struct NavStatusFields
             
         };
         
-        /// @brief Values enumerator for @ref SpoofDetState field.
+        /// @brief Values enumerator for @ref ublox::message::NavStatusFields::Flags2Members::SpoofDetState field.
         enum class SpoofDetStateVal : std::uint8_t
         {
             Unknown = 0, ///< value @b Unknown
@@ -248,6 +250,7 @@ struct NavStatusFields
         };
         
         /// @brief Definition of <b>"spoofDetState"</b> field.
+        /// @see @ref ublox::message::NavStatusFields::Flags2Members::SpoofDetStateVal
         struct SpoofDetState : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

@@ -27,7 +27,7 @@ namespace message
 template <typename TOpt = ublox::DefaultOptions>
 struct MgaAckFields
 {
-    /// @brief Values enumerator for @ref Type field.
+    /// @brief Values enumerator for @ref ublox::message::MgaAckFields::Type field.
     enum class TypeVal : std::uint8_t
     {
         NotUsed = 0, ///< value @b NotUsed
@@ -36,6 +36,7 @@ struct MgaAckFields
     };
     
     /// @brief Definition of <b>"type"</b> field.
+    /// @see @ref ublox::message::MgaAckFields::TypeVal
     struct Type : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -67,7 +68,7 @@ struct MgaAckFields
         
     };
     
-    /// @brief Values enumerator for @ref InfoCode field.
+    /// @brief Values enumerator for @ref ublox::message::MgaAckFields::InfoCode field.
     enum class InfoCodeVal : std::uint8_t
     {
         Accepted = 0, ///< value @b Accepted
@@ -81,6 +82,7 @@ struct MgaAckFields
     };
     
     /// @brief Definition of <b>"infoCode"</b> field.
+    /// @see @ref ublox::message::MgaAckFields::InfoCodeVal
     struct InfoCode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

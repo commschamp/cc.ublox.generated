@@ -121,7 +121,7 @@ struct MonHwFields
         
     };
     
-    /// @brief Values enumerator for @ref AStatus field.
+    /// @brief Values enumerator for @ref ublox::message::MonHwFields::AStatus field.
     enum class AStatusVal : std::uint8_t
     {
         INIT = 0, ///< value @b INIT
@@ -133,6 +133,7 @@ struct MonHwFields
     };
     
     /// @brief Definition of <b>"aStatus"</b> field.
+    /// @see @ref ublox::message::MonHwFields::AStatusVal
     struct AStatus : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -148,7 +149,7 @@ struct MonHwFields
         
     };
     
-    /// @brief Values enumerator for @ref APower field.
+    /// @brief Values enumerator for @ref ublox::message::MonHwFields::APower field.
     enum class APowerVal : std::uint8_t
     {
         OFF = 0, ///< value @b OFF
@@ -158,6 +159,7 @@ struct MonHwFields
     };
     
     /// @brief Definition of <b>"aPower"</b> field.
+    /// @see @ref ublox::message::MonHwFields::APowerVal
     struct APower : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -210,7 +212,7 @@ struct MonHwFields
             
         };
         
-        /// @brief Values enumerator for @ref JammingState field.
+        /// @brief Values enumerator for @ref ublox::message::MonHwFields::FlagsMembers::JammingState field.
         enum class JammingStateVal : std::uint8_t
         {
             Unknown = 0, ///< value @b Unknown
@@ -221,6 +223,7 @@ struct MonHwFields
         };
         
         /// @brief Definition of <b>"jammingState"</b> field.
+        /// @see @ref ublox::message::MonHwFields::FlagsMembers::JammingStateVal
         struct JammingState : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

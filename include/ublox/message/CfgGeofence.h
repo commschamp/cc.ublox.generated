@@ -91,7 +91,7 @@ struct CfgGeofenceFields
         
     };
     
-    /// @brief Values enumerator for @ref PioEnabled field.
+    /// @brief Values enumerator for @ref ublox::message::CfgGeofenceFields::PioEnabled field.
     enum class PioEnabledVal : std::uint8_t
     {
         Disable = 0, ///< value @b Disable
@@ -100,6 +100,7 @@ struct CfgGeofenceFields
     };
     
     /// @brief Definition of <b>"pioEnabled"</b> field.
+    /// @see @ref ublox::message::CfgGeofenceFields::PioEnabledVal
     struct PioEnabled : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -115,7 +116,7 @@ struct CfgGeofenceFields
         
     };
     
-    /// @brief Values enumerator for @ref PinPolarity field.
+    /// @brief Values enumerator for @ref ublox::message::CfgGeofenceFields::PinPolarity field.
     enum class PinPolarityVal : std::uint8_t
     {
         LowInside = 0, ///< value @b LowInside
@@ -124,6 +125,7 @@ struct CfgGeofenceFields
     };
     
     /// @brief Definition of <b>"pinPolarity"</b> field.
+    /// @see @ref ublox::message::CfgGeofenceFields::PinPolarityVal
     struct PinPolarity : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

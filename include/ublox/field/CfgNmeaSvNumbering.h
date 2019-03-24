@@ -15,7 +15,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref CfgNmeaSvNumbering field.
+/// @brief Values enumerator for @ref ublox::field::CfgNmeaSvNumbering field.
 enum class CfgNmeaSvNumberingVal : std::uint8_t
 {
     Strict = 0, ///< value @b Strict
@@ -24,6 +24,7 @@ enum class CfgNmeaSvNumberingVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"cfgNmeaSvNumbering"</b> field.
+/// @see @ref ublox::field::CfgNmeaSvNumberingVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
 template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>

@@ -56,7 +56,7 @@ struct NavSvinfoFields
     /// @brief Scope for all the member fields of @ref GlobalFlags bitfield.
     struct GlobalFlagsMembers
     {
-        /// @brief Values enumerator for @ref ChipGen field.
+        /// @brief Values enumerator for @ref ublox::message::NavSvinfoFields::GlobalFlagsMembers::ChipGen field.
         enum class ChipGenVal : std::uint8_t
         {
             Antaris = 0, ///< value @b Antaris
@@ -68,6 +68,7 @@ struct NavSvinfoFields
         };
         
         /// @brief Definition of <b>"chipGen"</b> field.
+        /// @see @ref ublox::message::NavSvinfoFields::GlobalFlagsMembers::ChipGenVal
         struct ChipGen : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -241,7 +242,7 @@ struct NavSvinfoFields
                 
             };
             
-            /// @brief Values enumerator for @ref Quality field.
+            /// @brief Values enumerator for @ref ublox::message::NavSvinfoFields::ListMembers::ElementMembers::Quality field.
             enum class QualityVal : std::uint8_t
             {
                 NoSignal = 0, ///< value <b>no signal</b>.
@@ -256,6 +257,7 @@ struct NavSvinfoFields
             };
             
             /// @brief Definition of <b>"quality"</b> field.
+            /// @see @ref ublox::message::NavSvinfoFields::ListMembers::ElementMembers::QualityVal
             struct Quality : public
                 comms::field::EnumValue<
                     ublox::field::FieldBase<>,

@@ -129,7 +129,7 @@ struct TimTpFields
             
         };
         
-        /// @brief Values enumerator for @ref Raim field.
+        /// @brief Values enumerator for @ref ublox::message::TimTpFields::FlagsMembers::Raim field.
         enum class RaimVal : std::uint8_t
         {
             NotAvailable = 0, ///< value @b NotAvailable
@@ -139,6 +139,7 @@ struct TimTpFields
         };
         
         /// @brief Definition of <b>"raim"</b> field.
+        /// @see @ref ublox::message::TimTpFields::FlagsMembers::RaimVal
         struct Raim : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -222,7 +223,7 @@ struct TimTpFields
     /// @brief Scope for all the member fields of @ref RefInfo bitfield.
     struct RefInfoMembers
     {
-        /// @brief Values enumerator for @ref TimeRefGnss field.
+        /// @brief Values enumerator for @ref ublox::message::TimTpFields::RefInfoMembers::TimeRefGnss field.
         enum class TimeRefGnssVal : std::uint8_t
         {
             GPS = 0, ///< value @b GPS
@@ -233,6 +234,7 @@ struct TimTpFields
         };
         
         /// @brief Definition of <b>"timeRefGnss"</b> field.
+        /// @see @ref ublox::message::TimTpFields::RefInfoMembers::TimeRefGnssVal
         struct TimeRefGnss : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -250,7 +252,7 @@ struct TimTpFields
             
         };
         
-        /// @brief Values enumerator for @ref UtcStandard field.
+        /// @brief Values enumerator for @ref ublox::message::TimTpFields::RefInfoMembers::UtcStandard field.
         enum class UtcStandardVal : std::uint8_t
         {
             NotAvailable = 0, ///< value @b NotAvailable
@@ -265,6 +267,7 @@ struct TimTpFields
         };
         
         /// @brief Definition of <b>"utcStandard"</b> field.
+        /// @see @ref ublox::message::TimTpFields::RefInfoMembers::UtcStandardVal
         struct UtcStandard : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

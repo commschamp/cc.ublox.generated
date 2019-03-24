@@ -60,7 +60,7 @@ struct CfgTpFields
         
     };
     
-    /// @brief Values enumerator for @ref Status field.
+    /// @brief Values enumerator for @ref ublox::message::CfgTpFields::Status field.
     enum class StatusVal : std::int8_t
     {
         Negative = -1, ///< value @b Negative
@@ -70,6 +70,7 @@ struct CfgTpFields
     };
     
     /// @brief Definition of <b>"status"</b> field.
+    /// @see @ref ublox::message::CfgTpFields::StatusVal
     struct Status : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -85,7 +86,7 @@ struct CfgTpFields
         
     };
     
-    /// @brief Values enumerator for @ref TimeRef field.
+    /// @brief Values enumerator for @ref ublox::message::CfgTpFields::TimeRef field.
     enum class TimeRefVal : std::uint8_t
     {
         UTC = 0, ///< value @b UTC
@@ -95,6 +96,7 @@ struct CfgTpFields
     };
     
     /// @brief Definition of <b>"timeRef"</b> field.
+    /// @see @ref ublox::message::CfgTpFields::TimeRefVal
     struct TimeRef : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

@@ -89,7 +89,7 @@ struct MonHw2Fields
         
     };
     
-    /// @brief Values enumerator for @ref CfgSource field.
+    /// @brief Values enumerator for @ref ublox::message::MonHw2Fields::CfgSource field.
     enum class CfgSourceVal : std::uint8_t
     {
         FlashImage = 102, ///< value @b FlashImage
@@ -100,6 +100,7 @@ struct MonHw2Fields
     };
     
     /// @brief Definition of <b>"cfgSource"</b> field.
+    /// @see @ref ublox::message::MonHw2Fields::CfgSourceVal
     struct CfgSource : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

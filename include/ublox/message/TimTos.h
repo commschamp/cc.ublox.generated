@@ -121,7 +121,7 @@ struct TimTosFields
             
         };
         
-        /// @brief Values enumerator for @ref DiscSrc field.
+        /// @brief Values enumerator for @ref ublox::message::TimTosFields::FlagsMembers::DiscSrc field.
         enum class DiscSrcVal : std::uint8_t
         {
             Internal = 0, ///< value @b Internal
@@ -134,6 +134,7 @@ struct TimTosFields
         };
         
         /// @brief Definition of <b>"DiscSrc"</b> field.
+        /// @see @ref ublox::message::TimTosFields::FlagsMembers::DiscSrcVal
         struct DiscSrc : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -269,7 +270,7 @@ struct TimTosFields
            TOpt
        >;
     
-    /// @brief Values enumerator for @ref UtcStandard field.
+    /// @brief Values enumerator for @ref ublox::message::TimTosFields::UtcStandard field.
     enum class UtcStandardVal : std::uint8_t
     {
         Unknown = 0, ///< value @b Unknown
@@ -280,6 +281,7 @@ struct TimTosFields
     };
     
     /// @brief Definition of <b>"utcStandard"</b> field.
+    /// @see @ref ublox::message::TimTosFields::UtcStandardVal
     struct UtcStandard : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

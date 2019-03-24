@@ -104,7 +104,7 @@ struct CfgOdoFields
     /// @brief Scope for all the member fields of @ref OdoCfg bitfield.
     struct OdoCfgMembers
     {
-        /// @brief Values enumerator for @ref Profile field.
+        /// @brief Values enumerator for @ref ublox::message::CfgOdoFields::OdoCfgMembers::Profile field.
         enum class ProfileVal : std::uint8_t
         {
             Running = 0, ///< value @b Running
@@ -116,6 +116,7 @@ struct CfgOdoFields
         };
         
         /// @brief Definition of <b>"profile"</b> field.
+        /// @see @ref ublox::message::CfgOdoFields::OdoCfgMembers::ProfileVal
         struct Profile : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

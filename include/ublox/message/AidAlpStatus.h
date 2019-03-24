@@ -25,7 +25,7 @@ namespace message
 template <typename TOpt = ublox::DefaultOptions>
 struct AidAlpStatusFields
 {
-    /// @brief Values enumerator for @ref Status field.
+    /// @brief Values enumerator for @ref ublox::message::AidAlpStatusFields::Status field.
     enum class StatusVal : std::uint8_t
     {
         nak = 0, ///< value @b nak
@@ -34,6 +34,7 @@ struct AidAlpStatusFields
     };
     
     /// @brief Definition of <b>"status"</b> field.
+    /// @see @ref ublox::message::AidAlpStatusFields::StatusVal
     struct Status : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

@@ -100,7 +100,7 @@ struct NavDgpsFields
         
     };
     
-    /// @brief Values enumerator for @ref Status field.
+    /// @brief Values enumerator for @ref ublox::message::NavDgpsFields::Status field.
     enum class StatusVal : std::uint8_t
     {
         None = 0, ///< value @b None
@@ -109,6 +109,7 @@ struct NavDgpsFields
     };
     
     /// @brief Definition of <b>"status"</b> field.
+    /// @see @ref ublox::message::NavDgpsFields::StatusVal
     struct Status : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

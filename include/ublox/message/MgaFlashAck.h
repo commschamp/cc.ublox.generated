@@ -61,7 +61,7 @@ struct MgaFlashAckFields
         
     };
     
-    /// @brief Values enumerator for @ref Ack field.
+    /// @brief Values enumerator for @ref ublox::message::MgaFlashAckFields::Ack field.
     enum class AckVal : std::uint8_t
     {
         Ack = 0, ///< value @b Ack
@@ -71,6 +71,7 @@ struct MgaFlashAckFields
     };
     
     /// @brief Definition of <b>"ack"</b> field.
+    /// @see @ref ublox::message::MgaFlashAckFields::AckVal
     struct Ack : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

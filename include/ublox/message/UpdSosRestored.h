@@ -59,7 +59,7 @@ struct UpdSosRestoredFields
         
     };
     
-    /// @brief Values enumerator for @ref Response field.
+    /// @brief Values enumerator for @ref ublox::message::UpdSosRestoredFields::Response field.
     enum class ResponseVal : std::uint8_t
     {
         Unknown = 0, ///< value @b Unknown
@@ -70,6 +70,7 @@ struct UpdSosRestoredFields
     };
     
     /// @brief Definition of <b>"response"</b> field.
+    /// @see @ref ublox::message::UpdSosRestoredFields::ResponseVal
     struct Response : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

@@ -70,7 +70,7 @@ struct EsfStatusFields
         
     };
     
-    /// @brief Values enumerator for @ref FusionMode field.
+    /// @brief Values enumerator for @ref ublox::message::EsfStatusFields::FusionMode field.
     enum class FusionModeVal : std::uint8_t
     {
         Initialization = 0, ///< value @b Initialization
@@ -81,6 +81,7 @@ struct EsfStatusFields
     };
     
     /// @brief Definition of <b>"fusionMode"</b> field.
+    /// @see @ref ublox::message::EsfStatusFields::FusionModeVal
     struct FusionMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -229,7 +230,7 @@ struct EsfStatusFields
             /// @brief Scope for all the member fields of @ref SensStatus2 bitfield.
             struct SensStatus2Members
             {
-                /// @brief Values enumerator for @ref CalibStatus field.
+                /// @brief Values enumerator for @ref ublox::message::EsfStatusFields::ListMembers::ElementMembers::SensStatus2Members::CalibStatus field.
                 enum class CalibStatusVal : std::uint8_t
                 {
                     NotCalibrated = 0, ///< value @b NotCalibrated
@@ -240,6 +241,7 @@ struct EsfStatusFields
                 };
                 
                 /// @brief Definition of <b>"calibStatus"</b> field.
+                /// @see @ref ublox::message::EsfStatusFields::ListMembers::ElementMembers::SensStatus2Members::CalibStatusVal
                 struct CalibStatus : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -256,7 +258,7 @@ struct EsfStatusFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref TimeStatus field.
+                /// @brief Values enumerator for @ref ublox::message::EsfStatusFields::ListMembers::ElementMembers::SensStatus2Members::TimeStatus field.
                 enum class TimeStatusVal : std::uint8_t
                 {
                     NoData = 0, ///< value @b NoData
@@ -267,6 +269,7 @@ struct EsfStatusFields
                 };
                 
                 /// @brief Definition of <b>"timeStatus"</b> field.
+                /// @see @ref ublox::message::EsfStatusFields::ListMembers::ElementMembers::SensStatus2Members::TimeStatusVal
                 struct TimeStatus : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,

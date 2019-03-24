@@ -15,7 +15,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref GeofenceState field.
+/// @brief Values enumerator for @ref ublox::field::GeofenceState field.
 enum class GeofenceStateVal : std::uint8_t
 {
     Unknown = 0, ///< value @b Unknown
@@ -25,6 +25,7 @@ enum class GeofenceStateVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"GeofenceState"</b> field.
+/// @see @ref ublox::field::GeofenceStateVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
 template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>

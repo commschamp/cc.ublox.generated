@@ -53,7 +53,7 @@ struct NavGeofenceFields
         
     };
     
-    /// @brief Values enumerator for @ref Status field.
+    /// @brief Values enumerator for @ref ublox::message::NavGeofenceFields::Status field.
     enum class StatusVal : std::uint8_t
     {
         NotAvailable = 0, ///< value <b>Not available</b>.
@@ -62,6 +62,7 @@ struct NavGeofenceFields
     };
     
     /// @brief Definition of <b>"status"</b> field.
+    /// @see @ref ublox::message::NavGeofenceFields::StatusVal
     struct Status : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

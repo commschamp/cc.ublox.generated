@@ -65,7 +65,7 @@ struct NavTimelsFields
         
     };
     
-    /// @brief Values enumerator for @ref SrcOfCurrLs field.
+    /// @brief Values enumerator for @ref ublox::message::NavTimelsFields::SrcOfCurrLs field.
     enum class SrcOfCurrLsVal : std::uint8_t
     {
         Default = 0, ///< value @b Default
@@ -81,6 +81,7 @@ struct NavTimelsFields
     };
     
     /// @brief Definition of <b>"srcOfCurrLs"</b> field.
+    /// @see @ref ublox::message::NavTimelsFields::SrcOfCurrLsVal
     struct SrcOfCurrLs : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -113,7 +114,7 @@ struct NavTimelsFields
         
     };
     
-    /// @brief Values enumerator for @ref SrcOfLsChange field.
+    /// @brief Values enumerator for @ref ublox::message::NavTimelsFields::SrcOfLsChange field.
     enum class SrcOfLsChangeVal : std::uint8_t
     {
         NoSource = 0, ///< value <b>No source</b>.
@@ -126,6 +127,7 @@ struct NavTimelsFields
     };
     
     /// @brief Definition of <b>"srcOfLsChange"</b> field.
+    /// @see @ref ublox::message::NavTimelsFields::SrcOfLsChangeVal
     struct SrcOfLsChange : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

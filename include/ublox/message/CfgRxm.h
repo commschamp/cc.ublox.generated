@@ -40,7 +40,7 @@ struct CfgRxmFields
         
     };
     
-    /// @brief Values enumerator for @ref LpMode field.
+    /// @brief Values enumerator for @ref ublox::message::CfgRxmFields::LpMode field.
     enum class LpModeVal : std::uint8_t
     {
         Continuous = 0, ///< value @b Continuous
@@ -50,6 +50,7 @@ struct CfgRxmFields
     };
     
     /// @brief Definition of <b>"lpMode"</b> field.
+    /// @see @ref ublox::message::CfgRxmFields::LpModeVal
     struct LpMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

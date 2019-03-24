@@ -26,7 +26,7 @@ namespace message
 template <typename TOpt = ublox::DefaultOptions>
 struct CfgTmodeFields
 {
-    /// @brief Values enumerator for @ref TimeMode field.
+    /// @brief Values enumerator for @ref ublox::message::CfgTmodeFields::TimeMode field.
     enum class TimeModeVal : std::uint32_t
     {
         Disabled = 0, ///< value @b Disabled
@@ -36,6 +36,7 @@ struct CfgTmodeFields
     };
     
     /// @brief Definition of <b>"timeMode"</b> field.
+    /// @see @ref ublox::message::CfgTmodeFields::TimeModeVal
     struct TimeMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

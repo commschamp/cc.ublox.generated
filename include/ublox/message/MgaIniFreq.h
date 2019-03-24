@@ -80,7 +80,7 @@ struct MgaIniFreqFields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref Source field.
+        /// @brief Values enumerator for @ref ublox::message::MgaIniFreqFields::FlagsMembers::Source field.
         enum class SourceVal : std::uint8_t
         {
             EXTINT0 = 0, ///< value @b EXTINT0
@@ -89,6 +89,7 @@ struct MgaIniFreqFields
         };
         
         /// @brief Definition of <b>"source"</b> field.
+        /// @see @ref ublox::message::MgaIniFreqFields::FlagsMembers::SourceVal
         struct Source : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

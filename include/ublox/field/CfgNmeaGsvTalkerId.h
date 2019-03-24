@@ -15,7 +15,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref CfgNmeaGsvTalkerId field.
+/// @brief Values enumerator for @ref ublox::field::CfgNmeaGsvTalkerId field.
 enum class CfgNmeaGsvTalkerIdVal : std::uint8_t
 {
     GnssSpecific = 0, ///< value <b>GNSS Specific</b>.
@@ -24,6 +24,7 @@ enum class CfgNmeaGsvTalkerIdVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"cfgNmeaGsvTalkerId"</b> field.
+/// @see @ref ublox::field::CfgNmeaGsvTalkerIdVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
 template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>

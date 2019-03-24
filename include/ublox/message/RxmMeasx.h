@@ -242,7 +242,7 @@ struct RxmMeasxFields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref TowSet field.
+        /// @brief Values enumerator for @ref ublox::message::RxmMeasxFields::FlagsMembers::TowSet field.
         enum class TowSetVal : std::uint8_t
         {
             No = 0, ///< value @b No
@@ -252,6 +252,7 @@ struct RxmMeasxFields
         };
         
         /// @brief Definition of <b>"towSet"</b> field.
+        /// @see @ref ublox::message::RxmMeasxFields::FlagsMembers::TowSetVal
         struct TowSet : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -383,7 +384,7 @@ struct RxmMeasxFields
                 
             };
             
-            /// @brief Values enumerator for @ref MpathIndic field.
+            /// @brief Values enumerator for @ref ublox::message::RxmMeasxFields::ListMembers::ElementMembers::MpathIndic field.
             enum class MpathIndicVal : std::uint8_t
             {
                 NotMeasured = 0, ///< value <b>Not measured</b>.
@@ -394,6 +395,7 @@ struct RxmMeasxFields
             };
             
             /// @brief Definition of <b>"mpathIndic"</b> field.
+            /// @see @ref ublox::message::RxmMeasxFields::ListMembers::ElementMembers::MpathIndicVal
             struct MpathIndic : public
                 comms::field::EnumValue<
                     ublox::field::FieldBase<>,

@@ -81,7 +81,7 @@ struct CfgPm2FlagsMembers
         
     };
     
-    /// @brief Values enumerator for @ref LimitPeakCurr field.
+    /// @brief Values enumerator for @ref ublox::field::CfgPm2FlagsMembers::LimitPeakCurr field.
     enum class LimitPeakCurrVal : std::uint8_t
     {
         Desabled = 0, ///< value @b Desabled
@@ -90,6 +90,7 @@ struct CfgPm2FlagsMembers
     };
     
     /// @brief Definition of <b>"limitPeakCurr"</b> field.
+    /// @see @ref ublox::field::CfgPm2FlagsMembers::LimitPeakCurrVal
     struct LimitPeakCurr : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -163,7 +164,7 @@ struct CfgPm2FlagsMembers
         
     };
     
-    /// @brief Values enumerator for @ref Mode field.
+    /// @brief Values enumerator for @ref ublox::field::CfgPm2FlagsMembers::Mode field.
     enum class ModeVal : std::uint8_t
     {
         OnOff = 0, ///< value <b>ON/OFF</b>.
@@ -172,6 +173,7 @@ struct CfgPm2FlagsMembers
     };
     
     /// @brief Definition of <b>"mode"</b> field.
+    /// @see @ref ublox::field::CfgPm2FlagsMembers::ModeVal
     struct Mode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

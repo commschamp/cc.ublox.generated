@@ -15,7 +15,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref SbasSys field.
+/// @brief Values enumerator for @ref ublox::field::SbasSys field.
 enum class SbasSysVal : std::int8_t
 {
     Unknown = -1, ///< value @b Unknown
@@ -28,6 +28,7 @@ enum class SbasSysVal : std::int8_t
 };
 
 /// @brief Definition of <b>"sbasSys"</b> field.
+/// @see @ref ublox::field::SbasSysVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
 template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>

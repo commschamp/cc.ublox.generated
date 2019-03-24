@@ -110,7 +110,7 @@ struct CfgNav5Fields
         
     };
     
-    /// @brief Values enumerator for @ref DynModel field.
+    /// @brief Values enumerator for @ref ublox::message::CfgNav5Fields::DynModel field.
     enum class DynModelVal : std::uint8_t
     {
         Portable = 0, ///< value @b Portable
@@ -126,6 +126,7 @@ struct CfgNav5Fields
     };
     
     /// @brief Definition of <b>"dynModel"</b> field.
+    /// @see @ref ublox::message::CfgNav5Fields::DynModelVal
     struct DynModel : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -142,7 +143,7 @@ struct CfgNav5Fields
         
     };
     
-    /// @brief Values enumerator for @ref FixMode field.
+    /// @brief Values enumerator for @ref ublox::message::CfgNav5Fields::FixMode field.
     enum class FixModeVal : std::uint8_t
     {
         Only2D = 1, ///< value <b>2D Only</b>.
@@ -152,6 +153,7 @@ struct CfgNav5Fields
     };
     
     /// @brief Definition of <b>"fixMode"</b> field.
+    /// @see @ref ublox::message::CfgNav5Fields::FixModeVal
     struct FixMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -388,7 +390,7 @@ struct CfgNav5Fields
         
     };
     
-    /// @brief Values enumerator for @ref UtcStandard field.
+    /// @brief Values enumerator for @ref ublox::message::CfgNav5Fields::UtcStandard field.
     enum class UtcStandardVal : std::uint8_t
     {
         Automatic = 0, ///< value @b Automatic
@@ -399,6 +401,7 @@ struct CfgNav5Fields
     };
     
     /// @brief Definition of <b>"utcStandard"</b> field.
+    /// @see @ref ublox::message::CfgNav5Fields::UtcStandardVal
     struct UtcStandard : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

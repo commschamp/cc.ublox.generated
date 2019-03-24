@@ -451,7 +451,7 @@ struct CfgTp5Fields
             
         };
         
-        /// @brief Values enumerator for @ref GridUtcGnss field.
+        /// @brief Values enumerator for @ref ublox::message::CfgTp5Fields::FlagsMembers::GridUtcGnss field.
         enum class GridUtcGnssVal : std::uint8_t
         {
             UTC = 0, ///< value @b UTC
@@ -463,6 +463,7 @@ struct CfgTp5Fields
         };
         
         /// @brief Definition of <b>"gridUtcGnss"</b> field.
+        /// @see @ref ublox::message::CfgTp5Fields::FlagsMembers::GridUtcGnssVal
         struct GridUtcGnss : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

@@ -15,7 +15,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref CfgTp5TpIdx field.
+/// @brief Values enumerator for @ref ublox::field::CfgTp5TpIdx field.
 enum class CfgTp5TpIdxVal : std::uint8_t
 {
     TIMEPULSE = 0, ///< value @b TIMEPULSE
@@ -24,6 +24,7 @@ enum class CfgTp5TpIdxVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"tpIdx"</b> field.
+/// @see @ref ublox::field::CfgTp5TpIdxVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
 template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>

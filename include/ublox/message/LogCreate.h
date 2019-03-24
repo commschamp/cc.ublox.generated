@@ -92,7 +92,7 @@ struct LogCreateFields
         
     };
     
-    /// @brief Values enumerator for @ref LogSize field.
+    /// @brief Values enumerator for @ref ublox::message::LogCreateFields::LogSize field.
     enum class LogSizeVal : std::uint8_t
     {
         Maximum = 0, ///< value @b Maximum
@@ -102,6 +102,7 @@ struct LogCreateFields
     };
     
     /// @brief Definition of <b>"logSize"</b> field.
+    /// @see @ref ublox::message::LogCreateFields::LogSizeVal
     struct LogSize : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

@@ -61,7 +61,7 @@ struct TimVcocalFields
         
     };
     
-    /// @brief Values enumerator for @ref OscId field.
+    /// @brief Values enumerator for @ref ublox::message::TimVcocalFields::OscId field.
     enum class OscIdVal : std::uint8_t
     {
         Internal = 0, ///< value @b Internal
@@ -70,6 +70,7 @@ struct TimVcocalFields
     };
     
     /// @brief Definition of <b>"oscId"</b> field.
+    /// @see @ref ublox::message::TimVcocalFields::OscIdVal
     struct OscId : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

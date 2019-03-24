@@ -55,7 +55,7 @@ struct NavSbasFields
         
     };
     
-    /// @brief Values enumerator for @ref Mode field.
+    /// @brief Values enumerator for @ref ublox::message::NavSbasFields::Mode field.
     enum class ModeVal : std::uint8_t
     {
         Disabled = 0, ///< value @b Disabled
@@ -65,6 +65,7 @@ struct NavSbasFields
     };
     
     /// @brief Definition of <b>"mode"</b> field.
+    /// @see @ref ublox::message::NavSbasFields::ModeVal
     struct Mode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

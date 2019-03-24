@@ -211,7 +211,7 @@ struct NavPvt_u8Fields
             
         };
         
-        /// @brief Values enumerator for @ref PsmState field.
+        /// @brief Values enumerator for @ref ublox::message::NavPvt_u8Fields::FlagsMembers::PsmState field.
         enum class PsmStateVal : std::uint8_t
         {
             NotAvailable = 0, ///< value <b>N/A</b>.
@@ -224,6 +224,7 @@ struct NavPvt_u8Fields
         };
         
         /// @brief Definition of <b>"psmState"</b> field.
+        /// @see @ref ublox::message::NavPvt_u8Fields::FlagsMembers::PsmStateVal
         struct PsmState : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -272,7 +273,7 @@ struct NavPvt_u8Fields
             
         };
         
-        /// @brief Values enumerator for @ref CarrSoln field.
+        /// @brief Values enumerator for @ref ublox::message::NavPvt_u8Fields::FlagsMembers::CarrSoln field.
         enum class CarrSolnVal : std::uint8_t
         {
             NoCarrier = 0, ///< value <b>No carrier</b>.
@@ -282,6 +283,7 @@ struct NavPvt_u8Fields
         };
         
         /// @brief Definition of <b>"carrSoln"</b> field.
+        /// @see @ref ublox::message::NavPvt_u8Fields::FlagsMembers::CarrSolnVal
         struct CarrSoln : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

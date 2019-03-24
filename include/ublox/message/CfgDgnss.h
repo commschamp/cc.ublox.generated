@@ -26,7 +26,7 @@ namespace message
 template <typename TOpt = ublox::DefaultOptions>
 struct CfgDgnssFields
 {
-    /// @brief Values enumerator for @ref DgnssMode field.
+    /// @brief Values enumerator for @ref ublox::message::CfgDgnssFields::DgnssMode field.
     enum class DgnssModeVal : std::uint8_t
     {
         Float = 2, ///< value @b Float
@@ -35,6 +35,7 @@ struct CfgDgnssFields
     };
     
     /// @brief Definition of <b>"dgnssMode"</b> field.
+    /// @see @ref ublox::message::CfgDgnssFields::DgnssModeVal
     struct DgnssMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

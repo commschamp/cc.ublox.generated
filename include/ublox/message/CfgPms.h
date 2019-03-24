@@ -43,7 +43,7 @@ struct CfgPmsFields
         
     };
     
-    /// @brief Values enumerator for @ref PowerSetupValue field.
+    /// @brief Values enumerator for @ref ublox::message::CfgPmsFields::PowerSetupValue field.
     enum class PowerSetupValueVal : std::uint8_t
     {
         FullPower = 0, ///< value <b>Full power</b>.
@@ -57,6 +57,7 @@ struct CfgPmsFields
     };
     
     /// @brief Definition of <b>"powerSetupValue"</b> field.
+    /// @see @ref ublox::message::CfgPmsFields::PowerSetupValueVal
     struct PowerSetupValue : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

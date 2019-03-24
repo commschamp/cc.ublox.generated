@@ -288,7 +288,7 @@ struct NavRelposnedFields
             
         };
         
-        /// @brief Values enumerator for @ref CarrSoln field.
+        /// @brief Values enumerator for @ref ublox::message::NavRelposnedFields::FlagsMembers::CarrSoln field.
         enum class CarrSolnVal : std::uint8_t
         {
             NoCarrier = 0, ///< value <b>No carrier</b>.
@@ -298,6 +298,7 @@ struct NavRelposnedFields
         };
         
         /// @brief Definition of <b>"carrSoln"</b> field.
+        /// @see @ref ublox::message::NavRelposnedFields::FlagsMembers::CarrSolnVal
         struct CarrSoln : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

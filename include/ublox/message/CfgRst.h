@@ -108,7 +108,7 @@ struct CfgRstFields
         
     };
     
-    /// @brief Values enumerator for @ref ResetMode field.
+    /// @brief Values enumerator for @ref ublox::message::CfgRstFields::ResetMode field.
     enum class ResetModeVal : std::uint8_t
     {
         Hardware = 0, ///< value @b Hardware
@@ -121,6 +121,7 @@ struct CfgRstFields
     };
     
     /// @brief Definition of <b>"resetMode"</b> field.
+    /// @see @ref ublox::message::CfgRstFields::ResetModeVal
     struct ResetMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

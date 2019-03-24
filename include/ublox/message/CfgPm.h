@@ -157,7 +157,7 @@ struct CfgPmFields
             
         };
         
-        /// @brief Values enumerator for @ref LimitPeakCurr field.
+        /// @brief Values enumerator for @ref ublox::message::CfgPmFields::FlagsMembers::LimitPeakCurr field.
         enum class LimitPeakCurrVal : std::uint8_t
         {
             Disabled = 0, ///< value @b Disabled
@@ -166,6 +166,7 @@ struct CfgPmFields
         };
         
         /// @brief Definition of <b>"limitPeakCurr"</b> field.
+        /// @see @ref ublox::message::CfgPmFields::FlagsMembers::LimitPeakCurrVal
         struct LimitPeakCurr : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

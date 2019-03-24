@@ -181,7 +181,7 @@ struct NavSatFields
             /// @brief Scope for all the member fields of @ref Flags bitfield.
             struct FlagsMembers
             {
-                /// @brief Values enumerator for @ref QualityInd field.
+                /// @brief Values enumerator for @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::QualityInd field.
                 enum class QualityIndVal : std::uint8_t
                 {
                     NoSignal = 0, ///< value <b>no signal</b>.
@@ -196,6 +196,7 @@ struct NavSatFields
                 };
                 
                 /// @brief Definition of <b>"qualityInd"</b> field.
+                /// @see @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::QualityIndVal
                 struct QualityInd : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -244,7 +245,7 @@ struct NavSatFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref Health field.
+                /// @brief Values enumerator for @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::Health field.
                 enum class HealthVal : std::uint8_t
                 {
                     Unknown = 0, ///< value @b Unknown
@@ -254,6 +255,7 @@ struct NavSatFields
                 };
                 
                 /// @brief Definition of <b>"health"</b> field.
+                /// @see @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::HealthVal
                 struct Health : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -304,7 +306,7 @@ struct NavSatFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref OrbitSource field.
+                /// @brief Values enumerator for @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::OrbitSource field.
                 enum class OrbitSourceVal : std::uint8_t
                 {
                     NoOrbit = 0, ///< value <b>No orbit</b>.
@@ -316,6 +318,7 @@ struct NavSatFields
                 };
                 
                 /// @brief Definition of <b>"orbitSource"</b> field.
+                /// @see @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::OrbitSourceVal
                 struct OrbitSource : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,

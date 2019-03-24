@@ -101,7 +101,7 @@ struct CfgPrtUartFields
             
         };
         
-        /// @brief Values enumerator for @ref CharLen field.
+        /// @brief Values enumerator for @ref ublox::message::CfgPrtUartFields::ModeMembers::CharLen field.
         enum class CharLenVal : std::uint8_t
         {
             Bits5 = 0, ///< value <b>5 bits</b>.
@@ -112,6 +112,7 @@ struct CfgPrtUartFields
         };
         
         /// @brief Definition of <b>"charLen"</b> field.
+        /// @see @ref ublox::message::CfgPrtUartFields::ModeMembers::CharLenVal
         struct CharLen : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -148,7 +149,7 @@ struct CfgPrtUartFields
             
         };
         
-        /// @brief Values enumerator for @ref Parity field.
+        /// @brief Values enumerator for @ref ublox::message::CfgPrtUartFields::ModeMembers::Parity field.
         enum class ParityVal : std::uint8_t
         {
             Even = 0, ///< value @b Even
@@ -159,6 +160,7 @@ struct CfgPrtUartFields
         };
         
         /// @brief Definition of <b>"parity"</b> field.
+        /// @see @ref ublox::message::CfgPrtUartFields::ModeMembers::ParityVal
         struct Parity : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -177,7 +179,7 @@ struct CfgPrtUartFields
             
         };
         
-        /// @brief Values enumerator for @ref NStopBits field.
+        /// @brief Values enumerator for @ref ublox::message::CfgPrtUartFields::ModeMembers::NStopBits field.
         enum class NStopBitsVal : std::uint8_t
         {
             Bits_1 = 0, ///< value <b>1 bit</b>.
@@ -188,6 +190,7 @@ struct CfgPrtUartFields
         };
         
         /// @brief Definition of <b>"nStopBits"</b> field.
+        /// @see @ref ublox::message::CfgPrtUartFields::ModeMembers::NStopBitsVal
         struct NStopBits : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

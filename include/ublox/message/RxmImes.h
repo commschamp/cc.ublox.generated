@@ -402,7 +402,7 @@ struct RxmImesFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref Pos2Acc field.
+                /// @brief Values enumerator for @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position2_1Members::Pos2Acc field.
                 enum class Pos2AccVal : std::uint8_t
                 {
                     Undef = 0, ///< value @b Undef
@@ -413,6 +413,7 @@ struct RxmImesFields
                 };
                 
                 /// @brief Definition of <b>"pos2Acc"</b> field.
+                /// @see @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position2_1Members::Pos2AccVal
                 struct Pos2Acc : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,

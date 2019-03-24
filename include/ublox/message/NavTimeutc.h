@@ -151,7 +151,7 @@ struct NavTimeutcFields
             
         };
         
-        /// @brief Values enumerator for @ref UtcStandard field.
+        /// @brief Values enumerator for @ref ublox::message::NavTimeutcFields::ValidMembers::UtcStandard field.
         enum class UtcStandardVal : std::uint8_t
         {
             NotAvailable = 0, ///< value <b>Not Available</b>.
@@ -167,6 +167,7 @@ struct NavTimeutcFields
         };
         
         /// @brief Definition of <b>"utcStandard"</b> field.
+        /// @see @ref ublox::message::NavTimeutcFields::ValidMembers::UtcStandardVal
         struct UtcStandard : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

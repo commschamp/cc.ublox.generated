@@ -114,7 +114,7 @@ struct NavOrbFields
             /// @brief Scope for all the member fields of @ref SvFlag bitfield.
             struct SvFlagMembers
             {
-                /// @brief Values enumerator for @ref Health field.
+                /// @brief Values enumerator for @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::SvFlagMembers::Health field.
                 enum class HealthVal : std::uint8_t
                 {
                     Unknown = 0, ///< value @b Unknown
@@ -124,6 +124,7 @@ struct NavOrbFields
                 };
                 
                 /// @brief Definition of <b>"health"</b> field.
+                /// @see @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::SvFlagMembers::HealthVal
                 struct Health : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -140,7 +141,7 @@ struct NavOrbFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref Visibility field.
+                /// @brief Values enumerator for @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::SvFlagMembers::Visibility field.
                 enum class VisibilityVal : std::uint8_t
                 {
                     Unknown = 0, ///< value @b Unknown
@@ -151,6 +152,7 @@ struct NavOrbFields
                 };
                 
                 /// @brief Definition of <b>"visibility"</b> field.
+                /// @see @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::SvFlagMembers::VisibilityVal
                 struct Visibility : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -250,7 +252,7 @@ struct NavOrbFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref EphSource field.
+                /// @brief Values enumerator for @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::EphMembers::EphSource field.
                 enum class EphSourceVal : std::uint8_t
                 {
                     NotAvailable = 0, ///< value <b>Not available</b>.
@@ -260,6 +262,7 @@ struct NavOrbFields
                 };
                 
                 /// @brief Definition of <b>"ephSource"</b> field.
+                /// @see @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::EphMembers::EphSourceVal
                 struct EphSource : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -337,7 +340,7 @@ struct NavOrbFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref AlmSource field.
+                /// @brief Values enumerator for @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::AlmMembers::AlmSource field.
                 enum class AlmSourceVal : std::uint8_t
                 {
                     NotAvailable = 0, ///< value <b>Not available</b>.
@@ -347,6 +350,7 @@ struct NavOrbFields
                 };
                 
                 /// @brief Definition of <b>"almSource"</b> field.
+                /// @see @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::AlmMembers::AlmSourceVal
                 struct AlmSource : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -424,7 +428,7 @@ struct NavOrbFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref Type field.
+                /// @brief Values enumerator for @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::OtherOrbMembers::Type field.
                 enum class TypeVal : std::uint8_t
                 {
                     NotAvailable = 0, ///< value <b>Not available</b>.
@@ -434,6 +438,7 @@ struct NavOrbFields
                 };
                 
                 /// @brief Definition of <b>"type"</b> field.
+                /// @see @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::OtherOrbMembers::TypeVal
                 struct Type : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,

@@ -15,7 +15,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref CfgPrtPortId field.
+/// @brief Values enumerator for @ref ublox::field::CfgPrtPortId field.
 enum class CfgPrtPortIdVal : std::uint8_t
 {
     DDC = 0, ///< value @b DDC
@@ -26,6 +26,7 @@ enum class CfgPrtPortIdVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"cfgPrtPortId"</b> field.
+/// @see @ref ublox::field::CfgPrtPortIdVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
 template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>

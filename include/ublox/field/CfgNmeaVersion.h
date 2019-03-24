@@ -15,7 +15,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref CfgNmeaVersion field.
+/// @brief Values enumerator for @ref ublox::field::CfgNmeaVersion field.
 enum class CfgNmeaVersionVal : std::uint8_t
 {
     V21 = 33, ///< value <b>v2.1</b>.
@@ -26,6 +26,7 @@ enum class CfgNmeaVersionVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"cfgNmeaVersion"</b> field.
+/// @see @ref ublox::field::CfgNmeaVersionVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
 template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>

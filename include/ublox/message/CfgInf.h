@@ -28,7 +28,7 @@ namespace message
 template <typename TOpt = ublox::DefaultOptions>
 struct CfgInfFields
 {
-    /// @brief Values enumerator for @ref ProtocolId field.
+    /// @brief Values enumerator for @ref ublox::message::CfgInfFields::ProtocolId field.
     enum class ProtocolIdVal : std::uint8_t
     {
         UBX = 0, ///< value @b UBX
@@ -37,6 +37,7 @@ struct CfgInfFields
     };
     
     /// @brief Definition of <b>"protocolId"</b> field.
+    /// @see @ref ublox::message::CfgInfFields::ProtocolIdVal
     struct ProtocolId : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

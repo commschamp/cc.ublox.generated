@@ -65,7 +65,7 @@ struct CfgTmode3Fields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref Mode field.
+        /// @brief Values enumerator for @ref ublox::message::CfgTmode3Fields::FlagsMembers::Mode field.
         enum class ModeVal : std::uint8_t
         {
             Disabled = 0, ///< value @b Disabled
@@ -75,6 +75,7 @@ struct CfgTmode3Fields
         };
         
         /// @brief Definition of <b>"mode"</b> field.
+        /// @see @ref ublox::message::CfgTmode3Fields::FlagsMembers::ModeVal
         struct Mode : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

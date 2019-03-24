@@ -15,7 +15,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref CfgMainTalkerId field.
+/// @brief Values enumerator for @ref ublox::field::CfgMainTalkerId field.
 enum class CfgMainTalkerIdVal : std::uint8_t
 {
     NotOverridden = 0, ///< value <b>Not overridden</b>.
@@ -28,6 +28,7 @@ enum class CfgMainTalkerIdVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"cfgMainTalkerId"</b> field.
+/// @see @ref ublox::field::CfgMainTalkerIdVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
 template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>

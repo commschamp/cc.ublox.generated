@@ -48,7 +48,7 @@ struct EsfMeasFields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref TimeMarkSent field.
+        /// @brief Values enumerator for @ref ublox::message::EsfMeasFields::FlagsMembers::TimeMarkSent field.
         enum class TimeMarkSentVal : std::uint8_t
         {
             None = 0, ///< value @b None
@@ -58,6 +58,7 @@ struct EsfMeasFields
         };
         
         /// @brief Definition of <b>"timeMarkSent"</b> field.
+        /// @see @ref ublox::message::EsfMeasFields::FlagsMembers::TimeMarkSentVal
         struct TimeMarkSent : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

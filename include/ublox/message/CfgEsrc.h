@@ -82,7 +82,7 @@ struct CfgEsrcFields
         /// @brief Scope for all the member fields of @ref Element bitfield.
         struct ElementMembers
         {
-            /// @brief Values enumerator for @ref ExtInt field.
+            /// @brief Values enumerator for @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::ExtInt field.
             enum class ExtIntVal : std::uint8_t
             {
                 EXTINT0 = 0, ///< value @b EXTINT0
@@ -91,6 +91,7 @@ struct CfgEsrcFields
             };
             
             /// @brief Definition of <b>"extInt"</b> field.
+            /// @see @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::ExtIntVal
             struct ExtInt : public
                 comms::field::EnumValue<
                     ublox::field::FieldBase<>,
@@ -106,7 +107,7 @@ struct CfgEsrcFields
                 
             };
             
-            /// @brief Values enumerator for @ref SourceType field.
+            /// @brief Values enumerator for @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::SourceType field.
             enum class SourceTypeVal : std::uint8_t
             {
                 None = 0, ///< value @b None
@@ -117,6 +118,7 @@ struct CfgEsrcFields
             };
             
             /// @brief Definition of <b>"sourceType"</b> field.
+            /// @see @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::SourceTypeVal
             struct SourceType : public
                 comms::field::EnumValue<
                     ublox::field::FieldBase<>,

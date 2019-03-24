@@ -28,7 +28,7 @@ namespace message
 template <typename TOpt = ublox::DefaultOptions>
 struct CfgEkfFields
 {
-    /// @brief Values enumerator for @ref DisableEkf field.
+    /// @brief Values enumerator for @ref ublox::message::CfgEkfFields::DisableEkf field.
     enum class DisableEkfVal : std::uint8_t
     {
         Enabled = 0, ///< value @b Enabled
@@ -37,6 +37,7 @@ struct CfgEkfFields
     };
     
     /// @brief Definition of <b>"disableEkf"</b> field.
+    /// @see @ref ublox::message::CfgEkfFields::DisableEkfVal
     struct DisableEkf : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

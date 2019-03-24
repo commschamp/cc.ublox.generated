@@ -102,7 +102,7 @@ struct TimVrfyFields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref Src field.
+        /// @brief Values enumerator for @ref ublox::message::TimVrfyFields::FlagsMembers::Src field.
         enum class SrcVal : std::uint8_t
         {
             NoAiding = 0, ///< value @b NoAiding
@@ -112,6 +112,7 @@ struct TimVrfyFields
         };
         
         /// @brief Definition of <b>"src"</b> field.
+        /// @see @ref ublox::message::TimVrfyFields::FlagsMembers::SrcVal
         struct Src : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

@@ -87,7 +87,7 @@ struct CfgTxslotFields
         
     };
     
-    /// @brief Values enumerator for @ref RefTp field.
+    /// @brief Values enumerator for @ref ublox::message::CfgTxslotFields::RefTp field.
     enum class RefTpVal : std::uint8_t
     {
         Timepulse = 0, ///< value @b Timepulse
@@ -96,6 +96,7 @@ struct CfgTxslotFields
     };
     
     /// @brief Definition of <b>"refTp"</b> field.
+    /// @see @ref ublox::message::CfgTxslotFields::RefTpVal
     struct RefTp : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

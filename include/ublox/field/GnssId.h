@@ -15,7 +15,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref GnssId field.
+/// @brief Values enumerator for @ref ublox::field::GnssId field.
 enum class GnssIdVal : std::uint8_t
 {
     GPS = 0, ///< value @b GPS
@@ -29,6 +29,7 @@ enum class GnssIdVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"gnssId"</b> field.
+/// @see @ref ublox::field::GnssIdVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
 template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>

@@ -82,7 +82,7 @@ struct TimTm2Fields
             
         };
         
-        /// @brief Values enumerator for @ref TimeBase field.
+        /// @brief Values enumerator for @ref ublox::message::TimTm2Fields::FlagsMembers::TimeBase field.
         enum class TimeBaseVal : std::uint8_t
         {
             Receiver = 0, ///< value @b Receiver
@@ -92,6 +92,7 @@ struct TimTm2Fields
         };
         
         /// @brief Definition of <b>"timeBase"</b> field.
+        /// @see @ref ublox::message::TimTm2Fields::FlagsMembers::TimeBaseVal
         struct TimeBase : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

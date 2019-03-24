@@ -59,7 +59,7 @@ struct UpdSosAckFields
         
     };
     
-    /// @brief Values enumerator for @ref Response field.
+    /// @brief Values enumerator for @ref ublox::message::UpdSosAckFields::Response field.
     enum class ResponseVal : std::uint8_t
     {
         NotAcknowledged = 0, ///< value @b NotAcknowledged
@@ -68,6 +68,7 @@ struct UpdSosAckFields
     };
     
     /// @brief Definition of <b>"response"</b> field.
+    /// @see @ref ublox::message::UpdSosAckFields::ResponseVal
     struct Response : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

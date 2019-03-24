@@ -15,7 +15,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref CfgDatDatumNum field.
+/// @brief Values enumerator for @ref ublox::field::CfgDatDatumNum field.
 enum class CfgDatDatumNumVal : std::uint16_t
 {
     WGS84 = 0, ///< value @b WGS84
@@ -24,6 +24,7 @@ enum class CfgDatDatumNumVal : std::uint16_t
 };
 
 /// @brief Definition of <b>"cfgDatDatumNum"</b> field.
+/// @see @ref ublox::field::CfgDatDatumNumVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
 template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>

@@ -103,7 +103,7 @@ struct MonPatchFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref Location field.
+                /// @brief Values enumerator for @ref ublox::message::MonPatchFields::ListMembers::ElementMembers::PatchInfoMembers::Location field.
                 enum class LocationVal : std::uint8_t
                 {
                     eFuse = 0, ///< value @b eFuse
@@ -114,6 +114,7 @@ struct MonPatchFields
                 };
                 
                 /// @brief Definition of <b>"location"</b> field.
+                /// @see @ref ublox::message::MonPatchFields::ListMembers::ElementMembers::PatchInfoMembers::LocationVal
                 struct Location : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,

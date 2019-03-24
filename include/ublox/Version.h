@@ -20,6 +20,7 @@ inline constexpr unsigned version()
 } // namespace ublox
 
 
+// Generated compile time check for minimal supported version of the COMMS library
 static_assert(COMMS_MAKE_VERSION(1, 0, 0) <= comms::version(),
     "The version of COMMS library is too old");
 

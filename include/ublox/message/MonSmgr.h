@@ -69,7 +69,7 @@ struct MonSmgrFields
     /// @brief Scope for all the member fields of @ref IntOsc bitfield.
     struct IntOscMembers
     {
-        /// @brief Values enumerator for @ref IntOscState field.
+        /// @brief Values enumerator for @ref ublox::message::MonSmgrFields::IntOscMembers::IntOscState field.
         enum class IntOscStateVal : std::uint8_t
         {
             Autonomous = 0, ///< value @b Autonomous
@@ -80,6 +80,7 @@ struct MonSmgrFields
         };
         
         /// @brief Definition of <b>"intOscState"</b> field.
+        /// @see @ref ublox::message::MonSmgrFields::IntOscMembers::IntOscStateVal
         struct IntOscState : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -178,7 +179,7 @@ struct MonSmgrFields
     /// @brief Scope for all the member fields of @ref ExtOsc bitfield.
     struct ExtOscMembers
     {
-        /// @brief Values enumerator for @ref ExtOscState field.
+        /// @brief Values enumerator for @ref ublox::message::MonSmgrFields::ExtOscMembers::ExtOscState field.
         enum class ExtOscStateVal : std::uint8_t
         {
             Autonomous = 0, ///< value @b Autonomous
@@ -189,6 +190,7 @@ struct MonSmgrFields
         };
         
         /// @brief Definition of <b>"extOscState"</b> field.
+        /// @see @ref ublox::message::MonSmgrFields::ExtOscMembers::ExtOscStateVal
         struct ExtOscState : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -284,7 +286,7 @@ struct MonSmgrFields
         
     };
     
-    /// @brief Values enumerator for @ref DiscSrc field.
+    /// @brief Values enumerator for @ref ublox::message::MonSmgrFields::DiscSrc field.
     enum class DiscSrcVal : std::uint8_t
     {
         Internal = 0, ///< value @b Internal
@@ -297,6 +299,7 @@ struct MonSmgrFields
     };
     
     /// @brief Definition of <b>"discSrc"</b> field.
+    /// @see @ref ublox::message::MonSmgrFields::DiscSrcVal
     struct DiscSrc : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,

@@ -284,7 +284,7 @@ struct CfgSmgrFields
             
         };
         
-        /// @brief Values enumerator for @ref TPCoherent field.
+        /// @brief Values enumerator for @ref ublox::message::CfgSmgrFields::FlagsMembers::TPCoherent field.
         enum class TPCoherentVal : std::uint8_t
         {
             Coherent = 0, ///< value @b Coherent
@@ -294,6 +294,7 @@ struct CfgSmgrFields
         };
         
         /// @brief Definition of <b>"TPCoherent"</b> field.
+        /// @see @ref ublox::message::CfgSmgrFields::FlagsMembers::TPCoherentVal
         struct TPCoherent : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

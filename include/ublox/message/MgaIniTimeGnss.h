@@ -68,7 +68,7 @@ struct MgaIniTimeGnssFields
     /// @brief Scope for all the member fields of @ref Ref bitfield.
     struct RefMembers
     {
-        /// @brief Values enumerator for @ref Source field.
+        /// @brief Values enumerator for @ref ublox::message::MgaIniTimeGnssFields::RefMembers::Source field.
         enum class SourceVal : std::uint8_t
         {
             None = 0, ///< value @b None
@@ -78,6 +78,7 @@ struct MgaIniTimeGnssFields
         };
         
         /// @brief Definition of <b>"source"</b> field.
+        /// @see @ref ublox::message::MgaIniTimeGnssFields::RefMembers::SourceVal
         struct Source : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,

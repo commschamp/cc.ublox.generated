@@ -84,7 +84,7 @@ struct CfgDoscFields
         /// @brief Scope for all the member fields of @ref Element bitfield.
         struct ElementMembers
         {
-            /// @brief Values enumerator for @ref OscId field.
+            /// @brief Values enumerator for @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::OscId field.
             enum class OscIdVal : std::uint8_t
             {
                 Internal = 0, ///< value @b Internal
@@ -93,6 +93,7 @@ struct CfgDoscFields
             };
             
             /// @brief Definition of <b>"oscId"</b> field.
+            /// @see @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::OscIdVal
             struct OscId : public
                 comms::field::EnumValue<
                     ublox::field::FieldBase<>,
@@ -157,7 +158,7 @@ struct CfgDoscFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref ControlIf field.
+                /// @brief Values enumerator for @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::FlagsMembers::ControlIf field.
                 enum class ControlIfVal : std::uint8_t
                 {
                     Custom = 0, ///< value @b Custom
@@ -170,6 +171,7 @@ struct CfgDoscFields
                 };
                 
                 /// @brief Definition of <b>"controlIf"</b> field.
+                /// @see @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::FlagsMembers::ControlIfVal
                 struct ControlIf : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
