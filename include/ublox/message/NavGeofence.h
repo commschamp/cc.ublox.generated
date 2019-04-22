@@ -5,18 +5,19 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bundle.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/GeofenceState.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -28,14 +29,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavGeofence
 /// @headerfile "ublox/message/NavGeofence.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavGeofenceFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"version"</b> field.
     struct Version : public
@@ -76,6 +77,22 @@ struct NavGeofenceFields
             return "status";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(StatusVal val)
+        {
+            static const char* Map[] = {
+                "Not available",
+                "Active"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"numFences"</b> field.
@@ -96,8 +113,8 @@ struct NavGeofenceFields
     /// @brief Definition of <b>"combState"</b> field.
     struct CombState : public
         ublox::field::GeofenceState<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -116,8 +133,8 @@ struct NavGeofenceFields
             /// @brief Definition of <b>"state"</b> field.
             struct State : public
                 ublox::field::GeofenceState<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -130,8 +147,8 @@ struct NavGeofenceFields
             /// @brief Definition of <b>"reserved1"</b> field.
             struct Reserved1 : public
                 ublox::field::Res1<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -219,7 +236,7 @@ struct NavGeofenceFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavGeofence.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavGeofence : public
     comms::MessageBase<
         TMsgBase,

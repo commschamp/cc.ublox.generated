@@ -5,12 +5,13 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -20,7 +21,7 @@ namespace field
 
 /// @brief Scope for all the member fields of @ref CfgPrtTxReady bitfield.
 /// @tparam TOpt Protocol options.
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgPrtTxReadyMembers
 {
     /// @brief Definition of <b>""</b> field.
@@ -53,6 +54,24 @@ struct CfgPrtTxReadyMembers
         static const char* name()
         {
             return "";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "en",
+                "pol"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -101,7 +120,7 @@ struct CfgPrtTxReadyMembers
 /// @brief Definition of <b>"cfgPrtTxReady"</b> field.
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 class CfgPrtTxReady : public
     comms::field::Bitfield<
         ublox::field::FieldBase<>,

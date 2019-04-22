@@ -9,11 +9,11 @@
 #include "comms/field/ArrayList.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/GnssId.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,14 +25,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref AidAopU8
 /// @headerfile "ublox/message/AidAopU8.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct AidAopU8Fields
 {
     /// @brief Definition of <b>"gnssId"</b> field.
     using GnssId =
         ublox::field::GnssId<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"svid"</b> field.
     struct Svid : public
@@ -52,8 +52,8 @@ struct AidAopU8Fields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -95,7 +95,7 @@ struct AidAopU8Fields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/AidAopU8.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AidAopU8 : public
     comms::MessageBase<
         TMsgBase,

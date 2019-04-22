@@ -5,8 +5,8 @@
 
 #include <tuple>
 #include "comms/MessageBase.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -18,7 +18,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgLogfilterPoll
 /// @headerfile "ublox/message/CfgLogfilterPoll.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgLogfilterPollFields
 {
     /// @brief All the fields bundled in std::tuple.
@@ -32,7 +32,7 @@ struct CfgLogfilterPollFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgLogfilterPoll.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgLogfilterPoll : public
     comms::MessageBase<
         TMsgBase,

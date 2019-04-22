@@ -5,13 +5,13 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgPrtFlags.h"
 #include "ublox/field/CfgPrtInProtoMask.h"
@@ -21,6 +21,7 @@
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res2.h"
 #include "ublox/field/Res4.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -32,7 +33,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgPrtSpi
 /// @headerfile "ublox/message/CfgPrtSpi.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgPrtSpiFields
 {
     /// @brief Definition of <b>"portId"</b> field.
@@ -56,8 +57,8 @@ struct CfgPrtSpiFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -70,8 +71,8 @@ struct CfgPrtSpiFields
     /// @brief Definition of <b>"txReady"</b> field.
     struct TxReady : public
         ublox::field::CfgPrtTxReady<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -129,6 +130,24 @@ struct CfgPrtSpiFields
                 return "spiMode";
             }
             
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(SpiModeVal val)
+            {
+                static const char* Map[] = {
+                    "Mode 0: CPOL = 0, CPHA = 0",
+                    "Mode 1: CPOL = 0, CPHA = 1",
+                    "Mode 2: CPOL = 1, CPHA = 0",
+                    "Mode 3: CPOL = 1, CPHA = 1"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
         };
         
         /// @brief Definition of <b>""</b> field.
@@ -172,6 +191,26 @@ struct CfgPrtSpiFields
             static const char* name()
             {
                 return "";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    nullptr,
+                    nullptr,
+                    nullptr,
+                    "flowControl"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -265,8 +304,8 @@ struct CfgPrtSpiFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -279,8 +318,8 @@ struct CfgPrtSpiFields
     /// @brief Definition of <b>"inProtoMask"</b> field.
     struct InProtoMask : public
         ublox::field::CfgPrtInProtoMask<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -293,8 +332,8 @@ struct CfgPrtSpiFields
     /// @brief Definition of <b>"outProtoMask"</b> field.
     struct OutProtoMask : public
         ublox::field::CfgPrtOutProtoMask<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -307,14 +346,14 @@ struct CfgPrtSpiFields
     /// @brief Definition of <b>"cfgPrtFlags"</b> field.
     using CfgPrtFlags =
         ublox::field::CfgPrtFlags<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"reserved3"</b> field.
     struct Reserved3 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -344,7 +383,7 @@ struct CfgPrtSpiFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgPrtSpi.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPrtSpi : public
     comms::MessageBase<
         TMsgBase,

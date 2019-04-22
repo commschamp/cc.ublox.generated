@@ -5,8 +5,8 @@
 
 #include <tuple>
 #include "comms/MessageBase.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -18,7 +18,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref RxmImesPoll
 /// @headerfile "ublox/message/RxmImesPoll.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct RxmImesPollFields
 {
     /// @brief All the fields bundled in std::tuple.
@@ -32,7 +32,7 @@ struct RxmImesPollFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/RxmImesPoll.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class RxmImesPoll : public
     comms::MessageBase<
         TMsgBase,

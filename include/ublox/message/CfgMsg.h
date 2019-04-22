@@ -9,10 +9,10 @@
 #include "comms/field/ArrayList.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/MsgId.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,14 +24,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgMsg
 /// @headerfile "ublox/message/CfgMsg.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgMsgFields
 {
     /// @brief Definition of <b>"MsgId"</b> field.
     using MsgId =
         ublox::field::MsgId<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Scope for all the member fields of @ref Rates list.
     struct RatesMembers
@@ -83,7 +83,7 @@ struct CfgMsgFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgMsg.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgMsg : public
     comms::MessageBase<
         TMsgBase,

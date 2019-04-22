@@ -3,8 +3,12 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cstdint>
+#include <iterator>
 #include <tuple>
+#include <type_traits>
+#include <utility>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -13,12 +17,12 @@
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res2.h"
 #include "ublox/field/Res3.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -30,7 +34,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgDosc
 /// @headerfile "ublox/message/CfgDosc.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgDoscFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -67,8 +71,8 @@ struct CfgDoscFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -107,13 +111,29 @@ struct CfgDoscFields
                     return "oscId";
                 }
                 
+                /// @brief Retrieve name of the enum value
+                static const char* valueName(OscIdVal val)
+                {
+                    static const char* Map[] = {
+                        "Internal",
+                        "External"
+                    };
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    
+                    if (MapSize <= static_cast<std::size_t>(val)) {
+                        return nullptr;
+                    }
+                    
+                    return Map[static_cast<std::size_t>(val)];
+                }
+                
             };
             
             /// @brief Definition of <b>"reserved2"</b> field.
             struct Reserved2 : public
                 ublox::field::Res1<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -156,6 +176,23 @@ struct CfgDoscFields
                         return "";
                     }
                     
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "isCalibrated"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
+                    }
+                    
                 };
                 
                 /// @brief Values enumerator for @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::FlagsMembers::ControlIf field.
@@ -185,6 +222,33 @@ struct CfgDoscFields
                     static const char* name()
                     {
                         return "controlIf";
+                    }
+                    
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(ControlIfVal val)
+                    {
+                        using NameInfo = std::pair<ControlIfVal, const char*>;
+                        static const NameInfo Map[] = {
+                            std::make_pair(ControlIfVal::Custom, "Custom"),
+                            std::make_pair(ControlIfVal::Microchip, "Microchip"),
+                            std::make_pair(ControlIfVal::TI, "TI"),
+                            std::make_pair(ControlIfVal::DAC_12bit, "DAC_12bit"),
+                            std::make_pair(ControlIfVal::DAC_14bit, "DAC_14bit"),
+                            std::make_pair(ControlIfVal::DAC_16bit, "DAC_16bit")
+                        };
+                        
+                        auto iter = std::lower_bound(
+                            std::begin(Map), std::end(Map), val,
+                            [](const NameInfo& info, ControlIfVal v) -> bool
+                            {
+                                return info.first < v;
+                            });
+                        
+                        if ((iter == std::end(Map)) || (iter->first != val)) {
+                            return nullptr;
+                        }
+                        
+                        return iter->second;
                     }
                     
                 };
@@ -336,8 +400,8 @@ struct CfgDoscFields
             /// @brief Definition of <b>"reserved3"</b> field.
             struct Reserved3 : public
                 ublox::field::Res2<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -382,8 +446,8 @@ struct CfgDoscFields
             /// @brief Definition of <b>"reserved4"</b> field.
             struct Reserved4 : public
                 ublox::field::Res3<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -499,7 +563,7 @@ struct CfgDoscFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgDosc.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgDosc : public
     comms::MessageBase<
         TMsgBase,

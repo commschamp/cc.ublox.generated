@@ -8,10 +8,10 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res4.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,7 +23,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaGpsAlm
 /// @headerfile "ublox/message/MgaGpsAlm.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaGpsAlmFields
 {
     /// @brief Definition of <b>"type"</b> field.
@@ -272,8 +272,8 @@ struct MgaGpsAlmFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -310,7 +310,7 @@ struct MgaGpsAlmFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaGpsAlm.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaGpsAlm : public
     comms::MessageBase<
         TMsgBase,

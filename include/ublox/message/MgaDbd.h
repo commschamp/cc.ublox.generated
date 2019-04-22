@@ -8,10 +8,10 @@
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,7 +23,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaDbd
 /// @headerfile "ublox/message/MgaDbd.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaDbdFields
 {
     /// @brief Scope for all the member fields of @ref Reserved1 list.
@@ -32,8 +32,8 @@ struct MgaDbdFields
         /// @brief Definition of <b>""</b> field.
         struct Element : public
             ublox::field::Res1<
-               TOpt
-           >
+                TOpt
+            >
         {
             /// @brief Name of the field.
             static const char* name()
@@ -91,7 +91,7 @@ struct MgaDbdFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaDbd.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaDbd : public
     comms::MessageBase<
         TMsgBase,

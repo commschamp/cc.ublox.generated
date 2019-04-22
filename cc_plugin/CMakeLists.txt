@@ -10,24 +10,24 @@ function (cc_plugin_all_messages)
         field/CfgNavx5Mask1.cpp
         field/CfgNavx5Mask2.cpp
         field/CfgNavx5SigAttenCompMode.cpp
+        field/CfgCfgMask.cpp
         field/GeofenceState.cpp
         field/MsgId.cpp
-        field/CfgCfgMask.cpp
         field/CfgDatD.cpp
-        field/CfgDatDatumNum.cpp
         field/CfgDatFlat.cpp
+        field/CfgDatDatumNum.cpp
         field/CfgDatMajA.cpp
         field/CfgDatRot.cpp
         field/CfgDatScale.cpp
-        field/CfgMainTalkerId.cpp
         field/CfgNmeaFilter.cpp
+        field/CfgMainTalkerId.cpp
         field/CfgNmeaFlags.cpp
         field/CfgNmeaGnssToFilter.cpp
-        field/CfgNmeaGsvTalkerId.cpp
         field/CfgNmeaNumSV.cpp
+        field/CfgNmeaGsvTalkerId.cpp
+        field/CfgNvsMask.cpp
         field/CfgNmeaSvNumbering.cpp
         field/CfgNmeaVersion.cpp
-        field/CfgNvsMask.cpp
         field/CfgPm2Flags.cpp
         field/CfgPrtFlags.cpp
         field/CfgPrtInProtoMask.cpp
@@ -45,9 +45,9 @@ function (cc_plugin_all_messages)
         field/EcefY.cpp
         field/EcefZ.cpp
         field/Ftow.cpp
+        field/HAcc.cpp
         field/GnssId.cpp
         field/GpsFix.cpp
-        field/HAcc.cpp
         field/HMSL.cpp
         field/Heading.cpp
         field/HeadingAcc.cpp
@@ -70,8 +70,8 @@ function (cc_plugin_all_messages)
         field/Res8.cpp
         field/SAcc.cpp
         field/SbasService.cpp
-        field/SbasSys.cpp
         field/Sec.cpp
+        field/SbasSys.cpp
         field/VAcc.cpp
         field/Vel.cpp
         field/Year.cpp
@@ -383,7 +383,7 @@ function (cc_plugin_all_messages)
         endif()
     endif ()
 
-    if (OPT_FULL_SOLUTION)
+    if (TARGET ${CC_EXTERNAL_TGT})
         add_dependencies(${name} ${CC_EXTERNAL_TGT})
     endif ()
 endfunction()
@@ -460,7 +460,7 @@ cc_plugin_all_messages()
 
 cc_plugin ("Ublox")
 
-if (OPT_FULL_SOLUTION)
+if (TARGET ${CC_EXTERNAL_TGT})
     install (
         FILES plugin/Ublox.cfg
         DESTINATION ${CONFIG_INSTALL_DIR}
@@ -468,10 +468,11 @@ if (OPT_FULL_SOLUTION)
 endif()
 
 
-# For some reason message/AidHui fails to compile in Release mode with g++-4.8
+# For some reason message/AidHui.cpp fails to compile in Release mode with g++-4.8
 if ((CMAKE_COMPILER_IS_GNUCC) AND 
     (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.9) AND 
     ("${CMAKE_BUILD_TYPE}" STREQUAL "Release"))
     set_source_files_properties (message/AidHui.cpp PROPERTIES COMPILE_FLAGS "-O2")
 endif ()
+
 

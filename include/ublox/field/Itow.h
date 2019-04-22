@@ -6,8 +6,8 @@
 #include <cstdint>
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -18,7 +18,7 @@ namespace field
 /// @brief Definition of <b>"iTOW"</b> field.
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 struct Itow : public
     comms::field::IntValue<
         ublox::field::FieldBase<>,

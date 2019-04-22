@@ -5,15 +5,16 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,7 +26,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref TimTm2
 /// @headerfile "ublox/message/TimTm2.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct TimTm2Fields
 {
     /// @brief Definition of <b>"ch"</b> field.
@@ -80,6 +81,25 @@ struct TimTm2Fields
                 return "";
             }
             
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "mode",
+                    "run",
+                    "newFallingEdge"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
+            }
+            
         };
         
         /// @brief Values enumerator for @ref ublox::message::TimTm2Fields::FlagsMembers::TimeBase field.
@@ -105,6 +125,23 @@ struct TimTm2Fields
             static const char* name()
             {
                 return "timeBase";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(TimeBaseVal val)
+            {
+                static const char* Map[] = {
+                    "Receiver",
+                    "GNSS",
+                    "UTC"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -141,6 +178,25 @@ struct TimTm2Fields
             static const char* name()
             {
                 return "";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "utc",
+                    "time",
+                    "newRisingEdge"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -336,7 +392,7 @@ struct TimTm2Fields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/TimTm2.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class TimTm2 : public
     comms::MessageBase<
         TMsgBase,

@@ -4,10 +4,11 @@
 #pragma once
 
 #include <cstdint>
+#include <type_traits>
 #include "comms/field/EnumValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -29,7 +30,7 @@ enum class CfgPrtPortIdVal : std::uint8_t
 /// @see @ref ublox::field::CfgPrtPortIdVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 struct CfgPrtPortId : public
     comms::field::EnumValue<
         ublox::field::FieldBase<>,
@@ -43,6 +44,25 @@ struct CfgPrtPortId : public
     static const char* name()
     {
         return "cfgPrtPortId";
+    }
+    
+    /// @brief Retrieve name of the enum value
+    static const char* valueName(CfgPrtPortIdVal val)
+    {
+        static const char* Map[] = {
+            "DDC",
+            "UART",
+            nullptr,
+            "USB",
+            "SPI"
+        };
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        
+        if (MapSize <= static_cast<std::size_t>(val)) {
+            return nullptr;
+        }
+        
+        return Map[static_cast<std::size_t>(val)];
     }
     
 };

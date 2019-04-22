@@ -10,10 +10,10 @@
 #include "comms/field/Bundle.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,7 +25,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MonIo
 /// @headerfile "ublox/message/MonIo.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MonIoFields
 {
     /// @brief Scope for all the member fields of @ref List list.
@@ -157,8 +157,8 @@ struct MonIoFields
             /// @brief Definition of <b>"reserved1"</b> field.
             struct Reserved1 : public
                 ublox::field::Res2<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -261,7 +261,7 @@ struct MonIoFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MonIo.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MonIo : public
     comms::MessageBase<
         TMsgBase,

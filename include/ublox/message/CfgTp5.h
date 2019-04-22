@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
@@ -12,11 +13,11 @@
 #include "comms/field/IntValue.h"
 #include "comms/field/Optional.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgTp5TpIdx.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -28,14 +29,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgTp5
 /// @headerfile "ublox/message/CfgTp5.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgTp5Fields
 {
     /// @brief Definition of <b>"tpIdx"</b> field.
     using TpIdx =
         ublox::field::CfgTp5TpIdx<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"version"</b> field.
     struct Version : public
@@ -57,8 +58,8 @@ struct CfgTp5Fields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -449,6 +450,29 @@ struct CfgTp5Fields
                 return "bits";
             }
             
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "active",
+                    "lockGnssFreq",
+                    "lockedOtherSet",
+                    "isFreq",
+                    "isLength",
+                    "alignToTow",
+                    "polarity"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
+            }
+            
         };
         
         /// @brief Values enumerator for @ref ublox::message::CfgTp5Fields::FlagsMembers::GridUtcGnss field.
@@ -476,6 +500,25 @@ struct CfgTp5Fields
             static const char* name()
             {
                 return "gridUtcGnss";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(GridUtcGnssVal val)
+            {
+                static const char* Map[] = {
+                    "UTC",
+                    "GPS",
+                    "GLONASS",
+                    "BeiDou",
+                    "Galileo"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -589,7 +632,7 @@ struct CfgTp5Fields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgTp5.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgTp5 : public
     comms::MessageBase<
         TMsgBase,

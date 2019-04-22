@@ -5,15 +5,16 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/field/String.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,7 +26,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgUsb
 /// @headerfile "ublox/message/CfgUsb.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgUsbFields
 {
     /// @brief Definition of <b>"vendorId"</b> field.
@@ -61,8 +62,8 @@ struct CfgUsbFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -75,8 +76,8 @@ struct CfgUsbFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -134,6 +135,24 @@ struct CfgUsbFields
         static const char* name()
         {
             return "flags";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "reEnum",
+                "powerMode"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -206,7 +225,7 @@ struct CfgUsbFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgUsb.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgUsb : public
     comms::MessageBase<
         TMsgBase,

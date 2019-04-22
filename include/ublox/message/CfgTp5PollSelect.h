@@ -6,10 +6,10 @@
 #include <tuple>
 #include "comms/MessageBase.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgTp5TpIdx.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -21,14 +21,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgTp5PollSelect
 /// @headerfile "ublox/message/CfgTp5PollSelect.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgTp5PollSelectFields
 {
     /// @brief Definition of <b>"tpIdx"</b> field.
     using TpIdx =
         ublox::field::CfgTp5TpIdx<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief All the fields bundled in std::tuple.
     using All = std::tuple<
@@ -42,7 +42,7 @@ struct CfgTp5PollSelectFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgTp5PollSelect.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgTp5PollSelect : public
     comms::MessageBase<
         TMsgBase,

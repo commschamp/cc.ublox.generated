@@ -8,10 +8,10 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,14 +23,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavClock
 /// @headerfile "ublox/message/NavClock.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavClockFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"clkB"</b> field.
     struct ClkB : public
@@ -111,7 +111,7 @@ struct NavClockFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavClock.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavClock : public
     comms::MessageBase<
         TMsgBase,

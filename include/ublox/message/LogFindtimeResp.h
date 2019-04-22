@@ -8,10 +8,10 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,7 +23,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref LogFindtimeResp
 /// @headerfile "ublox/message/LogFindtimeResp.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct LogFindtimeRespFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -64,8 +64,8 @@ struct LogFindtimeRespFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -105,7 +105,7 @@ struct LogFindtimeRespFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/LogFindtimeResp.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class LogFindtimeResp : public
     comms::MessageBase<
         TMsgBase,

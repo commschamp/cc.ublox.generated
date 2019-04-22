@@ -3,10 +3,11 @@
 
 #pragma once
 
+#include <type_traits>
 #include "comms/field/BitmaskValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -17,7 +18,7 @@ namespace field
 /// @brief Definition of <b>"cfgNmeaGnssToFilter"</b> field.
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 class CfgNmeaGnssToFilter : public
     comms::field::BitmaskValue<
         ublox::field::FieldBase<>,
@@ -76,6 +77,29 @@ public:
     static const char* name()
     {
         return "cfgNmeaGnssToFilter";
+    }
+    
+    /// @brief Retrieve name of the bit
+    static const char* bitName(BitIdx idx)
+    {
+        static const char* Map[] = {
+            "gps",
+            "sbas",
+            nullptr,
+            nullptr,
+            "qzss",
+            "glonass",
+            "beidou"
+        };
+    
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+    
+        if (MapSize <= static_cast<std::size_t>(idx)) {
+            return nullptr;
+        }
+    
+        return Map[static_cast<std::size_t>(idx)];
     }
     
 };

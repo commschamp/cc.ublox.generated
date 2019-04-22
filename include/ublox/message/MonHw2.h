@@ -3,18 +3,21 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cstdint>
+#include <iterator>
 #include <tuple>
+#include <utility>
 #include "comms/MessageBase.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res3.h"
 #include "ublox/field/Res4.h"
 #include "ublox/field/Res8.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,7 +29,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MonHw2
 /// @headerfile "ublox/message/MonHw2.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MonHw2Fields
 {
     /// @brief Definition of <b>"ofsI"</b> field.
@@ -116,13 +119,38 @@ struct MonHw2Fields
             return "cfgSource";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(CfgSourceVal val)
+        {
+            using NameInfo = std::pair<CfgSourceVal, const char*>;
+            static const NameInfo Map[] = {
+                std::make_pair(CfgSourceVal::FlashImage, "FlashImage"),
+                std::make_pair(CfgSourceVal::OTP, "OTP"),
+                std::make_pair(CfgSourceVal::ConfigPins, "ConfigPins"),
+                std::make_pair(CfgSourceVal::ROM, "ROM")
+            };
+            
+            auto iter = std::lower_bound(
+                std::begin(Map), std::end(Map), val,
+                [](const NameInfo& info, CfgSourceVal v) -> bool
+                {
+                    return info.first < v;
+                });
+            
+            if ((iter == std::end(Map)) || (iter->first != val)) {
+                return nullptr;
+            }
+            
+            return iter->second;
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -150,8 +178,8 @@ struct MonHw2Fields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res8<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -179,8 +207,8 @@ struct MonHw2Fields
     /// @brief Definition of <b>"reserved3"</b> field.
     struct Reserved3 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -211,7 +239,7 @@ struct MonHw2Fields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MonHw2.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MonHw2 : public
     comms::MessageBase<
         TMsgBase,

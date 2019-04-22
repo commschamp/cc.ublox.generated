@@ -5,13 +5,13 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/Day.h"
 #include "ublox/field/FieldBase.h"
@@ -22,6 +22,7 @@
 #include "ublox/field/Res2.h"
 #include "ublox/field/Sec.h"
 #include "ublox/field/Year.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -33,7 +34,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref TimTos
 /// @headerfile "ublox/message/TimTos.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct TimTosFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -55,14 +56,14 @@ struct TimTosFields
     /// @brief Definition of <b>"gnssId"</b> field.
     using GnssId =
         ublox::field::GnssId<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -119,6 +120,30 @@ struct TimTosFields
                 return "";
             }
             
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "leapNow",
+                    "leapSoon",
+                    "leapPositive",
+                    "timeInLimit",
+                    "intOscInLimit",
+                    "extOscInLimit",
+                    "gnssTimeValid",
+                    "UTCTimeValid"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
+            }
+            
         };
         
         /// @brief Values enumerator for @ref ublox::message::TimTosFields::FlagsMembers::DiscSrc field.
@@ -147,6 +172,26 @@ struct TimTosFields
             static const char* name()
             {
                 return "DiscSrc";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(DiscSrcVal val)
+            {
+                static const char* Map[] = {
+                    "Internal",
+                    "GNSS",
+                    "EXTINT0",
+                    "EXTINT1",
+                    "HostInternal",
+                    "HostExternal"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -185,6 +230,25 @@ struct TimTosFields
             static const char* name()
             {
                 return "";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "raim",
+                    "cohPulse",
+                    "lockedPulse"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -237,38 +301,38 @@ struct TimTosFields
     /// @brief Definition of <b>"year"</b> field.
     using Year =
         ublox::field::Year<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"month"</b> field.
     using Month =
         ublox::field::Month<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"day"</b> field.
     using Day =
         ublox::field::Day<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"hour"</b> field.
     using Hour =
         ublox::field::Hour<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"min"</b> field.
     using Min =
         ublox::field::Min<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"sec"</b> field.
     using Sec =
         ublox::field::Sec<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Values enumerator for @ref ublox::message::TimTosFields::UtcStandard field.
     enum class UtcStandardVal : std::uint8_t
@@ -295,6 +359,28 @@ struct TimTosFields
         static const char* name()
         {
             return "utcStandard";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(UtcStandardVal val)
+        {
+            static const char* Map[] = {
+                "Unknown",
+                nullptr,
+                nullptr,
+                "USNO",
+                nullptr,
+                nullptr,
+                "SU",
+                "NTSC"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -491,7 +577,7 @@ struct TimTosFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/TimTos.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class TimTos : public
     comms::MessageBase<
         TMsgBase,

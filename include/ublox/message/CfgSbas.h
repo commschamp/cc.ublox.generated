@@ -5,13 +5,14 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,7 +24,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgSbas
 /// @headerfile "ublox/message/CfgSbas.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgSbasFields
 {
     /// @brief Definition of <b>"mode"</b> field.
@@ -58,6 +59,24 @@ struct CfgSbasFields
         static const char* name()
         {
             return "mode";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "enabled",
+                "test"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -96,6 +115,25 @@ struct CfgSbasFields
         static const char* name()
         {
             return "usage";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "range",
+                "diffCorr",
+                "integrity"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -158,6 +196,29 @@ struct CfgSbasFields
         static const char* name()
         {
             return "scanmode2";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "PRN152",
+                "PRN153",
+                "PRN154",
+                "PRN155",
+                "PRN156",
+                "PRN157",
+                "PRN158"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -254,6 +315,54 @@ struct CfgSbasFields
             return "scanmode1";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "PRN120",
+                "PRN121",
+                "PRN122",
+                "PRN123",
+                "PRN124",
+                "PRN125",
+                "PRN126",
+                "PRN127",
+                "PRN128",
+                "PRN129",
+                "PRN130",
+                "PRN131",
+                "PRN132",
+                "PRN133",
+                "PRN134",
+                "PRN135",
+                "PRN136",
+                "PRN137",
+                "PRN138",
+                "PRN139",
+                "PRN140",
+                "PRN141",
+                "PRN142",
+                "PRN143",
+                "PRN144",
+                "PRN145",
+                "PRN146",
+                "PRN147",
+                "PRN148",
+                "PRN149",
+                "PRN150",
+                "PRN151"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief All the fields bundled in std::tuple.
@@ -272,7 +381,7 @@ struct CfgSbasFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgSbas.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgSbas : public
     comms::MessageBase<
         TMsgBase,

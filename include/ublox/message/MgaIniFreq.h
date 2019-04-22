@@ -5,16 +5,17 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,7 +27,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaIniFreq
 /// @headerfile "ublox/message/MgaIniFreq.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaIniFreqFields
 {
     /// @brief Definition of <b>"type"</b> field.
@@ -66,8 +67,8 @@ struct MgaIniFreqFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -104,6 +105,22 @@ struct MgaIniFreqFields
                 return "source";
             }
             
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(SourceVal val)
+            {
+                static const char* Map[] = {
+                    "EXTINT0",
+                    "EXTINT1"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
         };
         
         /// @brief Definition of <b>""</b> field.
@@ -136,6 +153,23 @@ struct MgaIniFreqFields
             static const char* name()
             {
                 return "";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "fall"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -231,7 +265,7 @@ struct MgaIniFreqFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaIniFreq.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaIniFreq : public
     comms::MessageBase<
         TMsgBase,

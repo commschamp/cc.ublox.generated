@@ -6,10 +6,10 @@
 #include <tuple>
 #include "comms/MessageBase.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgDatDatumNum.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -21,14 +21,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgDatStandard
 /// @headerfile "ublox/message/CfgDatStandard.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgDatStandardFields
 {
     /// @brief Definition of <b>"datumNum"</b> field.
     struct DatumNum : public
         ublox::field::CfgDatDatumNum<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -50,7 +50,7 @@ struct CfgDatStandardFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgDatStandard.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgDatStandard : public
     comms::MessageBase<
         TMsgBase,

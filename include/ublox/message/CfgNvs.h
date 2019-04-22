@@ -4,13 +4,14 @@
 #pragma once
 
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgNvsMask.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -22,14 +23,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgNvs
 /// @headerfile "ublox/message/CfgNvs.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgNvsFields
 {
     /// @brief Definition of <b>"clearMask"</b> field.
     struct ClearMask : public
         ublox::field::CfgNvsMask<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -42,8 +43,8 @@ struct CfgNvsFields
     /// @brief Definition of <b>"saveMask"</b> field.
     struct SaveMask : public
         ublox::field::CfgNvsMask<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -56,8 +57,8 @@ struct CfgNvsFields
     /// @brief Definition of <b>"loadMask"</b> field.
     struct LoadMask : public
         ublox::field::CfgNvsMask<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -122,6 +123,27 @@ struct CfgNvsFields
             return "deviceMask";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "devBBR",
+                "devFlash",
+                "devEEPROM",
+                nullptr,
+                "devSpiFlash"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief All the fields bundled in std::tuple.
@@ -139,7 +161,7 @@ struct CfgNvsFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgNvs.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgNvs : public
     comms::MessageBase<
         TMsgBase,

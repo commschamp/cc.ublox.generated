@@ -9,10 +9,10 @@
 #include "comms/field/ArrayList.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/MonMsgppCount.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,7 +24,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MonMsgpp
 /// @headerfile "ublox/message/MonMsgpp.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MonMsgppFields
 {
     /// @brief Definition of <b>"msg1"</b> field.
@@ -184,7 +184,7 @@ struct MonMsgppFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MonMsgpp.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MonMsgpp : public
     comms::MessageBase<
         TMsgBase,

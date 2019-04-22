@@ -5,13 +5,14 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,7 +24,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgRate
 /// @headerfile "ublox/message/CfgRate.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgRateFields
 {
     /// @brief Definition of <b>"measRate"</b> field.
@@ -83,6 +84,25 @@ struct CfgRateFields
             return "timeRef";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(TimeRefVal val)
+        {
+            static const char* Map[] = {
+                "UTC",
+                "GPS",
+                "GLONASS",
+                "BeiDou",
+                "Galileo"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief All the fields bundled in std::tuple.
@@ -99,7 +119,7 @@ struct CfgRateFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgRate.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgRate : public
     comms::MessageBase<
         TMsgBase,

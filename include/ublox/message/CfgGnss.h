@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -12,11 +13,11 @@
 #include "comms/field/Bundle.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/GnssId.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -28,7 +29,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgGnss
 /// @headerfile "ublox/message/CfgGnss.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgGnssFields
 {
     /// @brief Definition of <b>"msgVer"</b> field.
@@ -101,8 +102,8 @@ struct CfgGnssFields
             /// @brief Definition of <b>"gnssId"</b> field.
             using GnssId =
                 ublox::field::GnssId<
-                   TOpt
-               >;
+                    TOpt
+                >;
             
             /// @brief Definition of <b>"resTrkCh"</b> field.
             struct ResTrkCh : public
@@ -137,8 +138,8 @@ struct CfgGnssFields
             /// @brief Definition of <b>"reserved1"</b> field.
             struct Reserved1 : public
                 ublox::field::Res1<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -181,6 +182,23 @@ struct CfgGnssFields
                     static const char* name()
                     {
                         return "";
+                    }
+                    
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "enable"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
                     }
                     
                 };
@@ -351,7 +369,7 @@ struct CfgGnssFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgGnss.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgGnss : public
     comms::MessageBase<
         TMsgBase,

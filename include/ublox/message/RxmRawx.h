@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/BitmaskValue.h"
@@ -12,12 +13,12 @@
 #include "comms/field/FloatValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/GnssId.h"
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -29,7 +30,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref RxmRawx
 /// @headerfile "ublox/message/RxmRawx.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct RxmRawxFields
 {
     /// @brief Definition of <b>"rcvTow"</b> field.
@@ -129,6 +130,24 @@ struct RxmRawxFields
             return "recStat";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "leapSec",
+                "clkReset"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief Definition of <b>"version"</b> field.
@@ -150,8 +169,8 @@ struct RxmRawxFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -217,8 +236,8 @@ struct RxmRawxFields
             /// @brief Definition of <b>"gnssId"</b> field.
             using GnssId =
                 ublox::field::GnssId<
-                   TOpt
-               >;
+                    TOpt
+                >;
             
             /// @brief Definition of <b>"svid"</b> field.
             struct Svid : public
@@ -238,8 +257,8 @@ struct RxmRawxFields
             /// @brief Definition of <b>"reserved2"</b> field.
             struct Reserved2 : public
                 ublox::field::Res1<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -383,13 +402,33 @@ struct RxmRawxFields
                     return "trkStat";
                 }
                 
+                /// @brief Retrieve name of the bit
+                static const char* bitName(BitIdx idx)
+                {
+                    static const char* Map[] = {
+                        "prValid",
+                        "cpValid",
+                        "halfCyc",
+                        "subHalfCyc"
+                    };
+                
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                
+                    if (MapSize <= static_cast<std::size_t>(idx)) {
+                        return nullptr;
+                    }
+                
+                    return Map[static_cast<std::size_t>(idx)];
+                }
+                
             };
             
             /// @brief Definition of <b>"reserved3"</b> field.
             struct Reserved3 : public
                 ublox::field::Res1<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -515,7 +554,7 @@ struct RxmRawxFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/RxmRawx.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class RxmRawx : public
     comms::MessageBase<
         TMsgBase,

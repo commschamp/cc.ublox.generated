@@ -5,15 +5,16 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,7 +26,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgItfm
 /// @headerfile "ublox/message/CfgItfm.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgItfmFields
 {
     /// @brief Scope for all the member fields of @ref Config bitfield.
@@ -109,6 +110,23 @@ struct CfgItfmFields
             static const char* name()
             {
                 return "bits";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "enable"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -207,6 +225,23 @@ struct CfgItfmFields
                 return "antSetting";
             }
             
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(AntSettingVal val)
+            {
+                static const char* Map[] = {
+                    "Unknown",
+                    "Passive",
+                    "Active"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
         };
         
         /// @brief Definition of <b>"bitsHigh"</b> field.
@@ -239,6 +274,23 @@ struct CfgItfmFields
             static const char* name()
             {
                 return "bitsHigh";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "enable2"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -301,7 +353,7 @@ struct CfgItfmFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgItfm.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgItfm : public
     comms::MessageBase<
         TMsgBase,

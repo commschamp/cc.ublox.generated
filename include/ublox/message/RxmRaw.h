@@ -11,10 +11,10 @@
 #include "comms/field/FloatValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,7 +26,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref RxmRaw
 /// @headerfile "ublox/message/RxmRaw.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct RxmRawFields
 {
     /// @brief Definition of <b>"rcvTow"</b> field.
@@ -79,8 +79,8 @@ struct RxmRawFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -295,7 +295,7 @@ struct RxmRawFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/RxmRaw.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class RxmRaw : public
     comms::MessageBase<
         TMsgBase,

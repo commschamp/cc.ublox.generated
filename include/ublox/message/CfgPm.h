@@ -5,16 +5,17 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,7 +27,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgPm
 /// @headerfile "ublox/message/CfgPm.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgPmFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -48,14 +49,14 @@ struct CfgPmFields
     /// @brief Definition of <b>"res1"</b> field.
     using Res1 =
         ublox::field::Res1<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"res2"</b> field.
     struct Res2 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -68,8 +69,8 @@ struct CfgPmFields
     /// @brief Definition of <b>"res3"</b> field.
     struct Res3 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -155,6 +156,25 @@ struct CfgPmFields
                 return "bitsMid";
             }
             
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "extintSelect",
+                    "extintWake",
+                    "extintBackup"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
+            }
+            
         };
         
         /// @brief Values enumerator for @ref ublox::message::CfgPmFields::FlagsMembers::LimitPeakCurr field.
@@ -179,6 +199,22 @@ struct CfgPmFields
             static const char* name()
             {
                 return "limitPeakCurr";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(LimitPeakCurrVal val)
+            {
+                static const char* Map[] = {
+                    "Disabled",
+                    "Enabled"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -217,6 +253,25 @@ struct CfgPmFields
             static const char* name()
             {
                 return "bitsHigh";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "WaitTimeFix",
+                    "updateRTC",
+                    "updateEPH"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -373,7 +428,7 @@ struct CfgPmFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgPm.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPm : public
     comms::MessageBase<
         TMsgBase,

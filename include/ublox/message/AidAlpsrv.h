@@ -9,9 +9,9 @@
 #include "comms/field/ArrayList.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,7 +23,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref AidAlpsrv
 /// @headerfile "ublox/message/AidAlpsrv.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct AidAlpsrvFields
 {
     /// @brief Definition of <b>"idSize"</b> field.
@@ -199,7 +199,7 @@ struct AidAlpsrvFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/AidAlpsrv.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AidAlpsrv : public
     comms::MessageBase<
         TMsgBase,

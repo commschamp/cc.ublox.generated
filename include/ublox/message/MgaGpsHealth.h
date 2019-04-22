@@ -9,11 +9,11 @@
 #include "comms/field/ArrayList.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res2.h"
 #include "ublox/field/Res4.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,7 +25,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaGpsHealth
 /// @headerfile "ublox/message/MgaGpsHealth.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaGpsHealthFields
 {
     /// @brief Definition of <b>"type"</b> field.
@@ -65,8 +65,8 @@ struct MgaGpsHealthFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -96,8 +96,8 @@ struct MgaGpsHealthFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -123,7 +123,7 @@ struct MgaGpsHealthFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaGpsHealth.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaGpsHealth : public
     comms::MessageBase<
         TMsgBase,

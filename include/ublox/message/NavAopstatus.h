@@ -5,16 +5,17 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res4.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,14 +27,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavAopstatus
 /// @headerfile "ublox/message/NavAopstatus.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavAopstatusFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"aopCfg"</b> field.
     class AopCfg : public
@@ -67,6 +68,23 @@ struct NavAopstatusFields
             return "aopCfg";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "useAOP"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief Definition of <b>"status"</b> field.
@@ -87,8 +105,8 @@ struct NavAopstatusFields
     /// @brief Definition of <b>"reserved0"</b> field.
     struct Reserved0 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -101,8 +119,8 @@ struct NavAopstatusFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -130,8 +148,8 @@ struct NavAopstatusFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -144,8 +162,8 @@ struct NavAopstatusFields
     /// @brief Definition of <b>"reserved3"</b> field.
     struct Reserved3 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -174,7 +192,7 @@ struct NavAopstatusFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavAopstatus.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavAopstatus : public
     comms::MessageBase<
         TMsgBase,

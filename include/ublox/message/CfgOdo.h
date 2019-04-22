@@ -5,18 +5,19 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res2.h"
 #include "ublox/field/Res3.h"
 #include "ublox/field/Res6.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -28,7 +29,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgOdo
 /// @headerfile "ublox/message/CfgOdo.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgOdoFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -50,8 +51,8 @@ struct CfgOdoFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -99,6 +100,26 @@ struct CfgOdoFields
             return "flags";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "useODO",
+                "useCOG",
+                "outLPVel",
+                "outLPCog"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief Scope for all the member fields of @ref OdoCfg bitfield.
@@ -129,6 +150,25 @@ struct CfgOdoFields
             static const char* name()
             {
                 return "profile";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(ProfileVal val)
+            {
+                static const char* Map[] = {
+                    "Running",
+                    "Cycling",
+                    "Swimming",
+                    "Car",
+                    "Custom"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -197,8 +237,8 @@ struct CfgOdoFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res6<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -244,8 +284,8 @@ struct CfgOdoFields
     /// @brief Definition of <b>"reserved3"</b> field.
     struct Reserved3 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -288,8 +328,8 @@ struct CfgOdoFields
     /// @brief Definition of <b>"reserved4"</b> field.
     struct Reserved4 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -321,7 +361,7 @@ struct CfgOdoFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgOdo.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgOdo : public
     comms::MessageBase<
         TMsgBase,

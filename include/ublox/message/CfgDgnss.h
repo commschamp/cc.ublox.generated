@@ -5,13 +5,14 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/EnumValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res3.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,7 +24,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgDgnss
 /// @headerfile "ublox/message/CfgDgnss.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgDgnssFields
 {
     /// @brief Values enumerator for @ref ublox::message::CfgDgnssFields::DgnssMode field.
@@ -49,13 +50,31 @@ struct CfgDgnssFields
             return "dgnssMode";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(DgnssModeVal val)
+        {
+            static const char* Map[] = {
+                nullptr,
+                nullptr,
+                "Float",
+                "Fixed"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -78,7 +97,7 @@ struct CfgDgnssFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgDgnss.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgDgnss : public
     comms::MessageBase<
         TMsgBase,

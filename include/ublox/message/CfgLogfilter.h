@@ -5,13 +5,14 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,7 +24,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgLogfilter
 /// @headerfile "ublox/message/CfgLogfilter.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgLogfilterFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -77,6 +78,25 @@ struct CfgLogfilterFields
         static const char* name()
         {
             return "flags";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "recordEnabled",
+                "psmOncePerWakupEnabled",
+                "applyAllFilterSettings"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -162,7 +182,7 @@ struct CfgLogfilterFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgLogfilter.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgLogfilter : public
     comms::MessageBase<
         TMsgBase,

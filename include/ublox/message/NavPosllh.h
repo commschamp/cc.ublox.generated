@@ -6,7 +6,6 @@
 #include <tuple>
 #include "comms/MessageBase.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/HAcc.h"
@@ -16,6 +15,7 @@
 #include "ublox/field/Lat.h"
 #include "ublox/field/Lon.h"
 #include "ublox/field/VAcc.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -27,50 +27,50 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavPosllh
 /// @headerfile "ublox/message/NavPosllh.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavPosllhFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"lon"</b> field.
     using Lon =
         ublox::field::Lon<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"lat"</b> field.
     using Lat =
         ublox::field::Lat<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"height"</b> field.
     using Height =
         ublox::field::Height<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"hMSL"</b> field.
     using HMSL =
         ublox::field::HMSL<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"hAcc"</b> field.
     using HAcc =
         ublox::field::HAcc<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"vAcc"</b> field.
     using VAcc =
         ublox::field::VAcc<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief All the fields bundled in std::tuple.
     using All = std::tuple<
@@ -90,7 +90,7 @@ struct NavPosllhFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavPosllh.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavPosllh : public
     comms::MessageBase<
         TMsgBase,

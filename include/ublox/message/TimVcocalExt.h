@@ -5,14 +5,15 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,7 +25,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref TimVcocalExt
 /// @headerfile "ublox/message/TimVcocalExt.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct TimVcocalExtFields
 {
     /// @brief Definition of <b>"type"</b> field.
@@ -84,6 +85,22 @@ struct TimVcocalExtFields
             return "oscId";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(OscIdVal val)
+        {
+            static const char* Map[] = {
+                "Internal",
+                "External"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Values enumerator for @ref ublox::message::TimVcocalExtFields::SrcId field.
@@ -111,13 +128,31 @@ struct TimVcocalExtFields
             return "srcId";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(SrcIdVal val)
+        {
+            static const char* Map[] = {
+                "Internal",
+                "GNSS",
+                "EXTINT0",
+                "EXTINT1"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -191,7 +226,7 @@ struct TimVcocalExtFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/TimVcocalExt.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class TimVcocalExt : public
     comms::MessageBase<
         TMsgBase,

@@ -8,13 +8,13 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/EcefX.h"
 #include "ublox/field/EcefY.h"
 #include "ublox/field/EcefZ.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,7 +26,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaIniPosXyz
 /// @headerfile "ublox/message/MgaIniPosXyz.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaIniPosXyzFields
 {
     /// @brief Definition of <b>"type"</b> field.
@@ -65,8 +65,8 @@ struct MgaIniPosXyzFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -79,20 +79,20 @@ struct MgaIniPosXyzFields
     /// @brief Definition of <b>"ecefX"</b> field.
     using EcefX =
         ublox::field::EcefX<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"ecefY"</b> field.
     using EcefY =
         ublox::field::EcefY<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"ecefZ"</b> field.
     using EcefZ =
         ublox::field::EcefZ<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"posAcc"</b> field.
     struct PosAcc : public
@@ -128,7 +128,7 @@ struct MgaIniPosXyzFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaIniPosXyz.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaIniPosXyz : public
     comms::MessageBase<
         TMsgBase,

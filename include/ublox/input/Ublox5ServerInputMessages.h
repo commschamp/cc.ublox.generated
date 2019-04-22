@@ -4,7 +4,6 @@
 #pragma once
 
 #include <tuple>
-#include "ublox/DefaultOptions.h"
 #include "ublox/message/AidAlmPoll.h"
 #include "ublox/message/AidAlmPollSv.h"
 #include "ublox/message/AidAlp.h"
@@ -77,14 +76,18 @@
 #include "ublox/message/TimSvinPoll.h"
 #include "ublox/message/TimTm2Poll.h"
 #include "ublox/message/TimTpPoll.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
+{
+
+namespace input
 {
 
 /// @brief Messages of the protocol in ascending order.
 /// @tparam TBase Base class of all the messages.
 /// @tparam TOpt Protocol definition options.
-template <typename TBase, typename TOpt = ublox::DefaultOptions>
+template <typename TBase, typename TOpt = ublox::options::DefaultOptions>
 using Ublox5ServerInputMessages =
     std::tuple<
         ublox::message::NavPosecefPoll<TBase, TOpt>,
@@ -160,6 +163,8 @@ using Ublox5ServerInputMessages =
         ublox::message::TimTm2Poll<TBase, TOpt>,
         ublox::message::TimSvinPoll<TBase, TOpt>
     >;
+
+} // namespace input
 
 } // namespace ublox
 

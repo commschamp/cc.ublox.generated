@@ -8,7 +8,6 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgMainTalkerId.h"
 #include "ublox/field/CfgNmeaFilter.h"
@@ -19,6 +18,7 @@
 #include "ublox/field/CfgNmeaSvNumbering.h"
 #include "ublox/field/CfgNmeaVersion.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -30,14 +30,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgNmeaV0
 /// @headerfile "ublox/message/CfgNmeaV0.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgNmeaV0Fields
 {
     /// @brief Definition of <b>"filter"</b> field.
     struct Filter : public
         ublox::field::CfgNmeaFilter<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -50,8 +50,8 @@ struct CfgNmeaV0Fields
     /// @brief Definition of <b>"nmeaVersion"</b> field.
     struct NmeaVersion : public
         ublox::field::CfgNmeaVersion<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -64,8 +64,8 @@ struct CfgNmeaV0Fields
     /// @brief Definition of <b>"numSV"</b> field.
     struct NumSV : public
         ublox::field::CfgNmeaNumSV<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -78,8 +78,8 @@ struct CfgNmeaV0Fields
     /// @brief Definition of <b>"flags"</b> field.
     struct Flags : public
         ublox::field::CfgNmeaFlags<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -92,8 +92,8 @@ struct CfgNmeaV0Fields
     /// @brief Definition of <b>"gnssToFilter"</b> field.
     struct GnssToFilter : public
         ublox::field::CfgNmeaGnssToFilter<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -106,8 +106,8 @@ struct CfgNmeaV0Fields
     /// @brief Definition of <b>"svNumbering"</b> field.
     struct SvNumbering : public
         ublox::field::CfgNmeaSvNumbering<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -120,8 +120,8 @@ struct CfgNmeaV0Fields
     /// @brief Definition of <b>"mainTalkerId"</b> field.
     struct MainTalkerId : public
         ublox::field::CfgMainTalkerId<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -134,8 +134,8 @@ struct CfgNmeaV0Fields
     /// @brief Definition of <b>"gsvTalkerId"</b> field.
     struct GsvTalkerId : public
         ublox::field::CfgNmeaGsvTalkerId<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -182,7 +182,7 @@ struct CfgNmeaV0Fields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgNmeaV0.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgNmeaV0 : public
     comms::MessageBase<
         TMsgBase,

@@ -5,11 +5,11 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/Day.h"
 #include "ublox/field/FieldBase.h"
@@ -21,6 +21,7 @@
 #include "ublox/field/Res8.h"
 #include "ublox/field/Sec.h"
 #include "ublox/field/Year.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -32,7 +33,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref LogInfo
 /// @headerfile "ublox/message/LogInfo.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct LogInfoFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -55,8 +56,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -84,8 +85,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res8<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -143,8 +144,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"oldestYear"</b> field.
     struct OldestYear : public
         ublox::field::Year<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -157,8 +158,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"oldestMonth"</b> field.
     struct OldestMonth : public
         ublox::field::Month<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -171,8 +172,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"oldestDay"</b> field.
     struct OldestDay : public
         ublox::field::Day<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -185,8 +186,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"oldestHour"</b> field.
     struct OldestHour : public
         ublox::field::Hour<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -199,8 +200,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"oldestMinute"</b> field.
     struct OldestMinute : public
         ublox::field::Min<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -213,8 +214,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"oldestSecond"</b> field.
     struct OldestSecond : public
         ublox::field::Sec<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -227,8 +228,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"reserved3"</b> field.
     struct Reserved3 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -241,8 +242,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"newestYear"</b> field.
     struct NewestYear : public
         ublox::field::Year<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -255,8 +256,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"newestMonth"</b> field.
     struct NewestMonth : public
         ublox::field::Month<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -269,8 +270,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"newestDay"</b> field.
     struct NewestDay : public
         ublox::field::Day<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -283,8 +284,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"newestHour"</b> field.
     struct NewestHour : public
         ublox::field::Hour<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -297,8 +298,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"newestMinute"</b> field.
     struct NewestMinute : public
         ublox::field::Min<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -311,8 +312,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"newestSecond"</b> field.
     struct NewestSecond : public
         ublox::field::Sec<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -325,8 +326,8 @@ struct LogInfoFields
     /// @brief Definition of <b>"reserved4"</b> field.
     struct Reserved4 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -387,13 +388,35 @@ struct LogInfoFields
             return "status";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                nullptr,
+                nullptr,
+                "recording",
+                "inactive",
+                "circular"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved5"</b> field.
     struct Reserved5 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -437,7 +460,7 @@ struct LogInfoFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/LogInfo.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class LogInfo : public
     comms::MessageBase<
         TMsgBase,

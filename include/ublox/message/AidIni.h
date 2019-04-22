@@ -5,15 +5,16 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/Bundle.h"
 #include "comms/field/IntValue.h"
 #include "comms/field/Optional.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 #include "comms/field_cast.h"
 
 
@@ -27,7 +28,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref AidIni
 /// @headerfile "ublox/message/AidIni.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct AidIniFields
 {
     /// @brief Scope for all the member fields of @ref EcefX optional.
@@ -313,6 +314,29 @@ struct AidIniFields
         static const char* name()
         {
             return "tmCfg";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                "fEdge",
+                nullptr,
+                nullptr,
+                "tm1",
+                nullptr,
+                "f1"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -890,6 +914,33 @@ struct AidIniFields
             return "flags";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "pos",
+                "time",
+                "clockD",
+                "tp",
+                "clockF",
+                "lla",
+                "altInv",
+                "prevTm",
+                nullptr,
+                nullptr,
+                "utc"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief All the fields bundled in std::tuple.
@@ -923,7 +974,7 @@ struct AidIniFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/AidIni.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AidIni : public
     comms::MessageBase<
         TMsgBase,

@@ -6,13 +6,13 @@
 #include <tuple>
 #include "comms/MessageBase.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgNmeaFilter.h"
 #include "ublox/field/CfgNmeaFlags.h"
 #include "ublox/field/CfgNmeaNumSV.h"
 #include "ublox/field/CfgNmeaVersion.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,14 +24,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgNmea
 /// @headerfile "ublox/message/CfgNmea.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgNmeaFields
 {
     /// @brief Definition of <b>"filter"</b> field.
     struct Filter : public
         ublox::field::CfgNmeaFilter<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -44,8 +44,8 @@ struct CfgNmeaFields
     /// @brief Definition of <b>"nmeaVersion"</b> field.
     struct NmeaVersion : public
         ublox::field::CfgNmeaVersion<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -58,8 +58,8 @@ struct CfgNmeaFields
     /// @brief Definition of <b>"numSV"</b> field.
     struct NumSV : public
         ublox::field::CfgNmeaNumSV<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -72,8 +72,8 @@ struct CfgNmeaFields
     /// @brief Definition of <b>"flags"</b> field.
     struct Flags : public
         ublox::field::CfgNmeaFlags<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -98,7 +98,7 @@ struct CfgNmeaFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgNmea.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgNmea : public
     comms::MessageBase<
         TMsgBase,

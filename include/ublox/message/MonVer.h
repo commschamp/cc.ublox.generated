@@ -8,9 +8,9 @@
 #include "comms/field/ArrayList.h"
 #include "comms/field/String.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -22,7 +22,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MonVer
 /// @headerfile "ublox/message/MonVer.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MonVerFields
 {
     /// @brief Definition of <b>"swVersion"</b> field.
@@ -108,7 +108,7 @@ struct MonVerFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MonVer.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MonVer : public
     comms::MessageBase<
         TMsgBase,

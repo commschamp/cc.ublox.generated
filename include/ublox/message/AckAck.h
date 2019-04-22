@@ -6,10 +6,10 @@
 #include <tuple>
 #include "comms/MessageBase.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/MsgId.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -21,14 +21,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref AckAck
 /// @headerfile "ublox/message/AckAck.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct AckAckFields
 {
     /// @brief Definition of <b>"MsgId"</b> field.
     using MsgId =
         ublox::field::MsgId<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief All the fields bundled in std::tuple.
     using All = std::tuple<
@@ -42,7 +42,7 @@ struct AckAckFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/AckAck.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AckAck : public
     comms::MessageBase<
         TMsgBase,

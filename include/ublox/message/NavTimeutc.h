@@ -3,15 +3,18 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cstdint>
+#include <iterator>
 #include <tuple>
+#include <type_traits>
+#include <utility>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/Day.h"
 #include "ublox/field/FieldBase.h"
@@ -21,6 +24,7 @@
 #include "ublox/field/Month.h"
 #include "ublox/field/Sec.h"
 #include "ublox/field/Year.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -32,14 +36,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavTimeutc
 /// @headerfile "ublox/message/NavTimeutc.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavTimeutcFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"tAcc"</b> field.
     struct TAcc : public
@@ -77,38 +81,38 @@ struct NavTimeutcFields
     /// @brief Definition of <b>"year"</b> field.
     using Year =
         ublox::field::Year<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"month"</b> field.
     using Month =
         ublox::field::Month<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"day"</b> field.
     using Day =
         ublox::field::Day<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"hour"</b> field.
     using Hour =
         ublox::field::Hour<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"min"</b> field.
     using Min =
         ublox::field::Min<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"sec"</b> field.
     using Sec =
         ublox::field::Sec<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Scope for all the member fields of @ref Valid bitfield.
     struct ValidMembers
@@ -149,6 +153,25 @@ struct NavTimeutcFields
                 return "";
             }
             
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "validTOW",
+                    "validWKN",
+                    "validUTC"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
+            }
+            
         };
         
         /// @brief Values enumerator for @ref ublox::message::NavTimeutcFields::ValidMembers::UtcStandard field.
@@ -181,6 +204,36 @@ struct NavTimeutcFields
             static const char* name()
             {
                 return "utcStandard";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(UtcStandardVal val)
+            {
+                using NameInfo = std::pair<UtcStandardVal, const char*>;
+                static const NameInfo Map[] = {
+                    std::make_pair(UtcStandardVal::NotAvailable, "Not Available"),
+                    std::make_pair(UtcStandardVal::CRL, "CRL"),
+                    std::make_pair(UtcStandardVal::NIST, "NIST"),
+                    std::make_pair(UtcStandardVal::USNO, "USNO"),
+                    std::make_pair(UtcStandardVal::BIPM, "BIPM"),
+                    std::make_pair(UtcStandardVal::EuLab, "EuLab"),
+                    std::make_pair(UtcStandardVal::SU, "SU"),
+                    std::make_pair(UtcStandardVal::NTSC, "NTSC"),
+                    std::make_pair(UtcStandardVal::Unknown, "Unknown")
+                };
+                
+                auto iter = std::lower_bound(
+                    std::begin(Map), std::end(Map), val,
+                    [](const NameInfo& info, UtcStandardVal v) -> bool
+                    {
+                        return info.first < v;
+                    });
+                
+                if ((iter == std::end(Map)) || (iter->first != val)) {
+                    return nullptr;
+                }
+                
+                return iter->second;
             }
             
         };
@@ -248,7 +301,7 @@ struct NavTimeutcFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavTimeutc.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavTimeutc : public
     comms::MessageBase<
         TMsgBase,

@@ -9,7 +9,6 @@
 #include "comms/field/ArrayList.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/Day.h"
 #include "ublox/field/FieldBase.h"
@@ -20,6 +19,7 @@
 #include "ublox/field/Res3.h"
 #include "ublox/field/Sec.h"
 #include "ublox/field/Year.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -31,7 +31,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref LogRetrieveposextra
 /// @headerfile "ublox/message/LogRetrieveposextra.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct LogRetrieveposextraFields
 {
     /// @brief Definition of <b>"entryIndex"</b> field.
@@ -68,8 +68,8 @@ struct LogRetrieveposextraFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -82,32 +82,32 @@ struct LogRetrieveposextraFields
     /// @brief Definition of <b>"year"</b> field.
     using Year =
         ublox::field::Year<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"month"</b> field.
     using Month =
         ublox::field::Month<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"day"</b> field.
     using Day =
         ublox::field::Day<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"hour"</b> field.
     using Hour =
         ublox::field::Hour<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"minute"</b> field.
     struct Minute : public
         ublox::field::Min<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -120,8 +120,8 @@ struct LogRetrieveposextraFields
     /// @brief Definition of <b>"second"</b> field.
     struct Second : public
         ublox::field::Sec<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -134,8 +134,8 @@ struct LogRetrieveposextraFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -166,8 +166,8 @@ struct LogRetrieveposextraFields
         /// @brief Definition of <b>""</b> field.
         struct Element : public
             ublox::field::Res1<
-               TOpt
-           >
+                TOpt
+            >
         {
             /// @brief Name of the field.
             static const char* name()
@@ -219,7 +219,7 @@ struct LogRetrieveposextraFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/LogRetrieveposextra.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class LogRetrieveposextra : public
     comms::MessageBase<
         TMsgBase,
