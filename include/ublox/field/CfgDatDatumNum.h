@@ -3,11 +3,14 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cstdint>
+#include <iterator>
+#include <utility>
 #include "comms/field/EnumValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -15,7 +18,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref CfgDatDatumNum field.
+/// @brief Values enumerator for @ref ublox::field::CfgDatDatumNum field.
 enum class CfgDatDatumNumVal : std::uint16_t
 {
     WGS84 = 0, ///< value @b WGS84
@@ -24,9 +27,10 @@ enum class CfgDatDatumNumVal : std::uint16_t
 };
 
 /// @brief Definition of <b>"cfgDatDatumNum"</b> field.
+/// @see @ref ublox::field::CfgDatDatumNumVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 struct CfgDatDatumNum : public
     comms::field::EnumValue<
         ublox::field::FieldBase<>,
@@ -40,6 +44,29 @@ struct CfgDatDatumNum : public
     static const char* name()
     {
         return "cfgDatDatumNum";
+    }
+    
+    /// @brief Retrieve name of the enum value
+    static const char* valueName(CfgDatDatumNumVal val)
+    {
+        using NameInfo = std::pair<CfgDatDatumNumVal, const char*>;
+        static const NameInfo Map[] = {
+            std::make_pair(CfgDatDatumNumVal::WGS84, "WGS84"),
+            std::make_pair(CfgDatDatumNumVal::User, "User")
+        };
+        
+        auto iter = std::lower_bound(
+            std::begin(Map), std::end(Map), val,
+            [](const NameInfo& info, CfgDatDatumNumVal v) -> bool
+            {
+                return info.first < v;
+            });
+        
+        if ((iter == std::end(Map)) || (iter->first != val)) {
+            return nullptr;
+        }
+        
+        return iter->second;
     }
     
 };

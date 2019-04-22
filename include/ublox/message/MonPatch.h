@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -13,9 +14,9 @@
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -27,7 +28,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MonPatch
 /// @headerfile "ublox/message/MonPatch.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MonPatchFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -101,9 +102,26 @@ struct MonPatchFields
                         return "";
                     }
                     
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "activated"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
+                    }
+                    
                 };
                 
-                /// @brief Values enumerator for @ref Location field.
+                /// @brief Values enumerator for @ref ublox::message::MonPatchFields::ListMembers::ElementMembers::PatchInfoMembers::Location field.
                 enum class LocationVal : std::uint8_t
                 {
                     eFuse = 0, ///< value @b eFuse
@@ -114,6 +132,7 @@ struct MonPatchFields
                 };
                 
                 /// @brief Definition of <b>"location"</b> field.
+                /// @see @ref ublox::message::MonPatchFields::ListMembers::ElementMembers::PatchInfoMembers::LocationVal
                 struct Location : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -126,6 +145,24 @@ struct MonPatchFields
                     static const char* name()
                     {
                         return "location";
+                    }
+                    
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(LocationVal val)
+                    {
+                        static const char* Map[] = {
+                            "eFuse",
+                            "ROM",
+                            "BBR",
+                            "FileSystem"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
                     }
                     
                 };
@@ -320,7 +357,7 @@ struct MonPatchFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MonPatch.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MonPatch : public
     comms::MessageBase<
         TMsgBase,

@@ -5,12 +5,13 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/EnumValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -22,10 +23,10 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref AidAlpStatus
 /// @headerfile "ublox/message/AidAlpStatus.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct AidAlpStatusFields
 {
-    /// @brief Values enumerator for @ref Status field.
+    /// @brief Values enumerator for @ref ublox::message::AidAlpStatusFields::Status field.
     enum class StatusVal : std::uint8_t
     {
         nak = 0, ///< value @b nak
@@ -34,6 +35,7 @@ struct AidAlpStatusFields
     };
     
     /// @brief Definition of <b>"status"</b> field.
+    /// @see @ref ublox::message::AidAlpStatusFields::StatusVal
     struct Status : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -46,6 +48,22 @@ struct AidAlpStatusFields
         static const char* name()
         {
             return "status";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(StatusVal val)
+        {
+            static const char* Map[] = {
+                "nak",
+                "ack"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -62,7 +80,7 @@ struct AidAlpStatusFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/AidAlpStatus.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AidAlpStatus : public
     comms::MessageBase<
         TMsgBase,

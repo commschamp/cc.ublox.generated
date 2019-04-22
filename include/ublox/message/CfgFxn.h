@@ -5,14 +5,15 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res4.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,7 +25,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgFxn
 /// @headerfile "ublox/message/CfgFxn.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgFxnFields
 {
     /// @brief Definition of <b>"flags"</b> field.
@@ -76,6 +77,27 @@ struct CfgFxnFields
         static const char* name()
         {
             return "flags";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                "sleep",
+                nullptr,
+                "absAlign",
+                "onOff"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -179,8 +201,8 @@ struct CfgFxnFields
     /// @brief Definition of <b>"res"</b> field.
     struct Res : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -226,7 +248,7 @@ struct CfgFxnFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgFxn.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgFxn : public
     comms::MessageBase<
         TMsgBase,

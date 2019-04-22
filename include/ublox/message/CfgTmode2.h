@@ -5,16 +5,17 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/field/Optional.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,10 +27,10 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgTmode2
 /// @headerfile "ublox/message/CfgTmode2.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgTmode2Fields
 {
-    /// @brief Values enumerator for @ref TimeMode field.
+    /// @brief Values enumerator for @ref ublox::message::CfgTmode2Fields::TimeMode field.
     enum class TimeModeVal : std::uint32_t
     {
         Disabled = 0, ///< value @b Disabled
@@ -39,6 +40,7 @@ struct CfgTmode2Fields
     };
     
     /// @brief Definition of <b>"timeMode"</b> field.
+    /// @see @ref ublox::message::CfgTmode2Fields::TimeModeVal
     struct TimeMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -52,13 +54,30 @@ struct CfgTmode2Fields
             return "timeMode";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(TimeModeVal val)
+        {
+            static const char* Map[] = {
+                "Disabled",
+                "Survey In",
+                "Fixed Mode"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -100,6 +119,24 @@ struct CfgTmode2Fields
         static const char* name()
         {
             return "flags";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "lla",
+                "altInv"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -393,7 +430,7 @@ struct CfgTmode2Fields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgTmode2.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgTmode2 : public
     comms::MessageBase<
         TMsgBase,

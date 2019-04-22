@@ -3,17 +3,21 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cstdint>
+#include <iterator>
 #include <tuple>
+#include <type_traits>
+#include <utility>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,7 +29,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgTp
 /// @headerfile "ublox/message/CfgTp.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgTpFields
 {
     /// @brief Definition of <b>"interval"</b> field.
@@ -60,7 +64,7 @@ struct CfgTpFields
         
     };
     
-    /// @brief Values enumerator for @ref Status field.
+    /// @brief Values enumerator for @ref ublox::message::CfgTpFields::Status field.
     enum class StatusVal : std::int8_t
     {
         Negative = -1, ///< value @b Negative
@@ -70,6 +74,7 @@ struct CfgTpFields
     };
     
     /// @brief Definition of <b>"status"</b> field.
+    /// @see @ref ublox::message::CfgTpFields::StatusVal
     struct Status : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -83,9 +88,33 @@ struct CfgTpFields
             return "status";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(StatusVal val)
+        {
+            using NameInfo = std::pair<StatusVal, const char*>;
+            static const NameInfo Map[] = {
+                std::make_pair(StatusVal::Negative, "Negative"),
+                std::make_pair(StatusVal::Off, "Off"),
+                std::make_pair(StatusVal::Positive, "Positive")
+            };
+            
+            auto iter = std::lower_bound(
+                std::begin(Map), std::end(Map), val,
+                [](const NameInfo& info, StatusVal v) -> bool
+                {
+                    return info.first < v;
+                });
+            
+            if ((iter == std::end(Map)) || (iter->first != val)) {
+                return nullptr;
+            }
+            
+            return iter->second;
+        }
+        
     };
     
-    /// @brief Values enumerator for @ref TimeRef field.
+    /// @brief Values enumerator for @ref ublox::message::CfgTpFields::TimeRef field.
     enum class TimeRefVal : std::uint8_t
     {
         UTC = 0, ///< value @b UTC
@@ -95,6 +124,7 @@ struct CfgTpFields
     };
     
     /// @brief Definition of <b>"timeRef"</b> field.
+    /// @see @ref ublox::message::CfgTpFields::TimeRefVal
     struct TimeRef : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -106,6 +136,23 @@ struct CfgTpFields
         static const char* name()
         {
             return "timeRef";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(TimeRefVal val)
+        {
+            static const char* Map[] = {
+                "UTC",
+                "GPS",
+                "Local"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -142,13 +189,30 @@ struct CfgTpFields
             return "flags";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "syncMode"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief Definition of <b>"res"</b> field.
     struct Res : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -226,7 +290,7 @@ struct CfgTpFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgTp.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgTp : public
     comms::MessageBase<
         TMsgBase,

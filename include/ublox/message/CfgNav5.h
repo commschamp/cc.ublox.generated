@@ -5,16 +5,17 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res2.h"
 #include "ublox/field/Res5.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,7 +27,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgNav5
 /// @headerfile "ublox/message/CfgNav5.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgNav5Fields
 {
     /// @brief Definition of <b>"mask"</b> field.
@@ -108,9 +109,36 @@ struct CfgNav5Fields
             return "mask";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "dyn",
+                "minEl",
+                "posFixMode",
+                "drLim",
+                "posMask",
+                "timeMask",
+                "staticHoldMask",
+                "dgpsMask",
+                "cnoThreshold",
+                nullptr,
+                "utc"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
-    /// @brief Values enumerator for @ref DynModel field.
+    /// @brief Values enumerator for @ref ublox::message::CfgNav5Fields::DynModel field.
     enum class DynModelVal : std::uint8_t
     {
         Portable = 0, ///< value @b Portable
@@ -126,6 +154,7 @@ struct CfgNav5Fields
     };
     
     /// @brief Definition of <b>"dynModel"</b> field.
+    /// @see @ref ublox::message::CfgNav5Fields::DynModelVal
     struct DynModel : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -140,9 +169,33 @@ struct CfgNav5Fields
             return "dynModel";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(DynModelVal val)
+        {
+            static const char* Map[] = {
+                "Portable",
+                nullptr,
+                "Stationary",
+                "Pedestrian",
+                "Automotive",
+                "Sea",
+                "Airborne <1g accel",
+                "Airborne <2g accel",
+                "Airborne <4g accel",
+                "Wrist watch"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
-    /// @brief Values enumerator for @ref FixMode field.
+    /// @brief Values enumerator for @ref ublox::message::CfgNav5Fields::FixMode field.
     enum class FixModeVal : std::uint8_t
     {
         Only2D = 1, ///< value <b>2D Only</b>.
@@ -152,6 +205,7 @@ struct CfgNav5Fields
     };
     
     /// @brief Definition of <b>"fixMode"</b> field.
+    /// @see @ref ublox::message::CfgNav5Fields::FixModeVal
     struct FixMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -163,6 +217,24 @@ struct CfgNav5Fields
         static const char* name()
         {
             return "fixMode";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(FixModeVal val)
+        {
+            static const char* Map[] = {
+                nullptr,
+                "2D Only",
+                "2D Only",
+                "Auto 2D/3D"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -361,8 +433,8 @@ struct CfgNav5Fields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -388,7 +460,7 @@ struct CfgNav5Fields
         
     };
     
-    /// @brief Values enumerator for @ref UtcStandard field.
+    /// @brief Values enumerator for @ref ublox::message::CfgNav5Fields::UtcStandard field.
     enum class UtcStandardVal : std::uint8_t
     {
         Automatic = 0, ///< value @b Automatic
@@ -399,6 +471,7 @@ struct CfgNav5Fields
     };
     
     /// @brief Definition of <b>"utcStandard"</b> field.
+    /// @see @ref ublox::message::CfgNav5Fields::UtcStandardVal
     struct UtcStandard : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -414,13 +487,35 @@ struct CfgNav5Fields
             return "utcStandard";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(UtcStandardVal val)
+        {
+            static const char* Map[] = {
+                "Automatic",
+                nullptr,
+                nullptr,
+                "GPS",
+                nullptr,
+                nullptr,
+                "GLONASS",
+                "BeiDou"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res5<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -460,7 +555,7 @@ struct CfgNav5Fields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgNav5.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgNav5 : public
     comms::MessageBase<
         TMsgBase,

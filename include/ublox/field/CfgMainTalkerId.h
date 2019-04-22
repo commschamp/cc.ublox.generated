@@ -4,10 +4,11 @@
 #pragma once
 
 #include <cstdint>
+#include <type_traits>
 #include "comms/field/EnumValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -15,7 +16,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref CfgMainTalkerId field.
+/// @brief Values enumerator for @ref ublox::field::CfgMainTalkerId field.
 enum class CfgMainTalkerIdVal : std::uint8_t
 {
     NotOverridden = 0, ///< value <b>Not overridden</b>.
@@ -28,9 +29,10 @@ enum class CfgMainTalkerIdVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"cfgMainTalkerId"</b> field.
+/// @see @ref ublox::field::CfgMainTalkerIdVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 struct CfgMainTalkerId : public
     comms::field::EnumValue<
         ublox::field::FieldBase<>,
@@ -43,6 +45,26 @@ struct CfgMainTalkerId : public
     static const char* name()
     {
         return "cfgMainTalkerId";
+    }
+    
+    /// @brief Retrieve name of the enum value
+    static const char* valueName(CfgMainTalkerIdVal val)
+    {
+        static const char* Map[] = {
+            "Not overridden",
+            "GP",
+            "GL",
+            "GN",
+            "GA",
+            "GB"
+        };
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        
+        if (MapSize <= static_cast<std::size_t>(val)) {
+            return nullptr;
+        }
+        
+        return Map[static_cast<std::size_t>(val)];
     }
     
 };

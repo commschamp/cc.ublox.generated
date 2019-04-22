@@ -9,7 +9,6 @@
 #include "comms/field/ArrayList.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/Day.h"
 #include "ublox/field/FieldBase.h"
@@ -17,6 +16,7 @@
 #include "ublox/field/Month.h"
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res4.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -28,7 +28,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaAno
 /// @headerfile "ublox/message/MgaAno.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaAnoFields
 {
     /// @brief Definition of <b>"type"</b> field.
@@ -81,8 +81,8 @@ struct MgaAnoFields
     /// @brief Definition of <b>"gnssId"</b> field.
     using GnssId =
         ublox::field::GnssId<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"year"</b> field.
     struct Year : public
@@ -105,20 +105,20 @@ struct MgaAnoFields
     /// @brief Definition of <b>"month"</b> field.
     using Month =
         ublox::field::Month<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"day"</b> field.
     using Day =
         ublox::field::Day<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -148,8 +148,8 @@ struct MgaAnoFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -180,7 +180,7 @@ struct MgaAnoFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaAno.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaAno : public
     comms::MessageBase<
         TMsgBase,

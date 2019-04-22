@@ -5,18 +5,19 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bundle.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Lat.h"
 #include "ublox/field/Lon.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -28,7 +29,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgGeofence
 /// @headerfile "ublox/message/CfgGeofence.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgGeofenceFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -80,8 +81,8 @@ struct CfgGeofenceFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -91,7 +92,7 @@ struct CfgGeofenceFields
         
     };
     
-    /// @brief Values enumerator for @ref PioEnabled field.
+    /// @brief Values enumerator for @ref ublox::message::CfgGeofenceFields::PioEnabled field.
     enum class PioEnabledVal : std::uint8_t
     {
         Disable = 0, ///< value @b Disable
@@ -100,6 +101,7 @@ struct CfgGeofenceFields
     };
     
     /// @brief Definition of <b>"pioEnabled"</b> field.
+    /// @see @ref ublox::message::CfgGeofenceFields::PioEnabledVal
     struct PioEnabled : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -113,9 +115,25 @@ struct CfgGeofenceFields
             return "pioEnabled";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(PioEnabledVal val)
+        {
+            static const char* Map[] = {
+                "Disable",
+                "Enable"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
-    /// @brief Values enumerator for @ref PinPolarity field.
+    /// @brief Values enumerator for @ref ublox::message::CfgGeofenceFields::PinPolarity field.
     enum class PinPolarityVal : std::uint8_t
     {
         LowInside = 0, ///< value @b LowInside
@@ -124,6 +142,7 @@ struct CfgGeofenceFields
     };
     
     /// @brief Definition of <b>"pinPolarity"</b> field.
+    /// @see @ref ublox::message::CfgGeofenceFields::PinPolarityVal
     struct PinPolarity : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -135,6 +154,22 @@ struct CfgGeofenceFields
         static const char* name()
         {
             return "pinPolarity";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(PinPolarityVal val)
+        {
+            static const char* Map[] = {
+                "LowInside",
+                "LowOutside"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -157,8 +192,8 @@ struct CfgGeofenceFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -177,14 +212,14 @@ struct CfgGeofenceFields
             /// @brief Definition of <b>"lat"</b> field.
             using Lat =
                 ublox::field::Lat<
-                   TOpt
-               >;
+                    TOpt
+                >;
             
             /// @brief Definition of <b>"lon"</b> field.
             using Lon =
                 ublox::field::Lon<
-                   TOpt
-               >;
+                    TOpt
+                >;
             
             /// @brief Definition of <b>"radius"</b> field.
             struct Radius : public
@@ -287,7 +322,7 @@ struct CfgGeofenceFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgGeofence.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgGeofence : public
     comms::MessageBase<
         TMsgBase,

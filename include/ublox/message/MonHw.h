@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -12,11 +13,11 @@
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -28,7 +29,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MonHw
 /// @headerfile "ublox/message/MonHw.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MonHwFields
 {
     /// @brief Definition of <b>"pinSel"</b> field.
@@ -121,7 +122,7 @@ struct MonHwFields
         
     };
     
-    /// @brief Values enumerator for @ref AStatus field.
+    /// @brief Values enumerator for @ref ublox::message::MonHwFields::AStatus field.
     enum class AStatusVal : std::uint8_t
     {
         INIT = 0, ///< value @b INIT
@@ -133,6 +134,7 @@ struct MonHwFields
     };
     
     /// @brief Definition of <b>"aStatus"</b> field.
+    /// @see @ref ublox::message::MonHwFields::AStatusVal
     struct AStatus : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -146,9 +148,28 @@ struct MonHwFields
             return "aStatus";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(AStatusVal val)
+        {
+            static const char* Map[] = {
+                "INIT",
+                "DONTKNOW",
+                "OK",
+                "SHORT",
+                "OPEN"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
-    /// @brief Values enumerator for @ref APower field.
+    /// @brief Values enumerator for @ref ublox::message::MonHwFields::APower field.
     enum class APowerVal : std::uint8_t
     {
         OFF = 0, ///< value @b OFF
@@ -158,6 +179,7 @@ struct MonHwFields
     };
     
     /// @brief Definition of <b>"aPower"</b> field.
+    /// @see @ref ublox::message::MonHwFields::APowerVal
     struct APower : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -169,6 +191,23 @@ struct MonHwFields
         static const char* name()
         {
             return "aPower";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(APowerVal val)
+        {
+            static const char* Map[] = {
+                "OFF",
+                "ON",
+                "DONTKNOW"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -208,9 +247,27 @@ struct MonHwFields
                 return "";
             }
             
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "rtcCalib",
+                    "safeBoot"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
+            }
+            
         };
         
-        /// @brief Values enumerator for @ref JammingState field.
+        /// @brief Values enumerator for @ref ublox::message::MonHwFields::FlagsMembers::JammingState field.
         enum class JammingStateVal : std::uint8_t
         {
             Unknown = 0, ///< value @b Unknown
@@ -221,6 +278,7 @@ struct MonHwFields
         };
         
         /// @brief Definition of <b>"jammingState"</b> field.
+        /// @see @ref ublox::message::MonHwFields::FlagsMembers::JammingStateVal
         struct JammingState : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -233,6 +291,24 @@ struct MonHwFields
             static const char* name()
             {
                 return "jammingState";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(JammingStateVal val)
+            {
+                static const char* Map[] = {
+                    "Unknown",
+                    "Ok",
+                    "Warning",
+                    "Critical"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -267,6 +343,23 @@ struct MonHwFields
             static const char* name()
             {
                 return "";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "xtalAbsent"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -319,8 +412,8 @@ struct MonHwFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -380,8 +473,8 @@ struct MonHwFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -464,7 +557,7 @@ struct MonHwFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MonHw.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MonHw : public
     comms::MessageBase<
         TMsgBase,

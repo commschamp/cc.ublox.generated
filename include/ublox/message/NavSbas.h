@@ -5,13 +5,13 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bundle.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
@@ -20,6 +20,7 @@
 #include "ublox/field/Res3.h"
 #include "ublox/field/SbasService.h"
 #include "ublox/field/SbasSys.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -31,14 +32,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavSbas
 /// @headerfile "ublox/message/NavSbas.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavSbasFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"geo"</b> field.
     struct Geo : public
@@ -55,7 +56,7 @@ struct NavSbasFields
         
     };
     
-    /// @brief Values enumerator for @ref Mode field.
+    /// @brief Values enumerator for @ref ublox::message::NavSbasFields::Mode field.
     enum class ModeVal : std::uint8_t
     {
         Disabled = 0, ///< value @b Disabled
@@ -65,6 +66,7 @@ struct NavSbasFields
     };
     
     /// @brief Definition of <b>"mode"</b> field.
+    /// @see @ref ublox::message::NavSbasFields::ModeVal
     struct Mode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -78,13 +80,30 @@ struct NavSbasFields
             return "mode";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(ModeVal val)
+        {
+            static const char* Map[] = {
+                "Disabled",
+                "Enabled Integrity",
+                "Enabled Testmode"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"sys"</b> field.
     struct Sys : public
         ublox::field::SbasSys<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -97,8 +116,8 @@ struct NavSbasFields
     /// @brief Definition of <b>"service"</b> field.
     struct Service : public
         ublox::field::SbasService<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -126,8 +145,8 @@ struct NavSbasFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -191,8 +210,8 @@ struct NavSbasFields
             /// @brief Definition of <b>"svSys"</b> field.
             struct SvSys : public
                 ublox::field::SbasSys<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -205,8 +224,8 @@ struct NavSbasFields
             /// @brief Definition of <b>"svService"</b> field.
             struct SvService : public
                 ublox::field::SbasService<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -219,8 +238,8 @@ struct NavSbasFields
             /// @brief Definition of <b>"reserved2"</b> field.
             struct Reserved2 : public
                 ublox::field::Res1<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -249,8 +268,8 @@ struct NavSbasFields
             /// @brief Definition of <b>"reserved3"</b> field.
             struct Reserved3 : public
                 ublox::field::Res2<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -377,7 +396,7 @@ struct NavSbasFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavSbas.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavSbas : public
     comms::MessageBase<
         TMsgBase,

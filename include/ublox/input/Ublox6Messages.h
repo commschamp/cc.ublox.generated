@@ -1,10 +1,9 @@
 /// @file
-/// @brief Contains definition of all "ublox7" messages bundle.
+/// @brief Contains definition of all "ublox6" messages bundle.
 
 #pragma once
 
 #include <tuple>
-#include "ublox/DefaultOptions.h"
 #include "ublox/message/AckAck.h"
 #include "ublox/message/AckNak.h"
 #include "ublox/message/AidAlm.h"
@@ -32,15 +31,16 @@
 #include "ublox/message/CfgCfg.h"
 #include "ublox/message/CfgDat.h"
 #include "ublox/message/CfgDatPoll.h"
+#include "ublox/message/CfgDatStandard.h"
 #include "ublox/message/CfgDatUser.h"
-#include "ublox/message/CfgGnss.h"
-#include "ublox/message/CfgGnssPoll.h"
+#include "ublox/message/CfgEkf.h"
+#include "ublox/message/CfgEkfPoll.h"
+#include "ublox/message/CfgFxn.h"
+#include "ublox/message/CfgFxnPoll.h"
 #include "ublox/message/CfgInf.h"
 #include "ublox/message/CfgInfPoll.h"
 #include "ublox/message/CfgItfm.h"
 #include "ublox/message/CfgItfmPoll.h"
-#include "ublox/message/CfgLogfilter.h"
-#include "ublox/message/CfgLogfilterPoll.h"
 #include "ublox/message/CfgMsg.h"
 #include "ublox/message/CfgMsgCurrent.h"
 #include "ublox/message/CfgMsgPoll.h"
@@ -50,10 +50,11 @@
 #include "ublox/message/CfgNavx5Poll.h"
 #include "ublox/message/CfgNmea.h"
 #include "ublox/message/CfgNmeaPoll.h"
-#include "ublox/message/CfgNmeaV0.h"
 #include "ublox/message/CfgNvs.h"
+#include "ublox/message/CfgPm.h"
 #include "ublox/message/CfgPm2.h"
 #include "ublox/message/CfgPm2Poll.h"
+#include "ublox/message/CfgPmPoll.h"
 #include "ublox/message/CfgPrtDdc.h"
 #include "ublox/message/CfgPrtPoll.h"
 #include "ublox/message/CfgPrtPortPoll.h"
@@ -69,26 +70,26 @@
 #include "ublox/message/CfgRxmPoll.h"
 #include "ublox/message/CfgSbas.h"
 #include "ublox/message/CfgSbasPoll.h"
+#include "ublox/message/CfgTmode.h"
+#include "ublox/message/CfgTmode2.h"
+#include "ublox/message/CfgTmode2Poll.h"
+#include "ublox/message/CfgTmodePoll.h"
+#include "ublox/message/CfgTp.h"
 #include "ublox/message/CfgTp5.h"
 #include "ublox/message/CfgTp5Poll.h"
 #include "ublox/message/CfgTp5PollSelect.h"
+#include "ublox/message/CfgTpPoll.h"
 #include "ublox/message/CfgUsb.h"
 #include "ublox/message/CfgUsbPoll.h"
+#include "ublox/message/EsfMeas.h"
+#include "ublox/message/EsfMeasPoll.h"
+#include "ublox/message/EsfStatus.h"
+#include "ublox/message/EsfStatusPoll.h"
 #include "ublox/message/InfDebug.h"
 #include "ublox/message/InfError.h"
 #include "ublox/message/InfNotice.h"
 #include "ublox/message/InfTest.h"
 #include "ublox/message/InfWarning.h"
-#include "ublox/message/LogCreate.h"
-#include "ublox/message/LogErase.h"
-#include "ublox/message/LogFindtime.h"
-#include "ublox/message/LogFindtimeResp.h"
-#include "ublox/message/LogInfo.h"
-#include "ublox/message/LogInfoPoll.h"
-#include "ublox/message/LogRetrieve.h"
-#include "ublox/message/LogRetrievepos.h"
-#include "ublox/message/LogRetrievestring.h"
-#include "ublox/message/LogString.h"
 #include "ublox/message/MonHw.h"
 #include "ublox/message/MonHw2.h"
 #include "ublox/message/MonHw2Poll.h"
@@ -116,8 +117,6 @@
 #include "ublox/message/NavPosecefPoll.h"
 #include "ublox/message/NavPosllh.h"
 #include "ublox/message/NavPosllhPoll.h"
-#include "ublox/message/NavPvt.h"
-#include "ublox/message/NavPvtPoll.h"
 #include "ublox/message/NavSbas.h"
 #include "ublox/message/NavSbasPoll.h"
 #include "ublox/message/NavSol.h"
@@ -146,21 +145,27 @@
 #include "ublox/message/RxmSfrb.h"
 #include "ublox/message/RxmSvsi.h"
 #include "ublox/message/RxmSvsiPoll.h"
+#include "ublox/message/TimSvin.h"
+#include "ublox/message/TimSvinPoll.h"
 #include "ublox/message/TimTm2.h"
 #include "ublox/message/TimTm2Poll.h"
 #include "ublox/message/TimTp.h"
 #include "ublox/message/TimTpPoll.h"
 #include "ublox/message/TimVrfy.h"
 #include "ublox/message/TimVrfyPoll.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
+{
+
+namespace input
 {
 
 /// @brief Messages of the protocol in ascending order.
 /// @tparam TBase Base class of all the messages.
 /// @tparam TOpt Protocol definition options.
-template <typename TBase, typename TOpt = ublox::DefaultOptions>
-using Ublox7Messages =
+template <typename TBase, typename TOpt = ublox::options::DefaultOptions>
+using Ublox6Messages =
     std::tuple<
         ublox::message::NavPosecef<TBase, TOpt>,
         ublox::message::NavPosecefPoll<TBase, TOpt>,
@@ -172,8 +177,6 @@ using Ublox7Messages =
         ublox::message::NavDopPoll<TBase, TOpt>,
         ublox::message::NavSol<TBase, TOpt>,
         ublox::message::NavSolPoll<TBase, TOpt>,
-        ublox::message::NavPvt<TBase, TOpt>,
-        ublox::message::NavPvtPoll<TBase, TOpt>,
         ublox::message::NavVelecef<TBase, TOpt>,
         ublox::message::NavVelecefPoll<TBase, TOpt>,
         ublox::message::NavVelned<TBase, TOpt>,
@@ -225,21 +228,29 @@ using Ublox7Messages =
         ublox::message::CfgRst<TBase, TOpt>,
         ublox::message::CfgDat<TBase, TOpt>,
         ublox::message::CfgDatUser<TBase, TOpt>,
+        ublox::message::CfgDatStandard<TBase, TOpt>,
         ublox::message::CfgDatPoll<TBase, TOpt>,
+        ublox::message::CfgTp<TBase, TOpt>,
+        ublox::message::CfgTpPoll<TBase, TOpt>,
         ublox::message::CfgRate<TBase, TOpt>,
         ublox::message::CfgRatePoll<TBase, TOpt>,
         ublox::message::CfgCfg<TBase, TOpt>,
+        ublox::message::CfgFxn<TBase, TOpt>,
+        ublox::message::CfgFxnPoll<TBase, TOpt>,
         ublox::message::CfgRxm<TBase, TOpt>,
         ublox::message::CfgRxmPoll<TBase, TOpt>,
+        ublox::message::CfgEkf<TBase, TOpt>,
+        ublox::message::CfgEkfPoll<TBase, TOpt>,
         ublox::message::CfgAnt<TBase, TOpt>,
         ublox::message::CfgAntPoll<TBase, TOpt>,
         ublox::message::CfgSbas<TBase, TOpt>,
         ublox::message::CfgSbasPoll<TBase, TOpt>,
-        ublox::message::CfgNmeaV0<TBase, TOpt>,
         ublox::message::CfgNmea<TBase, TOpt>,
         ublox::message::CfgNmeaPoll<TBase, TOpt>,
         ublox::message::CfgUsb<TBase, TOpt>,
         ublox::message::CfgUsbPoll<TBase, TOpt>,
+        ublox::message::CfgTmode<TBase, TOpt>,
+        ublox::message::CfgTmodePoll<TBase, TOpt>,
         ublox::message::CfgNvs<TBase, TOpt>,
         ublox::message::CfgNavx5<TBase, TOpt>,
         ublox::message::CfgNavx5Poll<TBase, TOpt>,
@@ -248,16 +259,16 @@ using Ublox7Messages =
         ublox::message::CfgTp5<TBase, TOpt>,
         ublox::message::CfgTp5PollSelect<TBase, TOpt>,
         ublox::message::CfgTp5Poll<TBase, TOpt>,
+        ublox::message::CfgPm<TBase, TOpt>,
+        ublox::message::CfgPmPoll<TBase, TOpt>,
         ublox::message::CfgRinv<TBase, TOpt>,
         ublox::message::CfgRinvPoll<TBase, TOpt>,
         ublox::message::CfgItfm<TBase, TOpt>,
         ublox::message::CfgItfmPoll<TBase, TOpt>,
         ublox::message::CfgPm2<TBase, TOpt>,
         ublox::message::CfgPm2Poll<TBase, TOpt>,
-        ublox::message::CfgGnss<TBase, TOpt>,
-        ublox::message::CfgGnssPoll<TBase, TOpt>,
-        ublox::message::CfgLogfilter<TBase, TOpt>,
-        ublox::message::CfgLogfilterPoll<TBase, TOpt>,
+        ublox::message::CfgTmode2<TBase, TOpt>,
+        ublox::message::CfgTmode2Poll<TBase, TOpt>,
         ublox::message::MonIo<TBase, TOpt>,
         ublox::message::MonIoPoll<TBase, TOpt>,
         ublox::message::MonVer<TBase, TOpt>,
@@ -299,17 +310,15 @@ using Ublox7Messages =
         ublox::message::TimTm2Poll<TBase, TOpt>,
         ublox::message::TimVrfy<TBase, TOpt>,
         ublox::message::TimVrfyPoll<TBase, TOpt>,
-        ublox::message::LogErase<TBase, TOpt>,
-        ublox::message::LogString<TBase, TOpt>,
-        ublox::message::LogCreate<TBase, TOpt>,
-        ublox::message::LogInfo<TBase, TOpt>,
-        ublox::message::LogInfoPoll<TBase, TOpt>,
-        ublox::message::LogRetrieve<TBase, TOpt>,
-        ublox::message::LogRetrievepos<TBase, TOpt>,
-        ublox::message::LogRetrievestring<TBase, TOpt>,
-        ublox::message::LogFindtime<TBase, TOpt>,
-        ublox::message::LogFindtimeResp<TBase, TOpt>
+        ublox::message::TimSvin<TBase, TOpt>,
+        ublox::message::TimSvinPoll<TBase, TOpt>,
+        ublox::message::EsfMeas<TBase, TOpt>,
+        ublox::message::EsfMeasPoll<TBase, TOpt>,
+        ublox::message::EsfStatus<TBase, TOpt>,
+        ublox::message::EsfStatusPoll<TBase, TOpt>
     >;
+
+} // namespace input
 
 } // namespace ublox
 

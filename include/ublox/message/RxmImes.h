@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -13,12 +14,12 @@
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res2.h"
 #include "ublox/field/Res3.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -30,7 +31,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref RxmImes
 /// @headerfile "ublox/message/RxmImes.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct RxmImesFields
 {
     /// @brief Definition of <b>"numTx"</b> field.
@@ -68,8 +69,8 @@ struct RxmImesFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -88,8 +89,8 @@ struct RxmImesFields
             /// @brief Definition of <b>"reserved2"</b> field.
             struct Reserved2 : public
                 ublox::field::Res1<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -117,8 +118,8 @@ struct RxmImesFields
             /// @brief Definition of <b>"reserved3"</b> field.
             struct Reserved3 : public
                 ublox::field::Res3<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -146,8 +147,8 @@ struct RxmImesFields
             /// @brief Definition of <b>"reserved4"</b> field.
             struct Reserved4 : public
                 ublox::field::Res2<
-                   TOpt
-               >
+                    TOpt
+                >
             {
                 /// @brief Name of the field.
                 static const char* name()
@@ -323,6 +324,23 @@ struct RxmImesFields
                         return "flags";
                     }
                     
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "pos1Valid"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
+                    }
+                    
                 };
                 
                 /// @brief All members bundled in @b std::tuple.
@@ -402,7 +420,7 @@ struct RxmImesFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref Pos2Acc field.
+                /// @brief Values enumerator for @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position2_1Members::Pos2Acc field.
                 enum class Pos2AccVal : std::uint8_t
                 {
                     Undef = 0, ///< value @b Undef
@@ -413,6 +431,7 @@ struct RxmImesFields
                 };
                 
                 /// @brief Definition of <b>"pos2Acc"</b> field.
+                /// @see @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position2_1Members::Pos2AccVal
                 struct Pos2Acc : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -425,6 +444,24 @@ struct RxmImesFields
                     static const char* name()
                     {
                         return "pos2Acc";
+                    }
+                    
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(Pos2AccVal val)
+                    {
+                        static const char* Map[] = {
+                            "Undef",
+                            "<7m",
+                            "<15m",
+                            ">15m"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
                     }
                     
                 };
@@ -459,6 +496,23 @@ struct RxmImesFields
                     static const char* name()
                     {
                         return "";
+                    }
+                    
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "pos2Valid"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
                     }
                     
                 };
@@ -598,6 +652,24 @@ struct RxmImesFields
                         return "";
                     }
                     
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "shortValid",
+                            "shortBoundary"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
+                    }
+                    
                 };
                 
                 /// @brief All members bundled in @b std::tuple.
@@ -691,6 +763,25 @@ struct RxmImesFields
                 static const char* name()
                 {
                     return "mediumId_2";
+                }
+                
+                /// @brief Retrieve name of the bit
+                static const char* bitName(BitIdx idx)
+                {
+                    static const char* Map[] = {
+                        "mediumIdMSB",
+                        "mediumValid",
+                        "mediumboundary"
+                    };
+                
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                
+                    if (MapSize <= static_cast<std::size_t>(idx)) {
+                        return nullptr;
+                    }
+                
+                    return Map[static_cast<std::size_t>(idx)];
                 }
                 
             };
@@ -807,7 +898,7 @@ struct RxmImesFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/RxmImes.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class RxmImes : public
     comms::MessageBase<
         TMsgBase,

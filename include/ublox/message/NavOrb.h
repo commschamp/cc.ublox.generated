@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -12,12 +13,12 @@
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/GnssId.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -29,14 +30,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavOrb
 /// @headerfile "ublox/message/NavOrb.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavOrbFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"version"</b> field.
     struct Version : public
@@ -73,8 +74,8 @@ struct NavOrbFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -93,8 +94,8 @@ struct NavOrbFields
             /// @brief Definition of <b>"gnssId"</b> field.
             using GnssId =
                 ublox::field::GnssId<
-                   TOpt
-               >;
+                    TOpt
+                >;
             
             /// @brief Definition of <b>"svid"</b> field.
             struct Svid : public
@@ -114,7 +115,7 @@ struct NavOrbFields
             /// @brief Scope for all the member fields of @ref SvFlag bitfield.
             struct SvFlagMembers
             {
-                /// @brief Values enumerator for @ref Health field.
+                /// @brief Values enumerator for @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::SvFlagMembers::Health field.
                 enum class HealthVal : std::uint8_t
                 {
                     Unknown = 0, ///< value @b Unknown
@@ -124,6 +125,7 @@ struct NavOrbFields
                 };
                 
                 /// @brief Definition of <b>"health"</b> field.
+                /// @see @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::SvFlagMembers::HealthVal
                 struct Health : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -138,9 +140,26 @@ struct NavOrbFields
                         return "health";
                     }
                     
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(HealthVal val)
+                    {
+                        static const char* Map[] = {
+                            "Unknown",
+                            "Healthy",
+                            "Not healty"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
+                    }
+                    
                 };
                 
-                /// @brief Values enumerator for @ref Visibility field.
+                /// @brief Values enumerator for @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::SvFlagMembers::Visibility field.
                 enum class VisibilityVal : std::uint8_t
                 {
                     Unknown = 0, ///< value @b Unknown
@@ -151,6 +170,7 @@ struct NavOrbFields
                 };
                 
                 /// @brief Definition of <b>"visibility"</b> field.
+                /// @see @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::SvFlagMembers::VisibilityVal
                 struct Visibility : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -163,6 +183,24 @@ struct NavOrbFields
                     static const char* name()
                     {
                         return "visibility";
+                    }
+                    
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(VisibilityVal val)
+                    {
+                        static const char* Map[] = {
+                            "Unknown",
+                            "Below horizon",
+                            "Above horizon",
+                            "Above elevation mask"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
                     }
                     
                 };
@@ -250,7 +288,7 @@ struct NavOrbFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref EphSource field.
+                /// @brief Values enumerator for @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::EphMembers::EphSource field.
                 enum class EphSourceVal : std::uint8_t
                 {
                     NotAvailable = 0, ///< value <b>Not available</b>.
@@ -260,6 +298,7 @@ struct NavOrbFields
                 };
                 
                 /// @brief Definition of <b>"ephSource"</b> field.
+                /// @see @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::EphMembers::EphSourceVal
                 struct EphSource : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -272,6 +311,23 @@ struct NavOrbFields
                     static const char* name()
                     {
                         return "ephSource";
+                    }
+                    
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(EphSourceVal val)
+                    {
+                        static const char* Map[] = {
+                            "Not available",
+                            "GNSS transmission",
+                            "External aiding"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
                     }
                     
                 };
@@ -337,7 +393,7 @@ struct NavOrbFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref AlmSource field.
+                /// @brief Values enumerator for @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::AlmMembers::AlmSource field.
                 enum class AlmSourceVal : std::uint8_t
                 {
                     NotAvailable = 0, ///< value <b>Not available</b>.
@@ -347,6 +403,7 @@ struct NavOrbFields
                 };
                 
                 /// @brief Definition of <b>"almSource"</b> field.
+                /// @see @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::AlmMembers::AlmSourceVal
                 struct AlmSource : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -359,6 +416,23 @@ struct NavOrbFields
                     static const char* name()
                     {
                         return "almSource";
+                    }
+                    
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(AlmSourceVal val)
+                    {
+                        static const char* Map[] = {
+                            "Not available",
+                            "GNSS transmission",
+                            "External aiding"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
                     }
                     
                 };
@@ -424,7 +498,7 @@ struct NavOrbFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref Type field.
+                /// @brief Values enumerator for @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::OtherOrbMembers::Type field.
                 enum class TypeVal : std::uint8_t
                 {
                     NotAvailable = 0, ///< value <b>Not available</b>.
@@ -434,6 +508,7 @@ struct NavOrbFields
                 };
                 
                 /// @brief Definition of <b>"type"</b> field.
+                /// @see @ref ublox::message::NavOrbFields::ListMembers::ElementMembers::OtherOrbMembers::TypeVal
                 struct Type : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -446,6 +521,23 @@ struct NavOrbFields
                     static const char* name()
                     {
                         return "type";
+                    }
+                    
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(TypeVal val)
+                    {
+                        static const char* Map[] = {
+                            "Not available",
+                            "Offline data",
+                            "Autonomous data"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
                     }
                     
                 };
@@ -581,7 +673,7 @@ struct NavOrbFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavOrb.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavOrb : public
     comms::MessageBase<
         TMsgBase,

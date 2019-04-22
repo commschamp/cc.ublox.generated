@@ -8,7 +8,6 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/HMSL.h"
@@ -17,6 +16,7 @@
 #include "ublox/field/Lat.h"
 #include "ublox/field/Lon.h"
 #include "ublox/field/Res3.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -28,7 +28,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavHpposllh
 /// @headerfile "ublox/message/NavHpposllh.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavHpposllhFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -50,8 +50,8 @@ struct NavHpposllhFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -64,32 +64,32 @@ struct NavHpposllhFields
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"lon"</b> field.
     using Lon =
         ublox::field::Lon<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"lat"</b> field.
     using Lat =
         ublox::field::Lat<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"height"</b> field.
     using Height =
         ublox::field::Height<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"hMSL"</b> field.
     using HMSL =
         ublox::field::HMSL<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"lonHp"</b> field.
     struct LonHp : public
@@ -221,7 +221,7 @@ struct NavHpposllhFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavHpposllh.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavHpposllh : public
     comms::MessageBase<
         TMsgBase,

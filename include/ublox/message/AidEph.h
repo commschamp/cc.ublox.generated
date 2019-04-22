@@ -11,9 +11,9 @@
 #include "comms/field/IntValue.h"
 #include "comms/field/Optional.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,7 +25,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref AidEph
 /// @headerfile "ublox/message/AidEph.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct AidEphFields
 {
     /// @brief Definition of <b>"svid"</b> field.
@@ -250,7 +250,7 @@ struct AidEphFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/AidEph.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AidEph : public
     comms::MessageBase<
         TMsgBase,

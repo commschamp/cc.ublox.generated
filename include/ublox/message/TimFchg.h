@@ -8,11 +8,11 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res3.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,7 +24,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref TimFchg
 /// @headerfile "ublox/message/TimFchg.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct TimFchgFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -46,8 +46,8 @@ struct TimFchgFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -60,8 +60,8 @@ struct TimFchgFields
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"intDeltaFreq"</b> field.
     struct IntDeltaFreq : public
@@ -177,7 +177,7 @@ struct TimFchgFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/TimFchg.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class TimFchg : public
     comms::MessageBase<
         TMsgBase,

@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -13,12 +14,12 @@
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/GnssId.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -30,14 +31,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavSat
 /// @headerfile "ublox/message/NavSat.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavSatFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"version"</b> field.
     struct Version : public
@@ -74,8 +75,8 @@ struct NavSatFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -94,8 +95,8 @@ struct NavSatFields
             /// @brief Definition of <b>"gnssId"</b> field.
             using GnssId =
                 ublox::field::GnssId<
-                   TOpt
-               >;
+                    TOpt
+                >;
             
             /// @brief Definition of <b>"svid"</b> field.
             struct Svid : public
@@ -181,7 +182,7 @@ struct NavSatFields
             /// @brief Scope for all the member fields of @ref Flags bitfield.
             struct FlagsMembers
             {
-                /// @brief Values enumerator for @ref QualityInd field.
+                /// @brief Values enumerator for @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::QualityInd field.
                 enum class QualityIndVal : std::uint8_t
                 {
                     NoSignal = 0, ///< value <b>no signal</b>.
@@ -196,6 +197,7 @@ struct NavSatFields
                 };
                 
                 /// @brief Definition of <b>"qualityInd"</b> field.
+                /// @see @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::QualityIndVal
                 struct QualityInd : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -208,6 +210,28 @@ struct NavSatFields
                     static const char* name()
                     {
                         return "qualityInd";
+                    }
+                    
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(QualityIndVal val)
+                    {
+                        static const char* Map[] = {
+                            "no signal",
+                            "searching",
+                            "signal acquired",
+                            "detected but unsable",
+                            "code locked",
+                            "code and carrier locked",
+                            "code and carrier locked",
+                            "code and carrier locked"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
                     }
                     
                 };
@@ -242,9 +266,26 @@ struct NavSatFields
                         return "";
                     }
                     
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "svUsed"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
+                    }
+                    
                 };
                 
-                /// @brief Values enumerator for @ref Health field.
+                /// @brief Values enumerator for @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::Health field.
                 enum class HealthVal : std::uint8_t
                 {
                     Unknown = 0, ///< value @b Unknown
@@ -254,6 +295,7 @@ struct NavSatFields
                 };
                 
                 /// @brief Definition of <b>"health"</b> field.
+                /// @see @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::HealthVal
                 struct Health : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -266,6 +308,23 @@ struct NavSatFields
                     static const char* name()
                     {
                         return "health";
+                    }
+                    
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(HealthVal val)
+                    {
+                        static const char* Map[] = {
+                            "Unknown",
+                            "Healthy",
+                            "Unhealthy"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
                     }
                     
                 };
@@ -302,9 +361,27 @@ struct NavSatFields
                         return "";
                     }
                     
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "diffCorr",
+                            "smoothed"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
+                    }
+                    
                 };
                 
-                /// @brief Values enumerator for @ref OrbitSource field.
+                /// @brief Values enumerator for @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::OrbitSource field.
                 enum class OrbitSourceVal : std::uint8_t
                 {
                     NoOrbit = 0, ///< value <b>No orbit</b>.
@@ -316,6 +393,7 @@ struct NavSatFields
                 };
                 
                 /// @brief Definition of <b>"orbitSource"</b> field.
+                /// @see @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::OrbitSourceVal
                 struct OrbitSource : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -328,6 +406,25 @@ struct NavSatFields
                     static const char* name()
                     {
                         return "orbitSource";
+                    }
+                    
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(OrbitSourceVal val)
+                    {
+                        static const char* Map[] = {
+                            "No orbit",
+                            "Ephemeris",
+                            "Almanac",
+                            "AssistNow Offline",
+                            "AssistNow Autonomous"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
                     }
                     
                 };
@@ -405,6 +502,34 @@ struct NavSatFields
                     static const char* name()
                     {
                         return "";
+                    }
+                    
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "ephAvail",
+                            "almAvail",
+                            "anoAvail",
+                            "aopAvail",
+                            nullptr,
+                            "sbasCorrUsed",
+                            "rtcmCorrUsed",
+                            nullptr,
+                            nullptr,
+                            "prCorrUsed",
+                            "crCorrUsed",
+                            "doCorrUsed"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
                     }
                     
                 };
@@ -555,7 +680,7 @@ struct NavSatFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavSat.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavSat : public
     comms::MessageBase<
         TMsgBase,

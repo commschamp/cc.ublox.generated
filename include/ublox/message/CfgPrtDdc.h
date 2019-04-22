@@ -9,7 +9,6 @@
 #include "comms/field/Bitfield.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgPrtFlags.h"
 #include "ublox/field/CfgPrtInProtoMask.h"
@@ -19,6 +18,7 @@
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res2.h"
 #include "ublox/field/Res4.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -30,7 +30,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgPrtDdc
 /// @headerfile "ublox/message/CfgPrtDdc.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgPrtDdcFields
 {
     /// @brief Definition of <b>"portId"</b> field.
@@ -53,8 +53,8 @@ struct CfgPrtDdcFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -67,8 +67,8 @@ struct CfgPrtDdcFields
     /// @brief Definition of <b>"txReady"</b> field.
     struct TxReady : public
         ublox::field::CfgPrtTxReady<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -184,8 +184,8 @@ struct CfgPrtDdcFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -198,8 +198,8 @@ struct CfgPrtDdcFields
     /// @brief Definition of <b>"inProtoMask"</b> field.
     struct InProtoMask : public
         ublox::field::CfgPrtInProtoMask<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -212,8 +212,8 @@ struct CfgPrtDdcFields
     /// @brief Definition of <b>"outProtoMask"</b> field.
     struct OutProtoMask : public
         ublox::field::CfgPrtOutProtoMask<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -226,14 +226,14 @@ struct CfgPrtDdcFields
     /// @brief Definition of <b>"cfgPrtFlags"</b> field.
     using CfgPrtFlags =
         ublox::field::CfgPrtFlags<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"reserved3"</b> field.
     struct Reserved3 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -263,7 +263,7 @@ struct CfgPrtDdcFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgPrtDdc.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPrtDdc : public
     comms::MessageBase<
         TMsgBase,

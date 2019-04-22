@@ -9,12 +9,12 @@
 #include "comms/field/ArrayList.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgPm2Flags.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res4.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,7 +26,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgPm2V2
 /// @headerfile "ublox/message/CfgPm2V2.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgPm2V2Fields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -50,8 +50,8 @@ struct CfgPm2V2Fields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -80,8 +80,8 @@ struct CfgPm2V2Fields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -94,8 +94,8 @@ struct CfgPm2V2Fields
     /// @brief Definition of <b>"flags"</b> field.
     using Flags =
         ublox::field::CfgPm2Flags<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"updatePeriod"</b> field.
     struct UpdatePeriod : public
@@ -183,8 +183,8 @@ struct CfgPm2V2Fields
         /// @brief Definition of <b>""</b> field.
         struct Reserved3 : public
             ublox::field::Res4<
-               TOpt
-           >
+                TOpt
+            >
         {
             /// @brief Name of the field.
             static const char* name()
@@ -252,7 +252,7 @@ struct CfgPm2V2Fields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgPm2V2.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPm2V2 : public
     comms::MessageBase<
         TMsgBase,

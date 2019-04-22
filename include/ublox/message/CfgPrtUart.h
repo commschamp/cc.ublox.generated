@@ -5,12 +5,12 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgPrtFlags.h"
 #include "ublox/field/CfgPrtInProtoMask.h"
@@ -19,6 +19,7 @@
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -30,7 +31,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgPrtUart
 /// @headerfile "ublox/message/CfgPrtUart.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgPrtUartFields
 {
     /// @brief Definition of <b>"portId"</b> field.
@@ -54,8 +55,8 @@ struct CfgPrtUartFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -68,8 +69,8 @@ struct CfgPrtUartFields
     /// @brief Definition of <b>"txReady"</b> field.
     struct TxReady : public
         ublox::field::CfgPrtTxReady<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -101,7 +102,7 @@ struct CfgPrtUartFields
             
         };
         
-        /// @brief Values enumerator for @ref CharLen field.
+        /// @brief Values enumerator for @ref ublox::message::CfgPrtUartFields::ModeMembers::CharLen field.
         enum class CharLenVal : std::uint8_t
         {
             Bits5 = 0, ///< value <b>5 bits</b>.
@@ -112,6 +113,7 @@ struct CfgPrtUartFields
         };
         
         /// @brief Definition of <b>"charLen"</b> field.
+        /// @see @ref ublox::message::CfgPrtUartFields::ModeMembers::CharLenVal
         struct CharLen : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -125,6 +127,24 @@ struct CfgPrtUartFields
             static const char* name()
             {
                 return "charLen";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(CharLenVal val)
+            {
+                static const char* Map[] = {
+                    "5 bits",
+                    "6 bits",
+                    "7 bits",
+                    "8 bits"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -148,7 +168,7 @@ struct CfgPrtUartFields
             
         };
         
-        /// @brief Values enumerator for @ref Parity field.
+        /// @brief Values enumerator for @ref ublox::message::CfgPrtUartFields::ModeMembers::Parity field.
         enum class ParityVal : std::uint8_t
         {
             Even = 0, ///< value @b Even
@@ -159,6 +179,7 @@ struct CfgPrtUartFields
         };
         
         /// @brief Definition of <b>"parity"</b> field.
+        /// @see @ref ublox::message::CfgPrtUartFields::ModeMembers::ParityVal
         struct Parity : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -175,9 +196,29 @@ struct CfgPrtUartFields
                 return "parity";
             }
             
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(ParityVal val)
+            {
+                static const char* Map[] = {
+                    "Even",
+                    "Odd",
+                    nullptr,
+                    nullptr,
+                    "None",
+                    "None (2)"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
         };
         
-        /// @brief Values enumerator for @ref NStopBits field.
+        /// @brief Values enumerator for @ref ublox::message::CfgPrtUartFields::ModeMembers::NStopBits field.
         enum class NStopBitsVal : std::uint8_t
         {
             Bits_1 = 0, ///< value <b>1 bit</b>.
@@ -188,6 +229,7 @@ struct CfgPrtUartFields
         };
         
         /// @brief Definition of <b>"nStopBits"</b> field.
+        /// @see @ref ublox::message::CfgPrtUartFields::ModeMembers::NStopBitsVal
         struct NStopBits : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -200,6 +242,24 @@ struct CfgPrtUartFields
             static const char* name()
             {
                 return "nStopBits";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(NStopBitsVal val)
+            {
+                static const char* Map[] = {
+                    "1 bit",
+                    "1.5 bits",
+                    "2 bits",
+                    "0.5 bit"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -296,8 +356,8 @@ struct CfgPrtUartFields
     /// @brief Definition of <b>"inProtoMask"</b> field.
     struct InProtoMask : public
         ublox::field::CfgPrtInProtoMask<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -310,8 +370,8 @@ struct CfgPrtUartFields
     /// @brief Definition of <b>"outProtoMask"</b> field.
     struct OutProtoMask : public
         ublox::field::CfgPrtOutProtoMask<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -324,14 +384,14 @@ struct CfgPrtUartFields
     /// @brief Definition of <b>"cfgPrtFlags"</b> field.
     using CfgPrtFlags =
         ublox::field::CfgPrtFlags<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -361,7 +421,7 @@ struct CfgPrtUartFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgPrtUart.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPrtUart : public
     comms::MessageBase<
         TMsgBase,

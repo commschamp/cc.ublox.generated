@@ -5,13 +5,13 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/Day.h"
 #include "ublox/field/FieldBase.h"
@@ -22,6 +22,7 @@
 #include "ublox/field/Res2.h"
 #include "ublox/field/Sec.h"
 #include "ublox/field/Year.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -33,7 +34,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaIniTimeUtc
 /// @headerfile "ublox/message/MgaIniTimeUtc.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaIniTimeUtcFields
 {
     /// @brief Definition of <b>"type"</b> field.
@@ -73,7 +74,7 @@ struct MgaIniTimeUtcFields
     /// @brief Scope for all the member fields of @ref Ref bitfield.
     struct RefMembers
     {
-        /// @brief Values enumerator for @ref Source field.
+        /// @brief Values enumerator for @ref ublox::message::MgaIniTimeUtcFields::RefMembers::Source field.
         enum class SourceVal : std::uint8_t
         {
             None = 0, ///< value @b None
@@ -83,6 +84,7 @@ struct MgaIniTimeUtcFields
         };
         
         /// @brief Definition of <b>"source"</b> field.
+        /// @see @ref ublox::message::MgaIniTimeUtcFields::RefMembers::SourceVal
         struct Source : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -95,6 +97,23 @@ struct MgaIniTimeUtcFields
             static const char* name()
             {
                 return "source";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(SourceVal val)
+            {
+                static const char* Map[] = {
+                    "None",
+                    "EXTINT0",
+                    "EXTINT1"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -131,6 +150,24 @@ struct MgaIniTimeUtcFields
             static const char* name()
             {
                 return "";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "fall",
+                    "last"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -196,32 +233,32 @@ struct MgaIniTimeUtcFields
     /// @brief Definition of <b>"year"</b> field.
     using Year =
         ublox::field::Year<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"month"</b> field.
     using Month =
         ublox::field::Month<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"day"</b> field.
     using Day =
         ublox::field::Day<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"hour"</b> field.
     using Hour =
         ublox::field::Hour<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"minute"</b> field.
     struct Minute : public
         ublox::field::Min<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -234,8 +271,8 @@ struct MgaIniTimeUtcFields
     /// @brief Definition of <b>"second"</b> field.
     struct Second : public
         ublox::field::Sec<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -248,8 +285,8 @@ struct MgaIniTimeUtcFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -294,8 +331,8 @@ struct MgaIniTimeUtcFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -347,7 +384,7 @@ struct MgaIniTimeUtcFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaIniTimeUtc.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaIniTimeUtc : public
     comms::MessageBase<
         TMsgBase,

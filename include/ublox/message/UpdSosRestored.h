@@ -5,14 +5,15 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res3.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,7 +25,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref UpdSosRestored
 /// @headerfile "ublox/message/UpdSosRestored.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct UpdSosRestoredFields
 {
     /// @brief Definition of <b>"cmd"</b> field.
@@ -48,8 +49,8 @@ struct UpdSosRestoredFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -59,7 +60,7 @@ struct UpdSosRestoredFields
         
     };
     
-    /// @brief Values enumerator for @ref Response field.
+    /// @brief Values enumerator for @ref ublox::message::UpdSosRestoredFields::Response field.
     enum class ResponseVal : std::uint8_t
     {
         Unknown = 0, ///< value @b Unknown
@@ -70,6 +71,7 @@ struct UpdSosRestoredFields
     };
     
     /// @brief Definition of <b>"response"</b> field.
+    /// @see @ref ublox::message::UpdSosRestoredFields::ResponseVal
     struct Response : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -83,13 +85,31 @@ struct UpdSosRestoredFields
             return "response";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(ResponseVal val)
+        {
+            static const char* Map[] = {
+                "Unknown",
+                "Failed",
+                "Restored",
+                "NotRestored"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -114,7 +134,7 @@ struct UpdSosRestoredFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/UpdSosRestored.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class UpdSosRestored : public
     comms::MessageBase<
         TMsgBase,

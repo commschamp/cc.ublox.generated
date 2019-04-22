@@ -8,9 +8,9 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -22,7 +22,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaFlashStop
 /// @headerfile "ublox/message/MgaFlashStop.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaFlashStopFields
 {
     /// @brief Definition of <b>"type"</b> field.
@@ -72,7 +72,7 @@ struct MgaFlashStopFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaFlashStop.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaFlashStop : public
     comms::MessageBase<
         TMsgBase,

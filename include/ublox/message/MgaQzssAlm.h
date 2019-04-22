@@ -8,10 +8,10 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res4.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,7 +23,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaQzssAlm
 /// @headerfile "ublox/message/MgaQzssAlm.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaQzssAlmFields
 {
     /// @brief Definition of <b>"type"</b> field.
@@ -271,8 +271,8 @@ struct MgaQzssAlmFields
     /// @brief Definition of <b>"reserve1"</b> field.
     struct Reserve1 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -309,7 +309,7 @@ struct MgaQzssAlmFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaQzssAlm.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaQzssAlm : public
     comms::MessageBase<
         TMsgBase,

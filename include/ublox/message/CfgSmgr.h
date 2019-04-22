@@ -5,16 +5,17 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,7 +27,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgSmgr
 /// @headerfile "ublox/message/CfgSmgr.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgSmgrFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -94,8 +95,8 @@ struct CfgSmgrFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -172,6 +173,26 @@ struct CfgSmgrFields
         static const char* name()
         {
             return "messageCfg";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "measInternal",
+                "measGNSS",
+                "measEXTINT0",
+                "measEXTINT1"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -282,9 +303,39 @@ struct CfgSmgrFields
                 return "";
             }
             
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "disableInternal",
+                    "disableExternal",
+                    "preferenceMode",
+                    "enableGNSS",
+                    "enableEXTINT0",
+                    "enableEXTINT1",
+                    "enableHostMeasInt",
+                    "enableHostMeasExt",
+                    nullptr,
+                    nullptr,
+                    "useAnyFix",
+                    "disableMaxSlewRate",
+                    "issueFreqWarning",
+                    "issueTimeWarning"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
+            }
+            
         };
         
-        /// @brief Values enumerator for @ref TPCoherent field.
+        /// @brief Values enumerator for @ref ublox::message::CfgSmgrFields::FlagsMembers::TPCoherent field.
         enum class TPCoherentVal : std::uint8_t
         {
             Coherent = 0, ///< value @b Coherent
@@ -294,6 +345,7 @@ struct CfgSmgrFields
         };
         
         /// @brief Definition of <b>"TPCoherent"</b> field.
+        /// @see @ref ublox::message::CfgSmgrFields::FlagsMembers::TPCoherentVal
         struct TPCoherent : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -306,6 +358,23 @@ struct CfgSmgrFields
             static const char* name()
             {
                 return "TPCoherent";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(TPCoherentVal val)
+            {
+                static const char* Map[] = {
+                    "Coherent",
+                    "NonCoherent",
+                    "PostInitCoherent"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -340,6 +409,23 @@ struct CfgSmgrFields
             static const char* name()
             {
                 return "";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "disableOffset"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -410,7 +496,7 @@ struct CfgSmgrFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgSmgr.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgSmgr : public
     comms::MessageBase<
         TMsgBase,

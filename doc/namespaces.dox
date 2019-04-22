@@ -16,3 +16,9 @@
 /// @namespace ublox::frame::checksum
 /// @brief Main namespace for the custom frame layers.
 
+/// @namespace ublox::options
+/// @brief Main namespace for the various protocol options.
+
+/// @namespace ublox::input
+/// @brief Main namespace for hold input messages bundles.
+

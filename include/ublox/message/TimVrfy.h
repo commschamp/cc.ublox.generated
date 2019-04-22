@@ -5,16 +5,17 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,14 +27,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref TimVrfy
 /// @headerfile "ublox/message/TimVrfy.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct TimVrfyFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"frac"</b> field.
     struct Frac : public
@@ -102,7 +103,7 @@ struct TimVrfyFields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref Src field.
+        /// @brief Values enumerator for @ref ublox::message::TimVrfyFields::FlagsMembers::Src field.
         enum class SrcVal : std::uint8_t
         {
             NoAiding = 0, ///< value @b NoAiding
@@ -112,6 +113,7 @@ struct TimVrfyFields
         };
         
         /// @brief Definition of <b>"src"</b> field.
+        /// @see @ref ublox::message::TimVrfyFields::FlagsMembers::SrcVal
         struct Src : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -124,6 +126,23 @@ struct TimVrfyFields
             static const char* name()
             {
                 return "src";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(SrcVal val)
+            {
+                static const char* Map[] = {
+                    "NoAiding",
+                    "RTC",
+                    "AidIni"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -192,8 +211,8 @@ struct TimVrfyFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -221,7 +240,7 @@ struct TimVrfyFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/TimVrfy.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class TimVrfy : public
     comms::MessageBase<
         TMsgBase,

@@ -8,10 +8,10 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/MsgId.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,14 +23,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgMsgCurrent
 /// @headerfile "ublox/message/CfgMsgCurrent.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgMsgCurrentFields
 {
     /// @brief Definition of <b>"MsgId"</b> field.
     using MsgId =
         ublox::field::MsgId<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"rate"</b> field.
     struct Rate : public
@@ -60,7 +60,7 @@ struct CfgMsgCurrentFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgMsgCurrent.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgMsgCurrent : public
     comms::MessageBase<
         TMsgBase,

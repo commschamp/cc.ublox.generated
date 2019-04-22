@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -14,11 +15,11 @@
 #include "comms/field/FloatValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -30,14 +31,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavDgps
 /// @headerfile "ublox/message/NavDgps.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavDgpsFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"age"</b> field.
     struct Age : public
@@ -100,7 +101,7 @@ struct NavDgpsFields
         
     };
     
-    /// @brief Values enumerator for @ref Status field.
+    /// @brief Values enumerator for @ref ublox::message::NavDgpsFields::Status field.
     enum class StatusVal : std::uint8_t
     {
         None = 0, ///< value @b None
@@ -109,6 +110,7 @@ struct NavDgpsFields
     };
     
     /// @brief Definition of <b>"status"</b> field.
+    /// @see @ref ublox::message::NavDgpsFields::StatusVal
     struct Status : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -122,13 +124,29 @@ struct NavDgpsFields
             return "status";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(StatusVal val)
+        {
+            static const char* Map[] = {
+                "None",
+                "PR + PRR correction"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -208,6 +226,23 @@ struct NavDgpsFields
                     static const char* name()
                     {
                         return "";
+                    }
+                    
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "dgpsUsed"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
                     }
                     
                 };
@@ -391,7 +426,7 @@ struct NavDgpsFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavDgps.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavDgps : public
     comms::MessageBase<
         TMsgBase,

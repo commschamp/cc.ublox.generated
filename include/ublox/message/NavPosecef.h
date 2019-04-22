@@ -6,7 +6,6 @@
 #include <tuple>
 #include "comms/MessageBase.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/EcefX.h"
 #include "ublox/field/EcefY.h"
@@ -14,6 +13,7 @@
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/PAcc.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,38 +25,38 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavPosecef
 /// @headerfile "ublox/message/NavPosecef.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavPosecefFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"ecefX"</b> field.
     using EcefX =
         ublox::field::EcefX<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"ecefY"</b> field.
     using EcefY =
         ublox::field::EcefY<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"ecefZ"</b> field.
     using EcefZ =
         ublox::field::EcefZ<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"pAcc"</b> field.
     using PAcc =
         ublox::field::PAcc<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief All the fields bundled in std::tuple.
     using All = std::tuple<
@@ -74,7 +74,7 @@ struct NavPosecefFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavPosecef.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavPosecef : public
     comms::MessageBase<
         TMsgBase,

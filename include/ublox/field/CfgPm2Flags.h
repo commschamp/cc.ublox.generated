@@ -5,13 +5,14 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -21,7 +22,7 @@ namespace field
 
 /// @brief Scope for all the member fields of @ref CfgPm2Flags bitfield.
 /// @tparam TOpt Protocol options.
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgPm2FlagsMembers
 {
     /// @brief Definition of <b>""</b> field.
@@ -79,9 +80,33 @@ struct CfgPm2FlagsMembers
             return "";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                nullptr,
+                nullptr,
+                nullptr,
+                "extintSel",
+                "extintWake",
+                "extintBackup",
+                "extintInactive"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
-    /// @brief Values enumerator for @ref LimitPeakCurr field.
+    /// @brief Values enumerator for @ref ublox::field::CfgPm2FlagsMembers::LimitPeakCurr field.
     enum class LimitPeakCurrVal : std::uint8_t
     {
         Desabled = 0, ///< value @b Desabled
@@ -90,6 +115,7 @@ struct CfgPm2FlagsMembers
     };
     
     /// @brief Definition of <b>"limitPeakCurr"</b> field.
+    /// @see @ref ublox::field::CfgPm2FlagsMembers::LimitPeakCurrVal
     struct LimitPeakCurr : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -102,6 +128,22 @@ struct CfgPm2FlagsMembers
         static const char* name()
         {
             return "limitPeakCurr";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(LimitPeakCurrVal val)
+        {
+            static const char* Map[] = {
+                "Desabled",
+                "Enabled"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -161,9 +203,32 @@ struct CfgPm2FlagsMembers
             return "";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "waitTimeFix",
+                "updateRTC",
+                "updateEPH",
+                nullptr,
+                nullptr,
+                nullptr,
+                "doNotEnterOff"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
-    /// @brief Values enumerator for @ref Mode field.
+    /// @brief Values enumerator for @ref ublox::field::CfgPm2FlagsMembers::Mode field.
     enum class ModeVal : std::uint8_t
     {
         OnOff = 0, ///< value <b>ON/OFF</b>.
@@ -172,6 +237,7 @@ struct CfgPm2FlagsMembers
     };
     
     /// @brief Definition of <b>"mode"</b> field.
+    /// @see @ref ublox::field::CfgPm2FlagsMembers::ModeVal
     struct Mode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -184,6 +250,22 @@ struct CfgPm2FlagsMembers
         static const char* name()
         {
             return "mode";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(ModeVal val)
+        {
+            static const char* Map[] = {
+                "ON/OFF",
+                "Cyclic"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -221,7 +303,7 @@ struct CfgPm2FlagsMembers
 /// @brief Definition of <b>"flags"</b> field.
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 class CfgPm2Flags : public
     comms::field::Bitfield<
         ublox::field::FieldBase<>,

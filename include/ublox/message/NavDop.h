@@ -6,11 +6,11 @@
 #include <tuple>
 #include "comms/MessageBase.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/Dop.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -22,20 +22,20 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavDop
 /// @headerfile "ublox/message/NavDop.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavDopFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"gDOP"</b> field.
     struct GDOP : public
         ublox::field::Dop<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -48,8 +48,8 @@ struct NavDopFields
     /// @brief Definition of <b>"pDOP"</b> field.
     struct PDOP : public
         ublox::field::Dop<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -62,8 +62,8 @@ struct NavDopFields
     /// @brief Definition of <b>"tDOP"</b> field.
     struct TDOP : public
         ublox::field::Dop<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -76,8 +76,8 @@ struct NavDopFields
     /// @brief Definition of <b>"vDOP"</b> field.
     struct VDOP : public
         ublox::field::Dop<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -90,8 +90,8 @@ struct NavDopFields
     /// @brief Definition of <b>"hDOP"</b> field.
     struct HDOP : public
         ublox::field::Dop<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -104,8 +104,8 @@ struct NavDopFields
     /// @brief Definition of <b>"nDOP"</b> field.
     struct NDOP : public
         ublox::field::Dop<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -118,8 +118,8 @@ struct NavDopFields
     /// @brief Definition of <b>"eDOP"</b> field.
     struct EDOP : public
         ublox::field::Dop<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -148,7 +148,7 @@ struct NavDopFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavDop.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavDop : public
     comms::MessageBase<
         TMsgBase,

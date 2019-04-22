@@ -5,8 +5,8 @@
 
 #include "comms/field/FloatValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -17,7 +17,7 @@ namespace field
 /// @brief Definition of <b>"cfgDatScale"</b> field.
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 class CfgDatScale : public
     comms::field::FloatValue<
         ublox::field::FieldBase<>,

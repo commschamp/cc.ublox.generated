@@ -5,13 +5,14 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/EnumValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,14 +24,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgRxm
 /// @headerfile "ublox/message/CfgRxm.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgRxmFields
 {
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -40,7 +41,7 @@ struct CfgRxmFields
         
     };
     
-    /// @brief Values enumerator for @ref LpMode field.
+    /// @brief Values enumerator for @ref ublox::message::CfgRxmFields::LpMode field.
     enum class LpModeVal : std::uint8_t
     {
         Continuous = 0, ///< value @b Continuous
@@ -50,6 +51,7 @@ struct CfgRxmFields
     };
     
     /// @brief Definition of <b>"lpMode"</b> field.
+    /// @see @ref ublox::message::CfgRxmFields::LpModeVal
     struct LpMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -62,6 +64,25 @@ struct CfgRxmFields
         static const char* name()
         {
             return "lpMode";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(LpModeVal val)
+        {
+            static const char* Map[] = {
+                "Continuous",
+                "Power Save",
+                nullptr,
+                nullptr,
+                "Continuous (2)"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -79,7 +100,7 @@ struct CfgRxmFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgRxm.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgRxm : public
     comms::MessageBase<
         TMsgBase,

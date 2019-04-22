@@ -11,11 +11,11 @@
 #include "comms/protocol/MsgIdLayer.h"
 #include "comms/protocol/MsgSizeLayer.h"
 #include "comms/protocol/SyncPrefixLayer.h"
-#include "ublox/AllMessages.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/MsgId.h"
 #include "ublox/frame/checksum/UbloxChecksum.h"
+#include "ublox/input/AllMessages.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -27,7 +27,7 @@ namespace frame
 /// @tparam TOpt Protocol options.
 /// @see @ref UbloxFrame
 /// @headerfile "ublox/frame/UbloxFrame.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct UbloxFrameLayers
 {
     /// @brief Definition of layer "Payload".
@@ -69,8 +69,8 @@ struct UbloxFrameLayers
         /// @brief Definition of <b>"CLASS + ID"</b> field.
         struct MsgId : public
             ublox::field::MsgId<
-               TOpt
-           >
+                TOpt
+            >
         {
             /// @brief Name of the field.
             static const char* name()
@@ -166,8 +166,8 @@ struct UbloxFrameLayers
 /// @headerfile "ublox/frame/UbloxFrame.h"
 template <
    typename TMessage,
-   typename TAllMessages = ublox::AllMessages<TMessage>,
-   typename TOpt = ublox::DefaultOptions
+   typename TAllMessages = ublox::input::AllMessages<TMessage>,
+   typename TOpt = ublox::options::DefaultOptions
 >
 class UbloxFrame : public
     UbloxFrameLayers<TOpt>::template Stack<TMessage, TAllMessages>

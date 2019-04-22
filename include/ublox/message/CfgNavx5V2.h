@@ -8,7 +8,6 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgNavx5AopCfg.h"
 #include "ublox/field/CfgNavx5AopOrbMaxErr.h"
@@ -20,6 +19,7 @@
 #include "ublox/field/Res2.h"
 #include "ublox/field/Res3.h"
 #include "ublox/field/Res4.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -31,7 +31,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgNavx5V2
 /// @headerfile "ublox/message/CfgNavx5V2.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgNavx5V2Fields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -55,20 +55,20 @@ struct CfgNavx5V2Fields
     /// @brief Definition of <b>"mask1"</b> field.
     using Mask1 =
         ublox::field::CfgNavx5Mask1<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"mask2"</b> field.
     using Mask2 =
         ublox::field::CfgNavx5Mask2<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -126,8 +126,8 @@ struct CfgNavx5V2Fields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -155,8 +155,8 @@ struct CfgNavx5V2Fields
     /// @brief Definition of <b>"reserved3"</b> field.
     struct Reserved3 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -199,14 +199,14 @@ struct CfgNavx5V2Fields
     /// @brief Definition of <b>"sigAttenCompMode"</b> field.
     using SigAttenCompMode =
         ublox::field::CfgNavx5SigAttenCompMode<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"reserved4"</b> field.
     struct Reserved4 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -219,8 +219,8 @@ struct CfgNavx5V2Fields
     /// @brief Definition of <b>"reserved5"</b> field.
     struct Reserved5 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -233,8 +233,8 @@ struct CfgNavx5V2Fields
     /// @brief Definition of <b>"reserved6"</b> field.
     struct Reserved6 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -262,14 +262,14 @@ struct CfgNavx5V2Fields
     /// @brief Definition of <b>"aopCfg"</b> field.
     using AopCfg =
         ublox::field::CfgNavx5AopCfg<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"reserved7"</b> field.
     struct Reserved7 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -282,14 +282,14 @@ struct CfgNavx5V2Fields
     /// @brief Definition of <b>"aopOrbMaxErr"</b> field.
     using AopOrbMaxErr =
         ublox::field::CfgNavx5AopOrbMaxErr<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"reserved8"</b> field.
     struct Reserved8 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -302,8 +302,8 @@ struct CfgNavx5V2Fields
     /// @brief Definition of <b>"reserved9"</b> field.
     struct Reserved9 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -362,7 +362,7 @@ struct CfgNavx5V2Fields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgNavx5V2.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgNavx5V2 : public
     comms::MessageBase<
         TMsgBase,

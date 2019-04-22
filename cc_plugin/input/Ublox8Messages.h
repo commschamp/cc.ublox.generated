@@ -270,6 +270,9 @@ namespace ublox
 namespace cc_plugin
 {
 
+namespace input
+{
+
 using Ublox8Messages =
     std::tuple<
         ublox::cc_plugin::message::NavPosecef,
@@ -535,6 +538,8 @@ using Ublox8Messages =
         ublox::cc_plugin::message::HnrPvt,
         ublox::cc_plugin::message::HnrPvtPoll
     >;
+
+} // namespace input
 
 } // namespace cc_plugin
 

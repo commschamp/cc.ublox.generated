@@ -5,15 +5,16 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res4.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,10 +26,10 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgEkf
 /// @headerfile "ublox/message/CfgEkf.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgEkfFields
 {
-    /// @brief Values enumerator for @ref DisableEkf field.
+    /// @brief Values enumerator for @ref ublox::message::CfgEkfFields::DisableEkf field.
     enum class DisableEkfVal : std::uint8_t
     {
         Enabled = 0, ///< value @b Enabled
@@ -37,6 +38,7 @@ struct CfgEkfFields
     };
     
     /// @brief Definition of <b>"disableEkf"</b> field.
+    /// @see @ref ublox::message::CfgEkfFields::DisableEkfVal
     struct DisableEkf : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -48,6 +50,22 @@ struct CfgEkfFields
         static const char* name()
         {
             return "disableEkf";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(DisableEkfVal val)
+        {
+            static const char* Map[] = {
+                "Enabled",
+                "Disabled"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -115,6 +133,30 @@ struct CfgEkfFields
             return "actionFlags";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                "clTab",
+                "clCalib",
+                nullptr,
+                "nomTacho",
+                "nomGyro",
+                "setTemp",
+                "dir"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief Definition of <b>"configFlags"</b> field.
@@ -149,6 +191,24 @@ struct CfgEkfFields
         static const char* name()
         {
             return "configFlags";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "pulsesPerM",
+                "useSerWt"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -187,13 +247,31 @@ struct CfgEkfFields
             return "inverseFlags";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "invDir",
+                "invGyro"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -303,7 +381,7 @@ struct CfgEkfFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgEkf.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgEkf : public
     comms::MessageBase<
         TMsgBase,

@@ -5,14 +5,15 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,7 +25,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaFlashAck
 /// @headerfile "ublox/message/MgaFlashAck.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaFlashAckFields
 {
     /// @brief Definition of <b>"type"</b> field.
@@ -61,7 +62,7 @@ struct MgaFlashAckFields
         
     };
     
-    /// @brief Values enumerator for @ref Ack field.
+    /// @brief Values enumerator for @ref ublox::message::MgaFlashAckFields::Ack field.
     enum class AckVal : std::uint8_t
     {
         Ack = 0, ///< value @b Ack
@@ -71,6 +72,7 @@ struct MgaFlashAckFields
     };
     
     /// @brief Definition of <b>"ack"</b> field.
+    /// @see @ref ublox::message::MgaFlashAckFields::AckVal
     struct Ack : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -84,13 +86,30 @@ struct MgaFlashAckFields
             return "ack";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(AckVal val)
+        {
+            static const char* Map[] = {
+                "Ack",
+                "NakRetransmit",
+                "NakGiveUp"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -131,7 +150,7 @@ struct MgaFlashAckFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaFlashAck.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaFlashAck : public
     comms::MessageBase<
         TMsgBase,

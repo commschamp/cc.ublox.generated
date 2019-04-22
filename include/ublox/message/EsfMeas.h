@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -13,9 +14,9 @@
 #include "comms/field/IntValue.h"
 #include "comms/field/Optional.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -27,7 +28,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref EsfMeas
 /// @headerfile "ublox/message/EsfMeas.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct EsfMeasFields
 {
     /// @brief Definition of <b>"timeTag"</b> field.
@@ -48,7 +49,7 @@ struct EsfMeasFields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref TimeMarkSent field.
+        /// @brief Values enumerator for @ref ublox::message::EsfMeasFields::FlagsMembers::TimeMarkSent field.
         enum class TimeMarkSentVal : std::uint8_t
         {
             None = 0, ///< value @b None
@@ -58,6 +59,7 @@ struct EsfMeasFields
         };
         
         /// @brief Definition of <b>"timeMarkSent"</b> field.
+        /// @see @ref ublox::message::EsfMeasFields::FlagsMembers::TimeMarkSentVal
         struct TimeMarkSent : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -70,6 +72,23 @@ struct EsfMeasFields
             static const char* name()
             {
                 return "timeMarkSent";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(TimeMarkSentVal val)
+            {
+                static const char* Map[] = {
+                    "None",
+                    "Ext0",
+                    "Ext1"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -106,6 +125,24 @@ struct EsfMeasFields
             static const char* name()
             {
                 return "";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "timeMarkEdge",
+                    "calibTtagValid"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -338,7 +375,7 @@ struct EsfMeasFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/EsfMeas.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class EsfMeas : public
     comms::MessageBase<
         TMsgBase,

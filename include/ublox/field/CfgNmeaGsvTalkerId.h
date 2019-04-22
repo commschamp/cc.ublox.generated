@@ -4,10 +4,11 @@
 #pragma once
 
 #include <cstdint>
+#include <type_traits>
 #include "comms/field/EnumValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -15,7 +16,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref CfgNmeaGsvTalkerId field.
+/// @brief Values enumerator for @ref ublox::field::CfgNmeaGsvTalkerId field.
 enum class CfgNmeaGsvTalkerIdVal : std::uint8_t
 {
     GnssSpecific = 0, ///< value <b>GNSS Specific</b>.
@@ -24,9 +25,10 @@ enum class CfgNmeaGsvTalkerIdVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"cfgNmeaGsvTalkerId"</b> field.
+/// @see @ref ublox::field::CfgNmeaGsvTalkerIdVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 struct CfgNmeaGsvTalkerId : public
     comms::field::EnumValue<
         ublox::field::FieldBase<>,
@@ -39,6 +41,22 @@ struct CfgNmeaGsvTalkerId : public
     static const char* name()
     {
         return "cfgNmeaGsvTalkerId";
+    }
+    
+    /// @brief Retrieve name of the enum value
+    static const char* valueName(CfgNmeaGsvTalkerIdVal val)
+    {
+        static const char* Map[] = {
+            "GNSS Specific",
+            "Main"
+        };
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        
+        if (MapSize <= static_cast<std::size_t>(val)) {
+            return nullptr;
+        }
+        
+        return Map[static_cast<std::size_t>(val)];
     }
     
 };

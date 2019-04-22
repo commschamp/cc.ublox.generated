@@ -3,16 +3,19 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cstdint>
+#include <iterator>
 #include <tuple>
+#include <utility>
 #include "comms/MessageBase.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,7 +27,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgPms
 /// @headerfile "ublox/message/CfgPms.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgPmsFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -43,7 +46,7 @@ struct CfgPmsFields
         
     };
     
-    /// @brief Values enumerator for @ref PowerSetupValue field.
+    /// @brief Values enumerator for @ref ublox::message::CfgPmsFields::PowerSetupValue field.
     enum class PowerSetupValueVal : std::uint8_t
     {
         FullPower = 0, ///< value <b>Full power</b>.
@@ -57,6 +60,7 @@ struct CfgPmsFields
     };
     
     /// @brief Definition of <b>"powerSetupValue"</b> field.
+    /// @see @ref ublox::message::CfgPmsFields::PowerSetupValueVal
     struct PowerSetupValue : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -69,6 +73,34 @@ struct CfgPmsFields
         static const char* name()
         {
             return "powerSetupValue";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(PowerSetupValueVal val)
+        {
+            using NameInfo = std::pair<PowerSetupValueVal, const char*>;
+            static const NameInfo Map[] = {
+                std::make_pair(PowerSetupValueVal::FullPower, "Full power"),
+                std::make_pair(PowerSetupValueVal::Balanced, "Balanced"),
+                std::make_pair(PowerSetupValueVal::Interval, "Interval"),
+                std::make_pair(PowerSetupValueVal::Agressive1Hz, "Aggressive with 1Hz"),
+                std::make_pair(PowerSetupValueVal::Agressive2Hz, "Aggressive with 2Hz"),
+                std::make_pair(PowerSetupValueVal::Agressive4Hz, "Aggressive with 4Hz"),
+                std::make_pair(PowerSetupValueVal::Invalid, "Invalid")
+            };
+            
+            auto iter = std::lower_bound(
+                std::begin(Map), std::end(Map), val,
+                [](const NameInfo& info, PowerSetupValueVal v) -> bool
+                {
+                    return info.first < v;
+                });
+            
+            if ((iter == std::end(Map)) || (iter->first != val)) {
+                return nullptr;
+            }
+            
+            return iter->second;
         }
         
     };
@@ -108,8 +140,8 @@ struct CfgPmsFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -135,7 +167,7 @@ struct CfgPmsFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgPms.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPms : public
     comms::MessageBase<
         TMsgBase,

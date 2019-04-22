@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
@@ -13,11 +14,11 @@
 #include "comms/field/IntValue.h"
 #include "comms/field/Optional.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res8.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -29,7 +30,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgTmode3
 /// @headerfile "ublox/message/CfgTmode3.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgTmode3Fields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -51,8 +52,8 @@ struct CfgTmode3Fields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -65,7 +66,7 @@ struct CfgTmode3Fields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref Mode field.
+        /// @brief Values enumerator for @ref ublox::message::CfgTmode3Fields::FlagsMembers::Mode field.
         enum class ModeVal : std::uint8_t
         {
             Disabled = 0, ///< value @b Disabled
@@ -75,6 +76,7 @@ struct CfgTmode3Fields
         };
         
         /// @brief Definition of <b>"mode"</b> field.
+        /// @see @ref ublox::message::CfgTmode3Fields::FlagsMembers::ModeVal
         struct Mode : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -87,6 +89,23 @@ struct CfgTmode3Fields
             static const char* name()
             {
                 return "mode";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(ModeVal val)
+            {
+                static const char* Map[] = {
+                    "Disabled",
+                    "Survey In",
+                    "Fixed Mode"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -121,6 +140,23 @@ struct CfgTmode3Fields
             static const char* name()
             {
                 return "";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "lla"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -524,8 +560,8 @@ struct CfgTmode3Fields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -588,8 +624,8 @@ struct CfgTmode3Fields
     /// @brief Definition of <b>"reserved3"</b> field.
     struct Reserved3 : public
         ublox::field::Res8<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -620,7 +656,7 @@ struct CfgTmode3Fields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgTmode3.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgTmode3 : public
     comms::MessageBase<
         TMsgBase,

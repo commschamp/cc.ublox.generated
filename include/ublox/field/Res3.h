@@ -6,8 +6,8 @@
 #include <cstdint>
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -20,7 +20,7 @@ namespace field
 ///     Reserved field with 3 bytes length
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 struct Res3 : public
     comms::field::IntValue<
         ublox::field::FieldBase<>,

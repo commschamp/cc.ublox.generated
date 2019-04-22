@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -13,12 +14,12 @@
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res2.h"
 #include "ublox/field/Res7.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -30,14 +31,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref EsfStatus
 /// @headerfile "ublox/message/EsfStatus.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct EsfStatusFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"version"</b> field.
     struct Version : public
@@ -59,8 +60,8 @@ struct EsfStatusFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res7<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -70,7 +71,7 @@ struct EsfStatusFields
         
     };
     
-    /// @brief Values enumerator for @ref FusionMode field.
+    /// @brief Values enumerator for @ref ublox::message::EsfStatusFields::FusionMode field.
     enum class FusionModeVal : std::uint8_t
     {
         Initialization = 0, ///< value @b Initialization
@@ -81,6 +82,7 @@ struct EsfStatusFields
     };
     
     /// @brief Definition of <b>"fusionMode"</b> field.
+    /// @see @ref ublox::message::EsfStatusFields::FusionModeVal
     struct FusionMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -94,13 +96,31 @@ struct EsfStatusFields
             return "fusionMode";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(FusionModeVal val)
+        {
+            static const char* Map[] = {
+                "Initialization",
+                "Fusion",
+                "Suspended",
+                "Disabled"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -182,6 +202,24 @@ struct EsfStatusFields
                         return "";
                     }
                     
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "used",
+                            "ready"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
+                    }
+                    
                 };
                 
                 /// @brief All members bundled in @b std::tuple.
@@ -229,7 +267,7 @@ struct EsfStatusFields
             /// @brief Scope for all the member fields of @ref SensStatus2 bitfield.
             struct SensStatus2Members
             {
-                /// @brief Values enumerator for @ref CalibStatus field.
+                /// @brief Values enumerator for @ref ublox::message::EsfStatusFields::ListMembers::ElementMembers::SensStatus2Members::CalibStatus field.
                 enum class CalibStatusVal : std::uint8_t
                 {
                     NotCalibrated = 0, ///< value @b NotCalibrated
@@ -240,6 +278,7 @@ struct EsfStatusFields
                 };
                 
                 /// @brief Definition of <b>"calibStatus"</b> field.
+                /// @see @ref ublox::message::EsfStatusFields::ListMembers::ElementMembers::SensStatus2Members::CalibStatusVal
                 struct CalibStatus : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -254,9 +293,27 @@ struct EsfStatusFields
                         return "calibStatus";
                     }
                     
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(CalibStatusVal val)
+                    {
+                        static const char* Map[] = {
+                            "NotCalibrated",
+                            "Calibrating",
+                            "Calibrated",
+                            "Calibrated2"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
+                    }
+                    
                 };
                 
-                /// @brief Values enumerator for @ref TimeStatus field.
+                /// @brief Values enumerator for @ref ublox::message::EsfStatusFields::ListMembers::ElementMembers::SensStatus2Members::TimeStatus field.
                 enum class TimeStatusVal : std::uint8_t
                 {
                     NoData = 0, ///< value @b NoData
@@ -267,6 +324,7 @@ struct EsfStatusFields
                 };
                 
                 /// @brief Definition of <b>"timeStatus"</b> field.
+                /// @see @ref ublox::message::EsfStatusFields::ListMembers::ElementMembers::SensStatus2Members::TimeStatusVal
                 struct TimeStatus : public
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
@@ -279,6 +337,24 @@ struct EsfStatusFields
                     static const char* name()
                     {
                         return "timeStatus";
+                    }
+                    
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(TimeStatusVal val)
+                    {
+                        static const char* Map[] = {
+                            "NoData",
+                            "FirstByte",
+                            "EventInput",
+                            "TimeTag"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
                     }
                     
                 };
@@ -401,6 +477,26 @@ struct EsfStatusFields
                     return "faults";
                 }
                 
+                /// @brief Retrieve name of the bit
+                static const char* bitName(BitIdx idx)
+                {
+                    static const char* Map[] = {
+                        "badMeas",
+                        "badTTag",
+                        "missingMeas",
+                        "noisyMeas"
+                    };
+                
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                
+                    if (MapSize <= static_cast<std::size_t>(idx)) {
+                        return nullptr;
+                    }
+                
+                    return Map[static_cast<std::size_t>(idx)];
+                }
+                
             };
             
             /// @brief All members bundled in @b std::tuple.
@@ -488,7 +584,7 @@ struct EsfStatusFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/EsfStatus.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class EsfStatus : public
     comms::MessageBase<
         TMsgBase,

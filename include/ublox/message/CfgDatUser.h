@@ -6,7 +6,6 @@
 #include <tuple>
 #include "comms/MessageBase.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/CfgDatD.h"
 #include "ublox/field/CfgDatFlat.h"
@@ -14,6 +13,7 @@
 #include "ublox/field/CfgDatRot.h"
 #include "ublox/field/CfgDatScale.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,14 +25,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgDatUser
 /// @headerfile "ublox/message/CfgDatUser.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgDatUserFields
 {
     /// @brief Definition of <b>"majA"</b> field.
     struct MajA : public
         ublox::field::CfgDatMajA<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -45,8 +45,8 @@ struct CfgDatUserFields
     /// @brief Definition of <b>"flat"</b> field.
     struct Flat : public
         ublox::field::CfgDatFlat<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -59,8 +59,8 @@ struct CfgDatUserFields
     /// @brief Definition of <b>"dX"</b> field.
     struct DX : public
         ublox::field::CfgDatD<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -73,8 +73,8 @@ struct CfgDatUserFields
     /// @brief Definition of <b>"dY"</b> field.
     struct DY : public
         ublox::field::CfgDatD<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -87,8 +87,8 @@ struct CfgDatUserFields
     /// @brief Definition of <b>"dZ"</b> field.
     struct DZ : public
         ublox::field::CfgDatD<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -101,8 +101,8 @@ struct CfgDatUserFields
     /// @brief Definition of <b>"rotX"</b> field.
     struct RotX : public
         ublox::field::CfgDatRot<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -115,8 +115,8 @@ struct CfgDatUserFields
     /// @brief Definition of <b>"rotY"</b> field.
     struct RotY : public
         ublox::field::CfgDatRot<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -129,8 +129,8 @@ struct CfgDatUserFields
     /// @brief Definition of <b>"rotZ"</b> field.
     struct RotZ : public
         ublox::field::CfgDatRot<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -143,8 +143,8 @@ struct CfgDatUserFields
     /// @brief Definition of <b>"scale"</b> field.
     struct Scale : public
         ublox::field::CfgDatScale<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -174,7 +174,7 @@ struct CfgDatUserFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgDatUser.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgDatUser : public
     comms::MessageBase<
         TMsgBase,

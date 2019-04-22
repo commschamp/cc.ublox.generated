@@ -5,14 +5,15 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,7 +25,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgRst
 /// @headerfile "ublox/message/CfgRst.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgRstFields
 {
     /// @brief Definition of <b>"navBbrMask"</b> field.
@@ -106,9 +107,41 @@ struct CfgRstFields
             return "navBbrMask";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "eph",
+                "alm",
+                "health",
+                "klob",
+                "pos",
+                "clkd",
+                "osc",
+                "utc",
+                "rtc",
+                nullptr,
+                nullptr,
+                nullptr,
+                nullptr,
+                nullptr,
+                nullptr,
+                "aop"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
-    /// @brief Values enumerator for @ref ResetMode field.
+    /// @brief Values enumerator for @ref ublox::message::CfgRstFields::ResetMode field.
     enum class ResetModeVal : std::uint8_t
     {
         Hardware = 0, ///< value @b Hardware
@@ -121,6 +154,7 @@ struct CfgRstFields
     };
     
     /// @brief Definition of <b>"resetMode"</b> field.
+    /// @see @ref ublox::message::CfgRstFields::ResetModeVal
     struct ResetMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -136,13 +170,37 @@ struct CfgRstFields
             return "resetMode";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(ResetModeVal val)
+        {
+            static const char* Map[] = {
+                "Hardware",
+                "Software",
+                "Software (GNSS only)",
+                nullptr,
+                "Hardware (after shutdown)",
+                nullptr,
+                nullptr,
+                nullptr,
+                "GNSS stop",
+                "GNSS start"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -166,7 +224,7 @@ struct CfgRstFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgRst.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgRst : public
     comms::MessageBase<
         TMsgBase,

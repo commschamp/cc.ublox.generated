@@ -4,10 +4,11 @@
 #pragma once
 
 #include <cstdint>
+#include <type_traits>
 #include "comms/field/EnumValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -15,7 +16,7 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref GpsFix field.
+/// @brief Values enumerator for @ref ublox::field::GpsFix field.
 enum class GpsFixVal : std::uint8_t
 {
     NoFix = 0x00U, ///< value <b>no fix</b>.
@@ -28,9 +29,10 @@ enum class GpsFixVal : std::uint8_t
 };
 
 /// @brief Definition of <b>"gpsFix"</b> field.
+/// @see @ref ublox::field::GpsFixVal
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::DefaultOptions, typename... TExtraOpts>
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 struct GpsFix : public
     comms::field::EnumValue<
         ublox::field::FieldBase<>,
@@ -43,6 +45,26 @@ struct GpsFix : public
     static const char* name()
     {
         return "gpsFix";
+    }
+    
+    /// @brief Retrieve name of the enum value
+    static const char* valueName(GpsFixVal val)
+    {
+        static const char* Map[] = {
+            "no fix",
+            "dead reckoning",
+            "2D fix",
+            "3D fix",
+            "GPS + dead reckoning",
+            "time only fix"
+        };
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        
+        if (MapSize <= static_cast<std::size_t>(val)) {
+            return nullptr;
+        }
+        
+        return Map[static_cast<std::size_t>(val)];
     }
     
 };

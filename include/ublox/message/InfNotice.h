@@ -7,9 +7,9 @@
 #include "comms/MessageBase.h"
 #include "comms/field/String.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -21,7 +21,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref InfNotice
 /// @headerfile "ublox/message/InfNotice.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct InfNoticeFields
 {
     /// @brief Definition of <b>"str"</b> field.
@@ -51,7 +51,7 @@ struct InfNoticeFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/InfNotice.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class InfNotice : public
     comms::MessageBase<
         TMsgBase,

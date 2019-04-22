@@ -32,20 +32,20 @@
 ///
 /// Every frame class/type definition receives (as a template parameter) a list of
 /// @b input message types it is expected to recognize. Default defintion
-/// uses @ref ublox::AllMessages (defined in @b ublox/AllMessages.h).
+/// uses @ref ublox::input::AllMessages (defined in @b ).
 /// @n If protocol defines any uni-directional message, then it is recommended to use
-/// either @ref ublox::ServerInputMessages (from @b ublox/ServerInputMessages.h)
-/// or @ref ublox::ClientInputMessages  (from @b ublox/ClientInputMessages.h)
+/// either @ref ublox::input::ServerInputMessages (from @b ublox/input/ServerInputMessages.h)
+/// or @ref ublox::input::ClientInputMessages  (from @b ublox/input/ClientInputMessages.h)
 ///
 /// There are also platform specific definitions:
-/// @li @ref ublox::Ublox5ServerInputMessages (from @b ublox/Ublox5ServerInputMessages.h).
-/// @li @ref ublox::Ublox5ClientInputMessages (from @b ublox/Ublox5ClientInputMessages.h).
-/// @li @ref ublox::Ublox6ServerInputMessages (from @b ublox/Ublox6ServerInputMessages.h).
-/// @li @ref ublox::Ublox6ClientInputMessages (from @b ublox/Ublox6ClientInputMessages.h).
-/// @li @ref ublox::Ublox7ServerInputMessages (from @b ublox/Ublox7ServerInputMessages.h).
-/// @li @ref ublox::Ublox7ClientInputMessages (from @b ublox/Ublox7ClientInputMessages.h).
-/// @li @ref ublox::Ublox8ServerInputMessages (from @b ublox/Ublox8ServerInputMessages.h).
-/// @li @ref ublox::Ublox8ClientInputMessages (from @b ublox/Ublox8ClientInputMessages.h).
+/// @li @ref ublox::input::Ublox5ServerInputMessages (from @b ublox/input/Ublox5ServerInputMessages.h).
+/// @li @ref ublox::input::Ublox5ClientInputMessages (from @b ublox/input/Ublox5ClientInputMessages.h).
+/// @li @ref ublox::input::Ublox6ServerInputMessages (from @b ublox/input/Ublox6ServerInputMessages.h).
+/// @li @ref ublox::input::Ublox6ClientInputMessages (from @b ublox/input/Ublox6ClientInputMessages.h).
+/// @li @ref ublox::input::Ublox7ServerInputMessages (from @b ublox/input/Ublox7ServerInputMessages.h).
+/// @li @ref ublox::input::Ublox7ClientInputMessages (from @b ublox/input/Ublox7ClientInputMessages.h).
+/// @li @ref ublox::input::Ublox8ServerInputMessages (from @b ublox/input/Ublox8ServerInputMessages.h).
+/// @li @ref ublox::input::Ublox8ClientInputMessages (from @b ublox/input/Ublox8ClientInputMessages.h).
 ///
 /// @b NOTE, that the frame definition does not exactly follow the recommended
 /// instructions from <b>Protocol Stack Definition Tutorial</b> page of @b COMMS
@@ -54,25 +54,25 @@
 ///
 /// @section main_customization Customization
 /// Depending on the value of @b customization option passed to the @b commsdsl2comms
-/// code generator, the latter generates @ref ublox::DefaultOptions
-/// struct (defined in @b  ublox/DefaultOptions.h file),
+/// code generator, the latter generates @ref ublox::options::DefaultOptions
+/// struct (defined in @b ublox/options/DefaultOptions.h file),
 /// which is used by default thoughout the protocol definition classes.
 /// The struct contains all the available type definition, which can be used to
 /// customize default data structures and/or behaviour of various classes.
 /// If any additional customization is required, just recreate similar struct with
 /// relevant types overriden with new definition. The easiest way is to extend
-/// the ublox::DefaultOptions. For example:
+/// the ublox::options::DefaultOptions. For example:
 /// @code
-/// struct MyOptions : public ublox::DefaultOptions
+/// struct MyOptions : public ublox::options::DefaultOptions
 /// {
-///     struct field : public ublox::DefaultOptions::field
+///     struct field : public ublox::options::DefaultOptions::field
 ///     {
 ///         // use comms::util::StaticString as storage type
 ///         using SomeStringField = comms::option::FixedSizeStorage<32>;
 ///     };
 /// };
 /// @endcode
-/// @b NOTE, that inner scope of structs in the ublox::DefaultOptions
+/// @b NOTE, that inner scope of structs in the ublox::options::DefaultOptions
 /// resembles scope of namespaces used in protocol definition.
 ///
 /// The @b COMMS library also provides a flexible way to configure polymorphic
@@ -106,12 +106,16 @@
 ///        comms::option::IdInfoInterface // for polymorphic message ID retrieval
 ///    >;
 /// @endcode
-/// In this case the code generator may also define ublox::ServerDefaultOptions
-/// (check for existence of ublox/ServerDefaultOptions.h file) and
-/// ublox::ClientDefaultOptions (check for existence of ublox/ClientDefaultOptions.h file).
+/// In this case the code generator may also define @b ublox::options::ServerDefaultOptions
+/// (check for existence of @b ublox/options/ServerDefaultOptions.h file) and
+/// @b ublox::options::ClientDefaultOptions (check for existence of @b ublox/options/ClientDefaultOptions.h file).
 /// These structs suppress generation of unnecessary virtual functions which are not
 /// going to be used. Consider using this structs as options instead of default
-/// ublox::DefaultOptions.
+/// ublox::options::DefaultOptions.
+///
+/// Also there is @ref ublox::options::BareMetalDefaultOptions
+/// (defined in @b ublox/options/BareMetalDefaultOptions.h file) which can help in defining
+/// options for bare-metal applications. It exclude all usage of dynamic memory allocation.
 ///
 /// In case non-custom &lt;id&gt; layer has been used in schema (files), custom,
 /// application-specific allocation options to it may include

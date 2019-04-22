@@ -5,13 +5,13 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/Day.h"
 #include "ublox/field/Dop.h"
@@ -34,6 +34,7 @@
 #include "ublox/field/VAcc.h"
 #include "ublox/field/Vel.h"
 #include "ublox/field/Year.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -45,50 +46,50 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavPvt_u8
 /// @headerfile "ublox/message/NavPvt_u8.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavPvt_u8Fields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"year"</b> field.
     using Year =
         ublox::field::Year<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"month"</b> field.
     using Month =
         ublox::field::Month<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"day"</b> field.
     using Day =
         ublox::field::Day<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"hour"</b> field.
     using Hour =
         ublox::field::Hour<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"min"</b> field.
     using Min =
         ublox::field::Min<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"sec"</b> field.
     using Sec =
         ublox::field::Sec<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"valid"</b> field.
     class Valid : public
@@ -124,6 +125,25 @@ struct NavPvt_u8Fields
         static const char* name()
         {
             return "valid";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "validDate",
+                "validTime",
+                "fullyResolved"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -163,8 +183,8 @@ struct NavPvt_u8Fields
     /// @brief Definition of <b>"fixType"</b> field.
     struct FixType : public
         ublox::field::GpsFix<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -209,9 +229,27 @@ struct NavPvt_u8Fields
                 return "";
             }
             
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "gnssFixOK",
+                    "diffSoln"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
+            }
+            
         };
         
-        /// @brief Values enumerator for @ref PsmState field.
+        /// @brief Values enumerator for @ref ublox::message::NavPvt_u8Fields::FlagsMembers::PsmState field.
         enum class PsmStateVal : std::uint8_t
         {
             NotAvailable = 0, ///< value <b>N/A</b>.
@@ -224,6 +262,7 @@ struct NavPvt_u8Fields
         };
         
         /// @brief Definition of <b>"psmState"</b> field.
+        /// @see @ref ublox::message::NavPvt_u8Fields::FlagsMembers::PsmStateVal
         struct PsmState : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -236,6 +275,26 @@ struct NavPvt_u8Fields
             static const char* name()
             {
                 return "psmState";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(PsmStateVal val)
+            {
+                static const char* Map[] = {
+                    "N/A",
+                    "ENABLED",
+                    "ACQUISITION",
+                    "TRACKING",
+                    "POWER OPTIMIZED TRACKING",
+                    "INACTIVE"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -270,9 +329,26 @@ struct NavPvt_u8Fields
                 return "";
             }
             
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "headVehValid"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
+            }
+            
         };
         
-        /// @brief Values enumerator for @ref CarrSoln field.
+        /// @brief Values enumerator for @ref ublox::message::NavPvt_u8Fields::FlagsMembers::CarrSoln field.
         enum class CarrSolnVal : std::uint8_t
         {
             NoCarrier = 0, ///< value <b>No carrier</b>.
@@ -282,6 +358,7 @@ struct NavPvt_u8Fields
         };
         
         /// @brief Definition of <b>"carrSoln"</b> field.
+        /// @see @ref ublox::message::NavPvt_u8Fields::FlagsMembers::CarrSolnVal
         struct CarrSoln : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -294,6 +371,23 @@ struct NavPvt_u8Fields
             static const char* name()
             {
                 return "carrSoln";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(CarrSolnVal val)
+            {
+                static const char* Map[] = {
+                    "No carrier",
+                    "Float solution",
+                    "Fixed solution"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -397,6 +491,30 @@ struct NavPvt_u8Fields
             return "flags2";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                nullptr,
+                nullptr,
+                nullptr,
+                nullptr,
+                "confirmedAvai",
+                "confirmedDate",
+                "confirmedTime"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief Definition of <b>"numSV"</b> field.
@@ -417,44 +535,44 @@ struct NavPvt_u8Fields
     /// @brief Definition of <b>"lon"</b> field.
     using Lon =
         ublox::field::Lon<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"lat"</b> field.
     using Lat =
         ublox::field::Lat<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"height"</b> field.
     using Height =
         ublox::field::Height<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"hMSL"</b> field.
     using HMSL =
         ublox::field::HMSL<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"hAcc"</b> field.
     using HAcc =
         ublox::field::HAcc<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"vAcc"</b> field.
     using VAcc =
         ublox::field::VAcc<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"velN"</b> field.
     struct VelN : public
         ublox::field::Vel<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -467,8 +585,8 @@ struct NavPvt_u8Fields
     /// @brief Definition of <b>"velE"</b> field.
     struct VelE : public
         ublox::field::Vel<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -481,8 +599,8 @@ struct NavPvt_u8Fields
     /// @brief Definition of <b>"velD"</b> field.
     struct VelD : public
         ublox::field::Vel<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -495,8 +613,8 @@ struct NavPvt_u8Fields
     /// @brief Definition of <b>"gSpeed"</b> field.
     struct GSpeed : public
         ublox::field::Vel<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -509,8 +627,8 @@ struct NavPvt_u8Fields
     /// @brief Definition of <b>"heading"</b> field.
     using Heading =
         ublox::field::Heading<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"sAcc"</b> field.
     struct SAcc : public
@@ -531,14 +649,14 @@ struct NavPvt_u8Fields
     /// @brief Definition of <b>"headingAcc"</b> field.
     using HeadingAcc =
         ublox::field::HeadingAcc<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"pDop"</b> field.
     struct PDop : public
         ublox::field::Dop<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -551,8 +669,8 @@ struct NavPvt_u8Fields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -565,8 +683,8 @@ struct NavPvt_u8Fields
     /// @brief Definition of <b>"reserved3"</b> field.
     struct Reserved3 : public
         ublox::field::Res4<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -672,7 +790,7 @@ struct NavPvt_u8Fields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavPvt_u8.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavPvt_u8 : public
     comms::MessageBase<
         TMsgBase,

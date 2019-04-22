@@ -2,7 +2,7 @@
 
 #include "ublox/frame/UbloxFrame.h"
 #include "cc_plugin/Message.h"
-#include "cc_plugin/AllMessages.h"
+#include "cc_plugin/input/AllMessages.h"
 
 namespace ublox
 {
@@ -16,7 +16,7 @@ namespace frame
 using UbloxFrame =
     ublox::frame::UbloxFrame<
         ublox::cc_plugin::Message,
-        ublox::cc_plugin::AllMessages
+        ublox::cc_plugin::input::AllMessages
     >;
 
 } // namespace frame

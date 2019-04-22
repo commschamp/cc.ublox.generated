@@ -1,15 +1,24 @@
 /// @file
-/// @brief Contains definition of protocol default options.
+/// @brief Contains definition of protocol default options for bare-metal application
+///    where usage of dynamic memory allocation is disabled.
 
 #pragma once
 
-#include "comms/options.h"
+#ifndef DEFAULT_SEQ_FIXED_STORAGE_SIZE
+/// @brief Define default fixed size for various sequence fields
+/// @details May be defined during compile time to change the default value.
+#define DEFAULT_SEQ_FIXED_STORAGE_SIZE 32
+#endif
 
 namespace ublox
 {
 
-/// @brief Default (empty) options of the protocol.
-struct DefaultOptions
+namespace options
+{
+
+/// @brief Default options for bare-metal application where usage of dynamic
+///    memory allocation is diabled.
+struct BareMetalDefaultOptions
 {
     /// @brief Extra options for messages.
     struct message
@@ -27,7 +36,7 @@ struct DefaultOptions
             struct DwrdMembers
             {
                 /// @brief Extra options for @ref ublox::message::AidAlmFields::DwrdMembers::List field.
-                using List = comms::option::EmptyOption;
+                using List = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                 
             };
             
@@ -49,7 +58,7 @@ struct DefaultOptions
         struct AidAlpDataFields
         {
             /// @brief Extra options for @ref ublox::message::AidAlpDataFields::AlpData field.
-            using AlpData = comms::option::EmptyOption;
+            using AlpData = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct AidAlpDataFields
         
@@ -60,7 +69,7 @@ struct DefaultOptions
         struct AidAlpsrvFields
         {
             /// @brief Extra options for @ref ublox::message::AidAlpsrvFields::Data field.
-            using Data = comms::option::EmptyOption;
+            using Data = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct AidAlpsrvFields
         
@@ -69,7 +78,7 @@ struct DefaultOptions
         struct AidAlpsrvToServerFields
         {
             /// @brief Extra options for @ref ublox::message::AidAlpsrvToServerFields::Data field.
-            using Data = comms::option::EmptyOption;
+            using Data = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct AidAlpsrvToServerFields
         
@@ -80,7 +89,7 @@ struct DefaultOptions
         struct AidAopFields
         {
             /// @brief Extra options for @ref ublox::message::AidAopFields::Data field.
-            using Data = comms::option::EmptyOption;
+            using Data = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for all the member fields of @ref ublox::message::AidAopFields::Optionals optional.
             struct OptionalsMembers
@@ -89,13 +98,13 @@ struct DefaultOptions
                 struct OptionalsWrapMembers
                 {
                     /// @brief Extra options for @ref ublox::message::AidAopFields::OptionalsMembers::OptionalsWrapMembers::Optional0 field.
-                    using Optional0 = comms::option::EmptyOption;
+                    using Optional0 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                     
                     /// @brief Extra options for @ref ublox::message::AidAopFields::OptionalsMembers::OptionalsWrapMembers::Optional1 field.
-                    using Optional1 = comms::option::EmptyOption;
+                    using Optional1 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                     
                     /// @brief Extra options for @ref ublox::message::AidAopFields::OptionalsMembers::OptionalsWrapMembers::Optional2 field.
-                    using Optional2 = comms::option::EmptyOption;
+                    using Optional2 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                     
                 };
                 
@@ -114,7 +123,7 @@ struct DefaultOptions
         struct AidAopU8Fields
         {
             /// @brief Extra options for @ref ublox::message::AidAopU8Fields::Data field.
-            using Data = comms::option::EmptyOption;
+            using Data = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct AidAopU8Fields
         
@@ -132,13 +141,13 @@ struct DefaultOptions
                 struct ListsMembers
                 {
                     /// @brief Extra options for @ref ublox::message::AidEphFields::SfdMembers::ListsMembers::Sf1d field.
-                    using Sf1d = comms::option::EmptyOption;
+                    using Sf1d = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                     
                     /// @brief Extra options for @ref ublox::message::AidEphFields::SfdMembers::ListsMembers::Sf2d field.
-                    using Sf2d = comms::option::EmptyOption;
+                    using Sf2d = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                     
                     /// @brief Extra options for @ref ublox::message::AidEphFields::SfdMembers::ListsMembers::Sf3d field.
-                    using Sf3d = comms::option::EmptyOption;
+                    using Sf3d = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                     
                 };
                 
@@ -174,7 +183,7 @@ struct DefaultOptions
         struct CfgDatFields
         {
             /// @brief Extra options for @ref ublox::message::CfgDatFields::DatumName field.
-            using DatumName = comms::option::EmptyOption;
+            using DatumName = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct CfgDatFields
         
@@ -197,7 +206,7 @@ struct DefaultOptions
         struct CfgDoscFields
         {
             /// @brief Extra options for @ref ublox::message::CfgDoscFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct CfgDoscFields
         
@@ -212,7 +221,7 @@ struct DefaultOptions
         struct CfgEsrcFields
         {
             /// @brief Extra options for @ref ublox::message::CfgEsrcFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct CfgEsrcFields
         
@@ -224,7 +233,7 @@ struct DefaultOptions
         struct CfgFixseedFields
         {
             /// @brief Extra options for @ref ublox::message::CfgFixseedFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct CfgFixseedFields
         
@@ -238,7 +247,7 @@ struct DefaultOptions
         struct CfgGeofenceFields
         {
             /// @brief Extra options for @ref ublox::message::CfgGeofenceFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct CfgGeofenceFields
         
@@ -250,7 +259,7 @@ struct DefaultOptions
         struct CfgGnssFields
         {
             /// @brief Extra options for @ref ublox::message::CfgGnssFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct CfgGnssFields
         
@@ -265,7 +274,7 @@ struct DefaultOptions
         struct CfgInfFields
         {
             /// @brief Extra options for @ref ublox::message::CfgInfFields::InfMsgMask field.
-            using InfMsgMask = comms::option::EmptyOption;
+            using InfMsgMask = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct CfgInfFields
         
@@ -283,7 +292,7 @@ struct DefaultOptions
         struct CfgMsgFields
         {
             /// @brief Extra options for @ref ublox::message::CfgMsgFields::Rates field.
-            using Rates = comms::option::EmptyOption;
+            using Rates = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct CfgMsgFields
         
@@ -304,7 +313,7 @@ struct DefaultOptions
         struct CfgNmeaV1Fields
         {
             /// @brief Extra options for @ref ublox::message::CfgNmeaV1Fields::BdsTalkerId field.
-            using BdsTalkerId = comms::option::EmptyOption;
+            using BdsTalkerId = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct CfgNmeaV1Fields
         
@@ -319,7 +328,7 @@ struct DefaultOptions
         struct CfgPm2Fields
         {
             /// @brief Extra options for @ref ublox::message::CfgPm2Fields::Reserved3 field.
-            using Reserved3 = comms::option::EmptyOption;
+            using Reserved3 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct CfgPm2Fields
         
@@ -331,7 +340,7 @@ struct DefaultOptions
         struct CfgPm2V2Fields
         {
             /// @brief Extra options for @ref ublox::message::CfgPm2V2Fields::Reserved3 field.
-            using Reserved3 = comms::option::EmptyOption;
+            using Reserved3 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct CfgPm2V2Fields
         
@@ -358,7 +367,7 @@ struct DefaultOptions
         struct CfgRinvFields
         {
             /// @brief Extra options for @ref ublox::message::CfgRinvFields::Data field.
-            using Data = comms::option::EmptyOption;
+            using Data = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct CfgRinvFields
         
@@ -400,7 +409,7 @@ struct DefaultOptions
         struct CfgTxslotFields
         {
             /// @brief Extra options for @ref ublox::message::CfgTxslotFields::End field.
-            using End = comms::option::EmptyOption;
+            using End = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct CfgTxslotFields
         
@@ -411,13 +420,13 @@ struct DefaultOptions
         struct CfgUsbFields
         {
             /// @brief Extra options for @ref ublox::message::CfgUsbFields::VendorString field.
-            using VendorString = comms::option::EmptyOption;
+            using VendorString = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::CfgUsbFields::ProductString field.
-            using ProductString = comms::option::EmptyOption;
+            using ProductString = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::CfgUsbFields::SerialNumber field.
-            using SerialNumber = comms::option::EmptyOption;
+            using SerialNumber = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct CfgUsbFields
         
@@ -435,7 +444,7 @@ struct DefaultOptions
         struct EsfMeasFields
         {
             /// @brief Extra options for @ref ublox::message::EsfMeasFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct EsfMeasFields
         
@@ -447,7 +456,7 @@ struct DefaultOptions
         struct EsfRawFields
         {
             /// @brief Extra options for @ref ublox::message::EsfRawFields::Data field.
-            using Data = comms::option::EmptyOption;
+            using Data = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct EsfRawFields
         
@@ -458,7 +467,7 @@ struct DefaultOptions
         struct EsfStatusFields
         {
             /// @brief Extra options for @ref ublox::message::EsfStatusFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct EsfStatusFields
         
@@ -478,7 +487,7 @@ struct DefaultOptions
         struct InfDebugFields
         {
             /// @brief Extra options for @ref ublox::message::InfDebugFields::Str field.
-            using Str = comms::option::EmptyOption;
+            using Str = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct InfDebugFields
         
@@ -489,7 +498,7 @@ struct DefaultOptions
         struct InfErrorFields
         {
             /// @brief Extra options for @ref ublox::message::InfErrorFields::Str field.
-            using Str = comms::option::EmptyOption;
+            using Str = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct InfErrorFields
         
@@ -500,7 +509,7 @@ struct DefaultOptions
         struct InfNoticeFields
         {
             /// @brief Extra options for @ref ublox::message::InfNoticeFields::Str field.
-            using Str = comms::option::EmptyOption;
+            using Str = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct InfNoticeFields
         
@@ -511,7 +520,7 @@ struct DefaultOptions
         struct InfTestFields
         {
             /// @brief Extra options for @ref ublox::message::InfTestFields::Str field.
-            using Str = comms::option::EmptyOption;
+            using Str = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct InfTestFields
         
@@ -522,7 +531,7 @@ struct DefaultOptions
         struct InfWarningFields
         {
             /// @brief Extra options for @ref ublox::message::InfWarningFields::Str field.
-            using Str = comms::option::EmptyOption;
+            using Str = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct InfWarningFields
         
@@ -557,7 +566,7 @@ struct DefaultOptions
         struct LogRetrieveposextraFields
         {
             /// @brief Extra options for @ref ublox::message::LogRetrieveposextraFields::Reserved3 field.
-            using Reserved3 = comms::option::EmptyOption;
+            using Reserved3 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct LogRetrieveposextraFields
         
@@ -568,7 +577,7 @@ struct DefaultOptions
         struct LogRetrievestringFields
         {
             /// @brief Extra options for @ref ublox::message::LogRetrievestringFields::Bytes field.
-            using Bytes = comms::option::EmptyOption;
+            using Bytes = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct LogRetrievestringFields
         
@@ -579,7 +588,7 @@ struct DefaultOptions
         struct LogStringFields
         {
             /// @brief Extra options for @ref ublox::message::LogStringFields::Bytes field.
-            using Bytes = comms::option::EmptyOption;
+            using Bytes = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct LogStringFields
         
@@ -590,7 +599,7 @@ struct DefaultOptions
         struct MgaAckFields
         {
             /// @brief Extra options for @ref ublox::message::MgaAckFields::MsgPayloadStart field.
-            using MsgPayloadStart = comms::option::EmptyOption;
+            using MsgPayloadStart = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct MgaAckFields
         
@@ -601,7 +610,7 @@ struct DefaultOptions
         struct MgaAnoFields
         {
             /// @brief Extra options for @ref ublox::message::MgaAnoFields::Data field.
-            using Data = comms::option::EmptyOption;
+            using Data = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct MgaAnoFields
         
@@ -618,7 +627,7 @@ struct DefaultOptions
         struct MgaBdsHealthFields
         {
             /// @brief Extra options for @ref ublox::message::MgaBdsHealthFields::HealthCode field.
-            using HealthCode = comms::option::EmptyOption;
+            using HealthCode = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct MgaBdsHealthFields
         
@@ -635,10 +644,10 @@ struct DefaultOptions
         struct MgaDbdFields
         {
             /// @brief Extra options for @ref ublox::message::MgaDbdFields::Reserved1 field.
-            using Reserved1 = comms::option::EmptyOption;
+            using Reserved1 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MgaDbdFields::Data field.
-            using Data = comms::option::EmptyOption;
+            using Data = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct MgaDbdFields
         
@@ -653,7 +662,7 @@ struct DefaultOptions
         struct MgaFlashEphFields
         {
             /// @brief Extra options for @ref ublox::message::MgaFlashEphFields::Data field.
-            using Data = comms::option::EmptyOption;
+            using Data = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct MgaFlashEphFields
         
@@ -694,7 +703,7 @@ struct DefaultOptions
         struct MgaGpsHealthFields
         {
             /// @brief Extra options for @ref ublox::message::MgaGpsHealthFields::HealthCode field.
-            using HealthCode = comms::option::EmptyOption;
+            using HealthCode = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct MgaGpsHealthFields
         
@@ -714,7 +723,7 @@ struct DefaultOptions
         struct MgaIniEopFields
         {
             /// @brief Extra options for @ref ublox::message::MgaIniEopFields::Reserved2 field.
-            using Reserved2 = comms::option::EmptyOption;
+            using Reserved2 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct MgaIniEopFields
         
@@ -746,7 +755,7 @@ struct DefaultOptions
         struct MgaQzssHealthFields
         {
             /// @brief Extra options for @ref ublox::message::MgaQzssHealthFields::HealthCode field.
-            using HealthCode = comms::option::EmptyOption;
+            using HealthCode = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct MgaQzssHealthFields
         
@@ -763,7 +772,7 @@ struct DefaultOptions
         struct MonHwFields
         {
             /// @brief Extra options for @ref ublox::message::MonHwFields::VP field.
-            using VP = comms::option::EmptyOption;
+            using VP = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct MonHwFields
         
@@ -783,7 +792,7 @@ struct DefaultOptions
         struct MonIoFields
         {
             /// @brief Extra options for @ref ublox::message::MonIoFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct MonIoFields
         
@@ -797,25 +806,25 @@ struct DefaultOptions
         struct MonMsgppFields
         {
             /// @brief Extra options for @ref ublox::message::MonMsgppFields::Msg1 field.
-            using Msg1 = comms::option::EmptyOption;
+            using Msg1 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MonMsgppFields::Msg2 field.
-            using Msg2 = comms::option::EmptyOption;
+            using Msg2 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MonMsgppFields::Msg3 field.
-            using Msg3 = comms::option::EmptyOption;
+            using Msg3 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MonMsgppFields::Msg4 field.
-            using Msg4 = comms::option::EmptyOption;
+            using Msg4 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MonMsgppFields::Msg5 field.
-            using Msg5 = comms::option::EmptyOption;
+            using Msg5 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MonMsgppFields::Msg6 field.
-            using Msg6 = comms::option::EmptyOption;
+            using Msg6 = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MonMsgppFields::Skipped field.
-            using Skipped = comms::option::EmptyOption;
+            using Skipped = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct MonMsgppFields
         
@@ -829,7 +838,7 @@ struct DefaultOptions
         struct MonPatchFields
         {
             /// @brief Extra options for @ref ublox::message::MonPatchFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct MonPatchFields
         
@@ -843,13 +852,13 @@ struct DefaultOptions
         struct MonRxbufFields
         {
             /// @brief Extra options for @ref ublox::message::MonRxbufFields::Pending field.
-            using Pending = comms::option::EmptyOption;
+            using Pending = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MonRxbufFields::Usage field.
-            using Usage = comms::option::EmptyOption;
+            using Usage = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MonRxbufFields::PeakUsage field.
-            using PeakUsage = comms::option::EmptyOption;
+            using PeakUsage = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct MonRxbufFields
         
@@ -872,13 +881,13 @@ struct DefaultOptions
         struct MonTxbufFields
         {
             /// @brief Extra options for @ref ublox::message::MonTxbufFields::Pending field.
-            using Pending = comms::option::EmptyOption;
+            using Pending = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MonTxbufFields::Usage field.
-            using Usage = comms::option::EmptyOption;
+            using Usage = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MonTxbufFields::PeakUsage field.
-            using PeakUsage = comms::option::EmptyOption;
+            using PeakUsage = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct MonTxbufFields
         
@@ -892,21 +901,21 @@ struct DefaultOptions
         struct MonVerFields
         {
             /// @brief Extra options for @ref ublox::message::MonVerFields::SwVersion field.
-            using SwVersion = comms::option::EmptyOption;
+            using SwVersion = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::MonVerFields::HwVersion field.
-            using HwVersion = comms::option::EmptyOption;
+            using HwVersion = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for all the member fields of @ref ublox::message::MonVerFields::List string.
             struct ListMembers
             {
                 /// @brief Extra options for @ref ublox::message::MonVerFields::ListMembers::Extension field.
-                using Extension = comms::option::EmptyOption;
+                using Extension = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                 
             };
             
             /// @brief Extra options for @ref ublox::message::MonVerFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct MonVerFields
         
@@ -938,7 +947,7 @@ struct DefaultOptions
         struct NavDgpsFields
         {
             /// @brief Extra options for @ref ublox::message::NavDgpsFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct NavDgpsFields
         
@@ -961,7 +970,7 @@ struct DefaultOptions
         struct NavGeofenceFields
         {
             /// @brief Extra options for @ref ublox::message::NavGeofenceFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct NavGeofenceFields
         
@@ -993,7 +1002,7 @@ struct DefaultOptions
         struct NavOrbFields
         {
             /// @brief Extra options for @ref ublox::message::NavOrbFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct NavOrbFields
         
@@ -1037,7 +1046,7 @@ struct DefaultOptions
         struct NavSatFields
         {
             /// @brief Extra options for @ref ublox::message::NavSatFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct NavSatFields
         
@@ -1051,7 +1060,7 @@ struct DefaultOptions
         struct NavSbasFields
         {
             /// @brief Extra options for @ref ublox::message::NavSbasFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct NavSbasFields
         
@@ -1083,7 +1092,7 @@ struct DefaultOptions
         struct NavSvinfoFields
         {
             /// @brief Extra options for @ref ublox::message::NavSvinfoFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct NavSvinfoFields
         
@@ -1148,7 +1157,7 @@ struct DefaultOptions
             struct DwrdMembers
             {
                 /// @brief Extra options for @ref ublox::message::RxmAlmFields::DwrdMembers::List field.
-                using List = comms::option::EmptyOption;
+                using List = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                 
             };
             
@@ -1173,13 +1182,13 @@ struct DefaultOptions
                 struct ListsMembers
                 {
                     /// @brief Extra options for @ref ublox::message::RxmEphFields::SfdMembers::ListsMembers::Sf1d field.
-                    using Sf1d = comms::option::EmptyOption;
+                    using Sf1d = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                     
                     /// @brief Extra options for @ref ublox::message::RxmEphFields::SfdMembers::ListsMembers::Sf2d field.
-                    using Sf2d = comms::option::EmptyOption;
+                    using Sf2d = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                     
                     /// @brief Extra options for @ref ublox::message::RxmEphFields::SfdMembers::ListsMembers::Sf3d field.
-                    using Sf3d = comms::option::EmptyOption;
+                    using Sf3d = comms::option::SequenceFixedSizeUseFixedSizeStorage;
                     
                 };
                 
@@ -1200,7 +1209,7 @@ struct DefaultOptions
         struct RxmImesFields
         {
             /// @brief Extra options for @ref ublox::message::RxmImesFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct RxmImesFields
         
@@ -1214,7 +1223,7 @@ struct DefaultOptions
         struct RxmMeasxFields
         {
             /// @brief Extra options for @ref ublox::message::RxmMeasxFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct RxmMeasxFields
         
@@ -1231,7 +1240,7 @@ struct DefaultOptions
         struct RxmRawFields
         {
             /// @brief Extra options for @ref ublox::message::RxmRawFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct RxmRawFields
         
@@ -1245,7 +1254,7 @@ struct DefaultOptions
         struct RxmRawxFields
         {
             /// @brief Extra options for @ref ublox::message::RxmRawxFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct RxmRawxFields
         
@@ -1259,10 +1268,10 @@ struct DefaultOptions
         struct RxmRlmLongFields
         {
             /// @brief Extra options for @ref ublox::message::RxmRlmLongFields::Beacon field.
-            using Beacon = comms::option::EmptyOption;
+            using Beacon = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::RxmRlmLongFields::Params field.
-            using Params = comms::option::EmptyOption;
+            using Params = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct RxmRlmLongFields
         
@@ -1273,10 +1282,10 @@ struct DefaultOptions
         struct RxmRlmShortFields
         {
             /// @brief Extra options for @ref ublox::message::RxmRlmShortFields::Beacon field.
-            using Beacon = comms::option::EmptyOption;
+            using Beacon = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for @ref ublox::message::RxmRlmShortFields::Params field.
-            using Params = comms::option::EmptyOption;
+            using Params = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct RxmRlmShortFields
         
@@ -1290,7 +1299,7 @@ struct DefaultOptions
         struct RxmSfrbFields
         {
             /// @brief Extra options for @ref ublox::message::RxmSfrbFields::Dwrd field.
-            using Dwrd = comms::option::EmptyOption;
+            using Dwrd = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct RxmSfrbFields
         
@@ -1301,7 +1310,7 @@ struct DefaultOptions
         struct RxmSfrbxFields
         {
             /// @brief Extra options for @ref ublox::message::RxmSfrbxFields::Dwrd field.
-            using Dwrd = comms::option::EmptyOption;
+            using Dwrd = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct RxmSfrbxFields
         
@@ -1312,7 +1321,7 @@ struct DefaultOptions
         struct RxmSvsiFields
         {
             /// @brief Extra options for @ref ublox::message::RxmSvsiFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct RxmSvsiFields
         
@@ -1326,7 +1335,7 @@ struct DefaultOptions
         struct SecSignFields
         {
             /// @brief Extra options for @ref ublox::message::SecSignFields::Hash field.
-            using Hash = comms::option::EmptyOption;
+            using Hash = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct SecSignFields
         
@@ -1337,7 +1346,7 @@ struct DefaultOptions
         struct SecUniqidFields
         {
             /// @brief Extra options for @ref ublox::message::SecUniqidFields::UniqueId field.
-            using UniqueId = comms::option::EmptyOption;
+            using UniqueId = comms::option::SequenceFixedSizeUseFixedSizeStorage;
             
         }; // struct SecUniqidFields
         
@@ -1357,7 +1366,7 @@ struct DefaultOptions
         struct TimSmeasFields
         {
             /// @brief Extra options for @ref ublox::message::TimSmeasFields::List field.
-            using List = comms::option::EmptyOption;
+            using List = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE>;
             
         }; // struct TimSmeasFields
         
@@ -1425,10 +1434,10 @@ struct DefaultOptions
         struct UbloxFrameLayers
         {
             /// @brief Extra options for @ref ublox::frame::UbloxFrameLayers::Payload layer.
-            using Payload = comms::option::EmptyOption;
+            using Payload = comms::option::FixedSizeStorage<DEFAULT_SEQ_FIXED_STORAGE_SIZE * 8>;
             
             /// @brief Extra options for @ref ublox::frame::UbloxFrameLayers::Id layer.
-            using Id = comms::option::EmptyOption;
+            using Id = comms::option::InPlaceAllocation;
             
         }; // struct UbloxFrameLayers
         
@@ -1436,6 +1445,8 @@ struct DefaultOptions
     
     
 };
+
+} // namespace options
 
 } // namespace ublox
 

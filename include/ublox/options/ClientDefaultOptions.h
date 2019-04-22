@@ -1,5 +1,5 @@
 /// @file
-/// @brief Contains definition of protocol default options for client.
+/// @brief Contains definition of protocol default options for a client.
 
 #pragma once
 
@@ -8,7 +8,10 @@
 namespace ublox
 {
 
-/// @brief Default options of the protocol specific for a client.
+namespace options
+{
+
+/// @brief Default options of the protocol for a client.
 struct ClientDefaultOptions
 {
     /// @brief Extra options for messages.
@@ -1718,6 +1721,8 @@ struct ClientDefaultOptions
     };
     
 };
+
+} // namespace options
 
 } // namespace ublox
 

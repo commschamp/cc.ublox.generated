@@ -5,17 +5,18 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res3.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -27,7 +28,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MonSmgr
 /// @headerfile "ublox/message/MonSmgr.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MonSmgrFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -49,8 +50,8 @@ struct MonSmgrFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -63,13 +64,13 @@ struct MonSmgrFields
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Scope for all the member fields of @ref IntOsc bitfield.
     struct IntOscMembers
     {
-        /// @brief Values enumerator for @ref IntOscState field.
+        /// @brief Values enumerator for @ref ublox::message::MonSmgrFields::IntOscMembers::IntOscState field.
         enum class IntOscStateVal : std::uint8_t
         {
             Autonomous = 0, ///< value @b Autonomous
@@ -80,6 +81,7 @@ struct MonSmgrFields
         };
         
         /// @brief Definition of <b>"intOscState"</b> field.
+        /// @see @ref ublox::message::MonSmgrFields::IntOscMembers::IntOscStateVal
         struct IntOscState : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -93,6 +95,25 @@ struct MonSmgrFields
             static const char* name()
             {
                 return "intOscState";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(IntOscStateVal val)
+            {
+                static const char* Map[] = {
+                    "Autonomous",
+                    "Ongoing",
+                    "Steered",
+                    nullptr,
+                    "Idle"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -129,6 +150,24 @@ struct MonSmgrFields
             static const char* name()
             {
                 return "";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "intOscCalib",
+                    "intOscDisc"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -178,7 +217,7 @@ struct MonSmgrFields
     /// @brief Scope for all the member fields of @ref ExtOsc bitfield.
     struct ExtOscMembers
     {
-        /// @brief Values enumerator for @ref ExtOscState field.
+        /// @brief Values enumerator for @ref ublox::message::MonSmgrFields::ExtOscMembers::ExtOscState field.
         enum class ExtOscStateVal : std::uint8_t
         {
             Autonomous = 0, ///< value @b Autonomous
@@ -189,6 +228,7 @@ struct MonSmgrFields
         };
         
         /// @brief Definition of <b>"extOscState"</b> field.
+        /// @see @ref ublox::message::MonSmgrFields::ExtOscMembers::ExtOscStateVal
         struct ExtOscState : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -202,6 +242,25 @@ struct MonSmgrFields
             static const char* name()
             {
                 return "extOscState";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(ExtOscStateVal val)
+            {
+                static const char* Map[] = {
+                    "Autonomous",
+                    "Ongoing",
+                    "Steered",
+                    nullptr,
+                    "Idle"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -238,6 +297,24 @@ struct MonSmgrFields
             static const char* name()
             {
                 return "";
+            }
+            
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "extOscCalib",
+                    "extOscDisc"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
             }
             
         };
@@ -284,7 +361,7 @@ struct MonSmgrFields
         
     };
     
-    /// @brief Values enumerator for @ref DiscSrc field.
+    /// @brief Values enumerator for @ref ublox::message::MonSmgrFields::DiscSrc field.
     enum class DiscSrcVal : std::uint8_t
     {
         Internal = 0, ///< value @b Internal
@@ -297,6 +374,7 @@ struct MonSmgrFields
     };
     
     /// @brief Definition of <b>"discSrc"</b> field.
+    /// @see @ref ublox::message::MonSmgrFields::DiscSrcVal
     struct DiscSrc : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -308,6 +386,26 @@ struct MonSmgrFields
         static const char* name()
         {
             return "discSrc";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(DiscSrcVal val)
+        {
+            static const char* Map[] = {
+                "Internal",
+                "GNSS",
+                "EXTINT0",
+                "EXTINT1",
+                "HostInternal",
+                "HostExternal"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -342,6 +440,23 @@ struct MonSmgrFields
         static const char* name()
         {
             return "gnss";
+        }
+        
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "gnssAvail"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
         }
         
     };
@@ -382,6 +497,25 @@ struct MonSmgrFields
             return "extInt0";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "extInt0Avail",
+                "extInt0Type",
+                "extInt0FeedBack"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief Definition of <b>"extInt1"</b> field.
@@ -420,6 +554,25 @@ struct MonSmgrFields
             return "extInt1";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "extInt1Avail",
+                "extInt1Type",
+                "extInt1FeedBack"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief All the fields bundled in std::tuple.
@@ -442,7 +595,7 @@ struct MonSmgrFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MonSmgr.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MonSmgr : public
     comms::MessageBase<
         TMsgBase,

@@ -8,12 +8,12 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Heading.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/SAcc.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,14 +25,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavVelned
 /// @headerfile "ublox/message/NavVelned.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavVelnedFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"velN"</b> field.
     struct VelN : public
@@ -117,14 +117,14 @@ struct NavVelnedFields
     /// @brief Definition of <b>"heading"</b> field.
     using Heading =
         ublox::field::Heading<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"sAcc"</b> field.
     using SAcc =
         ublox::field::SAcc<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"cAcc"</b> field.
     struct CAcc : public
@@ -163,7 +163,7 @@ struct NavVelnedFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavVelned.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavVelned : public
     comms::MessageBase<
         TMsgBase,

@@ -10,9 +10,9 @@
 #include "comms/field/IntValue.h"
 #include "comms/field/Optional.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,7 +24,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref RxmAlm
 /// @headerfile "ublox/message/RxmAlm.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct RxmAlmFields
 {
     /// @brief Definition of <b>"svid"</b> field.
@@ -128,7 +128,7 @@ struct RxmAlmFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/RxmAlm.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class RxmAlm : public
     comms::MessageBase<
         TMsgBase,

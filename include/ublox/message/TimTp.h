@@ -3,17 +3,21 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cstdint>
+#include <iterator>
 #include <tuple>
+#include <type_traits>
+#include <utility>
 #include "comms/MessageBase.h"
 #include "comms/field/Bitfield.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,7 +29,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref TimTp
 /// @headerfile "ublox/message/TimTp.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct TimTpFields
 {
     /// @brief Definition of <b>"towMS"</b> field.
@@ -127,9 +131,27 @@ struct TimTpFields
                 return "";
             }
             
+            /// @brief Retrieve name of the bit
+            static const char* bitName(BitIdx idx)
+            {
+                static const char* Map[] = {
+                    "timeBase",
+                    "utc"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+            
+                if (MapSize <= static_cast<std::size_t>(idx)) {
+                    return nullptr;
+                }
+            
+                return Map[static_cast<std::size_t>(idx)];
+            }
+            
         };
         
-        /// @brief Values enumerator for @ref Raim field.
+        /// @brief Values enumerator for @ref ublox::message::TimTpFields::FlagsMembers::Raim field.
         enum class RaimVal : std::uint8_t
         {
             NotAvailable = 0, ///< value @b NotAvailable
@@ -139,6 +161,7 @@ struct TimTpFields
         };
         
         /// @brief Definition of <b>"raim"</b> field.
+        /// @see @ref ublox::message::TimTpFields::FlagsMembers::RaimVal
         struct Raim : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -151,6 +174,23 @@ struct TimTpFields
             static const char* name()
             {
                 return "raim";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(RaimVal val)
+            {
+                static const char* Map[] = {
+                    "NotAvailable",
+                    "NotActive",
+                    "Active"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -222,7 +262,7 @@ struct TimTpFields
     /// @brief Scope for all the member fields of @ref RefInfo bitfield.
     struct RefInfoMembers
     {
-        /// @brief Values enumerator for @ref TimeRefGnss field.
+        /// @brief Values enumerator for @ref ublox::message::TimTpFields::RefInfoMembers::TimeRefGnss field.
         enum class TimeRefGnssVal : std::uint8_t
         {
             GPS = 0, ///< value @b GPS
@@ -233,6 +273,7 @@ struct TimTpFields
         };
         
         /// @brief Definition of <b>"timeRefGnss"</b> field.
+        /// @see @ref ublox::message::TimTpFields::RefInfoMembers::TimeRefGnssVal
         struct TimeRefGnss : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -248,9 +289,34 @@ struct TimTpFields
                 return "timeRefGnss";
             }
             
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(TimeRefGnssVal val)
+            {
+                using NameInfo = std::pair<TimeRefGnssVal, const char*>;
+                static const NameInfo Map[] = {
+                    std::make_pair(TimeRefGnssVal::GPS, "GPS"),
+                    std::make_pair(TimeRefGnssVal::GLONASS, "GLONASS"),
+                    std::make_pair(TimeRefGnssVal::BeiDou, "BeiDou"),
+                    std::make_pair(TimeRefGnssVal::Unknown, "Unknown")
+                };
+                
+                auto iter = std::lower_bound(
+                    std::begin(Map), std::end(Map), val,
+                    [](const NameInfo& info, TimeRefGnssVal v) -> bool
+                    {
+                        return info.first < v;
+                    });
+                
+                if ((iter == std::end(Map)) || (iter->first != val)) {
+                    return nullptr;
+                }
+                
+                return iter->second;
+            }
+            
         };
         
-        /// @brief Values enumerator for @ref UtcStandard field.
+        /// @brief Values enumerator for @ref ublox::message::TimTpFields::RefInfoMembers::UtcStandard field.
         enum class UtcStandardVal : std::uint8_t
         {
             NotAvailable = 0, ///< value @b NotAvailable
@@ -265,6 +331,7 @@ struct TimTpFields
         };
         
         /// @brief Definition of <b>"utcStandard"</b> field.
+        /// @see @ref ublox::message::TimTpFields::RefInfoMembers::UtcStandardVal
         struct UtcStandard : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -278,6 +345,35 @@ struct TimTpFields
             static const char* name()
             {
                 return "utcStandard";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(UtcStandardVal val)
+            {
+                using NameInfo = std::pair<UtcStandardVal, const char*>;
+                static const NameInfo Map[] = {
+                    std::make_pair(UtcStandardVal::NotAvailable, "NotAvailable"),
+                    std::make_pair(UtcStandardVal::CRL, "CRL"),
+                    std::make_pair(UtcStandardVal::NIST, "NIST"),
+                    std::make_pair(UtcStandardVal::USNO, "USNO"),
+                    std::make_pair(UtcStandardVal::BIMP, "BIMP"),
+                    std::make_pair(UtcStandardVal::EuLab, "EuLab"),
+                    std::make_pair(UtcStandardVal::SU, "SU"),
+                    std::make_pair(UtcStandardVal::Unknown, "Unknown")
+                };
+                
+                auto iter = std::lower_bound(
+                    std::begin(Map), std::end(Map), val,
+                    [](const NameInfo& info, UtcStandardVal v) -> bool
+                    {
+                        return info.first < v;
+                    });
+                
+                if ((iter == std::end(Map)) || (iter->first != val)) {
+                    return nullptr;
+                }
+                
+                return iter->second;
             }
             
         };
@@ -341,7 +437,7 @@ struct TimTpFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/TimTp.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class TimTp : public
     comms::MessageBase<
         TMsgBase,

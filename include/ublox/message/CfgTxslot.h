@@ -5,16 +5,17 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,7 +27,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgTxslot
 /// @headerfile "ublox/message/CfgTxslot.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgTxslotFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -85,9 +86,30 @@ struct CfgTxslotFields
             return "enable";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "DDC",
+                "UART1",
+                "UART2",
+                "USB",
+                "SPI"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
-    /// @brief Values enumerator for @ref RefTp field.
+    /// @brief Values enumerator for @ref ublox::message::CfgTxslotFields::RefTp field.
     enum class RefTpVal : std::uint8_t
     {
         Timepulse = 0, ///< value @b Timepulse
@@ -96,6 +118,7 @@ struct CfgTxslotFields
     };
     
     /// @brief Definition of <b>"refTp"</b> field.
+    /// @see @ref ublox::message::CfgTxslotFields::RefTpVal
     struct RefTp : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -109,13 +132,29 @@ struct CfgTxslotFields
             return "refTp";
         }
         
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(RefTpVal val)
+        {
+            static const char* Map[] = {
+                "Timepulse",
+                "Timepulse2"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
     };
     
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -178,7 +217,7 @@ struct CfgTxslotFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgTxslot.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgTxslot : public
     comms::MessageBase<
         TMsgBase,

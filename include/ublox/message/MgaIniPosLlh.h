@@ -8,12 +8,12 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Lat.h"
 #include "ublox/field/Lon.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -25,7 +25,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaIniPosLlh
 /// @headerfile "ublox/message/MgaIniPosLlh.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaIniPosLlhFields
 {
     /// @brief Definition of <b>"type"</b> field.
@@ -65,8 +65,8 @@ struct MgaIniPosLlhFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -79,14 +79,14 @@ struct MgaIniPosLlhFields
     /// @brief Definition of <b>"lat"</b> field.
     using Lat =
         ublox::field::Lat<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"lon"</b> field.
     using Lon =
         ublox::field::Lon<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"alt"</b> field.
     struct Alt : public
@@ -138,7 +138,7 @@ struct MgaIniPosLlhFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaIniPosLlh.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaIniPosLlh : public
     comms::MessageBase<
         TMsgBase,

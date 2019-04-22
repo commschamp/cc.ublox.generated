@@ -8,9 +8,9 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -22,7 +22,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref AidAlmPollSv
 /// @headerfile "ublox/message/AidAlmPollSv.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct AidAlmPollSvFields
 {
     /// @brief Definition of <b>"svid"</b> field.
@@ -52,7 +52,7 @@ struct AidAlmPollSvFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/AidAlmPollSv.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AidAlmPollSv : public
     comms::MessageBase<
         TMsgBase,

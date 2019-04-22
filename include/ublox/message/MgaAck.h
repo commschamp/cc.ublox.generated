@@ -5,14 +5,15 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -24,10 +25,10 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref MgaAck
 /// @headerfile "ublox/message/MgaAck.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaAckFields
 {
-    /// @brief Values enumerator for @ref Type field.
+    /// @brief Values enumerator for @ref ublox::message::MgaAckFields::Type field.
     enum class TypeVal : std::uint8_t
     {
         NotUsed = 0, ///< value @b NotUsed
@@ -36,6 +37,7 @@ struct MgaAckFields
     };
     
     /// @brief Definition of <b>"type"</b> field.
+    /// @see @ref ublox::message::MgaAckFields::TypeVal
     struct Type : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -47,6 +49,22 @@ struct MgaAckFields
         static const char* name()
         {
             return "type";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(TypeVal val)
+        {
+            static const char* Map[] = {
+                "NotUsed",
+                "Accepted"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -67,7 +85,7 @@ struct MgaAckFields
         
     };
     
-    /// @brief Values enumerator for @ref InfoCode field.
+    /// @brief Values enumerator for @ref ublox::message::MgaAckFields::InfoCode field.
     enum class InfoCodeVal : std::uint8_t
     {
         Accepted = 0, ///< value @b Accepted
@@ -81,6 +99,7 @@ struct MgaAckFields
     };
     
     /// @brief Definition of <b>"infoCode"</b> field.
+    /// @see @ref ublox::message::MgaAckFields::InfoCodeVal
     struct InfoCode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -92,6 +111,27 @@ struct MgaAckFields
         static const char* name()
         {
             return "infoCode";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(InfoCodeVal val)
+        {
+            static const char* Map[] = {
+                "Accepted",
+                "TimeNotKnown",
+                "BadVersion",
+                "BadSize",
+                "StorageError",
+                "NotReady",
+                "UnknownType"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -144,7 +184,7 @@ struct MgaAckFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/MgaAck.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaAck : public
     comms::MessageBase<
         TMsgBase,

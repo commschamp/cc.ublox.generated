@@ -8,7 +8,6 @@
 #include "comms/MessageBase.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/EcefHP.h"
 #include "ublox/field/EcefX.h"
@@ -18,6 +17,7 @@
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res3.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -29,7 +29,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavHpposecef
 /// @headerfile "ublox/message/NavHpposecef.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavHpposecefFields
 {
     /// @brief Definition of <b>"version"</b> field.
@@ -51,8 +51,8 @@ struct NavHpposecefFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -65,32 +65,32 @@ struct NavHpposecefFields
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"ecefX"</b> field.
     using EcefX =
         ublox::field::EcefX<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"ecefY"</b> field.
     using EcefY =
         ublox::field::EcefY<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"ecefZ"</b> field.
     using EcefZ =
         ublox::field::EcefZ<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"ecefXHp"</b> field.
     struct EcefXHp : public
         ublox::field::EcefHP<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -103,8 +103,8 @@ struct NavHpposecefFields
     /// @brief Definition of <b>"ecefYHp"</b> field.
     struct EcefYHp : public
         ublox::field::EcefHP<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -117,8 +117,8 @@ struct NavHpposecefFields
     /// @brief Definition of <b>"ecefZHp"</b> field.
     struct EcefZHp : public
         ublox::field::EcefHP<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -131,8 +131,8 @@ struct NavHpposecefFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res1<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -181,7 +181,7 @@ struct NavHpposecefFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavHpposecef.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavHpposecef : public
     comms::MessageBase<
         TMsgBase,

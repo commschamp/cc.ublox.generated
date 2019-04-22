@@ -5,13 +5,14 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -23,10 +24,10 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref CfgTmode
 /// @headerfile "ublox/message/CfgTmode.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgTmodeFields
 {
-    /// @brief Values enumerator for @ref TimeMode field.
+    /// @brief Values enumerator for @ref ublox::message::CfgTmodeFields::TimeMode field.
     enum class TimeModeVal : std::uint32_t
     {
         Disabled = 0, ///< value @b Disabled
@@ -36,6 +37,7 @@ struct CfgTmodeFields
     };
     
     /// @brief Definition of <b>"timeMode"</b> field.
+    /// @see @ref ublox::message::CfgTmodeFields::TimeModeVal
     struct TimeMode : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -47,6 +49,23 @@ struct CfgTmodeFields
         static const char* name()
         {
             return "timeMode";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(TimeModeVal val)
+        {
+            static const char* Map[] = {
+                "Disabled",
+                "Survey In",
+                "Fixed Mode"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -163,7 +182,7 @@ struct CfgTmodeFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/CfgTmode.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgTmode : public
     comms::MessageBase<
         TMsgBase,

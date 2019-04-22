@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -13,11 +14,11 @@
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res2.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -29,14 +30,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavSvinfo
 /// @headerfile "ublox/message/NavSvinfo.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavSvinfoFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"numCh"</b> field.
     struct NumCh : public
@@ -56,7 +57,7 @@ struct NavSvinfoFields
     /// @brief Scope for all the member fields of @ref GlobalFlags bitfield.
     struct GlobalFlagsMembers
     {
-        /// @brief Values enumerator for @ref ChipGen field.
+        /// @brief Values enumerator for @ref ublox::message::NavSvinfoFields::GlobalFlagsMembers::ChipGen field.
         enum class ChipGenVal : std::uint8_t
         {
             Antaris = 0, ///< value @b Antaris
@@ -68,6 +69,7 @@ struct NavSvinfoFields
         };
         
         /// @brief Definition of <b>"chipGen"</b> field.
+        /// @see @ref ublox::message::NavSvinfoFields::GlobalFlagsMembers::ChipGenVal
         struct ChipGen : public
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
@@ -80,6 +82,25 @@ struct NavSvinfoFields
             static const char* name()
             {
                 return "chipGen";
+            }
+            
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(ChipGenVal val)
+            {
+                static const char* Map[] = {
+                    "Antaris",
+                    "u-blox 5",
+                    "u-blox 6",
+                    "u-blox 7",
+                    "u-blox 8"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
             }
             
         };
@@ -148,8 +169,8 @@ struct NavSvinfoFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res2<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -239,9 +260,33 @@ struct NavSvinfoFields
                     return "flags";
                 }
                 
+                /// @brief Retrieve name of the bit
+                static const char* bitName(BitIdx idx)
+                {
+                    static const char* Map[] = {
+                        "svUsed",
+                        "diffCorr",
+                        "orbitAvail",
+                        "orbitEph",
+                        "unhealthy",
+                        "orbitAlm",
+                        "orbitAop",
+                        "smoothed"
+                    };
+                
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                
+                    if (MapSize <= static_cast<std::size_t>(idx)) {
+                        return nullptr;
+                    }
+                
+                    return Map[static_cast<std::size_t>(idx)];
+                }
+                
             };
             
-            /// @brief Values enumerator for @ref Quality field.
+            /// @brief Values enumerator for @ref ublox::message::NavSvinfoFields::ListMembers::ElementMembers::Quality field.
             enum class QualityVal : std::uint8_t
             {
                 NoSignal = 0, ///< value <b>no signal</b>.
@@ -256,6 +301,7 @@ struct NavSvinfoFields
             };
             
             /// @brief Definition of <b>"quality"</b> field.
+            /// @see @ref ublox::message::NavSvinfoFields::ListMembers::ElementMembers::QualityVal
             struct Quality : public
                 comms::field::EnumValue<
                     ublox::field::FieldBase<>,
@@ -267,6 +313,28 @@ struct NavSvinfoFields
                 static const char* name()
                 {
                     return "quality";
+                }
+                
+                /// @brief Retrieve name of the enum value
+                static const char* valueName(QualityVal val)
+                {
+                    static const char* Map[] = {
+                        "no signal",
+                        "searching signal",
+                        "signal acquired",
+                        "signal detected but unusable",
+                        "code locked",
+                        "code and carrier locked",
+                        "code and carrier locked",
+                        "code and carrier locked"
+                    };
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    
+                    if (MapSize <= static_cast<std::size_t>(val)) {
+                        return nullptr;
+                    }
+                    
+                    return Map[static_cast<std::size_t>(val)];
                 }
                 
             };
@@ -429,7 +497,7 @@ struct NavSvinfoFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavSvinfo.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavSvinfo : public
     comms::MessageBase<
         TMsgBase,

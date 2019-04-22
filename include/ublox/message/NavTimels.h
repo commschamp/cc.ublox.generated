@@ -3,18 +3,22 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cstdint>
+#include <iterator>
 #include <tuple>
+#include <type_traits>
+#include <utility>
 #include "comms/MessageBase.h"
 #include "comms/field/BitmaskValue.h"
 #include "comms/field/EnumValue.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
 #include "ublox/field/Res3.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -26,14 +30,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref NavTimels
 /// @headerfile "ublox/message/NavTimels.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct NavTimelsFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"version"</b> field.
     struct Version : public
@@ -54,8 +58,8 @@ struct NavTimelsFields
     /// @brief Definition of <b>"reserved1"</b> field.
     struct Reserved1 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -65,7 +69,7 @@ struct NavTimelsFields
         
     };
     
-    /// @brief Values enumerator for @ref SrcOfCurrLs field.
+    /// @brief Values enumerator for @ref ublox::message::NavTimelsFields::SrcOfCurrLs field.
     enum class SrcOfCurrLsVal : std::uint8_t
     {
         Default = 0, ///< value @b Default
@@ -81,6 +85,7 @@ struct NavTimelsFields
     };
     
     /// @brief Definition of <b>"srcOfCurrLs"</b> field.
+    /// @see @ref ublox::message::NavTimelsFields::SrcOfCurrLsVal
     struct SrcOfCurrLs : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -93,6 +98,36 @@ struct NavTimelsFields
         static const char* name()
         {
             return "srcOfCurrLs";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(SrcOfCurrLsVal val)
+        {
+            using NameInfo = std::pair<SrcOfCurrLsVal, const char*>;
+            static const NameInfo Map[] = {
+                std::make_pair(SrcOfCurrLsVal::Default, "Default"),
+                std::make_pair(SrcOfCurrLsVal::Derived, "Derived"),
+                std::make_pair(SrcOfCurrLsVal::GPS, "GPS"),
+                std::make_pair(SrcOfCurrLsVal::SBAS, "SBAS"),
+                std::make_pair(SrcOfCurrLsVal::BeiDou, "BeiDou"),
+                std::make_pair(SrcOfCurrLsVal::Galileo, "Galileo"),
+                std::make_pair(SrcOfCurrLsVal::AidedData, "Aided data"),
+                std::make_pair(SrcOfCurrLsVal::Configured, "Configured"),
+                std::make_pair(SrcOfCurrLsVal::Unknown, "Unknown")
+            };
+            
+            auto iter = std::lower_bound(
+                std::begin(Map), std::end(Map), val,
+                [](const NameInfo& info, SrcOfCurrLsVal v) -> bool
+                {
+                    return info.first < v;
+                });
+            
+            if ((iter == std::end(Map)) || (iter->first != val)) {
+                return nullptr;
+            }
+            
+            return iter->second;
         }
         
     };
@@ -113,7 +148,7 @@ struct NavTimelsFields
         
     };
     
-    /// @brief Values enumerator for @ref SrcOfLsChange field.
+    /// @brief Values enumerator for @ref ublox::message::NavTimelsFields::SrcOfLsChange field.
     enum class SrcOfLsChangeVal : std::uint8_t
     {
         NoSource = 0, ///< value <b>No source</b>.
@@ -126,6 +161,7 @@ struct NavTimelsFields
     };
     
     /// @brief Definition of <b>"srcOfLsChange"</b> field.
+    /// @see @ref ublox::message::NavTimelsFields::SrcOfLsChangeVal
     struct SrcOfLsChange : public
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
@@ -138,6 +174,27 @@ struct NavTimelsFields
         static const char* name()
         {
             return "srcOfLsChange";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(SrcOfLsChangeVal val)
+        {
+            static const char* Map[] = {
+                "No source",
+                nullptr,
+                "GPS",
+                "SBAS",
+                "BeiDou",
+                "Galileo",
+                "GLONASS"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
         }
         
     };
@@ -207,8 +264,8 @@ struct NavTimelsFields
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
         ublox::field::Res3<
-           TOpt
-       >
+            TOpt
+        >
     {
         /// @brief Name of the field.
         static const char* name()
@@ -252,6 +309,24 @@ struct NavTimelsFields
             return "valid";
         }
         
+        /// @brief Retrieve name of the bit
+        static const char* bitName(BitIdx idx)
+        {
+            static const char* Map[] = {
+                "validCurrLs",
+                "validTimeToLsEvent"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+        
+            if (MapSize <= static_cast<std::size_t>(idx)) {
+                return nullptr;
+            }
+        
+            return Map[static_cast<std::size_t>(idx)];
+        }
+        
     };
     
     /// @brief All the fields bundled in std::tuple.
@@ -277,7 +352,7 @@ struct NavTimelsFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/NavTimels.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavTimels : public
     comms::MessageBase<
         TMsgBase,

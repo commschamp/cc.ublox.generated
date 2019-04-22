@@ -5,6 +5,7 @@
 
 #include <cstdint>
 #include <tuple>
+#include <type_traits>
 #include "comms/MessageBase.h"
 #include "comms/field/ArrayList.h"
 #include "comms/field/Bitfield.h"
@@ -12,10 +13,10 @@
 #include "comms/field/Bundle.h"
 #include "comms/field/IntValue.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Itow.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -27,14 +28,14 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref RxmSvsi
 /// @headerfile "ublox/message/RxmSvsi.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct RxmSvsiFields
 {
     /// @brief Definition of <b>"iTOW"</b> field.
     using Itow =
         ublox::field::Itow<
-           TOpt
-       >;
+            TOpt
+        >;
     
     /// @brief Definition of <b>"week"</b> field.
     struct Week : public
@@ -156,6 +157,26 @@ struct RxmSvsiFields
                     static const char* name()
                     {
                         return "";
+                    }
+                    
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(BitIdx idx)
+                    {
+                        static const char* Map[] = {
+                            "healthy",
+                            "ephVal",
+                            "almVal",
+                            "notAvail"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
+                    
+                        if (MapSize <= static_cast<std::size_t>(idx)) {
+                            return nullptr;
+                        }
+                    
+                        return Map[static_cast<std::size_t>(idx)];
                     }
                     
                 };
@@ -395,7 +416,7 @@ struct RxmSvsiFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/RxmSvsi.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class RxmSvsi : public
     comms::MessageBase<
         TMsgBase,

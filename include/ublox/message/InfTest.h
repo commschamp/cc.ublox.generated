@@ -7,9 +7,9 @@
 #include "comms/MessageBase.h"
 #include "comms/field/String.h"
 #include "comms/options.h"
-#include "ublox/DefaultOptions.h"
 #include "ublox/MsgId.h"
 #include "ublox/field/FieldBase.h"
+#include "ublox/options/DefaultOptions.h"
 
 namespace ublox
 {
@@ -21,7 +21,7 @@ namespace message
 /// @tparam TOpt Extra options
 /// @see @ref InfTest
 /// @headerfile "ublox/message/InfTest.h"
-template <typename TOpt = ublox::DefaultOptions>
+template <typename TOpt = ublox::options::DefaultOptions>
 struct InfTestFields
 {
     /// @brief Definition of <b>"str"</b> field.
@@ -51,7 +51,7 @@ struct InfTestFields
 /// @tparam TMsgBase Base (interface) class.
 /// @tparam TOpt Extra options
 /// @headerfile "ublox/message/InfTest.h"
-template <typename TMsgBase, typename TOpt = ublox::DefaultOptions>
+template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class InfTest : public
     comms::MessageBase<
         TMsgBase,
