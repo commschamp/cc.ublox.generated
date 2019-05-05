@@ -15,10 +15,10 @@
 #define UBLOX_MINOR_VERSION (6U)
 
 /// @brief Patch version of the protocol library.
-#define UBLOX_PATCH_VERSION (0U)
+#define UBLOX_PATCH_VERSION (1U)
 
 /// @brief Full version of the protocol library as single number.
-#define UBLOX_VERSION (COMMS_MAKE_VERSION(UBLOX_MAJOR_VERSION, UBLOX_MINOR_VERSION, UBLOX_MINOR_VERSION))
+#define UBLOX_VERSION (COMMS_MAKE_VERSION(UBLOX_MAJOR_VERSION, UBLOX_MINOR_VERSION, UBLOX_PATCH_VERSION))
 
 
 namespace ublox
