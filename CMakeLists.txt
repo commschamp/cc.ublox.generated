@@ -88,7 +88,7 @@ endif ()
 # Use external CommsChampion project or compile it in place
 set (CC_EXTERNAL_TGT "comms_champion_external")
 if ("${OPT_CC_MAIN_INSTALL_DIR}" STREQUAL "")
-    set (cc_tag "v1.2.2")
+    set (cc_tag "v1.3")
     set (cc_main_dir "${CMAKE_BINARY_DIR}/comms_champion")
     set (cc_src_dir "${cc_main_dir}/src")
     set (cc_bin_dir "${cc_main_dir}/build")

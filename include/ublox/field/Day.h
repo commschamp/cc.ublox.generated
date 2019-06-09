@@ -24,8 +24,8 @@ struct Day : public
         ublox::field::FieldBase<>,
         std::uint8_t,
         TExtraOpts...,
-        comms::option::DefaultNumValue<1>,
         comms::option::UnitsDays,
+        comms::option::DefaultNumValue<1>,
         comms::option::ValidNumValueRange<1, 31>
     >
 {

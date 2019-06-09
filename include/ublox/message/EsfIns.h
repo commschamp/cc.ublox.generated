@@ -38,8 +38,8 @@ struct EsfInsFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::DefaultNumValue<1>,
                 comms::option::FixedBitLength<8U>,
+                comms::option::DefaultNumValue<1>,
                 comms::option::ValidNumValue<1>
             >
         {
