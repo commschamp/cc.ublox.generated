@@ -1,7 +1,6 @@
 #include "Message.h"
 
 #include "comms_champion/property/field.h"
-
 namespace cc = comms_champion;
 
 namespace ublox

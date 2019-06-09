@@ -89,9 +89,9 @@ struct MgaAnoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::DefaultNumValue<2000>,
             comms::option::FixedLength<1U>,
-            comms::option::NumValueSerOffset<-2000>
+            comms::option::NumValueSerOffset<-2000>,
+            comms::option::DefaultNumValue<2000>
         >
     {
         /// @brief Name of the field.

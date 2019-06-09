@@ -69,8 +69,8 @@ struct CfgItfmFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::DefaultNumValue<1487190L>,
                 comms::option::FixedBitLength<22U>,
+                comms::option::DefaultNumValue<1487190L>,
                 comms::option::ValidNumValue<1487190L>
             >
         {
@@ -187,8 +187,8 @@ struct CfgItfmFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint16_t,
-                comms::option::DefaultNumValue<798>,
                 comms::option::FixedBitLength<12U>,
+                comms::option::DefaultNumValue<798>,
                 comms::option::ValidNumValue<798>
             >
         {
