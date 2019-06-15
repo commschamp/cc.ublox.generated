@@ -87,7 +87,12 @@ endif ()
 
 # Use external CommsChampion project or compile it in place
 set (CC_EXTERNAL_TGT "comms_champion_external")
-if ("${OPT_CC_MAIN_INSTALL_DIR}" STREQUAL "")
+if (OPT_BUILD_TEST OR OPT_BUILD_PLUGIN)
+    set (external_cc_needed TRUE)
+endif ()
+
+if (external_cc_needed AND ("${OPT_CC_MAIN_INSTALL_DIR}" STREQUAL ""))
+    set (cc_repo "https://github.com/arobenko/comms_champion.git")
     set (cc_tag "v1.3")
     set (cc_main_dir "${CMAKE_BINARY_DIR}/comms_champion")
     set (cc_src_dir "${cc_main_dir}/src")
@@ -96,47 +101,47 @@ if ("${OPT_CC_MAIN_INSTALL_DIR}" STREQUAL "")
 
     if (NOT "${OPT_QT_DIR}" STREQUAL "")
         set (cc_qt_dir_opt -DCC_QT_DIR=${OPT_QT_DIR})
+        set (EXT_QT_DIR ${OPT_QT_DIR})
     endif ()
 
     if (NOT ${OPT_BUILD_PLUGIN})
         set (ct_lib_only_opt -DCC_COMMS_LIB_ONLY=ON)
+        set (EXT_CC_NO_COMMS_CHAMPION TRUE)
     endif ()
 
     find_package (Git REQUIRED)
-    if (EXISTS "${cc_src_dir}/.git")
-        execute_process (
-            COMMAND ${GIT_EXECUTABLE} fetch --depth 1
-            WORKING_DIRECTORY ${cc_src_dir}
-        )
-
-        execute_process (
-            COMMAND ${GIT_EXECUTABLE} checkout ${cc_tag}
-            WORKING_DIRECTORY ${cc_src_dir}
-        )
-    else ()
+    set (ext_targets_inc_file "${cc_src_dir}/cmake/DefineExternalProjectTargets.cmake")
+    if (NOT EXISTS "${ext_targets_inc_file}")
         execute_process (
             COMMAND ${CMAKE_COMMAND} -E remove_directory "${cc_src_dir}"
         )
 
         execute_process (
             COMMAND 
-                ${GIT_EXECUTABLE} clone -b ${cc_tag} --depth 1 https://github.com/arobenko/comms_champion.git
-                    ${cc_src_dir}
+                ${GIT_EXECUTABLE} clone -b ${COMMS_TAG} --depth 1 ${cc_repo} ${cc_src_dir}
             RESULT_VARIABLE git_result
         )
 
         if (NOT "${git_result}" STREQUAL "0")
-            message (WARNING "git clone/checkout failed")
+            message (FATAL_ERROR "git clone/checkout failed")
         endif ()
+
+        if (NOT EXISTS "${ext_targets_inc_file}")
+             message (FATAL_ERROR "Incompatible version of ${cc_repo}, please use different tag.")
+        endif ()
+
     endif ()
 
     set (EXT_CC_INSTALL_DIR ${cc_install_dir})
-    include (${cc_src_dir}/cmake/DefineExternalProjectTargets.cmake)
+    include (${ext_targets_inc_file})
 
     include(ExternalProject)
     ExternalProject_Add(
         "${CC_EXTERNAL_TGT}"
         PREFIX "${cc_main_dir}"
+        STAMP_DIR "${cc_bin_dir}"
+        GIT_REPOSITORY ${cc_repo}
+        GIT_TAG ${COMMS_TAG}
         SOURCE_DIR "${cc_src_dir}"
         BINARY_DIR "${cc_bin_dir}"
         INSTALL_DIR "${cc_install_dir}"
@@ -156,7 +161,7 @@ if ("${OPT_CC_MAIN_INSTALL_DIR}" STREQUAL "")
 
         add_dependencies("deploy_qt" ${CC_EXTERNAL_TGT})
     endif ()
-else ()
+elseif (external_cc_needed)
     list (APPEND CMAKE_PREFIX_PATH "${OPT_CC_MAIN_INSTALL_DIR}")
     find_package(CommsChampion NO_MODULE)
 endif ()
@@ -169,8 +174,7 @@ if (DOXYGEN_FOUND)
     set (doc_output_dir "${DOC_INSTALL_DIR}")
     make_directory (${doc_output_dir})
 
-    set (match_str "OUTPUT_DIRECTORY[^
-]*")
+    set (match_str "OUTPUT_DIRECTORY[^\n]*")
     set (replacement_str "OUTPUT_DIRECTORY = ${doc_output_dir}")
     set (config_file "${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen.conf")
     set (OPT_DOXYGEN_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/doxygen.conf")
@@ -194,11 +198,11 @@ target_include_directories(ublox INTERFACE
     $<INSTALL_INTERFACE:include>
 )
 
-if (NOT TARGET cc::comms)
-    message (FATAL_ERROR "COMMS library is not found")
-endif()
+if (external_cc_needed AND (NOT TARGET ${CC_EXTERNAL_TGT}))
+    if (NOT TARGET cc::comms)
+        message (FATAL_ERROR "COMMS library is not found")
+    endif()
 
-if (NOT TARGET ${CC_EXTERNAL_TGT})
     target_link_libraries(ublox INTERFACE cc::comms)
 endif ()
 
