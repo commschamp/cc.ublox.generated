@@ -3,16 +3,28 @@ project ("ublox")
 
 option (OPT_BUILD_TEST "Build and install test applications." OFF)
 option (OPT_BUILD_PLUGIN "Build and install CommsChampion plugin." OFF)
+option (OPT_NO_COMMS "Forcefully exclude checkout and install of COMMS library. \
+    Works only if OPT_BUILD_TEST and OPT_BUILD_PLUGIN options weren't used" OFF)
 option (OPT_WARN_AS_ERR "Treat warning as error" ON)
 option (OPT_USE_CCACHE "Use of ccache on UNIX system" ON)
 
 # Other parameters:
+# OPT_CC_TAG - Override default tag of comms_champion project.
 # OPT_QT_DIR - Path to custom Qt5 install directory.
-# OPT_CC_MAIN_INSTALL_DIR - Path to CommsChampion external install directory (if such already built).
-# OPT_TEST_OPTIONS - Class name of the options for test applications, defaults to ublox::options::DefaultOptions.
-# OPT_TEST_INTERFACE - Class name of the interface for test applications, defaults to ublox::Message.
-# OPT_TEST_FRAME - Class name of the frame for test applications, defaults to ublox::frame::UbloxFrame.
-# OPT_TEST_INPUT_MESSAGES - All input messages bundle for test applications, defaults to ublox::input::AllMessages.
+# OPT_CC_MAIN_INSTALL_DIR - Path to CommsChampion external install directory
+#       (if such already built).
+# OPT_TEST_OPTIONS - Class name of the options for test applications,
+#       defaults to ublox::options::DefaultOptions.
+# OPT_TEST_INTERFACE - Class name of the interface for test applications,
+#       defaults to ublox::Message.
+# OPT_TEST_FRAME - Class name of the frame for test applications,
+#       defaults to ublox::frame::UbloxFrame.
+# OPT_TEST_INPUT_MESSAGES - All input messages bundle for test applications,
+#       defaults to ublox::input::AllMessages.
+
+if ("${OPT_CC_TAG}" STREQUAL "")
+    set (OPT_CC_TAG "v1.3")
+endif()
 
 if (NOT CMAKE_CXX_STANDARD)
     set (CMAKE_CXX_STANDARD 11)
@@ -91,9 +103,9 @@ if (OPT_BUILD_TEST OR OPT_BUILD_PLUGIN)
     set (external_cc_needed TRUE)
 endif ()
 
-if (external_cc_needed AND ("${OPT_CC_MAIN_INSTALL_DIR}" STREQUAL ""))
+if ((external_cc_needed OR (NOT OPT_NO_COMMS)) AND ("${OPT_CC_MAIN_INSTALL_DIR}" STREQUAL ""))
     set (cc_repo "https://github.com/arobenko/comms_champion.git")
-    set (cc_tag "v1.3")
+    set (cc_tag "${OPT_CC_TAG}")
     set (cc_main_dir "${CMAKE_BINARY_DIR}/comms_champion")
     set (cc_src_dir "${cc_main_dir}/src")
     set (cc_bin_dir "${cc_main_dir}/build")
@@ -118,7 +130,7 @@ if (external_cc_needed AND ("${OPT_CC_MAIN_INSTALL_DIR}" STREQUAL ""))
 
         execute_process (
             COMMAND 
-                ${GIT_EXECUTABLE} clone -b ${COMMS_TAG} --depth 1 ${cc_repo} ${cc_src_dir}
+                ${GIT_EXECUTABLE} clone -b ${cc_tag} --depth 1 ${cc_repo} ${cc_src_dir}
             RESULT_VARIABLE git_result
         )
 
@@ -141,7 +153,7 @@ if (external_cc_needed AND ("${OPT_CC_MAIN_INSTALL_DIR}" STREQUAL ""))
         PREFIX "${cc_main_dir}"
         STAMP_DIR "${cc_bin_dir}"
         GIT_REPOSITORY ${cc_repo}
-        GIT_TAG ${COMMS_TAG}
+        GIT_TAG ${cc_tag}
         SOURCE_DIR "${cc_src_dir}"
         BINARY_DIR "${cc_bin_dir}"
         INSTALL_DIR "${cc_install_dir}"
