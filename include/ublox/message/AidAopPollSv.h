@@ -57,10 +57,10 @@ class AidAopPollSv : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::AidAopPollSv,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AidAop>,
-        comms::option::FieldsImpl<typename AidAopPollSvFields<TOpt>::All>,
-        comms::option::MsgType<AidAopPollSv<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAop>,
+        comms::option::def::FieldsImpl<typename AidAopPollSvFields<TOpt>::All>,
+        comms::option::def::MsgType<AidAopPollSv<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -68,10 +68,10 @@ class AidAopPollSv : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::AidAopPollSv,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AidAop>,
-            comms::option::FieldsImpl<typename AidAopPollSvFields<TOpt>::All>,
-            comms::option::MsgType<AidAopPollSv<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAop>,
+            comms::option::def::FieldsImpl<typename AidAopPollSvFields<TOpt>::All>,
+            comms::option::def::MsgType<AidAopPollSv<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

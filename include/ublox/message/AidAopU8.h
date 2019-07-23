@@ -69,7 +69,7 @@ struct AidAopU8Fields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::AidAopU8Fields::Data,
-            comms::option::SequenceFixedSize<64U>
+            comms::option::def::SequenceFixedSize<64U>
         >
     {
         /// @brief Name of the field.
@@ -99,20 +99,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AidAopU8 : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AidAop>,
-        comms::option::FieldsImpl<typename AidAopU8Fields<TOpt>::All>,
-        comms::option::MsgType<AidAopU8<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAop>,
+        comms::option::def::FieldsImpl<typename AidAopU8Fields<TOpt>::All>,
+        comms::option::def::MsgType<AidAopU8<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AidAop>,
-            comms::option::FieldsImpl<typename AidAopU8Fields<TOpt>::All>,
-            comms::option::MsgType<AidAopU8<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAop>,
+            comms::option::def::FieldsImpl<typename AidAopU8Fields<TOpt>::All>,
+            comms::option::def::MsgType<AidAopU8<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -67,8 +67,8 @@ struct NavAttFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 100000L>,
-            comms::option::UnitsDegrees
+            comms::option::def::ScalingRatio<1, 100000L>,
+            comms::option::def::UnitsDegrees
         >
     {
         /// @brief Name of the field.
@@ -84,8 +84,8 @@ struct NavAttFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 100000L>,
-            comms::option::UnitsDegrees
+            comms::option::def::ScalingRatio<1, 100000L>,
+            comms::option::def::UnitsDegrees
         >
     {
         /// @brief Name of the field.
@@ -101,8 +101,8 @@ struct NavAttFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 100000L>,
-            comms::option::UnitsDegrees
+            comms::option::def::ScalingRatio<1, 100000L>,
+            comms::option::def::UnitsDegrees
         >
     {
         /// @brief Name of the field.
@@ -118,8 +118,8 @@ struct NavAttFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 100000L>,
-            comms::option::UnitsDegrees
+            comms::option::def::ScalingRatio<1, 100000L>,
+            comms::option::def::UnitsDegrees
         >
     {
         /// @brief Name of the field.
@@ -135,8 +135,8 @@ struct NavAttFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 100000L>,
-            comms::option::UnitsDegrees
+            comms::option::def::ScalingRatio<1, 100000L>,
+            comms::option::def::UnitsDegrees
         >
     {
         /// @brief Name of the field.
@@ -152,8 +152,8 @@ struct NavAttFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 100000L>,
-            comms::option::UnitsDegrees
+            comms::option::def::ScalingRatio<1, 100000L>,
+            comms::option::def::UnitsDegrees
         >
     {
         /// @brief Name of the field.
@@ -188,20 +188,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class NavAtt : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavAtt>,
-        comms::option::FieldsImpl<typename NavAttFields<TOpt>::All>,
-        comms::option::MsgType<NavAtt<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavAtt>,
+        comms::option::def::FieldsImpl<typename NavAttFields<TOpt>::All>,
+        comms::option::def::MsgType<NavAtt<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavAtt>,
-            comms::option::FieldsImpl<typename NavAttFields<TOpt>::All>,
-            comms::option::MsgType<NavAtt<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavAtt>,
+            comms::option::def::FieldsImpl<typename NavAttFields<TOpt>::All>,
+            comms::option::def::MsgType<NavAtt<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

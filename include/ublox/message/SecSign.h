@@ -33,8 +33,8 @@ struct SecSignFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -94,7 +94,7 @@ struct SecSignFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::SecSignFields::Hash,
-            comms::option::SequenceFixedSize<32U>
+            comms::option::def::SequenceFixedSize<32U>
         >
     {
         /// @brief Name of the field.
@@ -126,10 +126,10 @@ class SecSign : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::SecSign,
-        comms::option::StaticNumIdImpl<ublox::MsgId_SecSign>,
-        comms::option::FieldsImpl<typename SecSignFields<TOpt>::All>,
-        comms::option::MsgType<SecSign<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_SecSign>,
+        comms::option::def::FieldsImpl<typename SecSignFields<TOpt>::All>,
+        comms::option::def::MsgType<SecSign<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -137,10 +137,10 @@ class SecSign : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::SecSign,
-            comms::option::StaticNumIdImpl<ublox::MsgId_SecSign>,
-            comms::option::FieldsImpl<typename SecSignFields<TOpt>::All>,
-            comms::option::MsgType<SecSign<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_SecSign>,
+            comms::option::def::FieldsImpl<typename SecSignFields<TOpt>::All>,
+            comms::option::def::MsgType<SecSign<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -41,7 +41,7 @@ struct TimVrfyFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -57,7 +57,7 @@ struct TimVrfyFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -73,7 +73,7 @@ struct TimVrfyFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -89,7 +89,7 @@ struct TimVrfyFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -118,8 +118,8 @@ struct TimVrfyFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 SrcVal,
-                comms::option::FixedBitLength<3U>,
-                comms::option::ValidNumValueRange<0, 2>
+                comms::option::def::FixedBitLength<3U>,
+                comms::option::def::ValidNumValueRange<0, 2>
             >
         {
             /// @brief Name of the field.
@@ -154,8 +154,8 @@ struct TimVrfyFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<5U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<5U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -245,10 +245,10 @@ class TimVrfy : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::TimVrfy,
-        comms::option::StaticNumIdImpl<ublox::MsgId_TimVrfy>,
-        comms::option::FieldsImpl<typename TimVrfyFields<TOpt>::All>,
-        comms::option::MsgType<TimVrfy<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_TimVrfy>,
+        comms::option::def::FieldsImpl<typename TimVrfyFields<TOpt>::All>,
+        comms::option::def::MsgType<TimVrfy<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -256,10 +256,10 @@ class TimVrfy : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::TimVrfy,
-            comms::option::StaticNumIdImpl<ublox::MsgId_TimVrfy>,
-            comms::option::FieldsImpl<typename TimVrfyFields<TOpt>::All>,
-            comms::option::MsgType<TimVrfy<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_TimVrfy>,
+            comms::option::def::FieldsImpl<typename TimVrfyFields<TOpt>::All>,
+            comms::option::def::MsgType<TimVrfy<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

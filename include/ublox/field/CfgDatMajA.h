@@ -23,8 +23,8 @@ class CfgDatMajA : public
         ublox::field::FieldBase<>,
         double,
         TExtraOpts...,
-        comms::option::UnitsMeters,
-        comms::option::InvalidByDefault
+        comms::option::def::UnitsMeters,
+        comms::option::def::InvalidByDefault
     >
 {
     using Base = 
@@ -32,8 +32,8 @@ class CfgDatMajA : public
             ublox::field::FieldBase<>,
             double,
             TExtraOpts...,
-            comms::option::UnitsMeters,
-            comms::option::InvalidByDefault
+            comms::option::def::UnitsMeters,
+            comms::option::def::InvalidByDefault
         >;
 public:
     /// @brief Name of the field.

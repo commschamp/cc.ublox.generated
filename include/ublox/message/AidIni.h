@@ -39,7 +39,7 @@ struct AidIniFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::UnitsCentimeters
+                comms::option::def::UnitsCentimeters
             >
         {
             /// @brief Name of the field.
@@ -56,7 +56,7 @@ struct AidIniFields
     struct EcefX : public
         comms::field::Optional<
             typename EcefXMembers::EcefX,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -75,8 +75,8 @@ struct AidIniFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::ScalingRatio<1, 10000000L>,
-                comms::option::UnitsDegrees
+                comms::option::def::ScalingRatio<1, 10000000L>,
+                comms::option::def::UnitsDegrees
             >
         {
             /// @brief Name of the field.
@@ -93,7 +93,7 @@ struct AidIniFields
     struct Lat : public
         comms::field::Optional<
             typename LatMembers::Lat,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -112,7 +112,7 @@ struct AidIniFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::UnitsCentimeters
+                comms::option::def::UnitsCentimeters
             >
         {
             /// @brief Name of the field.
@@ -129,7 +129,7 @@ struct AidIniFields
     struct EcefY : public
         comms::field::Optional<
             typename EcefYMembers::EcefY,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -148,8 +148,8 @@ struct AidIniFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::ScalingRatio<1, 10000000L>,
-                comms::option::UnitsDegrees
+                comms::option::def::ScalingRatio<1, 10000000L>,
+                comms::option::def::UnitsDegrees
             >
         {
             /// @brief Name of the field.
@@ -166,7 +166,7 @@ struct AidIniFields
     struct Lon : public
         comms::field::Optional<
             typename LonMembers::Lon,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -185,7 +185,7 @@ struct AidIniFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::UnitsCentimeters
+                comms::option::def::UnitsCentimeters
             >
         {
             /// @brief Name of the field.
@@ -202,7 +202,7 @@ struct AidIniFields
     struct EcefZ : public
         comms::field::Optional<
             typename EcefZMembers::EcefZ,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -221,7 +221,7 @@ struct AidIniFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::UnitsCentimeters
+                comms::option::def::UnitsCentimeters
             >
         {
             /// @brief Name of the field.
@@ -238,7 +238,7 @@ struct AidIniFields
     struct Alt : public
         comms::field::Optional<
             typename AltMembers::Alt,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -254,7 +254,7 @@ struct AidIniFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -269,15 +269,15 @@ struct AidIniFields
     class TmCfg : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<2U>,
-            comms::option::BitmaskReservedBits<0xFFADU, 0x0U>
+            comms::option::def::FixedLength<2U>,
+            comms::option::def::BitmaskReservedBits<0xFFADU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<2U>,
-                comms::option::BitmaskReservedBits<0xFFADU, 0x0U>
+                comms::option::def::FixedLength<2U>,
+                comms::option::def::BitmaskReservedBits<0xFFADU, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -349,7 +349,7 @@ struct AidIniFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint16_t,
-                comms::option::UnitsWeeks
+                comms::option::def::UnitsWeeks
             >
         {
             /// @brief Name of the field.
@@ -366,7 +366,7 @@ struct AidIniFields
     struct Wno : public
         comms::field::Optional<
             typename WnoMembers::Wno,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -388,10 +388,10 @@ struct AidIniFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int16_t,
-                    comms::option::FixedLength<1U>,
-                    comms::option::NumValueSerOffset<-2000>,
-                    comms::option::DefaultNumValue<2000>,
-                    comms::option::ValidNumValueRange<2000, 2255>
+                    comms::option::def::FixedLength<1U>,
+                    comms::option::def::NumValueSerOffset<-2000>,
+                    comms::option::def::DefaultNumValue<2000>,
+                    comms::option::def::ValidNumValueRange<2000, 2255>
                 >
             {
                 /// @brief Name of the field.
@@ -465,7 +465,7 @@ struct AidIniFields
     struct Date : public
         comms::field::Optional<
             typename DateMembers::DateBundle,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -484,7 +484,7 @@ struct AidIniFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::UnitsMilliseconds
+                comms::option::def::UnitsMilliseconds
             >
         {
             /// @brief Name of the field.
@@ -501,7 +501,7 @@ struct AidIniFields
     struct Tow : public
         comms::field::Optional<
             typename TowMembers::Tow,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -523,7 +523,7 @@ struct AidIniFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::UnitsDays
+                    comms::option::def::UnitsDays
                 >
             {
                 /// @brief Name of the field.
@@ -539,7 +539,7 @@ struct AidIniFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::UnitsHours
+                    comms::option::def::UnitsHours
                 >
             {
                 /// @brief Name of the field.
@@ -555,7 +555,7 @@ struct AidIniFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::UnitsMinutes
+                    comms::option::def::UnitsMinutes
                 >
             {
                 /// @brief Name of the field.
@@ -571,7 +571,7 @@ struct AidIniFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::UnitsSeconds
+                    comms::option::def::UnitsSeconds
                 >
             {
                 /// @brief Name of the field.
@@ -636,7 +636,7 @@ struct AidIniFields
     struct Time : public
         comms::field::Optional<
             typename TimeMembers::TimeBundle,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -652,7 +652,7 @@ struct AidIniFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -668,7 +668,7 @@ struct AidIniFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -684,7 +684,7 @@ struct AidIniFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -703,7 +703,7 @@ struct AidIniFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::UnitsNanoseconds
+                comms::option::def::UnitsNanoseconds
             >
         {
             /// @brief Name of the field.
@@ -720,7 +720,7 @@ struct AidIniFields
     struct ClkD : public
         comms::field::Optional<
             typename ClkDMembers::ClkD,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -739,8 +739,8 @@ struct AidIniFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::ScalingRatio<1, 100>,
-                comms::option::UnitsHertz
+                comms::option::def::ScalingRatio<1, 100>,
+                comms::option::def::UnitsHertz
             >
         {
             /// @brief Name of the field.
@@ -757,7 +757,7 @@ struct AidIniFields
     struct Freq : public
         comms::field::Optional<
             typename FreqMembers::Freq,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -776,7 +776,7 @@ struct AidIniFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::UnitsNanoseconds
+                comms::option::def::UnitsNanoseconds
             >
         {
             /// @brief Name of the field.
@@ -793,7 +793,7 @@ struct AidIniFields
     struct ClkDAcc : public
         comms::field::Optional<
             typename ClkDAccMembers::ClkDAcc,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -828,7 +828,7 @@ struct AidIniFields
     struct FreqAcc : public
         comms::field::Optional<
             typename FreqAccMembers::FreqAcc,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -843,15 +843,15 @@ struct AidIniFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<4U>,
-            comms::option::BitmaskReservedBits<0xFFFFFB00UL, 0x0U>
+            comms::option::def::FixedLength<4U>,
+            comms::option::def::BitmaskReservedBits<0xFFFFFB00UL, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<4U>,
-                comms::option::BitmaskReservedBits<0xFFFFFB00UL, 0x0U>
+                comms::option::def::FixedLength<4U>,
+                comms::option::def::BitmaskReservedBits<0xFFFFFB00UL, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -978,22 +978,22 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AidIni : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AidIni>,
-        comms::option::FieldsImpl<typename AidIniFields<TOpt>::All>,
-        comms::option::MsgType<AidIni<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AidIni>,
+        comms::option::def::FieldsImpl<typename AidIniFields<TOpt>::All>,
+        comms::option::def::MsgType<AidIni<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AidIni>,
-            comms::option::FieldsImpl<typename AidIniFields<TOpt>::All>,
-            comms::option::MsgType<AidIni<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AidIni>,
+            comms::option::def::FieldsImpl<typename AidIniFields<TOpt>::All>,
+            comms::option::def::MsgType<AidIni<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

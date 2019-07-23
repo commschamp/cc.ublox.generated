@@ -37,10 +37,10 @@ class MonPatchPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonPatchPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonPatch>,
-        comms::option::FieldsImpl<typename MonPatchPollFields<TOpt>::All>,
-        comms::option::MsgType<MonPatchPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonPatch>,
+        comms::option::def::FieldsImpl<typename MonPatchPollFields<TOpt>::All>,
+        comms::option::def::MsgType<MonPatchPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class MonPatchPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonPatchPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonPatch>,
-            comms::option::FieldsImpl<typename MonPatchPollFields<TOpt>::All>,
-            comms::option::MsgType<MonPatchPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonPatch>,
+            comms::option::def::FieldsImpl<typename MonPatchPollFields<TOpt>::All>,
+            comms::option::def::MsgType<MonPatchPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -41,8 +41,8 @@ struct LogInfoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -341,15 +341,15 @@ struct LogInfoFields
     class Status : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xC7U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xC7U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xC7U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xC7U, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -465,10 +465,10 @@ class LogInfo : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::LogInfo,
-        comms::option::StaticNumIdImpl<ublox::MsgId_LogInfo>,
-        comms::option::FieldsImpl<typename LogInfoFields<TOpt>::All>,
-        comms::option::MsgType<LogInfo<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_LogInfo>,
+        comms::option::def::FieldsImpl<typename LogInfoFields<TOpt>::All>,
+        comms::option::def::MsgType<LogInfo<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -476,10 +476,10 @@ class LogInfo : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::LogInfo,
-            comms::option::StaticNumIdImpl<ublox::MsgId_LogInfo>,
-            comms::option::FieldsImpl<typename LogInfoFields<TOpt>::All>,
-            comms::option::MsgType<LogInfo<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_LogInfo>,
+            comms::option::def::FieldsImpl<typename LogInfoFields<TOpt>::All>,
+            comms::option::def::MsgType<LogInfo<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

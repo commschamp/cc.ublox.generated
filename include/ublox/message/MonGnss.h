@@ -33,8 +33,8 @@ struct MonGnssFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -49,15 +49,15 @@ struct MonGnssFields
     class Supported : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -109,15 +109,15 @@ struct MonGnssFields
     class DefaultGnss : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -169,15 +169,15 @@ struct MonGnssFields
     class Enabled : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -276,10 +276,10 @@ class MonGnss : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonGnss,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonGnss>,
-        comms::option::FieldsImpl<typename MonGnssFields<TOpt>::All>,
-        comms::option::MsgType<MonGnss<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonGnss>,
+        comms::option::def::FieldsImpl<typename MonGnssFields<TOpt>::All>,
+        comms::option::def::MsgType<MonGnss<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -287,10 +287,10 @@ class MonGnss : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonGnss,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonGnss>,
-            comms::option::FieldsImpl<typename MonGnssFields<TOpt>::All>,
-            comms::option::MsgType<MonGnss<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonGnss>,
+            comms::option::def::FieldsImpl<typename MonGnssFields<TOpt>::All>,
+            comms::option::def::MsgType<MonGnss<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

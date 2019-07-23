@@ -44,7 +44,7 @@ struct NavTimelsFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -90,8 +90,8 @@ struct NavTimelsFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             SrcOfCurrLsVal,
-            comms::option::ValidNumValueRange<0, 7>,
-            comms::option::ValidNumValue<255>
+            comms::option::def::ValidNumValueRange<0, 7>,
+            comms::option::def::ValidNumValue<255>
         >
     {
         /// @brief Name of the field.
@@ -137,7 +137,7 @@ struct NavTimelsFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -166,8 +166,8 @@ struct NavTimelsFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             SrcOfLsChangeVal,
-            comms::option::ValidNumValue<0>,
-            comms::option::ValidNumValueRange<2, 6>
+            comms::option::def::ValidNumValue<0>,
+            comms::option::def::ValidNumValueRange<2, 6>
         >
     {
         /// @brief Name of the field.
@@ -204,7 +204,7 @@ struct NavTimelsFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -220,7 +220,7 @@ struct NavTimelsFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -279,15 +279,15 @@ struct NavTimelsFields
     class Valid : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -357,10 +357,10 @@ class NavTimels : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavTimels,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavTimels>,
-        comms::option::FieldsImpl<typename NavTimelsFields<TOpt>::All>,
-        comms::option::MsgType<NavTimels<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavTimels>,
+        comms::option::def::FieldsImpl<typename NavTimelsFields<TOpt>::All>,
+        comms::option::def::MsgType<NavTimels<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -368,10 +368,10 @@ class NavTimels : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavTimels,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavTimels>,
-            comms::option::FieldsImpl<typename NavTimelsFields<TOpt>::All>,
-            comms::option::MsgType<NavTimels<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavTimels>,
+            comms::option::def::FieldsImpl<typename NavTimelsFields<TOpt>::All>,
+            comms::option::def::MsgType<NavTimels<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

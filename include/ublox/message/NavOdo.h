@@ -32,7 +32,7 @@ struct NavOdoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -68,7 +68,7 @@ struct NavOdoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMeters
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -84,7 +84,7 @@ struct NavOdoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMeters
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -100,7 +100,7 @@ struct NavOdoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMeters
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -133,10 +133,10 @@ class NavOdo : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavOdo,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavOdo>,
-        comms::option::FieldsImpl<typename NavOdoFields<TOpt>::All>,
-        comms::option::MsgType<NavOdo<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavOdo>,
+        comms::option::def::FieldsImpl<typename NavOdoFields<TOpt>::All>,
+        comms::option::def::MsgType<NavOdo<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -144,10 +144,10 @@ class NavOdo : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavOdo,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavOdo>,
-            comms::option::FieldsImpl<typename NavOdoFields<TOpt>::All>,
-            comms::option::MsgType<NavOdo<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavOdo>,
+            comms::option::def::FieldsImpl<typename NavOdoFields<TOpt>::All>,
+            comms::option::def::MsgType<NavOdo<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

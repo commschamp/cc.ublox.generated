@@ -37,10 +37,10 @@ class NavResetodo : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavResetodo,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavResetodo>,
-        comms::option::FieldsImpl<typename NavResetodoFields<TOpt>::All>,
-        comms::option::MsgType<NavResetodo<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavResetodo>,
+        comms::option::def::FieldsImpl<typename NavResetodoFields<TOpt>::All>,
+        comms::option::def::MsgType<NavResetodo<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class NavResetodo : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavResetodo,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavResetodo>,
-            comms::option::FieldsImpl<typename NavResetodoFields<TOpt>::All>,
-            comms::option::MsgType<NavResetodo<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavResetodo>,
+            comms::option::def::FieldsImpl<typename NavResetodoFields<TOpt>::All>,
+            comms::option::def::MsgType<NavResetodo<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

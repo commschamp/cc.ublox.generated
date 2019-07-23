@@ -37,10 +37,10 @@ class HnrPvtPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::HnrPvtPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_HnrPvt>,
-        comms::option::FieldsImpl<typename HnrPvtPollFields<TOpt>::All>,
-        comms::option::MsgType<HnrPvtPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_HnrPvt>,
+        comms::option::def::FieldsImpl<typename HnrPvtPollFields<TOpt>::All>,
+        comms::option::def::MsgType<HnrPvtPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class HnrPvtPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::HnrPvtPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_HnrPvt>,
-            comms::option::FieldsImpl<typename HnrPvtPollFields<TOpt>::All>,
-            comms::option::MsgType<HnrPvtPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_HnrPvt>,
+            comms::option::def::FieldsImpl<typename HnrPvtPollFields<TOpt>::All>,
+            comms::option::def::MsgType<HnrPvtPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

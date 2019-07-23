@@ -34,9 +34,9 @@ struct CfgPm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -66,7 +66,7 @@ struct CfgPm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -102,7 +102,7 @@ struct CfgPm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -118,7 +118,7 @@ struct CfgPm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -134,7 +134,7 @@ struct CfgPm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -150,7 +150,7 @@ struct CfgPm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -166,7 +166,7 @@ struct CfgPm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -202,7 +202,7 @@ struct CfgPm2Fields
             ublox::field::FieldBase<>,
             typename Reserved3Members::Reserved3,
             typename TOpt::message::CfgPm2Fields::Reserved3,
-            comms::option::SequenceFixedSize<5U>
+            comms::option::def::SequenceFixedSize<5U>
         >
     {
         /// @brief Name of the field.
@@ -239,20 +239,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPm2 : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgPm2>,
-        comms::option::FieldsImpl<typename CfgPm2Fields<TOpt>::All>,
-        comms::option::MsgType<CfgPm2<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPm2>,
+        comms::option::def::FieldsImpl<typename CfgPm2Fields<TOpt>::All>,
+        comms::option::def::MsgType<CfgPm2<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgPm2>,
-            comms::option::FieldsImpl<typename CfgPm2Fields<TOpt>::All>,
-            comms::option::MsgType<CfgPm2<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPm2>,
+            comms::option::def::FieldsImpl<typename CfgPm2Fields<TOpt>::All>,
+            comms::option::def::MsgType<CfgPm2<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

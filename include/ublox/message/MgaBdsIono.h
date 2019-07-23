@@ -32,9 +32,9 @@ struct MgaBdsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<6>,
-            comms::option::ValidNumValue<6>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<6>,
+            comms::option::def::ValidNumValue<6>
         >
     {
         /// @brief Name of the field.
@@ -50,7 +50,7 @@ struct MgaBdsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -80,8 +80,8 @@ struct MgaBdsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 1073741824L>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 1073741824L>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -97,7 +97,7 @@ struct MgaBdsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 134217728L>
+            comms::option::def::ScalingRatio<1, 134217728L>
         >
     {
         /// @brief Name of the field.
@@ -113,7 +113,7 @@ struct MgaBdsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 16777216L>
+            comms::option::def::ScalingRatio<1, 16777216L>
         >
     {
         /// @brief Name of the field.
@@ -129,7 +129,7 @@ struct MgaBdsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 16777216L>
+            comms::option::def::ScalingRatio<1, 16777216L>
         >
     {
         /// @brief Name of the field.
@@ -145,8 +145,8 @@ struct MgaBdsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<2048, 1>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<2048, 1>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -162,7 +162,7 @@ struct MgaBdsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<16384, 1>
+            comms::option::def::ScalingRatio<16384, 1>
         >
     {
         /// @brief Name of the field.
@@ -178,7 +178,7 @@ struct MgaBdsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<65536L, 1>
+            comms::option::def::ScalingRatio<65536L, 1>
         >
     {
         /// @brief Name of the field.
@@ -194,7 +194,7 @@ struct MgaBdsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<65536L, 1>
+            comms::option::def::ScalingRatio<65536L, 1>
         >
     {
         /// @brief Name of the field.
@@ -247,10 +247,10 @@ class MgaBdsIono : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaBdsIono,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaBds>,
-        comms::option::FieldsImpl<typename MgaBdsIonoFields<TOpt>::All>,
-        comms::option::MsgType<MgaBdsIono<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaBds>,
+        comms::option::def::FieldsImpl<typename MgaBdsIonoFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaBdsIono<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -258,10 +258,10 @@ class MgaBdsIono : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaBdsIono,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaBds>,
-            comms::option::FieldsImpl<typename MgaBdsIonoFields<TOpt>::All>,
-            comms::option::MsgType<MgaBdsIono<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaBds>,
+            comms::option::def::FieldsImpl<typename MgaBdsIonoFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaBdsIono<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

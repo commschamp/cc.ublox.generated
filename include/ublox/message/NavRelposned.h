@@ -36,7 +36,7 @@ struct NavRelposnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -66,7 +66,7 @@ struct NavRelposnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ValidNumValueRange<0, 4095>
+            comms::option::def::ValidNumValueRange<0, 4095>
         >
     {
         /// @brief Name of the field.
@@ -88,7 +88,7 @@ struct NavRelposnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -104,7 +104,7 @@ struct NavRelposnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -120,7 +120,7 @@ struct NavRelposnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -136,9 +136,9 @@ struct NavRelposnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters,
-            comms::option::ValidNumValueRange<-99, 99>
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters,
+            comms::option::def::ValidNumValueRange<-99, 99>
         >
     {
         /// @brief Name of the field.
@@ -154,9 +154,9 @@ struct NavRelposnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters,
-            comms::option::ValidNumValueRange<-99, 99>
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters,
+            comms::option::def::ValidNumValueRange<-99, 99>
         >
     {
         /// @brief Name of the field.
@@ -172,9 +172,9 @@ struct NavRelposnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters,
-            comms::option::ValidNumValueRange<-99, 99>
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters,
+            comms::option::def::ValidNumValueRange<-99, 99>
         >
     {
         /// @brief Name of the field.
@@ -204,8 +204,8 @@ struct NavRelposnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters
         >
     {
         /// @brief Name of the field.
@@ -221,8 +221,8 @@ struct NavRelposnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters
         >
     {
         /// @brief Name of the field.
@@ -238,8 +238,8 @@ struct NavRelposnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters
         >
     {
         /// @brief Name of the field.
@@ -257,13 +257,13 @@ struct NavRelposnedFields
         class BitsLow : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<3U>
+                comms::option::def::FixedBitLength<3U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<3U>
+                    comms::option::def::FixedBitLength<3U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -323,8 +323,8 @@ struct NavRelposnedFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 CarrSolnVal,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValueRange<0, 2>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValueRange<0, 2>
             >
         {
             /// @brief Name of the field.
@@ -356,15 +356,15 @@ struct NavRelposnedFields
         class BitsHigh : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<27U>,
-                comms::option::BitmaskReservedBits<0x7FFFFF8UL, 0x0U>
+                comms::option::def::FixedBitLength<27U>,
+                comms::option::def::BitmaskReservedBits<0x7FFFFF8UL, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<27U>,
-                    comms::option::BitmaskReservedBits<0x7FFFFF8UL, 0x0U>
+                    comms::option::def::FixedBitLength<27U>,
+                    comms::option::def::BitmaskReservedBits<0x7FFFFF8UL, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -485,10 +485,10 @@ class NavRelposned : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavRelposned,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavRelposned>,
-        comms::option::FieldsImpl<typename NavRelposnedFields<TOpt>::All>,
-        comms::option::MsgType<NavRelposned<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavRelposned>,
+        comms::option::def::FieldsImpl<typename NavRelposnedFields<TOpt>::All>,
+        comms::option::def::MsgType<NavRelposned<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -496,10 +496,10 @@ class NavRelposned : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavRelposned,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavRelposned>,
-            comms::option::FieldsImpl<typename NavRelposnedFields<TOpt>::All>,
-            comms::option::MsgType<NavRelposned<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavRelposned>,
+            comms::option::def::FieldsImpl<typename NavRelposnedFields<TOpt>::All>,
+            comms::option::def::MsgType<NavRelposned<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

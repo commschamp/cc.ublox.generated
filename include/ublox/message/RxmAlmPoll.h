@@ -37,10 +37,10 @@ class RxmAlmPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmAlmPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmAlm>,
-        comms::option::FieldsImpl<typename RxmAlmPollFields<TOpt>::All>,
-        comms::option::MsgType<RxmAlmPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmAlm>,
+        comms::option::def::FieldsImpl<typename RxmAlmPollFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmAlmPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class RxmAlmPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmAlmPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmAlm>,
-            comms::option::FieldsImpl<typename RxmAlmPollFields<TOpt>::All>,
-            comms::option::MsgType<RxmAlmPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmAlm>,
+            comms::option::def::FieldsImpl<typename RxmAlmPollFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmAlmPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -37,7 +37,7 @@ struct CfgEsrcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -97,7 +97,7 @@ struct CfgEsrcFields
                 comms::field::EnumValue<
                     ublox::field::FieldBase<>,
                     ExtIntVal,
-                    comms::option::ValidNumValueRange<0, 1>
+                    comms::option::def::ValidNumValueRange<0, 1>
                 >
             {
                 /// @brief Name of the field.
@@ -140,7 +140,7 @@ struct CfgEsrcFields
                 comms::field::EnumValue<
                     ublox::field::FieldBase<>,
                     SourceTypeVal,
-                    comms::option::ValidNumValueRange<0, 3>
+                    comms::option::def::ValidNumValueRange<0, 3>
                 >
             {
                 /// @brief Name of the field.
@@ -173,15 +173,15 @@ struct CfgEsrcFields
             class Flags : public
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedLength<2U>,
-                    comms::option::BitmaskReservedBits<0xFFFCU, 0x0U>
+                    comms::option::def::FixedLength<2U>,
+                    comms::option::def::BitmaskReservedBits<0xFFFCU, 0x0U>
                 >
             {
                 using Base = 
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedLength<2U>,
-                        comms::option::BitmaskReservedBits<0xFFFCU, 0x0U>
+                        comms::option::def::FixedLength<2U>,
+                        comms::option::def::BitmaskReservedBits<0xFFFCU, 0x0U>
                     >;
             public:
                 /// @brief Provides names and generates access functions for internal bits.
@@ -228,8 +228,8 @@ struct CfgEsrcFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::ScalingRatio<1, 4>,
-                    comms::option::UnitsHertz
+                    comms::option::def::ScalingRatio<1, 4>,
+                    comms::option::def::UnitsHertz
                 >
             {
                 /// @brief Name of the field.
@@ -259,7 +259,7 @@ struct CfgEsrcFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::ScalingRatio<1, 256>
+                    comms::option::def::ScalingRatio<1, 256>
                 >
             {
                 /// @brief Name of the field.
@@ -275,7 +275,7 @@ struct CfgEsrcFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::ScalingRatio<1, 256>
+                    comms::option::def::ScalingRatio<1, 256>
                 >
             {
                 /// @brief Name of the field.
@@ -291,7 +291,7 @@ struct CfgEsrcFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint16_t,
-                    comms::option::UnitsSeconds
+                    comms::option::def::UnitsSeconds
                 >
             {
                 /// @brief Name of the field.
@@ -322,7 +322,7 @@ struct CfgEsrcFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::UnitsNanoseconds
+                    comms::option::def::UnitsNanoseconds
                 >
             {
                 /// @brief Name of the field.
@@ -338,7 +338,7 @@ struct CfgEsrcFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::UnitsNanoseconds
+                    comms::option::def::UnitsNanoseconds
                 >
             {
                 /// @brief Name of the field.
@@ -354,7 +354,7 @@ struct CfgEsrcFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::UnitsNanoseconds
+                    comms::option::def::UnitsNanoseconds
                 >
             {
                 /// @brief Name of the field.
@@ -445,7 +445,7 @@ struct CfgEsrcFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::CfgEsrcFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -475,22 +475,22 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgEsrc : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgEsrc>,
-        comms::option::FieldsImpl<typename CfgEsrcFields<TOpt>::All>,
-        comms::option::MsgType<CfgEsrc<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgEsrc>,
+        comms::option::def::FieldsImpl<typename CfgEsrcFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgEsrc<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgEsrc>,
-            comms::option::FieldsImpl<typename CfgEsrcFields<TOpt>::All>,
-            comms::option::MsgType<CfgEsrc<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgEsrc>,
+            comms::option::def::FieldsImpl<typename CfgEsrcFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgEsrc<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

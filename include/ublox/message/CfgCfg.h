@@ -76,15 +76,15 @@ struct CfgCfgFields
         class DeviceMask : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xE8U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xE8U, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedLength<1U>,
-                    comms::option::BitmaskReservedBits<0xE8U, 0x0U>
+                    comms::option::def::FixedLength<1U>,
+                    comms::option::def::BitmaskReservedBits<0xE8U, 0x0U>
                 >;
         public:
             /// @brief Provide names for internal bits.
@@ -186,10 +186,10 @@ class CfgCfg : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgCfg,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgCfg>,
-        comms::option::FieldsImpl<typename CfgCfgFields<TOpt>::All>,
-        comms::option::MsgType<CfgCfg<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgCfg>,
+        comms::option::def::FieldsImpl<typename CfgCfgFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgCfg<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -197,10 +197,10 @@ class CfgCfg : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgCfg,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgCfg>,
-            comms::option::FieldsImpl<typename CfgCfgFields<TOpt>::All>,
-            comms::option::MsgType<CfgCfg<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgCfg>,
+            comms::option::def::FieldsImpl<typename CfgCfgFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgCfg<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

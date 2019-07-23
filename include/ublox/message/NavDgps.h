@@ -45,7 +45,7 @@ struct NavDgpsFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -115,7 +115,7 @@ struct NavDgpsFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             StatusVal,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -185,7 +185,7 @@ struct NavDgpsFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<4U>
+                        comms::option::def::FixedBitLength<4U>
                     >
                 {
                     /// @brief Name of the field.
@@ -200,15 +200,15 @@ struct NavDgpsFields
                 class Bits : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<4U>,
-                        comms::option::BitmaskReservedBits<0xEU, 0x0U>
+                        comms::option::def::FixedBitLength<4U>,
+                        comms::option::def::BitmaskReservedBits<0xEU, 0x0U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<4U>,
-                            comms::option::BitmaskReservedBits<0xEU, 0x0U>
+                            comms::option::def::FixedBitLength<4U>,
+                            comms::option::def::BitmaskReservedBits<0xEU, 0x0U>
                         >;
                 public:
                     /// @brief Provides names and generates access functions for internal bits.
@@ -294,7 +294,7 @@ struct NavDgpsFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint16_t,
-                    comms::option::UnitsMilliseconds
+                    comms::option::def::UnitsMilliseconds
                 >
             {
                 /// @brief Name of the field.
@@ -310,7 +310,7 @@ struct NavDgpsFields
                 comms::field::FloatValue<
                     ublox::field::FieldBase<>,
                     float,
-                    comms::option::UnitsMeters
+                    comms::option::def::UnitsMeters
                 >
             {
                 /// @brief Name of the field.
@@ -326,7 +326,7 @@ struct NavDgpsFields
                 comms::field::FloatValue<
                     ublox::field::FieldBase<>,
                     float,
-                    comms::option::UnitsMetersPerSecond
+                    comms::option::def::UnitsMetersPerSecond
                 >
             {
                 /// @brief Name of the field.
@@ -396,7 +396,7 @@ struct NavDgpsFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::NavDgpsFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -431,11 +431,11 @@ class NavDgps : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavDgps,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavDgps>,
-        comms::option::FieldsImpl<typename NavDgpsFields<TOpt>::All>,
-        comms::option::MsgType<NavDgps<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavDgps>,
+        comms::option::def::FieldsImpl<typename NavDgpsFields<TOpt>::All>,
+        comms::option::def::MsgType<NavDgps<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -443,11 +443,11 @@ class NavDgps : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavDgps,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavDgps>,
-            comms::option::FieldsImpl<typename NavDgpsFields<TOpt>::All>,
-            comms::option::MsgType<NavDgps<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavDgps>,
+            comms::option::def::FieldsImpl<typename NavDgpsFields<TOpt>::All>,
+            comms::option::def::MsgType<NavDgps<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

@@ -49,7 +49,7 @@ struct CfgDatFields
         comms::field::String<
             ublox::field::FieldBase<>,
             typename TOpt::message::CfgDatFields::DatumName,
-            comms::option::SequenceFixedSize<6U>
+            comms::option::def::SequenceFixedSize<6U>
         >
     {
         /// @brief Name of the field.
@@ -213,10 +213,10 @@ class CfgDat : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgDat,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgDat>,
-        comms::option::FieldsImpl<typename CfgDatFields<TOpt>::All>,
-        comms::option::MsgType<CfgDat<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgDat>,
+        comms::option::def::FieldsImpl<typename CfgDatFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgDat<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -224,10 +224,10 @@ class CfgDat : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgDat,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgDat>,
-            comms::option::FieldsImpl<typename CfgDatFields<TOpt>::All>,
-            comms::option::MsgType<CfgDat<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgDat>,
+            comms::option::def::FieldsImpl<typename CfgDatFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgDat<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

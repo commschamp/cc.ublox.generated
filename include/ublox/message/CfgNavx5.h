@@ -39,8 +39,8 @@ struct CfgNavx5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::ValidNumValue<0>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -328,20 +328,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgNavx5 : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgNavx5>,
-        comms::option::FieldsImpl<typename CfgNavx5Fields<TOpt>::All>,
-        comms::option::MsgType<CfgNavx5<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgNavx5>,
+        comms::option::def::FieldsImpl<typename CfgNavx5Fields<TOpt>::All>,
+        comms::option::def::MsgType<CfgNavx5<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgNavx5>,
-            comms::option::FieldsImpl<typename CfgNavx5Fields<TOpt>::All>,
-            comms::option::MsgType<CfgNavx5<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgNavx5>,
+            comms::option::def::FieldsImpl<typename CfgNavx5Fields<TOpt>::All>,
+            comms::option::def::MsgType<CfgNavx5<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -37,10 +37,10 @@ class MonHw2Poll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonHw2Poll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonHw2>,
-        comms::option::FieldsImpl<typename MonHw2PollFields<TOpt>::All>,
-        comms::option::MsgType<MonHw2Poll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonHw2>,
+        comms::option::def::FieldsImpl<typename MonHw2PollFields<TOpt>::All>,
+        comms::option::def::MsgType<MonHw2Poll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class MonHw2Poll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonHw2Poll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonHw2>,
-            comms::option::FieldsImpl<typename MonHw2PollFields<TOpt>::All>,
-            comms::option::MsgType<MonHw2Poll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonHw2>,
+            comms::option::def::FieldsImpl<typename MonHw2PollFields<TOpt>::All>,
+            comms::option::def::MsgType<MonHw2Poll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -36,8 +36,8 @@ struct CfgPrtPortId : public
         ublox::field::FieldBase<>,
         CfgPrtPortIdVal,
         TExtraOpts...,
-        comms::option::ValidNumValueRange<0, 1>,
-        comms::option::ValidNumValueRange<3, 4>
+        comms::option::def::ValidNumValueRange<0, 1>,
+        comms::option::def::ValidNumValueRange<3, 4>
     >
 {
     /// @brief Name of the field.

@@ -37,7 +37,7 @@ struct NavHpposecefFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -147,8 +147,8 @@ struct NavHpposecefFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters
         >
     {
         /// @brief Name of the field.
@@ -186,10 +186,10 @@ class NavHpposecef : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavHpposecef,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavHpposecef>,
-        comms::option::FieldsImpl<typename NavHpposecefFields<TOpt>::All>,
-        comms::option::MsgType<NavHpposecef<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavHpposecef>,
+        comms::option::def::FieldsImpl<typename NavHpposecefFields<TOpt>::All>,
+        comms::option::def::MsgType<NavHpposecef<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -197,10 +197,10 @@ class NavHpposecef : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavHpposecef,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavHpposecef>,
-            comms::option::FieldsImpl<typename NavHpposecefFields<TOpt>::All>,
-            comms::option::MsgType<NavHpposecef<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavHpposecef>,
+            comms::option::def::FieldsImpl<typename NavHpposecefFields<TOpt>::All>,
+            comms::option::def::MsgType<NavHpposecef<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

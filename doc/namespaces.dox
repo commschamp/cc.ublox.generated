@@ -22,3 +22,6 @@
 /// @namespace ublox::input
 /// @brief Main namespace for hold input messages bundles.
 
+/// @namespace ublox::dispatch
+/// @brief Main namespace for the various message dispatch functions.
+

@@ -37,10 +37,10 @@ class UpdSosPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::UpdSosPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_UpdSos>,
-        comms::option::FieldsImpl<typename UpdSosPollFields<TOpt>::All>,
-        comms::option::MsgType<UpdSosPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_UpdSos>,
+        comms::option::def::FieldsImpl<typename UpdSosPollFields<TOpt>::All>,
+        comms::option::def::MsgType<UpdSosPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class UpdSosPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::UpdSosPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_UpdSos>,
-            comms::option::FieldsImpl<typename UpdSosPollFields<TOpt>::All>,
-            comms::option::MsgType<UpdSosPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_UpdSos>,
+            comms::option::def::FieldsImpl<typename UpdSosPollFields<TOpt>::All>,
+            comms::option::def::MsgType<UpdSosPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

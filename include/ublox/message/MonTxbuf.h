@@ -56,7 +56,7 @@ struct MonTxbufFields
             ublox::field::FieldBase<>,
             typename PendingMembers::Element,
             typename TOpt::message::MonTxbufFields::Pending,
-            comms::option::SequenceFixedSize<6U>
+            comms::option::def::SequenceFixedSize<6U>
         >
     {
         /// @brief Name of the field.
@@ -93,7 +93,7 @@ struct MonTxbufFields
             ublox::field::FieldBase<>,
             typename UsageMembers::Element,
             typename TOpt::message::MonTxbufFields::Usage,
-            comms::option::SequenceFixedSize<6U>
+            comms::option::def::SequenceFixedSize<6U>
         >
     {
         /// @brief Name of the field.
@@ -130,7 +130,7 @@ struct MonTxbufFields
             ublox::field::FieldBase<>,
             typename PeakUsageMembers::Element,
             typename TOpt::message::MonTxbufFields::PeakUsage,
-            comms::option::SequenceFixedSize<6U>
+            comms::option::def::SequenceFixedSize<6U>
         >
     {
         /// @brief Name of the field.
@@ -179,7 +179,7 @@ struct MonTxbufFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<6U>
+                comms::option::def::FixedBitLength<6U>
             >
         {
             /// @brief Name of the field.
@@ -194,13 +194,13 @@ struct MonTxbufFields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<2U>
+                comms::option::def::FixedBitLength<2U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<2U>
+                    comms::option::def::FixedBitLength<2U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -321,10 +321,10 @@ class MonTxbuf : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonTxbuf,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonTxbuf>,
-        comms::option::FieldsImpl<typename MonTxbufFields<TOpt>::All>,
-        comms::option::MsgType<MonTxbuf<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonTxbuf>,
+        comms::option::def::FieldsImpl<typename MonTxbufFields<TOpt>::All>,
+        comms::option::def::MsgType<MonTxbuf<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -332,10 +332,10 @@ class MonTxbuf : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonTxbuf,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonTxbuf>,
-            comms::option::FieldsImpl<typename MonTxbufFields<TOpt>::All>,
-            comms::option::MsgType<MonTxbuf<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonTxbuf>,
+            comms::option::def::FieldsImpl<typename MonTxbufFields<TOpt>::All>,
+            comms::option::def::MsgType<MonTxbuf<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

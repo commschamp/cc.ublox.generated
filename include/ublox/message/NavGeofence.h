@@ -43,7 +43,7 @@ struct NavGeofenceFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -68,7 +68,7 @@ struct NavGeofenceFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             StatusVal,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -208,7 +208,7 @@ struct NavGeofenceFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::NavGeofenceFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -241,11 +241,11 @@ class NavGeofence : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavGeofence,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavGeofence>,
-        comms::option::FieldsImpl<typename NavGeofenceFields<TOpt>::All>,
-        comms::option::MsgType<NavGeofence<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavGeofence>,
+        comms::option::def::FieldsImpl<typename NavGeofenceFields<TOpt>::All>,
+        comms::option::def::MsgType<NavGeofence<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -253,11 +253,11 @@ class NavGeofence : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavGeofence,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavGeofence>,
-            comms::option::FieldsImpl<typename NavGeofenceFields<TOpt>::All>,
-            comms::option::MsgType<NavGeofence<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavGeofence>,
+            comms::option::def::FieldsImpl<typename NavGeofenceFields<TOpt>::All>,
+            comms::option::def::MsgType<NavGeofence<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

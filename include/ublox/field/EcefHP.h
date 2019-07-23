@@ -24,9 +24,9 @@ struct EcefHP : public
         ublox::field::FieldBase<>,
         std::int8_t,
         TExtraOpts...,
-        comms::option::ScalingRatio<1, 10>,
-        comms::option::UnitsMillimeters,
-        comms::option::ValidNumValueRange<-99, 99>
+        comms::option::def::ScalingRatio<1, 10>,
+        comms::option::def::UnitsMillimeters,
+        comms::option::def::ValidNumValueRange<-99, 99>
     >
 {
     /// @brief Name of the field.

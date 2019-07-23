@@ -130,9 +130,9 @@ struct UbloxFrameLayers
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint16_t,
-                comms::option::FailOnInvalid<comms::ErrorStatus::ProtocolError>,
-                comms::option::DefaultNumValue<25269>,
-                comms::option::ValidNumValue<25269>
+                comms::option::def::FailOnInvalid<comms::ErrorStatus::ProtocolError>,
+                comms::option::def::DefaultNumValue<25269>,
+                comms::option::def::ValidNumValue<25269>
             >
         {
             /// @brief Name of the field.

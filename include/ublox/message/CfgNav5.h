@@ -34,15 +34,15 @@ struct CfgNav5Fields
     class Mask : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<2U>,
-            comms::option::BitmaskReservedBits<0xFA00U, 0x0U>
+            comms::option::def::FixedLength<2U>,
+            comms::option::def::BitmaskReservedBits<0xFA00U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<2U>,
-                comms::option::BitmaskReservedBits<0xFA00U, 0x0U>
+                comms::option::def::FixedLength<2U>,
+                comms::option::def::BitmaskReservedBits<0xFA00U, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -159,8 +159,8 @@ struct CfgNav5Fields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             DynModelVal,
-            comms::option::ValidNumValue<0>,
-            comms::option::ValidNumValueRange<2, 9>
+            comms::option::def::ValidNumValue<0>,
+            comms::option::def::ValidNumValueRange<2, 9>
         >
     {
         /// @brief Name of the field.
@@ -210,7 +210,7 @@ struct CfgNav5Fields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             FixModeVal,
-            comms::option::ValidNumValueRange<1, 3>
+            comms::option::def::ValidNumValueRange<1, 3>
         >
     {
         /// @brief Name of the field.
@@ -244,8 +244,8 @@ struct CfgNav5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 100>,
-            comms::option::UnitsMeters
+            comms::option::def::ScalingRatio<1, 100>,
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -261,7 +261,7 @@ struct CfgNav5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 10000>
+            comms::option::def::ScalingRatio<1, 10000>
         >
     {
         /// @brief Name of the field.
@@ -277,7 +277,7 @@ struct CfgNav5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::UnitsDegrees
+            comms::option::def::UnitsDegrees
         >
     {
         /// @brief Name of the field.
@@ -293,7 +293,7 @@ struct CfgNav5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -309,7 +309,7 @@ struct CfgNav5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ScalingRatio<1, 10>
+            comms::option::def::ScalingRatio<1, 10>
         >
     {
         /// @brief Name of the field.
@@ -325,7 +325,7 @@ struct CfgNav5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ScalingRatio<1, 10>
+            comms::option::def::ScalingRatio<1, 10>
         >
     {
         /// @brief Name of the field.
@@ -341,7 +341,7 @@ struct CfgNav5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsMeters
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -357,7 +357,7 @@ struct CfgNav5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsMeters
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -373,7 +373,7 @@ struct CfgNav5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsCentimetersPerSecond
+            comms::option::def::UnitsCentimetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -389,7 +389,7 @@ struct CfgNav5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -449,7 +449,7 @@ struct CfgNav5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsMeters
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -476,9 +476,9 @@ struct CfgNav5Fields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             UtcStandardVal,
-            comms::option::ValidNumValue<0>,
-            comms::option::ValidNumValue<3>,
-            comms::option::ValidNumValueRange<6, 7>
+            comms::option::def::ValidNumValue<0>,
+            comms::option::def::ValidNumValue<3>,
+            comms::option::def::ValidNumValueRange<6, 7>
         >
     {
         /// @brief Name of the field.
@@ -559,20 +559,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgNav5 : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgNav5>,
-        comms::option::FieldsImpl<typename CfgNav5Fields<TOpt>::All>,
-        comms::option::MsgType<CfgNav5<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgNav5>,
+        comms::option::def::FieldsImpl<typename CfgNav5Fields<TOpt>::All>,
+        comms::option::def::MsgType<CfgNav5<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgNav5>,
-            comms::option::FieldsImpl<typename CfgNav5Fields<TOpt>::All>,
-            comms::option::MsgType<CfgNav5<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgNav5>,
+            comms::option::def::FieldsImpl<typename CfgNav5Fields<TOpt>::All>,
+            comms::option::def::MsgType<CfgNav5<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -33,7 +33,7 @@ struct RxmRlmLongFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -49,9 +49,9 @@ struct RxmRlmLongFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<2>,
-            comms::option::ValidNumValue<2>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<2>,
+            comms::option::def::ValidNumValue<2>
         >
     {
         /// @brief Name of the field.
@@ -97,7 +97,7 @@ struct RxmRlmLongFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::RxmRlmLongFields::Beacon,
-            comms::option::SequenceFixedSize<8U>
+            comms::option::def::SequenceFixedSize<8U>
         >
     {
         /// @brief Name of the field.
@@ -129,7 +129,7 @@ struct RxmRlmLongFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::RxmRlmLongFields::Params,
-            comms::option::SequenceFixedSize<12U>
+            comms::option::def::SequenceFixedSize<12U>
         >
     {
         /// @brief Name of the field.
@@ -178,10 +178,10 @@ class RxmRlmLong : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmRlmLong,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmRlm>,
-        comms::option::FieldsImpl<typename RxmRlmLongFields<TOpt>::All>,
-        comms::option::MsgType<RxmRlmLong<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmRlm>,
+        comms::option::def::FieldsImpl<typename RxmRlmLongFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmRlmLong<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -189,10 +189,10 @@ class RxmRlmLong : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmRlmLong,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmRlm>,
-            comms::option::FieldsImpl<typename RxmRlmLongFields<TOpt>::All>,
-            comms::option::MsgType<RxmRlmLong<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmRlm>,
+            comms::option::def::FieldsImpl<typename RxmRlmLongFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmRlmLong<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

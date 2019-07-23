@@ -37,10 +37,10 @@ class NavTimegpsPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavTimegpsPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavTimegps>,
-        comms::option::FieldsImpl<typename NavTimegpsPollFields<TOpt>::All>,
-        comms::option::MsgType<NavTimegpsPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavTimegps>,
+        comms::option::def::FieldsImpl<typename NavTimegpsPollFields<TOpt>::All>,
+        comms::option::def::MsgType<NavTimegpsPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class NavTimegpsPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavTimegpsPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavTimegps>,
-            comms::option::FieldsImpl<typename NavTimegpsPollFields<TOpt>::All>,
-            comms::option::MsgType<NavTimegpsPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavTimegps>,
+            comms::option::def::FieldsImpl<typename NavTimegpsPollFields<TOpt>::All>,
+            comms::option::def::MsgType<NavTimegpsPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

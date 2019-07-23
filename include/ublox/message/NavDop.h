@@ -153,10 +153,10 @@ class NavDop : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavDop,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavDop>,
-        comms::option::FieldsImpl<typename NavDopFields<TOpt>::All>,
-        comms::option::MsgType<NavDop<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavDop>,
+        comms::option::def::FieldsImpl<typename NavDopFields<TOpt>::All>,
+        comms::option::def::MsgType<NavDop<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -164,10 +164,10 @@ class NavDop : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavDop,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavDop>,
-            comms::option::FieldsImpl<typename NavDopFields<TOpt>::All>,
-            comms::option::MsgType<NavDop<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavDop>,
+            comms::option::def::FieldsImpl<typename NavDopFields<TOpt>::All>,
+            comms::option::def::MsgType<NavDop<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

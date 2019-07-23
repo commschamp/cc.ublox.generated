@@ -54,7 +54,7 @@ struct LogRetrieveposextraFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -185,7 +185,7 @@ struct LogRetrieveposextraFields
             ublox::field::FieldBase<>,
             typename Reserved3Members::Element,
             typename TOpt::message::LogRetrieveposextraFields::Reserved3,
-            comms::option::SequenceFixedSize<12U>
+            comms::option::def::SequenceFixedSize<12U>
         >
     {
         /// @brief Name of the field.
@@ -224,10 +224,10 @@ class LogRetrieveposextra : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::LogRetrieveposextra,
-        comms::option::StaticNumIdImpl<ublox::MsgId_LogRetrieveposextra>,
-        comms::option::FieldsImpl<typename LogRetrieveposextraFields<TOpt>::All>,
-        comms::option::MsgType<LogRetrieveposextra<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_LogRetrieveposextra>,
+        comms::option::def::FieldsImpl<typename LogRetrieveposextraFields<TOpt>::All>,
+        comms::option::def::MsgType<LogRetrieveposextra<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -235,10 +235,10 @@ class LogRetrieveposextra : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::LogRetrieveposextra,
-            comms::option::StaticNumIdImpl<ublox::MsgId_LogRetrieveposextra>,
-            comms::option::FieldsImpl<typename LogRetrieveposextraFields<TOpt>::All>,
-            comms::option::MsgType<LogRetrieveposextra<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_LogRetrieveposextra>,
+            comms::option::def::FieldsImpl<typename LogRetrieveposextraFields<TOpt>::All>,
+            comms::option::def::MsgType<LogRetrieveposextra<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

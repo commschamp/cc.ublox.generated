@@ -17,8 +17,8 @@ template <typename... TOpt>
 using Message =
     comms::Message<
         TOpt...,
-        comms::option::LittleEndian,
-        comms::option::MsgIdType<ublox::MsgId>
+        comms::option::def::LittleEndian,
+        comms::option::def::MsgIdType<ublox::MsgId>
     >;
 
 } // namespace ublox

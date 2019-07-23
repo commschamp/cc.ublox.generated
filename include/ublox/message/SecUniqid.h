@@ -32,8 +32,8 @@ struct SecUniqidFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -64,7 +64,7 @@ struct SecUniqidFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::SecUniqidFields::UniqueId,
-            comms::option::SequenceFixedSize<5U>
+            comms::option::def::SequenceFixedSize<5U>
         >
     {
         /// @brief Name of the field.
@@ -94,10 +94,10 @@ class SecUniqid : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::SecUniqid,
-        comms::option::StaticNumIdImpl<ublox::MsgId_SecUniqid>,
-        comms::option::FieldsImpl<typename SecUniqidFields<TOpt>::All>,
-        comms::option::MsgType<SecUniqid<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_SecUniqid>,
+        comms::option::def::FieldsImpl<typename SecUniqidFields<TOpt>::All>,
+        comms::option::def::MsgType<SecUniqid<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -105,10 +105,10 @@ class SecUniqid : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::SecUniqid,
-            comms::option::StaticNumIdImpl<ublox::MsgId_SecUniqid>,
-            comms::option::FieldsImpl<typename SecUniqidFields<TOpt>::All>,
-            comms::option::MsgType<SecUniqid<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_SecUniqid>,
+            comms::option::def::FieldsImpl<typename SecUniqidFields<TOpt>::All>,
+            comms::option::def::MsgType<SecUniqid<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

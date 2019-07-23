@@ -33,9 +33,9 @@ struct MgaIniEopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<48>,
-            comms::option::ValidNumValue<48>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<48>,
+            comms::option::def::ValidNumValue<48>
         >
     {
         /// @brief Name of the field.
@@ -51,7 +51,7 @@ struct MgaIniEopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -81,7 +81,7 @@ struct MgaIniEopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsDays
+            comms::option::def::UnitsDays
         >
     {
         /// @brief Name of the field.
@@ -97,7 +97,7 @@ struct MgaIniEopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsDays
+            comms::option::def::UnitsDays
         >
     {
         /// @brief Name of the field.
@@ -113,7 +113,7 @@ struct MgaIniEopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 1073741824L>
+            comms::option::def::ScalingRatio<1, 1073741824L>
         >
     {
         /// @brief Name of the field.
@@ -129,7 +129,7 @@ struct MgaIniEopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 1073741824L>
+            comms::option::def::ScalingRatio<1, 1073741824L>
         >
     {
         /// @brief Name of the field.
@@ -145,7 +145,7 @@ struct MgaIniEopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 1073741824L>
+            comms::option::def::ScalingRatio<1, 1073741824L>
         >
     {
         /// @brief Name of the field.
@@ -161,7 +161,7 @@ struct MgaIniEopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 1073741824L>
+            comms::option::def::ScalingRatio<1, 1073741824L>
         >
     {
         /// @brief Name of the field.
@@ -177,8 +177,8 @@ struct MgaIniEopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 33554432L>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 33554432L>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -194,7 +194,7 @@ struct MgaIniEopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 1073741824L>
+            comms::option::def::ScalingRatio<1, 1073741824L>
         >
     {
         /// @brief Name of the field.
@@ -230,7 +230,7 @@ struct MgaIniEopFields
             ublox::field::FieldBase<>,
             typename Reserved2Members::Element,
             typename TOpt::message::MgaIniEopFields::Reserved2,
-            comms::option::SequenceFixedSize<10U>
+            comms::option::def::SequenceFixedSize<10U>
         >
     {
         /// @brief Name of the field.
@@ -269,10 +269,10 @@ class MgaIniEop : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaIniEop,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-        comms::option::FieldsImpl<typename MgaIniEopFields<TOpt>::All>,
-        comms::option::MsgType<MgaIniEop<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+        comms::option::def::FieldsImpl<typename MgaIniEopFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaIniEop<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -280,10 +280,10 @@ class MgaIniEop : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaIniEop,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-            comms::option::FieldsImpl<typename MgaIniEopFields<TOpt>::All>,
-            comms::option::MsgType<MgaIniEop<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+            comms::option::def::FieldsImpl<typename MgaIniEopFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaIniEop<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

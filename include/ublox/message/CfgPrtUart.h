@@ -39,9 +39,9 @@ struct CfgPrtUartFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -90,8 +90,8 @@ struct CfgPrtUartFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<6U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<6U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -118,9 +118,9 @@ struct CfgPrtUartFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 CharLenVal,
-                comms::option::DefaultNumValue<3>,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValueRange<0, 3>
+                comms::option::def::DefaultNumValue<3>,
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValueRange<0, 3>
             >
         {
             /// @brief Name of the field.
@@ -156,8 +156,8 @@ struct CfgPrtUartFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<1U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<1U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -184,10 +184,10 @@ struct CfgPrtUartFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 ParityVal,
-                comms::option::DefaultNumValue<4>,
-                comms::option::FixedBitLength<3U>,
-                comms::option::ValidNumValueRange<0, 1>,
-                comms::option::ValidNumValueRange<4, 5>
+                comms::option::def::DefaultNumValue<4>,
+                comms::option::def::FixedBitLength<3U>,
+                comms::option::def::ValidNumValueRange<0, 1>,
+                comms::option::def::ValidNumValueRange<4, 5>
             >
         {
             /// @brief Name of the field.
@@ -234,8 +234,8 @@ struct CfgPrtUartFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 NStopBitsVal,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValueRange<0, 3>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValueRange<0, 3>
             >
         {
             /// @brief Name of the field.
@@ -271,8 +271,8 @@ struct CfgPrtUartFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::FixedBitLength<18U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<18U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -342,7 +342,7 @@ struct CfgPrtUartFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::DefaultNumValue<115200L>
+            comms::option::def::DefaultNumValue<115200L>
         >
     {
         /// @brief Name of the field.
@@ -425,20 +425,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPrtUart : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
-        comms::option::FieldsImpl<typename CfgPrtUartFields<TOpt>::All>,
-        comms::option::MsgType<CfgPrtUart<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
+        comms::option::def::FieldsImpl<typename CfgPrtUartFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgPrtUart<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
-            comms::option::FieldsImpl<typename CfgPrtUartFields<TOpt>::All>,
-            comms::option::MsgType<CfgPrtUart<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
+            comms::option::def::FieldsImpl<typename CfgPrtUartFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgPrtUart<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

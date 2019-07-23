@@ -37,10 +37,10 @@ class MgaDbdPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaDbdPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaDbd>,
-        comms::option::FieldsImpl<typename MgaDbdPollFields<TOpt>::All>,
-        comms::option::MsgType<MgaDbdPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaDbd>,
+        comms::option::def::FieldsImpl<typename MgaDbdPollFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaDbdPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class MgaDbdPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaDbdPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaDbd>,
-            comms::option::FieldsImpl<typename MgaDbdPollFields<TOpt>::All>,
-            comms::option::MsgType<MgaDbdPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaDbd>,
+            comms::option::def::FieldsImpl<typename MgaDbdPollFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaDbdPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

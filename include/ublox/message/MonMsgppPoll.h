@@ -37,10 +37,10 @@ class MonMsgppPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonMsgppPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonMsgpp>,
-        comms::option::FieldsImpl<typename MonMsgppPollFields<TOpt>::All>,
-        comms::option::MsgType<MonMsgppPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonMsgpp>,
+        comms::option::def::FieldsImpl<typename MonMsgppPollFields<TOpt>::All>,
+        comms::option::def::MsgType<MonMsgppPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class MonMsgppPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonMsgppPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonMsgpp>,
-            comms::option::FieldsImpl<typename MonMsgppPollFields<TOpt>::All>,
-            comms::option::MsgType<MonMsgppPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonMsgpp>,
+            comms::option::def::FieldsImpl<typename MonMsgppPollFields<TOpt>::All>,
+            comms::option::def::MsgType<MonMsgppPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

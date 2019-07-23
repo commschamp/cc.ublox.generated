@@ -55,10 +55,10 @@ class CfgPrtPortPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgPrtPortPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
-        comms::option::FieldsImpl<typename CfgPrtPortPollFields<TOpt>::All>,
-        comms::option::MsgType<CfgPrtPortPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
+        comms::option::def::FieldsImpl<typename CfgPrtPortPollFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgPrtPortPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -66,10 +66,10 @@ class CfgPrtPortPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgPrtPortPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
-            comms::option::FieldsImpl<typename CfgPrtPortPollFields<TOpt>::All>,
-            comms::option::MsgType<CfgPrtPortPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
+            comms::option::def::FieldsImpl<typename CfgPrtPortPollFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgPrtPortPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -37,9 +37,9 @@ struct MgaIniTimeGnssFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<17>,
-            comms::option::ValidNumValue<17>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<17>,
+            comms::option::def::ValidNumValue<17>
         >
     {
         /// @brief Name of the field.
@@ -55,7 +55,7 @@ struct MgaIniTimeGnssFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -84,8 +84,8 @@ struct MgaIniTimeGnssFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 SourceVal,
-                comms::option::FixedBitLength<4U>,
-                comms::option::ValidNumValueRange<0, 2>
+                comms::option::def::FixedBitLength<4U>,
+                comms::option::def::ValidNumValueRange<0, 2>
             >
         {
             /// @brief Name of the field.
@@ -117,15 +117,15 @@ struct MgaIniTimeGnssFields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<4U>,
-                comms::option::BitmaskReservedBits<0xCU, 0x0U>
+                comms::option::def::FixedBitLength<4U>,
+                comms::option::def::BitmaskReservedBits<0xCU, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<4U>,
-                    comms::option::BitmaskReservedBits<0xCU, 0x0U>
+                    comms::option::def::FixedBitLength<4U>,
+                    comms::option::def::BitmaskReservedBits<0xCU, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -255,7 +255,7 @@ struct MgaIniTimeGnssFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -271,7 +271,7 @@ struct MgaIniTimeGnssFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -301,7 +301,7 @@ struct MgaIniTimeGnssFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -339,10 +339,10 @@ class MgaIniTimeGnss : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaIniTimeGnss,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-        comms::option::FieldsImpl<typename MgaIniTimeGnssFields<TOpt>::All>,
-        comms::option::MsgType<MgaIniTimeGnss<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+        comms::option::def::FieldsImpl<typename MgaIniTimeGnssFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaIniTimeGnss<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -350,10 +350,10 @@ class MgaIniTimeGnss : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaIniTimeGnss,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-            comms::option::FieldsImpl<typename MgaIniTimeGnssFields<TOpt>::All>,
-            comms::option::MsgType<MgaIniTimeGnss<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+            comms::option::def::FieldsImpl<typename MgaIniTimeGnssFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaIniTimeGnss<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -33,8 +33,8 @@ struct CfgFixseedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<2>,
-            comms::option::ValidNumValue<2>
+            comms::option::def::DefaultNumValue<2>,
+            comms::option::def::ValidNumValue<2>
         >
     {
         /// @brief Name of the field.
@@ -50,7 +50,7 @@ struct CfgFixseedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValueRange<1, 10>
+            comms::option::def::ValidNumValueRange<1, 10>
         >
     {
         /// @brief Name of the field.
@@ -111,7 +111,7 @@ struct CfgFixseedFields
             ublox::field::FieldBase<>,
             ublox::field::MsgId<TOpt>,
             typename TOpt::message::CfgFixseedFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -144,11 +144,11 @@ class CfgFixseed : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgFixseed,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgFixseed>,
-        comms::option::FieldsImpl<typename CfgFixseedFields<TOpt>::All>,
-        comms::option::MsgType<CfgFixseed<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgFixseed>,
+        comms::option::def::FieldsImpl<typename CfgFixseedFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgFixseed<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -156,11 +156,11 @@ class CfgFixseed : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgFixseed,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgFixseed>,
-            comms::option::FieldsImpl<typename CfgFixseedFields<TOpt>::All>,
-            comms::option::MsgType<CfgFixseed<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgFixseed>,
+            comms::option::def::FieldsImpl<typename CfgFixseedFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgFixseed<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

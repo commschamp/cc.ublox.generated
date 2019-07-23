@@ -152,9 +152,9 @@ struct CfgNmeaV1Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -171,7 +171,7 @@ struct CfgNmeaV1Fields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::CfgNmeaV1Fields::BdsTalkerId,
-            comms::option::SequenceFixedSize<2U>
+            comms::option::def::SequenceFixedSize<2U>
         >
     {
         /// @brief Name of the field.
@@ -222,20 +222,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgNmeaV1 : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgNmea>,
-        comms::option::FieldsImpl<typename CfgNmeaV1Fields<TOpt>::All>,
-        comms::option::MsgType<CfgNmeaV1<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgNmea>,
+        comms::option::def::FieldsImpl<typename CfgNmeaV1Fields<TOpt>::All>,
+        comms::option::def::MsgType<CfgNmeaV1<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgNmea>,
-            comms::option::FieldsImpl<typename CfgNmeaV1Fields<TOpt>::All>,
-            comms::option::MsgType<CfgNmeaV1<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgNmea>,
+            comms::option::def::FieldsImpl<typename CfgNmeaV1Fields<TOpt>::All>,
+            comms::option::def::MsgType<CfgNmeaV1<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

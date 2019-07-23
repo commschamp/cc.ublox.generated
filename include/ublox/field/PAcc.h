@@ -24,7 +24,7 @@ struct PAcc : public
         ublox::field::FieldBase<>,
         std::uint32_t,
         TExtraOpts...,
-        comms::option::UnitsCentimeters
+        comms::option::def::UnitsCentimeters
     >
 {
     /// @brief Name of the field.

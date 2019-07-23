@@ -44,8 +44,8 @@ struct NavOrbFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -130,8 +130,8 @@ struct NavOrbFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         HealthVal,
-                        comms::option::FixedBitLength<2U>,
-                        comms::option::ValidNumValueRange<0, 2>
+                        comms::option::def::FixedBitLength<2U>,
+                        comms::option::def::ValidNumValueRange<0, 2>
                     >
                 {
                     /// @brief Name of the field.
@@ -175,8 +175,8 @@ struct NavOrbFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         VisibilityVal,
-                        comms::option::FixedBitLength<2U>,
-                        comms::option::ValidNumValueRange<0, 3>
+                        comms::option::def::FixedBitLength<2U>,
+                        comms::option::def::ValidNumValueRange<0, 3>
                     >
                 {
                     /// @brief Name of the field.
@@ -212,8 +212,8 @@ struct NavOrbFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<4U>,
-                        comms::option::ValidNumValue<0>
+                        comms::option::def::FixedBitLength<4U>,
+                        comms::option::def::ValidNumValue<0>
                     >
                 {
                     /// @brief Name of the field.
@@ -277,7 +277,7 @@ struct NavOrbFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<5U>
+                        comms::option::def::FixedBitLength<5U>
                     >
                 {
                     /// @brief Name of the field.
@@ -303,8 +303,8 @@ struct NavOrbFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         EphSourceVal,
-                        comms::option::FixedBitLength<3U>,
-                        comms::option::ValidNumValueRange<0, 2>
+                        comms::option::def::FixedBitLength<3U>,
+                        comms::option::def::ValidNumValueRange<0, 2>
                     >
                 {
                     /// @brief Name of the field.
@@ -382,7 +382,7 @@ struct NavOrbFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<5U>
+                        comms::option::def::FixedBitLength<5U>
                     >
                 {
                     /// @brief Name of the field.
@@ -408,8 +408,8 @@ struct NavOrbFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         AlmSourceVal,
-                        comms::option::FixedBitLength<3U>,
-                        comms::option::ValidNumValueRange<0, 2>
+                        comms::option::def::FixedBitLength<3U>,
+                        comms::option::def::ValidNumValueRange<0, 2>
                     >
                 {
                     /// @brief Name of the field.
@@ -487,7 +487,7 @@ struct NavOrbFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<5U>
+                        comms::option::def::FixedBitLength<5U>
                     >
                 {
                     /// @brief Name of the field.
@@ -513,8 +513,8 @@ struct NavOrbFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         TypeVal,
-                        comms::option::FixedBitLength<3U>,
-                        comms::option::ValidNumValueRange<0, 2>
+                        comms::option::def::FixedBitLength<3U>,
+                        comms::option::def::ValidNumValueRange<0, 2>
                     >
                 {
                     /// @brief Name of the field.
@@ -646,7 +646,7 @@ struct NavOrbFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::NavOrbFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -678,11 +678,11 @@ class NavOrb : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavOrb,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavOrb>,
-        comms::option::FieldsImpl<typename NavOrbFields<TOpt>::All>,
-        comms::option::MsgType<NavOrb<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavOrb>,
+        comms::option::def::FieldsImpl<typename NavOrbFields<TOpt>::All>,
+        comms::option::def::MsgType<NavOrb<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -690,11 +690,11 @@ class NavOrb : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavOrb,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavOrb>,
-            comms::option::FieldsImpl<typename NavOrbFields<TOpt>::All>,
-            comms::option::MsgType<NavOrb<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavOrb>,
+            comms::option::def::FieldsImpl<typename NavOrbFields<TOpt>::All>,
+            comms::option::def::MsgType<NavOrb<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

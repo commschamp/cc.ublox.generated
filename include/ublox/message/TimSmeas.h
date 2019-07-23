@@ -37,7 +37,7 @@ struct TimSmeasFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -122,15 +122,15 @@ struct TimSmeasFields
             class Flags : public
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedLength<1U>,
-                    comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+                    comms::option::def::FixedLength<1U>,
+                    comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
                 >
             {
                 using Base = 
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedLength<1U>,
-                        comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+                        comms::option::def::FixedLength<1U>,
+                        comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
                     >;
             public:
                 /// @brief Provides names and generates access functions for internal bits.
@@ -177,8 +177,8 @@ struct TimSmeasFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int8_t,
-                    comms::option::ScalingRatio<1, 256>,
-                    comms::option::UnitsNanoseconds
+                    comms::option::def::ScalingRatio<1, 256>,
+                    comms::option::def::UnitsNanoseconds
                 >
             {
                 /// @brief Name of the field.
@@ -194,8 +194,8 @@ struct TimSmeasFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::ScalingRatio<1, 256>,
-                    comms::option::UnitsNanoseconds
+                    comms::option::def::ScalingRatio<1, 256>,
+                    comms::option::def::UnitsNanoseconds
                 >
             {
                 /// @brief Name of the field.
@@ -211,7 +211,7 @@ struct TimSmeasFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::UnitsNanoseconds
+                    comms::option::def::UnitsNanoseconds
                 >
             {
                 /// @brief Name of the field.
@@ -227,7 +227,7 @@ struct TimSmeasFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::UnitsNanoseconds
+                    comms::option::def::UnitsNanoseconds
                 >
             {
                 /// @brief Name of the field.
@@ -257,7 +257,7 @@ struct TimSmeasFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::ScalingRatio<1, 256>
+                    comms::option::def::ScalingRatio<1, 256>
                 >
             {
                 /// @brief Name of the field.
@@ -273,7 +273,7 @@ struct TimSmeasFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::ScalingRatio<1, 256>
+                    comms::option::def::ScalingRatio<1, 256>
                 >
             {
                 /// @brief Name of the field.
@@ -355,7 +355,7 @@ struct TimSmeasFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::TimSmeasFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -387,22 +387,22 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class TimSmeas : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_TimSmeas>,
-        comms::option::FieldsImpl<typename TimSmeasFields<TOpt>::All>,
-        comms::option::MsgType<TimSmeas<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_TimSmeas>,
+        comms::option::def::FieldsImpl<typename TimSmeasFields<TOpt>::All>,
+        comms::option::def::MsgType<TimSmeas<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_TimSmeas>,
-            comms::option::FieldsImpl<typename TimSmeasFields<TOpt>::All>,
-            comms::option::MsgType<TimSmeas<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_TimSmeas>,
+            comms::option::def::FieldsImpl<typename TimSmeasFields<TOpt>::All>,
+            comms::option::def::MsgType<TimSmeas<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

@@ -23,16 +23,16 @@ class CfgNmeaFilter : public
     comms::field::BitmaskValue<
         ublox::field::FieldBase<>,
         TExtraOpts...,
-        comms::option::FixedLength<1U>,
-        comms::option::BitmaskReservedBits<0xC0U, 0x0U>
+        comms::option::def::FixedLength<1U>,
+        comms::option::def::BitmaskReservedBits<0xC0U, 0x0U>
     >
 {
     using Base = 
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
             TExtraOpts...,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xC0U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xC0U, 0x0U>
         >;
 public:
     /// @brief Provides names and generates access functions for internal bits.

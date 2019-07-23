@@ -24,7 +24,7 @@ struct Dop : public
         ublox::field::FieldBase<>,
         std::uint16_t,
         TExtraOpts...,
-        comms::option::ScalingRatio<1, 100>
+        comms::option::def::ScalingRatio<1, 100>
     >
 {
     /// @brief Name of the field.

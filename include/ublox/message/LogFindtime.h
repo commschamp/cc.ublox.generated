@@ -38,7 +38,7 @@ struct LogFindtimeFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -54,8 +54,8 @@ struct LogFindtimeFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::ValidNumValue<0>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -172,10 +172,10 @@ class LogFindtime : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::LogFindtime,
-        comms::option::StaticNumIdImpl<ublox::MsgId_LogFindtime>,
-        comms::option::FieldsImpl<typename LogFindtimeFields<TOpt>::All>,
-        comms::option::MsgType<LogFindtime<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_LogFindtime>,
+        comms::option::def::FieldsImpl<typename LogFindtimeFields<TOpt>::All>,
+        comms::option::def::MsgType<LogFindtime<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -183,10 +183,10 @@ class LogFindtime : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::LogFindtime,
-            comms::option::StaticNumIdImpl<ublox::MsgId_LogFindtime>,
-            comms::option::FieldsImpl<typename LogFindtimeFields<TOpt>::All>,
-            comms::option::MsgType<LogFindtime<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_LogFindtime>,
+            comms::option::def::FieldsImpl<typename LogFindtimeFields<TOpt>::All>,
+            comms::option::def::MsgType<LogFindtime<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

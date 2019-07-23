@@ -30,8 +30,8 @@ struct TimVcocalStopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::ValidNumValue<0>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -59,10 +59,10 @@ class TimVcocalStop : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::TimVcocalStop,
-        comms::option::StaticNumIdImpl<ublox::MsgId_TimVcocal>,
-        comms::option::FieldsImpl<typename TimVcocalStopFields<TOpt>::All>,
-        comms::option::MsgType<TimVcocalStop<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_TimVcocal>,
+        comms::option::def::FieldsImpl<typename TimVcocalStopFields<TOpt>::All>,
+        comms::option::def::MsgType<TimVcocalStop<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -70,10 +70,10 @@ class TimVcocalStop : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::TimVcocalStop,
-            comms::option::StaticNumIdImpl<ublox::MsgId_TimVcocal>,
-            comms::option::FieldsImpl<typename TimVcocalStopFields<TOpt>::All>,
-            comms::option::MsgType<TimVcocalStop<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_TimVcocal>,
+            comms::option::def::FieldsImpl<typename TimVcocalStopFields<TOpt>::All>,
+            comms::option::def::MsgType<TimVcocalStop<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

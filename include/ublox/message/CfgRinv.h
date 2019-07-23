@@ -31,15 +31,15 @@ struct CfgRinvFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -114,20 +114,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgRinv : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgRinv>,
-        comms::option::FieldsImpl<typename CfgRinvFields<TOpt>::All>,
-        comms::option::MsgType<CfgRinv<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgRinv>,
+        comms::option::def::FieldsImpl<typename CfgRinvFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgRinv<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgRinv>,
-            comms::option::FieldsImpl<typename CfgRinvFields<TOpt>::All>,
-            comms::option::MsgType<CfgRinv<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgRinv>,
+            comms::option::def::FieldsImpl<typename CfgRinvFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgRinv<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

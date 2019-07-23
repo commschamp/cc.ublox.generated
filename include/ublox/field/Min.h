@@ -24,8 +24,8 @@ struct Min : public
         ublox::field::FieldBase<>,
         std::uint8_t,
         TExtraOpts...,
-        comms::option::UnitsMinutes,
-        comms::option::ValidNumValueRange<0, 59>
+        comms::option::def::UnitsMinutes,
+        comms::option::def::ValidNumValueRange<0, 59>
     >
 {
     /// @brief Name of the field.

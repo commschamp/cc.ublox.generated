@@ -39,7 +39,7 @@ struct NavTimegloFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -55,8 +55,8 @@ struct NavTimegloFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsNanoseconds,
-            comms::option::ValidNumValueRange<-500000000L, 500000000L>
+            comms::option::def::UnitsNanoseconds,
+            comms::option::def::ValidNumValueRange<-500000000L, 500000000L>
         >
     {
         /// @brief Name of the field.
@@ -72,7 +72,7 @@ struct NavTimegloFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsDays
+            comms::option::def::UnitsDays
         >
     {
         /// @brief Name of the field.
@@ -102,15 +102,15 @@ struct NavTimegloFields
     class Valid : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -157,7 +157,7 @@ struct NavTimegloFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -191,10 +191,10 @@ class NavTimeglo : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavTimeglo,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavTimeglo>,
-        comms::option::FieldsImpl<typename NavTimegloFields<TOpt>::All>,
-        comms::option::MsgType<NavTimeglo<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavTimeglo>,
+        comms::option::def::FieldsImpl<typename NavTimegloFields<TOpt>::All>,
+        comms::option::def::MsgType<NavTimeglo<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -202,10 +202,10 @@ class NavTimeglo : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavTimeglo,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavTimeglo>,
-            comms::option::FieldsImpl<typename NavTimegloFields<TOpt>::All>,
-            comms::option::MsgType<NavTimeglo<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavTimeglo>,
+            comms::option::def::FieldsImpl<typename NavTimegloFields<TOpt>::All>,
+            comms::option::def::MsgType<NavTimeglo<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

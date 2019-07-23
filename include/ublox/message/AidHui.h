@@ -183,7 +183,7 @@ struct AidHuiFields
         comms::field::FloatValue<
             ublox::field::FieldBase<>,
             float,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -199,7 +199,7 @@ struct AidHuiFields
         comms::field::FloatValue<
             ublox::field::FieldBase<>,
             float,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -215,7 +215,7 @@ struct AidHuiFields
         comms::field::FloatValue<
             ublox::field::FieldBase<>,
             float,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -231,7 +231,7 @@ struct AidHuiFields
         comms::field::FloatValue<
             ublox::field::FieldBase<>,
             float,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -247,7 +247,7 @@ struct AidHuiFields
         comms::field::FloatValue<
             ublox::field::FieldBase<>,
             float,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -263,7 +263,7 @@ struct AidHuiFields
         comms::field::FloatValue<
             ublox::field::FieldBase<>,
             float,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -279,7 +279,7 @@ struct AidHuiFields
         comms::field::FloatValue<
             ublox::field::FieldBase<>,
             float,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -295,7 +295,7 @@ struct AidHuiFields
         comms::field::FloatValue<
             ublox::field::FieldBase<>,
             float,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -310,15 +310,15 @@ struct AidHuiFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<4U>,
-            comms::option::BitmaskReservedBits<0xFFFFFFF8UL, 0x0U>
+            comms::option::def::FixedLength<4U>,
+            comms::option::def::BitmaskReservedBits<0xFFFFFFF8UL, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<4U>,
-                comms::option::BitmaskReservedBits<0xFFFFFFF8UL, 0x0U>
+                comms::option::def::FixedLength<4U>,
+                comms::option::def::BitmaskReservedBits<0xFFFFFFF8UL, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -397,20 +397,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AidHui : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AidHui>,
-        comms::option::FieldsImpl<typename AidHuiFields<TOpt>::All>,
-        comms::option::MsgType<AidHui<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AidHui>,
+        comms::option::def::FieldsImpl<typename AidHuiFields<TOpt>::All>,
+        comms::option::def::MsgType<AidHui<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AidHui>,
-            comms::option::FieldsImpl<typename AidHuiFields<TOpt>::All>,
-            comms::option::MsgType<AidHui<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AidHui>,
+            comms::option::def::FieldsImpl<typename AidHuiFields<TOpt>::All>,
+            comms::option::def::MsgType<AidHui<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

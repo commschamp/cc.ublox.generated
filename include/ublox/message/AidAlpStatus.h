@@ -40,8 +40,8 @@ struct AidAlpStatusFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             StatusVal,
-            comms::option::FailOnInvalid<>,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -84,20 +84,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AidAlpStatus : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AidAlp>,
-        comms::option::FieldsImpl<typename AidAlpStatusFields<TOpt>::All>,
-        comms::option::MsgType<AidAlpStatus<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAlp>,
+        comms::option::def::FieldsImpl<typename AidAlpStatusFields<TOpt>::All>,
+        comms::option::def::MsgType<AidAlpStatus<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AidAlp>,
-            comms::option::FieldsImpl<typename AidAlpStatusFields<TOpt>::All>,
-            comms::option::MsgType<AidAlpStatus<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAlp>,
+            comms::option::def::FieldsImpl<typename AidAlpStatusFields<TOpt>::All>,
+            comms::option::def::MsgType<AidAlpStatus<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

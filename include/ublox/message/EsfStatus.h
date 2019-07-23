@@ -45,8 +45,8 @@ struct EsfStatusFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<2>,
-            comms::option::ValidNumValueRange<0, 2>
+            comms::option::def::DefaultNumValue<2>,
+            comms::option::def::ValidNumValueRange<0, 2>
         >
     {
         /// @brief Name of the field.
@@ -87,7 +87,7 @@ struct EsfStatusFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             FusionModeVal,
-            comms::option::ValidNumValueRange<0, 3>
+            comms::option::def::ValidNumValueRange<0, 3>
         >
     {
         /// @brief Name of the field.
@@ -159,7 +159,7 @@ struct EsfStatusFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<6U>
+                        comms::option::def::FixedBitLength<6U>
                     >
                 {
                     /// @brief Name of the field.
@@ -174,13 +174,13 @@ struct EsfStatusFields
                 class Bits : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<2U>
+                        comms::option::def::FixedBitLength<2U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<2U>
+                            comms::option::def::FixedBitLength<2U>
                         >;
                 public:
                     /// @brief Provides names and generates access functions for internal bits.
@@ -283,8 +283,8 @@ struct EsfStatusFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         CalibStatusVal,
-                        comms::option::FixedBitLength<2U>,
-                        comms::option::ValidNumValueRange<0, 3>
+                        comms::option::def::FixedBitLength<2U>,
+                        comms::option::def::ValidNumValueRange<0, 3>
                     >
                 {
                     /// @brief Name of the field.
@@ -329,8 +329,8 @@ struct EsfStatusFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         TimeStatusVal,
-                        comms::option::FixedBitLength<2U>,
-                        comms::option::ValidNumValueRange<0, 3>
+                        comms::option::def::FixedBitLength<2U>,
+                        comms::option::def::ValidNumValueRange<0, 3>
                     >
                 {
                     /// @brief Name of the field.
@@ -366,8 +366,8 @@ struct EsfStatusFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<4U>,
-                        comms::option::ValidNumValue<0>
+                        comms::option::def::FixedBitLength<4U>,
+                        comms::option::def::ValidNumValue<0>
                     >
                 {
                     /// @brief Name of the field.
@@ -428,7 +428,7 @@ struct EsfStatusFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::UnitsHertz
+                    comms::option::def::UnitsHertz
                 >
             {
                 /// @brief Name of the field.
@@ -443,15 +443,15 @@ struct EsfStatusFields
             class Faults : public
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedLength<1U>,
-                    comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+                    comms::option::def::FixedLength<1U>,
+                    comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
                 >
             {
                 using Base = 
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedLength<1U>,
-                        comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+                        comms::option::def::FixedLength<1U>,
+                        comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
                     >;
             public:
                 /// @brief Provides names and generates access functions for internal bits.
@@ -555,7 +555,7 @@ struct EsfStatusFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::EsfStatusFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -589,11 +589,11 @@ class EsfStatus : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::EsfStatus,
-        comms::option::StaticNumIdImpl<ublox::MsgId_EsfStatus>,
-        comms::option::FieldsImpl<typename EsfStatusFields<TOpt>::All>,
-        comms::option::MsgType<EsfStatus<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_EsfStatus>,
+        comms::option::def::FieldsImpl<typename EsfStatusFields<TOpt>::All>,
+        comms::option::def::MsgType<EsfStatus<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -601,11 +601,11 @@ class EsfStatus : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::EsfStatus,
-            comms::option::StaticNumIdImpl<ublox::MsgId_EsfStatus>,
-            comms::option::FieldsImpl<typename EsfStatusFields<TOpt>::All>,
-            comms::option::MsgType<EsfStatus<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_EsfStatus>,
+            comms::option::def::FieldsImpl<typename EsfStatusFields<TOpt>::All>,
+            comms::option::def::MsgType<EsfStatus<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

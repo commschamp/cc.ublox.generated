@@ -35,7 +35,7 @@ struct CfgSmgrFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -81,7 +81,7 @@ struct CfgSmgrFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -126,7 +126,7 @@ struct CfgSmgrFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -141,15 +141,15 @@ struct CfgSmgrFields
     class MessageCfg : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<2U>,
-            comms::option::BitmaskReservedBits<0xFFF0U, 0x0U>
+            comms::option::def::FixedLength<2U>,
+            comms::option::def::BitmaskReservedBits<0xFFF0U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<2U>,
-                comms::option::BitmaskReservedBits<0xFFF0U, 0x0U>
+                comms::option::def::FixedLength<2U>,
+                comms::option::def::BitmaskReservedBits<0xFFF0U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -202,7 +202,7 @@ struct CfgSmgrFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsMicroseconds
+            comms::option::def::UnitsMicroseconds
         >
     {
         /// @brief Name of the field.
@@ -220,15 +220,15 @@ struct CfgSmgrFields
         class BitsLow : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<14U>,
-                comms::option::BitmaskReservedBits<0x300U, 0x0U>
+                comms::option::def::FixedBitLength<14U>,
+                comms::option::def::BitmaskReservedBits<0x300U, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<14U>,
-                    comms::option::BitmaskReservedBits<0x300U, 0x0U>
+                    comms::option::def::FixedBitLength<14U>,
+                    comms::option::def::BitmaskReservedBits<0x300U, 0x0U>
                 >;
         public:
             /// @brief Provide names for internal bits.
@@ -350,8 +350,8 @@ struct CfgSmgrFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 TPCoherentVal,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValueRange<0, 2>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValueRange<0, 2>
             >
         {
             /// @brief Name of the field.
@@ -383,15 +383,15 @@ struct CfgSmgrFields
         class BitsHigh : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<16U>,
-                comms::option::BitmaskReservedBits<0xFFFEU, 0x0U>
+                comms::option::def::FixedBitLength<16U>,
+                comms::option::def::BitmaskReservedBits<0xFFFEU, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<16U>,
-                    comms::option::BitmaskReservedBits<0xFFFEU, 0x0U>
+                    comms::option::def::FixedBitLength<16U>,
+                    comms::option::def::BitmaskReservedBits<0xFFFEU, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -500,20 +500,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgSmgr : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgSmgr>,
-        comms::option::FieldsImpl<typename CfgSmgrFields<TOpt>::All>,
-        comms::option::MsgType<CfgSmgr<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgSmgr>,
+        comms::option::def::FieldsImpl<typename CfgSmgrFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgSmgr<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgSmgr>,
-            comms::option::FieldsImpl<typename CfgSmgrFields<TOpt>::All>,
-            comms::option::MsgType<CfgSmgr<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgSmgr>,
+            comms::option::def::FieldsImpl<typename CfgSmgrFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgSmgr<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

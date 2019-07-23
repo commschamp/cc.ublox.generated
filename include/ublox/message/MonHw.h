@@ -139,7 +139,7 @@ struct MonHwFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             AStatusVal,
-            comms::option::ValidNumValueRange<0, 4>
+            comms::option::def::ValidNumValueRange<0, 4>
         >
     {
         /// @brief Name of the field.
@@ -184,7 +184,7 @@ struct MonHwFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             APowerVal,
-            comms::option::ValidNumValueRange<0, 2>
+            comms::option::def::ValidNumValueRange<0, 2>
         >
     {
         /// @brief Name of the field.
@@ -219,13 +219,13 @@ struct MonHwFields
         class BitsLow : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<2U>
+                comms::option::def::FixedBitLength<2U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<2U>
+                    comms::option::def::FixedBitLength<2U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -283,8 +283,8 @@ struct MonHwFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 JammingStateVal,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValueRange<0, 3>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValueRange<0, 3>
             >
         {
             /// @brief Name of the field.
@@ -317,15 +317,15 @@ struct MonHwFields
         class BitsHigh : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<4U>,
-                comms::option::BitmaskReservedBits<0xEU, 0x0U>
+                comms::option::def::FixedBitLength<4U>,
+                comms::option::def::BitmaskReservedBits<0xEU, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<4U>,
-                    comms::option::BitmaskReservedBits<0xEU, 0x0U>
+                    comms::option::def::FixedBitLength<4U>,
+                    comms::option::def::BitmaskReservedBits<0xEU, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -444,7 +444,7 @@ struct MonHwFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::MonHwFields::VP,
-            comms::option::SequenceFixedSize<17U>
+            comms::option::def::SequenceFixedSize<17U>
         >
     {
         /// @brief Name of the field.
@@ -562,10 +562,10 @@ class MonHw : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonHw,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonHw>,
-        comms::option::FieldsImpl<typename MonHwFields<TOpt>::All>,
-        comms::option::MsgType<MonHw<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonHw>,
+        comms::option::def::FieldsImpl<typename MonHwFields<TOpt>::All>,
+        comms::option::def::MsgType<MonHw<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -573,10 +573,10 @@ class MonHw : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonHw,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonHw>,
-            comms::option::FieldsImpl<typename MonHwFields<TOpt>::All>,
-            comms::option::MsgType<MonHw<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonHw>,
+            comms::option::def::FieldsImpl<typename MonHwFields<TOpt>::All>,
+            comms::option::def::MsgType<MonHw<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

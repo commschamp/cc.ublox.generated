@@ -37,10 +37,10 @@ class NavOdoPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavOdoPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavOdo>,
-        comms::option::FieldsImpl<typename NavOdoPollFields<TOpt>::All>,
-        comms::option::MsgType<NavOdoPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavOdo>,
+        comms::option::def::FieldsImpl<typename NavOdoPollFields<TOpt>::All>,
+        comms::option::def::MsgType<NavOdoPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class NavOdoPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavOdoPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavOdo>,
-            comms::option::FieldsImpl<typename NavOdoPollFields<TOpt>::All>,
-            comms::option::MsgType<NavOdoPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavOdo>,
+            comms::option::def::FieldsImpl<typename NavOdoPollFields<TOpt>::All>,
+            comms::option::def::MsgType<NavOdoPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

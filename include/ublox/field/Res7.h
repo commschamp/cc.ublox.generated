@@ -26,8 +26,8 @@ struct Res7 : public
         ublox::field::FieldBase<>,
         std::uint64_t,
         TExtraOpts...,
-        comms::option::FixedLength<7U>,
-        comms::option::ValidNumValue<0>
+        comms::option::def::FixedLength<7U>,
+        comms::option::def::ValidNumValue<0>
     >
 {
     /// @brief Name of the field.

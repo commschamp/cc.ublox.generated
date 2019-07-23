@@ -37,10 +37,10 @@ class NavSvinPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavSvinPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavSvin>,
-        comms::option::FieldsImpl<typename NavSvinPollFields<TOpt>::All>,
-        comms::option::MsgType<NavSvinPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavSvin>,
+        comms::option::def::FieldsImpl<typename NavSvinPollFields<TOpt>::All>,
+        comms::option::def::MsgType<NavSvinPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class NavSvinPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavSvinPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavSvin>,
-            comms::option::FieldsImpl<typename NavSvinPollFields<TOpt>::All>,
-            comms::option::MsgType<NavSvinPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavSvin>,
+            comms::option::def::FieldsImpl<typename NavSvinPollFields<TOpt>::All>,
+            comms::option::def::MsgType<NavSvinPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

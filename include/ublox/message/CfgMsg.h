@@ -59,7 +59,7 @@ struct CfgMsgFields
             ublox::field::FieldBase<>,
             typename RatesMembers::Element,
             typename TOpt::message::CfgMsgFields::Rates,
-            comms::option::SequenceFixedSize<6U>
+            comms::option::def::SequenceFixedSize<6U>
         >
     {
         /// @brief Name of the field.
@@ -87,20 +87,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgMsg : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgMsg>,
-        comms::option::FieldsImpl<typename CfgMsgFields<TOpt>::All>,
-        comms::option::MsgType<CfgMsg<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgMsg>,
+        comms::option::def::FieldsImpl<typename CfgMsgFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgMsg<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgMsg>,
-            comms::option::FieldsImpl<typename CfgMsgFields<TOpt>::All>,
-            comms::option::MsgType<CfgMsg<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgMsg>,
+            comms::option::def::FieldsImpl<typename CfgMsgFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgMsg<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

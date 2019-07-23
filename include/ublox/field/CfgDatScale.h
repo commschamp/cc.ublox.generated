@@ -23,7 +23,7 @@ class CfgDatScale : public
         ublox::field::FieldBase<>,
         float,
         TExtraOpts...,
-        comms::option::InvalidByDefault
+        comms::option::def::InvalidByDefault
     >
 {
     using Base = 
@@ -31,7 +31,7 @@ class CfgDatScale : public
             ublox::field::FieldBase<>,
             float,
             TExtraOpts...,
-            comms::option::InvalidByDefault
+            comms::option::def::InvalidByDefault
         >;
 public:
     /// @brief Name of the field.

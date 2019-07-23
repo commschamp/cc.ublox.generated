@@ -37,7 +37,7 @@ struct NavClockFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -53,7 +53,7 @@ struct NavClockFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -69,7 +69,7 @@ struct NavClockFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -116,10 +116,10 @@ class NavClock : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavClock,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavClock>,
-        comms::option::FieldsImpl<typename NavClockFields<TOpt>::All>,
-        comms::option::MsgType<NavClock<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavClock>,
+        comms::option::def::FieldsImpl<typename NavClockFields<TOpt>::All>,
+        comms::option::def::MsgType<NavClock<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -127,10 +127,10 @@ class NavClock : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavClock,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavClock>,
-            comms::option::FieldsImpl<typename NavClockFields<TOpt>::All>,
-            comms::option::MsgType<NavClock<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavClock>,
+            comms::option::def::FieldsImpl<typename NavClockFields<TOpt>::All>,
+            comms::option::def::MsgType<NavClock<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

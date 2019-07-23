@@ -91,15 +91,15 @@ struct HnrPvtFields
     class Valid : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -149,7 +149,7 @@ struct HnrPvtFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -178,15 +178,15 @@ struct HnrPvtFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xE0U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xE0U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xE0U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xE0U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -280,7 +280,7 @@ struct HnrPvtFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsMillimetersPerSecond
+            comms::option::def::UnitsMillimetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -296,7 +296,7 @@ struct HnrPvtFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsMillimetersPerSecond
+            comms::option::def::UnitsMillimetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -352,7 +352,7 @@ struct HnrPvtFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMillimetersPerSecond
+            comms::option::def::UnitsMillimetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -432,10 +432,10 @@ class HnrPvt : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::HnrPvt,
-        comms::option::StaticNumIdImpl<ublox::MsgId_HnrPvt>,
-        comms::option::FieldsImpl<typename HnrPvtFields<TOpt>::All>,
-        comms::option::MsgType<HnrPvt<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_HnrPvt>,
+        comms::option::def::FieldsImpl<typename HnrPvtFields<TOpt>::All>,
+        comms::option::def::MsgType<HnrPvt<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -443,10 +443,10 @@ class HnrPvt : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::HnrPvt,
-            comms::option::StaticNumIdImpl<ublox::MsgId_HnrPvt>,
-            comms::option::FieldsImpl<typename HnrPvtFields<TOpt>::All>,
-            comms::option::MsgType<HnrPvt<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_HnrPvt>,
+            comms::option::def::FieldsImpl<typename HnrPvtFields<TOpt>::All>,
+            comms::option::def::MsgType<HnrPvt<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -95,15 +95,15 @@ struct NavPvtFields
     class Valid : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -153,7 +153,7 @@ struct NavPvtFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -169,7 +169,7 @@ struct NavPvtFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -201,13 +201,13 @@ struct NavPvtFields
         class LowBits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<2U>
+                comms::option::def::FixedBitLength<2U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<2U>
+                    comms::option::def::FixedBitLength<2U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -267,8 +267,8 @@ struct NavPvtFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 PsmStateVal,
-                comms::option::FixedBitLength<3U>,
-                comms::option::ValidNumValueRange<0, 5>
+                comms::option::def::FixedBitLength<3U>,
+                comms::option::def::ValidNumValueRange<0, 5>
             >
         {
             /// @brief Name of the field.
@@ -303,13 +303,13 @@ struct NavPvtFields
         class MidBits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<1U>
+                comms::option::def::FixedBitLength<1U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<1U>
+                    comms::option::def::FixedBitLength<1U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -363,8 +363,8 @@ struct NavPvtFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 CarrSolnVal,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValueRange<0, 2>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValueRange<0, 2>
             >
         {
             /// @brief Name of the field.
@@ -444,15 +444,15 @@ struct NavPvtFields
     class Flags2 : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0x1FU, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0x1FU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0x1FU, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0x1FU, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -635,7 +635,7 @@ struct NavPvtFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMillimetersPerSecond
+            comms::option::def::UnitsMillimetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -740,10 +740,10 @@ class NavPvt : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavPvt,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavPvt>,
-        comms::option::FieldsImpl<typename NavPvtFields<TOpt>::All>,
-        comms::option::MsgType<NavPvt<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavPvt>,
+        comms::option::def::FieldsImpl<typename NavPvtFields<TOpt>::All>,
+        comms::option::def::MsgType<NavPvt<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -751,10 +751,10 @@ class NavPvt : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavPvt,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavPvt>,
-            comms::option::FieldsImpl<typename NavPvtFields<TOpt>::All>,
-            comms::option::MsgType<NavPvt<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavPvt>,
+            comms::option::def::FieldsImpl<typename NavPvtFields<TOpt>::All>,
+            comms::option::def::MsgType<NavPvt<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

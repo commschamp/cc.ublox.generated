@@ -32,9 +32,9 @@ struct MgaGpsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<6>,
-            comms::option::ValidNumValue<6>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<6>,
+            comms::option::def::ValidNumValue<6>
         >
     {
         /// @brief Name of the field.
@@ -50,7 +50,7 @@ struct MgaGpsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -80,8 +80,8 @@ struct MgaGpsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 1073741824L>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 1073741824L>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -97,7 +97,7 @@ struct MgaGpsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 134217728L>
+            comms::option::def::ScalingRatio<1, 134217728L>
         >
     {
         /// @brief Name of the field.
@@ -113,7 +113,7 @@ struct MgaGpsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 16777216L>
+            comms::option::def::ScalingRatio<1, 16777216L>
         >
     {
         /// @brief Name of the field.
@@ -129,7 +129,7 @@ struct MgaGpsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 16777216L>
+            comms::option::def::ScalingRatio<1, 16777216L>
         >
     {
         /// @brief Name of the field.
@@ -145,8 +145,8 @@ struct MgaGpsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 2048>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 2048>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -162,7 +162,7 @@ struct MgaGpsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 16384>
+            comms::option::def::ScalingRatio<1, 16384>
         >
     {
         /// @brief Name of the field.
@@ -178,7 +178,7 @@ struct MgaGpsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 65536L>
+            comms::option::def::ScalingRatio<1, 65536L>
         >
     {
         /// @brief Name of the field.
@@ -194,7 +194,7 @@ struct MgaGpsIonoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 65536L>
+            comms::option::def::ScalingRatio<1, 65536L>
         >
     {
         /// @brief Name of the field.
@@ -247,10 +247,10 @@ class MgaGpsIono : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaGpsIono,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaGps>,
-        comms::option::FieldsImpl<typename MgaGpsIonoFields<TOpt>::All>,
-        comms::option::MsgType<MgaGpsIono<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGps>,
+        comms::option::def::FieldsImpl<typename MgaGpsIonoFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaGpsIono<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -258,10 +258,10 @@ class MgaGpsIono : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaGpsIono,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaGps>,
-            comms::option::FieldsImpl<typename MgaGpsIonoFields<TOpt>::All>,
-            comms::option::MsgType<MgaGpsIono<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGps>,
+            comms::option::def::FieldsImpl<typename MgaGpsIonoFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaGpsIono<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -36,7 +36,7 @@ struct MonSmgrFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -86,9 +86,9 @@ struct MonSmgrFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 IntOscStateVal,
-                comms::option::FixedBitLength<4U>,
-                comms::option::ValidNumValueRange<0, 2>,
-                comms::option::ValidNumValue<4>
+                comms::option::def::FixedBitLength<4U>,
+                comms::option::def::ValidNumValueRange<0, 2>,
+                comms::option::def::ValidNumValue<4>
             >
         {
             /// @brief Name of the field.
@@ -122,15 +122,15 @@ struct MonSmgrFields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<12U>,
-                comms::option::BitmaskReservedBits<0xFFCU, 0x0U>
+                comms::option::def::FixedBitLength<12U>,
+                comms::option::def::BitmaskReservedBits<0xFFCU, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<12U>,
-                    comms::option::BitmaskReservedBits<0xFFCU, 0x0U>
+                    comms::option::def::FixedBitLength<12U>,
+                    comms::option::def::BitmaskReservedBits<0xFFCU, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -233,9 +233,9 @@ struct MonSmgrFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 ExtOscStateVal,
-                comms::option::FixedBitLength<4U>,
-                comms::option::ValidNumValueRange<0, 2>,
-                comms::option::ValidNumValue<4>
+                comms::option::def::FixedBitLength<4U>,
+                comms::option::def::ValidNumValueRange<0, 2>,
+                comms::option::def::ValidNumValue<4>
             >
         {
             /// @brief Name of the field.
@@ -269,15 +269,15 @@ struct MonSmgrFields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<12U>,
-                comms::option::BitmaskReservedBits<0xFFCU, 0x0U>
+                comms::option::def::FixedBitLength<12U>,
+                comms::option::def::BitmaskReservedBits<0xFFCU, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<12U>,
-                    comms::option::BitmaskReservedBits<0xFFCU, 0x0U>
+                    comms::option::def::FixedBitLength<12U>,
+                    comms::option::def::BitmaskReservedBits<0xFFCU, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -379,7 +379,7 @@ struct MonSmgrFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             DiscSrcVal,
-            comms::option::ValidNumValueRange<0, 5>
+            comms::option::def::ValidNumValueRange<0, 5>
         >
     {
         /// @brief Name of the field.
@@ -414,15 +414,15 @@ struct MonSmgrFields
     class Gnss : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -465,15 +465,15 @@ struct MonSmgrFields
     class ExtInt0 : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -522,15 +522,15 @@ struct MonSmgrFields
     class ExtInt1 : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -600,10 +600,10 @@ class MonSmgr : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonSmgr,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonSmgr>,
-        comms::option::FieldsImpl<typename MonSmgrFields<TOpt>::All>,
-        comms::option::MsgType<MonSmgr<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonSmgr>,
+        comms::option::def::FieldsImpl<typename MonSmgrFields<TOpt>::All>,
+        comms::option::def::MsgType<MonSmgr<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -611,10 +611,10 @@ class MonSmgr : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonSmgr,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonSmgr>,
-            comms::option::FieldsImpl<typename MonSmgrFields<TOpt>::All>,
-            comms::option::MsgType<MonSmgr<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonSmgr>,
+            comms::option::def::FieldsImpl<typename MonSmgrFields<TOpt>::All>,
+            comms::option::def::MsgType<MonSmgr<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

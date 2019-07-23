@@ -35,7 +35,7 @@ struct CfgPmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -90,8 +90,8 @@ struct CfgPmFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -107,9 +107,9 @@ struct CfgPmFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<2U>,
-                comms::option::DefaultNumValue<1>,
-                comms::option::ValidNumValue<1>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::DefaultNumValue<1>,
+                comms::option::def::ValidNumValue<1>
             >
         {
             /// @brief Name of the field.
@@ -124,15 +124,15 @@ struct CfgPmFields
         class BitsMid : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<4U>,
-                comms::option::BitmaskReservedBits<0x8U, 0x0U>
+                comms::option::def::FixedBitLength<4U>,
+                comms::option::def::BitmaskReservedBits<0x8U, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<4U>,
-                    comms::option::BitmaskReservedBits<0x8U, 0x0U>
+                    comms::option::def::FixedBitLength<4U>,
+                    comms::option::def::BitmaskReservedBits<0x8U, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -191,8 +191,8 @@ struct CfgPmFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 LimitPeakCurrVal,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValueRange<0, 1>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValueRange<0, 1>
             >
         {
             /// @brief Name of the field.
@@ -223,15 +223,15 @@ struct CfgPmFields
         class BitsHigh : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<22U>,
-                comms::option::BitmaskReservedBits<0x3FFFF8UL, 0x0U>
+                comms::option::def::FixedBitLength<22U>,
+                comms::option::def::BitmaskReservedBits<0x3FFFF8UL, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<22U>,
-                    comms::option::BitmaskReservedBits<0x3FFFF8UL, 0x0U>
+                    comms::option::def::FixedBitLength<22U>,
+                    comms::option::def::BitmaskReservedBits<0x3FFFF8UL, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -332,7 +332,7 @@ struct CfgPmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -348,7 +348,7 @@ struct CfgPmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -364,7 +364,7 @@ struct CfgPmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -380,7 +380,7 @@ struct CfgPmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -396,7 +396,7 @@ struct CfgPmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -432,20 +432,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPm : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgPm>,
-        comms::option::FieldsImpl<typename CfgPmFields<TOpt>::All>,
-        comms::option::MsgType<CfgPm<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPm>,
+        comms::option::def::FieldsImpl<typename CfgPmFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgPm<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgPm>,
-            comms::option::FieldsImpl<typename CfgPmFields<TOpt>::All>,
-            comms::option::MsgType<CfgPm<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPm>,
+            comms::option::def::FieldsImpl<typename CfgPmFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgPm<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -39,7 +39,7 @@ struct GnssId : public
         ublox::field::FieldBase<>,
         GnssIdVal,
         TExtraOpts...,
-        comms::option::ValidNumValueRange<0, 6>
+        comms::option::def::ValidNumValueRange<0, 6>
     >
 {
     /// @brief Name of the field.

@@ -33,9 +33,9 @@ struct MgaGpsHealthFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<4>,
-            comms::option::ValidNumValue<4>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<4>,
+            comms::option::def::ValidNumValue<4>
         >
     {
         /// @brief Name of the field.
@@ -51,7 +51,7 @@ struct MgaGpsHealthFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -82,7 +82,7 @@ struct MgaGpsHealthFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::MgaGpsHealthFields::HealthCode,
-            comms::option::SequenceFixedSize<32U>
+            comms::option::def::SequenceFixedSize<32U>
         >
     {
         /// @brief Name of the field.
@@ -128,10 +128,10 @@ class MgaGpsHealth : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaGpsHealth,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaGps>,
-        comms::option::FieldsImpl<typename MgaGpsHealthFields<TOpt>::All>,
-        comms::option::MsgType<MgaGpsHealth<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGps>,
+        comms::option::def::FieldsImpl<typename MgaGpsHealthFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaGpsHealth<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -139,10 +139,10 @@ class MgaGpsHealth : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaGpsHealth,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaGps>,
-            comms::option::FieldsImpl<typename MgaGpsHealthFields<TOpt>::All>,
-            comms::option::MsgType<MgaGpsHealth<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGps>,
+            comms::option::def::FieldsImpl<typename MgaGpsHealthFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaGpsHealth<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

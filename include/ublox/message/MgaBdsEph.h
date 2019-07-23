@@ -32,9 +32,9 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -50,7 +50,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -140,7 +140,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x4000000000000LL>
+            comms::option::def::ScalingRatio<1, 0x4000000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -156,8 +156,8 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x200000000LL>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 0x200000000LL>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -173,7 +173,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<8, 1>
+            comms::option::def::ScalingRatio<8, 1>
         >
     {
         /// @brief Name of the field.
@@ -189,8 +189,8 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsNanoseconds
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -236,7 +236,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<8, 1>
+            comms::option::def::ScalingRatio<8, 1>
         >
     {
         /// @brief Name of the field.
@@ -252,7 +252,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 524288L>
+            comms::option::def::ScalingRatio<1, 524288L>
         >
     {
         /// @brief Name of the field.
@@ -268,7 +268,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 0x200000000LL>
+            comms::option::def::ScalingRatio<1, 0x200000000LL>
         >
     {
         /// @brief Name of the field.
@@ -284,7 +284,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -300,7 +300,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 0x80000000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -316,7 +316,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 0x80000000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -332,7 +332,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -348,7 +348,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -364,7 +364,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -380,7 +380,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -396,7 +396,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -412,7 +412,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -428,8 +428,8 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 64>,
-            comms::option::UnitsMeters
+            comms::option::def::ScalingRatio<1, 64>,
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -445,8 +445,8 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 64>,
-            comms::option::UnitsMeters
+            comms::option::def::ScalingRatio<1, 64>,
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -462,7 +462,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -478,7 +478,7 @@ struct MgaBdsEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -549,10 +549,10 @@ class MgaBdsEph : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaBdsEph,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaBds>,
-        comms::option::FieldsImpl<typename MgaBdsEphFields<TOpt>::All>,
-        comms::option::MsgType<MgaBdsEph<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaBds>,
+        comms::option::def::FieldsImpl<typename MgaBdsEphFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaBdsEph<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -560,10 +560,10 @@ class MgaBdsEph : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaBdsEph,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaBds>,
-            comms::option::FieldsImpl<typename MgaBdsEphFields<TOpt>::All>,
-            comms::option::MsgType<MgaBdsEph<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaBds>,
+            comms::option::def::FieldsImpl<typename MgaBdsEphFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaBdsEph<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

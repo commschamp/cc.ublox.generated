@@ -37,9 +37,9 @@ struct CfgPrtUsbFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<3>,
-            comms::option::ValidNumValue<3>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<3>,
+            comms::option::def::ValidNumValue<3>
         >
     {
         /// @brief Name of the field.
@@ -178,20 +178,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPrtUsb : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
-        comms::option::FieldsImpl<typename CfgPrtUsbFields<TOpt>::All>,
-        comms::option::MsgType<CfgPrtUsb<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
+        comms::option::def::FieldsImpl<typename CfgPrtUsbFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgPrtUsb<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
-            comms::option::FieldsImpl<typename CfgPrtUsbFields<TOpt>::All>,
-            comms::option::MsgType<CfgPrtUsb<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
+            comms::option::def::FieldsImpl<typename CfgPrtUsbFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgPrtUsb<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

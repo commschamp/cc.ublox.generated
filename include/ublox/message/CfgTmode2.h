@@ -45,7 +45,7 @@ struct CfgTmode2Fields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             TimeModeVal,
-            comms::option::ValidNumValueRange<0, 2>
+            comms::option::def::ValidNumValueRange<0, 2>
         >
     {
         /// @brief Name of the field.
@@ -91,15 +91,15 @@ struct CfgTmode2Fields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<2U>,
-            comms::option::BitmaskReservedBits<0xFFFCU, 0x0U>
+            comms::option::def::FixedLength<2U>,
+            comms::option::def::BitmaskReservedBits<0xFFFCU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<2U>,
-                comms::option::BitmaskReservedBits<0xFFFCU, 0x0U>
+                comms::option::def::FixedLength<2U>,
+                comms::option::def::BitmaskReservedBits<0xFFFCU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -149,7 +149,7 @@ struct CfgTmode2Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::UnitsCentimeters
+                comms::option::def::UnitsCentimeters
             >
         {
             /// @brief Name of the field.
@@ -166,7 +166,7 @@ struct CfgTmode2Fields
     struct EcefX : public
         comms::field::Optional<
             typename EcefXMembers::EcefX,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -185,8 +185,8 @@ struct CfgTmode2Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::ScalingRatio<1, 10000000L>,
-                comms::option::UnitsDegrees
+                comms::option::def::ScalingRatio<1, 10000000L>,
+                comms::option::def::UnitsDegrees
             >
         {
             /// @brief Name of the field.
@@ -203,7 +203,7 @@ struct CfgTmode2Fields
     struct Lat : public
         comms::field::Optional<
             typename LatMembers::Lat,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -222,7 +222,7 @@ struct CfgTmode2Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::UnitsCentimeters
+                comms::option::def::UnitsCentimeters
             >
         {
             /// @brief Name of the field.
@@ -239,7 +239,7 @@ struct CfgTmode2Fields
     struct EcefY : public
         comms::field::Optional<
             typename EcefYMembers::EcefY,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -258,8 +258,8 @@ struct CfgTmode2Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::ScalingRatio<1, 10000000L>,
-                comms::option::UnitsDegrees
+                comms::option::def::ScalingRatio<1, 10000000L>,
+                comms::option::def::UnitsDegrees
             >
         {
             /// @brief Name of the field.
@@ -276,7 +276,7 @@ struct CfgTmode2Fields
     struct Lon : public
         comms::field::Optional<
             typename LonMembers::Lon,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -295,7 +295,7 @@ struct CfgTmode2Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::UnitsCentimeters
+                comms::option::def::UnitsCentimeters
             >
         {
             /// @brief Name of the field.
@@ -312,7 +312,7 @@ struct CfgTmode2Fields
     struct EcefZ : public
         comms::field::Optional<
             typename EcefZMembers::EcefZ,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -331,7 +331,7 @@ struct CfgTmode2Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::int32_t,
-                comms::option::UnitsCentimeters
+                comms::option::def::UnitsCentimeters
             >
         {
             /// @brief Name of the field.
@@ -348,7 +348,7 @@ struct CfgTmode2Fields
     struct Alt : public
         comms::field::Optional<
             typename AltMembers::Alt,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -364,7 +364,7 @@ struct CfgTmode2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMillimeters
+            comms::option::def::UnitsMillimeters
         >
     {
         /// @brief Name of the field.
@@ -380,7 +380,7 @@ struct CfgTmode2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -396,7 +396,7 @@ struct CfgTmode2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMillimeters
+            comms::option::def::UnitsMillimeters
         >
     {
         /// @brief Name of the field.
@@ -434,22 +434,22 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgTmode2 : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgTmode2>,
-        comms::option::FieldsImpl<typename CfgTmode2Fields<TOpt>::All>,
-        comms::option::MsgType<CfgTmode2<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgTmode2>,
+        comms::option::def::FieldsImpl<typename CfgTmode2Fields<TOpt>::All>,
+        comms::option::def::MsgType<CfgTmode2<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgTmode2>,
-            comms::option::FieldsImpl<typename CfgTmode2Fields<TOpt>::All>,
-            comms::option::MsgType<CfgTmode2<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgTmode2>,
+            comms::option::def::FieldsImpl<typename CfgTmode2Fields<TOpt>::All>,
+            comms::option::def::MsgType<CfgTmode2<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

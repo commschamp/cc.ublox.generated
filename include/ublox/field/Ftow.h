@@ -24,8 +24,8 @@ struct Ftow : public
         ublox::field::FieldBase<>,
         std::int32_t,
         TExtraOpts...,
-        comms::option::UnitsNanoseconds,
-        comms::option::ValidNumValueRange<-500000L, 500000L>
+        comms::option::def::UnitsNanoseconds,
+        comms::option::def::ValidNumValueRange<-500000L, 500000L>
     >
 {
     /// @brief Name of the field.

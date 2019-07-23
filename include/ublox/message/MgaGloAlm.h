@@ -32,9 +32,9 @@ struct MgaGloAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<2>,
-            comms::option::ValidNumValue<2>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<2>,
+            comms::option::def::ValidNumValue<2>
         >
     {
         /// @brief Name of the field.
@@ -50,7 +50,7 @@ struct MgaGloAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -95,7 +95,7 @@ struct MgaGloAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsDays
+            comms::option::def::UnitsDays
         >
     {
         /// @brief Name of the field.
@@ -141,8 +141,8 @@ struct MgaGloAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 262144L>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 262144L>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -158,7 +158,7 @@ struct MgaGloAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ScalingRatio<1, 1048576L>
+            comms::option::def::ScalingRatio<1, 1048576L>
         >
     {
         /// @brief Name of the field.
@@ -174,7 +174,7 @@ struct MgaGloAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 1048576L>
+            comms::option::def::ScalingRatio<1, 1048576L>
         >
     {
         /// @brief Name of the field.
@@ -190,7 +190,7 @@ struct MgaGloAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 1048576L>
+            comms::option::def::ScalingRatio<1, 1048576L>
         >
     {
         /// @brief Name of the field.
@@ -206,8 +206,8 @@ struct MgaGloAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 32>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 32>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -223,7 +223,7 @@ struct MgaGloAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 512>
+            comms::option::def::ScalingRatio<1, 512>
         >
     {
         /// @brief Name of the field.
@@ -239,7 +239,7 @@ struct MgaGloAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 16384>
+            comms::option::def::ScalingRatio<1, 16384>
         >
     {
         /// @brief Name of the field.
@@ -327,10 +327,10 @@ class MgaGloAlm : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaGloAlm,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaGlo>,
-        comms::option::FieldsImpl<typename MgaGloAlmFields<TOpt>::All>,
-        comms::option::MsgType<MgaGloAlm<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGlo>,
+        comms::option::def::FieldsImpl<typename MgaGloAlmFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaGloAlm<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -338,10 +338,10 @@ class MgaGloAlm : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaGloAlm,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaGlo>,
-            comms::option::FieldsImpl<typename MgaGloAlmFields<TOpt>::All>,
-            comms::option::MsgType<MgaGloAlm<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGlo>,
+            comms::option::def::FieldsImpl<typename MgaGloAlmFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaGloAlm<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -54,8 +54,8 @@ struct RxmImesFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -163,8 +163,8 @@ struct RxmImesFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::ScalingRatio<1, 4096>,
-                    comms::option::UnitsHertz
+                    comms::option::def::ScalingRatio<1, 4096>,
+                    comms::option::def::UnitsHertz
                 >
             {
                 /// @brief Name of the field.
@@ -183,7 +183,7 @@ struct RxmImesFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::int8_t,
-                        comms::option::FixedBitLength<8U>
+                        comms::option::def::FixedBitLength<8U>
                     >
                 {
                     /// @brief Name of the field.
@@ -199,8 +199,8 @@ struct RxmImesFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::int32_t,
-                        comms::option::FixedBitLength<23U>,
-                        comms::option::ScalingRatio<180, 8388608L>
+                        comms::option::def::FixedBitLength<23U>,
+                        comms::option::def::ScalingRatio<180, 8388608L>
                     >
                 {
                     /// @brief Name of the field.
@@ -216,7 +216,7 @@ struct RxmImesFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<1U>
+                        comms::option::def::FixedBitLength<1U>
                     >
                 {
                     /// @brief Name of the field.
@@ -280,8 +280,8 @@ struct RxmImesFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::int32_t,
-                        comms::option::FixedBitLength<24U>,
-                        comms::option::ScalingRatio<360, 16777216L>
+                        comms::option::def::FixedBitLength<24U>,
+                        comms::option::def::ScalingRatio<360, 16777216L>
                     >
                 {
                     /// @brief Name of the field.
@@ -296,15 +296,15 @@ struct RxmImesFields
                 class Flags : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<8U>,
-                        comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+                        comms::option::def::FixedBitLength<8U>,
+                        comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<8U>,
-                            comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+                            comms::option::def::FixedBitLength<8U>,
+                            comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
                         >;
                 public:
                     /// @brief Provides names and generates access functions for internal bits.
@@ -393,7 +393,7 @@ struct RxmImesFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::int16_t,
-                        comms::option::FixedBitLength<9U>
+                        comms::option::def::FixedBitLength<9U>
                     >
                 {
                     /// @brief Name of the field.
@@ -409,7 +409,7 @@ struct RxmImesFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::int16_t,
-                        comms::option::FixedBitLength<12U>
+                        comms::option::def::FixedBitLength<12U>
                     >
                 {
                     /// @brief Name of the field.
@@ -436,8 +436,8 @@ struct RxmImesFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         Pos2AccVal,
-                        comms::option::FixedBitLength<2U>,
-                        comms::option::ValidNumValueRange<0, 3>
+                        comms::option::def::FixedBitLength<2U>,
+                        comms::option::def::ValidNumValueRange<0, 3>
                     >
                 {
                     /// @brief Name of the field.
@@ -470,15 +470,15 @@ struct RxmImesFields
                 class Bits : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<9U>,
-                        comms::option::BitmaskReservedBits<0x1FEU, 0x0U>
+                        comms::option::def::FixedBitLength<9U>,
+                        comms::option::def::BitmaskReservedBits<0x1FEU, 0x0U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<9U>,
-                            comms::option::BitmaskReservedBits<0x1FEU, 0x0U>
+                            comms::option::def::FixedBitLength<9U>,
+                            comms::option::def::BitmaskReservedBits<0x1FEU, 0x0U>
                         >;
                 public:
                     /// @brief Provides names and generates access functions for internal bits.
@@ -570,8 +570,8 @@ struct RxmImesFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::ScalingRatio<180, 16777216L>,
-                    comms::option::UnitsDegrees
+                    comms::option::def::ScalingRatio<180, 16777216L>,
+                    comms::option::def::UnitsDegrees
                 >
             {
                 /// @brief Name of the field.
@@ -587,8 +587,8 @@ struct RxmImesFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::ScalingRatio<360, 33554432L>,
-                    comms::option::UnitsDegrees
+                    comms::option::def::ScalingRatio<360, 33554432L>,
+                    comms::option::def::UnitsDegrees
                 >
             {
                 /// @brief Name of the field.
@@ -607,7 +607,7 @@ struct RxmImesFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint16_t,
-                        comms::option::FixedBitLength<12U>
+                        comms::option::def::FixedBitLength<12U>
                     >
                 {
                     /// @brief Name of the field.
@@ -622,15 +622,15 @@ struct RxmImesFields
                 class Bits : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<20U>,
-                        comms::option::BitmaskReservedBits<0xFFFFCUL, 0x0U>
+                        comms::option::def::FixedBitLength<20U>,
+                        comms::option::def::BitmaskReservedBits<0xFFFFCUL, 0x0U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<20U>,
-                            comms::option::BitmaskReservedBits<0xFFFFCUL, 0x0U>
+                            comms::option::def::FixedBitLength<20U>,
+                            comms::option::def::BitmaskReservedBits<0xFFFFCUL, 0x0U>
                         >;
                 public:
                     /// @brief Provides names and generates access functions for internal bits.
@@ -733,15 +733,15 @@ struct RxmImesFields
             class MediumId_2 : public
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedLength<4U>,
-                    comms::option::BitmaskReservedBits<0xFFFFFFF8UL, 0x0U>
+                    comms::option::def::FixedLength<4U>,
+                    comms::option::def::BitmaskReservedBits<0xFFFFFFF8UL, 0x0U>
                 >
             {
                 using Base = 
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedLength<4U>,
-                        comms::option::BitmaskReservedBits<0xFFFFFFF8UL, 0x0U>
+                        comms::option::def::FixedLength<4U>,
+                        comms::option::def::BitmaskReservedBits<0xFFFFFFF8UL, 0x0U>
                     >;
             public:
                 /// @brief Provides names and generates access functions for internal bits.
@@ -872,7 +872,7 @@ struct RxmImesFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::RxmImesFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -903,11 +903,11 @@ class RxmImes : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmImes,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmImes>,
-        comms::option::FieldsImpl<typename RxmImesFields<TOpt>::All>,
-        comms::option::MsgType<RxmImes<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmImes>,
+        comms::option::def::FieldsImpl<typename RxmImesFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmImes<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -915,11 +915,11 @@ class RxmImes : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmImes,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmImes>,
-            comms::option::FieldsImpl<typename RxmImesFields<TOpt>::All>,
-            comms::option::MsgType<RxmImes<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmImes>,
+            comms::option::def::FieldsImpl<typename RxmImesFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmImes<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

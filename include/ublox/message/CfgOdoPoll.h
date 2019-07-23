@@ -37,10 +37,10 @@ class CfgOdoPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgOdoPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgOdo>,
-        comms::option::FieldsImpl<typename CfgOdoPollFields<TOpt>::All>,
-        comms::option::MsgType<CfgOdoPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgOdo>,
+        comms::option::def::FieldsImpl<typename CfgOdoPollFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgOdoPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class CfgOdoPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgOdoPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgOdo>,
-            comms::option::FieldsImpl<typename CfgOdoPollFields<TOpt>::All>,
-            comms::option::MsgType<CfgOdoPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgOdo>,
+            comms::option::def::FieldsImpl<typename CfgOdoPollFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgOdoPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

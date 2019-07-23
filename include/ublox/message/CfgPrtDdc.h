@@ -38,8 +38,8 @@ struct CfgPrtDdcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::ValidNumValue<0>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -88,8 +88,8 @@ struct CfgPrtDdcFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<1U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<1U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -105,8 +105,8 @@ struct CfgPrtDdcFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<7U>,
-                comms::option::ValidNumValueRange<7, 120>
+                comms::option::def::FixedBitLength<7U>,
+                comms::option::def::ValidNumValueRange<7, 120>
             >
         {
             /// @brief Name of the field.
@@ -124,8 +124,8 @@ struct CfgPrtDdcFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::FixedBitLength<24U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<24U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -267,20 +267,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPrtDdc : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
-        comms::option::FieldsImpl<typename CfgPrtDdcFields<TOpt>::All>,
-        comms::option::MsgType<CfgPrtDdc<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
+        comms::option::def::FieldsImpl<typename CfgPrtDdcFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgPrtDdc<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
-            comms::option::FieldsImpl<typename CfgPrtDdcFields<TOpt>::All>,
-            comms::option::MsgType<CfgPrtDdc<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
+            comms::option::def::FieldsImpl<typename CfgPrtDdcFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgPrtDdc<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

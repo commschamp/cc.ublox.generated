@@ -31,9 +31,9 @@ struct MgaGalTimeoffsetFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<3>,
-            comms::option::ValidNumValue<3>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<3>,
+            comms::option::def::ValidNumValue<3>
         >
     {
         /// @brief Name of the field.
@@ -49,7 +49,7 @@ struct MgaGalTimeoffsetFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -79,8 +79,8 @@ struct MgaGalTimeoffsetFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 0x800000000LL>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 0x800000000LL>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -96,7 +96,7 @@ struct MgaGalTimeoffsetFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 0x8000000000000LL>
+            comms::option::def::ScalingRatio<1, 0x8000000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -112,8 +112,8 @@ struct MgaGalTimeoffsetFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ScalingRatio<3600, 1>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<3600, 1>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -129,7 +129,7 @@ struct MgaGalTimeoffsetFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -178,10 +178,10 @@ class MgaGalTimeoffset : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaGalTimeoffset,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaGal>,
-        comms::option::FieldsImpl<typename MgaGalTimeoffsetFields<TOpt>::All>,
-        comms::option::MsgType<MgaGalTimeoffset<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGal>,
+        comms::option::def::FieldsImpl<typename MgaGalTimeoffsetFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaGalTimeoffset<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -189,10 +189,10 @@ class MgaGalTimeoffset : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaGalTimeoffset,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaGal>,
-            comms::option::FieldsImpl<typename MgaGalTimeoffsetFields<TOpt>::All>,
-            comms::option::MsgType<MgaGalTimeoffset<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGal>,
+            comms::option::def::FieldsImpl<typename MgaGalTimeoffsetFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaGalTimeoffset<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

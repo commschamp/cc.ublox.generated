@@ -31,7 +31,7 @@ struct CfgHnrFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsHertz
+            comms::option::def::UnitsHertz
         >
     {
         /// @brief Name of the field.
@@ -73,20 +73,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgHnr : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgHnr>,
-        comms::option::FieldsImpl<typename CfgHnrFields<TOpt>::All>,
-        comms::option::MsgType<CfgHnr<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgHnr>,
+        comms::option::def::FieldsImpl<typename CfgHnrFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgHnr<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgHnr>,
-            comms::option::FieldsImpl<typename CfgHnrFields<TOpt>::All>,
-            comms::option::MsgType<CfgHnr<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgHnr>,
+            comms::option::def::FieldsImpl<typename CfgHnrFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgHnr<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

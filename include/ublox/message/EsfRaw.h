@@ -53,7 +53,7 @@ struct EsfRawFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::FixedLength<3U>
+                    comms::option::def::FixedLength<3U>
                 >
             {
                 /// @brief Name of the field.
@@ -175,10 +175,10 @@ class EsfRaw : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::EsfRaw,
-        comms::option::StaticNumIdImpl<ublox::MsgId_EsfRaw>,
-        comms::option::FieldsImpl<typename EsfRawFields<TOpt>::All>,
-        comms::option::MsgType<EsfRaw<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_EsfRaw>,
+        comms::option::def::FieldsImpl<typename EsfRawFields<TOpt>::All>,
+        comms::option::def::MsgType<EsfRaw<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -186,10 +186,10 @@ class EsfRaw : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::EsfRaw,
-            comms::option::StaticNumIdImpl<ublox::MsgId_EsfRaw>,
-            comms::option::FieldsImpl<typename EsfRawFields<TOpt>::All>,
-            comms::option::MsgType<EsfRaw<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_EsfRaw>,
+            comms::option::def::FieldsImpl<typename EsfRawFields<TOpt>::All>,
+            comms::option::def::MsgType<EsfRaw<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

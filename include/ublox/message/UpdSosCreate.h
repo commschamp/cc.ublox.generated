@@ -31,8 +31,8 @@ struct UpdSosCreateFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::ValidNumValue<0>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -75,10 +75,10 @@ class UpdSosCreate : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::UpdSosCreate,
-        comms::option::StaticNumIdImpl<ublox::MsgId_UpdSos>,
-        comms::option::FieldsImpl<typename UpdSosCreateFields<TOpt>::All>,
-        comms::option::MsgType<UpdSosCreate<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_UpdSos>,
+        comms::option::def::FieldsImpl<typename UpdSosCreateFields<TOpt>::All>,
+        comms::option::def::MsgType<UpdSosCreate<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -86,10 +86,10 @@ class UpdSosCreate : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::UpdSosCreate,
-            comms::option::StaticNumIdImpl<ublox::MsgId_UpdSos>,
-            comms::option::FieldsImpl<typename UpdSosCreateFields<TOpt>::All>,
-            comms::option::MsgType<UpdSosCreate<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_UpdSos>,
+            comms::option::def::FieldsImpl<typename UpdSosCreateFields<TOpt>::All>,
+            comms::option::def::MsgType<UpdSosCreate<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

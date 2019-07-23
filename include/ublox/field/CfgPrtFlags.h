@@ -23,16 +23,16 @@ class CfgPrtFlags : public
     comms::field::BitmaskValue<
         ublox::field::FieldBase<>,
         TExtraOpts...,
-        comms::option::FixedLength<2U>,
-        comms::option::BitmaskReservedBits<0xFFFDU, 0x0U>
+        comms::option::def::FixedLength<2U>,
+        comms::option::def::BitmaskReservedBits<0xFFFDU, 0x0U>
     >
 {
     using Base = 
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
             TExtraOpts...,
-            comms::option::FixedLength<2U>,
-            comms::option::BitmaskReservedBits<0xFFFDU, 0x0U>
+            comms::option::def::FixedLength<2U>,
+            comms::option::def::BitmaskReservedBits<0xFFFDU, 0x0U>
         >;
 public:
     /// @brief Provide names for internal bits.

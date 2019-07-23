@@ -31,9 +31,9 @@ struct UpdSosClearFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -76,10 +76,10 @@ class UpdSosClear : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::UpdSosClear,
-        comms::option::StaticNumIdImpl<ublox::MsgId_UpdSos>,
-        comms::option::FieldsImpl<typename UpdSosClearFields<TOpt>::All>,
-        comms::option::MsgType<UpdSosClear<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_UpdSos>,
+        comms::option::def::FieldsImpl<typename UpdSosClearFields<TOpt>::All>,
+        comms::option::def::MsgType<UpdSosClear<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -87,10 +87,10 @@ class UpdSosClear : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::UpdSosClear,
-            comms::option::StaticNumIdImpl<ublox::MsgId_UpdSos>,
-            comms::option::FieldsImpl<typename UpdSosClearFields<TOpt>::All>,
-            comms::option::MsgType<UpdSosClear<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_UpdSos>,
+            comms::option::def::FieldsImpl<typename UpdSosClearFields<TOpt>::All>,
+            comms::option::def::MsgType<UpdSosClear<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -25,14 +25,14 @@ namespace field
 template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
 class MsgId : public
     comms::field::EnumValue<
-        ublox::field::FieldBase<comms::option::BigEndian>,
+        ublox::field::FieldBase<comms::option::def::BigEndian>,
         ublox::MsgId,
         TExtraOpts...
     >
 {
     using Base = 
         comms::field::EnumValue<
-            ublox::field::FieldBase<comms::option::BigEndian>,
+            ublox::field::FieldBase<comms::option::def::BigEndian>,
             ublox::MsgId,
             TExtraOpts...
         >;

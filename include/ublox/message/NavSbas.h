@@ -71,7 +71,7 @@ struct NavSbasFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             ModeVal,
-            comms::option::ValidNumValueRange<0, 2>
+            comms::option::def::ValidNumValueRange<0, 2>
         >
     {
         /// @brief Name of the field.
@@ -254,7 +254,7 @@ struct NavSbasFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int16_t,
-                    comms::option::UnitsCentimeters
+                    comms::option::def::UnitsCentimeters
                 >
             {
                 /// @brief Name of the field.
@@ -284,7 +284,7 @@ struct NavSbasFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int16_t,
-                    comms::option::UnitsCentimeters
+                    comms::option::def::UnitsCentimeters
                 >
             {
                 /// @brief Name of the field.
@@ -366,7 +366,7 @@ struct NavSbasFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::NavSbasFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -401,11 +401,11 @@ class NavSbas : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavSbas,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavSbas>,
-        comms::option::FieldsImpl<typename NavSbasFields<TOpt>::All>,
-        comms::option::MsgType<NavSbas<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavSbas>,
+        comms::option::def::FieldsImpl<typename NavSbasFields<TOpt>::All>,
+        comms::option::def::MsgType<NavSbas<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -413,11 +413,11 @@ class NavSbas : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavSbas,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavSbas>,
-            comms::option::FieldsImpl<typename NavSbasFields<TOpt>::All>,
-            comms::option::MsgType<NavSbas<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavSbas>,
+            comms::option::def::FieldsImpl<typename NavSbasFields<TOpt>::All>,
+            comms::option::def::MsgType<NavSbas<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

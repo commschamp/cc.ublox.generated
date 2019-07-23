@@ -33,7 +33,7 @@ struct MonMsgppFields
             ublox::field::FieldBase<>,
             ublox::field::MonMsgppCount<TOpt>,
             typename TOpt::message::MonMsgppFields::Msg1,
-            comms::option::SequenceFixedSize<8U>
+            comms::option::def::SequenceFixedSize<8U>
         >
     {
         /// @brief Name of the field.
@@ -50,7 +50,7 @@ struct MonMsgppFields
             ublox::field::FieldBase<>,
             ublox::field::MonMsgppCount<TOpt>,
             typename TOpt::message::MonMsgppFields::Msg2,
-            comms::option::SequenceFixedSize<8U>
+            comms::option::def::SequenceFixedSize<8U>
         >
     {
         /// @brief Name of the field.
@@ -67,7 +67,7 @@ struct MonMsgppFields
             ublox::field::FieldBase<>,
             ublox::field::MonMsgppCount<TOpt>,
             typename TOpt::message::MonMsgppFields::Msg3,
-            comms::option::SequenceFixedSize<8U>
+            comms::option::def::SequenceFixedSize<8U>
         >
     {
         /// @brief Name of the field.
@@ -84,7 +84,7 @@ struct MonMsgppFields
             ublox::field::FieldBase<>,
             ublox::field::MonMsgppCount<TOpt>,
             typename TOpt::message::MonMsgppFields::Msg4,
-            comms::option::SequenceFixedSize<8U>
+            comms::option::def::SequenceFixedSize<8U>
         >
     {
         /// @brief Name of the field.
@@ -101,7 +101,7 @@ struct MonMsgppFields
             ublox::field::FieldBase<>,
             ublox::field::MonMsgppCount<TOpt>,
             typename TOpt::message::MonMsgppFields::Msg5,
-            comms::option::SequenceFixedSize<8U>
+            comms::option::def::SequenceFixedSize<8U>
         >
     {
         /// @brief Name of the field.
@@ -118,7 +118,7 @@ struct MonMsgppFields
             ublox::field::FieldBase<>,
             ublox::field::MonMsgppCount<TOpt>,
             typename TOpt::message::MonMsgppFields::Msg6,
-            comms::option::SequenceFixedSize<8U>
+            comms::option::def::SequenceFixedSize<8U>
         >
     {
         /// @brief Name of the field.
@@ -155,7 +155,7 @@ struct MonMsgppFields
             ublox::field::FieldBase<>,
             typename SkippedMembers::Element,
             typename TOpt::message::MonMsgppFields::Skipped,
-            comms::option::SequenceFixedSize<6U>
+            comms::option::def::SequenceFixedSize<6U>
         >
     {
         /// @brief Name of the field.
@@ -189,10 +189,10 @@ class MonMsgpp : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonMsgpp,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonMsgpp>,
-        comms::option::FieldsImpl<typename MonMsgppFields<TOpt>::All>,
-        comms::option::MsgType<MonMsgpp<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonMsgpp>,
+        comms::option::def::FieldsImpl<typename MonMsgppFields<TOpt>::All>,
+        comms::option::def::MsgType<MonMsgpp<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -200,10 +200,10 @@ class MonMsgpp : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonMsgpp,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonMsgpp>,
-            comms::option::FieldsImpl<typename MonMsgppFields<TOpt>::All>,
-            comms::option::MsgType<MonMsgpp<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonMsgpp>,
+            comms::option::def::FieldsImpl<typename MonMsgppFields<TOpt>::All>,
+            comms::option::def::MsgType<MonMsgpp<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -53,7 +53,7 @@ struct LogRetrievestringFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -164,7 +164,7 @@ struct LogRetrievestringFields
         comms::field::String<
             ublox::field::FieldBase<>,
             typename TOpt::message::LogRetrievestringFields::Bytes,
-            comms::option::SequenceLengthForcingEnabled
+            comms::option::def::SequenceLengthForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -203,11 +203,11 @@ class LogRetrievestring : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::LogRetrievestring,
-        comms::option::StaticNumIdImpl<ublox::MsgId_LogRetrievestring>,
-        comms::option::FieldsImpl<typename LogRetrievestringFields<TOpt>::All>,
-        comms::option::MsgType<LogRetrievestring<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_LogRetrievestring>,
+        comms::option::def::FieldsImpl<typename LogRetrievestringFields<TOpt>::All>,
+        comms::option::def::MsgType<LogRetrievestring<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -215,11 +215,11 @@ class LogRetrievestring : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::LogRetrievestring,
-            comms::option::StaticNumIdImpl<ublox::MsgId_LogRetrievestring>,
-            comms::option::FieldsImpl<typename LogRetrievestringFields<TOpt>::All>,
-            comms::option::MsgType<LogRetrievestring<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_LogRetrievestring>,
+            comms::option::def::FieldsImpl<typename LogRetrievestringFields<TOpt>::All>,
+            comms::option::def::MsgType<LogRetrievestring<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

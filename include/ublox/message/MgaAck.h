@@ -42,7 +42,7 @@ struct MgaAckFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             TypeVal,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -74,7 +74,7 @@ struct MgaAckFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -104,7 +104,7 @@ struct MgaAckFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             InfoCodeVal,
-            comms::option::ValidNumValueRange<0, 6>
+            comms::option::def::ValidNumValueRange<0, 6>
         >
     {
         /// @brief Name of the field.
@@ -157,7 +157,7 @@ struct MgaAckFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::MgaAckFields::MsgPayloadStart,
-            comms::option::SequenceFixedSize<4U>
+            comms::option::def::SequenceFixedSize<4U>
         >
     {
         /// @brief Name of the field.
@@ -189,10 +189,10 @@ class MgaAck : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaAck,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaAck>,
-        comms::option::FieldsImpl<typename MgaAckFields<TOpt>::All>,
-        comms::option::MsgType<MgaAck<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaAck>,
+        comms::option::def::FieldsImpl<typename MgaAckFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaAck<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -200,10 +200,10 @@ class MgaAck : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaAck,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaAck>,
-            comms::option::FieldsImpl<typename MgaAckFields<TOpt>::All>,
-            comms::option::MsgType<MgaAck<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaAck>,
+            comms::option::def::FieldsImpl<typename MgaAckFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaAck<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

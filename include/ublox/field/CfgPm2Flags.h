@@ -29,15 +29,15 @@ struct CfgPm2FlagsMembers
     class BitsLow : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedBitLength<8U>,
-            comms::option::BitmaskReservedBits<0xFU, 0x0U>
+            comms::option::def::FixedBitLength<8U>,
+            comms::option::def::BitmaskReservedBits<0xFU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<8U>,
-                comms::option::BitmaskReservedBits<0xFU, 0x0U>
+                comms::option::def::FixedBitLength<8U>,
+                comms::option::def::BitmaskReservedBits<0xFU, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -120,8 +120,8 @@ struct CfgPm2FlagsMembers
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             LimitPeakCurrVal,
-            comms::option::FixedBitLength<2U>,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::FixedBitLength<2U>,
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -152,15 +152,15 @@ struct CfgPm2FlagsMembers
     class BitsMid : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedBitLength<7U>,
-            comms::option::BitmaskReservedBits<0x38U, 0x0U>
+            comms::option::def::FixedBitLength<7U>,
+            comms::option::def::BitmaskReservedBits<0x38U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<7U>,
-                comms::option::BitmaskReservedBits<0x38U, 0x0U>
+                comms::option::def::FixedBitLength<7U>,
+                comms::option::def::BitmaskReservedBits<0x38U, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -242,8 +242,8 @@ struct CfgPm2FlagsMembers
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             ModeVal,
-            comms::option::FixedBitLength<2U>,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::FixedBitLength<2U>,
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -277,8 +277,8 @@ struct CfgPm2FlagsMembers
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::FixedBitLength<13U>,
-            comms::option::ValidNumValue<0>
+            comms::option::def::FixedBitLength<13U>,
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.

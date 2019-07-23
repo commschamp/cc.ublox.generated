@@ -32,7 +32,7 @@ struct CfgRateFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -75,7 +75,7 @@ struct CfgRateFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             TimeRefVal,
-            comms::option::ValidNumValueRange<0, 4>
+            comms::option::def::ValidNumValueRange<0, 4>
         >
     {
         /// @brief Name of the field.
@@ -123,20 +123,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgRate : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgRate>,
-        comms::option::FieldsImpl<typename CfgRateFields<TOpt>::All>,
-        comms::option::MsgType<CfgRate<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgRate>,
+        comms::option::def::FieldsImpl<typename CfgRateFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgRate<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgRate>,
-            comms::option::FieldsImpl<typename CfgRateFields<TOpt>::All>,
-            comms::option::MsgType<CfgRate<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgRate>,
+            comms::option::def::FieldsImpl<typename CfgRateFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgRate<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

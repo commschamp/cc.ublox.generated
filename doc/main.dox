@@ -28,11 +28,11 @@
 ///
 /// @section main_frames Frame (Protocol Stack) Classes
 /// The available frame (protocol stack) classes are:
-/// @li @ref ublox::frame::UbloxFrame from @b ublox/frame/UbloxFrame.h header file).
+/// @li @ref ublox::frame::UbloxFrame (from @b ublox/frame/UbloxFrame.h header file).
 ///
 /// Every frame class/type definition receives (as a template parameter) a list of
 /// @b input message types it is expected to recognize. Default defintion
-/// uses @ref ublox::input::AllMessages (defined in @b ).
+/// uses @ref ublox::input::AllMessages (defined in @b ublox/input/AllMessages.h).
 /// @n If protocol defines any uni-directional message, then it is recommended to use
 /// either @ref ublox::input::ServerInputMessages (from @b ublox/input/ServerInputMessages.h)
 /// or @ref ublox::input::ClientInputMessages  (from @b ublox/input/ClientInputMessages.h)
@@ -52,6 +52,93 @@
 /// library documentation. The extra customization (see @ref main_customization below)
 /// is performed by passing options to the layers themselves.
 ///
+/// The available bundles of input messages are:
+/// @li @ref ublox::input::AllMessages (from @b ublox/input/AllMessages.h header file).
+/// @li @ref ublox::input::ServerInputMessages (from @b ublox/input/ServerInputMessages.h header file).
+/// @li @ref ublox::input::ClientInputMessages (from @b ublox/input/ClientInputMessages.h header file).
+/// @li @ref ublox::input::Ublox5Messages (from @b ublox/input/Ublox5Messages.h header file).
+/// @li @ref ublox::input::Ublox5ServerInputMessages (from @b ublox/input/Ublox5ServerInputMessages.h header file).
+/// @li @ref ublox::input::Ublox5ClientInputMessages (from @b ublox/input/Ublox5ClientInputMessages.h header file).
+/// @li @ref ublox::input::Ublox6Messages (from @b ublox/input/Ublox6Messages.h header file).
+/// @li @ref ublox::input::Ublox6ServerInputMessages (from @b ublox/input/Ublox6ServerInputMessages.h header file).
+/// @li @ref ublox::input::Ublox6ClientInputMessages (from @b ublox/input/Ublox6ClientInputMessages.h header file).
+/// @li @ref ublox::input::Ublox7Messages (from @b ublox/input/Ublox7Messages.h header file).
+/// @li @ref ublox::input::Ublox7ServerInputMessages (from @b ublox/input/Ublox7ServerInputMessages.h header file).
+/// @li @ref ublox::input::Ublox7ClientInputMessages (from @b ublox/input/Ublox7ClientInputMessages.h header file).
+/// @li @ref ublox::input::Ublox8Messages (from @b ublox/input/Ublox8Messages.h header file).
+/// @li @ref ublox::input::Ublox8ServerInputMessages (from @b ublox/input/Ublox8ServerInputMessages.h header file).
+/// @li @ref ublox::input::Ublox8ClientInputMessages (from @b ublox/input/Ublox8ClientInputMessages.h header file).
+///
+/// @section main_dispatch Dispatching Message Objects
+/// While the @b COMMS library provides various built-in ways of 
+/// dispatching message objects into their respective handlers
+/// (see <b>Advanced Guide to Message Dispatching</b> page of the
+/// @b COMMS library documentation), the generated code also provides
+/// additional auxiliary dispatch functions which are @b switch statement
+/// based.
+///
+/// The available functions are:
+/// @li @ref ublox::dispatch::dispatchMessage
+/// (defined in @b ublox/dispatch/DispatchMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchServerInputMessage
+/// (defined in @b ublox/dispatch/DispatchServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchServerInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchClientInputMessage
+/// (defined in @b ublox/dispatch/DispatchClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchClientInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox5Message
+/// (defined in @b ublox/dispatch/DispatchUblox5Message.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox5MessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox5Message.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox5ServerInputMessage
+/// (defined in @b ublox/dispatch/DispatchUblox5ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox5ServerInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox5ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox5ClientInputMessage
+/// (defined in @b ublox/dispatch/DispatchUblox5ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox5ClientInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox5ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox6Message
+/// (defined in @b ublox/dispatch/DispatchUblox6Message.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox6MessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox6Message.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox6ServerInputMessage
+/// (defined in @b ublox/dispatch/DispatchUblox6ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox6ServerInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox6ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox6ClientInputMessage
+/// (defined in @b ublox/dispatch/DispatchUblox6ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox6ClientInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox6ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox7Message
+/// (defined in @b ublox/dispatch/DispatchUblox7Message.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox7MessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox7Message.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox7ServerInputMessage
+/// (defined in @b ublox/dispatch/DispatchUblox7ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox7ServerInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox7ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox7ClientInputMessage
+/// (defined in @b ublox/dispatch/DispatchUblox7ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox7ClientInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox7ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox8Message
+/// (defined in @b ublox/dispatch/DispatchUblox8Message.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox8MessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox8Message.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox8ServerInputMessage
+/// (defined in @b ublox/dispatch/DispatchUblox8ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox8ServerInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox8ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox8ClientInputMessage
+/// (defined in @b ublox/dispatch/DispatchUblox8ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox8ClientInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox8ClientInputMessage.h header file).
+///
 /// @section main_customization Customization
 /// Depending on the value of @b customization option passed to the @b commsdsl2comms
 /// code generator, the latter generates @ref ublox::options::DefaultOptions
@@ -68,7 +155,7 @@
 ///     struct field : public ublox::options::DefaultOptions::field
 ///     {
 ///         // use comms::util::StaticString as storage type
-///         using SomeStringField = comms::option::FixedSizeStorage<32>;
+///         using SomeStringField = comms::option::app::FixedSizeStorage<32>;
 ///     };
 /// };
 /// @endcode
@@ -83,15 +170,15 @@
 /// @code
 /// using MyInputMsg =
 ///    ublox::Message<
-///        comms::option::ReadIterator<const std::uint8_t*>, // for polymorphic read
-///        comms::option::Handler<MyHandler> // for polymorphic dispatch
+///        comms::option::app::ReadIterator<const std::uint8_t*>, // for polymorphic read
+///        comms::option::app::Handler<MyHandler> // for polymorphic dispatch
 ///    >;
 ///
 /// using MyOutputMsg =
 ///    ublox::Message<
-///        comms::option::WriteIterator<std::uint8_t*>, // for polymorphic write
-///        comms::option::LengthInfoInterface, // for polymorphic serialisation length retrieval
-///        comms::option::IdInfoInterface // for polymorphic message ID retrieval
+///        comms::option::app::WriteIterator<std::uint8_t*>, // for polymorphic write
+///        comms::option::app::LengthInfoInterface, // for polymorphic serialisation length retrieval
+///        comms::option::app::IdInfoInterface // for polymorphic message ID retrieval
 ///    >;
 /// @endcode
 /// In case there are only few uni-directional messages, it may make sence to define
@@ -99,11 +186,11 @@
 /// @code
 /// using MyMsg =
 ///    ublox::Message<
-///        comms::option::ReadIterator<const std::uint8_t*>, // for polymorphic read
-///        comms::option::Handler<MyHandler> // for polymorphic dispatch
-///        comms::option::WriteIterator<std::uint8_t*>, // for polymorphic write
-///        comms::option::LengthInfoInterface, // for polymorphic serialisation length retrieval
-///        comms::option::IdInfoInterface // for polymorphic message ID retrieval
+///        comms::option::app::ReadIterator<const std::uint8_t*>, // for polymorphic read
+///        comms::option::app::Handler<MyHandler> // for polymorphic dispatch
+///        comms::option::app::WriteIterator<std::uint8_t*>, // for polymorphic write
+///        comms::option::app::LengthInfoInterface, // for polymorphic serialisation length retrieval
+///        comms::option::app::IdInfoInterface // for polymorphic message ID retrieval
 ///    >;
 /// @endcode
 /// In this case the code generator may also define @b ublox::options::ServerDefaultOptions
@@ -119,6 +206,6 @@
 ///
 /// In case non-custom &lt;id&gt; layer has been used in schema (files), custom,
 /// application-specific allocation options to it may include
-/// @b comms::option::InPlaceAllocation and/or @b comms::option::SupportGenericMessage.
+/// @b comms::option::app::InPlaceAllocation and/or @b comms::option::app::SupportGenericMessage.
 /// Please see the documentation of the @b COMMS library itself for more details.
 

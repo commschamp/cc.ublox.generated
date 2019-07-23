@@ -37,7 +37,7 @@ struct CfgOdoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -66,15 +66,15 @@ struct CfgOdoFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -142,8 +142,8 @@ struct CfgOdoFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 ProfileVal,
-                comms::option::FixedBitLength<3U>,
-                comms::option::ValidNumValueRange<0, 4>
+                comms::option::def::FixedBitLength<3U>,
+                comms::option::def::ValidNumValueRange<0, 4>
             >
         {
             /// @brief Name of the field.
@@ -180,8 +180,8 @@ struct CfgOdoFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<5U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<5U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -253,8 +253,8 @@ struct CfgOdoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMetersPerSecond
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -270,7 +270,7 @@ struct CfgOdoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsMeters
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -365,20 +365,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgOdo : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgOdo>,
-        comms::option::FieldsImpl<typename CfgOdoFields<TOpt>::All>,
-        comms::option::MsgType<CfgOdo<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgOdo>,
+        comms::option::def::FieldsImpl<typename CfgOdoFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgOdo<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgOdo>,
-            comms::option::FieldsImpl<typename CfgOdoFields<TOpt>::All>,
-            comms::option::MsgType<CfgOdo<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgOdo>,
+            comms::option::def::FieldsImpl<typename CfgOdoFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgOdo<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

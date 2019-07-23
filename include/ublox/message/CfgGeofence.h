@@ -37,7 +37,7 @@ struct CfgGeofenceFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -106,7 +106,7 @@ struct CfgGeofenceFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             PioEnabledVal,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -147,7 +147,7 @@ struct CfgGeofenceFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             PinPolarityVal,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -226,8 +226,8 @@ struct CfgGeofenceFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::ScalingRatio<100, 1>,
-                    comms::option::UnitsMeters
+                    comms::option::def::ScalingRatio<100, 1>,
+                    comms::option::def::UnitsMeters
                 >
             {
                 /// @brief Name of the field.
@@ -291,7 +291,7 @@ struct CfgGeofenceFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::CfgGeofenceFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -326,22 +326,22 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgGeofence : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgGeofence>,
-        comms::option::FieldsImpl<typename CfgGeofenceFields<TOpt>::All>,
-        comms::option::MsgType<CfgGeofence<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgGeofence>,
+        comms::option::def::FieldsImpl<typename CfgGeofenceFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgGeofence<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgGeofence>,
-            comms::option::FieldsImpl<typename CfgGeofenceFields<TOpt>::All>,
-            comms::option::MsgType<CfgGeofence<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgGeofence>,
+            comms::option::def::FieldsImpl<typename CfgGeofenceFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgGeofence<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

@@ -35,7 +35,7 @@ struct CfgTxslotFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -50,15 +50,15 @@ struct CfgTxslotFields
     class Enable : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xE0U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xE0U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xE0U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xE0U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -123,7 +123,7 @@ struct CfgTxslotFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             RefTpVal,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -190,7 +190,7 @@ struct CfgTxslotFields
             ublox::field::FieldBase<>,
             typename EndMembers::Element,
             typename TOpt::message::CfgTxslotFields::End,
-            comms::option::SequenceFixedSize<3U>
+            comms::option::def::SequenceFixedSize<3U>
         >
     {
         /// @brief Name of the field.
@@ -222,10 +222,10 @@ class CfgTxslot : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgTxslot,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgTxslot>,
-        comms::option::FieldsImpl<typename CfgTxslotFields<TOpt>::All>,
-        comms::option::MsgType<CfgTxslot<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgTxslot>,
+        comms::option::def::FieldsImpl<typename CfgTxslotFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgTxslot<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -233,10 +233,10 @@ class CfgTxslot : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgTxslot,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgTxslot>,
-            comms::option::FieldsImpl<typename CfgTxslotFields<TOpt>::All>,
-            comms::option::MsgType<CfgTxslot<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgTxslot>,
+            comms::option::def::FieldsImpl<typename CfgTxslotFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgTxslot<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:
