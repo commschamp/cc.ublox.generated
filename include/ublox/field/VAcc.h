@@ -24,7 +24,7 @@ struct VAcc : public
         ublox::field::FieldBase<>,
         std::uint32_t,
         TExtraOpts...,
-        comms::option::UnitsMillimeters
+        comms::option::def::UnitsMillimeters
     >
 {
     /// @brief Name of the field.

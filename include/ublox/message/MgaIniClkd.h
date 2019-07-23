@@ -31,9 +31,9 @@ struct MgaIniClkdFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<32>,
-            comms::option::ValidNumValue<32>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<32>,
+            comms::option::def::ValidNumValue<32>
         >
     {
         /// @brief Name of the field.
@@ -49,7 +49,7 @@ struct MgaIniClkdFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -125,10 +125,10 @@ class MgaIniClkd : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaIniClkd,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-        comms::option::FieldsImpl<typename MgaIniClkdFields<TOpt>::All>,
-        comms::option::MsgType<MgaIniClkd<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+        comms::option::def::FieldsImpl<typename MgaIniClkdFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaIniClkd<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -136,10 +136,10 @@ class MgaIniClkd : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaIniClkd,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-            comms::option::FieldsImpl<typename MgaIniClkdFields<TOpt>::All>,
-            comms::option::MsgType<MgaIniClkd<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+            comms::option::def::FieldsImpl<typename MgaIniClkdFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaIniClkd<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -32,15 +32,15 @@ struct CfgRstFields
     class NavBbrMask : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<2U>,
-            comms::option::BitmaskReservedBits<0x7E00U, 0x0U>
+            comms::option::def::FixedLength<2U>,
+            comms::option::def::BitmaskReservedBits<0x7E00U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<2U>,
-                comms::option::BitmaskReservedBits<0x7E00U, 0x0U>
+                comms::option::def::FixedLength<2U>,
+                comms::option::def::BitmaskReservedBits<0x7E00U, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -159,9 +159,9 @@ struct CfgRstFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             ResetModeVal,
-            comms::option::ValidNumValueRange<0, 2>,
-            comms::option::ValidNumValue<4>,
-            comms::option::ValidNumValueRange<8, 9>
+            comms::option::def::ValidNumValueRange<0, 2>,
+            comms::option::def::ValidNumValue<4>,
+            comms::option::def::ValidNumValueRange<8, 9>
         >
     {
         /// @brief Name of the field.
@@ -229,10 +229,10 @@ class CfgRst : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgRst,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgRst>,
-        comms::option::FieldsImpl<typename CfgRstFields<TOpt>::All>,
-        comms::option::MsgType<CfgRst<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgRst>,
+        comms::option::def::FieldsImpl<typename CfgRstFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgRst<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -240,10 +240,10 @@ class CfgRst : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgRst,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgRst>,
-            comms::option::FieldsImpl<typename CfgRstFields<TOpt>::All>,
-            comms::option::MsgType<CfgRst<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgRst>,
+            comms::option::def::FieldsImpl<typename CfgRstFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgRst<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

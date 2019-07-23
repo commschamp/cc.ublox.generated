@@ -51,7 +51,7 @@ struct MgaDbdFields
             ublox::field::FieldBase<>,
             typename Reserved1Members::Element,
             typename TOpt::message::MgaDbdFields::Reserved1,
-            comms::option::SequenceFixedSize<12U>
+            comms::option::def::SequenceFixedSize<12U>
         >
     {
         /// @brief Name of the field.
@@ -95,20 +95,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class MgaDbd : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaDbd>,
-        comms::option::FieldsImpl<typename MgaDbdFields<TOpt>::All>,
-        comms::option::MsgType<MgaDbd<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaDbd>,
+        comms::option::def::FieldsImpl<typename MgaDbdFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaDbd<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaDbd>,
-            comms::option::FieldsImpl<typename MgaDbdFields<TOpt>::All>,
-            comms::option::MsgType<MgaDbd<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaDbd>,
+            comms::option::def::FieldsImpl<typename MgaDbdFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaDbd<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

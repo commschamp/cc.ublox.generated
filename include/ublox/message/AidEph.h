@@ -90,7 +90,7 @@ struct AidEphFields
                     ublox::field::FieldBase<>,
                     typename Sf1dMembers::Element,
                     typename TOpt::message::AidEphFields::SfdMembers::ListsMembers::Sf1d,
-                    comms::option::SequenceFixedSize<8U>
+                    comms::option::def::SequenceFixedSize<8U>
                 >
             {
                 /// @brief Name of the field.
@@ -127,7 +127,7 @@ struct AidEphFields
                     ublox::field::FieldBase<>,
                     typename Sf2dMembers::Element,
                     typename TOpt::message::AidEphFields::SfdMembers::ListsMembers::Sf2d,
-                    comms::option::SequenceFixedSize<8U>
+                    comms::option::def::SequenceFixedSize<8U>
                 >
             {
                 /// @brief Name of the field.
@@ -164,7 +164,7 @@ struct AidEphFields
                     ublox::field::FieldBase<>,
                     typename Sf3dMembers::Element,
                     typename TOpt::message::AidEphFields::SfdMembers::ListsMembers::Sf3d,
-                    comms::option::SequenceFixedSize<8U>
+                    comms::option::def::SequenceFixedSize<8U>
                 >
             {
                 /// @brief Name of the field.
@@ -255,11 +255,11 @@ class AidEph : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::AidEph,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AidEph>,
-        comms::option::FieldsImpl<typename AidEphFields<TOpt>::All>,
-        comms::option::MsgType<AidEph<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AidEph>,
+        comms::option::def::FieldsImpl<typename AidEphFields<TOpt>::All>,
+        comms::option::def::MsgType<AidEph<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -267,11 +267,11 @@ class AidEph : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::AidEph,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AidEph>,
-            comms::option::FieldsImpl<typename AidEphFields<TOpt>::All>,
-            comms::option::MsgType<AidEph<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AidEph>,
+            comms::option::def::FieldsImpl<typename AidEphFields<TOpt>::All>,
+            comms::option::def::MsgType<AidEph<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

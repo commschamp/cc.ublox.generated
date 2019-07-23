@@ -31,9 +31,9 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<2>,
-            comms::option::ValidNumValue<2>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<2>,
+            comms::option::def::ValidNumValue<2>
         >
     {
         /// @brief Name of the field.
@@ -49,7 +49,7 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -95,7 +95,7 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 2097152L>
+            comms::option::def::ScalingRatio<1, 2097152L>
         >
     {
         /// @brief Name of the field.
@@ -111,7 +111,7 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -127,8 +127,8 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ScalingRatio<4096, 1>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<4096, 1>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -144,7 +144,7 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ScalingRatio<1, 524288L>
+            comms::option::def::ScalingRatio<1, 524288L>
         >
     {
         /// @brief Name of the field.
@@ -160,7 +160,7 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 0x4000000000LL>
+            comms::option::def::ScalingRatio<1, 0x4000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -176,8 +176,8 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 2048>,
-            comms::option::UnitsMeters
+            comms::option::def::ScalingRatio<1, 2048>,
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -193,7 +193,7 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 8388608L>
+            comms::option::def::ScalingRatio<1, 8388608L>
         >
     {
         /// @brief Name of the field.
@@ -209,7 +209,7 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 8388608L>
+            comms::option::def::ScalingRatio<1, 8388608L>
         >
     {
         /// @brief Name of the field.
@@ -225,7 +225,7 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 8388608L>
+            comms::option::def::ScalingRatio<1, 8388608L>
         >
     {
         /// @brief Name of the field.
@@ -241,8 +241,8 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 1048576L>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 1048576L>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -258,7 +258,7 @@ struct MgaGpsAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 0x4000000000LL>
+            comms::option::def::ScalingRatio<1, 0x4000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -315,10 +315,10 @@ class MgaGpsAlm : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaGpsAlm,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaGps>,
-        comms::option::FieldsImpl<typename MgaGpsAlmFields<TOpt>::All>,
-        comms::option::MsgType<MgaGpsAlm<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGps>,
+        comms::option::def::FieldsImpl<typename MgaGpsAlmFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaGpsAlm<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -326,10 +326,10 @@ class MgaGpsAlm : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaGpsAlm,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaGps>,
-            comms::option::FieldsImpl<typename MgaGpsAlmFields<TOpt>::All>,
-            comms::option::MsgType<MgaGpsAlm<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGps>,
+            comms::option::def::FieldsImpl<typename MgaGpsAlmFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaGpsAlm<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

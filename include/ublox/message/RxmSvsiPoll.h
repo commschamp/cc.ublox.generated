@@ -37,10 +37,10 @@ class RxmSvsiPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmSvsiPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmSvsi>,
-        comms::option::FieldsImpl<typename RxmSvsiPollFields<TOpt>::All>,
-        comms::option::MsgType<RxmSvsiPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmSvsi>,
+        comms::option::def::FieldsImpl<typename RxmSvsiPollFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmSvsiPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class RxmSvsiPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmSvsiPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmSvsi>,
-            comms::option::FieldsImpl<typename RxmSvsiPollFields<TOpt>::All>,
-            comms::option::MsgType<RxmSvsiPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmSvsi>,
+            comms::option::def::FieldsImpl<typename RxmSvsiPollFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmSvsiPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

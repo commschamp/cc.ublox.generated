@@ -37,10 +37,10 @@ class CfgEsrcPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgEsrcPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgEsrc>,
-        comms::option::FieldsImpl<typename CfgEsrcPollFields<TOpt>::All>,
-        comms::option::MsgType<CfgEsrcPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgEsrc>,
+        comms::option::def::FieldsImpl<typename CfgEsrcPollFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgEsrcPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class CfgEsrcPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgEsrcPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgEsrc>,
-            comms::option::FieldsImpl<typename CfgEsrcPollFields<TOpt>::All>,
-            comms::option::MsgType<CfgEsrcPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgEsrc>,
+            comms::option::def::FieldsImpl<typename CfgEsrcPollFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgEsrcPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

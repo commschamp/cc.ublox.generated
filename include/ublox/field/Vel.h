@@ -24,7 +24,7 @@ struct Vel : public
         ublox::field::FieldBase<>,
         std::int32_t,
         TExtraOpts...,
-        comms::option::UnitsMillimetersPerSecond
+        comms::option::def::UnitsMillimetersPerSecond
     >
 {
     /// @brief Name of the field.

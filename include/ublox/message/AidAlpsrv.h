@@ -167,7 +167,7 @@ struct AidAlpsrvFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::AidAlpsrvFields::Data,
-            comms::option::SequenceLengthForcingEnabled
+            comms::option::def::SequenceLengthForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -203,22 +203,22 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class AidAlpsrv : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AidAlpsrv>,
-        comms::option::FieldsImpl<typename AidAlpsrvFields<TOpt>::All>,
-        comms::option::MsgType<AidAlpsrv<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAlpsrv>,
+        comms::option::def::FieldsImpl<typename AidAlpsrvFields<TOpt>::All>,
+        comms::option::def::MsgType<AidAlpsrv<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AidAlpsrv>,
-            comms::option::FieldsImpl<typename AidAlpsrvFields<TOpt>::All>,
-            comms::option::MsgType<AidAlpsrv<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAlpsrv>,
+            comms::option::def::FieldsImpl<typename AidAlpsrvFields<TOpt>::All>,
+            comms::option::def::MsgType<AidAlpsrv<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

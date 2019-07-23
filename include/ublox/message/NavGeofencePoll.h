@@ -37,10 +37,10 @@ class NavGeofencePoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavGeofencePoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavGeofence>,
-        comms::option::FieldsImpl<typename NavGeofencePollFields<TOpt>::All>,
-        comms::option::MsgType<NavGeofencePoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavGeofence>,
+        comms::option::def::FieldsImpl<typename NavGeofencePollFields<TOpt>::All>,
+        comms::option::def::MsgType<NavGeofencePoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class NavGeofencePoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavGeofencePoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavGeofence>,
-            comms::option::FieldsImpl<typename NavGeofencePollFields<TOpt>::All>,
-            comms::option::MsgType<NavGeofencePoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavGeofence>,
+            comms::option::def::FieldsImpl<typename NavGeofencePollFields<TOpt>::All>,
+            comms::option::def::MsgType<NavGeofencePoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

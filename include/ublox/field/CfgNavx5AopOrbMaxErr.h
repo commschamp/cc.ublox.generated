@@ -24,8 +24,8 @@ class CfgNavx5AopOrbMaxErr : public
         ublox::field::FieldBase<>,
         std::uint16_t,
         TExtraOpts...,
-        comms::option::UnitsMeters,
-        comms::option::ValidNumValueRange<5, 1000>
+        comms::option::def::UnitsMeters,
+        comms::option::def::ValidNumValueRange<5, 1000>
     >
 {
     using Base = 
@@ -33,8 +33,8 @@ class CfgNavx5AopOrbMaxErr : public
             ublox::field::FieldBase<>,
             std::uint16_t,
             TExtraOpts...,
-            comms::option::UnitsMeters,
-            comms::option::ValidNumValueRange<5, 1000>
+            comms::option::def::UnitsMeters,
+            comms::option::def::ValidNumValueRange<5, 1000>
         >;
 public:
     /// @brief Special value <b>"Reset"</b>.

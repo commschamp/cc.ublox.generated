@@ -37,10 +37,10 @@ class NavPosecefPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavPosecefPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavPosecef>,
-        comms::option::FieldsImpl<typename NavPosecefPollFields<TOpt>::All>,
-        comms::option::MsgType<NavPosecefPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavPosecef>,
+        comms::option::def::FieldsImpl<typename NavPosecefPollFields<TOpt>::All>,
+        comms::option::def::MsgType<NavPosecefPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class NavPosecefPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavPosecefPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavPosecef>,
-            comms::option::FieldsImpl<typename NavPosecefPollFields<TOpt>::All>,
-            comms::option::MsgType<NavPosecefPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavPosecef>,
+            comms::option::def::FieldsImpl<typename NavPosecefPollFields<TOpt>::All>,
+            comms::option::def::MsgType<NavPosecefPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

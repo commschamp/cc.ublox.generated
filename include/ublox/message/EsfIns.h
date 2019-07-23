@@ -38,9 +38,9 @@ struct EsfInsFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<8U>,
-                comms::option::DefaultNumValue<1>,
-                comms::option::ValidNumValue<1>
+                comms::option::def::FixedBitLength<8U>,
+                comms::option::def::DefaultNumValue<1>,
+                comms::option::def::ValidNumValue<1>
             >
         {
             /// @brief Name of the field.
@@ -55,15 +55,15 @@ struct EsfInsFields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<24U>,
-                comms::option::BitmaskReservedBits<0xFFFFC0UL, 0x0U>
+                comms::option::def::FixedBitLength<24U>,
+                comms::option::def::BitmaskReservedBits<0xFFFFC0UL, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<24U>,
-                    comms::option::BitmaskReservedBits<0xFFFFC0UL, 0x0U>
+                    comms::option::def::FixedBitLength<24U>,
+                    comms::option::def::BitmaskReservedBits<0xFFFFC0UL, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -184,8 +184,8 @@ struct EsfInsFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 1000>,
-            comms::option::UnitsDegrees
+            comms::option::def::ScalingRatio<1, 1000>,
+            comms::option::def::UnitsDegrees
         >
     {
         /// @brief Name of the field.
@@ -201,8 +201,8 @@ struct EsfInsFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 1000>,
-            comms::option::UnitsDegrees
+            comms::option::def::ScalingRatio<1, 1000>,
+            comms::option::def::UnitsDegrees
         >
     {
         /// @brief Name of the field.
@@ -218,8 +218,8 @@ struct EsfInsFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 1000>,
-            comms::option::UnitsDegrees
+            comms::option::def::ScalingRatio<1, 1000>,
+            comms::option::def::UnitsDegrees
         >
     {
         /// @brief Name of the field.
@@ -300,10 +300,10 @@ class EsfIns : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::EsfIns,
-        comms::option::StaticNumIdImpl<ublox::MsgId_EsfIns>,
-        comms::option::FieldsImpl<typename EsfInsFields<TOpt>::All>,
-        comms::option::MsgType<EsfIns<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_EsfIns>,
+        comms::option::def::FieldsImpl<typename EsfInsFields<TOpt>::All>,
+        comms::option::def::MsgType<EsfIns<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -311,10 +311,10 @@ class EsfIns : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::EsfIns,
-            comms::option::StaticNumIdImpl<ublox::MsgId_EsfIns>,
-            comms::option::FieldsImpl<typename EsfInsFields<TOpt>::All>,
-            comms::option::MsgType<EsfIns<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_EsfIns>,
+            comms::option::def::FieldsImpl<typename EsfInsFields<TOpt>::All>,
+            comms::option::def::MsgType<EsfIns<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

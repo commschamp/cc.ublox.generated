@@ -29,15 +29,15 @@ struct MonRxrFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -93,10 +93,10 @@ class MonRxr : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonRxr,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonRxr>,
-        comms::option::FieldsImpl<typename MonRxrFields<TOpt>::All>,
-        comms::option::MsgType<MonRxr<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonRxr>,
+        comms::option::def::FieldsImpl<typename MonRxrFields<TOpt>::All>,
+        comms::option::def::MsgType<MonRxr<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -104,10 +104,10 @@ class MonRxr : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonRxr,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonRxr>,
-            comms::option::FieldsImpl<typename MonRxrFields<TOpt>::All>,
-            comms::option::MsgType<MonRxr<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonRxr>,
+            comms::option::def::FieldsImpl<typename MonRxrFields<TOpt>::All>,
+            comms::option::def::MsgType<MonRxr<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

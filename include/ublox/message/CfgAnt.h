@@ -32,15 +32,15 @@ struct CfgAntFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<2U>,
-            comms::option::BitmaskReservedBits<0xFFE0U, 0x0U>
+            comms::option::def::FixedLength<2U>,
+            comms::option::def::BitmaskReservedBits<0xFFE0U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<2U>,
-                comms::option::BitmaskReservedBits<0xFFE0U, 0x0U>
+                comms::option::def::FixedLength<2U>,
+                comms::option::def::BitmaskReservedBits<0xFFE0U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -99,7 +99,7 @@ struct CfgAntFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<5U>
+                comms::option::def::FixedBitLength<5U>
             >
         {
             /// @brief Name of the field.
@@ -115,7 +115,7 @@ struct CfgAntFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<5U>
+                comms::option::def::FixedBitLength<5U>
             >
         {
             /// @brief Name of the field.
@@ -131,7 +131,7 @@ struct CfgAntFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<5U>
+                comms::option::def::FixedBitLength<5U>
             >
         {
             /// @brief Name of the field.
@@ -146,13 +146,13 @@ struct CfgAntFields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<1U>
+                comms::option::def::FixedBitLength<1U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<1U>
+                    comms::option::def::FixedBitLength<1U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -256,20 +256,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgAnt : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgAnt>,
-        comms::option::FieldsImpl<typename CfgAntFields<TOpt>::All>,
-        comms::option::MsgType<CfgAnt<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgAnt>,
+        comms::option::def::FieldsImpl<typename CfgAntFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgAnt<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgAnt>,
-            comms::option::FieldsImpl<typename CfgAntFields<TOpt>::All>,
-            comms::option::MsgType<CfgAnt<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgAnt>,
+            comms::option::def::FieldsImpl<typename CfgAntFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgAnt<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

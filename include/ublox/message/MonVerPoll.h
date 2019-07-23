@@ -37,10 +37,10 @@ class MonVerPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonVerPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonVer>,
-        comms::option::FieldsImpl<typename MonVerPollFields<TOpt>::All>,
-        comms::option::MsgType<MonVerPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonVer>,
+        comms::option::def::FieldsImpl<typename MonVerPollFields<TOpt>::All>,
+        comms::option::def::MsgType<MonVerPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class MonVerPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonVerPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonVer>,
-            comms::option::FieldsImpl<typename MonVerPollFields<TOpt>::All>,
-            comms::option::MsgType<MonVerPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonVer>,
+            comms::option::def::FieldsImpl<typename MonVerPollFields<TOpt>::All>,
+            comms::option::def::MsgType<MonVerPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

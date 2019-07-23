@@ -24,7 +24,7 @@ struct EcefZ : public
         ublox::field::FieldBase<>,
         std::int32_t,
         TExtraOpts...,
-        comms::option::UnitsCentimeters
+        comms::option::def::UnitsCentimeters
     >
 {
     /// @brief Name of the field.

@@ -179,10 +179,10 @@ class CfgDatUser : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgDatUser,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgDat>,
-        comms::option::FieldsImpl<typename CfgDatUserFields<TOpt>::All>,
-        comms::option::MsgType<CfgDatUser<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgDat>,
+        comms::option::def::FieldsImpl<typename CfgDatUserFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgDatUser<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -190,10 +190,10 @@ class CfgDatUser : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgDatUser,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgDat>,
-            comms::option::FieldsImpl<typename CfgDatUserFields<TOpt>::All>,
-            comms::option::MsgType<CfgDatUser<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgDat>,
+            comms::option::def::FieldsImpl<typename CfgDatUserFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgDatUser<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

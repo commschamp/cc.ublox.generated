@@ -37,10 +37,10 @@ class AidReq : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::AidReq,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AidReq>,
-        comms::option::FieldsImpl<typename AidReqFields<TOpt>::All>,
-        comms::option::MsgType<AidReq<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AidReq>,
+        comms::option::def::FieldsImpl<typename AidReqFields<TOpt>::All>,
+        comms::option::def::MsgType<AidReq<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class AidReq : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::AidReq,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AidReq>,
-            comms::option::FieldsImpl<typename AidReqFields<TOpt>::All>,
-            comms::option::MsgType<AidReq<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AidReq>,
+            comms::option::def::FieldsImpl<typename AidReqFields<TOpt>::All>,
+            comms::option::def::MsgType<AidReq<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -38,7 +38,7 @@ struct CfgTmode3Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -81,8 +81,8 @@ struct CfgTmode3Fields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 ModeVal,
-                comms::option::FixedBitLength<8U>,
-                comms::option::ValidNumValueRange<0, 2>
+                comms::option::def::FixedBitLength<8U>,
+                comms::option::def::ValidNumValueRange<0, 2>
             >
         {
             /// @brief Name of the field.
@@ -114,15 +114,15 @@ struct CfgTmode3Fields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<8U>,
-                comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+                comms::option::def::FixedBitLength<8U>,
+                comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<8U>,
-                    comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+                    comms::option::def::FixedBitLength<8U>,
+                    comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -214,7 +214,7 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::UnitsCentimeters
+                    comms::option::def::UnitsCentimeters
                 >
             {
                 /// @brief Name of the field.
@@ -230,7 +230,7 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::UnitsCentimeters
+                    comms::option::def::UnitsCentimeters
                 >
             {
                 /// @brief Name of the field.
@@ -246,7 +246,7 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::UnitsCentimeters
+                    comms::option::def::UnitsCentimeters
                 >
             {
                 /// @brief Name of the field.
@@ -262,8 +262,8 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int8_t,
-                    comms::option::ScalingRatio<1, 10>,
-                    comms::option::UnitsMillimeters
+                    comms::option::def::ScalingRatio<1, 10>,
+                    comms::option::def::UnitsMillimeters
                 >
             {
                 /// @brief Name of the field.
@@ -279,8 +279,8 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int8_t,
-                    comms::option::ScalingRatio<1, 10>,
-                    comms::option::UnitsMillimeters
+                    comms::option::def::ScalingRatio<1, 10>,
+                    comms::option::def::UnitsMillimeters
                 >
             {
                 /// @brief Name of the field.
@@ -296,8 +296,8 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int8_t,
-                    comms::option::ScalingRatio<1, 10>,
-                    comms::option::UnitsMillimeters
+                    comms::option::def::ScalingRatio<1, 10>,
+                    comms::option::def::UnitsMillimeters
                 >
             {
                 /// @brief Name of the field.
@@ -368,7 +368,7 @@ struct CfgTmode3Fields
     struct Ecef : public
         comms::field::Optional<
             typename EcefMembers::EcefWrap,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -390,8 +390,8 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::ScalingRatio<1, 10000000L>,
-                    comms::option::UnitsDegrees
+                    comms::option::def::ScalingRatio<1, 10000000L>,
+                    comms::option::def::UnitsDegrees
                 >
             {
                 /// @brief Name of the field.
@@ -407,8 +407,8 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::ScalingRatio<1, 10000000L>,
-                    comms::option::UnitsDegrees
+                    comms::option::def::ScalingRatio<1, 10000000L>,
+                    comms::option::def::UnitsDegrees
                 >
             {
                 /// @brief Name of the field.
@@ -424,7 +424,7 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::UnitsCentimeters
+                    comms::option::def::UnitsCentimeters
                 >
             {
                 /// @brief Name of the field.
@@ -440,8 +440,8 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int8_t,
-                    comms::option::ScalingRatio<1, 1000000000L>,
-                    comms::option::UnitsDegrees
+                    comms::option::def::ScalingRatio<1, 1000000000L>,
+                    comms::option::def::UnitsDegrees
                 >
             {
                 /// @brief Name of the field.
@@ -457,8 +457,8 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int8_t,
-                    comms::option::ScalingRatio<1, 1000000000L>,
-                    comms::option::UnitsDegrees
+                    comms::option::def::ScalingRatio<1, 1000000000L>,
+                    comms::option::def::UnitsDegrees
                 >
             {
                 /// @brief Name of the field.
@@ -474,8 +474,8 @@ struct CfgTmode3Fields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int8_t,
-                    comms::option::ScalingRatio<1, 10>,
-                    comms::option::UnitsMillimeters
+                    comms::option::def::ScalingRatio<1, 10>,
+                    comms::option::def::UnitsMillimeters
                 >
             {
                 /// @brief Name of the field.
@@ -546,7 +546,7 @@ struct CfgTmode3Fields
     struct Lla : public
         comms::field::Optional<
             typename LlaMembers::LlaWrap,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -576,8 +576,8 @@ struct CfgTmode3Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters
         >
     {
         /// @brief Name of the field.
@@ -593,7 +593,7 @@ struct CfgTmode3Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -609,8 +609,8 @@ struct CfgTmode3Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters
         >
     {
         /// @brief Name of the field.
@@ -660,22 +660,22 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgTmode3 : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgTmode3>,
-        comms::option::FieldsImpl<typename CfgTmode3Fields<TOpt>::All>,
-        comms::option::MsgType<CfgTmode3<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgTmode3>,
+        comms::option::def::FieldsImpl<typename CfgTmode3Fields<TOpt>::All>,
+        comms::option::def::MsgType<CfgTmode3<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgTmode3>,
-            comms::option::FieldsImpl<typename CfgTmode3Fields<TOpt>::All>,
-            comms::option::MsgType<CfgTmode3<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgTmode3>,
+            comms::option::def::FieldsImpl<typename CfgTmode3Fields<TOpt>::All>,
+            comms::option::def::MsgType<CfgTmode3<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

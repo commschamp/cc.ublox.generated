@@ -23,7 +23,7 @@ class CfgDatFlat : public
         ublox::field::FieldBase<>,
         double,
         TExtraOpts...,
-        comms::option::InvalidByDefault
+        comms::option::def::InvalidByDefault
     >
 {
     using Base = 
@@ -31,7 +31,7 @@ class CfgDatFlat : public
             ublox::field::FieldBase<>,
             double,
             TExtraOpts...,
-            comms::option::InvalidByDefault
+            comms::option::def::InvalidByDefault
         >;
 public:
     /// @brief Name of the field.

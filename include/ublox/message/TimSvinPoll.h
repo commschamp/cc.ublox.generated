@@ -37,10 +37,10 @@ class TimSvinPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::TimSvinPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_TimSvin>,
-        comms::option::FieldsImpl<typename TimSvinPollFields<TOpt>::All>,
-        comms::option::MsgType<TimSvinPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_TimSvin>,
+        comms::option::def::FieldsImpl<typename TimSvinPollFields<TOpt>::All>,
+        comms::option::def::MsgType<TimSvinPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class TimSvinPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::TimSvinPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_TimSvin>,
-            comms::option::FieldsImpl<typename TimSvinPollFields<TOpt>::All>,
-            comms::option::MsgType<TimSvinPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_TimSvin>,
+            comms::option::def::FieldsImpl<typename TimSvinPollFields<TOpt>::All>,
+            comms::option::def::MsgType<TimSvinPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

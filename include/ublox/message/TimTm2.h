@@ -51,13 +51,13 @@ struct TimTm2Fields
         class BitsLow : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<3U>
+                comms::option::def::FixedBitLength<3U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<3U>
+                    comms::option::def::FixedBitLength<3U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -117,8 +117,8 @@ struct TimTm2Fields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 TimeBaseVal,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValueRange<0, 2>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValueRange<0, 2>
             >
         {
             /// @brief Name of the field.
@@ -150,13 +150,13 @@ struct TimTm2Fields
         class BitsHigh : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<3U>
+                comms::option::def::FixedBitLength<3U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<3U>
+                    comms::option::def::FixedBitLength<3U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -296,7 +296,7 @@ struct TimTm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -312,7 +312,7 @@ struct TimTm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -328,7 +328,7 @@ struct TimTm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -344,7 +344,7 @@ struct TimTm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -360,7 +360,7 @@ struct TimTm2Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -397,10 +397,10 @@ class TimTm2 : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::TimTm2,
-        comms::option::StaticNumIdImpl<ublox::MsgId_TimTm2>,
-        comms::option::FieldsImpl<typename TimTm2Fields<TOpt>::All>,
-        comms::option::MsgType<TimTm2<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_TimTm2>,
+        comms::option::def::FieldsImpl<typename TimTm2Fields<TOpt>::All>,
+        comms::option::def::MsgType<TimTm2<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -408,10 +408,10 @@ class TimTm2 : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::TimTm2,
-            comms::option::StaticNumIdImpl<ublox::MsgId_TimTm2>,
-            comms::option::FieldsImpl<typename TimTm2Fields<TOpt>::All>,
-            comms::option::MsgType<TimTm2<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_TimTm2>,
+            comms::option::def::FieldsImpl<typename TimTm2Fields<TOpt>::All>,
+            comms::option::def::MsgType<TimTm2<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

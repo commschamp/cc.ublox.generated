@@ -37,10 +37,10 @@ class MonTxbufPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonTxbufPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonTxbuf>,
-        comms::option::FieldsImpl<typename MonTxbufPollFields<TOpt>::All>,
-        comms::option::MsgType<MonTxbufPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonTxbuf>,
+        comms::option::def::FieldsImpl<typename MonTxbufPollFields<TOpt>::All>,
+        comms::option::def::MsgType<MonTxbufPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class MonTxbufPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonTxbufPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonTxbuf>,
-            comms::option::FieldsImpl<typename MonTxbufPollFields<TOpt>::All>,
-            comms::option::MsgType<MonTxbufPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonTxbuf>,
+            comms::option::def::FieldsImpl<typename MonTxbufPollFields<TOpt>::All>,
+            comms::option::def::MsgType<MonTxbufPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -32,7 +32,7 @@ struct TimFchgFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -68,7 +68,7 @@ struct TimFchgFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 256>
+            comms::option::def::ScalingRatio<1, 256>
         >
     {
         /// @brief Name of the field.
@@ -84,7 +84,7 @@ struct TimFchgFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 256>
+            comms::option::def::ScalingRatio<1, 256>
         >
     {
         /// @brief Name of the field.
@@ -115,7 +115,7 @@ struct TimFchgFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 256>
+            comms::option::def::ScalingRatio<1, 256>
         >
     {
         /// @brief Name of the field.
@@ -131,7 +131,7 @@ struct TimFchgFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 256>
+            comms::option::def::ScalingRatio<1, 256>
         >
     {
         /// @brief Name of the field.
@@ -182,10 +182,10 @@ class TimFchg : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::TimFchg,
-        comms::option::StaticNumIdImpl<ublox::MsgId_TimFchg>,
-        comms::option::FieldsImpl<typename TimFchgFields<TOpt>::All>,
-        comms::option::MsgType<TimFchg<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_TimFchg>,
+        comms::option::def::FieldsImpl<typename TimFchgFields<TOpt>::All>,
+        comms::option::def::MsgType<TimFchg<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -193,10 +193,10 @@ class TimFchg : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::TimFchg,
-            comms::option::StaticNumIdImpl<ublox::MsgId_TimFchg>,
-            comms::option::FieldsImpl<typename TimFchgFields<TOpt>::All>,
-            comms::option::MsgType<TimFchg<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_TimFchg>,
+            comms::option::def::FieldsImpl<typename TimFchgFields<TOpt>::All>,
+            comms::option::def::MsgType<TimFchg<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

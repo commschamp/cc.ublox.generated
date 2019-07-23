@@ -69,7 +69,7 @@ struct RxmSfrbxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValueRange<0, 13>
+            comms::option::def::ValidNumValueRange<0, 13>
         >
     {
         /// @brief Name of the field.
@@ -114,8 +114,8 @@ struct RxmSfrbxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -166,7 +166,7 @@ struct RxmSfrbxFields
             ublox::field::FieldBase<>,
             typename DwrdMembers::Element,
             typename TOpt::message::RxmSfrbxFields::Dwrd,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -202,11 +202,11 @@ class RxmSfrbx : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmSfrbx,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmSfrbx>,
-        comms::option::FieldsImpl<typename RxmSfrbxFields<TOpt>::All>,
-        comms::option::MsgType<RxmSfrbx<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmSfrbx>,
+        comms::option::def::FieldsImpl<typename RxmSfrbxFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmSfrbx<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -214,11 +214,11 @@ class RxmSfrbx : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmSfrbx,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmSfrbx>,
-            comms::option::FieldsImpl<typename RxmSfrbxFields<TOpt>::All>,
-            comms::option::MsgType<RxmSfrbx<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmSfrbx>,
+            comms::option::def::FieldsImpl<typename RxmSfrbxFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmSfrbx<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

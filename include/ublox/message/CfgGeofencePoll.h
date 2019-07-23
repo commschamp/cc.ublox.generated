@@ -37,10 +37,10 @@ class CfgGeofencePoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgGeofencePoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgGeofence>,
-        comms::option::FieldsImpl<typename CfgGeofencePollFields<TOpt>::All>,
-        comms::option::MsgType<CfgGeofencePoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgGeofence>,
+        comms::option::def::FieldsImpl<typename CfgGeofencePollFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgGeofencePoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class CfgGeofencePoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgGeofencePoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgGeofence>,
-            comms::option::FieldsImpl<typename CfgGeofencePollFields<TOpt>::All>,
-            comms::option::MsgType<CfgGeofencePoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgGeofence>,
+            comms::option::def::FieldsImpl<typename CfgGeofencePollFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgGeofencePoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

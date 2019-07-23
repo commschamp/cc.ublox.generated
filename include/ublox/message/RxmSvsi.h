@@ -42,7 +42,7 @@ struct RxmSvsiFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -112,7 +112,7 @@ struct RxmSvsiFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<4U>
+                        comms::option::def::FixedBitLength<4U>
                     >
                 {
                     /// @brief Name of the field.
@@ -127,13 +127,13 @@ struct RxmSvsiFields
                 class Bits : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<4U>
+                        comms::option::def::FixedBitLength<4U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<4U>
+                            comms::option::def::FixedBitLength<4U>
                         >;
                 public:
                     /// @brief Provides names and generates access functions for internal bits.
@@ -261,7 +261,7 @@ struct RxmSvsiFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<4U>
+                        comms::option::def::FixedBitLength<4U>
                     >
                 {
                     /// @brief Name of the field.
@@ -277,7 +277,7 @@ struct RxmSvsiFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<4U>
+                        comms::option::def::FixedBitLength<4U>
                     >
                 {
                     /// @brief Name of the field.
@@ -389,7 +389,7 @@ struct RxmSvsiFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::RxmSvsiFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -421,11 +421,11 @@ class RxmSvsi : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmSvsi,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmSvsi>,
-        comms::option::FieldsImpl<typename RxmSvsiFields<TOpt>::All>,
-        comms::option::MsgType<RxmSvsi<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmSvsi>,
+        comms::option::def::FieldsImpl<typename RxmSvsiFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmSvsi<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -433,11 +433,11 @@ class RxmSvsi : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmSvsi,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmSvsi>,
-            comms::option::FieldsImpl<typename RxmSvsiFields<TOpt>::All>,
-            comms::option::MsgType<RxmSvsi<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmSvsi>,
+            comms::option::def::FieldsImpl<typename RxmSvsiFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmSvsi<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

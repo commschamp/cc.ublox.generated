@@ -36,7 +36,7 @@ struct NavHpposllhFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -96,9 +96,9 @@ struct NavHpposllhFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 100000000L>,
-            comms::option::UnitsDegrees,
-            comms::option::ValidNumValueRange<-99, 99>
+            comms::option::def::ScalingRatio<1, 100000000L>,
+            comms::option::def::UnitsDegrees,
+            comms::option::def::ValidNumValueRange<-99, 99>
         >
     {
         /// @brief Name of the field.
@@ -114,9 +114,9 @@ struct NavHpposllhFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 100000000L>,
-            comms::option::UnitsDegrees,
-            comms::option::ValidNumValueRange<-99, 99>
+            comms::option::def::ScalingRatio<1, 100000000L>,
+            comms::option::def::UnitsDegrees,
+            comms::option::def::ValidNumValueRange<-99, 99>
         >
     {
         /// @brief Name of the field.
@@ -132,9 +132,9 @@ struct NavHpposllhFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters,
-            comms::option::ValidNumValueRange<-9, 9>
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters,
+            comms::option::def::ValidNumValueRange<-9, 9>
         >
     {
         /// @brief Name of the field.
@@ -150,9 +150,9 @@ struct NavHpposllhFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters,
-            comms::option::ValidNumValueRange<-9, 9>
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters,
+            comms::option::def::ValidNumValueRange<-9, 9>
         >
     {
         /// @brief Name of the field.
@@ -168,8 +168,8 @@ struct NavHpposllhFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters
         >
     {
         /// @brief Name of the field.
@@ -185,8 +185,8 @@ struct NavHpposllhFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 10>,
-            comms::option::UnitsMillimeters
+            comms::option::def::ScalingRatio<1, 10>,
+            comms::option::def::UnitsMillimeters
         >
     {
         /// @brief Name of the field.
@@ -226,10 +226,10 @@ class NavHpposllh : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavHpposllh,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavHpposllh>,
-        comms::option::FieldsImpl<typename NavHpposllhFields<TOpt>::All>,
-        comms::option::MsgType<NavHpposllh<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavHpposllh>,
+        comms::option::def::FieldsImpl<typename NavHpposllhFields<TOpt>::All>,
+        comms::option::def::MsgType<NavHpposllh<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -237,10 +237,10 @@ class NavHpposllh : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavHpposllh,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavHpposllh>,
-            comms::option::FieldsImpl<typename NavHpposllhFields<TOpt>::All>,
-            comms::option::MsgType<NavHpposllh<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavHpposllh>,
+            comms::option::def::FieldsImpl<typename NavHpposllhFields<TOpt>::All>,
+            comms::option::def::MsgType<NavHpposllh<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -31,9 +31,9 @@ struct MgaGalUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<5>,
-            comms::option::ValidNumValue<5>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<5>,
+            comms::option::def::ValidNumValue<5>
         >
     {
         /// @brief Name of the field.
@@ -49,7 +49,7 @@ struct MgaGalUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -79,8 +79,8 @@ struct MgaGalUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 1073741824L>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 1073741824L>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -96,7 +96,7 @@ struct MgaGalUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x4000000000000LL>
+            comms::option::def::ScalingRatio<1, 0x4000000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -112,7 +112,7 @@ struct MgaGalUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -128,8 +128,8 @@ struct MgaGalUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ScalingRatio<3600, 1>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<3600, 1>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -145,7 +145,7 @@ struct MgaGalUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -161,7 +161,7 @@ struct MgaGalUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -177,7 +177,7 @@ struct MgaGalUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsDays
+            comms::option::def::UnitsDays
         >
     {
         /// @brief Name of the field.
@@ -193,7 +193,7 @@ struct MgaGalUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -246,10 +246,10 @@ class MgaGalUtc : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaGalUtc,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaGal>,
-        comms::option::FieldsImpl<typename MgaGalUtcFields<TOpt>::All>,
-        comms::option::MsgType<MgaGalUtc<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGal>,
+        comms::option::def::FieldsImpl<typename MgaGalUtcFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaGalUtc<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -257,10 +257,10 @@ class MgaGalUtc : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaGalUtc,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaGal>,
-            comms::option::FieldsImpl<typename MgaGalUtcFields<TOpt>::All>,
-            comms::option::MsgType<MgaGalUtc<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaGal>,
+            comms::option::def::FieldsImpl<typename MgaGalUtcFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaGalUtc<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

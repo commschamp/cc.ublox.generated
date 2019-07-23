@@ -64,20 +64,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgMsgCurrent : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgMsg>,
-        comms::option::FieldsImpl<typename CfgMsgCurrentFields<TOpt>::All>,
-        comms::option::MsgType<CfgMsgCurrent<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgMsg>,
+        comms::option::def::FieldsImpl<typename CfgMsgCurrentFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgMsgCurrent<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgMsg>,
-            comms::option::FieldsImpl<typename CfgMsgCurrentFields<TOpt>::All>,
-            comms::option::MsgType<CfgMsgCurrent<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgMsg>,
+            comms::option::def::FieldsImpl<typename CfgMsgCurrentFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgMsgCurrent<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

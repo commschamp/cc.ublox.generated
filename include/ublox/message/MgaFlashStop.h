@@ -30,9 +30,9 @@ struct MgaFlashStopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<2>,
-            comms::option::ValidNumValue<2>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<2>,
+            comms::option::def::ValidNumValue<2>
         >
     {
         /// @brief Name of the field.
@@ -48,7 +48,7 @@ struct MgaFlashStopFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -77,10 +77,10 @@ class MgaFlashStop : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaFlashStop,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
-        comms::option::FieldsImpl<typename MgaFlashStopFields<TOpt>::All>,
-        comms::option::MsgType<MgaFlashStop<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
+        comms::option::def::FieldsImpl<typename MgaFlashStopFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaFlashStop<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -88,10 +88,10 @@ class MgaFlashStop : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaFlashStop,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
-            comms::option::FieldsImpl<typename MgaFlashStopFields<TOpt>::All>,
-            comms::option::MsgType<MgaFlashStop<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
+            comms::option::def::FieldsImpl<typename MgaFlashStopFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaFlashStop<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

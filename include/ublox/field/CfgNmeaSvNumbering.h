@@ -34,7 +34,7 @@ struct CfgNmeaSvNumbering : public
         ublox::field::FieldBase<>,
         CfgNmeaSvNumberingVal,
         TExtraOpts...,
-        comms::option::ValidNumValueRange<0, 1>
+        comms::option::def::ValidNumValueRange<0, 1>
     >
 {
     /// @brief Name of the field.

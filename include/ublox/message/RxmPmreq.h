@@ -32,7 +32,7 @@ struct RxmPmreqFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -47,15 +47,15 @@ struct RxmPmreqFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<4U>,
-            comms::option::BitmaskReservedBits<0xFFFFFFFDUL, 0x0U>
+            comms::option::def::FixedLength<4U>,
+            comms::option::def::BitmaskReservedBits<0xFFFFFFFDUL, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<4U>,
-                comms::option::BitmaskReservedBits<0xFFFFFFFDUL, 0x0U>
+                comms::option::def::FixedLength<4U>,
+                comms::option::def::BitmaskReservedBits<0xFFFFFFFDUL, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -124,10 +124,10 @@ class RxmPmreq : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmPmreq,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmPmreq>,
-        comms::option::FieldsImpl<typename RxmPmreqFields<TOpt>::All>,
-        comms::option::MsgType<RxmPmreq<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmPmreq>,
+        comms::option::def::FieldsImpl<typename RxmPmreqFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmPmreq<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -135,10 +135,10 @@ class RxmPmreq : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmPmreq,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmPmreq>,
-            comms::option::FieldsImpl<typename RxmPmreqFields<TOpt>::All>,
-            comms::option::MsgType<RxmPmreq<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmPmreq>,
+            comms::option::def::FieldsImpl<typename RxmPmreqFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmPmreq<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

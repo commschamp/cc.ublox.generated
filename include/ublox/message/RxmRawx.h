@@ -38,7 +38,7 @@ struct RxmRawxFields
         comms::field::FloatValue<
             ublox::field::FieldBase<>,
             double,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -54,7 +54,7 @@ struct RxmRawxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -70,7 +70,7 @@ struct RxmRawxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -100,15 +100,15 @@ struct RxmRawxFields
     class RecStat : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -155,7 +155,7 @@ struct RxmRawxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -191,7 +191,7 @@ struct RxmRawxFields
                 comms::field::FloatValue<
                     ublox::field::FieldBase<>,
                     double,
-                    comms::option::UnitsMeters
+                    comms::option::def::UnitsMeters
                 >
             {
                 /// @brief Name of the field.
@@ -222,7 +222,7 @@ struct RxmRawxFields
                 comms::field::FloatValue<
                     ublox::field::FieldBase<>,
                     float,
-                    comms::option::UnitsHertz
+                    comms::option::def::UnitsHertz
                 >
             {
                 /// @brief Name of the field.
@@ -273,7 +273,7 @@ struct RxmRawxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::ValidNumValueRange<0, 13>
+                    comms::option::def::ValidNumValueRange<0, 13>
                 >
             {
                 /// @brief Name of the field.
@@ -289,8 +289,8 @@ struct RxmRawxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint16_t,
-                    comms::option::UnitsMilliseconds,
-                    comms::option::ValidNumValueRange<0, 64500L>
+                    comms::option::def::UnitsMilliseconds,
+                    comms::option::def::ValidNumValueRange<0, 64500L>
                 >
             {
                 /// @brief Name of the field.
@@ -321,7 +321,7 @@ struct RxmRawxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::UnitsMeters
+                    comms::option::def::UnitsMeters
                 >
             {
                 /// @brief Name of the field.
@@ -337,7 +337,7 @@ struct RxmRawxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::ScalingRatio<4, 1000>
+                    comms::option::def::ScalingRatio<4, 1000>
                 >
             {
                 /// @brief Name of the field.
@@ -353,7 +353,7 @@ struct RxmRawxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::UnitsHertz
+                    comms::option::def::UnitsHertz
                 >
             {
                 /// @brief Name of the field.
@@ -368,15 +368,15 @@ struct RxmRawxFields
             class TrkStat : public
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedLength<1U>,
-                    comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+                    comms::option::def::FixedLength<1U>,
+                    comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
                 >
             {
                 using Base = 
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedLength<1U>,
-                        comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+                        comms::option::def::FixedLength<1U>,
+                        comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
                     >;
             public:
                 /// @brief Provides names and generates access functions for internal bits.
@@ -524,7 +524,7 @@ struct RxmRawxFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::RxmRawxFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -559,11 +559,11 @@ class RxmRawx : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmRawx,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmRawx>,
-        comms::option::FieldsImpl<typename RxmRawxFields<TOpt>::All>,
-        comms::option::MsgType<RxmRawx<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmRawx>,
+        comms::option::def::FieldsImpl<typename RxmRawxFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmRawx<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -571,11 +571,11 @@ class RxmRawx : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmRawx,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmRawx>,
-            comms::option::FieldsImpl<typename RxmRawxFields<TOpt>::All>,
-            comms::option::MsgType<RxmRawx<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmRawx>,
+            comms::option::def::FieldsImpl<typename RxmRawxFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmRawx<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

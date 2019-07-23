@@ -31,9 +31,9 @@ struct MgaFlashEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -49,7 +49,7 @@ struct MgaFlashEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -96,7 +96,7 @@ struct MgaFlashEphFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::MgaFlashEphFields::Data,
-            comms::option::SequenceLengthForcingEnabled
+            comms::option::def::SequenceLengthForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -128,11 +128,11 @@ class MgaFlashEph : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaFlashEph,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
-        comms::option::FieldsImpl<typename MgaFlashEphFields<TOpt>::All>,
-        comms::option::MsgType<MgaFlashEph<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
+        comms::option::def::FieldsImpl<typename MgaFlashEphFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaFlashEph<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -140,11 +140,11 @@ class MgaFlashEph : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaFlashEph,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
-            comms::option::FieldsImpl<typename MgaFlashEphFields<TOpt>::All>,
-            comms::option::MsgType<MgaFlashEph<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
+            comms::option::def::FieldsImpl<typename MgaFlashEphFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaFlashEph<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

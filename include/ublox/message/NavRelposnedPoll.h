@@ -37,10 +37,10 @@ class NavRelposnedPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavRelposnedPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavRelposned>,
-        comms::option::FieldsImpl<typename NavRelposnedPollFields<TOpt>::All>,
-        comms::option::MsgType<NavRelposnedPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavRelposned>,
+        comms::option::def::FieldsImpl<typename NavRelposnedPollFields<TOpt>::All>,
+        comms::option::def::MsgType<NavRelposnedPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class NavRelposnedPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavRelposnedPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavRelposned>,
-            comms::option::FieldsImpl<typename NavRelposnedPollFields<TOpt>::All>,
-            comms::option::MsgType<NavRelposnedPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavRelposned>,
+            comms::option::def::FieldsImpl<typename NavRelposnedPollFields<TOpt>::All>,
+            comms::option::def::MsgType<NavRelposnedPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

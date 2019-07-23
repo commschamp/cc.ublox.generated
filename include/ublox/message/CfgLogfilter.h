@@ -32,8 +32,8 @@ struct CfgLogfilterFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -48,15 +48,15 @@ struct CfgLogfilterFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -106,7 +106,7 @@ struct CfgLogfilterFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -122,7 +122,7 @@ struct CfgLogfilterFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -138,7 +138,7 @@ struct CfgLogfilterFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsMetersPerSecond
+            comms::option::def::UnitsMetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -154,7 +154,7 @@ struct CfgLogfilterFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMeters
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -186,20 +186,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgLogfilter : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgLogfilter>,
-        comms::option::FieldsImpl<typename CfgLogfilterFields<TOpt>::All>,
-        comms::option::MsgType<CfgLogfilter<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgLogfilter>,
+        comms::option::def::FieldsImpl<typename CfgLogfilterFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgLogfilter<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgLogfilter>,
-            comms::option::FieldsImpl<typename CfgLogfilterFields<TOpt>::All>,
-            comms::option::MsgType<CfgLogfilter<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgLogfilter>,
+            comms::option::def::FieldsImpl<typename CfgLogfilterFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgLogfilter<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

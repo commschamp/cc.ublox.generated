@@ -41,9 +41,9 @@ struct CfgPrtSpiFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<4>,
-            comms::option::ValidNumValue<4>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<4>,
+            comms::option::def::ValidNumValue<4>
         >
     {
         /// @brief Name of the field.
@@ -92,8 +92,8 @@ struct CfgPrtSpiFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<1U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<1U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -120,8 +120,8 @@ struct CfgPrtSpiFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 SpiModeVal,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValueRange<0, 3>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValueRange<0, 3>
             >
         {
             /// @brief Name of the field.
@@ -154,15 +154,15 @@ struct CfgPrtSpiFields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<5U>,
-                comms::option::BitmaskReservedBits<0x17U, 0x0U>
+                comms::option::def::FixedBitLength<5U>,
+                comms::option::def::BitmaskReservedBits<0x17U, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<5U>,
-                    comms::option::BitmaskReservedBits<0x17U, 0x0U>
+                    comms::option::def::FixedBitLength<5U>,
+                    comms::option::def::BitmaskReservedBits<0x17U, 0x0U>
                 >;
         public:
             /// @brief Provide names for internal bits.
@@ -220,7 +220,7 @@ struct CfgPrtSpiFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<6U>
+                comms::option::def::FixedBitLength<6U>
             >
         {
             /// @brief Name of the field.
@@ -238,8 +238,8 @@ struct CfgPrtSpiFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::FixedBitLength<18U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<18U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -387,20 +387,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgPrtSpi : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
-        comms::option::FieldsImpl<typename CfgPrtSpiFields<TOpt>::All>,
-        comms::option::MsgType<CfgPrtSpi<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
+        comms::option::def::FieldsImpl<typename CfgPrtSpiFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgPrtSpi<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
-            comms::option::FieldsImpl<typename CfgPrtSpiFields<TOpt>::All>,
-            comms::option::MsgType<CfgPrtSpi<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPrt>,
+            comms::option::def::FieldsImpl<typename CfgPrtSpiFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgPrtSpi<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -38,7 +38,7 @@ struct GpsFix : public
         ublox::field::FieldBase<>,
         GpsFixVal,
         TExtraOpts...,
-        comms::option::ValidNumValueRange<0, 5>
+        comms::option::def::ValidNumValueRange<0, 5>
     >
 {
     /// @brief Name of the field.

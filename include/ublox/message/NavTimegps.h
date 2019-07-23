@@ -46,7 +46,7 @@ struct NavTimegpsFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -62,7 +62,7 @@ struct NavTimegpsFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -77,15 +77,15 @@ struct NavTimegpsFields
     class Valid : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -135,7 +135,7 @@ struct NavTimegpsFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -168,10 +168,10 @@ class NavTimegps : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavTimegps,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavTimegps>,
-        comms::option::FieldsImpl<typename NavTimegpsFields<TOpt>::All>,
-        comms::option::MsgType<NavTimegps<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavTimegps>,
+        comms::option::def::FieldsImpl<typename NavTimegpsFields<TOpt>::All>,
+        comms::option::def::MsgType<NavTimegps<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -179,10 +179,10 @@ class NavTimegps : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavTimegps,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavTimegps>,
-            comms::option::FieldsImpl<typename NavTimegpsFields<TOpt>::All>,
-            comms::option::MsgType<NavTimegps<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavTimegps>,
+            comms::option::def::FieldsImpl<typename NavTimegpsFields<TOpt>::All>,
+            comms::option::def::MsgType<NavTimegps<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -32,15 +32,15 @@ struct CfgFxnFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<4U>,
-            comms::option::BitmaskReservedBits<0xFFFFFFE5UL, 0x0U>
+            comms::option::def::FixedLength<4U>,
+            comms::option::def::BitmaskReservedBits<0xFFFFFFE5UL, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<4U>,
-                comms::option::BitmaskReservedBits<0xFFFFFFE5UL, 0x0U>
+                comms::option::def::FixedLength<4U>,
+                comms::option::def::BitmaskReservedBits<0xFFFFFFE5UL, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -107,7 +107,7 @@ struct CfgFxnFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -123,7 +123,7 @@ struct CfgFxnFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -139,7 +139,7 @@ struct CfgFxnFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -155,7 +155,7 @@ struct CfgFxnFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -171,7 +171,7 @@ struct CfgFxnFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -187,7 +187,7 @@ struct CfgFxnFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -217,7 +217,7 @@ struct CfgFxnFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -252,20 +252,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgFxn : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgFxn>,
-        comms::option::FieldsImpl<typename CfgFxnFields<TOpt>::All>,
-        comms::option::MsgType<CfgFxn<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgFxn>,
+        comms::option::def::FieldsImpl<typename CfgFxnFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgFxn<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgFxn>,
-            comms::option::FieldsImpl<typename CfgFxnFields<TOpt>::All>,
-            comms::option::MsgType<CfgFxn<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgFxn>,
+            comms::option::def::FieldsImpl<typename CfgFxnFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgFxn<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

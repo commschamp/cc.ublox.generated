@@ -42,7 +42,7 @@ struct CfgDoscFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -102,7 +102,7 @@ struct CfgDoscFields
                 comms::field::EnumValue<
                     ublox::field::FieldBase<>,
                     OscIdVal,
-                    comms::option::ValidNumValueRange<0, 1>
+                    comms::option::def::ValidNumValueRange<0, 1>
                 >
             {
                 /// @brief Name of the field.
@@ -150,13 +150,13 @@ struct CfgDoscFields
                 class Bits : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<1U>
+                        comms::option::def::FixedBitLength<1U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<1U>
+                            comms::option::def::FixedBitLength<1U>
                         >;
                 public:
                     /// @brief Provides names and generates access functions for internal bits.
@@ -213,9 +213,9 @@ struct CfgDoscFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         ControlIfVal,
-                        comms::option::FixedBitLength<4U>,
-                        comms::option::ValidNumValueRange<0, 2>,
-                        comms::option::ValidNumValueRange<13, 15>
+                        comms::option::def::FixedBitLength<4U>,
+                        comms::option::def::ValidNumValueRange<0, 2>,
+                        comms::option::def::ValidNumValueRange<13, 15>
                     >
                 {
                     /// @brief Name of the field.
@@ -260,8 +260,8 @@ struct CfgDoscFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint16_t,
-                        comms::option::FixedBitLength<11U>,
-                        comms::option::ValidNumValue<0>
+                        comms::option::def::FixedBitLength<11U>,
+                        comms::option::def::ValidNumValue<0>
                     >
                 {
                     /// @brief Name of the field.
@@ -322,8 +322,8 @@ struct CfgDoscFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::ScalingRatio<1, 4>,
-                    comms::option::UnitsHertz
+                    comms::option::def::ScalingRatio<1, 4>,
+                    comms::option::def::UnitsHertz
                 >
             {
                 /// @brief Name of the field.
@@ -354,7 +354,7 @@ struct CfgDoscFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::ScalingRatio<1, 256>
+                    comms::option::def::ScalingRatio<1, 256>
                 >
             {
                 /// @brief Name of the field.
@@ -370,7 +370,7 @@ struct CfgDoscFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::ScalingRatio<1, 256>
+                    comms::option::def::ScalingRatio<1, 256>
                 >
             {
                 /// @brief Name of the field.
@@ -386,7 +386,7 @@ struct CfgDoscFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint16_t,
-                    comms::option::UnitsSeconds
+                    comms::option::def::UnitsSeconds
                 >
             {
                 /// @brief Name of the field.
@@ -416,7 +416,7 @@ struct CfgDoscFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::ScalingRatio<1, 65536L>
+                    comms::option::def::ScalingRatio<1, 65536L>
                 >
             {
                 /// @brief Name of the field.
@@ -432,7 +432,7 @@ struct CfgDoscFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::ScalingRatio<1, 256>
+                    comms::option::def::ScalingRatio<1, 256>
                 >
             {
                 /// @brief Name of the field.
@@ -537,7 +537,7 @@ struct CfgDoscFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::CfgDoscFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -567,22 +567,22 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgDosc : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgDosc>,
-        comms::option::FieldsImpl<typename CfgDoscFields<TOpt>::All>,
-        comms::option::MsgType<CfgDosc<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgDosc>,
+        comms::option::def::FieldsImpl<typename CfgDoscFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgDosc<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgDosc>,
-            comms::option::FieldsImpl<typename CfgDoscFields<TOpt>::All>,
-            comms::option::MsgType<CfgDosc<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgDosc>,
+            comms::option::def::FieldsImpl<typename CfgDoscFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgDosc<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

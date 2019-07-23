@@ -95,10 +95,10 @@ class NavPosllh : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavPosllh,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavPosllh>,
-        comms::option::FieldsImpl<typename NavPosllhFields<TOpt>::All>,
-        comms::option::MsgType<NavPosllh<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavPosllh>,
+        comms::option::def::FieldsImpl<typename NavPosllhFields<TOpt>::All>,
+        comms::option::def::MsgType<NavPosllh<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -106,10 +106,10 @@ class NavPosllh : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavPosllh,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavPosllh>,
-            comms::option::FieldsImpl<typename NavPosllhFields<TOpt>::All>,
-            comms::option::MsgType<NavPosllh<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavPosllh>,
+            comms::option::def::FieldsImpl<typename NavPosllhFields<TOpt>::All>,
+            comms::option::def::MsgType<NavPosllh<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

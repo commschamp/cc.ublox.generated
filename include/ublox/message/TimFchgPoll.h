@@ -37,10 +37,10 @@ class TimFchgPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::TimFchgPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_TimFchg>,
-        comms::option::FieldsImpl<typename TimFchgPollFields<TOpt>::All>,
-        comms::option::MsgType<TimFchgPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_TimFchg>,
+        comms::option::def::FieldsImpl<typename TimFchgPollFields<TOpt>::All>,
+        comms::option::def::MsgType<TimFchgPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class TimFchgPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::TimFchgPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_TimFchg>,
-            comms::option::FieldsImpl<typename TimFchgPollFields<TOpt>::All>,
-            comms::option::MsgType<TimFchgPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_TimFchg>,
+            comms::option::def::FieldsImpl<typename TimFchgPollFields<TOpt>::All>,
+            comms::option::def::MsgType<TimFchgPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -37,10 +37,10 @@ class MonIoPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonIoPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonIo>,
-        comms::option::FieldsImpl<typename MonIoPollFields<TOpt>::All>,
-        comms::option::MsgType<MonIoPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonIo>,
+        comms::option::def::FieldsImpl<typename MonIoPollFields<TOpt>::All>,
+        comms::option::def::MsgType<MonIoPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class MonIoPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonIoPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonIo>,
-            comms::option::FieldsImpl<typename MonIoPollFields<TOpt>::All>,
-            comms::option::MsgType<MonIoPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonIo>,
+            comms::option::def::FieldsImpl<typename MonIoPollFields<TOpt>::All>,
+            comms::option::def::MsgType<MonIoPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -42,9 +42,9 @@ struct MgaIniTimeUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<16>,
-            comms::option::ValidNumValue<16>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<16>,
+            comms::option::def::ValidNumValue<16>
         >
     {
         /// @brief Name of the field.
@@ -60,7 +60,7 @@ struct MgaIniTimeUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -89,8 +89,8 @@ struct MgaIniTimeUtcFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 SourceVal,
-                comms::option::FixedBitLength<4U>,
-                comms::option::ValidNumValueRange<0, 2>
+                comms::option::def::FixedBitLength<4U>,
+                comms::option::def::ValidNumValueRange<0, 2>
             >
         {
             /// @brief Name of the field.
@@ -122,15 +122,15 @@ struct MgaIniTimeUtcFields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<4U>,
-                comms::option::BitmaskReservedBits<0xCU, 0x0U>
+                comms::option::def::FixedBitLength<4U>,
+                comms::option::def::BitmaskReservedBits<0xCU, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<4U>,
-                    comms::option::BitmaskReservedBits<0xCU, 0x0U>
+                    comms::option::def::FixedBitLength<4U>,
+                    comms::option::def::BitmaskReservedBits<0xCU, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -219,7 +219,7 @@ struct MgaIniTimeUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -301,7 +301,7 @@ struct MgaIniTimeUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -317,7 +317,7 @@ struct MgaIniTimeUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -347,7 +347,7 @@ struct MgaIniTimeUtcFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -389,10 +389,10 @@ class MgaIniTimeUtc : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaIniTimeUtc,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-        comms::option::FieldsImpl<typename MgaIniTimeUtcFields<TOpt>::All>,
-        comms::option::MsgType<MgaIniTimeUtc<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+        comms::option::def::FieldsImpl<typename MgaIniTimeUtcFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaIniTimeUtc<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -400,10 +400,10 @@ class MgaIniTimeUtc : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaIniTimeUtc,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-            comms::option::FieldsImpl<typename MgaIniTimeUtcFields<TOpt>::All>,
-            comms::option::MsgType<MgaIniTimeUtc<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+            comms::option::def::FieldsImpl<typename MgaIniTimeUtcFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaIniTimeUtc<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

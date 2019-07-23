@@ -34,7 +34,7 @@ struct CfgTp5TpIdx : public
         ublox::field::FieldBase<>,
         CfgTp5TpIdxVal,
         TExtraOpts...,
-        comms::option::ValidNumValueRange<0, 1>
+        comms::option::def::ValidNumValueRange<0, 1>
     >
 {
     /// @brief Name of the field.

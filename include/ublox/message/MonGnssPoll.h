@@ -37,10 +37,10 @@ class MonGnssPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonGnssPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonGnss>,
-        comms::option::FieldsImpl<typename MonGnssPollFields<TOpt>::All>,
-        comms::option::MsgType<MonGnssPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonGnss>,
+        comms::option::def::FieldsImpl<typename MonGnssPollFields<TOpt>::All>,
+        comms::option::def::MsgType<MonGnssPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class MonGnssPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonGnssPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonGnss>,
-            comms::option::FieldsImpl<typename MonGnssPollFields<TOpt>::All>,
-            comms::option::MsgType<MonGnssPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonGnss>,
+            comms::option::def::FieldsImpl<typename MonGnssPollFields<TOpt>::All>,
+            comms::option::def::MsgType<MonGnssPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

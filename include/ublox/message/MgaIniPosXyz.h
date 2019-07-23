@@ -34,8 +34,8 @@ struct MgaIniPosXyzFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::ValidNumValue<0>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -51,7 +51,7 @@ struct MgaIniPosXyzFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -99,7 +99,7 @@ struct MgaIniPosXyzFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -133,10 +133,10 @@ class MgaIniPosXyz : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaIniPosXyz,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-        comms::option::FieldsImpl<typename MgaIniPosXyzFields<TOpt>::All>,
-        comms::option::MsgType<MgaIniPosXyz<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+        comms::option::def::FieldsImpl<typename MgaIniPosXyzFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaIniPosXyz<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -144,10 +144,10 @@ class MgaIniPosXyz : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaIniPosXyz,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-            comms::option::FieldsImpl<typename MgaIniPosXyzFields<TOpt>::All>,
-            comms::option::MsgType<MgaIniPosXyz<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+            comms::option::def::FieldsImpl<typename MgaIniPosXyzFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaIniPosXyz<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

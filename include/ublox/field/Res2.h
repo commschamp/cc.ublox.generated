@@ -26,7 +26,7 @@ struct Res2 : public
         ublox::field::FieldBase<>,
         std::uint16_t,
         TExtraOpts...,
-        comms::option::ValidNumValue<0>
+        comms::option::def::ValidNumValue<0>
     >
 {
     /// @brief Name of the field.

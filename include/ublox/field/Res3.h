@@ -26,8 +26,8 @@ struct Res3 : public
         ublox::field::FieldBase<>,
         std::uint32_t,
         TExtraOpts...,
-        comms::option::FixedLength<3U>,
-        comms::option::ValidNumValue<0>
+        comms::option::def::FixedLength<3U>,
+        comms::option::def::ValidNumValue<0>
     >
 {
     /// @brief Name of the field.

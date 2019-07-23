@@ -43,7 +43,7 @@ struct CfgInfFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             ProtocolIdVal,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -91,15 +91,15 @@ struct CfgInfFields
         class Element : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xE0U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xE0U, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedLength<1U>,
-                    comms::option::BitmaskReservedBits<0xE0U, 0x0U>
+                    comms::option::def::FixedLength<1U>,
+                    comms::option::def::BitmaskReservedBits<0xE0U, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -158,7 +158,7 @@ struct CfgInfFields
             ublox::field::FieldBase<>,
             typename InfMsgMaskMembers::Element,
             typename TOpt::message::CfgInfFields::InfMsgMask,
-            comms::option::SequenceFixedSize<6U>
+            comms::option::def::SequenceFixedSize<6U>
         >
     {
         /// @brief Name of the field.
@@ -187,20 +187,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgInf : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgInf>,
-        comms::option::FieldsImpl<typename CfgInfFields<TOpt>::All>,
-        comms::option::MsgType<CfgInf<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgInf>,
+        comms::option::def::FieldsImpl<typename CfgInfFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgInf<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgInf>,
-            comms::option::FieldsImpl<typename CfgInfFields<TOpt>::All>,
-            comms::option::MsgType<CfgInf<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgInf>,
+            comms::option::def::FieldsImpl<typename CfgInfFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgInf<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

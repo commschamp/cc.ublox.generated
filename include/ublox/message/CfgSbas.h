@@ -31,15 +31,15 @@ struct CfgSbasFields
     class Mode : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xFCU, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xFCU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -85,15 +85,15 @@ struct CfgSbasFields
     class Usage : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF8U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF8U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -143,7 +143,7 @@ struct CfgSbasFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValueRange<0, 3>
+            comms::option::def::ValidNumValueRange<0, 3>
         >
     {
         /// @brief Name of the field.
@@ -158,15 +158,15 @@ struct CfgSbasFields
     class Scanmode2 : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0x80U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0x80U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0x80U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0x80U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -227,13 +227,13 @@ struct CfgSbasFields
     class Scanmode1 : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<4U>
+            comms::option::def::FixedLength<4U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<4U>
+                comms::option::def::FixedLength<4U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -385,20 +385,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgSbas : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgSbas>,
-        comms::option::FieldsImpl<typename CfgSbasFields<TOpt>::All>,
-        comms::option::MsgType<CfgSbas<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgSbas>,
+        comms::option::def::FieldsImpl<typename CfgSbasFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgSbas<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgSbas>,
-            comms::option::FieldsImpl<typename CfgSbasFields<TOpt>::All>,
-            comms::option::MsgType<CfgSbas<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgSbas>,
+            comms::option::def::FieldsImpl<typename CfgSbasFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgSbas<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

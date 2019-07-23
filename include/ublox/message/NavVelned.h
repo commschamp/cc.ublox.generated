@@ -39,7 +39,7 @@ struct NavVelnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimetersPerSecond
+            comms::option::def::UnitsCentimetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -55,7 +55,7 @@ struct NavVelnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimetersPerSecond
+            comms::option::def::UnitsCentimetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -71,7 +71,7 @@ struct NavVelnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimetersPerSecond
+            comms::option::def::UnitsCentimetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -87,7 +87,7 @@ struct NavVelnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsCentimetersPerSecond
+            comms::option::def::UnitsCentimetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -103,7 +103,7 @@ struct NavVelnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsCentimetersPerSecond
+            comms::option::def::UnitsCentimetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -131,8 +131,8 @@ struct NavVelnedFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 100000L>,
-            comms::option::UnitsDegrees
+            comms::option::def::ScalingRatio<1, 100000L>,
+            comms::option::def::UnitsDegrees
         >
     {
         /// @brief Name of the field.
@@ -168,10 +168,10 @@ class NavVelned : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavVelned,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavVelned>,
-        comms::option::FieldsImpl<typename NavVelnedFields<TOpt>::All>,
-        comms::option::MsgType<NavVelned<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavVelned>,
+        comms::option::def::FieldsImpl<typename NavVelnedFields<TOpt>::All>,
+        comms::option::def::MsgType<NavVelned<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -179,10 +179,10 @@ class NavVelned : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavVelned,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavVelned>,
-            comms::option::FieldsImpl<typename NavVelnedFields<TOpt>::All>,
-            comms::option::MsgType<NavVelned<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavVelned>,
+            comms::option::def::FieldsImpl<typename NavVelnedFields<TOpt>::All>,
+            comms::option::def::MsgType<NavVelned<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

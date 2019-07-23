@@ -42,7 +42,7 @@ struct TimTosFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -80,13 +80,13 @@ struct TimTosFields
         class BitsLow : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<8U>
+                comms::option::def::FixedBitLength<8U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<8U>
+                    comms::option::def::FixedBitLength<8U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -164,8 +164,8 @@ struct TimTosFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 DiscSrcVal,
-                comms::option::FixedBitLength<3U>,
-                comms::option::ValidNumValueRange<0, 5>
+                comms::option::def::FixedBitLength<3U>,
+                comms::option::def::ValidNumValueRange<0, 5>
             >
         {
             /// @brief Name of the field.
@@ -200,15 +200,15 @@ struct TimTosFields
         class BitsHigh : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<21U>,
-                comms::option::BitmaskReservedBits<0x1FFFF8UL, 0x0U>
+                comms::option::def::FixedBitLength<21U>,
+                comms::option::def::BitmaskReservedBits<0x1FFFF8UL, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<21U>,
-                    comms::option::BitmaskReservedBits<0x1FFFF8UL, 0x0U>
+                    comms::option::def::FixedBitLength<21U>,
+                    comms::option::def::BitmaskReservedBits<0x1FFFF8UL, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -350,9 +350,9 @@ struct TimTosFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             UtcStandardVal,
-            comms::option::ValidNumValue<0>,
-            comms::option::ValidNumValue<3>,
-            comms::option::ValidNumValueRange<6, 7>
+            comms::option::def::ValidNumValue<0>,
+            comms::option::def::ValidNumValue<3>,
+            comms::option::def::ValidNumValueRange<6, 7>
         >
     {
         /// @brief Name of the field.
@@ -390,7 +390,7 @@ struct TimTosFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -406,7 +406,7 @@ struct TimTosFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -422,7 +422,7 @@ struct TimTosFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -438,7 +438,7 @@ struct TimTosFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -454,7 +454,7 @@ struct TimTosFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -470,7 +470,7 @@ struct TimTosFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -486,7 +486,7 @@ struct TimTosFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 256>
+            comms::option::def::ScalingRatio<1, 256>
         >
     {
         /// @brief Name of the field.
@@ -502,7 +502,7 @@ struct TimTosFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 256>
+            comms::option::def::ScalingRatio<1, 256>
         >
     {
         /// @brief Name of the field.
@@ -518,7 +518,7 @@ struct TimTosFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 256>
+            comms::option::def::ScalingRatio<1, 256>
         >
     {
         /// @brief Name of the field.
@@ -534,7 +534,7 @@ struct TimTosFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 256>
+            comms::option::def::ScalingRatio<1, 256>
         >
     {
         /// @brief Name of the field.
@@ -582,10 +582,10 @@ class TimTos : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::TimTos,
-        comms::option::StaticNumIdImpl<ublox::MsgId_TimTos>,
-        comms::option::FieldsImpl<typename TimTosFields<TOpt>::All>,
-        comms::option::MsgType<TimTos<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_TimTos>,
+        comms::option::def::FieldsImpl<typename TimTosFields<TOpt>::All>,
+        comms::option::def::MsgType<TimTos<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -593,10 +593,10 @@ class TimTos : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::TimTos,
-            comms::option::StaticNumIdImpl<ublox::MsgId_TimTos>,
-            comms::option::FieldsImpl<typename TimTosFields<TOpt>::All>,
-            comms::option::MsgType<TimTos<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_TimTos>,
+            comms::option::def::FieldsImpl<typename TimTosFields<TOpt>::All>,
+            comms::option::def::MsgType<TimTos<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

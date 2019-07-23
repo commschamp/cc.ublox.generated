@@ -37,7 +37,7 @@ struct CfgGnssFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -156,15 +156,15 @@ struct CfgGnssFields
                 class BitsLow : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<16U>,
-                        comms::option::BitmaskReservedBits<0xFFFEU, 0x0U>
+                        comms::option::def::FixedBitLength<16U>,
+                        comms::option::def::BitmaskReservedBits<0xFFFEU, 0x0U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<16U>,
-                            comms::option::BitmaskReservedBits<0xFFFEU, 0x0U>
+                            comms::option::def::FixedBitLength<16U>,
+                            comms::option::def::BitmaskReservedBits<0xFFFEU, 0x0U>
                         >;
                 public:
                     /// @brief Provides names and generates access functions for internal bits.
@@ -208,7 +208,7 @@ struct CfgGnssFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<8U>
+                        comms::option::def::FixedBitLength<8U>
                     >
                 {
                     /// @brief Name of the field.
@@ -226,8 +226,8 @@ struct CfgGnssFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint8_t,
-                        comms::option::FixedBitLength<8U>,
-                        comms::option::ValidNumValue<0>
+                        comms::option::def::FixedBitLength<8U>,
+                        comms::option::def::ValidNumValue<0>
                     >
                 {
                     /// @brief Name of the field.
@@ -342,7 +342,7 @@ struct CfgGnssFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::CfgGnssFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -373,22 +373,22 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgGnss : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgGnss>,
-        comms::option::FieldsImpl<typename CfgGnssFields<TOpt>::All>,
-        comms::option::MsgType<CfgGnss<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgGnss>,
+        comms::option::def::FieldsImpl<typename CfgGnssFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgGnss<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgGnss>,
-            comms::option::FieldsImpl<typename CfgGnssFields<TOpt>::All>,
-            comms::option::MsgType<CfgGnss<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgGnss>,
+            comms::option::def::FieldsImpl<typename CfgGnssFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgGnss<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

@@ -56,8 +56,8 @@ struct CfgRxmFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             LpModeVal,
-            comms::option::ValidNumValueRange<0, 1>,
-            comms::option::ValidNumValue<4>
+            comms::option::def::ValidNumValueRange<0, 1>,
+            comms::option::def::ValidNumValue<4>
         >
     {
         /// @brief Name of the field.
@@ -104,20 +104,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgRxm : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgRxm>,
-        comms::option::FieldsImpl<typename CfgRxmFields<TOpt>::All>,
-        comms::option::MsgType<CfgRxm<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgRxm>,
+        comms::option::def::FieldsImpl<typename CfgRxmFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgRxm<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgRxm>,
-            comms::option::FieldsImpl<typename CfgRxmFields<TOpt>::All>,
-            comms::option::MsgType<CfgRxm<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgRxm>,
+            comms::option::def::FieldsImpl<typename CfgRxmFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgRxm<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

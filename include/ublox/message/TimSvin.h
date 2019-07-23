@@ -31,7 +31,7 @@ struct TimSvinFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -47,7 +47,7 @@ struct TimSvinFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -63,7 +63,7 @@ struct TimSvinFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -79,7 +79,7 @@ struct TimSvinFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -189,10 +189,10 @@ class TimSvin : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::TimSvin,
-        comms::option::StaticNumIdImpl<ublox::MsgId_TimSvin>,
-        comms::option::FieldsImpl<typename TimSvinFields<TOpt>::All>,
-        comms::option::MsgType<TimSvin<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_TimSvin>,
+        comms::option::def::FieldsImpl<typename TimSvinFields<TOpt>::All>,
+        comms::option::def::MsgType<TimSvin<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -200,10 +200,10 @@ class TimSvin : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::TimSvin,
-            comms::option::StaticNumIdImpl<ublox::MsgId_TimSvin>,
-            comms::option::FieldsImpl<typename TimSvinFields<TOpt>::All>,
-            comms::option::MsgType<TimSvin<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_TimSvin>,
+            comms::option::def::FieldsImpl<typename TimSvinFields<TOpt>::All>,
+            comms::option::def::MsgType<TimSvin<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

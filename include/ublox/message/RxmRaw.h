@@ -34,7 +34,7 @@ struct RxmRawFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -50,7 +50,7 @@ struct RxmRawFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -116,7 +116,7 @@ struct RxmRawFields
                 comms::field::FloatValue<
                     ublox::field::FieldBase<>,
                     double,
-                    comms::option::UnitsMeters
+                    comms::option::def::UnitsMeters
                 >
             {
                 /// @brief Name of the field.
@@ -132,7 +132,7 @@ struct RxmRawFields
                 comms::field::FloatValue<
                     ublox::field::FieldBase<>,
                     float,
-                    comms::option::UnitsHertz
+                    comms::option::def::UnitsHertz
                 >
             {
                 /// @brief Name of the field.
@@ -268,7 +268,7 @@ struct RxmRawFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::RxmRawFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -300,11 +300,11 @@ class RxmRaw : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmRaw,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmRaw>,
-        comms::option::FieldsImpl<typename RxmRawFields<TOpt>::All>,
-        comms::option::MsgType<RxmRaw<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmRaw>,
+        comms::option::def::FieldsImpl<typename RxmRawFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmRaw<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -312,11 +312,11 @@ class RxmRaw : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmRaw,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmRaw>,
-            comms::option::FieldsImpl<typename RxmRawFields<TOpt>::All>,
-            comms::option::MsgType<RxmRaw<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmRaw>,
+            comms::option::def::FieldsImpl<typename RxmRawFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmRaw<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

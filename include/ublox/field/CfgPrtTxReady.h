@@ -28,13 +28,13 @@ struct CfgPrtTxReadyMembers
     class Bits : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedBitLength<2U>
+            comms::option::def::FixedBitLength<2U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<2U>
+                comms::option::def::FixedBitLength<2U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -81,7 +81,7 @@ struct CfgPrtTxReadyMembers
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FixedBitLength<5U>
+            comms::option::def::FixedBitLength<5U>
         >
     {
         /// @brief Name of the field.
@@ -97,7 +97,7 @@ struct CfgPrtTxReadyMembers
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::FixedBitLength<9U>
+            comms::option::def::FixedBitLength<9U>
         >
     {
         /// @brief Name of the field.

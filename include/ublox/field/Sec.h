@@ -24,8 +24,8 @@ struct Sec : public
         ublox::field::FieldBase<>,
         std::uint8_t,
         TExtraOpts...,
-        comms::option::UnitsSeconds,
-        comms::option::ValidNumValueRange<0, 60>
+        comms::option::def::UnitsSeconds,
+        comms::option::def::ValidNumValueRange<0, 60>
     >
 {
     /// @brief Name of the field.

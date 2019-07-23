@@ -82,7 +82,7 @@ struct LogRetrieveposFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMillimetersPerSecond
+            comms::option::def::UnitsMillimetersPerSecond
         >
     {
         /// @brief Name of the field.
@@ -104,7 +104,7 @@ struct LogRetrieveposFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -258,10 +258,10 @@ class LogRetrievepos : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::LogRetrievepos,
-        comms::option::StaticNumIdImpl<ublox::MsgId_LogRetrievepos>,
-        comms::option::FieldsImpl<typename LogRetrieveposFields<TOpt>::All>,
-        comms::option::MsgType<LogRetrievepos<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_LogRetrievepos>,
+        comms::option::def::FieldsImpl<typename LogRetrieveposFields<TOpt>::All>,
+        comms::option::def::MsgType<LogRetrievepos<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -269,10 +269,10 @@ class LogRetrievepos : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::LogRetrievepos,
-            comms::option::StaticNumIdImpl<ublox::MsgId_LogRetrievepos>,
-            comms::option::FieldsImpl<typename LogRetrieveposFields<TOpt>::All>,
-            comms::option::MsgType<LogRetrievepos<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_LogRetrievepos>,
+            comms::option::def::FieldsImpl<typename LogRetrieveposFields<TOpt>::All>,
+            comms::option::def::MsgType<LogRetrievepos<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

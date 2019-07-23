@@ -34,7 +34,7 @@ struct LogCreateFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -49,15 +49,15 @@ struct LogCreateFields
     class LogCfg : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -125,7 +125,7 @@ struct LogCreateFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             LogSizeVal,
-            comms::option::ValidNumValueRange<0, 2>
+            comms::option::def::ValidNumValueRange<0, 2>
         >
     {
         /// @brief Name of the field.
@@ -189,10 +189,10 @@ class LogCreate : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::LogCreate,
-        comms::option::StaticNumIdImpl<ublox::MsgId_LogCreate>,
-        comms::option::FieldsImpl<typename LogCreateFields<TOpt>::All>,
-        comms::option::MsgType<LogCreate<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_LogCreate>,
+        comms::option::def::FieldsImpl<typename LogCreateFields<TOpt>::All>,
+        comms::option::def::MsgType<LogCreate<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -200,10 +200,10 @@ class LogCreate : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::LogCreate,
-            comms::option::StaticNumIdImpl<ublox::MsgId_LogCreate>,
-            comms::option::FieldsImpl<typename LogCreateFields<TOpt>::All>,
-            comms::option::MsgType<LogCreate<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_LogCreate>,
+            comms::option::def::FieldsImpl<typename LogCreateFields<TOpt>::All>,
+            comms::option::def::MsgType<LogCreate<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -33,9 +33,9 @@ struct TimVcocalFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<3>,
-            comms::option::ValidNumValue<3>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<3>,
+            comms::option::def::ValidNumValue<3>
         >
     {
         /// @brief Name of the field.
@@ -51,7 +51,7 @@ struct TimVcocalFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -76,7 +76,7 @@ struct TimVcocalFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             OscIdVal,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -122,7 +122,7 @@ struct TimVcocalFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ScalingRatio<1, 65536L>
+            comms::option::def::ScalingRatio<1, 65536L>
         >
     {
         /// @brief Name of the field.
@@ -138,7 +138,7 @@ struct TimVcocalFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 65536L>
+            comms::option::def::ScalingRatio<1, 65536L>
         >
     {
         /// @brief Name of the field.
@@ -171,10 +171,10 @@ class TimVcocal : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::TimVcocal,
-        comms::option::StaticNumIdImpl<ublox::MsgId_TimVcocal>,
-        comms::option::FieldsImpl<typename TimVcocalFields<TOpt>::All>,
-        comms::option::MsgType<TimVcocal<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_TimVcocal>,
+        comms::option::def::FieldsImpl<typename TimVcocalFields<TOpt>::All>,
+        comms::option::def::MsgType<TimVcocal<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -182,10 +182,10 @@ class TimVcocal : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::TimVcocal,
-            comms::option::StaticNumIdImpl<ublox::MsgId_TimVcocal>,
-            comms::option::FieldsImpl<typename TimVcocalFields<TOpt>::All>,
-            comms::option::MsgType<TimVcocal<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_TimVcocal>,
+            comms::option::def::FieldsImpl<typename TimVcocalFields<TOpt>::All>,
+            comms::option::def::MsgType<TimVcocal<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -24,8 +24,8 @@ struct Hour : public
         ublox::field::FieldBase<>,
         std::uint8_t,
         TExtraOpts...,
-        comms::option::UnitsHours,
-        comms::option::ValidNumValueRange<0, 23>
+        comms::option::def::UnitsHours,
+        comms::option::def::ValidNumValueRange<0, 23>
     >
 {
     /// @brief Name of the field.

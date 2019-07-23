@@ -32,9 +32,9 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -50,7 +50,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -140,8 +140,8 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 0x80000000LL>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -172,8 +172,8 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ScalingRatio<16, 1>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<16, 1>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -203,7 +203,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int8_t,
-            comms::option::ScalingRatio<1, 0x80000000000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -219,7 +219,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 0x80000000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -235,8 +235,8 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>,
-            comms::option::UnitsSeconds
+            comms::option::def::ScalingRatio<1, 0x80000000LL>,
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -252,8 +252,8 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 32>,
-            comms::option::UnitsMeters
+            comms::option::def::ScalingRatio<1, 32>,
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -269,7 +269,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 0x80000000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -285,7 +285,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -301,8 +301,8 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 536870912L>,
-            comms::option::UnitsRadians
+            comms::option::def::ScalingRatio<1, 536870912L>,
+            comms::option::def::UnitsRadians
         >
     {
         /// @brief Name of the field.
@@ -318,8 +318,8 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 536870912L>,
-            comms::option::UnitsRadians
+            comms::option::def::ScalingRatio<1, 536870912L>,
+            comms::option::def::UnitsRadians
         >
     {
         /// @brief Name of the field.
@@ -335,7 +335,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 0x200000000LL>
+            comms::option::def::ScalingRatio<1, 0x200000000LL>
         >
     {
         /// @brief Name of the field.
@@ -351,7 +351,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::ScalingRatio<1, 524288L>
+            comms::option::def::ScalingRatio<1, 524288L>
         >
     {
         /// @brief Name of the field.
@@ -367,7 +367,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ScalingRatio<16, 1>
+            comms::option::def::ScalingRatio<16, 1>
         >
     {
         /// @brief Name of the field.
@@ -383,8 +383,8 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 536870912L>,
-            comms::option::UnitsRadians
+            comms::option::def::ScalingRatio<1, 536870912L>,
+            comms::option::def::UnitsRadians
         >
     {
         /// @brief Name of the field.
@@ -400,7 +400,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -416,8 +416,8 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 536870912L>,
-            comms::option::UnitsRadians
+            comms::option::def::ScalingRatio<1, 536870912L>,
+            comms::option::def::UnitsRadians
         >
     {
         /// @brief Name of the field.
@@ -433,8 +433,8 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 32>,
-            comms::option::UnitsMeters
+            comms::option::def::ScalingRatio<1, 32>,
+            comms::option::def::UnitsMeters
         >
     {
         /// @brief Name of the field.
@@ -450,7 +450,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -466,7 +466,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000LL>
         >
     {
         /// @brief Name of the field.
@@ -482,7 +482,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 0x80000000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -498,7 +498,7 @@ struct MgaQzssEphFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::ScalingRatio<1, 0x80000000000LL>
+            comms::option::def::ScalingRatio<1, 0x80000000000LL>
         >
     {
         /// @brief Name of the field.
@@ -570,10 +570,10 @@ class MgaQzssEph : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaQzssEph,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaQzss>,
-        comms::option::FieldsImpl<typename MgaQzssEphFields<TOpt>::All>,
-        comms::option::MsgType<MgaQzssEph<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaQzss>,
+        comms::option::def::FieldsImpl<typename MgaQzssEphFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaQzssEph<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -581,10 +581,10 @@ class MgaQzssEph : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaQzssEph,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaQzss>,
-            comms::option::FieldsImpl<typename MgaQzssEphFields<TOpt>::All>,
-            comms::option::MsgType<MgaQzssEph<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaQzss>,
+            comms::option::def::FieldsImpl<typename MgaQzssEphFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaQzssEph<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

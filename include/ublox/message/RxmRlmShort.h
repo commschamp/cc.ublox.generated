@@ -32,7 +32,7 @@ struct RxmRlmShortFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -48,9 +48,9 @@ struct RxmRlmShortFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -96,7 +96,7 @@ struct RxmRlmShortFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::RxmRlmShortFields::Beacon,
-            comms::option::SequenceFixedSize<8U>
+            comms::option::def::SequenceFixedSize<8U>
         >
     {
         /// @brief Name of the field.
@@ -128,7 +128,7 @@ struct RxmRlmShortFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::RxmRlmShortFields::Params,
-            comms::option::SequenceFixedSize<2U>
+            comms::option::def::SequenceFixedSize<2U>
         >
     {
         /// @brief Name of the field.
@@ -177,10 +177,10 @@ class RxmRlmShort : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmRlmShort,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmRlm>,
-        comms::option::FieldsImpl<typename RxmRlmShortFields<TOpt>::All>,
-        comms::option::MsgType<RxmRlmShort<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmRlm>,
+        comms::option::def::FieldsImpl<typename RxmRlmShortFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmRlmShort<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -188,10 +188,10 @@ class RxmRlmShort : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmRlmShort,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmRlm>,
-            comms::option::FieldsImpl<typename RxmRlmShortFields<TOpt>::All>,
-            comms::option::MsgType<RxmRlmShort<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmRlm>,
+            comms::option::def::FieldsImpl<typename RxmRlmShortFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmRlmShort<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

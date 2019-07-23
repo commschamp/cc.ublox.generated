@@ -74,8 +74,8 @@ struct NavSvinfoFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 ChipGenVal,
-                comms::option::FixedBitLength<3U>,
-                comms::option::ValidNumValueRange<0, 4>
+                comms::option::def::FixedBitLength<3U>,
+                comms::option::def::ValidNumValueRange<0, 4>
             >
         {
             /// @brief Name of the field.
@@ -112,8 +112,8 @@ struct NavSvinfoFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<5U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<5U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -220,13 +220,13 @@ struct NavSvinfoFields
             class Flags : public
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedLength<1U>
+                    comms::option::def::FixedLength<1U>
                 >
             {
                 using Base = 
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedLength<1U>
+                        comms::option::def::FixedLength<1U>
                     >;
             public:
                 /// @brief Provides names and generates access functions for internal bits.
@@ -306,7 +306,7 @@ struct NavSvinfoFields
                 comms::field::EnumValue<
                     ublox::field::FieldBase<>,
                     QualityVal,
-                    comms::option::ValidNumValueRange<0, 7>
+                    comms::option::def::ValidNumValueRange<0, 7>
                 >
             {
                 /// @brief Name of the field.
@@ -359,7 +359,7 @@ struct NavSvinfoFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int8_t,
-                    comms::option::UnitsDegrees
+                    comms::option::def::UnitsDegrees
                 >
             {
                 /// @brief Name of the field.
@@ -375,7 +375,7 @@ struct NavSvinfoFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int16_t,
-                    comms::option::UnitsDegrees
+                    comms::option::def::UnitsDegrees
                 >
             {
                 /// @brief Name of the field.
@@ -391,7 +391,7 @@ struct NavSvinfoFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::UnitsCentimeters
+                    comms::option::def::UnitsCentimeters
                 >
             {
                 /// @brief Name of the field.
@@ -470,7 +470,7 @@ struct NavSvinfoFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::NavSvinfoFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -502,11 +502,11 @@ class NavSvinfo : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavSvinfo,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavSvinfo>,
-        comms::option::FieldsImpl<typename NavSvinfoFields<TOpt>::All>,
-        comms::option::MsgType<NavSvinfo<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavSvinfo>,
+        comms::option::def::FieldsImpl<typename NavSvinfoFields<TOpt>::All>,
+        comms::option::def::MsgType<NavSvinfo<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -514,11 +514,11 @@ class NavSvinfo : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavSvinfo,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavSvinfo>,
-            comms::option::FieldsImpl<typename NavSvinfoFields<TOpt>::All>,
-            comms::option::MsgType<NavSvinfo<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavSvinfo>,
+            comms::option::def::FieldsImpl<typename NavSvinfoFields<TOpt>::All>,
+            comms::option::def::MsgType<NavSvinfo<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

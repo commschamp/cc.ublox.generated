@@ -52,7 +52,7 @@ struct MonRxbufFields
             ublox::field::FieldBase<>,
             typename PendingMembers::Element,
             typename TOpt::message::MonRxbufFields::Pending,
-            comms::option::SequenceFixedSize<6U>
+            comms::option::def::SequenceFixedSize<6U>
         >
     {
         /// @brief Name of the field.
@@ -89,7 +89,7 @@ struct MonRxbufFields
             ublox::field::FieldBase<>,
             typename UsageMembers::Element,
             typename TOpt::message::MonRxbufFields::Usage,
-            comms::option::SequenceFixedSize<6U>
+            comms::option::def::SequenceFixedSize<6U>
         >
     {
         /// @brief Name of the field.
@@ -126,7 +126,7 @@ struct MonRxbufFields
             ublox::field::FieldBase<>,
             typename PeakUsageMembers::Element,
             typename TOpt::message::MonRxbufFields::PeakUsage,
-            comms::option::SequenceFixedSize<6U>
+            comms::option::def::SequenceFixedSize<6U>
         >
     {
         /// @brief Name of the field.
@@ -156,10 +156,10 @@ class MonRxbuf : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonRxbuf,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonRxbuf>,
-        comms::option::FieldsImpl<typename MonRxbufFields<TOpt>::All>,
-        comms::option::MsgType<MonRxbuf<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonRxbuf>,
+        comms::option::def::FieldsImpl<typename MonRxbufFields<TOpt>::All>,
+        comms::option::def::MsgType<MonRxbuf<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -167,10 +167,10 @@ class MonRxbuf : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonRxbuf,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonRxbuf>,
-            comms::option::FieldsImpl<typename MonRxbufFields<TOpt>::All>,
-            comms::option::MsgType<MonRxbuf<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonRxbuf>,
+            comms::option::def::FieldsImpl<typename MonRxbufFields<TOpt>::All>,
+            comms::option::def::MsgType<MonRxbuf<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

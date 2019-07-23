@@ -47,10 +47,10 @@ class AckAck : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::AckAck,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AckAck>,
-        comms::option::FieldsImpl<typename AckAckFields<TOpt>::All>,
-        comms::option::MsgType<AckAck<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AckAck>,
+        comms::option::def::FieldsImpl<typename AckAckFields<TOpt>::All>,
+        comms::option::def::MsgType<AckAck<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -58,10 +58,10 @@ class AckAck : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::AckAck,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AckAck>,
-            comms::option::FieldsImpl<typename AckAckFields<TOpt>::All>,
-            comms::option::MsgType<AckAck<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AckAck>,
+            comms::option::def::FieldsImpl<typename AckAckFields<TOpt>::All>,
+            comms::option::def::MsgType<AckAck<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -24,7 +24,7 @@ struct SAcc : public
         ublox::field::FieldBase<>,
         std::uint32_t,
         TExtraOpts...,
-        comms::option::UnitsCentimetersPerSecond
+        comms::option::def::UnitsCentimetersPerSecond
     >
 {
     /// @brief Name of the field.

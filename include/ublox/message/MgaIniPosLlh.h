@@ -33,9 +33,9 @@ struct MgaIniPosLlhFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -51,7 +51,7 @@ struct MgaIniPosLlhFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -93,7 +93,7 @@ struct MgaIniPosLlhFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -109,7 +109,7 @@ struct MgaIniPosLlhFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -143,10 +143,10 @@ class MgaIniPosLlh : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaIniPosLlh,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-        comms::option::FieldsImpl<typename MgaIniPosLlhFields<TOpt>::All>,
-        comms::option::MsgType<MgaIniPosLlh<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+        comms::option::def::FieldsImpl<typename MgaIniPosLlhFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaIniPosLlh<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -154,10 +154,10 @@ class MgaIniPosLlh : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaIniPosLlh,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-            comms::option::FieldsImpl<typename MgaIniPosLlhFields<TOpt>::All>,
-            comms::option::MsgType<MgaIniPosLlh<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+            comms::option::def::FieldsImpl<typename MgaIniPosLlhFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaIniPosLlh<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

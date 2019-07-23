@@ -40,7 +40,7 @@ struct RxmMeasxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -70,7 +70,7 @@ struct RxmMeasxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -86,7 +86,7 @@ struct RxmMeasxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -102,7 +102,7 @@ struct RxmMeasxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -132,7 +132,7 @@ struct RxmMeasxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -148,8 +148,8 @@ struct RxmMeasxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ScalingRatio<1, 16>,
-            comms::option::UnitsMilliseconds
+            comms::option::def::ScalingRatio<1, 16>,
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -165,8 +165,8 @@ struct RxmMeasxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ScalingRatio<1, 16>,
-            comms::option::UnitsMilliseconds
+            comms::option::def::ScalingRatio<1, 16>,
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -182,8 +182,8 @@ struct RxmMeasxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ScalingRatio<1, 16>,
-            comms::option::UnitsMilliseconds
+            comms::option::def::ScalingRatio<1, 16>,
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -213,8 +213,8 @@ struct RxmMeasxFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::ScalingRatio<1, 16>,
-            comms::option::UnitsMilliseconds
+            comms::option::def::ScalingRatio<1, 16>,
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -258,8 +258,8 @@ struct RxmMeasxFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 TowSetVal,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValueRange<0, 2>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValueRange<0, 2>
             >
         {
             /// @brief Name of the field.
@@ -292,7 +292,7 @@ struct RxmMeasxFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<6U>
+                comms::option::def::FixedBitLength<6U>
             >
         {
             /// @brief Name of the field.
@@ -391,7 +391,7 @@ struct RxmMeasxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::ValidNumValueRange<0, 63>
+                    comms::option::def::ValidNumValueRange<0, 63>
                 >
             {
                 /// @brief Name of the field.
@@ -418,7 +418,7 @@ struct RxmMeasxFields
                 comms::field::EnumValue<
                     ublox::field::FieldBase<>,
                     MpathIndicVal,
-                    comms::option::ValidNumValueRange<0, 3>
+                    comms::option::def::ValidNumValueRange<0, 3>
                 >
             {
                 /// @brief Name of the field.
@@ -452,8 +452,8 @@ struct RxmMeasxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::ScalingRatio<4, 100>,
-                    comms::option::UnitsMetersPerSecond
+                    comms::option::def::ScalingRatio<4, 100>,
+                    comms::option::def::UnitsMetersPerSecond
                 >
             {
                 /// @brief Name of the field.
@@ -469,8 +469,8 @@ struct RxmMeasxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int32_t,
-                    comms::option::ScalingRatio<2, 100>,
-                    comms::option::UnitsHertz
+                    comms::option::def::ScalingRatio<2, 100>,
+                    comms::option::def::UnitsHertz
                 >
             {
                 /// @brief Name of the field.
@@ -486,7 +486,7 @@ struct RxmMeasxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint16_t,
-                    comms::option::ValidNumValueRange<0, 1022>
+                    comms::option::def::ValidNumValueRange<0, 1022>
                 >
             {
                 /// @brief Name of the field.
@@ -502,7 +502,7 @@ struct RxmMeasxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint16_t,
-                    comms::option::ValidNumValueRange<0, 1023>
+                    comms::option::def::ValidNumValueRange<0, 1023>
                 >
             {
                 /// @brief Name of the field.
@@ -518,8 +518,8 @@ struct RxmMeasxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::ScalingRatio<1, 2097152L>,
-                    comms::option::UnitsMilliseconds
+                    comms::option::def::ScalingRatio<1, 2097152L>,
+                    comms::option::def::UnitsMilliseconds
                 >
             {
                 /// @brief Name of the field.
@@ -535,7 +535,7 @@ struct RxmMeasxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::UnitsMilliseconds
+                    comms::option::def::UnitsMilliseconds
                 >
             {
                 /// @brief Name of the field.
@@ -551,7 +551,7 @@ struct RxmMeasxFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::ValidNumValueRange<0, 63>
+                    comms::option::def::ValidNumValueRange<0, 63>
                 >
             {
                 /// @brief Name of the field.
@@ -656,7 +656,7 @@ struct RxmMeasxFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::RxmMeasxFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -699,11 +699,11 @@ class RxmMeasx : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmMeasx,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmMeasx>,
-        comms::option::FieldsImpl<typename RxmMeasxFields<TOpt>::All>,
-        comms::option::MsgType<RxmMeasx<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmMeasx>,
+        comms::option::def::FieldsImpl<typename RxmMeasxFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmMeasx<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -711,11 +711,11 @@ class RxmMeasx : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmMeasx,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmMeasx>,
-            comms::option::FieldsImpl<typename RxmMeasxFields<TOpt>::All>,
-            comms::option::MsgType<RxmMeasx<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmMeasx>,
+            comms::option::def::FieldsImpl<typename RxmMeasxFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmMeasx<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

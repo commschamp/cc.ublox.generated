@@ -92,7 +92,7 @@ struct CfgUsbFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::UnitsMilliamps
+            comms::option::def::UnitsMilliamps
         >
     {
         /// @brief Name of the field.
@@ -107,15 +107,15 @@ struct CfgUsbFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<2U>,
-            comms::option::BitmaskReservedBits<0xFFFCU, 0x0U>
+            comms::option::def::FixedLength<2U>,
+            comms::option::def::BitmaskReservedBits<0xFFFCU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<2U>,
-                comms::option::BitmaskReservedBits<0xFFFCU, 0x0U>
+                comms::option::def::FixedLength<2U>,
+                comms::option::def::BitmaskReservedBits<0xFFFCU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -162,7 +162,7 @@ struct CfgUsbFields
         comms::field::String<
             ublox::field::FieldBase<>,
             typename TOpt::message::CfgUsbFields::VendorString,
-            comms::option::SequenceFixedSize<32U>
+            comms::option::def::SequenceFixedSize<32U>
         >
     {
         /// @brief Name of the field.
@@ -178,7 +178,7 @@ struct CfgUsbFields
         comms::field::String<
             ublox::field::FieldBase<>,
             typename TOpt::message::CfgUsbFields::ProductString,
-            comms::option::SequenceFixedSize<32U>
+            comms::option::def::SequenceFixedSize<32U>
         >
     {
         /// @brief Name of the field.
@@ -194,7 +194,7 @@ struct CfgUsbFields
         comms::field::String<
             ublox::field::FieldBase<>,
             typename TOpt::message::CfgUsbFields::SerialNumber,
-            comms::option::SequenceFixedSize<32U>
+            comms::option::def::SequenceFixedSize<32U>
         >
     {
         /// @brief Name of the field.
@@ -229,20 +229,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgUsb : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgUsb>,
-        comms::option::FieldsImpl<typename CfgUsbFields<TOpt>::All>,
-        comms::option::MsgType<CfgUsb<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgUsb>,
+        comms::option::def::FieldsImpl<typename CfgUsbFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgUsb<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgUsb>,
-            comms::option::FieldsImpl<typename CfgUsbFields<TOpt>::All>,
-            comms::option::MsgType<CfgUsb<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgUsb>,
+            comms::option::def::FieldsImpl<typename CfgUsbFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgUsb<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

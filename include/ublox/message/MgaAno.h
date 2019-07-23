@@ -36,7 +36,7 @@ struct MgaAnoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -52,7 +52,7 @@ struct MgaAnoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -89,9 +89,9 @@ struct MgaAnoFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::FixedLength<1U>,
-            comms::option::NumValueSerOffset<-2000>,
-            comms::option::DefaultNumValue<2000>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::NumValueSerOffset<-2000>,
+            comms::option::def::DefaultNumValue<2000>
         >
     {
         /// @brief Name of the field.
@@ -134,7 +134,7 @@ struct MgaAnoFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::MgaAnoFields::Data,
-            comms::option::SequenceFixedSize<64U>
+            comms::option::def::SequenceFixedSize<64U>
         >
     {
         /// @brief Name of the field.
@@ -185,10 +185,10 @@ class MgaAno : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaAno,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaAno>,
-        comms::option::FieldsImpl<typename MgaAnoFields<TOpt>::All>,
-        comms::option::MsgType<MgaAno<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaAno>,
+        comms::option::def::FieldsImpl<typename MgaAnoFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaAno<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -196,10 +196,10 @@ class MgaAno : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaAno,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaAno>,
-            comms::option::FieldsImpl<typename MgaAnoFields<TOpt>::All>,
-            comms::option::MsgType<MgaAno<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaAno>,
+            comms::option::def::FieldsImpl<typename MgaAnoFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaAno<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

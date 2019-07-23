@@ -37,10 +37,10 @@ class EsfMeasPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::EsfMeasPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_EsfMeas>,
-        comms::option::FieldsImpl<typename EsfMeasPollFields<TOpt>::All>,
-        comms::option::MsgType<EsfMeasPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_EsfMeas>,
+        comms::option::def::FieldsImpl<typename EsfMeasPollFields<TOpt>::All>,
+        comms::option::def::MsgType<EsfMeasPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class EsfMeasPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::EsfMeasPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_EsfMeas>,
-            comms::option::FieldsImpl<typename EsfMeasPollFields<TOpt>::All>,
-            comms::option::MsgType<EsfMeasPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_EsfMeas>,
+            comms::option::def::FieldsImpl<typename EsfMeasPollFields<TOpt>::All>,
+            comms::option::def::MsgType<EsfMeasPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

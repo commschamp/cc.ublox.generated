@@ -33,8 +33,8 @@ struct RxmPmreqV0Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::ValidNumValue<0>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -64,7 +64,7 @@ struct RxmPmreqV0Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsMilliseconds
+            comms::option::def::UnitsMilliseconds
         >
     {
         /// @brief Name of the field.
@@ -79,15 +79,15 @@ struct RxmPmreqV0Fields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<4U>,
-            comms::option::BitmaskReservedBits<0xFFFFFFF9UL, 0x0U>
+            comms::option::def::FixedLength<4U>,
+            comms::option::def::BitmaskReservedBits<0xFFFFFFF9UL, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<4U>,
-                comms::option::BitmaskReservedBits<0xFFFFFFF9UL, 0x0U>
+                comms::option::def::FixedLength<4U>,
+                comms::option::def::BitmaskReservedBits<0xFFFFFFF9UL, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -147,15 +147,15 @@ struct RxmPmreqV0Fields
     class WakeupSources : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<4U>,
-            comms::option::BitmaskReservedBits<0xFFFFFF17UL, 0x0U>
+            comms::option::def::FixedLength<4U>,
+            comms::option::def::BitmaskReservedBits<0xFFFFFF17UL, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<4U>,
-                comms::option::BitmaskReservedBits<0xFFFFFF17UL, 0x0U>
+                comms::option::def::FixedLength<4U>,
+                comms::option::def::BitmaskReservedBits<0xFFFFFF17UL, 0x0U>
             >;
     public:
         /// @brief Provide names for internal bits.
@@ -245,10 +245,10 @@ class RxmPmreqV0 : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmPmreqV0,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmPmreq>,
-        comms::option::FieldsImpl<typename RxmPmreqV0Fields<TOpt>::All>,
-        comms::option::MsgType<RxmPmreqV0<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmPmreq>,
+        comms::option::def::FieldsImpl<typename RxmPmreqV0Fields<TOpt>::All>,
+        comms::option::def::MsgType<RxmPmreqV0<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -256,10 +256,10 @@ class RxmPmreqV0 : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmPmreqV0,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmPmreq>,
-            comms::option::FieldsImpl<typename RxmPmreqV0Fields<TOpt>::All>,
-            comms::option::MsgType<RxmPmreqV0<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmPmreq>,
+            comms::option::def::FieldsImpl<typename RxmPmreqV0Fields<TOpt>::All>,
+            comms::option::def::MsgType<RxmPmreqV0<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

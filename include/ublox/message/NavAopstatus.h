@@ -40,15 +40,15 @@ struct NavAopstatusFields
     class AopCfg : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -197,10 +197,10 @@ class NavAopstatus : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavAopstatus,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavAopstatus>,
-        comms::option::FieldsImpl<typename NavAopstatusFields<TOpt>::All>,
-        comms::option::MsgType<NavAopstatus<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavAopstatus>,
+        comms::option::def::FieldsImpl<typename NavAopstatusFields<TOpt>::All>,
+        comms::option::def::MsgType<NavAopstatus<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -208,10 +208,10 @@ class NavAopstatus : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavAopstatus,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavAopstatus>,
-            comms::option::FieldsImpl<typename NavAopstatusFields<TOpt>::All>,
-            comms::option::MsgType<NavAopstatus<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavAopstatus>,
+            comms::option::def::FieldsImpl<typename NavAopstatusFields<TOpt>::All>,
+            comms::option::def::MsgType<NavAopstatus<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

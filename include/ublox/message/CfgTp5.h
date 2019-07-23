@@ -43,8 +43,8 @@ struct CfgTp5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -74,7 +74,7 @@ struct CfgTp5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -90,7 +90,7 @@ struct CfgTp5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -109,7 +109,7 @@ struct CfgTp5Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::UnitsHertz
+                comms::option::def::UnitsHertz
             >
         {
             /// @brief Name of the field.
@@ -126,7 +126,7 @@ struct CfgTp5Fields
     struct Freq : public
         comms::field::Optional<
             typename FreqMembers::Freq,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -145,7 +145,7 @@ struct CfgTp5Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::UnitsMicroseconds
+                comms::option::def::UnitsMicroseconds
             >
         {
             /// @brief Name of the field.
@@ -162,7 +162,7 @@ struct CfgTp5Fields
     struct Period : public
         comms::field::Optional<
             typename PeriodMembers::Period,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -181,7 +181,7 @@ struct CfgTp5Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::UnitsHertz
+                comms::option::def::UnitsHertz
             >
         {
             /// @brief Name of the field.
@@ -198,7 +198,7 @@ struct CfgTp5Fields
     struct FreqLock : public
         comms::field::Optional<
             typename FreqLockMembers::FreqLock,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -217,7 +217,7 @@ struct CfgTp5Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::UnitsMicroseconds
+                comms::option::def::UnitsMicroseconds
             >
         {
             /// @brief Name of the field.
@@ -234,7 +234,7 @@ struct CfgTp5Fields
     struct PeriodLock : public
         comms::field::Optional<
             typename PeriodLockMembers::PeriodLock,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -253,7 +253,7 @@ struct CfgTp5Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::UnitsMicroseconds
+                comms::option::def::UnitsMicroseconds
             >
         {
             /// @brief Name of the field.
@@ -270,7 +270,7 @@ struct CfgTp5Fields
     struct PulseLen : public
         comms::field::Optional<
             typename PulseLenMembers::PulseLen,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -289,7 +289,7 @@ struct CfgTp5Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::ScalingRatio<1, 0x100000000LL>
+                comms::option::def::ScalingRatio<1, 0x100000000LL>
             >
         {
             /// @brief Name of the field.
@@ -306,7 +306,7 @@ struct CfgTp5Fields
     struct Ratio : public
         comms::field::Optional<
             typename RatioMembers::Ratio,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -325,7 +325,7 @@ struct CfgTp5Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::UnitsMicroseconds
+                comms::option::def::UnitsMicroseconds
             >
         {
             /// @brief Name of the field.
@@ -342,7 +342,7 @@ struct CfgTp5Fields
     struct PulseLenLock : public
         comms::field::Optional<
             typename PulseLenLockMembers::PulseLenLock,
-            comms::option::MissingByDefault
+            comms::option::def::MissingByDefault
         >
     {
         /// @brief Name of the field.
@@ -361,7 +361,7 @@ struct CfgTp5Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::ScalingRatio<1, 0x100000000LL>
+                comms::option::def::ScalingRatio<1, 0x100000000LL>
             >
         {
             /// @brief Name of the field.
@@ -378,7 +378,7 @@ struct CfgTp5Fields
     struct RatioLock : public
         comms::field::Optional<
             typename RatioLockMembers::RatioLock,
-            comms::option::ExistsByDefault
+            comms::option::def::ExistsByDefault
         >
     {
         /// @brief Name of the field.
@@ -394,7 +394,7 @@ struct CfgTp5Fields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsNanoseconds
+            comms::option::def::UnitsNanoseconds
         >
     {
         /// @brief Name of the field.
@@ -412,13 +412,13 @@ struct CfgTp5Fields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<7U>
+                comms::option::def::FixedBitLength<7U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<7U>
+                    comms::option::def::FixedBitLength<7U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -492,8 +492,8 @@ struct CfgTp5Fields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 GridUtcGnssVal,
-                comms::option::FixedBitLength<4U>,
-                comms::option::ValidNumValueRange<0, 4>
+                comms::option::def::FixedBitLength<4U>,
+                comms::option::def::ValidNumValueRange<0, 4>
             >
         {
             /// @brief Name of the field.
@@ -528,7 +528,7 @@ struct CfgTp5Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint8_t,
-                comms::option::FixedBitLength<3U>
+                comms::option::def::FixedBitLength<3U>
             >
         {
             /// @brief Name of the field.
@@ -546,8 +546,8 @@ struct CfgTp5Fields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::FixedBitLength<18U>,
-                comms::option::ValidNumValue<0>
+                comms::option::def::FixedBitLength<18U>,
+                comms::option::def::ValidNumValue<0>
             >
         {
             /// @brief Name of the field.
@@ -636,22 +636,22 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgTp5 : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgTp5>,
-        comms::option::FieldsImpl<typename CfgTp5Fields<TOpt>::All>,
-        comms::option::MsgType<CfgTp5<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgTp5>,
+        comms::option::def::FieldsImpl<typename CfgTp5Fields<TOpt>::All>,
+        comms::option::def::MsgType<CfgTp5<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgTp5>,
-            comms::option::FieldsImpl<typename CfgTp5Fields<TOpt>::All>,
-            comms::option::MsgType<CfgTp5<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgTp5>,
+            comms::option::def::FieldsImpl<typename CfgTp5Fields<TOpt>::All>,
+            comms::option::def::MsgType<CfgTp5<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

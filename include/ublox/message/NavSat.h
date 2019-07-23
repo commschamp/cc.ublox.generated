@@ -45,8 +45,8 @@ struct NavSatFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -133,8 +133,8 @@ struct NavSatFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int8_t,
-                    comms::option::UnitsDegrees,
-                    comms::option::ValidNumValueRange<-90, 90>
+                    comms::option::def::UnitsDegrees,
+                    comms::option::def::ValidNumValueRange<-90, 90>
                 >
             {
                 /// @brief Name of the field.
@@ -150,8 +150,8 @@ struct NavSatFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int16_t,
-                    comms::option::UnitsDegrees,
-                    comms::option::ValidNumValueRange<0, 360>
+                    comms::option::def::UnitsDegrees,
+                    comms::option::def::ValidNumValueRange<0, 360>
                 >
             {
                 /// @brief Name of the field.
@@ -167,8 +167,8 @@ struct NavSatFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::int16_t,
-                    comms::option::ScalingRatio<1, 10>,
-                    comms::option::UnitsMeters
+                    comms::option::def::ScalingRatio<1, 10>,
+                    comms::option::def::UnitsMeters
                 >
             {
                 /// @brief Name of the field.
@@ -202,8 +202,8 @@ struct NavSatFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         QualityIndVal,
-                        comms::option::FixedBitLength<3U>,
-                        comms::option::ValidNumValueRange<0, 7>
+                        comms::option::def::FixedBitLength<3U>,
+                        comms::option::def::ValidNumValueRange<0, 7>
                     >
                 {
                     /// @brief Name of the field.
@@ -240,13 +240,13 @@ struct NavSatFields
                 class BitsLow : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<1U>
+                        comms::option::def::FixedBitLength<1U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<1U>
+                            comms::option::def::FixedBitLength<1U>
                         >;
                 public:
                     /// @brief Provides names and generates access functions for internal bits.
@@ -300,8 +300,8 @@ struct NavSatFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         HealthVal,
-                        comms::option::FixedBitLength<2U>,
-                        comms::option::ValidNumValueRange<0, 2>
+                        comms::option::def::FixedBitLength<2U>,
+                        comms::option::def::ValidNumValueRange<0, 2>
                     >
                 {
                     /// @brief Name of the field.
@@ -333,13 +333,13 @@ struct NavSatFields
                 class BitsMid : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<2U>
+                        comms::option::def::FixedBitLength<2U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<2U>
+                            comms::option::def::FixedBitLength<2U>
                         >;
                 public:
                     /// @brief Provides names and generates access functions for internal bits.
@@ -398,8 +398,8 @@ struct NavSatFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         OrbitSourceVal,
-                        comms::option::FixedBitLength<3U>,
-                        comms::option::ValidNumValueRange<0, 4>
+                        comms::option::def::FixedBitLength<3U>,
+                        comms::option::def::ValidNumValueRange<0, 4>
                     >
                 {
                     /// @brief Name of the field.
@@ -433,15 +433,15 @@ struct NavSatFields
                 class BitsHigh : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<21U>,
-                        comms::option::BitmaskReservedBits<0x1FF190UL, 0x0U>
+                        comms::option::def::FixedBitLength<21U>,
+                        comms::option::def::BitmaskReservedBits<0x1FF190UL, 0x0U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<21U>,
-                            comms::option::BitmaskReservedBits<0x1FF190UL, 0x0U>
+                            comms::option::def::FixedBitLength<21U>,
+                            comms::option::def::BitmaskReservedBits<0x1FF190UL, 0x0U>
                         >;
                 public:
                     /// @brief Provide names for internal bits.
@@ -653,7 +653,7 @@ struct NavSatFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::NavSatFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -685,11 +685,11 @@ class NavSat : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavSat,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavSat>,
-        comms::option::FieldsImpl<typename NavSatFields<TOpt>::All>,
-        comms::option::MsgType<NavSat<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavSat>,
+        comms::option::def::FieldsImpl<typename NavSatFields<TOpt>::All>,
+        comms::option::def::MsgType<NavSat<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -697,11 +697,11 @@ class NavSat : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavSat,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavSat>,
-            comms::option::FieldsImpl<typename NavSatFields<TOpt>::All>,
-            comms::option::MsgType<NavSat<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavSat>,
+            comms::option::def::FieldsImpl<typename NavSatFields<TOpt>::All>,
+            comms::option::def::MsgType<NavSat<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

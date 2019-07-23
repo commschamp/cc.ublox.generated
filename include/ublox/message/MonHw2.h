@@ -108,9 +108,9 @@ struct MonHw2Fields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             CfgSourceVal,
-            comms::option::ValidNumValue<102>,
-            comms::option::ValidNumValueRange<111, 112>,
-            comms::option::ValidNumValue<114>
+            comms::option::def::ValidNumValue<102>,
+            comms::option::def::ValidNumValueRange<111, 112>,
+            comms::option::def::ValidNumValue<114>
         >
     {
         /// @brief Name of the field.
@@ -244,10 +244,10 @@ class MonHw2 : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonHw2,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonHw2>,
-        comms::option::FieldsImpl<typename MonHw2Fields<TOpt>::All>,
-        comms::option::MsgType<MonHw2<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonHw2>,
+        comms::option::def::FieldsImpl<typename MonHw2Fields<TOpt>::All>,
+        comms::option::def::MsgType<MonHw2<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -255,10 +255,10 @@ class MonHw2 : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonHw2,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonHw2>,
-            comms::option::FieldsImpl<typename MonHw2Fields<TOpt>::All>,
-            comms::option::MsgType<MonHw2<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonHw2>,
+            comms::option::def::FieldsImpl<typename MonHw2Fields<TOpt>::All>,
+            comms::option::def::MsgType<MonHw2<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

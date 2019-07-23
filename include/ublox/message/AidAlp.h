@@ -33,7 +33,7 @@ struct AidAlpFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -49,7 +49,7 @@ struct AidAlpFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -65,7 +65,7 @@ struct AidAlpFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -188,10 +188,10 @@ class AidAlp : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::AidAlp,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AidAlp>,
-        comms::option::FieldsImpl<typename AidAlpFields<TOpt>::All>,
-        comms::option::MsgType<AidAlp<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAlp>,
+        comms::option::def::FieldsImpl<typename AidAlpFields<TOpt>::All>,
+        comms::option::def::MsgType<AidAlp<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -199,10 +199,10 @@ class AidAlp : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::AidAlp,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AidAlp>,
-            comms::option::FieldsImpl<typename AidAlpFields<TOpt>::All>,
-            comms::option::MsgType<AidAlp<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAlp>,
+            comms::option::def::FieldsImpl<typename AidAlpFields<TOpt>::All>,
+            comms::option::def::MsgType<AidAlp<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

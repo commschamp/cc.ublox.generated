@@ -36,8 +36,8 @@ struct MonPatchFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint16_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -76,13 +76,13 @@ struct MonPatchFields
                 class Bits : public
                     comms::field::BitmaskValue<
                         ublox::field::FieldBase<>,
-                        comms::option::FixedBitLength<1U>
+                        comms::option::def::FixedBitLength<1U>
                     >
                 {
                     using Base = 
                         comms::field::BitmaskValue<
                             ublox::field::FieldBase<>,
-                            comms::option::FixedBitLength<1U>
+                            comms::option::def::FixedBitLength<1U>
                         >;
                 public:
                     /// @brief Provides names and generates access functions for internal bits.
@@ -137,8 +137,8 @@ struct MonPatchFields
                     comms::field::EnumValue<
                         ublox::field::FieldBase<>,
                         LocationVal,
-                        comms::option::FixedBitLength<2U>,
-                        comms::option::ValidNumValueRange<0, 3>
+                        comms::option::def::FixedBitLength<2U>,
+                        comms::option::def::ValidNumValueRange<0, 3>
                     >
                 {
                     /// @brief Name of the field.
@@ -174,8 +174,8 @@ struct MonPatchFields
                     comms::field::IntValue<
                         ublox::field::FieldBase<>,
                         std::uint32_t,
-                        comms::option::FixedBitLength<29U>,
-                        comms::option::ValidNumValue<0>
+                        comms::option::def::FixedBitLength<29U>,
+                        comms::option::def::ValidNumValue<0>
                     >
                 {
                     /// @brief Name of the field.
@@ -332,7 +332,7 @@ struct MonPatchFields
             ublox::field::FieldBase<>,
             typename ListMembers::Element,
             typename TOpt::message::MonPatchFields::List,
-            comms::option::SequenceSizeForcingEnabled
+            comms::option::def::SequenceSizeForcingEnabled
         >
     {
         /// @brief Name of the field.
@@ -362,11 +362,11 @@ class MonPatch : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonPatch,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonPatch>,
-        comms::option::FieldsImpl<typename MonPatchFields<TOpt>::All>,
-        comms::option::MsgType<MonPatch<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonPatch>,
+        comms::option::def::FieldsImpl<typename MonPatchFields<TOpt>::All>,
+        comms::option::def::MsgType<MonPatch<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -374,11 +374,11 @@ class MonPatch : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonPatch,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonPatch>,
-            comms::option::FieldsImpl<typename MonPatchFields<TOpt>::All>,
-            comms::option::MsgType<MonPatch<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonPatch>,
+            comms::option::def::FieldsImpl<typename MonPatchFields<TOpt>::All>,
+            comms::option::def::MsgType<MonPatch<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

@@ -26,8 +26,8 @@ struct Lat : public
         ublox::field::FieldBase<>,
         std::int32_t,
         TExtraOpts...,
-        comms::option::ScalingRatio<1, 10000000L>,
-        comms::option::UnitsDegrees
+        comms::option::def::ScalingRatio<1, 10000000L>,
+        comms::option::def::UnitsDegrees
     >
 {
     /// @brief Name of the field.

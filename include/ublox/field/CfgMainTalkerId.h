@@ -38,7 +38,7 @@ struct CfgMainTalkerId : public
         ublox::field::FieldBase<>,
         CfgMainTalkerIdVal,
         TExtraOpts...,
-        comms::option::ValidNumValueRange<0, 5>
+        comms::option::def::ValidNumValueRange<0, 5>
     >
 {
     /// @brief Name of the field.

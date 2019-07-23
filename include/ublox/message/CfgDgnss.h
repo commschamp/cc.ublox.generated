@@ -41,7 +41,7 @@ struct CfgDgnssFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             DgnssModeVal,
-            comms::option::ValidNumValueRange<2, 3>
+            comms::option::def::ValidNumValueRange<2, 3>
         >
     {
         /// @brief Name of the field.
@@ -101,20 +101,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgDgnss : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgDgnss>,
-        comms::option::FieldsImpl<typename CfgDgnssFields<TOpt>::All>,
-        comms::option::MsgType<CfgDgnss<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgDgnss>,
+        comms::option::def::FieldsImpl<typename CfgDgnssFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgDgnss<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgDgnss>,
-            comms::option::FieldsImpl<typename CfgDgnssFields<TOpt>::All>,
-            comms::option::MsgType<CfgDgnss<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgDgnss>,
+            comms::option::def::FieldsImpl<typename CfgDgnssFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgDgnss<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

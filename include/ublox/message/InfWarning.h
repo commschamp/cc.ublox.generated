@@ -56,10 +56,10 @@ class InfWarning : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::InfWarning,
-        comms::option::StaticNumIdImpl<ublox::MsgId_InfWarning>,
-        comms::option::FieldsImpl<typename InfWarningFields<TOpt>::All>,
-        comms::option::MsgType<InfWarning<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_InfWarning>,
+        comms::option::def::FieldsImpl<typename InfWarningFields<TOpt>::All>,
+        comms::option::def::MsgType<InfWarning<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -67,10 +67,10 @@ class InfWarning : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::InfWarning,
-            comms::option::StaticNumIdImpl<ublox::MsgId_InfWarning>,
-            comms::option::FieldsImpl<typename InfWarningFields<TOpt>::All>,
-            comms::option::MsgType<InfWarning<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_InfWarning>,
+            comms::option::def::FieldsImpl<typename InfWarningFields<TOpt>::All>,
+            comms::option::def::MsgType<InfWarning<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

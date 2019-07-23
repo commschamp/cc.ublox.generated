@@ -35,9 +35,9 @@ struct MgaIniFreqFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<33>,
-            comms::option::ValidNumValue<33>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<33>,
+            comms::option::def::ValidNumValue<33>
         >
     {
         /// @brief Name of the field.
@@ -53,7 +53,7 @@ struct MgaIniFreqFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -95,8 +95,8 @@ struct MgaIniFreqFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 SourceVal,
-                comms::option::FixedBitLength<4U>,
-                comms::option::ValidNumValueRange<0, 1>
+                comms::option::def::FixedBitLength<4U>,
+                comms::option::def::ValidNumValueRange<0, 1>
             >
         {
             /// @brief Name of the field.
@@ -127,15 +127,15 @@ struct MgaIniFreqFields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<4U>,
-                comms::option::BitmaskReservedBits<0xEU, 0x0U>
+                comms::option::def::FixedBitLength<4U>,
+                comms::option::def::BitmaskReservedBits<0xEU, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<4U>,
-                    comms::option::BitmaskReservedBits<0xEU, 0x0U>
+                    comms::option::def::FixedBitLength<4U>,
+                    comms::option::def::BitmaskReservedBits<0xEU, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -221,8 +221,8 @@ struct MgaIniFreqFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::ScalingRatio<1, 100>,
-            comms::option::UnitsHertz
+            comms::option::def::ScalingRatio<1, 100>,
+            comms::option::def::UnitsHertz
         >
     {
         /// @brief Name of the field.
@@ -270,10 +270,10 @@ class MgaIniFreq : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaIniFreq,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-        comms::option::FieldsImpl<typename MgaIniFreqFields<TOpt>::All>,
-        comms::option::MsgType<MgaIniFreq<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+        comms::option::def::FieldsImpl<typename MgaIniFreqFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaIniFreq<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -281,10 +281,10 @@ class MgaIniFreq : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaIniFreq,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaIni>,
-            comms::option::FieldsImpl<typename MgaIniFreqFields<TOpt>::All>,
-            comms::option::MsgType<MgaIniFreq<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaIni>,
+            comms::option::def::FieldsImpl<typename MgaIniFreqFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaIniFreq<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

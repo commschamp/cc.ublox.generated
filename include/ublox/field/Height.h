@@ -26,7 +26,7 @@ struct Height : public
         ublox::field::FieldBase<>,
         std::int32_t,
         TExtraOpts...,
-        comms::option::UnitsMillimeters
+        comms::option::def::UnitsMillimeters
     >
 {
     /// @brief Name of the field.

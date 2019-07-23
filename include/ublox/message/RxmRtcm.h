@@ -33,8 +33,8 @@ struct RxmRtcmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<2>,
-            comms::option::ValidNumValue<2>
+            comms::option::def::DefaultNumValue<2>,
+            comms::option::def::ValidNumValue<2>
         >
     {
         /// @brief Name of the field.
@@ -49,15 +49,15 @@ struct RxmRtcmFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xFEU, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xFEU, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -161,10 +161,10 @@ class RxmRtcm : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmRtcm,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmRtcm>,
-        comms::option::FieldsImpl<typename RxmRtcmFields<TOpt>::All>,
-        comms::option::MsgType<RxmRtcm<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmRtcm>,
+        comms::option::def::FieldsImpl<typename RxmRtcmFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmRtcm<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -172,10 +172,10 @@ class RxmRtcm : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmRtcm,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmRtcm>,
-            comms::option::FieldsImpl<typename RxmRtcmFields<TOpt>::All>,
-            comms::option::MsgType<RxmRtcm<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmRtcm>,
+            comms::option::def::FieldsImpl<typename RxmRtcmFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmRtcm<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

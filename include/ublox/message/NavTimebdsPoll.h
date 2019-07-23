@@ -37,10 +37,10 @@ class NavTimebdsPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavTimebdsPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavTimebds>,
-        comms::option::FieldsImpl<typename NavTimebdsPollFields<TOpt>::All>,
-        comms::option::MsgType<NavTimebdsPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavTimebds>,
+        comms::option::def::FieldsImpl<typename NavTimebdsPollFields<TOpt>::All>,
+        comms::option::def::MsgType<NavTimebdsPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class NavTimebdsPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavTimebdsPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavTimebds>,
-            comms::option::FieldsImpl<typename NavTimebdsPollFields<TOpt>::All>,
-            comms::option::MsgType<NavTimebdsPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavTimebds>,
+            comms::option::def::FieldsImpl<typename NavTimebdsPollFields<TOpt>::All>,
+            comms::option::def::MsgType<NavTimebdsPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -37,10 +37,10 @@ class LogInfoPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::LogInfoPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_LogInfo>,
-        comms::option::FieldsImpl<typename LogInfoPollFields<TOpt>::All>,
-        comms::option::MsgType<LogInfoPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_LogInfo>,
+        comms::option::def::FieldsImpl<typename LogInfoPollFields<TOpt>::All>,
+        comms::option::def::MsgType<LogInfoPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class LogInfoPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::LogInfoPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_LogInfo>,
-            comms::option::FieldsImpl<typename LogInfoPollFields<TOpt>::All>,
-            comms::option::MsgType<LogInfoPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_LogInfo>,
+            comms::option::def::FieldsImpl<typename LogInfoPollFields<TOpt>::All>,
+            comms::option::def::MsgType<LogInfoPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

@@ -79,10 +79,10 @@ class AidAlpData : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::AidAlpData,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AidAlp>,
-        comms::option::FieldsImpl<typename AidAlpDataFields<TOpt>::All>,
-        comms::option::MsgType<AidAlpData<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAlp>,
+        comms::option::def::FieldsImpl<typename AidAlpDataFields<TOpt>::All>,
+        comms::option::def::MsgType<AidAlpData<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -90,10 +90,10 @@ class AidAlpData : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::AidAlpData,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AidAlp>,
-            comms::option::FieldsImpl<typename AidAlpDataFields<TOpt>::All>,
-            comms::option::MsgType<AidAlpData<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAlp>,
+            comms::option::def::FieldsImpl<typename AidAlpDataFields<TOpt>::All>,
+            comms::option::def::MsgType<AidAlpData<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

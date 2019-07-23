@@ -58,7 +58,7 @@ struct NavSolFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int16_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -79,15 +79,15 @@ struct NavSolFields
     class Flags : public
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
-            comms::option::FixedLength<1U>,
-            comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+            comms::option::def::FixedLength<1U>,
+            comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
         >
     {
         using Base = 
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedLength<1U>,
-                comms::option::BitmaskReservedBits<0xF0U, 0x0U>
+                comms::option::def::FixedLength<1U>,
+                comms::option::def::BitmaskReservedBits<0xF0U, 0x0U>
             >;
     public:
         /// @brief Provides names and generates access functions for internal bits.
@@ -273,10 +273,10 @@ class NavSol : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::NavSol,
-        comms::option::StaticNumIdImpl<ublox::MsgId_NavSol>,
-        comms::option::FieldsImpl<typename NavSolFields<TOpt>::All>,
-        comms::option::MsgType<NavSol<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_NavSol>,
+        comms::option::def::FieldsImpl<typename NavSolFields<TOpt>::All>,
+        comms::option::def::MsgType<NavSol<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -284,10 +284,10 @@ class NavSol : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::NavSol,
-            comms::option::StaticNumIdImpl<ublox::MsgId_NavSol>,
-            comms::option::FieldsImpl<typename NavSolFields<TOpt>::All>,
-            comms::option::MsgType<NavSol<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_NavSol>,
+            comms::option::def::FieldsImpl<typename NavSolFields<TOpt>::All>,
+            comms::option::def::MsgType<NavSol<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

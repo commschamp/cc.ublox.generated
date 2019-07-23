@@ -7,6 +7,7 @@
 #include <iomanip>
 
 #include "comms/fields.h"
+#include "comms/process.h"
 
 #define QUOTES_(x_) #x_
 #define QUOTES(x_) QUOTES_(x_)
@@ -51,20 +52,18 @@
 namespace
 {
 
-struct Handler;
+class Handler;
 using Message = 
     INTERFACE<
-        comms::option::ReadIterator<const char*>,
-        comms::option::WriteIterator<char*>,
-        comms::option::LengthInfoInterface,
-        comms::option::Handler<Handler>
+        comms::option::app::ReadIterator<const char*>,
+        comms::option::app::WriteIterator<char*>,
+        comms::option::app::LengthInfoInterface,
+        comms::option::app::Handler<Handler>
     >;
 
 using AppOptions = OPTIONS;
 using InputMessages = INPUT_MESSAGES<Message, AppOptions>;
 using Frame = FRAME<Message, InputMessages, AppOptions>;
-
-Frame frame;
 
 void printIndent(unsigned indent)
 {
@@ -301,21 +300,26 @@ void printVariantField(const TField& field, unsigned indent)
     field.currentFieldExec(VariantFieldPrinter(indent));
 }
 
-struct Handler
+class Handler
 {
+public:
+    explicit Handler(Frame& frame) : m_frame(frame) {}
+
     template <typename TMsg>
     void handle(TMsg& msg)
     {
+        static_assert(comms::isMessageBase<typename std::decay<decltype(msg)>::type>(),
+            "Must be actual message");
         std::cout << '\n' << msg.doName() << " (" << "0x" << std::hex << std::setfill('0') << std::setw(4) << static_cast<std::uintmax_t>(msg.doGetId()) << std::dec << "):\n";
         comms::util::tupleForEach(msg.fields(), FieldPrinter(1));
         std::cout << std::endl;
 
         // Check write is correct
-        std::size_t len = frame.length(msg);
+        std::size_t len = m_frame.length(msg);
         assert(0U < len);
         std::unique_ptr<char []> outBuf(new char[len]);
         auto writeIter = &(outBuf[0]);
-        auto es = frame.write(msg, writeIter, len);
+        auto es = m_frame.write(msg, writeIter, len);
         if (es != comms::ErrorStatus::Success) {
             std::cerr << "ERROR: Failed to write" << std::endl;
             assert(!"Should not happen");
@@ -328,52 +332,17 @@ struct Handler
             exit(-1);
         }
     }
-};
 
-Handler handler; // Handler object
-
-// Receives input buffer and its size and returns number of consumed bytes
-std::size_t processInput(const char* buf, std::size_t len)
-{
-    std::size_t consumed = 0U;
-    // Processing loop
-    while (consumed < len) {
-        // Smart pointer to the message object.
-        Frame::MsgPtr msgPtr;
-        // Type of the message interface class
-        using MsgType = Frame::MsgPtr::element_type;
-
-        // Get the iterator for reading
-        auto begIter = comms::readIteratorFor<MsgType>(buf + consumed);
-        auto iter = begIter;
-
-        // Do the read
-        auto remLen = len - consumed;
-        auto es = frame.read(msgPtr, iter, remLen);
-        if (es == comms::ErrorStatus::NotEnoughData) {
-            break; // Not enough data in the buffer, stop processing
-        }
-
-        if (es == comms::ErrorStatus::ProtocolError) {
-            // Something is not right with the data, remove one character and try again
-            ++consumed;
-            continue;
-        }
-
-        // The iterator for reading has been advanced, update the difference
-        auto diff = static_cast<std::size_t>(std::distance(begIter, iter));
-        assert(diff <= remLen);
-        consumed += diff;
-        assert(consumed <= len);
-
-        if (es == comms::ErrorStatus::Success) {
-            assert(msgPtr); // If read is successful, msgPtr is expected to hold a valid pointer
-            msgPtr->dispatch(handler); // Dispatch message for handling
-        }
+    // Handle unexpected messages
+    void handle(Message&)
+    {
+        std::cerr << "ERROR: unexpected message object." << std::endl;
+        assert(!"Should not happen");
     }
-    // Report how many bytes have been consumed from the buffer
-    return consumed;
-}
+
+private:
+    Frame& m_frame;
+};
 
 } // namespace
 
@@ -392,6 +361,9 @@ int main(int argc, const char* argv[])
 
     std::array<char, 1024> buf;
     std::vector<char> input;
+    Frame frame;
+    Handler handler(frame);
+
     while (true) {
         std::size_t len = std::fread(buf.data(), sizeof(buf[0]), buf.size(), stdin);
 
@@ -409,8 +381,7 @@ int main(int argc, const char* argv[])
         }
 
         input.insert(input.end(), buf.data(), buf.data() + len); // append to vector
-
-        auto consumed = processInput(&input[0], input.size());
+        auto consumed = comms::processAllWithDispatch(&input[0], input.size(), frame, handler);
         input.erase(input.begin(), input.begin() + consumed);
     }
     return 0;

@@ -38,9 +38,9 @@ struct CfgNmeaVersion : public
         ublox::field::FieldBase<>,
         CfgNmeaVersionVal,
         TExtraOpts...,
-        comms::option::ValidNumValue<33>,
-        comms::option::ValidNumValue<35>,
-        comms::option::ValidNumValueRange<64, 65>
+        comms::option::def::ValidNumValue<33>,
+        comms::option::def::ValidNumValue<35>,
+        comms::option::def::ValidNumValueRange<64, 65>
     >
 {
     /// @brief Name of the field.

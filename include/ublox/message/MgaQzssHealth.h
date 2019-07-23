@@ -33,9 +33,9 @@ struct MgaQzssHealthFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<4>,
-            comms::option::ValidNumValue<4>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<4>,
+            comms::option::def::ValidNumValue<4>
         >
     {
         /// @brief Name of the field.
@@ -51,7 +51,7 @@ struct MgaQzssHealthFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -82,7 +82,7 @@ struct MgaQzssHealthFields
             ublox::field::FieldBase<>,
             std::uint8_t,
             typename TOpt::message::MgaQzssHealthFields::HealthCode,
-            comms::option::SequenceFixedSize<5U>
+            comms::option::def::SequenceFixedSize<5U>
         >
     {
         /// @brief Name of the field.
@@ -128,10 +128,10 @@ class MgaQzssHealth : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaQzssHealth,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaQzss>,
-        comms::option::FieldsImpl<typename MgaQzssHealthFields<TOpt>::All>,
-        comms::option::MsgType<MgaQzssHealth<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaQzss>,
+        comms::option::def::FieldsImpl<typename MgaQzssHealthFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaQzssHealth<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -139,10 +139,10 @@ class MgaQzssHealth : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaQzssHealth,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaQzss>,
-            comms::option::FieldsImpl<typename MgaQzssHealthFields<TOpt>::All>,
-            comms::option::MsgType<MgaQzssHealth<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaQzss>,
+            comms::option::def::FieldsImpl<typename MgaQzssHealthFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaQzssHealth<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

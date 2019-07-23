@@ -82,7 +82,7 @@ struct RxmSfrbFields
             ublox::field::FieldBase<>,
             typename DwrdMembers::Element,
             typename TOpt::message::RxmSfrbFields::Dwrd,
-            comms::option::SequenceFixedSize<10U>
+            comms::option::def::SequenceFixedSize<10U>
         >
     {
         /// @brief Name of the field.
@@ -112,10 +112,10 @@ class RxmSfrb : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::RxmSfrb,
-        comms::option::StaticNumIdImpl<ublox::MsgId_RxmSfrb>,
-        comms::option::FieldsImpl<typename RxmSfrbFields<TOpt>::All>,
-        comms::option::MsgType<RxmSfrb<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmSfrb>,
+        comms::option::def::FieldsImpl<typename RxmSfrbFields<TOpt>::All>,
+        comms::option::def::MsgType<RxmSfrb<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -123,10 +123,10 @@ class RxmSfrb : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::RxmSfrb,
-            comms::option::StaticNumIdImpl<ublox::MsgId_RxmSfrb>,
-            comms::option::FieldsImpl<typename RxmSfrbFields<TOpt>::All>,
-            comms::option::MsgType<RxmSfrb<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_RxmSfrb>,
+            comms::option::def::FieldsImpl<typename RxmSfrbFields<TOpt>::All>,
+            comms::option::def::MsgType<RxmSfrb<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

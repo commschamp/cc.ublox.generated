@@ -33,9 +33,9 @@ struct MgaFlashAckFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<3>,
-            comms::option::ValidNumValue<3>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<3>,
+            comms::option::def::ValidNumValue<3>
         >
     {
         /// @brief Name of the field.
@@ -51,7 +51,7 @@ struct MgaFlashAckFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::ValidNumValue<0>
+            comms::option::def::ValidNumValue<0>
         >
     {
         /// @brief Name of the field.
@@ -77,7 +77,7 @@ struct MgaFlashAckFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             AckVal,
-            comms::option::ValidNumValueRange<0, 2>
+            comms::option::def::ValidNumValueRange<0, 2>
         >
     {
         /// @brief Name of the field.
@@ -155,10 +155,10 @@ class MgaFlashAck : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MgaFlashAck,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
-        comms::option::FieldsImpl<typename MgaFlashAckFields<TOpt>::All>,
-        comms::option::MsgType<MgaFlashAck<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
+        comms::option::def::FieldsImpl<typename MgaFlashAckFields<TOpt>::All>,
+        comms::option::def::MsgType<MgaFlashAck<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -166,10 +166,10 @@ class MgaFlashAck : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MgaFlashAck,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
-            comms::option::FieldsImpl<typename MgaFlashAckFields<TOpt>::All>,
-            comms::option::MsgType<MgaFlashAck<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MgaFlash>,
+            comms::option::def::FieldsImpl<typename MgaFlashAckFields<TOpt>::All>,
+            comms::option::def::MsgType<MgaFlashAck<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

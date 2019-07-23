@@ -33,9 +33,9 @@ struct UpdSosRestoredFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<3>,
-            comms::option::ValidNumValue<3>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<3>,
+            comms::option::def::ValidNumValue<3>
         >
     {
         /// @brief Name of the field.
@@ -76,7 +76,7 @@ struct UpdSosRestoredFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             ResponseVal,
-            comms::option::ValidNumValueRange<0, 3>
+            comms::option::def::ValidNumValueRange<0, 3>
         >
     {
         /// @brief Name of the field.
@@ -139,10 +139,10 @@ class UpdSosRestored : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::UpdSosRestored,
-        comms::option::StaticNumIdImpl<ublox::MsgId_UpdSos>,
-        comms::option::FieldsImpl<typename UpdSosRestoredFields<TOpt>::All>,
-        comms::option::MsgType<UpdSosRestored<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_UpdSos>,
+        comms::option::def::FieldsImpl<typename UpdSosRestoredFields<TOpt>::All>,
+        comms::option::def::MsgType<UpdSosRestored<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -150,10 +150,10 @@ class UpdSosRestored : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::UpdSosRestored,
-            comms::option::StaticNumIdImpl<ublox::MsgId_UpdSos>,
-            comms::option::FieldsImpl<typename UpdSosRestoredFields<TOpt>::All>,
-            comms::option::MsgType<UpdSosRestored<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_UpdSos>,
+            comms::option::def::FieldsImpl<typename UpdSosRestoredFields<TOpt>::All>,
+            comms::option::def::MsgType<UpdSosRestored<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

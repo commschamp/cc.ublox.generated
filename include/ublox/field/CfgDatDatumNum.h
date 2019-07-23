@@ -36,8 +36,8 @@ struct CfgDatDatumNum : public
         ublox::field::FieldBase<>,
         CfgDatDatumNumVal,
         TExtraOpts...,
-        comms::option::ValidNumValue<0>,
-        comms::option::ValidNumValue<65535L>
+        comms::option::def::ValidNumValue<0>,
+        comms::option::def::ValidNumValue<65535L>
     >
 {
     /// @brief Name of the field.

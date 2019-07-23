@@ -33,9 +33,9 @@ struct UpdSosAckFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<2>,
-            comms::option::ValidNumValue<2>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<2>,
+            comms::option::def::ValidNumValue<2>
         >
     {
         /// @brief Name of the field.
@@ -74,7 +74,7 @@ struct UpdSosAckFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             ResponseVal,
-            comms::option::ValidNumValueRange<0, 1>
+            comms::option::def::ValidNumValueRange<0, 1>
         >
     {
         /// @brief Name of the field.
@@ -135,10 +135,10 @@ class UpdSosAck : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::UpdSosAck,
-        comms::option::StaticNumIdImpl<ublox::MsgId_UpdSos>,
-        comms::option::FieldsImpl<typename UpdSosAckFields<TOpt>::All>,
-        comms::option::MsgType<UpdSosAck<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_UpdSos>,
+        comms::option::def::FieldsImpl<typename UpdSosAckFields<TOpt>::All>,
+        comms::option::def::MsgType<UpdSosAck<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -146,10 +146,10 @@ class UpdSosAck : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::UpdSosAck,
-            comms::option::StaticNumIdImpl<ublox::MsgId_UpdSos>,
-            comms::option::FieldsImpl<typename UpdSosAckFields<TOpt>::All>,
-            comms::option::MsgType<UpdSosAck<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_UpdSos>,
+            comms::option::def::FieldsImpl<typename UpdSosAckFields<TOpt>::All>,
+            comms::option::def::MsgType<UpdSosAck<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

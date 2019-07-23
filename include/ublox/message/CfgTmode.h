@@ -42,7 +42,7 @@ struct CfgTmodeFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             TimeModeVal,
-            comms::option::ValidNumValueRange<0, 2>
+            comms::option::def::ValidNumValueRange<0, 2>
         >
     {
         /// @brief Name of the field.
@@ -75,7 +75,7 @@ struct CfgTmodeFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -91,7 +91,7 @@ struct CfgTmodeFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -107,7 +107,7 @@ struct CfgTmodeFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::int32_t,
-            comms::option::UnitsCentimeters
+            comms::option::def::UnitsCentimeters
         >
     {
         /// @brief Name of the field.
@@ -138,7 +138,7 @@ struct CfgTmodeFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsSeconds
+            comms::option::def::UnitsSeconds
         >
     {
         /// @brief Name of the field.
@@ -186,20 +186,20 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class CfgTmode : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgTmode>,
-        comms::option::FieldsImpl<typename CfgTmodeFields<TOpt>::All>,
-        comms::option::MsgType<CfgTmode<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgTmode>,
+        comms::option::def::FieldsImpl<typename CfgTmodeFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgTmode<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgTmode>,
-            comms::option::FieldsImpl<typename CfgTmodeFields<TOpt>::All>,
-            comms::option::MsgType<CfgTmode<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgTmode>,
+            comms::option::def::FieldsImpl<typename CfgTmodeFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgTmode<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

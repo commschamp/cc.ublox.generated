@@ -40,8 +40,8 @@ struct SbasSys : public
         ublox::field::FieldBase<>,
         SbasSysVal,
         TExtraOpts...,
-        comms::option::ValidNumValueRange<-1, 3>,
-        comms::option::ValidNumValue<16>
+        comms::option::def::ValidNumValueRange<-1, 3>,
+        comms::option::def::ValidNumValue<16>
     >
 {
     /// @brief Name of the field.

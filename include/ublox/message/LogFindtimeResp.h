@@ -31,8 +31,8 @@ struct LogFindtimeRespFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -48,9 +48,9 @@ struct LogFindtimeRespFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::FailOnInvalid<>,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::FailOnInvalid<>,
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -110,10 +110,10 @@ class LogFindtimeResp : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::LogFindtimeResp,
-        comms::option::StaticNumIdImpl<ublox::MsgId_LogFindtime>,
-        comms::option::FieldsImpl<typename LogFindtimeRespFields<TOpt>::All>,
-        comms::option::MsgType<LogFindtimeResp<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_LogFindtime>,
+        comms::option::def::FieldsImpl<typename LogFindtimeRespFields<TOpt>::All>,
+        comms::option::def::MsgType<LogFindtimeResp<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -121,10 +121,10 @@ class LogFindtimeResp : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::LogFindtimeResp,
-            comms::option::StaticNumIdImpl<ublox::MsgId_LogFindtime>,
-            comms::option::FieldsImpl<typename LogFindtimeRespFields<TOpt>::All>,
-            comms::option::MsgType<LogFindtimeResp<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_LogFindtime>,
+            comms::option::def::FieldsImpl<typename LogFindtimeRespFields<TOpt>::All>,
+            comms::option::def::MsgType<LogFindtimeResp<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

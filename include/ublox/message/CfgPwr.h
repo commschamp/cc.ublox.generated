@@ -35,8 +35,8 @@ struct CfgPwrFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint8_t,
-            comms::option::DefaultNumValue<1>,
-            comms::option::ValidNumValue<1>
+            comms::option::def::DefaultNumValue<1>,
+            comms::option::def::ValidNumValue<1>
         >
     {
         /// @brief Name of the field.
@@ -76,10 +76,10 @@ struct CfgPwrFields
         comms::field::EnumValue<
             ublox::field::FieldBase<>,
             StateVal,
-            comms::option::DefaultNumValue<1381322272L>,
-            comms::option::ValidNumValue<1111706448L>,
-            comms::option::ValidNumValue<1381322272L>,
-            comms::option::ValidNumValue<1398034256L>
+            comms::option::def::DefaultNumValue<1381322272L>,
+            comms::option::def::ValidNumValue<1111706448L>,
+            comms::option::def::ValidNumValue<1381322272L>,
+            comms::option::def::ValidNumValue<1398034256L>
         >
     {
         /// @brief Name of the field.
@@ -133,10 +133,10 @@ class CfgPwr : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgPwr,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgPwr>,
-        comms::option::FieldsImpl<typename CfgPwrFields<TOpt>::All>,
-        comms::option::MsgType<CfgPwr<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPwr>,
+        comms::option::def::FieldsImpl<typename CfgPwrFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgPwr<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -144,10 +144,10 @@ class CfgPwr : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgPwr,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgPwr>,
-            comms::option::FieldsImpl<typename CfgPwrFields<TOpt>::All>,
-            comms::option::MsgType<CfgPwr<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPwr>,
+            comms::option::def::FieldsImpl<typename CfgPwrFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgPwr<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

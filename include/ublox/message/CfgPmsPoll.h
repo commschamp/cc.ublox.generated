@@ -37,10 +37,10 @@ class CfgPmsPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgPmsPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgPms>,
-        comms::option::FieldsImpl<typename CfgPmsPollFields<TOpt>::All>,
-        comms::option::MsgType<CfgPmsPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPms>,
+        comms::option::def::FieldsImpl<typename CfgPmsPollFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgPmsPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class CfgPmsPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgPmsPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgPms>,
-            comms::option::FieldsImpl<typename CfgPmsPollFields<TOpt>::All>,
-            comms::option::MsgType<CfgPmsPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgPms>,
+            comms::option::def::FieldsImpl<typename CfgPmsPollFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgPmsPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

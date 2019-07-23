@@ -24,8 +24,8 @@ struct Month : public
         ublox::field::FieldBase<>,
         std::uint8_t,
         TExtraOpts...,
-        comms::option::DefaultNumValue<1>,
-        comms::option::ValidNumValueRange<1, 12>
+        comms::option::def::DefaultNumValue<1>,
+        comms::option::def::ValidNumValueRange<1, 12>
     >
 {
     /// @brief Name of the field.

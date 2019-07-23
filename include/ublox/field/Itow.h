@@ -24,8 +24,8 @@ struct Itow : public
         ublox::field::FieldBase<>,
         std::uint32_t,
         TExtraOpts...,
-        comms::option::UnitsMilliseconds,
-        comms::option::ValidNumValueRange<0, 604799999L>
+        comms::option::def::UnitsMilliseconds,
+        comms::option::def::ValidNumValueRange<0, 604799999L>
     >
 {
     /// @brief Name of the field.

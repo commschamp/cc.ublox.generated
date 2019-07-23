@@ -24,7 +24,7 @@ struct EcefVX : public
         ublox::field::FieldBase<>,
         std::int32_t,
         TExtraOpts...,
-        comms::option::UnitsCentimetersPerSecond
+        comms::option::def::UnitsCentimetersPerSecond
     >
 {
     /// @brief Name of the field.

@@ -30,7 +30,7 @@ struct MonVerFields
         comms::field::String<
             ublox::field::FieldBase<>,
             typename TOpt::message::MonVerFields::SwVersion,
-            comms::option::SequenceFixedSize<30U>
+            comms::option::def::SequenceFixedSize<30U>
         >
     {
         /// @brief Name of the field.
@@ -46,7 +46,7 @@ struct MonVerFields
         comms::field::String<
             ublox::field::FieldBase<>,
             typename TOpt::message::MonVerFields::HwVersion,
-            comms::option::SequenceFixedSize<10U>
+            comms::option::def::SequenceFixedSize<10U>
         >
     {
         /// @brief Name of the field.
@@ -65,7 +65,7 @@ struct MonVerFields
             comms::field::String<
                 ublox::field::FieldBase<>,
                 typename TOpt::message::MonVerFields::ListMembers::Extension,
-                comms::option::SequenceFixedSize<30U>
+                comms::option::def::SequenceFixedSize<30U>
             >
         {
             /// @brief Name of the field.
@@ -113,10 +113,10 @@ class MonVer : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::MonVer,
-        comms::option::StaticNumIdImpl<ublox::MsgId_MonVer>,
-        comms::option::FieldsImpl<typename MonVerFields<TOpt>::All>,
-        comms::option::MsgType<MonVer<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_MonVer>,
+        comms::option::def::FieldsImpl<typename MonVerFields<TOpt>::All>,
+        comms::option::def::MsgType<MonVer<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -124,10 +124,10 @@ class MonVer : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::MonVer,
-            comms::option::StaticNumIdImpl<ublox::MsgId_MonVer>,
-            comms::option::FieldsImpl<typename MonVerFields<TOpt>::All>,
-            comms::option::MsgType<MonVer<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_MonVer>,
+            comms::option::def::FieldsImpl<typename MonVerFields<TOpt>::All>,
+            comms::option::def::MsgType<MonVer<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

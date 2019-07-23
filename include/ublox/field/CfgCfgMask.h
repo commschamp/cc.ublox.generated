@@ -23,16 +23,16 @@ class CfgCfgMask : public
     comms::field::BitmaskValue<
         ublox::field::FieldBase<>,
         TExtraOpts...,
-        comms::option::FixedLength<4U>,
-        comms::option::BitmaskReservedBits<0xFFFFE0E0UL, 0x0U>
+        comms::option::def::FixedLength<4U>,
+        comms::option::def::BitmaskReservedBits<0xFFFFE0E0UL, 0x0U>
     >
 {
     using Base = 
         comms::field::BitmaskValue<
             ublox::field::FieldBase<>,
             TExtraOpts...,
-            comms::option::FixedLength<4U>,
-            comms::option::BitmaskReservedBits<0xFFFFE0E0UL, 0x0U>
+            comms::option::def::FixedLength<4U>,
+            comms::option::def::BitmaskReservedBits<0xFFFFE0E0UL, 0x0U>
         >;
 public:
     /// @brief Provide names for internal bits.

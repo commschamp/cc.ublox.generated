@@ -37,10 +37,10 @@ class CfgRinvPoll : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::CfgRinvPoll,
-        comms::option::StaticNumIdImpl<ublox::MsgId_CfgRinv>,
-        comms::option::FieldsImpl<typename CfgRinvPollFields<TOpt>::All>,
-        comms::option::MsgType<CfgRinvPoll<TMsgBase, TOpt> >,
-        comms::option::HasName
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgRinv>,
+        comms::option::def::FieldsImpl<typename CfgRinvPollFields<TOpt>::All>,
+        comms::option::def::MsgType<CfgRinvPoll<TMsgBase, TOpt> >,
+        comms::option::def::HasName
     >
 {
     // Redefinition of the base class type
@@ -48,10 +48,10 @@ class CfgRinvPoll : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::CfgRinvPoll,
-            comms::option::StaticNumIdImpl<ublox::MsgId_CfgRinv>,
-            comms::option::FieldsImpl<typename CfgRinvPollFields<TOpt>::All>,
-            comms::option::MsgType<CfgRinvPoll<TMsgBase, TOpt> >,
-            comms::option::HasName
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_CfgRinv>,
+            comms::option::def::FieldsImpl<typename CfgRinvPollFields<TOpt>::All>,
+            comms::option::def::MsgType<CfgRinvPoll<TMsgBase, TOpt> >,
+            comms::option::def::HasName
         >;
 
 public:

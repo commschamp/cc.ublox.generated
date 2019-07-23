@@ -47,7 +47,7 @@ struct AidAlmFields
         comms::field::IntValue<
             ublox::field::FieldBase<>,
             std::uint32_t,
-            comms::option::UnitsWeeks
+            comms::option::def::UnitsWeeks
         >
     {
         /// @brief Name of the field.
@@ -87,7 +87,7 @@ struct AidAlmFields
                 ublox::field::FieldBase<>,
                 typename ListMembers::Element,
                 typename TOpt::message::AidAlmFields::DwrdMembers::List,
-                comms::option::SequenceFixedSize<8U>
+                comms::option::def::SequenceFixedSize<8U>
             >
         {
             /// @brief Name of the field.
@@ -133,11 +133,11 @@ class AidAlm : public
     comms::MessageBase<
         TMsgBase,
         typename TOpt::message::AidAlm,
-        comms::option::StaticNumIdImpl<ublox::MsgId_AidAlm>,
-        comms::option::FieldsImpl<typename AidAlmFields<TOpt>::All>,
-        comms::option::MsgType<AidAlm<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAlm>,
+        comms::option::def::FieldsImpl<typename AidAlmFields<TOpt>::All>,
+        comms::option::def::MsgType<AidAlm<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
@@ -145,11 +145,11 @@ class AidAlm : public
         comms::MessageBase<
             TMsgBase,
             typename TOpt::message::AidAlm,
-            comms::option::StaticNumIdImpl<ublox::MsgId_AidAlm>,
-            comms::option::FieldsImpl<typename AidAlmFields<TOpt>::All>,
-            comms::option::MsgType<AidAlm<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_AidAlm>,
+            comms::option::def::FieldsImpl<typename AidAlmFields<TOpt>::All>,
+            comms::option::def::MsgType<AidAlm<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:

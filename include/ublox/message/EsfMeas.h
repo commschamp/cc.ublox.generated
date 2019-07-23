@@ -64,8 +64,8 @@ struct EsfMeasFields
             comms::field::EnumValue<
                 ublox::field::FieldBase<>,
                 TimeMarkSentVal,
-                comms::option::FixedBitLength<2U>,
-                comms::option::ValidNumValueRange<0, 2>
+                comms::option::def::FixedBitLength<2U>,
+                comms::option::def::ValidNumValueRange<0, 2>
             >
         {
             /// @brief Name of the field.
@@ -97,15 +97,15 @@ struct EsfMeasFields
         class Bits : public
             comms::field::BitmaskValue<
                 ublox::field::FieldBase<>,
-                comms::option::FixedBitLength<14U>,
-                comms::option::BitmaskReservedBits<0x3FFCU, 0x0U>
+                comms::option::def::FixedBitLength<14U>,
+                comms::option::def::BitmaskReservedBits<0x3FFCU, 0x0U>
             >
         {
             using Base = 
                 comms::field::BitmaskValue<
                     ublox::field::FieldBase<>,
-                    comms::option::FixedBitLength<14U>,
-                    comms::option::BitmaskReservedBits<0x3FFCU, 0x0U>
+                    comms::option::def::FixedBitLength<14U>,
+                    comms::option::def::BitmaskReservedBits<0x3FFCU, 0x0U>
                 >;
         public:
             /// @brief Provides names and generates access functions for internal bits.
@@ -215,7 +215,7 @@ struct EsfMeasFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint32_t,
-                    comms::option::FixedBitLength<24U>
+                    comms::option::def::FixedBitLength<24U>
                 >
             {
                 /// @brief Name of the field.
@@ -231,7 +231,7 @@ struct EsfMeasFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::FixedBitLength<6U>
+                    comms::option::def::FixedBitLength<6U>
                 >
             {
                 /// @brief Name of the field.
@@ -249,8 +249,8 @@ struct EsfMeasFields
                 comms::field::IntValue<
                     ublox::field::FieldBase<>,
                     std::uint8_t,
-                    comms::option::FixedBitLength<2U>,
-                    comms::option::ValidNumValue<0>
+                    comms::option::def::FixedBitLength<2U>,
+                    comms::option::def::ValidNumValue<0>
                 >
             {
                 /// @brief Name of the field.
@@ -332,7 +332,7 @@ struct EsfMeasFields
             comms::field::IntValue<
                 ublox::field::FieldBase<>,
                 std::uint32_t,
-                comms::option::UnitsMilliseconds
+                comms::option::def::UnitsMilliseconds
             >
         {
             /// @brief Name of the field.
@@ -379,22 +379,22 @@ template <typename TMsgBase, typename TOpt = ublox::options::DefaultOptions>
 class EsfMeas : public
     comms::MessageBase<
         TMsgBase,
-        comms::option::StaticNumIdImpl<ublox::MsgId_EsfMeas>,
-        comms::option::FieldsImpl<typename EsfMeasFields<TOpt>::All>,
-        comms::option::MsgType<EsfMeas<TMsgBase, TOpt> >,
-        comms::option::HasName,
-        comms::option::HasCustomRefresh
+        comms::option::def::StaticNumIdImpl<ublox::MsgId_EsfMeas>,
+        comms::option::def::FieldsImpl<typename EsfMeasFields<TOpt>::All>,
+        comms::option::def::MsgType<EsfMeas<TMsgBase, TOpt> >,
+        comms::option::def::HasName,
+        comms::option::def::HasCustomRefresh
     >
 {
     // Redefinition of the base class type
     using Base =
         comms::MessageBase<
             TMsgBase,
-            comms::option::StaticNumIdImpl<ublox::MsgId_EsfMeas>,
-            comms::option::FieldsImpl<typename EsfMeasFields<TOpt>::All>,
-            comms::option::MsgType<EsfMeas<TMsgBase, TOpt> >,
-            comms::option::HasName,
-            comms::option::HasCustomRefresh
+            comms::option::def::StaticNumIdImpl<ublox::MsgId_EsfMeas>,
+            comms::option::def::FieldsImpl<typename EsfMeasFields<TOpt>::All>,
+            comms::option::def::MsgType<EsfMeas<TMsgBase, TOpt> >,
+            comms::option::def::HasName,
+            comms::option::def::HasCustomRefresh
         >;
 
 public:
