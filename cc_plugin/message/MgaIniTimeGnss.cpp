@@ -88,14 +88,16 @@ static QVariantMap createProps_ref()
 static QVariantMap createProps_gnssId()
 {
     using Field = ublox::message::MgaIniTimeGnssFields<>::GnssId;
-    return cc_plugin::field::createProps_gnssId(Field::name());
+    auto props = cc_plugin::field::createProps_gnssId(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::MgaIniTimeGnssFields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -112,7 +114,8 @@ static QVariantMap createProps_week()
 static QVariantMap createProps_tow()
 {
     using Field = ublox::message::MgaIniTimeGnssFields<>::Tow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
@@ -139,7 +142,8 @@ static QVariantMap createProps_tAccS()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::MgaIniTimeGnssFields<>::Reserved2;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 

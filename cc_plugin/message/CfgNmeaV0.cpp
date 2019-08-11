@@ -29,56 +29,64 @@ namespace
 static QVariantMap createProps_filter()
 {
     using Field = ublox::message::CfgNmeaV0Fields<>::Filter;
-    return cc_plugin::field::createProps_cfgNmeaFilter(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNmeaFilter(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_nmeaVersion()
 {
     using Field = ublox::message::CfgNmeaV0Fields<>::NmeaVersion;
-    return cc_plugin::field::createProps_cfgNmeaVersion(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNmeaVersion(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_numSV()
 {
     using Field = ublox::message::CfgNmeaV0Fields<>::NumSV;
-    return cc_plugin::field::createProps_cfgNmeaNumSV(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNmeaNumSV(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_flags()
 {
     using Field = ublox::message::CfgNmeaV0Fields<>::Flags;
-    return cc_plugin::field::createProps_cfgNmeaFlags(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNmeaFlags(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_gnssToFilter()
 {
     using Field = ublox::message::CfgNmeaV0Fields<>::GnssToFilter;
-    return cc_plugin::field::createProps_cfgNmeaGnssToFilter(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNmeaGnssToFilter(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_svNumbering()
 {
     using Field = ublox::message::CfgNmeaV0Fields<>::SvNumbering;
-    return cc_plugin::field::createProps_cfgNmeaSvNumbering(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNmeaSvNumbering(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_mainTalkerId()
 {
     using Field = ublox::message::CfgNmeaV0Fields<>::MainTalkerId;
-    return cc_plugin::field::createProps_cfgMainTalkerId(Field::name());
+    auto props = cc_plugin::field::createProps_cfgMainTalkerId(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_gsvTalkerId()
 {
     using Field = ublox::message::CfgNmeaV0Fields<>::GsvTalkerId;
-    return cc_plugin::field::createProps_cfgNmeaGsvTalkerId(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNmeaGsvTalkerId(Field::name());
+    return props;
     
 }
 

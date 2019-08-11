@@ -23,7 +23,8 @@ namespace
 static QVariantMap createProps_tpIdx()
 {
     using Field = ublox::message::CfgTp5Fields<>::TpIdx;
-    return cc_plugin::field::createProps_cfgTp5TpIdx(Field::name());
+    auto props = cc_plugin::field::createProps_cfgTp5TpIdx(Field::name());
+    return props;
     
 }
 
@@ -40,7 +41,8 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::CfgTp5Fields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 

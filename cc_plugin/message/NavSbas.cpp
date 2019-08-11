@@ -27,7 +27,8 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavSbasFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
@@ -57,14 +58,16 @@ static QVariantMap createProps_mode()
 static QVariantMap createProps_sys()
 {
     using Field = ublox::message::NavSbasFields<>::Sys;
-    return cc_plugin::field::createProps_sbasSys(Field::name());
+    auto props = cc_plugin::field::createProps_sbasSys(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_service()
 {
     using Field = ublox::message::NavSbasFields<>::Service;
-    return cc_plugin::field::createProps_sbasService(Field::name());
+    auto props = cc_plugin::field::createProps_sbasService(Field::name());
+    return props;
     
 }
 
@@ -82,7 +85,8 @@ static QVariantMap createProps_cnt()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::NavSbasFields<>::Reserved1;
-    return cc_plugin::field::createProps_res3(Field::name());
+    auto props = cc_plugin::field::createProps_res3(Field::name());
+    return props;
     
 }
 
@@ -123,21 +127,24 @@ struct ListMembers
         static QVariantMap createProps_svSys()
         {
             using Field = ublox::message::NavSbasFields<>::ListMembers::ElementMembers::SvSys;
-            return cc_plugin::field::createProps_sbasSys(Field::name());
+            auto props = cc_plugin::field::createProps_sbasSys(Field::name());
+            return props;
             
         }
         
         static QVariantMap createProps_svService()
         {
             using Field = ublox::message::NavSbasFields<>::ListMembers::ElementMembers::SvService;
-            return cc_plugin::field::createProps_sbasService(Field::name());
+            auto props = cc_plugin::field::createProps_sbasService(Field::name());
+            return props;
             
         }
         
         static QVariantMap createProps_reserved2()
         {
             using Field = ublox::message::NavSbasFields<>::ListMembers::ElementMembers::Reserved2;
-            return cc_plugin::field::createProps_res1(Field::name());
+            auto props = cc_plugin::field::createProps_res1(Field::name());
+            return props;
             
         }
         
@@ -154,7 +161,8 @@ struct ListMembers
         static QVariantMap createProps_reserved3()
         {
             using Field = ublox::message::NavSbasFields<>::ListMembers::ElementMembers::Reserved3;
-            return cc_plugin::field::createProps_res2(Field::name());
+            auto props = cc_plugin::field::createProps_res2(Field::name());
+            return props;
             
         }
         

@@ -24,7 +24,8 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavVelnedFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
@@ -81,14 +82,16 @@ static QVariantMap createProps_gSpeed()
 static QVariantMap createProps_heading()
 {
     using Field = ublox::message::NavVelnedFields<>::Heading;
-    return cc_plugin::field::createProps_heading(Field::name());
+    auto props = cc_plugin::field::createProps_heading(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_sAcc()
 {
     using Field = ublox::message::NavVelnedFields<>::SAcc;
-    return cc_plugin::field::createProps_sAcc(Field::name());
+    auto props = cc_plugin::field::createProps_sAcc(Field::name());
+    return props;
     
 }
 

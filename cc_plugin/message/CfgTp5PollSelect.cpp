@@ -22,7 +22,8 @@ namespace
 static QVariantMap createProps_tpIdx()
 {
     using Field = ublox::message::CfgTp5PollSelectFields<>::TpIdx;
-    return cc_plugin::field::createProps_cfgTp5TpIdx(Field::name());
+    auto props = cc_plugin::field::createProps_cfgTp5TpIdx(Field::name());
+    return props;
     
 }
 

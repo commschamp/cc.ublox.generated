@@ -33,7 +33,8 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::CfgTmode3Fields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -282,7 +283,8 @@ static QVariantMap createProps_lla()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::CfgTmode3Fields<>::Reserved2;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -321,7 +323,8 @@ static QVariantMap createProps_svinVarLimit()
 static QVariantMap createProps_reserved3()
 {
     using Field = ublox::message::CfgTmode3Fields<>::Reserved3;
-    return cc_plugin::field::createProps_res8(Field::name());
+    auto props = cc_plugin::field::createProps_res8(Field::name());
+    return props;
     
 }
 

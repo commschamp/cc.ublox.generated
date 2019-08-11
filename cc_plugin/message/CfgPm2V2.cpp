@@ -35,7 +35,8 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::CfgPm2V2Fields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -52,14 +53,16 @@ static QVariantMap createProps_maxStartupStateDur()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::CfgPm2V2Fields<>::Reserved2;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_flags()
 {
     using Field = ublox::message::CfgPm2V2Fields<>::Flags;
-    return cc_plugin::field::createProps_cfgPm2Flags(Field::name());
+    auto props = cc_plugin::field::createProps_cfgPm2Flags(Field::name());
+    return props;
     
 }
 
@@ -118,7 +121,8 @@ struct Reserved3Members
     static QVariantMap createProps_reserved3()
     {
         using Field = ublox::message::CfgPm2V2Fields<>::Reserved3Members::Reserved3;
-        return cc_plugin::field::createProps_res4(Field::name());
+        auto props = cc_plugin::field::createProps_res4(Field::name());
+        return props;
         
     }
     

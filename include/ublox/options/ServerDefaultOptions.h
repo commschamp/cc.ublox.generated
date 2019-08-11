@@ -12,7 +12,7 @@ namespace options
 {
 
 /// @brief Default options of the protocol for a server.
-struct ServerDefaultOptions
+struct ServerDefaultOptions : public DefaultOptions
 {
     /// @brief Extra options for messages.
     struct message : public DefaultOptions::message

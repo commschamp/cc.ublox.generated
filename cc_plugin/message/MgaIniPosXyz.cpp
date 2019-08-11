@@ -46,28 +46,32 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::MgaIniPosXyzFields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ecefX()
 {
     using Field = ublox::message::MgaIniPosXyzFields<>::EcefX;
-    return cc_plugin::field::createProps_ecefX(Field::name());
+    auto props = cc_plugin::field::createProps_ecefX(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ecefY()
 {
     using Field = ublox::message::MgaIniPosXyzFields<>::EcefY;
-    return cc_plugin::field::createProps_ecefY(Field::name());
+    auto props = cc_plugin::field::createProps_ecefY(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ecefZ()
 {
     using Field = ublox::message::MgaIniPosXyzFields<>::EcefZ;
-    return cc_plugin::field::createProps_ecefZ(Field::name());
+    auto props = cc_plugin::field::createProps_ecefZ(Field::name());
+    return props;
     
 }
 

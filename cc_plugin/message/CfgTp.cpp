@@ -79,7 +79,8 @@ static QVariantMap createProps_flags()
 static QVariantMap createProps_res()
 {
     using Field = ublox::message::CfgTpFields<>::Res;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 

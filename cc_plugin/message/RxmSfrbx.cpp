@@ -24,7 +24,8 @@ namespace
 static QVariantMap createProps_gnssId()
 {
     using Field = ublox::message::RxmSfrbxFields<>::GnssId;
-    return cc_plugin::field::createProps_gnssId(Field::name());
+    auto props = cc_plugin::field::createProps_gnssId(Field::name());
+    return props;
     
 }
 
@@ -41,7 +42,8 @@ static QVariantMap createProps_svid()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::RxmSfrbxFields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -69,7 +71,8 @@ static QVariantMap createProps_numWords()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::RxmSfrbxFields<>::Reserved2;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -86,7 +89,8 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved3()
 {
     using Field = ublox::message::RxmSfrbxFields<>::Reserved3;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 

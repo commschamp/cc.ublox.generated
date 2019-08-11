@@ -44,28 +44,32 @@ static QVariantMap createProps_entryIndex()
 static QVariantMap createProps_lon()
 {
     using Field = ublox::message::LogRetrieveposFields<>::Lon;
-    return cc_plugin::field::createProps_lon(Field::name());
+    auto props = cc_plugin::field::createProps_lon(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_lat()
 {
     using Field = ublox::message::LogRetrieveposFields<>::Lat;
-    return cc_plugin::field::createProps_lat(Field::name());
+    auto props = cc_plugin::field::createProps_lat(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hMSL()
 {
     using Field = ublox::message::LogRetrieveposFields<>::HMSL;
-    return cc_plugin::field::createProps_hMSL(Field::name());
+    auto props = cc_plugin::field::createProps_hMSL(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hAcc()
 {
     using Field = ublox::message::LogRetrieveposFields<>::HAcc;
-    return cc_plugin::field::createProps_hAcc(Field::name());
+    auto props = cc_plugin::field::createProps_hAcc(Field::name());
+    return props;
     
 }
 
@@ -82,7 +86,8 @@ static QVariantMap createProps_gSpeed()
 static QVariantMap createProps_heading()
 {
     using Field = ublox::message::LogRetrieveposFields<>::Heading;
-    return cc_plugin::field::createProps_heading(Field::name());
+    auto props = cc_plugin::field::createProps_heading(Field::name());
+    return props;
     
 }
 
@@ -99,56 +104,64 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_fixType()
 {
     using Field = ublox::message::LogRetrieveposFields<>::FixType;
-    return cc_plugin::field::createProps_gpsFix(Field::name());
+    auto props = cc_plugin::field::createProps_gpsFix(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_year()
 {
     using Field = ublox::message::LogRetrieveposFields<>::Year;
-    return cc_plugin::field::createProps_year(Field::name());
+    auto props = cc_plugin::field::createProps_year(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_month()
 {
     using Field = ublox::message::LogRetrieveposFields<>::Month;
-    return cc_plugin::field::createProps_month(Field::name());
+    auto props = cc_plugin::field::createProps_month(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_day()
 {
     using Field = ublox::message::LogRetrieveposFields<>::Day;
-    return cc_plugin::field::createProps_day(Field::name());
+    auto props = cc_plugin::field::createProps_day(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hour()
 {
     using Field = ublox::message::LogRetrieveposFields<>::Hour;
-    return cc_plugin::field::createProps_hour(Field::name());
+    auto props = cc_plugin::field::createProps_hour(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_minute()
 {
     using Field = ublox::message::LogRetrieveposFields<>::Minute;
-    return cc_plugin::field::createProps_min(Field::name());
+    auto props = cc_plugin::field::createProps_min(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_second()
 {
     using Field = ublox::message::LogRetrieveposFields<>::Second;
-    return cc_plugin::field::createProps_sec(Field::name());
+    auto props = cc_plugin::field::createProps_sec(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::LogRetrieveposFields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -165,7 +178,8 @@ static QVariantMap createProps_numSV()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::LogRetrieveposFields<>::Reserved2;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 

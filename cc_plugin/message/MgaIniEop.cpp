@@ -44,7 +44,8 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::MgaIniEopFields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -133,7 +134,8 @@ struct Reserved2Members
     static QVariantMap createProps_element()
     {
         using Field = ublox::message::MgaIniEopFields<>::Reserved2Members::Element;
-        return cc_plugin::field::createProps_res4(Field::name());
+        auto props = cc_plugin::field::createProps_res4(Field::name());
+        return props;
         
     }
     

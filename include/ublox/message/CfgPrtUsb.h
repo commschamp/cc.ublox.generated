@@ -16,7 +16,7 @@
 #include "ublox/field/FieldBase.h"
 #include "ublox/field/Res1.h"
 #include "ublox/field/Res2.h"
-#include "ublox/field/Res4.h"
+#include "ublox/field/Res8.h"
 #include "ublox/options/DefaultOptions.h"
 
 namespace ublox
@@ -80,7 +80,7 @@ struct CfgPrtUsbFields
     
     /// @brief Definition of <b>"reserved2"</b> field.
     struct Reserved2 : public
-        ublox::field::Res4<
+        ublox::field::Res8<
             TOpt
         >
     {
@@ -225,8 +225,8 @@ public:
     // Compile time check for serialisation length.
     static const std::size_t MsgMinLen = Base::doMinLength();
     static const std::size_t MsgMaxLen = Base::doMaxLength();
-    static_assert(MsgMinLen == 18U, "Unexpected min serialisation length");
-    static_assert(MsgMaxLen == 18U, "Unexpected max serialisation length");
+    static_assert(MsgMinLen == 22U, "Unexpected min serialisation length");
+    static_assert(MsgMaxLen == 22U, "Unexpected max serialisation length");
     
     /// @brief Name of the message.
     static const char* doName()

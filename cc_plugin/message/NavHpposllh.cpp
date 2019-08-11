@@ -37,42 +37,48 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::NavHpposllhFields<>::Reserved1;
-    return cc_plugin::field::createProps_res3(Field::name());
+    auto props = cc_plugin::field::createProps_res3(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavHpposllhFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_lon()
 {
     using Field = ublox::message::NavHpposllhFields<>::Lon;
-    return cc_plugin::field::createProps_lon(Field::name());
+    auto props = cc_plugin::field::createProps_lon(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_lat()
 {
     using Field = ublox::message::NavHpposllhFields<>::Lat;
-    return cc_plugin::field::createProps_lat(Field::name());
+    auto props = cc_plugin::field::createProps_lat(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_height()
 {
     using Field = ublox::message::NavHpposllhFields<>::Height;
-    return cc_plugin::field::createProps_height(Field::name());
+    auto props = cc_plugin::field::createProps_height(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hMSL()
 {
     using Field = ublox::message::NavHpposllhFields<>::HMSL;
-    return cc_plugin::field::createProps_hMSL(Field::name());
+    auto props = cc_plugin::field::createProps_hMSL(Field::name());
+    return props;
     
 }
 

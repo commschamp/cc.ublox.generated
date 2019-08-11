@@ -48,56 +48,64 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::LogRetrievestringFields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_year()
 {
     using Field = ublox::message::LogRetrievestringFields<>::Year;
-    return cc_plugin::field::createProps_year(Field::name());
+    auto props = cc_plugin::field::createProps_year(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_month()
 {
     using Field = ublox::message::LogRetrievestringFields<>::Month;
-    return cc_plugin::field::createProps_month(Field::name());
+    auto props = cc_plugin::field::createProps_month(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_day()
 {
     using Field = ublox::message::LogRetrievestringFields<>::Day;
-    return cc_plugin::field::createProps_day(Field::name());
+    auto props = cc_plugin::field::createProps_day(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hour()
 {
     using Field = ublox::message::LogRetrievestringFields<>::Hour;
-    return cc_plugin::field::createProps_hour(Field::name());
+    auto props = cc_plugin::field::createProps_hour(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_minute()
 {
     using Field = ublox::message::LogRetrievestringFields<>::Minute;
-    return cc_plugin::field::createProps_min(Field::name());
+    auto props = cc_plugin::field::createProps_min(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_second()
 {
     using Field = ublox::message::LogRetrievestringFields<>::Second;
-    return cc_plugin::field::createProps_sec(Field::name());
+    auto props = cc_plugin::field::createProps_sec(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::LogRetrievestringFields<>::Reserved2;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 

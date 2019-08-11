@@ -32,21 +32,24 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_res1()
 {
     using Field = ublox::message::CfgPmFields<>::Res1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_res2()
 {
     using Field = ublox::message::CfgPmFields<>::Res2;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_res3()
 {
     using Field = ublox::message::CfgPmFields<>::Res3;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 

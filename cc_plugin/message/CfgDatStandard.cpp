@@ -22,7 +22,8 @@ namespace
 static QVariantMap createProps_datumNum()
 {
     using Field = ublox::message::CfgDatStandardFields<>::DatumNum;
-    return cc_plugin::field::createProps_cfgDatDatumNum(Field::name());
+    auto props = cc_plugin::field::createProps_cfgDatDatumNum(Field::name());
+    return props;
     
 }
 

@@ -95,7 +95,8 @@ static QVariantMap createProps_tOff()
 static QVariantMap createProps_res()
 {
     using Field = ublox::message::CfgFxnFields<>::Res;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 

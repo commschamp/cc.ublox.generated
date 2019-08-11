@@ -24,7 +24,8 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavAopstatusFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
@@ -52,14 +53,16 @@ static QVariantMap createProps_status()
 static QVariantMap createProps_reserved0()
 {
     using Field = ublox::message::NavAopstatusFields<>::Reserved0;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::NavAopstatusFields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -76,14 +79,16 @@ static QVariantMap createProps_availGPS()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::NavAopstatusFields<>::Reserved2;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved3()
 {
     using Field = ublox::message::NavAopstatusFields<>::Reserved3;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 

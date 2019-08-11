@@ -54,7 +54,8 @@ static QVariantMap createProps_svid()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::MgaGpsEphFields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -121,7 +122,8 @@ static QVariantMap createProps_toc()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::MgaGpsEphFields<>::Reserved2;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -318,7 +320,8 @@ static QVariantMap createProps_idot()
 static QVariantMap createProps_reserved3()
 {
     using Field = ublox::message::MgaGpsEphFields<>::Reserved3;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 

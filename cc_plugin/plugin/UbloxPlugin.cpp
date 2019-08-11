@@ -14,13 +14,15 @@ namespace plugin
 {
 
 UbloxPlugin::UbloxPlugin()
+  : m_protocol(new UbloxProtocol())
 {
     pluginProperties()
         .setProtocolCreateFunc(
-            []() -> cc::ProtocolPtr
+            [this]() -> cc::ProtocolPtr
             {
-                return cc::ProtocolPtr(new UbloxProtocol());
-            });
+                return m_protocol;
+            })
+            ;
 }
 
 UbloxPlugin::~UbloxPlugin() = default;

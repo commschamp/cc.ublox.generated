@@ -67,14 +67,16 @@ static QVariantMap createProps_bitfield0()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::EsfInsFields<>::Reserved1;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::EsfInsFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 

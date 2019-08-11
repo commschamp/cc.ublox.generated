@@ -23,56 +23,64 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavDopFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_gDOP()
 {
     using Field = ublox::message::NavDopFields<>::GDOP;
-    return cc_plugin::field::createProps_dop(Field::name());
+    auto props = cc_plugin::field::createProps_dop(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_pDOP()
 {
     using Field = ublox::message::NavDopFields<>::PDOP;
-    return cc_plugin::field::createProps_dop(Field::name());
+    auto props = cc_plugin::field::createProps_dop(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_tDOP()
 {
     using Field = ublox::message::NavDopFields<>::TDOP;
-    return cc_plugin::field::createProps_dop(Field::name());
+    auto props = cc_plugin::field::createProps_dop(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_vDOP()
 {
     using Field = ublox::message::NavDopFields<>::VDOP;
-    return cc_plugin::field::createProps_dop(Field::name());
+    auto props = cc_plugin::field::createProps_dop(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hDOP()
 {
     using Field = ublox::message::NavDopFields<>::HDOP;
-    return cc_plugin::field::createProps_dop(Field::name());
+    auto props = cc_plugin::field::createProps_dop(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_nDOP()
 {
     using Field = ublox::message::NavDopFields<>::NDOP;
-    return cc_plugin::field::createProps_dop(Field::name());
+    auto props = cc_plugin::field::createProps_dop(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_eDOP()
 {
     using Field = ublox::message::NavDopFields<>::EDOP;
-    return cc_plugin::field::createProps_dop(Field::name());
+    auto props = cc_plugin::field::createProps_dop(Field::name());
+    return props;
     
 }
 

@@ -22,21 +22,24 @@ namespace
 static QVariantMap createProps_clearMask()
 {
     using Field = ublox::message::CfgNvsFields<>::ClearMask;
-    return cc_plugin::field::createProps_cfgNvsMask(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNvsMask(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_saveMask()
 {
     using Field = ublox::message::CfgNvsFields<>::SaveMask;
-    return cc_plugin::field::createProps_cfgNvsMask(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNvsMask(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_loadMask()
 {
     using Field = ublox::message::CfgNvsFields<>::LoadMask;
-    return cc_plugin::field::createProps_cfgNvsMask(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNvsMask(Field::name());
+    return props;
     
 }
 

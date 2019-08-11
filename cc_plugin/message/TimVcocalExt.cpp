@@ -69,7 +69,8 @@ static QVariantMap createProps_srcId()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::TimVcocalExtFields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 

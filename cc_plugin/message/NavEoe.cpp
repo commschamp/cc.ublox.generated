@@ -22,7 +22,8 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavEoeFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 

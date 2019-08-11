@@ -38,14 +38,16 @@ static QVariantMap createProps_portId()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::CfgPrtUartFields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_txReady()
 {
     using Field = ublox::message::CfgPrtUartFields<>::TxReady;
-    return cc_plugin::field::createProps_cfgPrtTxReady(Field::name());
+    auto props = cc_plugin::field::createProps_cfgPrtTxReady(Field::name());
+    return props;
     
 }
 
@@ -163,28 +165,32 @@ static QVariantMap createProps_baudRate()
 static QVariantMap createProps_inProtoMask()
 {
     using Field = ublox::message::CfgPrtUartFields<>::InProtoMask;
-    return cc_plugin::field::createProps_cfgPrtInProtoMask(Field::name());
+    auto props = cc_plugin::field::createProps_cfgPrtInProtoMask(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_outProtoMask()
 {
     using Field = ublox::message::CfgPrtUartFields<>::OutProtoMask;
-    return cc_plugin::field::createProps_cfgPrtOutProtoMask(Field::name());
+    auto props = cc_plugin::field::createProps_cfgPrtOutProtoMask(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_cfgPrtFlags()
 {
     using Field = ublox::message::CfgPrtUartFields<>::CfgPrtFlags;
-    return cc_plugin::field::createProps_cfgPrtFlags(Field::name());
+    auto props = cc_plugin::field::createProps_cfgPrtFlags(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::CfgPrtUartFields<>::Reserved2;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 

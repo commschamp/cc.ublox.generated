@@ -68,7 +68,8 @@ struct ListMembers
         static QVariantMap createProps_gnssId()
         {
             using Field = ublox::message::CfgGnssFields<>::ListMembers::ElementMembers::GnssId;
-            return cc_plugin::field::createProps_gnssId(Field::name());
+            auto props = cc_plugin::field::createProps_gnssId(Field::name());
+            return props;
             
         }
         
@@ -95,7 +96,8 @@ struct ListMembers
         static QVariantMap createProps_reserved1()
         {
             using Field = ublox::message::CfgGnssFields<>::ListMembers::ElementMembers::Reserved1;
-            return cc_plugin::field::createProps_res1(Field::name());
+            auto props = cc_plugin::field::createProps_res1(Field::name());
+            return props;
             
         }
         

@@ -36,7 +36,8 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::RxmMeasxFields<>::Reserved1;
-    return cc_plugin::field::createProps_res3(Field::name());
+    auto props = cc_plugin::field::createProps_res3(Field::name());
+    return props;
     
 }
 
@@ -73,7 +74,8 @@ static QVariantMap createProps_bdsTOW()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::RxmMeasxFields<>::Reserved2;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 
@@ -123,7 +125,8 @@ static QVariantMap createProps_bdsTOWacc()
 static QVariantMap createProps_reserved3()
 {
     using Field = ublox::message::RxmMeasxFields<>::Reserved3;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -194,7 +197,8 @@ static QVariantMap createProps_flags()
 static QVariantMap createProps_reserved4()
 {
     using Field = ublox::message::RxmMeasxFields<>::Reserved4;
-    return cc_plugin::field::createProps_res8(Field::name());
+    auto props = cc_plugin::field::createProps_res8(Field::name());
+    return props;
     
 }
 
@@ -205,7 +209,8 @@ struct ListMembers
         static QVariantMap createProps_gnssId()
         {
             using Field = ublox::message::RxmMeasxFields<>::ListMembers::ElementMembers::GnssId;
-            return cc_plugin::field::createProps_gnssId(Field::name());
+            auto props = cc_plugin::field::createProps_gnssId(Field::name());
+            return props;
             
         }
         
@@ -319,7 +324,8 @@ struct ListMembers
         static QVariantMap createProps_reserved5()
         {
             using Field = ublox::message::RxmMeasxFields<>::ListMembers::ElementMembers::Reserved5;
-            return cc_plugin::field::createProps_res2(Field::name());
+            auto props = cc_plugin::field::createProps_res2(Field::name());
+            return props;
             
         }
         

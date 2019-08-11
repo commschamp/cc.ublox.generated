@@ -56,7 +56,8 @@ static QVariantMap createProps_svid()
 static QVariantMap createProps_gnssId()
 {
     using Field = ublox::message::MgaAnoFields<>::GnssId;
-    return cc_plugin::field::createProps_gnssId(Field::name());
+    auto props = cc_plugin::field::createProps_gnssId(Field::name());
+    return props;
     
 }
 
@@ -73,21 +74,24 @@ static QVariantMap createProps_year()
 static QVariantMap createProps_month()
 {
     using Field = ublox::message::MgaAnoFields<>::Month;
-    return cc_plugin::field::createProps_month(Field::name());
+    auto props = cc_plugin::field::createProps_month(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_day()
 {
     using Field = ublox::message::MgaAnoFields<>::Day;
-    return cc_plugin::field::createProps_day(Field::name());
+    auto props = cc_plugin::field::createProps_day(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::MgaAnoFields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -104,7 +108,8 @@ static QVariantMap createProps_data()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::MgaAnoFields<>::Reserved2;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 

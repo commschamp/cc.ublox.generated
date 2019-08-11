@@ -45,21 +45,24 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::MgaIniPosLlhFields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_lat()
 {
     using Field = ublox::message::MgaIniPosLlhFields<>::Lat;
-    return cc_plugin::field::createProps_lat(Field::name());
+    auto props = cc_plugin::field::createProps_lat(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_lon()
 {
     using Field = ublox::message::MgaIniPosLlhFields<>::Lon;
-    return cc_plugin::field::createProps_lon(Field::name());
+    auto props = cc_plugin::field::createProps_lon(Field::name());
+    return props;
     
 }
 

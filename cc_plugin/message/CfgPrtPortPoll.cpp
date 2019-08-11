@@ -22,7 +22,8 @@ namespace
 static QVariantMap createProps_portId()
 {
     using Field = ublox::message::CfgPrtPortPollFields<>::PortId;
-    return cc_plugin::field::createProps_cfgPrtPortId(Field::name());
+    auto props = cc_plugin::field::createProps_cfgPrtPortId(Field::name());
+    return props;
     
 }
 

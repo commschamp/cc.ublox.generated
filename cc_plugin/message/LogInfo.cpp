@@ -40,7 +40,8 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::LogInfoFields<>::Reserved1;
-    return cc_plugin::field::createProps_res3(Field::name());
+    auto props = cc_plugin::field::createProps_res3(Field::name());
+    return props;
     
 }
 
@@ -57,7 +58,8 @@ static QVariantMap createProps_filestoreCapacity()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::LogInfoFields<>::Reserved2;
-    return cc_plugin::field::createProps_res8(Field::name());
+    auto props = cc_plugin::field::createProps_res8(Field::name());
+    return props;
     
 }
 
@@ -94,98 +96,112 @@ static QVariantMap createProps_entryCount()
 static QVariantMap createProps_oldestYear()
 {
     using Field = ublox::message::LogInfoFields<>::OldestYear;
-    return cc_plugin::field::createProps_year(Field::name());
+    auto props = cc_plugin::field::createProps_year(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_oldestMonth()
 {
     using Field = ublox::message::LogInfoFields<>::OldestMonth;
-    return cc_plugin::field::createProps_month(Field::name());
+    auto props = cc_plugin::field::createProps_month(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_oldestDay()
 {
     using Field = ublox::message::LogInfoFields<>::OldestDay;
-    return cc_plugin::field::createProps_day(Field::name());
+    auto props = cc_plugin::field::createProps_day(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_oldestHour()
 {
     using Field = ublox::message::LogInfoFields<>::OldestHour;
-    return cc_plugin::field::createProps_hour(Field::name());
+    auto props = cc_plugin::field::createProps_hour(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_oldestMinute()
 {
     using Field = ublox::message::LogInfoFields<>::OldestMinute;
-    return cc_plugin::field::createProps_min(Field::name());
+    auto props = cc_plugin::field::createProps_min(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_oldestSecond()
 {
     using Field = ublox::message::LogInfoFields<>::OldestSecond;
-    return cc_plugin::field::createProps_sec(Field::name());
+    auto props = cc_plugin::field::createProps_sec(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved3()
 {
     using Field = ublox::message::LogInfoFields<>::Reserved3;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_newestYear()
 {
     using Field = ublox::message::LogInfoFields<>::NewestYear;
-    return cc_plugin::field::createProps_year(Field::name());
+    auto props = cc_plugin::field::createProps_year(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_newestMonth()
 {
     using Field = ublox::message::LogInfoFields<>::NewestMonth;
-    return cc_plugin::field::createProps_month(Field::name());
+    auto props = cc_plugin::field::createProps_month(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_newestDay()
 {
     using Field = ublox::message::LogInfoFields<>::NewestDay;
-    return cc_plugin::field::createProps_day(Field::name());
+    auto props = cc_plugin::field::createProps_day(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_newestHour()
 {
     using Field = ublox::message::LogInfoFields<>::NewestHour;
-    return cc_plugin::field::createProps_hour(Field::name());
+    auto props = cc_plugin::field::createProps_hour(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_newestMinute()
 {
     using Field = ublox::message::LogInfoFields<>::NewestMinute;
-    return cc_plugin::field::createProps_min(Field::name());
+    auto props = cc_plugin::field::createProps_min(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_newestSecond()
 {
     using Field = ublox::message::LogInfoFields<>::NewestSecond;
-    return cc_plugin::field::createProps_sec(Field::name());
+    auto props = cc_plugin::field::createProps_sec(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved4()
 {
     using Field = ublox::message::LogInfoFields<>::Reserved4;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -205,7 +221,8 @@ static QVariantMap createProps_status()
 static QVariantMap createProps_reserved5()
 {
     using Field = ublox::message::LogInfoFields<>::Reserved5;
-    return cc_plugin::field::createProps_res3(Field::name());
+    auto props = cc_plugin::field::createProps_res3(Field::name());
+    return props;
     
 }
 

@@ -24,7 +24,8 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavAopstatusUblox8Fields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
@@ -52,21 +53,24 @@ static QVariantMap createProps_status()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::NavAopstatusUblox8Fields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::NavAopstatusUblox8Fields<>::Reserved2;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved3()
 {
     using Field = ublox::message::NavAopstatusUblox8Fields<>::Reserved3;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 

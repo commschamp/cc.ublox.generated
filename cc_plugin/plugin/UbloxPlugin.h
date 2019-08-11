@@ -3,6 +3,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QtPlugin>
 #include "comms_champion/Plugin.h"
+#include "comms_champion/Protocol.h"
 
 namespace ublox
 {
@@ -22,6 +23,8 @@ class UbloxPlugin : public comms_champion::Plugin
 public:
     UbloxPlugin();
     virtual ~UbloxPlugin();
+private:
+    comms_champion::ProtocolPtr m_protocol;
 };
 
 } // namespace plugin
