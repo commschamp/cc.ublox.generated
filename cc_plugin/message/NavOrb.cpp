@@ -24,7 +24,8 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavOrbFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
@@ -52,7 +53,8 @@ static QVariantMap createProps_numSv()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::NavOrbFields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -63,7 +65,8 @@ struct ListMembers
         static QVariantMap createProps_gnssId()
         {
             using Field = ublox::message::NavOrbFields<>::ListMembers::ElementMembers::GnssId;
-            return cc_plugin::field::createProps_gnssId(Field::name());
+            auto props = cc_plugin::field::createProps_gnssId(Field::name());
+            return props;
             
         }
         

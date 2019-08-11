@@ -35,14 +35,16 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavSolFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ftow()
 {
     using Field = ublox::message::NavSolFields<>::Ftow;
-    return cc_plugin::field::createProps_ftow(Field::name());
+    auto props = cc_plugin::field::createProps_ftow(Field::name());
+    return props;
     
 }
 
@@ -59,7 +61,8 @@ static QVariantMap createProps_week()
 static QVariantMap createProps_gpsFix()
 {
     using Field = ublox::message::NavSolFields<>::GpsFix;
-    return cc_plugin::field::createProps_gpsFix(Field::name());
+    auto props = cc_plugin::field::createProps_gpsFix(Field::name());
+    return props;
     
 }
 
@@ -80,70 +83,80 @@ static QVariantMap createProps_flags()
 static QVariantMap createProps_ecefX()
 {
     using Field = ublox::message::NavSolFields<>::EcefX;
-    return cc_plugin::field::createProps_ecefX(Field::name());
+    auto props = cc_plugin::field::createProps_ecefX(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ecefY()
 {
     using Field = ublox::message::NavSolFields<>::EcefY;
-    return cc_plugin::field::createProps_ecefY(Field::name());
+    auto props = cc_plugin::field::createProps_ecefY(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ecefZ()
 {
     using Field = ublox::message::NavSolFields<>::EcefZ;
-    return cc_plugin::field::createProps_ecefZ(Field::name());
+    auto props = cc_plugin::field::createProps_ecefZ(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_pAcc()
 {
     using Field = ublox::message::NavSolFields<>::PAcc;
-    return cc_plugin::field::createProps_pAcc(Field::name());
+    auto props = cc_plugin::field::createProps_pAcc(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ecefVX()
 {
     using Field = ublox::message::NavSolFields<>::EcefVX;
-    return cc_plugin::field::createProps_ecefVX(Field::name());
+    auto props = cc_plugin::field::createProps_ecefVX(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ecefVY()
 {
     using Field = ublox::message::NavSolFields<>::EcefVY;
-    return cc_plugin::field::createProps_ecefVY(Field::name());
+    auto props = cc_plugin::field::createProps_ecefVY(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ecefVZ()
 {
     using Field = ublox::message::NavSolFields<>::EcefVZ;
-    return cc_plugin::field::createProps_ecefVZ(Field::name());
+    auto props = cc_plugin::field::createProps_ecefVZ(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_sAcc()
 {
     using Field = ublox::message::NavSolFields<>::SAcc;
-    return cc_plugin::field::createProps_sAcc(Field::name());
+    auto props = cc_plugin::field::createProps_sAcc(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_pDOP()
 {
     using Field = ublox::message::NavSolFields<>::PDOP;
-    return cc_plugin::field::createProps_dop(Field::name());
+    auto props = cc_plugin::field::createProps_dop(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::NavSolFields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -160,7 +173,8 @@ static QVariantMap createProps_numSV()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::NavSolFields<>::Reserved2;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 

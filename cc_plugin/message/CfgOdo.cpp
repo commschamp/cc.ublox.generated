@@ -34,7 +34,8 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::CfgOdoFields<>::Reserved1;
-    return cc_plugin::field::createProps_res3(Field::name());
+    auto props = cc_plugin::field::createProps_res3(Field::name());
+    return props;
     
 }
 
@@ -99,7 +100,8 @@ static QVariantMap createProps_odoCfg()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::CfgOdoFields<>::Reserved2;
-    return cc_plugin::field::createProps_res6(Field::name());
+    auto props = cc_plugin::field::createProps_res6(Field::name());
+    return props;
     
 }
 
@@ -127,7 +129,8 @@ static QVariantMap createProps_cogMaxPosAcc()
 static QVariantMap createProps_reserved3()
 {
     using Field = ublox::message::CfgOdoFields<>::Reserved3;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -154,7 +157,8 @@ static QVariantMap createProps_cogLpGain()
 static QVariantMap createProps_reserved4()
 {
     using Field = ublox::message::CfgOdoFields<>::Reserved4;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 

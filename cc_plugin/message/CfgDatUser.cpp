@@ -26,63 +26,72 @@ namespace
 static QVariantMap createProps_majA()
 {
     using Field = ublox::message::CfgDatUserFields<>::MajA;
-    return cc_plugin::field::createProps_cfgDatMajA(Field::name());
+    auto props = cc_plugin::field::createProps_cfgDatMajA(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_flat()
 {
     using Field = ublox::message::CfgDatUserFields<>::Flat;
-    return cc_plugin::field::createProps_cfgDatFlat(Field::name());
+    auto props = cc_plugin::field::createProps_cfgDatFlat(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_dX()
 {
     using Field = ublox::message::CfgDatUserFields<>::DX;
-    return cc_plugin::field::createProps_cfgDatD(Field::name());
+    auto props = cc_plugin::field::createProps_cfgDatD(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_dY()
 {
     using Field = ublox::message::CfgDatUserFields<>::DY;
-    return cc_plugin::field::createProps_cfgDatD(Field::name());
+    auto props = cc_plugin::field::createProps_cfgDatD(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_dZ()
 {
     using Field = ublox::message::CfgDatUserFields<>::DZ;
-    return cc_plugin::field::createProps_cfgDatD(Field::name());
+    auto props = cc_plugin::field::createProps_cfgDatD(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_rotX()
 {
     using Field = ublox::message::CfgDatUserFields<>::RotX;
-    return cc_plugin::field::createProps_cfgDatRot(Field::name());
+    auto props = cc_plugin::field::createProps_cfgDatRot(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_rotY()
 {
     using Field = ublox::message::CfgDatUserFields<>::RotY;
-    return cc_plugin::field::createProps_cfgDatRot(Field::name());
+    auto props = cc_plugin::field::createProps_cfgDatRot(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_rotZ()
 {
     using Field = ublox::message::CfgDatUserFields<>::RotZ;
-    return cc_plugin::field::createProps_cfgDatRot(Field::name());
+    auto props = cc_plugin::field::createProps_cfgDatRot(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_scale()
 {
     using Field = ublox::message::CfgDatUserFields<>::Scale;
-    return cc_plugin::field::createProps_cfgDatScale(Field::name());
+    auto props = cc_plugin::field::createProps_cfgDatScale(Field::name());
+    return props;
     
 }
 

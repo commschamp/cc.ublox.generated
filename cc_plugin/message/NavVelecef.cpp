@@ -26,35 +26,40 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavVelecefFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ecefVX()
 {
     using Field = ublox::message::NavVelecefFields<>::EcefVX;
-    return cc_plugin::field::createProps_ecefVX(Field::name());
+    auto props = cc_plugin::field::createProps_ecefVX(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ecefVY()
 {
     using Field = ublox::message::NavVelecefFields<>::EcefVY;
-    return cc_plugin::field::createProps_ecefVY(Field::name());
+    auto props = cc_plugin::field::createProps_ecefVY(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ecefVZ()
 {
     using Field = ublox::message::NavVelecefFields<>::EcefVZ;
-    return cc_plugin::field::createProps_ecefVZ(Field::name());
+    auto props = cc_plugin::field::createProps_ecefVZ(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_sAcc()
 {
     using Field = ublox::message::NavVelecefFields<>::SAcc;
-    return cc_plugin::field::createProps_sAcc(Field::name());
+    auto props = cc_plugin::field::createProps_sAcc(Field::name());
+    return props;
     
 }
 

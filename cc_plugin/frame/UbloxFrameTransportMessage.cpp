@@ -36,7 +36,8 @@ struct IdLayer
     static QVariantMap createProps_msgId()
     {
         using Field = ublox::frame::UbloxFrameLayers<>::IdMembers::MsgId;
-        return cc_plugin::field::createProps_msgId(Field::name());
+        auto props = cc_plugin::field::createProps_msgId(Field::name());
+        return props;
         
     }
     

@@ -59,7 +59,8 @@ static QVariantMap createProps_refTp()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::CfgTxslotFields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 

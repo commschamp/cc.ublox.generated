@@ -87,7 +87,8 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::RxmRawxFields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -128,7 +129,8 @@ struct ListMembers
         static QVariantMap createProps_gnssId()
         {
             using Field = ublox::message::RxmRawxFields<>::ListMembers::ElementMembers::GnssId;
-            return cc_plugin::field::createProps_gnssId(Field::name());
+            auto props = cc_plugin::field::createProps_gnssId(Field::name());
+            return props;
             
         }
         
@@ -145,7 +147,8 @@ struct ListMembers
         static QVariantMap createProps_reserved2()
         {
             using Field = ublox::message::RxmRawxFields<>::ListMembers::ElementMembers::Reserved2;
-            return cc_plugin::field::createProps_res1(Field::name());
+            auto props = cc_plugin::field::createProps_res1(Field::name());
+            return props;
             
         }
         
@@ -227,7 +230,8 @@ struct ListMembers
         static QVariantMap createProps_reserved3()
         {
             using Field = ublox::message::RxmRawxFields<>::ListMembers::ElementMembers::Reserved3;
-            return cc_plugin::field::createProps_res1(Field::name());
+            auto props = cc_plugin::field::createProps_res1(Field::name());
+            return props;
             
         }
         

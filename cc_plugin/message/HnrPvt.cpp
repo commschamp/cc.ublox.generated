@@ -39,49 +39,56 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::HnrPvtFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_year()
 {
     using Field = ublox::message::HnrPvtFields<>::Year;
-    return cc_plugin::field::createProps_year(Field::name());
+    auto props = cc_plugin::field::createProps_year(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_month()
 {
     using Field = ublox::message::HnrPvtFields<>::Month;
-    return cc_plugin::field::createProps_month(Field::name());
+    auto props = cc_plugin::field::createProps_month(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_day()
 {
     using Field = ublox::message::HnrPvtFields<>::Day;
-    return cc_plugin::field::createProps_day(Field::name());
+    auto props = cc_plugin::field::createProps_day(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hour()
 {
     using Field = ublox::message::HnrPvtFields<>::Hour;
-    return cc_plugin::field::createProps_hour(Field::name());
+    auto props = cc_plugin::field::createProps_hour(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_min()
 {
     using Field = ublox::message::HnrPvtFields<>::Min;
-    return cc_plugin::field::createProps_min(Field::name());
+    auto props = cc_plugin::field::createProps_min(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_sec()
 {
     using Field = ublox::message::HnrPvtFields<>::Sec;
-    return cc_plugin::field::createProps_sec(Field::name());
+    auto props = cc_plugin::field::createProps_sec(Field::name());
+    return props;
     
 }
 
@@ -111,7 +118,8 @@ static QVariantMap createProps_nano()
 static QVariantMap createProps_fixType()
 {
     using Field = ublox::message::HnrPvtFields<>::FixType;
-    return cc_plugin::field::createProps_gpsFix(Field::name());
+    auto props = cc_plugin::field::createProps_gpsFix(Field::name());
+    return props;
     
 }
 
@@ -133,35 +141,40 @@ static QVariantMap createProps_flags()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::HnrPvtFields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_lon()
 {
     using Field = ublox::message::HnrPvtFields<>::Lon;
-    return cc_plugin::field::createProps_lon(Field::name());
+    auto props = cc_plugin::field::createProps_lon(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_lat()
 {
     using Field = ublox::message::HnrPvtFields<>::Lat;
-    return cc_plugin::field::createProps_lat(Field::name());
+    auto props = cc_plugin::field::createProps_lat(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_height()
 {
     using Field = ublox::message::HnrPvtFields<>::Height;
-    return cc_plugin::field::createProps_height(Field::name());
+    auto props = cc_plugin::field::createProps_height(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hMSL()
 {
     using Field = ublox::message::HnrPvtFields<>::HMSL;
-    return cc_plugin::field::createProps_hMSL(Field::name());
+    auto props = cc_plugin::field::createProps_hMSL(Field::name());
+    return props;
     
 }
 
@@ -188,28 +201,32 @@ static QVariantMap createProps_speed()
 static QVariantMap createProps_headMot()
 {
     using Field = ublox::message::HnrPvtFields<>::HeadMot;
-    return cc_plugin::field::createProps_heading(Field::name());
+    auto props = cc_plugin::field::createProps_heading(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_headVeh()
 {
     using Field = ublox::message::HnrPvtFields<>::HeadVeh;
-    return cc_plugin::field::createProps_heading(Field::name());
+    auto props = cc_plugin::field::createProps_heading(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hAcc()
 {
     using Field = ublox::message::HnrPvtFields<>::HAcc;
-    return cc_plugin::field::createProps_hAcc(Field::name());
+    auto props = cc_plugin::field::createProps_hAcc(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_vAcc()
 {
     using Field = ublox::message::HnrPvtFields<>::VAcc;
-    return cc_plugin::field::createProps_vAcc(Field::name());
+    auto props = cc_plugin::field::createProps_vAcc(Field::name());
+    return props;
     
 }
 
@@ -226,14 +243,16 @@ static QVariantMap createProps_sAcc()
 static QVariantMap createProps_headAcc()
 {
     using Field = ublox::message::HnrPvtFields<>::HeadAcc;
-    return cc_plugin::field::createProps_headingAcc(Field::name());
+    auto props = cc_plugin::field::createProps_headingAcc(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::HnrPvtFields<>::Reserved2;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 

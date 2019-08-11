@@ -28,49 +28,56 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavPosllhFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_lon()
 {
     using Field = ublox::message::NavPosllhFields<>::Lon;
-    return cc_plugin::field::createProps_lon(Field::name());
+    auto props = cc_plugin::field::createProps_lon(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_lat()
 {
     using Field = ublox::message::NavPosllhFields<>::Lat;
-    return cc_plugin::field::createProps_lat(Field::name());
+    auto props = cc_plugin::field::createProps_lat(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_height()
 {
     using Field = ublox::message::NavPosllhFields<>::Height;
-    return cc_plugin::field::createProps_height(Field::name());
+    auto props = cc_plugin::field::createProps_height(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hMSL()
 {
     using Field = ublox::message::NavPosllhFields<>::HMSL;
-    return cc_plugin::field::createProps_hMSL(Field::name());
+    auto props = cc_plugin::field::createProps_hMSL(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hAcc()
 {
     using Field = ublox::message::NavPosllhFields<>::HAcc;
-    return cc_plugin::field::createProps_hAcc(Field::name());
+    auto props = cc_plugin::field::createProps_hAcc(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_vAcc()
 {
     using Field = ublox::message::NavPosllhFields<>::VAcc;
-    return cc_plugin::field::createProps_vAcc(Field::name());
+    auto props = cc_plugin::field::createProps_vAcc(Field::name());
+    return props;
     
 }
 

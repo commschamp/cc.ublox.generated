@@ -28,7 +28,8 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavTimeutcFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
@@ -55,42 +56,48 @@ static QVariantMap createProps_nano()
 static QVariantMap createProps_year()
 {
     using Field = ublox::message::NavTimeutcFields<>::Year;
-    return cc_plugin::field::createProps_year(Field::name());
+    auto props = cc_plugin::field::createProps_year(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_month()
 {
     using Field = ublox::message::NavTimeutcFields<>::Month;
-    return cc_plugin::field::createProps_month(Field::name());
+    auto props = cc_plugin::field::createProps_month(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_day()
 {
     using Field = ublox::message::NavTimeutcFields<>::Day;
-    return cc_plugin::field::createProps_day(Field::name());
+    auto props = cc_plugin::field::createProps_day(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_hour()
 {
     using Field = ublox::message::NavTimeutcFields<>::Hour;
-    return cc_plugin::field::createProps_hour(Field::name());
+    auto props = cc_plugin::field::createProps_hour(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_min()
 {
     using Field = ublox::message::NavTimeutcFields<>::Min;
-    return cc_plugin::field::createProps_min(Field::name());
+    auto props = cc_plugin::field::createProps_min(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_sec()
 {
     using Field = ublox::message::NavTimeutcFields<>::Sec;
-    return cc_plugin::field::createProps_sec(Field::name());
+    auto props = cc_plugin::field::createProps_sec(Field::name());
+    return props;
     
 }
 

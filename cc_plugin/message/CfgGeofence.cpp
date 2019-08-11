@@ -55,7 +55,8 @@ static QVariantMap createProps_confLvl()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::CfgGeofenceFields<>::Reserved1;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -96,7 +97,8 @@ static QVariantMap createProps_pin()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::CfgGeofenceFields<>::Reserved2;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -107,14 +109,16 @@ struct ListMembers
         static QVariantMap createProps_lat()
         {
             using Field = ublox::message::CfgGeofenceFields<>::ListMembers::ElementMembers::Lat;
-            return cc_plugin::field::createProps_lat(Field::name());
+            auto props = cc_plugin::field::createProps_lat(Field::name());
+            return props;
             
         }
         
         static QVariantMap createProps_lon()
         {
             using Field = ublox::message::CfgGeofenceFields<>::ListMembers::ElementMembers::Lon;
-            return cc_plugin::field::createProps_lon(Field::name());
+            auto props = cc_plugin::field::createProps_lon(Field::name());
+            return props;
             
         }
         

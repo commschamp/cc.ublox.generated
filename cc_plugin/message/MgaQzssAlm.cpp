@@ -173,7 +173,8 @@ static QVariantMap createProps_af1()
 static QVariantMap createProps_reserve1()
 {
     using Field = ublox::message::MgaQzssAlmFields<>::Reserve1;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 

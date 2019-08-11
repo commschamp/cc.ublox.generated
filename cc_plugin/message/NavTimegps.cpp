@@ -23,14 +23,16 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavTimegpsFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_ftow()
 {
     using Field = ublox::message::NavTimegpsFields<>::Ftow;
-    return cc_plugin::field::createProps_ftow(Field::name());
+    auto props = cc_plugin::field::createProps_ftow(Field::name());
+    return props;
     
 }
 

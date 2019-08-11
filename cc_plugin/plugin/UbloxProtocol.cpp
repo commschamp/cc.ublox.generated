@@ -1,5 +1,6 @@
 #include "UbloxProtocol.h"
 
+#include <cassert>
 #include "comms_champion/ProtocolBase.h"
 #include "cc_plugin/frame/UbloxFrame.h"
 #include "cc_plugin/frame/UbloxFrameTransportMessage.h"
@@ -42,6 +43,7 @@ protected:
     using Base::createInvalidMessageImpl;
     using Base::createRawDataMessageImpl;
     using Base::createExtraInfoMessageImpl;
+
 };
 
 UbloxProtocol::UbloxProtocol()

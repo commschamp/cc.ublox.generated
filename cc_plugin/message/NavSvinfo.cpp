@@ -23,7 +23,8 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::NavSvinfoFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
@@ -85,7 +86,8 @@ static QVariantMap createProps_globalFlags()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::NavSvinfoFields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 

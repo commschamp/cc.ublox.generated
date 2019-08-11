@@ -44,7 +44,8 @@ static QVariantMap createProps_numSources()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::CfgEsrcFields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -104,7 +105,8 @@ struct ListMembers
         static QVariantMap createProps_reserved2()
         {
             using Field = ublox::message::CfgEsrcFields<>::ListMembers::ElementMembers::Reserved2;
-            return cc_plugin::field::createProps_res4(Field::name());
+            auto props = cc_plugin::field::createProps_res4(Field::name());
+            return props;
             
         }
         

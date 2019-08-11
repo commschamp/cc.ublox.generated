@@ -43,7 +43,8 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::MgaGpsUtcFields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -130,7 +131,8 @@ static QVariantMap createProps_utcDtLSF()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::MgaGpsUtcFields<>::Reserved2;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 

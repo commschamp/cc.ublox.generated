@@ -379,7 +379,7 @@ function (cc_plugin_all_messages)
     if (CC_COMMS_CHAMPION_FOUND)
         if (CC_PLUGIN_DIR)
             file (RELATIVE_PATH rel_plugin_install_path "${CC_ROOT_DIR}" "${CC_PLUGIN_DIR}")
-            set (PLUGIN_INSTALL_DIR "${INSTALL_DIR}/${rel_plugin_install_path}")
+            set (PLUGIN_INSTALL_DIR "${rel_plugin_install_path}")
         endif()
     endif ()
 
@@ -390,7 +390,7 @@ endfunction()
 
 ######################################################################
 
-function (cc_plugin protocol)
+function (cc_plugin protocol has_config_widget)
     set (name "cc_plugin_${protocol}")
 
     set (meta_file "${CMAKE_CURRENT_SOURCE_DIR}/${protocol}.json")
@@ -412,6 +412,11 @@ function (cc_plugin protocol)
     set (hdr
         plugin/${protocol}Plugin.h
     )
+
+    if (has_config_widget)
+        list (APPEND src plugin/${protocol}ConfigWidget.cpp)
+        list (APPEND hdr plugin/${protocol}ConfigWidget.h)
+    endif ()
 
     qt5_wrap_cpp(moc ${hdr})
 
@@ -458,7 +463,7 @@ endif ()
 
 cc_plugin_all_messages()
 
-cc_plugin ("Ublox")
+cc_plugin ("Ublox" FALSE)
 
 if (TARGET ${CC_EXTERNAL_TGT})
     install (

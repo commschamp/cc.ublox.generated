@@ -41,21 +41,24 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_mask1()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::Mask1;
-    return cc_plugin::field::createProps_cfgNavx5Mask1(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNavx5Mask1(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_mask2()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::Mask2;
-    return cc_plugin::field::createProps_cfgNavx5Mask2(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNavx5Mask2(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::Reserved1;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -92,7 +95,8 @@ static QVariantMap createProps_minCNO()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::Reserved2;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
@@ -109,7 +113,8 @@ static QVariantMap createProps_iniFix3D()
 static QVariantMap createProps_reserved3()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::Reserved3;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -136,28 +141,32 @@ static QVariantMap createProps_wknRollover()
 static QVariantMap createProps_sigAttenCompMode()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::SigAttenCompMode;
-    return cc_plugin::field::createProps_cfgNavx5SigAttenCompMode(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNavx5SigAttenCompMode(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved4()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::Reserved4;
-    return cc_plugin::field::createProps_res1(Field::name());
+    auto props = cc_plugin::field::createProps_res1(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved5()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::Reserved5;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved6()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::Reserved6;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
@@ -174,35 +183,40 @@ static QVariantMap createProps_usePPP()
 static QVariantMap createProps_aopCfg()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::AopCfg;
-    return cc_plugin::field::createProps_cfgNavx5AopCfg(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNavx5AopCfg(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved7()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::Reserved7;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_aopOrbMaxErr()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::AopOrbMaxErr;
-    return cc_plugin::field::createProps_cfgNavx5AopOrbMaxErr(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNavx5AopOrbMaxErr(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved8()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::Reserved8;
-    return cc_plugin::field::createProps_res4(Field::name());
+    auto props = cc_plugin::field::createProps_res4(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_reserved9()
 {
     using Field = ublox::message::CfgNavx5V2Fields<>::Reserved9;
-    return cc_plugin::field::createProps_res3(Field::name());
+    auto props = cc_plugin::field::createProps_res3(Field::name());
+    return props;
     
 }
 

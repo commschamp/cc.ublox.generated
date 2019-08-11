@@ -22,7 +22,8 @@ namespace
 static QVariantMap createProps_msgId()
 {
     using Field = ublox::message::CfgMsgPollFields<>::MsgId;
-    return cc_plugin::field::createProps_msgId(Field::name());
+    auto props = cc_plugin::field::createProps_msgId(Field::name());
+    return props;
     
 }
 

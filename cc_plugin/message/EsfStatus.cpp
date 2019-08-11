@@ -24,7 +24,8 @@ namespace
 static QVariantMap createProps_itow()
 {
     using Field = ublox::message::EsfStatusFields<>::Itow;
-    return cc_plugin::field::createProps_itow(Field::name());
+    auto props = cc_plugin::field::createProps_itow(Field::name());
+    return props;
     
 }
 
@@ -41,7 +42,8 @@ static QVariantMap createProps_version()
 static QVariantMap createProps_reserved1()
 {
     using Field = ublox::message::EsfStatusFields<>::Reserved1;
-    return cc_plugin::field::createProps_res7(Field::name());
+    auto props = cc_plugin::field::createProps_res7(Field::name());
+    return props;
     
 }
 
@@ -62,7 +64,8 @@ static QVariantMap createProps_fusionMode()
 static QVariantMap createProps_reserved2()
 {
     using Field = ublox::message::EsfStatusFields<>::Reserved2;
-    return cc_plugin::field::createProps_res2(Field::name());
+    auto props = cc_plugin::field::createProps_res2(Field::name());
+    return props;
     
 }
 

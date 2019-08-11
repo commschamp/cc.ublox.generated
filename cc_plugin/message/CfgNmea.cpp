@@ -25,28 +25,32 @@ namespace
 static QVariantMap createProps_filter()
 {
     using Field = ublox::message::CfgNmeaFields<>::Filter;
-    return cc_plugin::field::createProps_cfgNmeaFilter(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNmeaFilter(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_nmeaVersion()
 {
     using Field = ublox::message::CfgNmeaFields<>::NmeaVersion;
-    return cc_plugin::field::createProps_cfgNmeaVersion(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNmeaVersion(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_numSV()
 {
     using Field = ublox::message::CfgNmeaFields<>::NumSV;
-    return cc_plugin::field::createProps_cfgNmeaNumSV(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNmeaNumSV(Field::name());
+    return props;
     
 }
 
 static QVariantMap createProps_flags()
 {
     using Field = ublox::message::CfgNmeaFields<>::Flags;
-    return cc_plugin::field::createProps_cfgNmeaFlags(Field::name());
+    auto props = cc_plugin::field::createProps_cfgNmeaFlags(Field::name());
+    return props;
     
 }
 
