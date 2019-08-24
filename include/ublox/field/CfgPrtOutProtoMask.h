@@ -15,6 +15,32 @@ namespace ublox
 namespace field
 {
 
+/// @brief Common functions for
+///     @ref ublox::field::CfgPrtOutProtoMask field.
+struct CfgPrtOutProtoMaskCommon
+{
+    /// @brief Retrieve name of the bit
+    static const char* bitName(std::size_t idx)
+    {
+        static const char* Map[] = {
+            "outUbx",
+            "outNmea",
+            nullptr,
+            nullptr,
+            nullptr,
+            "outRtcm3"
+        };
+    
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        if (MapSize <= idx) {
+            return nullptr;
+        }
+    
+        return Map[idx];
+    }
+    
+};
+
 /// @brief Definition of <b>"cfgPrtOutProtoMask"</b> field.
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
@@ -74,23 +100,9 @@ public:
     /// @brief Retrieve name of the bit
     static const char* bitName(BitIdx idx)
     {
-        static const char* Map[] = {
-            "outUbx",
-            "outNmea",
-            nullptr,
-            nullptr,
-            nullptr,
-            "outRtcm3"
-        };
-    
-        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-    
-        if (MapSize <= static_cast<std::size_t>(idx)) {
-            return nullptr;
-        }
-    
-        return Map[static_cast<std::size_t>(idx)];
+        return
+            ublox::field::CfgPrtOutProtoMaskCommon::bitName(
+                static_cast<std::size_t>(idx));
     }
     
 };

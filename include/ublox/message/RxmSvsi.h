@@ -24,6 +24,55 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref RxmSvsiFields.
+/// @see @ref RxmSvsiFields
+/// @headerfile "ublox/message/RxmSvsi.h"
+struct RxmSvsiFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::RxmSvsiFields::List list.
+    struct ListMembersCommon
+    {
+        /// @brief Scope for all the common definitions of the member fields of
+        ///     @ref ublox::message::RxmSvsiFields::ListMembers::Element bundle.
+        struct ElementMembersCommon
+        {
+            /// @brief Scope for all the common definitions of the member fields of
+            ///     @ref ublox::message::RxmSvsiFields::ListMembers::ElementMembers::SvFlag bitfield.
+            struct SvFlagMembersCommon
+            {
+                /// @brief Common functions for
+                ///     @ref ublox::message::RxmSvsiFields::ListMembers::ElementMembers::SvFlagMembers::Bits field.
+                struct BitsCommon
+                {
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(std::size_t idx)
+                    {
+                        static const char* Map[] = {
+                            "healthy",
+                            "ephVal",
+                            "almVal",
+                            "notAvail"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        if (MapSize <= idx) {
+                            return nullptr;
+                        }
+                    
+                        return Map[idx];
+                    }
+                    
+                };
+                
+            };
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref RxmSvsi.
 /// @tparam TOpt Extra options
 /// @see @ref RxmSvsi
@@ -83,10 +132,10 @@ struct RxmSvsiFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
             /// @brief Definition of <b>"svid"</b> field.
@@ -162,21 +211,9 @@ struct RxmSvsiFields
                     /// @brief Retrieve name of the bit
                     static const char* bitName(BitIdx idx)
                     {
-                        static const char* Map[] = {
-                            "healthy",
-                            "ephVal",
-                            "almVal",
-                            "notAvail"
-                        };
-                    
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                    
-                        if (MapSize <= static_cast<std::size_t>(idx)) {
-                            return nullptr;
-                        }
-                    
-                        return Map[static_cast<std::size_t>(idx)];
+                        return
+                            ublox::message::RxmSvsiFieldsCommon::ListMembersCommon::ElementMembersCommon::SvFlagMembersCommon::BitsCommon::bitName(
+                                static_cast<std::size_t>(idx));
                     }
                     
                 };

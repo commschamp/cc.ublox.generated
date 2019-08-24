@@ -18,7 +18,8 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref ublox::field::SbasSys field.
+/// @brief Values enumerator for
+///     @ref ublox::field::SbasSys field.
 enum class SbasSysVal : std::int8_t
 {
     Unknown = -1, ///< value @b Unknown
@@ -27,6 +28,44 @@ enum class SbasSysVal : std::int8_t
     MSAS = 2, ///< value @b MSAS
     GAGAN = 3, ///< value @b GAGAN
     GPS = 16, ///< value @b GPS
+    
+    // --- Extra values generated for convenience ---
+    FirstValue = -1, ///< First defined value.
+    LastValue = 16, ///< Last defined value.
+    ValuesLimit = 17, ///< Upper limit for defined values.
+    
+};
+
+/// @brief Common functions for
+///     @ref ublox::field::SbasSys field.
+struct SbasSysCommon
+{
+    /// @brief Retrieve name of the enum value
+    static const char* valueName(SbasSysVal val)
+    {
+        using NameInfo = std::pair<SbasSysVal, const char*>;
+        static const NameInfo Map[] = {
+            std::make_pair(SbasSysVal::Unknown, "Unknown"),
+            std::make_pair(SbasSysVal::WAAS, "WAAS"),
+            std::make_pair(SbasSysVal::EGNOS, "EGNOS"),
+            std::make_pair(SbasSysVal::MSAS, "MSAS"),
+            std::make_pair(SbasSysVal::GAGAN, "GAGAN"),
+            std::make_pair(SbasSysVal::GPS, "GPS")
+        };
+        
+        auto iter = std::lower_bound(
+            std::begin(Map), std::end(Map), val,
+            [](const NameInfo& info, SbasSysVal v) -> bool
+            {
+                return info.first < v;
+            });
+        
+        if ((iter == std::end(Map)) || (iter->first != val)) {
+            return nullptr;
+        }
+        
+        return iter->second;
+    }
     
 };
 
@@ -53,28 +92,7 @@ struct SbasSys : public
     /// @brief Retrieve name of the enum value
     static const char* valueName(SbasSysVal val)
     {
-        using NameInfo = std::pair<SbasSysVal, const char*>;
-        static const NameInfo Map[] = {
-            std::make_pair(SbasSysVal::Unknown, "Unknown"),
-            std::make_pair(SbasSysVal::WAAS, "WAAS"),
-            std::make_pair(SbasSysVal::EGNOS, "EGNOS"),
-            std::make_pair(SbasSysVal::MSAS, "MSAS"),
-            std::make_pair(SbasSysVal::GAGAN, "GAGAN"),
-            std::make_pair(SbasSysVal::GPS, "GPS")
-        };
-        
-        auto iter = std::lower_bound(
-            std::begin(Map), std::end(Map), val,
-            [](const NameInfo& info, SbasSysVal v) -> bool
-            {
-                return info.first < v;
-            });
-        
-        if ((iter == std::end(Map)) || (iter->first != val)) {
-            return nullptr;
-        }
-        
-        return iter->second;
+        return ublox::field::SbasSysCommon::valueName(val);
     }
     
 };

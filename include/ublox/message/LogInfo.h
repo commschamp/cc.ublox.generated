@@ -29,6 +29,39 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref LogInfoFields.
+/// @see @ref LogInfoFields
+/// @headerfile "ublox/message/LogInfo.h"
+struct LogInfoFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::LogInfoFields::Status field.
+    struct StatusCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                nullptr,
+                nullptr,
+                "recording",
+                "inactive",
+                "circular"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref LogInfo.
 /// @tparam TOpt Extra options
 /// @see @ref LogInfo
@@ -391,23 +424,9 @@ struct LogInfoFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                nullptr,
-                nullptr,
-                nullptr,
-                "recording",
-                "inactive",
-                "circular"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::LogInfoFieldsCommon::StatusCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

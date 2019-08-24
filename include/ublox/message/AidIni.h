@@ -24,6 +24,71 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref AidIniFields.
+/// @see @ref AidIniFields
+/// @headerfile "ublox/message/AidIni.h"
+struct AidIniFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::AidIniFields::TmCfg field.
+    struct TmCfgCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                "fEdge",
+                nullptr,
+                nullptr,
+                "tm1",
+                nullptr,
+                "f1"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::AidIniFields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "pos",
+                "time",
+                "clockD",
+                "tp",
+                "clockF",
+                "lla",
+                "altInv",
+                "prevTm",
+                nullptr,
+                nullptr,
+                "utc"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref AidIni.
 /// @tparam TOpt Extra options
 /// @see @ref AidIni
@@ -319,24 +384,9 @@ struct AidIniFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                nullptr,
-                "fEdge",
-                nullptr,
-                nullptr,
-                "tm1",
-                nullptr,
-                "f1"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::AidIniFieldsCommon::TmCfgCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -380,7 +430,7 @@ struct AidIniFields
     /// @brief Scope for all the member fields of @ref Date optional.
     struct DateMembers
     {
-        /// @brief Scope for all the member fields of @ref DateBundle bitfield.
+        /// @brief Scope for all the member fields of @ref DateBundle bundle.
         struct DateBundleMembers
         {
             /// @brief Definition of <b>"year"</b> field.
@@ -515,7 +565,7 @@ struct AidIniFields
     /// @brief Scope for all the member fields of @ref Time optional.
     struct TimeMembers
     {
-        /// @brief Scope for all the member fields of @ref TimeBundle bitfield.
+        /// @brief Scope for all the member fields of @ref TimeBundle bundle.
         struct TimeBundleMembers
         {
             /// @brief Definition of <b>"day"</b> field.
@@ -917,28 +967,9 @@ struct AidIniFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "pos",
-                "time",
-                "clockD",
-                "tp",
-                "clockF",
-                "lla",
-                "altInv",
-                "prevTm",
-                nullptr,
-                nullptr,
-                "utc"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::AidIniFieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

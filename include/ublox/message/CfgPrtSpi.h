@@ -29,6 +29,83 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgPrtSpiFields.
+/// @see @ref CfgPrtSpiFields
+/// @headerfile "ublox/message/CfgPrtSpi.h"
+struct CfgPrtSpiFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgPrtSpiFields::Mode bitfield.
+    struct ModeMembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgPrtSpiFields::ModeMembers::SpiMode field.
+        enum class SpiModeVal : std::uint8_t
+        {
+            Mode0 = 0, ///< value <b>Mode 0: CPOL = 0, CPHA = 0</b>.
+            Mode1 = 1, ///< value <b>Mode 1: CPOL = 0, CPHA = 1</b>.
+            Mode2 = 2, ///< value <b>Mode 2: CPOL = 1, CPHA = 0</b>.
+            Mode3 = 3, ///< value <b>Mode 3: CPOL = 1, CPHA = 1</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 3, ///< Last defined value.
+            ValuesLimit = 4, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgPrtSpiFields::ModeMembers::SpiMode field.
+        struct SpiModeCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(SpiModeVal val)
+            {
+                static const char* Map[] = {
+                    "Mode 0: CPOL = 0, CPHA = 0",
+                    "Mode 1: CPOL = 0, CPHA = 1",
+                    "Mode 2: CPOL = 1, CPHA = 0",
+                    "Mode 3: CPOL = 1, CPHA = 1"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgPrtSpiFields::ModeMembers::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    nullptr,
+                    nullptr,
+                    nullptr,
+                    "flowControl"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgPrtSpi.
 /// @tparam TOpt Extra options
 /// @see @ref CfgPrtSpi
@@ -104,15 +181,9 @@ struct CfgPrtSpiFields
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::CfgPrtSpiFields::ModeMembers::SpiMode field.
-        enum class SpiModeVal : std::uint8_t
-        {
-            Mode0 = 0, ///< value <b>Mode 0: CPOL = 0, CPHA = 0</b>.
-            Mode1 = 1, ///< value <b>Mode 1: CPOL = 0, CPHA = 1</b>.
-            Mode2 = 2, ///< value <b>Mode 2: CPOL = 1, CPHA = 0</b>.
-            Mode3 = 3, ///< value <b>Mode 3: CPOL = 1, CPHA = 1</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgPrtSpiFields::ModeMembers::SpiMode field.
+        using SpiModeVal = ublox::message::CfgPrtSpiFieldsCommon::ModeMembersCommon::SpiModeVal;
         
         /// @brief Definition of <b>"spiMode"</b> field.
         /// @see @ref ublox::message::CfgPrtSpiFields::ModeMembers::SpiModeVal
@@ -133,19 +204,7 @@ struct CfgPrtSpiFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(SpiModeVal val)
             {
-                static const char* Map[] = {
-                    "Mode 0: CPOL = 0, CPHA = 0",
-                    "Mode 1: CPOL = 0, CPHA = 1",
-                    "Mode 2: CPOL = 1, CPHA = 0",
-                    "Mode 3: CPOL = 1, CPHA = 1"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::CfgPrtSpiFieldsCommon::ModeMembersCommon::SpiModeCommon::valueName(val);
             }
             
         };
@@ -196,21 +255,9 @@ struct CfgPrtSpiFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    nullptr,
-                    nullptr,
-                    nullptr,
-                    "flowControl"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::CfgPrtSpiFieldsCommon::ModeMembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };

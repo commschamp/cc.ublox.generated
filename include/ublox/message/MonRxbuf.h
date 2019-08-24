@@ -26,7 +26,7 @@ namespace message
 template <typename TOpt = ublox::options::DefaultOptions>
 struct MonRxbufFields
 {
-    /// @brief Scope for all the member fields of @ref Pending list.
+    /// @brief Scope for all the member fields of ///     @ref Pending list.
     struct PendingMembers
     {
         /// @brief Definition of <b>""</b> field.
@@ -63,7 +63,7 @@ struct MonRxbufFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref Usage list.
+    /// @brief Scope for all the member fields of ///     @ref Usage list.
     struct UsageMembers
     {
         /// @brief Definition of <b>""</b> field.
@@ -100,7 +100,7 @@ struct MonRxbufFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref PeakUsage list.
+    /// @brief Scope for all the member fields of ///     @ref PeakUsage list.
     struct PeakUsageMembers
     {
         /// @brief Definition of <b>""</b> field.

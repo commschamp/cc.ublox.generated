@@ -22,6 +22,121 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgEkfFields.
+/// @see @ref CfgEkfFields
+/// @headerfile "ublox/message/CfgEkf.h"
+struct CfgEkfFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgEkfFields::DisableEkf field.
+    enum class DisableEkfVal : std::uint8_t
+    {
+        Enabled = 0, ///< value @b Enabled
+        Disabled = 1, ///< value @b Disabled
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 1, ///< Last defined value.
+        ValuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgEkfFields::DisableEkf field.
+    struct DisableEkfCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(DisableEkfVal val)
+        {
+            static const char* Map[] = {
+                "Enabled",
+                "Disabled"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgEkfFields::ActionFlags field.
+    struct ActionFlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                "clTab",
+                "clCalib",
+                nullptr,
+                "nomTacho",
+                "nomGyro",
+                "setTemp",
+                "dir"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgEkfFields::ConfigFlags field.
+    struct ConfigFlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "pulsesPerM",
+                "useSerWt"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgEkfFields::InverseFlags field.
+    struct InverseFlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "invDir",
+                "invGyro"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgEkf.
 /// @tparam TOpt Extra options
 /// @see @ref CfgEkf
@@ -29,13 +144,9 @@ namespace message
 template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgEkfFields
 {
-    /// @brief Values enumerator for @ref ublox::message::CfgEkfFields::DisableEkf field.
-    enum class DisableEkfVal : std::uint8_t
-    {
-        Enabled = 0, ///< value @b Enabled
-        Disabled = 1, ///< value @b Disabled
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgEkfFields::DisableEkf field.
+    using DisableEkfVal = ublox::message::CfgEkfFieldsCommon::DisableEkfVal;
     
     /// @brief Definition of <b>"disableEkf"</b> field.
     /// @see @ref ublox::message::CfgEkfFields::DisableEkfVal
@@ -55,17 +166,7 @@ struct CfgEkfFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(DisableEkfVal val)
         {
-            static const char* Map[] = {
-                "Enabled",
-                "Disabled"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgEkfFieldsCommon::DisableEkfCommon::valueName(val);
         }
         
     };
@@ -136,25 +237,9 @@ struct CfgEkfFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                nullptr,
-                "clTab",
-                "clCalib",
-                nullptr,
-                "nomTacho",
-                "nomGyro",
-                "setTemp",
-                "dir"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgEkfFieldsCommon::ActionFlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -196,19 +281,9 @@ struct CfgEkfFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "pulsesPerM",
-                "useSerWt"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgEkfFieldsCommon::ConfigFlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -250,19 +325,9 @@ struct CfgEkfFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "invDir",
-                "invGyro"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgEkfFieldsCommon::InverseFlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

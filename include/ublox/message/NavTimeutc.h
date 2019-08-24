@@ -32,6 +32,99 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref NavTimeutcFields.
+/// @see @ref NavTimeutcFields
+/// @headerfile "ublox/message/NavTimeutc.h"
+struct NavTimeutcFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::NavTimeutcFields::Valid bitfield.
+    struct ValidMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavTimeutcFields::ValidMembers::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "validTOW",
+                    "validWKN",
+                    "validUTC"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavTimeutcFields::ValidMembers::UtcStandard field.
+        enum class UtcStandardVal : std::uint8_t
+        {
+            NotAvailable = 0, ///< value <b>Not Available</b>.
+            CRL = 1, ///< value @b CRL
+            NIST = 2, ///< value @b NIST
+            USNO = 3, ///< value @b USNO
+            BIPM = 4, ///< value @b BIPM
+            EuLab = 5, ///< value @b EuLab
+            SU = 6, ///< value @b SU
+            NTSC = 7, ///< value @b NTSC
+            Unknown = 15, ///< value @b Unknown
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 15, ///< Last defined value.
+            ValuesLimit = 16, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavTimeutcFields::ValidMembers::UtcStandard field.
+        struct UtcStandardCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(UtcStandardVal val)
+            {
+                using NameInfo = std::pair<UtcStandardVal, const char*>;
+                static const NameInfo Map[] = {
+                    std::make_pair(UtcStandardVal::NotAvailable, "Not Available"),
+                    std::make_pair(UtcStandardVal::CRL, "CRL"),
+                    std::make_pair(UtcStandardVal::NIST, "NIST"),
+                    std::make_pair(UtcStandardVal::USNO, "USNO"),
+                    std::make_pair(UtcStandardVal::BIPM, "BIPM"),
+                    std::make_pair(UtcStandardVal::EuLab, "EuLab"),
+                    std::make_pair(UtcStandardVal::SU, "SU"),
+                    std::make_pair(UtcStandardVal::NTSC, "NTSC"),
+                    std::make_pair(UtcStandardVal::Unknown, "Unknown")
+                };
+                
+                auto iter = std::lower_bound(
+                    std::begin(Map), std::end(Map), val,
+                    [](const NameInfo& info, UtcStandardVal v) -> bool
+                    {
+                        return info.first < v;
+                    });
+                
+                if ((iter == std::end(Map)) || (iter->first != val)) {
+                    return nullptr;
+                }
+                
+                return iter->second;
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref NavTimeutc.
 /// @tparam TOpt Extra options
 /// @see @ref NavTimeutc
@@ -156,38 +249,16 @@ struct NavTimeutcFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "validTOW",
-                    "validWKN",
-                    "validUTC"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::NavTimeutcFieldsCommon::ValidMembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::NavTimeutcFields::ValidMembers::UtcStandard field.
-        enum class UtcStandardVal : std::uint8_t
-        {
-            NotAvailable = 0, ///< value <b>Not Available</b>.
-            CRL = 1, ///< value @b CRL
-            NIST = 2, ///< value @b NIST
-            USNO = 3, ///< value @b USNO
-            BIPM = 4, ///< value @b BIPM
-            EuLab = 5, ///< value @b EuLab
-            SU = 6, ///< value @b SU
-            NTSC = 7, ///< value @b NTSC
-            Unknown = 15, ///< value @b Unknown
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavTimeutcFields::ValidMembers::UtcStandard field.
+        using UtcStandardVal = ublox::message::NavTimeutcFieldsCommon::ValidMembersCommon::UtcStandardVal;
         
         /// @brief Definition of <b>"utcStandard"</b> field.
         /// @see @ref ublox::message::NavTimeutcFields::ValidMembers::UtcStandardVal
@@ -209,31 +280,7 @@ struct NavTimeutcFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(UtcStandardVal val)
             {
-                using NameInfo = std::pair<UtcStandardVal, const char*>;
-                static const NameInfo Map[] = {
-                    std::make_pair(UtcStandardVal::NotAvailable, "Not Available"),
-                    std::make_pair(UtcStandardVal::CRL, "CRL"),
-                    std::make_pair(UtcStandardVal::NIST, "NIST"),
-                    std::make_pair(UtcStandardVal::USNO, "USNO"),
-                    std::make_pair(UtcStandardVal::BIPM, "BIPM"),
-                    std::make_pair(UtcStandardVal::EuLab, "EuLab"),
-                    std::make_pair(UtcStandardVal::SU, "SU"),
-                    std::make_pair(UtcStandardVal::NTSC, "NTSC"),
-                    std::make_pair(UtcStandardVal::Unknown, "Unknown")
-                };
-                
-                auto iter = std::lower_bound(
-                    std::begin(Map), std::end(Map), val,
-                    [](const NameInfo& info, UtcStandardVal v) -> bool
-                    {
-                        return info.first < v;
-                    });
-                
-                if ((iter == std::end(Map)) || (iter->first != val)) {
-                    return nullptr;
-                }
-                
-                return iter->second;
+                return ublox::message::NavTimeutcFieldsCommon::ValidMembersCommon::UtcStandardCommon::valueName(val);
             }
             
         };

@@ -23,6 +23,57 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref TimVrfyFields.
+/// @see @ref TimVrfyFields
+/// @headerfile "ublox/message/TimVrfy.h"
+struct TimVrfyFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::TimVrfyFields::Flags bitfield.
+    struct FlagsMembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::TimVrfyFields::FlagsMembers::Src field.
+        enum class SrcVal : std::uint8_t
+        {
+            NoAiding = 0, ///< value @b NoAiding
+            RTC = 1, ///< value @b RTC
+            AidIni = 2, ///< value @b AidIni
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 2, ///< Last defined value.
+            ValuesLimit = 3, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::TimVrfyFields::FlagsMembers::Src field.
+        struct SrcCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(SrcVal val)
+            {
+                static const char* Map[] = {
+                    "NoAiding",
+                    "RTC",
+                    "AidIni"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref TimVrfy.
 /// @tparam TOpt Extra options
 /// @see @ref TimVrfy
@@ -103,14 +154,9 @@ struct TimVrfyFields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref ublox::message::TimVrfyFields::FlagsMembers::Src field.
-        enum class SrcVal : std::uint8_t
-        {
-            NoAiding = 0, ///< value @b NoAiding
-            RTC = 1, ///< value @b RTC
-            AidIni = 2, ///< value @b AidIni
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::TimVrfyFields::FlagsMembers::Src field.
+        using SrcVal = ublox::message::TimVrfyFieldsCommon::FlagsMembersCommon::SrcVal;
         
         /// @brief Definition of <b>"src"</b> field.
         /// @see @ref ublox::message::TimVrfyFields::FlagsMembers::SrcVal
@@ -131,18 +177,7 @@ struct TimVrfyFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(SrcVal val)
             {
-                static const char* Map[] = {
-                    "NoAiding",
-                    "RTC",
-                    "AidIni"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::TimVrfyFieldsCommon::FlagsMembersCommon::SrcCommon::valueName(val);
             }
             
         };

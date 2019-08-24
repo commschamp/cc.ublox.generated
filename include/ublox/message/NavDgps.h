@@ -27,6 +27,88 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref NavDgpsFields.
+/// @see @ref NavDgpsFields
+/// @headerfile "ublox/message/NavDgps.h"
+struct NavDgpsFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::NavDgpsFields::Status field.
+    enum class StatusVal : std::uint8_t
+    {
+        None = 0, ///< value @b None
+        PR_PRR = 1, ///< value <b>PR + PRR correction</b>.
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 1, ///< Last defined value.
+        ValuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::NavDgpsFields::Status field.
+    struct StatusCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(StatusVal val)
+        {
+            static const char* Map[] = {
+                "None",
+                "PR + PRR correction"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::NavDgpsFields::List list.
+    struct ListMembersCommon
+    {
+        /// @brief Scope for all the common definitions of the member fields of
+        ///     @ref ublox::message::NavDgpsFields::ListMembers::Element bundle.
+        struct ElementMembersCommon
+        {
+            /// @brief Scope for all the common definitions of the member fields of
+            ///     @ref ublox::message::NavDgpsFields::ListMembers::ElementMembers::Flags bitfield.
+            struct FlagsMembersCommon
+            {
+                /// @brief Common functions for
+                ///     @ref ublox::message::NavDgpsFields::ListMembers::ElementMembers::FlagsMembers::Bits field.
+                struct BitsCommon
+                {
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(std::size_t idx)
+                    {
+                        static const char* Map[] = {
+                            "dgpsUsed"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        if (MapSize <= idx) {
+                            return nullptr;
+                        }
+                    
+                        return Map[idx];
+                    }
+                    
+                };
+                
+            };
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref NavDgps.
 /// @tparam TOpt Extra options
 /// @see @ref NavDgps
@@ -101,13 +183,9 @@ struct NavDgpsFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::NavDgpsFields::Status field.
-    enum class StatusVal : std::uint8_t
-    {
-        None = 0, ///< value @b None
-        PR_PRR = 1, ///< value <b>PR + PRR correction</b>.
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::NavDgpsFields::Status field.
+    using StatusVal = ublox::message::NavDgpsFieldsCommon::StatusVal;
     
     /// @brief Definition of <b>"status"</b> field.
     /// @see @ref ublox::message::NavDgpsFields::StatusVal
@@ -127,17 +205,7 @@ struct NavDgpsFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(StatusVal val)
         {
-            static const char* Map[] = {
-                "None",
-                "PR + PRR correction"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::NavDgpsFieldsCommon::StatusCommon::valueName(val);
         }
         
     };
@@ -156,10 +224,10 @@ struct NavDgpsFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
             /// @brief Definition of <b>"svid"</b> field.
@@ -231,18 +299,9 @@ struct NavDgpsFields
                     /// @brief Retrieve name of the bit
                     static const char* bitName(BitIdx idx)
                     {
-                        static const char* Map[] = {
-                            "dgpsUsed"
-                        };
-                    
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                    
-                        if (MapSize <= static_cast<std::size_t>(idx)) {
-                            return nullptr;
-                        }
-                    
-                        return Map[static_cast<std::size_t>(idx)];
+                        return
+                            ublox::message::NavDgpsFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::BitsCommon::bitName(
+                                static_cast<std::size_t>(idx));
                     }
                     
                 };

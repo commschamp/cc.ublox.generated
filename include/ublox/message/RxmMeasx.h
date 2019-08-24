@@ -28,6 +28,109 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref RxmMeasxFields.
+/// @see @ref RxmMeasxFields
+/// @headerfile "ublox/message/RxmMeasx.h"
+struct RxmMeasxFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::RxmMeasxFields::Flags bitfield.
+    struct FlagsMembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::RxmMeasxFields::FlagsMembers::TowSet field.
+        enum class TowSetVal : std::uint8_t
+        {
+            No = 0, ///< value @b No
+            Yes = 1, ///< value @b Yes
+            Yes2 = 2, ///< value @b Yes2
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 2, ///< Last defined value.
+            ValuesLimit = 3, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::RxmMeasxFields::FlagsMembers::TowSet field.
+        struct TowSetCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(TowSetVal val)
+            {
+                static const char* Map[] = {
+                    "No",
+                    "Yes",
+                    "Yes2"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::RxmMeasxFields::List list.
+    struct ListMembersCommon
+    {
+        /// @brief Scope for all the common definitions of the member fields of
+        ///     @ref ublox::message::RxmMeasxFields::ListMembers::Element bundle.
+        struct ElementMembersCommon
+        {
+            /// @brief Values enumerator for
+            ///     @ref ublox::message::RxmMeasxFields::ListMembers::ElementMembers::MpathIndic field.
+            enum class MpathIndicVal : std::uint8_t
+            {
+                NotMeasured = 0, ///< value <b>Not measured</b>.
+                Low = 1, ///< value @b Low
+                Medium = 2, ///< value @b Medium
+                High = 3, ///< value @b High
+                
+                // --- Extra values generated for convenience ---
+                FirstValue = 0, ///< First defined value.
+                LastValue = 3, ///< Last defined value.
+                ValuesLimit = 4, ///< Upper limit for defined values.
+                
+            };
+            
+            /// @brief Common functions for
+            ///     @ref ublox::message::RxmMeasxFields::ListMembers::ElementMembers::MpathIndic field.
+            struct MpathIndicCommon
+            {
+                /// @brief Retrieve name of the enum value
+                static const char* valueName(MpathIndicVal val)
+                {
+                    static const char* Map[] = {
+                        "Not measured",
+                        "Low",
+                        "Medium",
+                        "High"
+                    };
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    
+                    if (MapSize <= static_cast<std::size_t>(val)) {
+                        return nullptr;
+                    }
+                    
+                    return Map[static_cast<std::size_t>(val)];
+                }
+                
+            };
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref RxmMeasx.
 /// @tparam TOpt Extra options
 /// @see @ref RxmMeasx
@@ -243,14 +346,9 @@ struct RxmMeasxFields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref ublox::message::RxmMeasxFields::FlagsMembers::TowSet field.
-        enum class TowSetVal : std::uint8_t
-        {
-            No = 0, ///< value @b No
-            Yes = 1, ///< value @b Yes
-            Yes2 = 2, ///< value @b Yes2
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::RxmMeasxFields::FlagsMembers::TowSet field.
+        using TowSetVal = ublox::message::RxmMeasxFieldsCommon::FlagsMembersCommon::TowSetVal;
         
         /// @brief Definition of <b>"towSet"</b> field.
         /// @see @ref ublox::message::RxmMeasxFields::FlagsMembers::TowSetVal
@@ -271,18 +369,7 @@ struct RxmMeasxFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(TowSetVal val)
             {
-                static const char* Map[] = {
-                    "No",
-                    "Yes",
-                    "Yes2"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::RxmMeasxFieldsCommon::FlagsMembersCommon::TowSetCommon::valueName(val);
             }
             
         };
@@ -359,10 +446,10 @@ struct RxmMeasxFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
             /// @brief Definition of <b>"gnssId"</b> field.
@@ -402,15 +489,9 @@ struct RxmMeasxFields
                 
             };
             
-            /// @brief Values enumerator for @ref ublox::message::RxmMeasxFields::ListMembers::ElementMembers::MpathIndic field.
-            enum class MpathIndicVal : std::uint8_t
-            {
-                NotMeasured = 0, ///< value <b>Not measured</b>.
-                Low = 1, ///< value @b Low
-                Medium = 2, ///< value @b Medium
-                High = 3, ///< value @b High
-                
-            };
+            /// @brief Values enumerator for
+            ///     @ref ublox::message::RxmMeasxFields::ListMembers::ElementMembers::MpathIndic field.
+            using MpathIndicVal = ublox::message::RxmMeasxFieldsCommon::ListMembersCommon::ElementMembersCommon::MpathIndicVal;
             
             /// @brief Definition of <b>"mpathIndic"</b> field.
             /// @see @ref ublox::message::RxmMeasxFields::ListMembers::ElementMembers::MpathIndicVal
@@ -430,19 +511,7 @@ struct RxmMeasxFields
                 /// @brief Retrieve name of the enum value
                 static const char* valueName(MpathIndicVal val)
                 {
-                    static const char* Map[] = {
-                        "Not measured",
-                        "Low",
-                        "Medium",
-                        "High"
-                    };
-                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                    
-                    if (MapSize <= static_cast<std::size_t>(val)) {
-                        return nullptr;
-                    }
-                    
-                    return Map[static_cast<std::size_t>(val)];
+                    return ublox::message::RxmMeasxFieldsCommon::ListMembersCommon::ElementMembersCommon::MpathIndicCommon::valueName(val);
                 }
                 
             };

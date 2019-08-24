@@ -23,6 +23,34 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref NavAopstatusFields.
+/// @see @ref NavAopstatusFields
+/// @headerfile "ublox/message/NavAopstatus.h"
+struct NavAopstatusFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::NavAopstatusFields::AopCfg field.
+    struct AopCfgCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "useAOP"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref NavAopstatus.
 /// @tparam TOpt Extra options
 /// @see @ref NavAopstatus
@@ -71,18 +99,9 @@ struct NavAopstatusFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "useAOP"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::NavAopstatusFieldsCommon::AopCfgCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

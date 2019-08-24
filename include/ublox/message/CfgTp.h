@@ -25,6 +25,117 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgTpFields.
+/// @see @ref CfgTpFields
+/// @headerfile "ublox/message/CfgTp.h"
+struct CfgTpFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgTpFields::Status field.
+    enum class StatusVal : std::int8_t
+    {
+        Negative = -1, ///< value @b Negative
+        Off = 0, ///< value @b Off
+        Positive = 1, ///< value @b Positive
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = -1, ///< First defined value.
+        LastValue = 1, ///< Last defined value.
+        ValuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgTpFields::Status field.
+    struct StatusCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(StatusVal val)
+        {
+            using NameInfo = std::pair<StatusVal, const char*>;
+            static const NameInfo Map[] = {
+                std::make_pair(StatusVal::Negative, "Negative"),
+                std::make_pair(StatusVal::Off, "Off"),
+                std::make_pair(StatusVal::Positive, "Positive")
+            };
+            
+            auto iter = std::lower_bound(
+                std::begin(Map), std::end(Map), val,
+                [](const NameInfo& info, StatusVal v) -> bool
+                {
+                    return info.first < v;
+                });
+            
+            if ((iter == std::end(Map)) || (iter->first != val)) {
+                return nullptr;
+            }
+            
+            return iter->second;
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgTpFields::TimeRef field.
+    enum class TimeRefVal : std::uint8_t
+    {
+        UTC = 0, ///< value @b UTC
+        GPS = 1, ///< value @b GPS
+        Local = 2, ///< value @b Local
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 2, ///< Last defined value.
+        ValuesLimit = 3, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgTpFields::TimeRef field.
+    struct TimeRefCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(TimeRefVal val)
+        {
+            static const char* Map[] = {
+                "UTC",
+                "GPS",
+                "Local"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgTpFields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "syncMode"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgTp.
 /// @tparam TOpt Extra options
 /// @see @ref CfgTp
@@ -64,14 +175,9 @@ struct CfgTpFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgTpFields::Status field.
-    enum class StatusVal : std::int8_t
-    {
-        Negative = -1, ///< value @b Negative
-        Off = 0, ///< value @b Off
-        Positive = 1, ///< value @b Positive
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgTpFields::Status field.
+    using StatusVal = ublox::message::CfgTpFieldsCommon::StatusVal;
     
     /// @brief Definition of <b>"status"</b> field.
     /// @see @ref ublox::message::CfgTpFields::StatusVal
@@ -91,37 +197,14 @@ struct CfgTpFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(StatusVal val)
         {
-            using NameInfo = std::pair<StatusVal, const char*>;
-            static const NameInfo Map[] = {
-                std::make_pair(StatusVal::Negative, "Negative"),
-                std::make_pair(StatusVal::Off, "Off"),
-                std::make_pair(StatusVal::Positive, "Positive")
-            };
-            
-            auto iter = std::lower_bound(
-                std::begin(Map), std::end(Map), val,
-                [](const NameInfo& info, StatusVal v) -> bool
-                {
-                    return info.first < v;
-                });
-            
-            if ((iter == std::end(Map)) || (iter->first != val)) {
-                return nullptr;
-            }
-            
-            return iter->second;
+            return ublox::message::CfgTpFieldsCommon::StatusCommon::valueName(val);
         }
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgTpFields::TimeRef field.
-    enum class TimeRefVal : std::uint8_t
-    {
-        UTC = 0, ///< value @b UTC
-        GPS = 1, ///< value @b GPS
-        Local = 2, ///< value @b Local
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgTpFields::TimeRef field.
+    using TimeRefVal = ublox::message::CfgTpFieldsCommon::TimeRefVal;
     
     /// @brief Definition of <b>"timeRef"</b> field.
     /// @see @ref ublox::message::CfgTpFields::TimeRefVal
@@ -141,18 +224,7 @@ struct CfgTpFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(TimeRefVal val)
         {
-            static const char* Map[] = {
-                "UTC",
-                "GPS",
-                "Local"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgTpFieldsCommon::TimeRefCommon::valueName(val);
         }
         
     };
@@ -192,18 +264,9 @@ struct CfgTpFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "syncMode"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgTpFieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

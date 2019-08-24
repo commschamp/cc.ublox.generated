@@ -15,6 +15,30 @@ namespace ublox
 namespace field
 {
 
+/// @brief Common functions for
+///     @ref ublox::field::CfgNmeaFlags field.
+struct CfgNmeaFlagsCommon
+{
+    /// @brief Retrieve name of the bit
+    static const char* bitName(std::size_t idx)
+    {
+        static const char* Map[] = {
+            "compat",
+            "consider",
+            "limit82",
+            "highPrec"
+        };
+    
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        if (MapSize <= idx) {
+            return nullptr;
+        }
+    
+        return Map[idx];
+    }
+    
+};
+
 /// @brief Definition of <b>"cfgNmeaFlags"</b> field.
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
@@ -61,21 +85,9 @@ public:
     /// @brief Retrieve name of the bit
     static const char* bitName(BitIdx idx)
     {
-        static const char* Map[] = {
-            "compat",
-            "consider",
-            "limit82",
-            "highPrec"
-        };
-    
-        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-    
-        if (MapSize <= static_cast<std::size_t>(idx)) {
-            return nullptr;
-        }
-    
-        return Map[static_cast<std::size_t>(idx)];
+        return
+            ublox::field::CfgNmeaFlagsCommon::bitName(
+                static_cast<std::size_t>(idx));
     }
     
 };

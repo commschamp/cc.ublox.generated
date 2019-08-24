@@ -25,6 +25,47 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref TimSmeasFields.
+/// @see @ref TimSmeasFields
+/// @headerfile "ublox/message/TimSmeas.h"
+struct TimSmeasFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::TimSmeasFields::List list.
+    struct ListMembersCommon
+    {
+        /// @brief Scope for all the common definitions of the member fields of
+        ///     @ref ublox::message::TimSmeasFields::ListMembers::Element bundle.
+        struct ElementMembersCommon
+        {
+            /// @brief Common functions for
+            ///     @ref ublox::message::TimSmeasFields::ListMembers::ElementMembers::Flags field.
+            struct FlagsCommon
+            {
+                /// @brief Retrieve name of the bit
+                static const char* bitName(std::size_t idx)
+                {
+                    static const char* Map[] = {
+                        "freqValid",
+                        "phaseValid"
+                    };
+                
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    if (MapSize <= idx) {
+                        return nullptr;
+                    }
+                
+                    return Map[idx];
+                }
+                
+            };
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref TimSmeas.
 /// @tparam TOpt Extra options
 /// @see @ref TimSmeas
@@ -97,10 +138,10 @@ struct TimSmeasFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
             /// @brief Definition of <b>"sourceId"</b> field.
@@ -155,19 +196,9 @@ struct TimSmeasFields
                 /// @brief Retrieve name of the bit
                 static const char* bitName(BitIdx idx)
                 {
-                    static const char* Map[] = {
-                        "freqValid",
-                        "phaseValid"
-                    };
-                
-                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                    static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                
-                    if (MapSize <= static_cast<std::size_t>(idx)) {
-                        return nullptr;
-                    }
-                
-                    return Map[static_cast<std::size_t>(idx)];
+                    return
+                        ublox::message::TimSmeasFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsCommon::bitName(
+                            static_cast<std::size_t>(idx));
                 }
                 
             };

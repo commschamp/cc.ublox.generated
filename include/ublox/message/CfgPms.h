@@ -23,30 +23,13 @@ namespace ublox
 namespace message
 {
 
-/// @brief Fields of @ref CfgPms.
-/// @tparam TOpt Extra options
-/// @see @ref CfgPms
+/// @brief Common definitions for fields from @ref CfgPmsFields.
+/// @see @ref CfgPmsFields
 /// @headerfile "ublox/message/CfgPms.h"
-template <typename TOpt = ublox::options::DefaultOptions>
-struct CfgPmsFields
+struct CfgPmsFieldsCommon
 {
-    /// @brief Definition of <b>"version"</b> field.
-    struct Version : public
-        comms::field::IntValue<
-            ublox::field::FieldBase<>,
-            std::uint8_t,
-            comms::option::def::ValidNumValue<0>
-        >
-    {
-        /// @brief Name of the field.
-        static const char* name()
-        {
-            return "version";
-        }
-        
-    };
-    
-    /// @brief Values enumerator for @ref ublox::message::CfgPmsFields::PowerSetupValue field.
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgPmsFields::PowerSetupValue field.
     enum class PowerSetupValueVal : std::uint8_t
     {
         FullPower = 0, ///< value <b>Full power</b>.
@@ -57,24 +40,16 @@ struct CfgPmsFields
         Agressive4Hz = 5, ///< value <b>Aggressive with 4Hz</b>.
         Invalid = 255, ///< value @b Invalid
         
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 255, ///< Last defined value.
+        
     };
     
-    /// @brief Definition of <b>"powerSetupValue"</b> field.
-    /// @see @ref ublox::message::CfgPmsFields::PowerSetupValueVal
-    struct PowerSetupValue : public
-        comms::field::EnumValue<
-            ublox::field::FieldBase<>,
-            PowerSetupValueVal,
-            comms::option::def::ValidNumValueRange<0, 5>,
-            comms::option::def::ValidNumValue<255>
-        >
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgPmsFields::PowerSetupValue field.
+    struct PowerSetupValueCommon
     {
-        /// @brief Name of the field.
-        static const char* name()
-        {
-            return "powerSetupValue";
-        }
-        
         /// @brief Retrieve name of the enum value
         static const char* valueName(PowerSetupValueVal val)
         {
@@ -101,6 +76,59 @@ struct CfgPmsFields
             }
             
             return iter->second;
+        }
+        
+    };
+    
+};
+
+/// @brief Fields of @ref CfgPms.
+/// @tparam TOpt Extra options
+/// @see @ref CfgPms
+/// @headerfile "ublox/message/CfgPms.h"
+template <typename TOpt = ublox::options::DefaultOptions>
+struct CfgPmsFields
+{
+    /// @brief Definition of <b>"version"</b> field.
+    struct Version : public
+        comms::field::IntValue<
+            ublox::field::FieldBase<>,
+            std::uint8_t,
+            comms::option::def::ValidNumValue<0>
+        >
+    {
+        /// @brief Name of the field.
+        static const char* name()
+        {
+            return "version";
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgPmsFields::PowerSetupValue field.
+    using PowerSetupValueVal = ublox::message::CfgPmsFieldsCommon::PowerSetupValueVal;
+    
+    /// @brief Definition of <b>"powerSetupValue"</b> field.
+    /// @see @ref ublox::message::CfgPmsFields::PowerSetupValueVal
+    struct PowerSetupValue : public
+        comms::field::EnumValue<
+            ublox::field::FieldBase<>,
+            PowerSetupValueVal,
+            comms::option::def::ValidNumValueRange<0, 5>,
+            comms::option::def::ValidNumValue<255>
+        >
+    {
+        /// @brief Name of the field.
+        static const char* name()
+        {
+            return "powerSetupValue";
+        }
+        
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(PowerSetupValueVal val)
+        {
+            return ublox::message::CfgPmsFieldsCommon::PowerSetupValueCommon::valueName(val);
         }
         
     };

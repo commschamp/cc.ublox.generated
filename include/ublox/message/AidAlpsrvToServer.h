@@ -101,7 +101,7 @@ struct AidAlpsrvToServerFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref Data list.
+    /// @brief Scope for all the member fields of ///     @ref Data list.
     struct DataMembers
     {
         /// @brief Definition of <b>""</b> field.

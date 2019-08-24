@@ -205,7 +205,7 @@ struct MgaIniEopFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref Reserved2 list.
+    /// @brief Scope for all the member fields of ///     @ref Reserved2 list.
     struct Reserved2Members
     {
         /// @brief Definition of <b>""</b> field.

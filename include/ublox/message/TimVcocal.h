@@ -21,6 +21,49 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref TimVcocalFields.
+/// @see @ref TimVcocalFields
+/// @headerfile "ublox/message/TimVcocal.h"
+struct TimVcocalFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::TimVcocalFields::OscId field.
+    enum class OscIdVal : std::uint8_t
+    {
+        Internal = 0, ///< value @b Internal
+        External = 1, ///< value @b External
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 1, ///< Last defined value.
+        ValuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::TimVcocalFields::OscId field.
+    struct OscIdCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(OscIdVal val)
+        {
+            static const char* Map[] = {
+                "Internal",
+                "External"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref TimVcocal.
 /// @tparam TOpt Extra options
 /// @see @ref TimVcocal
@@ -62,13 +105,9 @@ struct TimVcocalFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::TimVcocalFields::OscId field.
-    enum class OscIdVal : std::uint8_t
-    {
-        Internal = 0, ///< value @b Internal
-        External = 1, ///< value @b External
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::TimVcocalFields::OscId field.
+    using OscIdVal = ublox::message::TimVcocalFieldsCommon::OscIdVal;
     
     /// @brief Definition of <b>"oscId"</b> field.
     /// @see @ref ublox::message::TimVcocalFields::OscIdVal
@@ -88,17 +127,7 @@ struct TimVcocalFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(OscIdVal val)
         {
-            static const char* Map[] = {
-                "Internal",
-                "External"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::TimVcocalFieldsCommon::OscIdCommon::valueName(val);
         }
         
     };

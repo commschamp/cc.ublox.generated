@@ -25,6 +25,85 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgGeofenceFields.
+/// @see @ref CfgGeofenceFields
+/// @headerfile "ublox/message/CfgGeofence.h"
+struct CfgGeofenceFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgGeofenceFields::PioEnabled field.
+    enum class PioEnabledVal : std::uint8_t
+    {
+        Disable = 0, ///< value @b Disable
+        Enable = 1, ///< value @b Enable
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 1, ///< Last defined value.
+        ValuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgGeofenceFields::PioEnabled field.
+    struct PioEnabledCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(PioEnabledVal val)
+        {
+            static const char* Map[] = {
+                "Disable",
+                "Enable"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgGeofenceFields::PinPolarity field.
+    enum class PinPolarityVal : std::uint8_t
+    {
+        LowInside = 0, ///< value @b LowInside
+        LowOutside = 1, ///< value @b LowOutside
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 1, ///< Last defined value.
+        ValuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgGeofenceFields::PinPolarity field.
+    struct PinPolarityCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(PinPolarityVal val)
+        {
+            static const char* Map[] = {
+                "LowInside",
+                "LowOutside"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgGeofence.
 /// @tparam TOpt Extra options
 /// @see @ref CfgGeofence
@@ -92,13 +171,9 @@ struct CfgGeofenceFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgGeofenceFields::PioEnabled field.
-    enum class PioEnabledVal : std::uint8_t
-    {
-        Disable = 0, ///< value @b Disable
-        Enable = 1, ///< value @b Enable
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgGeofenceFields::PioEnabled field.
+    using PioEnabledVal = ublox::message::CfgGeofenceFieldsCommon::PioEnabledVal;
     
     /// @brief Definition of <b>"pioEnabled"</b> field.
     /// @see @ref ublox::message::CfgGeofenceFields::PioEnabledVal
@@ -118,28 +193,14 @@ struct CfgGeofenceFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(PioEnabledVal val)
         {
-            static const char* Map[] = {
-                "Disable",
-                "Enable"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgGeofenceFieldsCommon::PioEnabledCommon::valueName(val);
         }
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgGeofenceFields::PinPolarity field.
-    enum class PinPolarityVal : std::uint8_t
-    {
-        LowInside = 0, ///< value @b LowInside
-        LowOutside = 1, ///< value @b LowOutside
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgGeofenceFields::PinPolarity field.
+    using PinPolarityVal = ublox::message::CfgGeofenceFieldsCommon::PinPolarityVal;
     
     /// @brief Definition of <b>"pinPolarity"</b> field.
     /// @see @ref ublox::message::CfgGeofenceFields::PinPolarityVal
@@ -159,17 +220,7 @@ struct CfgGeofenceFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(PinPolarityVal val)
         {
-            static const char* Map[] = {
-                "LowInside",
-                "LowOutside"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgGeofenceFieldsCommon::PinPolarityCommon::valueName(val);
         }
         
     };
@@ -203,10 +254,10 @@ struct CfgGeofenceFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
             /// @brief Definition of <b>"lat"</b> field.

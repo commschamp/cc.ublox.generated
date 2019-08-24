@@ -23,6 +23,101 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgPmFields.
+/// @see @ref CfgPmFields
+/// @headerfile "ublox/message/CfgPm.h"
+struct CfgPmFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgPmFields::Flags bitfield.
+    struct FlagsMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgPmFields::FlagsMembers::BitsMid field.
+        struct BitsMidCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "extintSelect",
+                    "extintWake",
+                    "extintBackup"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgPmFields::FlagsMembers::LimitPeakCurr field.
+        enum class LimitPeakCurrVal : std::uint8_t
+        {
+            Disabled = 0, ///< value @b Disabled
+            Enabled = 1, ///< value @b Enabled
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 1, ///< Last defined value.
+            ValuesLimit = 2, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgPmFields::FlagsMembers::LimitPeakCurr field.
+        struct LimitPeakCurrCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(LimitPeakCurrVal val)
+            {
+                static const char* Map[] = {
+                    "Disabled",
+                    "Enabled"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgPmFields::FlagsMembers::BitsHigh field.
+        struct BitsHighCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "WaitTimeFix",
+                    "updateRTC",
+                    "updateEPH"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgPm.
 /// @tparam TOpt Extra options
 /// @see @ref CfgPm
@@ -159,31 +254,16 @@ struct CfgPmFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "extintSelect",
-                    "extintWake",
-                    "extintBackup"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::CfgPmFieldsCommon::FlagsMembersCommon::BitsMidCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::CfgPmFields::FlagsMembers::LimitPeakCurr field.
-        enum class LimitPeakCurrVal : std::uint8_t
-        {
-            Disabled = 0, ///< value @b Disabled
-            Enabled = 1, ///< value @b Enabled
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgPmFields::FlagsMembers::LimitPeakCurr field.
+        using LimitPeakCurrVal = ublox::message::CfgPmFieldsCommon::FlagsMembersCommon::LimitPeakCurrVal;
         
         /// @brief Definition of <b>"limitPeakCurr"</b> field.
         /// @see @ref ublox::message::CfgPmFields::FlagsMembers::LimitPeakCurrVal
@@ -204,17 +284,7 @@ struct CfgPmFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(LimitPeakCurrVal val)
             {
-                static const char* Map[] = {
-                    "Disabled",
-                    "Enabled"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::CfgPmFieldsCommon::FlagsMembersCommon::LimitPeakCurrCommon::valueName(val);
             }
             
         };
@@ -258,20 +328,9 @@ struct CfgPmFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "WaitTimeFix",
-                    "updateRTC",
-                    "updateEPH"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::CfgPmFieldsCommon::FlagsMembersCommon::BitsHighCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };

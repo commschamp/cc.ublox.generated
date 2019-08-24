@@ -23,6 +23,74 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgTxslotFields.
+/// @see @ref CfgTxslotFields
+/// @headerfile "ublox/message/CfgTxslot.h"
+struct CfgTxslotFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgTxslotFields::Enable field.
+    struct EnableCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "DDC",
+                "UART1",
+                "UART2",
+                "USB",
+                "SPI"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgTxslotFields::RefTp field.
+    enum class RefTpVal : std::uint8_t
+    {
+        Timepulse = 0, ///< value @b Timepulse
+        Timepulse2 = 1, ///< value @b Timepulse2
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 1, ///< Last defined value.
+        ValuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgTxslotFields::RefTp field.
+    struct RefTpCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(RefTpVal val)
+        {
+            static const char* Map[] = {
+                "Timepulse",
+                "Timepulse2"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgTxslot.
 /// @tparam TOpt Extra options
 /// @see @ref CfgTxslot
@@ -89,33 +157,16 @@ struct CfgTxslotFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "DDC",
-                "UART1",
-                "UART2",
-                "USB",
-                "SPI"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgTxslotFieldsCommon::EnableCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgTxslotFields::RefTp field.
-    enum class RefTpVal : std::uint8_t
-    {
-        Timepulse = 0, ///< value @b Timepulse
-        Timepulse2 = 1, ///< value @b Timepulse2
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgTxslotFields::RefTp field.
+    using RefTpVal = ublox::message::CfgTxslotFieldsCommon::RefTpVal;
     
     /// @brief Definition of <b>"refTp"</b> field.
     /// @see @ref ublox::message::CfgTxslotFields::RefTpVal
@@ -135,17 +186,7 @@ struct CfgTxslotFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(RefTpVal val)
         {
-            static const char* Map[] = {
-                "Timepulse",
-                "Timepulse2"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgTxslotFieldsCommon::RefTpCommon::valueName(val);
         }
         
     };
@@ -164,7 +205,7 @@ struct CfgTxslotFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref End list.
+    /// @brief Scope for all the member fields of ///     @ref End list.
     struct EndMembers
     {
         /// @brief Definition of <b>""</b> field.

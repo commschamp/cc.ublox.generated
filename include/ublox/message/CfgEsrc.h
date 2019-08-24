@@ -25,6 +25,123 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgEsrcFields.
+/// @see @ref CfgEsrcFields
+/// @headerfile "ublox/message/CfgEsrc.h"
+struct CfgEsrcFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgEsrcFields::List list.
+    struct ListMembersCommon
+    {
+        /// @brief Scope for all the common definitions of the member fields of
+        ///     @ref ublox::message::CfgEsrcFields::ListMembers::Element bundle.
+        struct ElementMembersCommon
+        {
+            /// @brief Values enumerator for
+            ///     @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::ExtInt field.
+            enum class ExtIntVal : std::uint8_t
+            {
+                EXTINT0 = 0, ///< value @b EXTINT0
+                EXTINT1 = 1, ///< value @b EXTINT1
+                
+                // --- Extra values generated for convenience ---
+                FirstValue = 0, ///< First defined value.
+                LastValue = 1, ///< Last defined value.
+                ValuesLimit = 2, ///< Upper limit for defined values.
+                
+            };
+            
+            /// @brief Common functions for
+            ///     @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::ExtInt field.
+            struct ExtIntCommon
+            {
+                /// @brief Retrieve name of the enum value
+                static const char* valueName(ExtIntVal val)
+                {
+                    static const char* Map[] = {
+                        "EXTINT0",
+                        "EXTINT1"
+                    };
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    
+                    if (MapSize <= static_cast<std::size_t>(val)) {
+                        return nullptr;
+                    }
+                    
+                    return Map[static_cast<std::size_t>(val)];
+                }
+                
+            };
+            
+            /// @brief Values enumerator for
+            ///     @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::SourceType field.
+            enum class SourceTypeVal : std::uint8_t
+            {
+                None = 0, ///< value @b None
+                Frequency = 1, ///< value @b Frequency
+                Time = 2, ///< value @b Time
+                ExternalOsc = 3, ///< value @b ExternalOsc
+                
+                // --- Extra values generated for convenience ---
+                FirstValue = 0, ///< First defined value.
+                LastValue = 3, ///< Last defined value.
+                ValuesLimit = 4, ///< Upper limit for defined values.
+                
+            };
+            
+            /// @brief Common functions for
+            ///     @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::SourceType field.
+            struct SourceTypeCommon
+            {
+                /// @brief Retrieve name of the enum value
+                static const char* valueName(SourceTypeVal val)
+                {
+                    static const char* Map[] = {
+                        "None",
+                        "Frequency",
+                        "Time",
+                        "ExternalOsc"
+                    };
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    
+                    if (MapSize <= static_cast<std::size_t>(val)) {
+                        return nullptr;
+                    }
+                    
+                    return Map[static_cast<std::size_t>(val)];
+                }
+                
+            };
+            
+            /// @brief Common functions for
+            ///     @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::Flags field.
+            struct FlagsCommon
+            {
+                /// @brief Retrieve name of the bit
+                static const char* bitName(std::size_t idx)
+                {
+                    static const char* Map[] = {
+                        "polarity",
+                        "gnssUtc"
+                    };
+                
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    if (MapSize <= idx) {
+                        return nullptr;
+                    }
+                
+                    return Map[idx];
+                }
+                
+            };
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgEsrc.
 /// @tparam TOpt Extra options
 /// @see @ref CfgEsrc
@@ -77,19 +194,15 @@ struct CfgEsrcFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
-            /// @brief Values enumerator for @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::ExtInt field.
-            enum class ExtIntVal : std::uint8_t
-            {
-                EXTINT0 = 0, ///< value @b EXTINT0
-                EXTINT1 = 1, ///< value @b EXTINT1
-                
-            };
+            /// @brief Values enumerator for
+            ///     @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::ExtInt field.
+            using ExtIntVal = ublox::message::CfgEsrcFieldsCommon::ListMembersCommon::ElementMembersCommon::ExtIntVal;
             
             /// @brief Definition of <b>"extInt"</b> field.
             /// @see @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::ExtIntVal
@@ -109,30 +222,14 @@ struct CfgEsrcFields
                 /// @brief Retrieve name of the enum value
                 static const char* valueName(ExtIntVal val)
                 {
-                    static const char* Map[] = {
-                        "EXTINT0",
-                        "EXTINT1"
-                    };
-                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                    
-                    if (MapSize <= static_cast<std::size_t>(val)) {
-                        return nullptr;
-                    }
-                    
-                    return Map[static_cast<std::size_t>(val)];
+                    return ublox::message::CfgEsrcFieldsCommon::ListMembersCommon::ElementMembersCommon::ExtIntCommon::valueName(val);
                 }
                 
             };
             
-            /// @brief Values enumerator for @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::SourceType field.
-            enum class SourceTypeVal : std::uint8_t
-            {
-                None = 0, ///< value @b None
-                Frequency = 1, ///< value @b Frequency
-                Time = 2, ///< value @b Time
-                ExternalOsc = 3, ///< value @b ExternalOsc
-                
-            };
+            /// @brief Values enumerator for
+            ///     @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::SourceType field.
+            using SourceTypeVal = ublox::message::CfgEsrcFieldsCommon::ListMembersCommon::ElementMembersCommon::SourceTypeVal;
             
             /// @brief Definition of <b>"sourceType"</b> field.
             /// @see @ref ublox::message::CfgEsrcFields::ListMembers::ElementMembers::SourceTypeVal
@@ -152,19 +249,7 @@ struct CfgEsrcFields
                 /// @brief Retrieve name of the enum value
                 static const char* valueName(SourceTypeVal val)
                 {
-                    static const char* Map[] = {
-                        "None",
-                        "Frequency",
-                        "Time",
-                        "ExternalOsc"
-                    };
-                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                    
-                    if (MapSize <= static_cast<std::size_t>(val)) {
-                        return nullptr;
-                    }
-                    
-                    return Map[static_cast<std::size_t>(val)];
+                    return ublox::message::CfgEsrcFieldsCommon::ListMembersCommon::ElementMembersCommon::SourceTypeCommon::valueName(val);
                 }
                 
             };
@@ -206,19 +291,9 @@ struct CfgEsrcFields
                 /// @brief Retrieve name of the bit
                 static const char* bitName(BitIdx idx)
                 {
-                    static const char* Map[] = {
-                        "polarity",
-                        "gnssUtc"
-                    };
-                
-                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                    static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                
-                    if (MapSize <= static_cast<std::size_t>(idx)) {
-                        return nullptr;
-                    }
-                
-                    return Map[static_cast<std::size_t>(idx)];
+                    return
+                        ublox::message::CfgEsrcFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsCommon::bitName(
+                            static_cast<std::size_t>(idx));
                 }
                 
             };

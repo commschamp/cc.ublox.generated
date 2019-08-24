@@ -19,30 +19,10 @@ namespace ublox
 namespace field
 {
 
-/// @brief Definition of <b>"MsgId"</b> field.
-/// @tparam TOpt Protocol options.
-/// @tparam TExtraOpts Extra options.
-template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
-class MsgId : public
-    comms::field::EnumValue<
-        ublox::field::FieldBase<comms::option::def::BigEndian>,
-        ublox::MsgId,
-        TExtraOpts...
-    >
+/// @brief Common functions for
+///     @ref ublox::field::MsgId field.
+struct MsgIdCommon
 {
-    using Base = 
-        comms::field::EnumValue<
-            ublox::field::FieldBase<comms::option::def::BigEndian>,
-            ublox::MsgId,
-            TExtraOpts...
-        >;
-public:
-    /// @brief Name of the field.
-    static const char* name()
-    {
-        return "MsgId";
-    }
-    
     /// @brief Retrieve name of the enum value
     static const char* valueName(ublox::MsgId val)
     {
@@ -210,6 +190,38 @@ public:
         }
         
         return iter->second;
+    }
+    
+};
+
+/// @brief Definition of <b>"MsgId"</b> field.
+/// @tparam TOpt Protocol options.
+/// @tparam TExtraOpts Extra options.
+template <typename TOpt = ublox::options::DefaultOptions, typename... TExtraOpts>
+class MsgId : public
+    comms::field::EnumValue<
+        ublox::field::FieldBase<comms::option::def::BigEndian>,
+        ublox::MsgId,
+        TExtraOpts...
+    >
+{
+    using Base = 
+        comms::field::EnumValue<
+            ublox::field::FieldBase<comms::option::def::BigEndian>,
+            ublox::MsgId,
+            TExtraOpts...
+        >;
+public:
+    /// @brief Name of the field.
+    static const char* name()
+    {
+        return "MsgId";
+    }
+    
+    /// @brief Retrieve name of the enum value
+    static const char* valueName(ublox::MsgId val)
+    {
+        return ublox::field::MsgIdCommon::valueName(val);
     }
     
     /// @brief Validity check function.

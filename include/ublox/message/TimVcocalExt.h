@@ -21,6 +21,89 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref TimVcocalExtFields.
+/// @see @ref TimVcocalExtFields
+/// @headerfile "ublox/message/TimVcocalExt.h"
+struct TimVcocalExtFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::TimVcocalExtFields::OscId field.
+    enum class OscIdVal : std::uint8_t
+    {
+        Internal = 0, ///< value @b Internal
+        External = 1, ///< value @b External
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 1, ///< Last defined value.
+        ValuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::TimVcocalExtFields::OscId field.
+    struct OscIdCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(OscIdVal val)
+        {
+            static const char* Map[] = {
+                "Internal",
+                "External"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::TimVcocalExtFields::SrcId field.
+    enum class SrcIdVal : std::uint8_t
+    {
+        Internal = 0, ///< value @b Internal
+        GNSS = 1, ///< value @b GNSS
+        EXTINT0 = 2, ///< value @b EXTINT0
+        EXTINT1 = 3, ///< value @b EXTINT1
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 3, ///< Last defined value.
+        ValuesLimit = 4, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::TimVcocalExtFields::SrcId field.
+    struct SrcIdCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(SrcIdVal val)
+        {
+            static const char* Map[] = {
+                "Internal",
+                "GNSS",
+                "EXTINT0",
+                "EXTINT1"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref TimVcocalExt.
 /// @tparam TOpt Extra options
 /// @see @ref TimVcocalExt
@@ -62,13 +145,9 @@ struct TimVcocalExtFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::TimVcocalExtFields::OscId field.
-    enum class OscIdVal : std::uint8_t
-    {
-        Internal = 0, ///< value @b Internal
-        External = 1, ///< value @b External
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::TimVcocalExtFields::OscId field.
+    using OscIdVal = ublox::message::TimVcocalExtFieldsCommon::OscIdVal;
     
     /// @brief Definition of <b>"oscId"</b> field.
     /// @see @ref ublox::message::TimVcocalExtFields::OscIdVal
@@ -88,30 +167,14 @@ struct TimVcocalExtFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(OscIdVal val)
         {
-            static const char* Map[] = {
-                "Internal",
-                "External"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::TimVcocalExtFieldsCommon::OscIdCommon::valueName(val);
         }
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::TimVcocalExtFields::SrcId field.
-    enum class SrcIdVal : std::uint8_t
-    {
-        Internal = 0, ///< value @b Internal
-        GNSS = 1, ///< value @b GNSS
-        EXTINT0 = 2, ///< value @b EXTINT0
-        EXTINT1 = 3, ///< value @b EXTINT1
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::TimVcocalExtFields::SrcId field.
+    using SrcIdVal = ublox::message::TimVcocalExtFieldsCommon::SrcIdVal;
     
     /// @brief Definition of <b>"srcId"</b> field.
     /// @see @ref ublox::message::TimVcocalExtFields::SrcIdVal
@@ -131,19 +194,7 @@ struct TimVcocalExtFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(SrcIdVal val)
         {
-            static const char* Map[] = {
-                "Internal",
-                "GNSS",
-                "EXTINT0",
-                "EXTINT1"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::TimVcocalExtFieldsCommon::SrcIdCommon::valueName(val);
         }
         
     };

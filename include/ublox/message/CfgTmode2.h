@@ -23,6 +23,73 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgTmode2Fields.
+/// @see @ref CfgTmode2Fields
+/// @headerfile "ublox/message/CfgTmode2.h"
+struct CfgTmode2FieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgTmode2Fields::TimeMode field.
+    enum class TimeModeVal : std::uint32_t
+    {
+        Disabled = 0, ///< value @b Disabled
+        SurveyIn = 1, ///< value <b>Survey In</b>.
+        FixedMode = 2, ///< value <b>Fixed Mode</b>.
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 2, ///< Last defined value.
+        ValuesLimit = 3, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgTmode2Fields::TimeMode field.
+    struct TimeModeCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(TimeModeVal val)
+        {
+            static const char* Map[] = {
+                "Disabled",
+                "Survey In",
+                "Fixed Mode"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgTmode2Fields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "lla",
+                "altInv"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgTmode2.
 /// @tparam TOpt Extra options
 /// @see @ref CfgTmode2
@@ -30,14 +97,9 @@ namespace message
 template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgTmode2Fields
 {
-    /// @brief Values enumerator for @ref ublox::message::CfgTmode2Fields::TimeMode field.
-    enum class TimeModeVal : std::uint32_t
-    {
-        Disabled = 0, ///< value @b Disabled
-        SurveyIn = 1, ///< value <b>Survey In</b>.
-        FixedMode = 2, ///< value <b>Fixed Mode</b>.
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgTmode2Fields::TimeMode field.
+    using TimeModeVal = ublox::message::CfgTmode2FieldsCommon::TimeModeVal;
     
     /// @brief Definition of <b>"timeMode"</b> field.
     /// @see @ref ublox::message::CfgTmode2Fields::TimeModeVal
@@ -57,18 +119,7 @@ struct CfgTmode2Fields
         /// @brief Retrieve name of the enum value
         static const char* valueName(TimeModeVal val)
         {
-            static const char* Map[] = {
-                "Disabled",
-                "Survey In",
-                "Fixed Mode"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgTmode2FieldsCommon::TimeModeCommon::valueName(val);
         }
         
     };
@@ -124,19 +175,9 @@ struct CfgTmode2Fields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "lla",
-                "altInv"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgTmode2FieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

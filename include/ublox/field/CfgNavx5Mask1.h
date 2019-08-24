@@ -15,6 +15,41 @@ namespace ublox
 namespace field
 {
 
+/// @brief Common functions for
+///     @ref ublox::field::CfgNavx5Mask1 field.
+struct CfgNavx5Mask1Common
+{
+    /// @brief Retrieve name of the bit
+    static const char* bitName(std::size_t idx)
+    {
+        static const char* Map[] = {
+            nullptr,
+            nullptr,
+            "minMax",
+            "minCno",
+            nullptr,
+            nullptr,
+            "initial3dfix",
+            nullptr,
+            nullptr,
+            "wknRoll",
+            "ackAid",
+            nullptr,
+            nullptr,
+            "ppp",
+            "aop"
+        };
+    
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        if (MapSize <= idx) {
+            return nullptr;
+        }
+    
+        return Map[idx];
+    }
+    
+};
+
 /// @brief Definition of <b>"mask1"</b> field.
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
@@ -90,32 +125,9 @@ public:
     /// @brief Retrieve name of the bit
     static const char* bitName(BitIdx idx)
     {
-        static const char* Map[] = {
-            nullptr,
-            nullptr,
-            "minMax",
-            "minCno",
-            nullptr,
-            nullptr,
-            "initial3dfix",
-            nullptr,
-            nullptr,
-            "wknRoll",
-            "ackAid",
-            nullptr,
-            nullptr,
-            "ppp",
-            "aop"
-        };
-    
-        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-    
-        if (MapSize <= static_cast<std::size_t>(idx)) {
-            return nullptr;
-        }
-    
-        return Map[static_cast<std::size_t>(idx)];
+        return
+            ublox::field::CfgNavx5Mask1Common::bitName(
+                static_cast<std::size_t>(idx));
     }
     
 };

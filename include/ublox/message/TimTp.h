@@ -25,6 +25,187 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref TimTpFields.
+/// @see @ref TimTpFields
+/// @headerfile "ublox/message/TimTp.h"
+struct TimTpFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::TimTpFields::Flags bitfield.
+    struct FlagsMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::TimTpFields::FlagsMembers::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "timeBase",
+                    "utc"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::TimTpFields::FlagsMembers::Raim field.
+        enum class RaimVal : std::uint8_t
+        {
+            NotAvailable = 0, ///< value @b NotAvailable
+            NotActive = 1, ///< value @b NotActive
+            Active = 2, ///< value @b Active
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 2, ///< Last defined value.
+            ValuesLimit = 3, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::TimTpFields::FlagsMembers::Raim field.
+        struct RaimCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(RaimVal val)
+            {
+                static const char* Map[] = {
+                    "NotAvailable",
+                    "NotActive",
+                    "Active"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::TimTpFields::RefInfo bitfield.
+    struct RefInfoMembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::TimTpFields::RefInfoMembers::TimeRefGnss field.
+        enum class TimeRefGnssVal : std::uint8_t
+        {
+            GPS = 0, ///< value @b GPS
+            GLONASS = 1, ///< value @b GLONASS
+            BeiDou = 2, ///< value @b BeiDou
+            Unknown = 15, ///< value @b Unknown
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 15, ///< Last defined value.
+            ValuesLimit = 16, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::TimTpFields::RefInfoMembers::TimeRefGnss field.
+        struct TimeRefGnssCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(TimeRefGnssVal val)
+            {
+                using NameInfo = std::pair<TimeRefGnssVal, const char*>;
+                static const NameInfo Map[] = {
+                    std::make_pair(TimeRefGnssVal::GPS, "GPS"),
+                    std::make_pair(TimeRefGnssVal::GLONASS, "GLONASS"),
+                    std::make_pair(TimeRefGnssVal::BeiDou, "BeiDou"),
+                    std::make_pair(TimeRefGnssVal::Unknown, "Unknown")
+                };
+                
+                auto iter = std::lower_bound(
+                    std::begin(Map), std::end(Map), val,
+                    [](const NameInfo& info, TimeRefGnssVal v) -> bool
+                    {
+                        return info.first < v;
+                    });
+                
+                if ((iter == std::end(Map)) || (iter->first != val)) {
+                    return nullptr;
+                }
+                
+                return iter->second;
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::TimTpFields::RefInfoMembers::UtcStandard field.
+        enum class UtcStandardVal : std::uint8_t
+        {
+            NotAvailable = 0, ///< value @b NotAvailable
+            CRL = 1, ///< value @b CRL
+            NIST = 2, ///< value @b NIST
+            USNO = 3, ///< value @b USNO
+            BIMP = 4, ///< value @b BIMP
+            EuLab = 5, ///< value @b EuLab
+            SU = 6, ///< value @b SU
+            Unknown = 15, ///< value @b Unknown
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 15, ///< Last defined value.
+            ValuesLimit = 16, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::TimTpFields::RefInfoMembers::UtcStandard field.
+        struct UtcStandardCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(UtcStandardVal val)
+            {
+                using NameInfo = std::pair<UtcStandardVal, const char*>;
+                static const NameInfo Map[] = {
+                    std::make_pair(UtcStandardVal::NotAvailable, "NotAvailable"),
+                    std::make_pair(UtcStandardVal::CRL, "CRL"),
+                    std::make_pair(UtcStandardVal::NIST, "NIST"),
+                    std::make_pair(UtcStandardVal::USNO, "USNO"),
+                    std::make_pair(UtcStandardVal::BIMP, "BIMP"),
+                    std::make_pair(UtcStandardVal::EuLab, "EuLab"),
+                    std::make_pair(UtcStandardVal::SU, "SU"),
+                    std::make_pair(UtcStandardVal::Unknown, "Unknown")
+                };
+                
+                auto iter = std::lower_bound(
+                    std::begin(Map), std::end(Map), val,
+                    [](const NameInfo& info, UtcStandardVal v) -> bool
+                    {
+                        return info.first < v;
+                    });
+                
+                if ((iter == std::end(Map)) || (iter->first != val)) {
+                    return nullptr;
+                }
+                
+                return iter->second;
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref TimTp.
 /// @tparam TOpt Extra options
 /// @see @ref TimTp
@@ -134,31 +315,16 @@ struct TimTpFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "timeBase",
-                    "utc"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::TimTpFieldsCommon::FlagsMembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::TimTpFields::FlagsMembers::Raim field.
-        enum class RaimVal : std::uint8_t
-        {
-            NotAvailable = 0, ///< value @b NotAvailable
-            NotActive = 1, ///< value @b NotActive
-            Active = 2, ///< value @b Active
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::TimTpFields::FlagsMembers::Raim field.
+        using RaimVal = ublox::message::TimTpFieldsCommon::FlagsMembersCommon::RaimVal;
         
         /// @brief Definition of <b>"raim"</b> field.
         /// @see @ref ublox::message::TimTpFields::FlagsMembers::RaimVal
@@ -179,18 +345,7 @@ struct TimTpFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(RaimVal val)
             {
-                static const char* Map[] = {
-                    "NotAvailable",
-                    "NotActive",
-                    "Active"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::TimTpFieldsCommon::FlagsMembersCommon::RaimCommon::valueName(val);
             }
             
         };
@@ -262,15 +417,9 @@ struct TimTpFields
     /// @brief Scope for all the member fields of @ref RefInfo bitfield.
     struct RefInfoMembers
     {
-        /// @brief Values enumerator for @ref ublox::message::TimTpFields::RefInfoMembers::TimeRefGnss field.
-        enum class TimeRefGnssVal : std::uint8_t
-        {
-            GPS = 0, ///< value @b GPS
-            GLONASS = 1, ///< value @b GLONASS
-            BeiDou = 2, ///< value @b BeiDou
-            Unknown = 15, ///< value @b Unknown
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::TimTpFields::RefInfoMembers::TimeRefGnss field.
+        using TimeRefGnssVal = ublox::message::TimTpFieldsCommon::RefInfoMembersCommon::TimeRefGnssVal;
         
         /// @brief Definition of <b>"timeRefGnss"</b> field.
         /// @see @ref ublox::message::TimTpFields::RefInfoMembers::TimeRefGnssVal
@@ -292,43 +441,14 @@ struct TimTpFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(TimeRefGnssVal val)
             {
-                using NameInfo = std::pair<TimeRefGnssVal, const char*>;
-                static const NameInfo Map[] = {
-                    std::make_pair(TimeRefGnssVal::GPS, "GPS"),
-                    std::make_pair(TimeRefGnssVal::GLONASS, "GLONASS"),
-                    std::make_pair(TimeRefGnssVal::BeiDou, "BeiDou"),
-                    std::make_pair(TimeRefGnssVal::Unknown, "Unknown")
-                };
-                
-                auto iter = std::lower_bound(
-                    std::begin(Map), std::end(Map), val,
-                    [](const NameInfo& info, TimeRefGnssVal v) -> bool
-                    {
-                        return info.first < v;
-                    });
-                
-                if ((iter == std::end(Map)) || (iter->first != val)) {
-                    return nullptr;
-                }
-                
-                return iter->second;
+                return ublox::message::TimTpFieldsCommon::RefInfoMembersCommon::TimeRefGnssCommon::valueName(val);
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::TimTpFields::RefInfoMembers::UtcStandard field.
-        enum class UtcStandardVal : std::uint8_t
-        {
-            NotAvailable = 0, ///< value @b NotAvailable
-            CRL = 1, ///< value @b CRL
-            NIST = 2, ///< value @b NIST
-            USNO = 3, ///< value @b USNO
-            BIMP = 4, ///< value @b BIMP
-            EuLab = 5, ///< value @b EuLab
-            SU = 6, ///< value @b SU
-            Unknown = 15, ///< value @b Unknown
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::TimTpFields::RefInfoMembers::UtcStandard field.
+        using UtcStandardVal = ublox::message::TimTpFieldsCommon::RefInfoMembersCommon::UtcStandardVal;
         
         /// @brief Definition of <b>"utcStandard"</b> field.
         /// @see @ref ublox::message::TimTpFields::RefInfoMembers::UtcStandardVal
@@ -350,30 +470,7 @@ struct TimTpFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(UtcStandardVal val)
             {
-                using NameInfo = std::pair<UtcStandardVal, const char*>;
-                static const NameInfo Map[] = {
-                    std::make_pair(UtcStandardVal::NotAvailable, "NotAvailable"),
-                    std::make_pair(UtcStandardVal::CRL, "CRL"),
-                    std::make_pair(UtcStandardVal::NIST, "NIST"),
-                    std::make_pair(UtcStandardVal::USNO, "USNO"),
-                    std::make_pair(UtcStandardVal::BIMP, "BIMP"),
-                    std::make_pair(UtcStandardVal::EuLab, "EuLab"),
-                    std::make_pair(UtcStandardVal::SU, "SU"),
-                    std::make_pair(UtcStandardVal::Unknown, "Unknown")
-                };
-                
-                auto iter = std::lower_bound(
-                    std::begin(Map), std::end(Map), val,
-                    [](const NameInfo& info, UtcStandardVal v) -> bool
-                    {
-                        return info.first < v;
-                    });
-                
-                if ((iter == std::end(Map)) || (iter->first != val)) {
-                    return nullptr;
-                }
-                
-                return iter->second;
+                return ublox::message::TimTpFieldsCommon::RefInfoMembersCommon::UtcStandardCommon::valueName(val);
             }
             
         };

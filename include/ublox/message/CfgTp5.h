@@ -25,6 +25,88 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgTp5Fields.
+/// @see @ref CfgTp5Fields
+/// @headerfile "ublox/message/CfgTp5.h"
+struct CfgTp5FieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgTp5Fields::Flags bitfield.
+    struct FlagsMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgTp5Fields::FlagsMembers::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "active",
+                    "lockGnssFreq",
+                    "lockedOtherSet",
+                    "isFreq",
+                    "isLength",
+                    "alignToTow",
+                    "polarity"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgTp5Fields::FlagsMembers::GridUtcGnss field.
+        enum class GridUtcGnssVal : std::uint8_t
+        {
+            UTC = 0, ///< value @b UTC
+            GPS = 1, ///< value @b GPS
+            GLONASS = 2, ///< value @b GLONASS
+            BeiDou = 3, ///< value @b BeiDou
+            Galileo = 4, ///< value @b Galileo
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 4, ///< Last defined value.
+            ValuesLimit = 5, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgTp5Fields::FlagsMembers::GridUtcGnss field.
+        struct GridUtcGnssCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(GridUtcGnssVal val)
+            {
+                static const char* Map[] = {
+                    "UTC",
+                    "GPS",
+                    "GLONASS",
+                    "BeiDou",
+                    "Galileo"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgTp5.
 /// @tparam TOpt Extra options
 /// @see @ref CfgTp5
@@ -453,38 +535,16 @@ struct CfgTp5Fields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "active",
-                    "lockGnssFreq",
-                    "lockedOtherSet",
-                    "isFreq",
-                    "isLength",
-                    "alignToTow",
-                    "polarity"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::CfgTp5FieldsCommon::FlagsMembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::CfgTp5Fields::FlagsMembers::GridUtcGnss field.
-        enum class GridUtcGnssVal : std::uint8_t
-        {
-            UTC = 0, ///< value @b UTC
-            GPS = 1, ///< value @b GPS
-            GLONASS = 2, ///< value @b GLONASS
-            BeiDou = 3, ///< value @b BeiDou
-            Galileo = 4, ///< value @b Galileo
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgTp5Fields::FlagsMembers::GridUtcGnss field.
+        using GridUtcGnssVal = ublox::message::CfgTp5FieldsCommon::FlagsMembersCommon::GridUtcGnssVal;
         
         /// @brief Definition of <b>"gridUtcGnss"</b> field.
         /// @see @ref ublox::message::CfgTp5Fields::FlagsMembers::GridUtcGnssVal
@@ -505,20 +565,7 @@ struct CfgTp5Fields
             /// @brief Retrieve name of the enum value
             static const char* valueName(GridUtcGnssVal val)
             {
-                static const char* Map[] = {
-                    "UTC",
-                    "GPS",
-                    "GLONASS",
-                    "BeiDou",
-                    "Galileo"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::CfgTp5FieldsCommon::FlagsMembersCommon::GridUtcGnssCommon::valueName(val);
             }
             
         };

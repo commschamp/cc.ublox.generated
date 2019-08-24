@@ -19,6 +19,49 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref AidAlpStatusFields.
+/// @see @ref AidAlpStatusFields
+/// @headerfile "ublox/message/AidAlpStatus.h"
+struct AidAlpStatusFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::AidAlpStatusFields::Status field.
+    enum class StatusVal : std::uint8_t
+    {
+        nak = 0, ///< value @b nak
+        ack = 1, ///< value @b ack
+        
+        // --- Extra values generated for convenience ---
+        firstValue = 0, ///< First defined value.
+        lastValue = 1, ///< Last defined value.
+        valuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::AidAlpStatusFields::Status field.
+    struct StatusCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(StatusVal val)
+        {
+            static const char* Map[] = {
+                "nak",
+                "ack"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref AidAlpStatus.
 /// @tparam TOpt Extra options
 /// @see @ref AidAlpStatus
@@ -26,13 +69,9 @@ namespace message
 template <typename TOpt = ublox::options::DefaultOptions>
 struct AidAlpStatusFields
 {
-    /// @brief Values enumerator for @ref ublox::message::AidAlpStatusFields::Status field.
-    enum class StatusVal : std::uint8_t
-    {
-        nak = 0, ///< value @b nak
-        ack = 1, ///< value @b ack
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::AidAlpStatusFields::Status field.
+    using StatusVal = ublox::message::AidAlpStatusFieldsCommon::StatusVal;
     
     /// @brief Definition of <b>"status"</b> field.
     /// @see @ref ublox::message::AidAlpStatusFields::StatusVal
@@ -53,17 +92,7 @@ struct AidAlpStatusFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(StatusVal val)
         {
-            static const char* Map[] = {
-                "nak",
-                "ack"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::AidAlpStatusFieldsCommon::StatusCommon::valueName(val);
         }
         
     };

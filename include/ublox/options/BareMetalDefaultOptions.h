@@ -120,7 +120,7 @@ struct BareMetalDefaultOptions
             struct OptionalsMembers
             {
                 /// @brief Extra options for all the member fields of
-                ///     @ref ublox::message::AidAopFields::OptionalsMembers::OptionalsWrap bitfield.
+                ///     @ref ublox::message::AidAopFields::OptionalsMembers::OptionalsWrap bundle.
                 struct OptionalsWrapMembers
                 {
                     /// @brief Extra options for @ref
@@ -178,7 +178,7 @@ struct BareMetalDefaultOptions
             struct SfdMembers
             {
                 /// @brief Extra options for all the member fields of
-                ///     @ref ublox::message::AidEphFields::SfdMembers::Lists bitfield.
+                ///     @ref ublox::message::AidEphFields::SfdMembers::Lists bundle.
                 struct ListsMembers
                 {
                     /// @brief Extra options for @ref
@@ -1226,7 +1226,7 @@ struct BareMetalDefaultOptions
             using HwVersion = comms::option::app::SequenceFixedSizeUseFixedSizeStorage;
             
             /// @brief Extra options for all the member fields of
-            ///     @ref ublox::message::MonVerFields::List string.
+            ///     @ref ublox::message::MonVerFields::List list.
             struct ListMembers
             {
                 /// @brief Extra options for @ref
@@ -1591,7 +1591,7 @@ struct BareMetalDefaultOptions
             struct SfdMembers
             {
                 /// @brief Extra options for all the member fields of
-                ///     @ref ublox::message::RxmEphFields::SfdMembers::Lists bitfield.
+                ///     @ref ublox::message::RxmEphFields::SfdMembers::Lists bundle.
                 struct ListsMembers
                 {
                     /// @brief Extra options for @ref

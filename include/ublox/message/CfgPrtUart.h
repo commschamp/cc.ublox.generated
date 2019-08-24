@@ -27,6 +27,141 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgPrtUartFields.
+/// @see @ref CfgPrtUartFields
+/// @headerfile "ublox/message/CfgPrtUart.h"
+struct CfgPrtUartFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgPrtUartFields::Mode bitfield.
+    struct ModeMembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgPrtUartFields::ModeMembers::CharLen field.
+        enum class CharLenVal : std::uint8_t
+        {
+            Bits5 = 0, ///< value <b>5 bits</b>.
+            Bits6 = 1, ///< value <b>6 bits</b>.
+            Bits7 = 2, ///< value <b>7 bits</b>.
+            Bits8 = 3, ///< value <b>8 bits</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 3, ///< Last defined value.
+            ValuesLimit = 4, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgPrtUartFields::ModeMembers::CharLen field.
+        struct CharLenCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(CharLenVal val)
+            {
+                static const char* Map[] = {
+                    "5 bits",
+                    "6 bits",
+                    "7 bits",
+                    "8 bits"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgPrtUartFields::ModeMembers::Parity field.
+        enum class ParityVal : std::uint8_t
+        {
+            Even = 0, ///< value @b Even
+            Odd = 1, ///< value @b Odd
+            None = 4, ///< value @b None
+            None2 = 5, ///< value <b>None (2)</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 5, ///< Last defined value.
+            ValuesLimit = 6, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgPrtUartFields::ModeMembers::Parity field.
+        struct ParityCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(ParityVal val)
+            {
+                static const char* Map[] = {
+                    "Even",
+                    "Odd",
+                    nullptr,
+                    nullptr,
+                    "None",
+                    "None (2)"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgPrtUartFields::ModeMembers::NStopBits field.
+        enum class NStopBitsVal : std::uint8_t
+        {
+            Bits_1 = 0, ///< value <b>1 bit</b>.
+            Bits_1_5 = 1, ///< value <b>1.5 bits</b>.
+            Bits_2 = 2, ///< value <b>2 bits</b>.
+            Bits_0_5 = 3, ///< value <b>0.5 bit</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 3, ///< Last defined value.
+            ValuesLimit = 4, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgPrtUartFields::ModeMembers::NStopBits field.
+        struct NStopBitsCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(NStopBitsVal val)
+            {
+                static const char* Map[] = {
+                    "1 bit",
+                    "1.5 bits",
+                    "2 bits",
+                    "0.5 bit"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgPrtUart.
 /// @tparam TOpt Extra options
 /// @see @ref CfgPrtUart
@@ -102,15 +237,9 @@ struct CfgPrtUartFields
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::CfgPrtUartFields::ModeMembers::CharLen field.
-        enum class CharLenVal : std::uint8_t
-        {
-            Bits5 = 0, ///< value <b>5 bits</b>.
-            Bits6 = 1, ///< value <b>6 bits</b>.
-            Bits7 = 2, ///< value <b>7 bits</b>.
-            Bits8 = 3, ///< value <b>8 bits</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgPrtUartFields::ModeMembers::CharLen field.
+        using CharLenVal = ublox::message::CfgPrtUartFieldsCommon::ModeMembersCommon::CharLenVal;
         
         /// @brief Definition of <b>"charLen"</b> field.
         /// @see @ref ublox::message::CfgPrtUartFields::ModeMembers::CharLenVal
@@ -132,19 +261,7 @@ struct CfgPrtUartFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(CharLenVal val)
             {
-                static const char* Map[] = {
-                    "5 bits",
-                    "6 bits",
-                    "7 bits",
-                    "8 bits"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::CfgPrtUartFieldsCommon::ModeMembersCommon::CharLenCommon::valueName(val);
             }
             
         };
@@ -168,15 +285,9 @@ struct CfgPrtUartFields
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::CfgPrtUartFields::ModeMembers::Parity field.
-        enum class ParityVal : std::uint8_t
-        {
-            Even = 0, ///< value @b Even
-            Odd = 1, ///< value @b Odd
-            None = 4, ///< value @b None
-            None2 = 5, ///< value <b>None (2)</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgPrtUartFields::ModeMembers::Parity field.
+        using ParityVal = ublox::message::CfgPrtUartFieldsCommon::ModeMembersCommon::ParityVal;
         
         /// @brief Definition of <b>"parity"</b> field.
         /// @see @ref ublox::message::CfgPrtUartFields::ModeMembers::ParityVal
@@ -199,34 +310,14 @@ struct CfgPrtUartFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(ParityVal val)
             {
-                static const char* Map[] = {
-                    "Even",
-                    "Odd",
-                    nullptr,
-                    nullptr,
-                    "None",
-                    "None (2)"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::CfgPrtUartFieldsCommon::ModeMembersCommon::ParityCommon::valueName(val);
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::CfgPrtUartFields::ModeMembers::NStopBits field.
-        enum class NStopBitsVal : std::uint8_t
-        {
-            Bits_1 = 0, ///< value <b>1 bit</b>.
-            Bits_1_5 = 1, ///< value <b>1.5 bits</b>.
-            Bits_2 = 2, ///< value <b>2 bits</b>.
-            Bits_0_5 = 3, ///< value <b>0.5 bit</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgPrtUartFields::ModeMembers::NStopBits field.
+        using NStopBitsVal = ublox::message::CfgPrtUartFieldsCommon::ModeMembersCommon::NStopBitsVal;
         
         /// @brief Definition of <b>"nStopBits"</b> field.
         /// @see @ref ublox::message::CfgPrtUartFields::ModeMembers::NStopBitsVal
@@ -247,19 +338,7 @@ struct CfgPrtUartFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(NStopBitsVal val)
             {
-                static const char* Map[] = {
-                    "1 bit",
-                    "1.5 bits",
-                    "2 bits",
-                    "0.5 bit"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::CfgPrtUartFieldsCommon::ModeMembersCommon::NStopBitsCommon::valueName(val);
             }
             
         };

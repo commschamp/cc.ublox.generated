@@ -30,6 +30,139 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgDoscFields.
+/// @see @ref CfgDoscFields
+/// @headerfile "ublox/message/CfgDosc.h"
+struct CfgDoscFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgDoscFields::List list.
+    struct ListMembersCommon
+    {
+        /// @brief Scope for all the common definitions of the member fields of
+        ///     @ref ublox::message::CfgDoscFields::ListMembers::Element bundle.
+        struct ElementMembersCommon
+        {
+            /// @brief Values enumerator for
+            ///     @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::OscId field.
+            enum class OscIdVal : std::uint8_t
+            {
+                Internal = 0, ///< value @b Internal
+                External = 1, ///< value @b External
+                
+                // --- Extra values generated for convenience ---
+                FirstValue = 0, ///< First defined value.
+                LastValue = 1, ///< Last defined value.
+                ValuesLimit = 2, ///< Upper limit for defined values.
+                
+            };
+            
+            /// @brief Common functions for
+            ///     @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::OscId field.
+            struct OscIdCommon
+            {
+                /// @brief Retrieve name of the enum value
+                static const char* valueName(OscIdVal val)
+                {
+                    static const char* Map[] = {
+                        "Internal",
+                        "External"
+                    };
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    
+                    if (MapSize <= static_cast<std::size_t>(val)) {
+                        return nullptr;
+                    }
+                    
+                    return Map[static_cast<std::size_t>(val)];
+                }
+                
+            };
+            
+            /// @brief Scope for all the common definitions of the member fields of
+            ///     @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::Flags bitfield.
+            struct FlagsMembersCommon
+            {
+                /// @brief Common functions for
+                ///     @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::FlagsMembers::Bits field.
+                struct BitsCommon
+                {
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(std::size_t idx)
+                    {
+                        static const char* Map[] = {
+                            "isCalibrated"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        if (MapSize <= idx) {
+                            return nullptr;
+                        }
+                    
+                        return Map[idx];
+                    }
+                    
+                };
+                
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::FlagsMembers::ControlIf field.
+                enum class ControlIfVal : std::uint8_t
+                {
+                    Custom = 0, ///< value @b Custom
+                    Microchip = 1, ///< value @b Microchip
+                    TI = 2, ///< value @b TI
+                    DAC_12bit = 13, ///< value @b DAC_12bit
+                    DAC_14bit = 14, ///< value @b DAC_14bit
+                    DAC_16bit = 15, ///< value @b DAC_16bit
+                    
+                    // --- Extra values generated for convenience ---
+                    FirstValue = 0, ///< First defined value.
+                    LastValue = 15, ///< Last defined value.
+                    ValuesLimit = 16, ///< Upper limit for defined values.
+                    
+                };
+                
+                /// @brief Common functions for
+                ///     @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::FlagsMembers::ControlIf field.
+                struct ControlIfCommon
+                {
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(ControlIfVal val)
+                    {
+                        using NameInfo = std::pair<ControlIfVal, const char*>;
+                        static const NameInfo Map[] = {
+                            std::make_pair(ControlIfVal::Custom, "Custom"),
+                            std::make_pair(ControlIfVal::Microchip, "Microchip"),
+                            std::make_pair(ControlIfVal::TI, "TI"),
+                            std::make_pair(ControlIfVal::DAC_12bit, "DAC_12bit"),
+                            std::make_pair(ControlIfVal::DAC_14bit, "DAC_14bit"),
+                            std::make_pair(ControlIfVal::DAC_16bit, "DAC_16bit")
+                        };
+                        
+                        auto iter = std::lower_bound(
+                            std::begin(Map), std::end(Map), val,
+                            [](const NameInfo& info, ControlIfVal v) -> bool
+                            {
+                                return info.first < v;
+                            });
+                        
+                        if ((iter == std::end(Map)) || (iter->first != val)) {
+                            return nullptr;
+                        }
+                        
+                        return iter->second;
+                    }
+                    
+                };
+                
+            };
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgDosc.
 /// @tparam TOpt Extra options
 /// @see @ref CfgDosc
@@ -82,19 +215,15 @@ struct CfgDoscFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
-            /// @brief Values enumerator for @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::OscId field.
-            enum class OscIdVal : std::uint8_t
-            {
-                Internal = 0, ///< value @b Internal
-                External = 1, ///< value @b External
-                
-            };
+            /// @brief Values enumerator for
+            ///     @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::OscId field.
+            using OscIdVal = ublox::message::CfgDoscFieldsCommon::ListMembersCommon::ElementMembersCommon::OscIdVal;
             
             /// @brief Definition of <b>"oscId"</b> field.
             /// @see @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::OscIdVal
@@ -114,17 +243,7 @@ struct CfgDoscFields
                 /// @brief Retrieve name of the enum value
                 static const char* valueName(OscIdVal val)
                 {
-                    static const char* Map[] = {
-                        "Internal",
-                        "External"
-                    };
-                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                    
-                    if (MapSize <= static_cast<std::size_t>(val)) {
-                        return nullptr;
-                    }
-                    
-                    return Map[static_cast<std::size_t>(val)];
+                    return ublox::message::CfgDoscFieldsCommon::ListMembersCommon::ElementMembersCommon::OscIdCommon::valueName(val);
                 }
                 
             };
@@ -179,33 +298,16 @@ struct CfgDoscFields
                     /// @brief Retrieve name of the bit
                     static const char* bitName(BitIdx idx)
                     {
-                        static const char* Map[] = {
-                            "isCalibrated"
-                        };
-                    
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                    
-                        if (MapSize <= static_cast<std::size_t>(idx)) {
-                            return nullptr;
-                        }
-                    
-                        return Map[static_cast<std::size_t>(idx)];
+                        return
+                            ublox::message::CfgDoscFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::BitsCommon::bitName(
+                                static_cast<std::size_t>(idx));
                     }
                     
                 };
                 
-                /// @brief Values enumerator for @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::FlagsMembers::ControlIf field.
-                enum class ControlIfVal : std::uint8_t
-                {
-                    Custom = 0, ///< value @b Custom
-                    Microchip = 1, ///< value @b Microchip
-                    TI = 2, ///< value @b TI
-                    DAC_12bit = 13, ///< value @b DAC_12bit
-                    DAC_14bit = 14, ///< value @b DAC_14bit
-                    DAC_16bit = 15, ///< value @b DAC_16bit
-                    
-                };
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::FlagsMembers::ControlIf field.
+                using ControlIfVal = ublox::message::CfgDoscFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::ControlIfVal;
                 
                 /// @brief Definition of <b>"controlIf"</b> field.
                 /// @see @ref ublox::message::CfgDoscFields::ListMembers::ElementMembers::FlagsMembers::ControlIfVal
@@ -227,28 +329,7 @@ struct CfgDoscFields
                     /// @brief Retrieve name of the enum value
                     static const char* valueName(ControlIfVal val)
                     {
-                        using NameInfo = std::pair<ControlIfVal, const char*>;
-                        static const NameInfo Map[] = {
-                            std::make_pair(ControlIfVal::Custom, "Custom"),
-                            std::make_pair(ControlIfVal::Microchip, "Microchip"),
-                            std::make_pair(ControlIfVal::TI, "TI"),
-                            std::make_pair(ControlIfVal::DAC_12bit, "DAC_12bit"),
-                            std::make_pair(ControlIfVal::DAC_14bit, "DAC_14bit"),
-                            std::make_pair(ControlIfVal::DAC_16bit, "DAC_16bit")
-                        };
-                        
-                        auto iter = std::lower_bound(
-                            std::begin(Map), std::end(Map), val,
-                            [](const NameInfo& info, ControlIfVal v) -> bool
-                            {
-                                return info.first < v;
-                            });
-                        
-                        if ((iter == std::end(Map)) || (iter->first != val)) {
-                            return nullptr;
-                        }
-                        
-                        return iter->second;
+                        return ublox::message::CfgDoscFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::ControlIfCommon::valueName(val);
                     }
                     
                 };

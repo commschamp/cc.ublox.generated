@@ -22,6 +22,80 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgInfFields.
+/// @see @ref CfgInfFields
+/// @headerfile "ublox/message/CfgInf.h"
+struct CfgInfFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgInfFields::ProtocolId field.
+    enum class ProtocolIdVal : std::uint8_t
+    {
+        UBX = 0, ///< value @b UBX
+        NMEA = 1, ///< value @b NMEA
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 1, ///< Last defined value.
+        ValuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgInfFields::ProtocolId field.
+    struct ProtocolIdCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(ProtocolIdVal val)
+        {
+            static const char* Map[] = {
+                "UBX",
+                "NMEA"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgInfFields::InfMsgMask list.
+    struct InfMsgMaskMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgInfFields::InfMsgMaskMembers::Element field.
+        struct ElementCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "ERROR",
+                    "WARNING",
+                    "NOTICE",
+                    "TEST",
+                    "DEBUG"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgInf.
 /// @tparam TOpt Extra options
 /// @see @ref CfgInf
@@ -29,13 +103,9 @@ namespace message
 template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgInfFields
 {
-    /// @brief Values enumerator for @ref ublox::message::CfgInfFields::ProtocolId field.
-    enum class ProtocolIdVal : std::uint8_t
-    {
-        UBX = 0, ///< value @b UBX
-        NMEA = 1, ///< value @b NMEA
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgInfFields::ProtocolId field.
+    using ProtocolIdVal = ublox::message::CfgInfFieldsCommon::ProtocolIdVal;
     
     /// @brief Definition of <b>"protocolId"</b> field.
     /// @see @ref ublox::message::CfgInfFields::ProtocolIdVal
@@ -55,17 +125,7 @@ struct CfgInfFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(ProtocolIdVal val)
         {
-            static const char* Map[] = {
-                "UBX",
-                "NMEA"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgInfFieldsCommon::ProtocolIdCommon::valueName(val);
         }
         
     };
@@ -84,7 +144,7 @@ struct CfgInfFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref InfMsgMask list.
+    /// @brief Scope for all the member fields of ///     @ref InfMsgMask list.
     struct InfMsgMaskMembers
     {
         /// @brief Definition of <b>"element"</b> field.
@@ -130,22 +190,9 @@ struct CfgInfFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "ERROR",
-                    "WARNING",
-                    "NOTICE",
-                    "TEST",
-                    "DEBUG"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::CfgInfFieldsCommon::InfMsgMaskMembersCommon::ElementCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };

@@ -16,7 +16,8 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref ublox::field::GpsFix field.
+/// @brief Values enumerator for
+///     @ref ublox::field::GpsFix field.
 enum class GpsFixVal : std::uint8_t
 {
     NoFix = 0x00U, ///< value <b>no fix</b>.
@@ -25,6 +26,37 @@ enum class GpsFixVal : std::uint8_t
     Fix3D = 0x03U, ///< value <b>3D fix</b>.
     GpsAndDeadReckon = 0x04U, ///< value <b>GPS + dead reckoning</b>.
     TimeOnlyFix = 0x05U, ///< value <b>time only fix</b>.
+    
+    // --- Extra values generated for convenience ---
+    FirstValue = 0x00U, ///< First defined value.
+    LastValue = 0x05U, ///< Last defined value.
+    ValuesLimit = 0x06U, ///< Upper limit for defined values.
+    
+};
+
+/// @brief Common functions for
+///     @ref ublox::field::GpsFix field.
+struct GpsFixCommon
+{
+    /// @brief Retrieve name of the enum value
+    static const char* valueName(GpsFixVal val)
+    {
+        static const char* Map[] = {
+            "no fix",
+            "dead reckoning",
+            "2D fix",
+            "3D fix",
+            "GPS + dead reckoning",
+            "time only fix"
+        };
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        
+        if (MapSize <= static_cast<std::size_t>(val)) {
+            return nullptr;
+        }
+        
+        return Map[static_cast<std::size_t>(val)];
+    }
     
 };
 
@@ -50,21 +82,7 @@ struct GpsFix : public
     /// @brief Retrieve name of the enum value
     static const char* valueName(GpsFixVal val)
     {
-        static const char* Map[] = {
-            "no fix",
-            "dead reckoning",
-            "2D fix",
-            "3D fix",
-            "GPS + dead reckoning",
-            "time only fix"
-        };
-        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-        
-        if (MapSize <= static_cast<std::size_t>(val)) {
-            return nullptr;
-        }
-        
-        return Map[static_cast<std::size_t>(val)];
+        return ublox::field::GpsFixCommon::valueName(val);
     }
     
 };

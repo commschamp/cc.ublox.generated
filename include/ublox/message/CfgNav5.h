@@ -23,6 +23,178 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgNav5Fields.
+/// @see @ref CfgNav5Fields
+/// @headerfile "ublox/message/CfgNav5.h"
+struct CfgNav5FieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgNav5Fields::Mask field.
+    struct MaskCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "dyn",
+                "minEl",
+                "posFixMode",
+                "drLim",
+                "posMask",
+                "timeMask",
+                "staticHoldMask",
+                "dgpsMask",
+                "cnoThreshold",
+                nullptr,
+                "utc"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgNav5Fields::DynModel field.
+    enum class DynModelVal : std::uint8_t
+    {
+        Portable = 0, ///< value @b Portable
+        Stationary = 2, ///< value @b Stationary
+        Pedestrian = 3, ///< value @b Pedestrian
+        Automotive = 4, ///< value @b Automotive
+        Sea = 5, ///< value @b Sea
+        Airborne1G = 6, ///< value <b>Airborne <1g accel</b>.
+        Airborne2G = 7, ///< value <b>Airborne <2g accel</b>.
+        Airborne4G = 8, ///< value <b>Airborne <4g accel</b>.
+        WristWatch = 9, ///< value <b>Wrist watch</b>.
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 9, ///< Last defined value.
+        ValuesLimit = 10, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgNav5Fields::DynModel field.
+    struct DynModelCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(DynModelVal val)
+        {
+            static const char* Map[] = {
+                "Portable",
+                nullptr,
+                "Stationary",
+                "Pedestrian",
+                "Automotive",
+                "Sea",
+                "Airborne <1g accel",
+                "Airborne <2g accel",
+                "Airborne <4g accel",
+                "Wrist watch"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgNav5Fields::FixMode field.
+    enum class FixModeVal : std::uint8_t
+    {
+        Only2D = 1, ///< value <b>2D Only</b>.
+        Only3D = 2, ///< value <b>2D Only</b>.
+        Auto = 3, ///< value <b>Auto 2D/3D</b>.
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 1, ///< First defined value.
+        LastValue = 3, ///< Last defined value.
+        ValuesLimit = 4, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgNav5Fields::FixMode field.
+    struct FixModeCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(FixModeVal val)
+        {
+            static const char* Map[] = {
+                nullptr,
+                "2D Only",
+                "2D Only",
+                "Auto 2D/3D"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgNav5Fields::UtcStandard field.
+    enum class UtcStandardVal : std::uint8_t
+    {
+        Automatic = 0, ///< value @b Automatic
+        GPS = 3, ///< value @b GPS
+        GLONASS = 6, ///< value @b GLONASS
+        BeiDou = 7, ///< value @b BeiDou
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 7, ///< Last defined value.
+        ValuesLimit = 8, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgNav5Fields::UtcStandard field.
+    struct UtcStandardCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(UtcStandardVal val)
+        {
+            static const char* Map[] = {
+                "Automatic",
+                nullptr,
+                nullptr,
+                "GPS",
+                nullptr,
+                nullptr,
+                "GLONASS",
+                "BeiDou"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgNav5.
 /// @tparam TOpt Extra options
 /// @see @ref CfgNav5
@@ -112,46 +284,16 @@ struct CfgNav5Fields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "dyn",
-                "minEl",
-                "posFixMode",
-                "drLim",
-                "posMask",
-                "timeMask",
-                "staticHoldMask",
-                "dgpsMask",
-                "cnoThreshold",
-                nullptr,
-                "utc"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgNav5FieldsCommon::MaskCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgNav5Fields::DynModel field.
-    enum class DynModelVal : std::uint8_t
-    {
-        Portable = 0, ///< value @b Portable
-        Stationary = 2, ///< value @b Stationary
-        Pedestrian = 3, ///< value @b Pedestrian
-        Automotive = 4, ///< value @b Automotive
-        Sea = 5, ///< value @b Sea
-        Airborne1G = 6, ///< value <b>Airborne <1g accel</b>.
-        Airborne2G = 7, ///< value <b>Airborne <2g accel</b>.
-        Airborne4G = 8, ///< value <b>Airborne <4g accel</b>.
-        WristWatch = 9, ///< value <b>Wrist watch</b>.
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgNav5Fields::DynModel field.
+    using DynModelVal = ublox::message::CfgNav5FieldsCommon::DynModelVal;
     
     /// @brief Definition of <b>"dynModel"</b> field.
     /// @see @ref ublox::message::CfgNav5Fields::DynModelVal
@@ -172,37 +314,14 @@ struct CfgNav5Fields
         /// @brief Retrieve name of the enum value
         static const char* valueName(DynModelVal val)
         {
-            static const char* Map[] = {
-                "Portable",
-                nullptr,
-                "Stationary",
-                "Pedestrian",
-                "Automotive",
-                "Sea",
-                "Airborne <1g accel",
-                "Airborne <2g accel",
-                "Airborne <4g accel",
-                "Wrist watch"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgNav5FieldsCommon::DynModelCommon::valueName(val);
         }
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgNav5Fields::FixMode field.
-    enum class FixModeVal : std::uint8_t
-    {
-        Only2D = 1, ///< value <b>2D Only</b>.
-        Only3D = 2, ///< value <b>2D Only</b>.
-        Auto = 3, ///< value <b>Auto 2D/3D</b>.
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgNav5Fields::FixMode field.
+    using FixModeVal = ublox::message::CfgNav5FieldsCommon::FixModeVal;
     
     /// @brief Definition of <b>"fixMode"</b> field.
     /// @see @ref ublox::message::CfgNav5Fields::FixModeVal
@@ -222,19 +341,7 @@ struct CfgNav5Fields
         /// @brief Retrieve name of the enum value
         static const char* valueName(FixModeVal val)
         {
-            static const char* Map[] = {
-                nullptr,
-                "2D Only",
-                "2D Only",
-                "Auto 2D/3D"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgNav5FieldsCommon::FixModeCommon::valueName(val);
         }
         
     };
@@ -460,15 +567,9 @@ struct CfgNav5Fields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgNav5Fields::UtcStandard field.
-    enum class UtcStandardVal : std::uint8_t
-    {
-        Automatic = 0, ///< value @b Automatic
-        GPS = 3, ///< value @b GPS
-        GLONASS = 6, ///< value @b GLONASS
-        BeiDou = 7, ///< value @b BeiDou
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgNav5Fields::UtcStandard field.
+    using UtcStandardVal = ublox::message::CfgNav5FieldsCommon::UtcStandardVal;
     
     /// @brief Definition of <b>"utcStandard"</b> field.
     /// @see @ref ublox::message::CfgNav5Fields::UtcStandardVal
@@ -490,23 +591,7 @@ struct CfgNav5Fields
         /// @brief Retrieve name of the enum value
         static const char* valueName(UtcStandardVal val)
         {
-            static const char* Map[] = {
-                "Automatic",
-                nullptr,
-                nullptr,
-                "GPS",
-                nullptr,
-                nullptr,
-                "GLONASS",
-                "BeiDou"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgNav5FieldsCommon::UtcStandardCommon::valueName(val);
         }
         
     };

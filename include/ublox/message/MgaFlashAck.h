@@ -21,6 +21,51 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref MgaFlashAckFields.
+/// @see @ref MgaFlashAckFields
+/// @headerfile "ublox/message/MgaFlashAck.h"
+struct MgaFlashAckFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MgaFlashAckFields::Ack field.
+    enum class AckVal : std::uint8_t
+    {
+        Ack = 0, ///< value @b Ack
+        NakRetransmit = 1, ///< value @b NakRetransmit
+        NakGiveUp = 2, ///< value @b NakGiveUp
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 2, ///< Last defined value.
+        ValuesLimit = 3, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::MgaFlashAckFields::Ack field.
+    struct AckCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(AckVal val)
+        {
+            static const char* Map[] = {
+                "Ack",
+                "NakRetransmit",
+                "NakGiveUp"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref MgaFlashAck.
 /// @tparam TOpt Extra options
 /// @see @ref MgaFlashAck
@@ -62,14 +107,9 @@ struct MgaFlashAckFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::MgaFlashAckFields::Ack field.
-    enum class AckVal : std::uint8_t
-    {
-        Ack = 0, ///< value @b Ack
-        NakRetransmit = 1, ///< value @b NakRetransmit
-        NakGiveUp = 2, ///< value @b NakGiveUp
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MgaFlashAckFields::Ack field.
+    using AckVal = ublox::message::MgaFlashAckFieldsCommon::AckVal;
     
     /// @brief Definition of <b>"ack"</b> field.
     /// @see @ref ublox::message::MgaFlashAckFields::AckVal
@@ -89,18 +129,7 @@ struct MgaFlashAckFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(AckVal val)
         {
-            static const char* Map[] = {
-                "Ack",
-                "NakRetransmit",
-                "NakGiveUp"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::MgaFlashAckFieldsCommon::AckCommon::valueName(val);
         }
         
     };

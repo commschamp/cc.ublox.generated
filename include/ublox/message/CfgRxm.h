@@ -20,6 +20,53 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgRxmFields.
+/// @see @ref CfgRxmFields
+/// @headerfile "ublox/message/CfgRxm.h"
+struct CfgRxmFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgRxmFields::LpMode field.
+    enum class LpModeVal : std::uint8_t
+    {
+        Continuous = 0, ///< value @b Continuous
+        PowerSave = 1, ///< value <b>Power Save</b>.
+        Continuous2 = 4, ///< value <b>Continuous (2)</b>.
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 4, ///< Last defined value.
+        ValuesLimit = 5, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgRxmFields::LpMode field.
+    struct LpModeCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(LpModeVal val)
+        {
+            static const char* Map[] = {
+                "Continuous",
+                "Power Save",
+                nullptr,
+                nullptr,
+                "Continuous (2)"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgRxm.
 /// @tparam TOpt Extra options
 /// @see @ref CfgRxm
@@ -41,14 +88,9 @@ struct CfgRxmFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgRxmFields::LpMode field.
-    enum class LpModeVal : std::uint8_t
-    {
-        Continuous = 0, ///< value @b Continuous
-        PowerSave = 1, ///< value <b>Power Save</b>.
-        Continuous2 = 4, ///< value <b>Continuous (2)</b>.
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgRxmFields::LpMode field.
+    using LpModeVal = ublox::message::CfgRxmFieldsCommon::LpModeVal;
     
     /// @brief Definition of <b>"lpMode"</b> field.
     /// @see @ref ublox::message::CfgRxmFields::LpModeVal
@@ -69,20 +111,7 @@ struct CfgRxmFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(LpModeVal val)
         {
-            static const char* Map[] = {
-                "Continuous",
-                "Power Save",
-                nullptr,
-                nullptr,
-                "Continuous (2)"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgRxmFieldsCommon::LpModeCommon::valueName(val);
         }
         
     };
