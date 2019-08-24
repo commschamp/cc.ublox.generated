@@ -26,7 +26,7 @@ namespace message
 template <typename TOpt = ublox::options::DefaultOptions>
 struct AidAlpDataFields
 {
-    /// @brief Scope for all the member fields of @ref AlpData list.
+    /// @brief Scope for all the member fields of ///     @ref AlpData list.
     struct AlpDataMembers
     {
         /// @brief Definition of <b>""</b> field.

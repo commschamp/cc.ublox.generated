@@ -42,6 +42,195 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref NavPvt_u8Fields.
+/// @see @ref NavPvt_u8Fields
+/// @headerfile "ublox/message/NavPvt_u8.h"
+struct NavPvt_u8FieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::NavPvt_u8Fields::Valid field.
+    struct ValidCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "validDate",
+                "validTime",
+                "fullyResolved"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::NavPvt_u8Fields::Flags bitfield.
+    struct FlagsMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavPvt_u8Fields::FlagsMembers::LowBits field.
+        struct LowBitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "gnssFixOK",
+                    "diffSoln"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavPvt_u8Fields::FlagsMembers::PsmState field.
+        enum class PsmStateVal : std::uint8_t
+        {
+            NotAvailable = 0, ///< value <b>N/A</b>.
+            Enabled = 1, ///< value <b>ENABLED</b>.
+            Acquisition = 2, ///< value <b>ACQUISITION</b>.
+            Tracking = 3, ///< value <b>TRACKING</b>.
+            PowerOptTracking = 4, ///< value <b>POWER OPTIMIZED TRACKING</b>.
+            Inactive = 5, ///< value <b>INACTIVE</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 5, ///< Last defined value.
+            ValuesLimit = 6, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavPvt_u8Fields::FlagsMembers::PsmState field.
+        struct PsmStateCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(PsmStateVal val)
+            {
+                static const char* Map[] = {
+                    "N/A",
+                    "ENABLED",
+                    "ACQUISITION",
+                    "TRACKING",
+                    "POWER OPTIMIZED TRACKING",
+                    "INACTIVE"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavPvt_u8Fields::FlagsMembers::MidBits field.
+        struct MidBitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "headVehValid"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavPvt_u8Fields::FlagsMembers::CarrSoln field.
+        enum class CarrSolnVal : std::uint8_t
+        {
+            NoCarrier = 0, ///< value <b>No carrier</b>.
+            Float = 1, ///< value <b>Float solution</b>.
+            Fixed = 2, ///< value <b>Fixed solution</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 2, ///< Last defined value.
+            ValuesLimit = 3, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavPvt_u8Fields::FlagsMembers::CarrSoln field.
+        struct CarrSolnCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(CarrSolnVal val)
+            {
+                static const char* Map[] = {
+                    "No carrier",
+                    "Float solution",
+                    "Fixed solution"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::NavPvt_u8Fields::Flags2 field.
+    struct Flags2Common
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                nullptr,
+                nullptr,
+                nullptr,
+                nullptr,
+                "confirmedAvai",
+                "confirmedDate",
+                "confirmedTime"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref NavPvt_u8.
 /// @tparam TOpt Extra options
 /// @see @ref NavPvt_u8
@@ -130,20 +319,9 @@ struct NavPvt_u8Fields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "validDate",
-                "validTime",
-                "fullyResolved"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::NavPvt_u8FieldsCommon::ValidCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -232,34 +410,16 @@ struct NavPvt_u8Fields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "gnssFixOK",
-                    "diffSoln"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::NavPvt_u8FieldsCommon::FlagsMembersCommon::LowBitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::NavPvt_u8Fields::FlagsMembers::PsmState field.
-        enum class PsmStateVal : std::uint8_t
-        {
-            NotAvailable = 0, ///< value <b>N/A</b>.
-            Enabled = 1, ///< value <b>ENABLED</b>.
-            Acquisition = 2, ///< value <b>ACQUISITION</b>.
-            Tracking = 3, ///< value <b>TRACKING</b>.
-            PowerOptTracking = 4, ///< value <b>POWER OPTIMIZED TRACKING</b>.
-            Inactive = 5, ///< value <b>INACTIVE</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavPvt_u8Fields::FlagsMembers::PsmState field.
+        using PsmStateVal = ublox::message::NavPvt_u8FieldsCommon::FlagsMembersCommon::PsmStateVal;
         
         /// @brief Definition of <b>"psmState"</b> field.
         /// @see @ref ublox::message::NavPvt_u8Fields::FlagsMembers::PsmStateVal
@@ -280,21 +440,7 @@ struct NavPvt_u8Fields
             /// @brief Retrieve name of the enum value
             static const char* valueName(PsmStateVal val)
             {
-                static const char* Map[] = {
-                    "N/A",
-                    "ENABLED",
-                    "ACQUISITION",
-                    "TRACKING",
-                    "POWER OPTIMIZED TRACKING",
-                    "INACTIVE"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::NavPvt_u8FieldsCommon::FlagsMembersCommon::PsmStateCommon::valueName(val);
             }
             
         };
@@ -332,30 +478,16 @@ struct NavPvt_u8Fields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "headVehValid"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::NavPvt_u8FieldsCommon::FlagsMembersCommon::MidBitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::NavPvt_u8Fields::FlagsMembers::CarrSoln field.
-        enum class CarrSolnVal : std::uint8_t
-        {
-            NoCarrier = 0, ///< value <b>No carrier</b>.
-            Float = 1, ///< value <b>Float solution</b>.
-            Fixed = 2, ///< value <b>Fixed solution</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavPvt_u8Fields::FlagsMembers::CarrSoln field.
+        using CarrSolnVal = ublox::message::NavPvt_u8FieldsCommon::FlagsMembersCommon::CarrSolnVal;
         
         /// @brief Definition of <b>"carrSoln"</b> field.
         /// @see @ref ublox::message::NavPvt_u8Fields::FlagsMembers::CarrSolnVal
@@ -376,18 +508,7 @@ struct NavPvt_u8Fields
             /// @brief Retrieve name of the enum value
             static const char* valueName(CarrSolnVal val)
             {
-                static const char* Map[] = {
-                    "No carrier",
-                    "Float solution",
-                    "Fixed solution"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::NavPvt_u8FieldsCommon::FlagsMembersCommon::CarrSolnCommon::valueName(val);
             }
             
         };
@@ -494,25 +615,9 @@ struct NavPvt_u8Fields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                nullptr,
-                nullptr,
-                nullptr,
-                nullptr,
-                nullptr,
-                "confirmedAvai",
-                "confirmedDate",
-                "confirmedTime"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::NavPvt_u8FieldsCommon::Flags2Common::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

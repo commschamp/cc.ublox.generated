@@ -24,6 +24,103 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref NavRelposnedFields.
+/// @see @ref NavRelposnedFields
+/// @headerfile "ublox/message/NavRelposned.h"
+struct NavRelposnedFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::NavRelposnedFields::Flags bitfield.
+    struct FlagsMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavRelposnedFields::FlagsMembers::BitsLow field.
+        struct BitsLowCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "gnssFixOK",
+                    "diffSoln",
+                    "relPosValid"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavRelposnedFields::FlagsMembers::CarrSoln field.
+        enum class CarrSolnVal : std::uint8_t
+        {
+            NoCarrier = 0, ///< value <b>No carrier</b>.
+            FloatSolution = 1, ///< value <b>Float solution</b>.
+            FixedSolution = 2, ///< value <b>Fixed solution</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 2, ///< Last defined value.
+            ValuesLimit = 3, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavRelposnedFields::FlagsMembers::CarrSoln field.
+        struct CarrSolnCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(CarrSolnVal val)
+            {
+                static const char* Map[] = {
+                    "No carrier",
+                    "Float solution",
+                    "Fixed solution"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavRelposnedFields::FlagsMembers::BitsHigh field.
+        struct BitsHighCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "isMoving",
+                    "refPosMiss",
+                    "refObsMiss"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref NavRelposned.
 /// @tparam TOpt Extra options
 /// @see @ref NavRelposned
@@ -290,32 +387,16 @@ struct NavRelposnedFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "gnssFixOK",
-                    "diffSoln",
-                    "relPosValid"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::NavRelposnedFieldsCommon::FlagsMembersCommon::BitsLowCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::NavRelposnedFields::FlagsMembers::CarrSoln field.
-        enum class CarrSolnVal : std::uint8_t
-        {
-            NoCarrier = 0, ///< value <b>No carrier</b>.
-            FloatSolution = 1, ///< value <b>Float solution</b>.
-            FixedSolution = 2, ///< value <b>Fixed solution</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavRelposnedFields::FlagsMembers::CarrSoln field.
+        using CarrSolnVal = ublox::message::NavRelposnedFieldsCommon::FlagsMembersCommon::CarrSolnVal;
         
         /// @brief Definition of <b>"carrSoln"</b> field.
         /// @see @ref ublox::message::NavRelposnedFields::FlagsMembers::CarrSolnVal
@@ -336,18 +417,7 @@ struct NavRelposnedFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(CarrSolnVal val)
             {
-                static const char* Map[] = {
-                    "No carrier",
-                    "Float solution",
-                    "Fixed solution"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::NavRelposnedFieldsCommon::FlagsMembersCommon::CarrSolnCommon::valueName(val);
             }
             
         };
@@ -391,20 +461,9 @@ struct NavRelposnedFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "isMoving",
-                    "refPosMiss",
-                    "refObsMiss"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::NavRelposnedFieldsCommon::FlagsMembersCommon::BitsHighCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };

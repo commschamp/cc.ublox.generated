@@ -22,6 +22,105 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgItfmFields.
+/// @see @ref CfgItfmFields
+/// @headerfile "ublox/message/CfgItfm.h"
+struct CfgItfmFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgItfmFields::Config bitfield.
+    struct ConfigMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgItfmFields::ConfigMembers::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "enable"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgItfmFields::Config2 bitfield.
+    struct Config2MembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgItfmFields::Config2Members::AntSetting field.
+        enum class AntSettingVal : std::uint8_t
+        {
+            Unknown = 0, ///< value @b Unknown
+            Passive = 1, ///< value @b Passive
+            Active = 2, ///< value @b Active
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 2, ///< Last defined value.
+            ValuesLimit = 3, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgItfmFields::Config2Members::AntSetting field.
+        struct AntSettingCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(AntSettingVal val)
+            {
+                static const char* Map[] = {
+                    "Unknown",
+                    "Passive",
+                    "Active"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgItfmFields::Config2Members::BitsHigh field.
+        struct BitsHighCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "enable2"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgItfm.
 /// @tparam TOpt Extra options
 /// @see @ref CfgItfm
@@ -115,18 +214,9 @@ struct CfgItfmFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "enable"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::CfgItfmFieldsCommon::ConfigMembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
@@ -200,14 +290,9 @@ struct CfgItfmFields
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::CfgItfmFields::Config2Members::AntSetting field.
-        enum class AntSettingVal : std::uint8_t
-        {
-            Unknown = 0, ///< value @b Unknown
-            Passive = 1, ///< value @b Passive
-            Active = 2, ///< value @b Active
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgItfmFields::Config2Members::AntSetting field.
+        using AntSettingVal = ublox::message::CfgItfmFieldsCommon::Config2MembersCommon::AntSettingVal;
         
         /// @brief Definition of <b>"antSetting"</b> field.
         /// @see @ref ublox::message::CfgItfmFields::Config2Members::AntSettingVal
@@ -228,18 +313,7 @@ struct CfgItfmFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(AntSettingVal val)
             {
-                static const char* Map[] = {
-                    "Unknown",
-                    "Passive",
-                    "Active"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::CfgItfmFieldsCommon::Config2MembersCommon::AntSettingCommon::valueName(val);
             }
             
         };
@@ -279,18 +353,9 @@ struct CfgItfmFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "enable2"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::CfgItfmFieldsCommon::Config2MembersCommon::BitsHighCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };

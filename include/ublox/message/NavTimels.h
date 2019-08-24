@@ -26,6 +26,136 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref NavTimelsFields.
+/// @see @ref NavTimelsFields
+/// @headerfile "ublox/message/NavTimels.h"
+struct NavTimelsFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::NavTimelsFields::SrcOfCurrLs field.
+    enum class SrcOfCurrLsVal : std::uint8_t
+    {
+        Default = 0, ///< value @b Default
+        Derived = 1, ///< value @b Derived
+        GPS = 2, ///< value @b GPS
+        SBAS = 3, ///< value @b SBAS
+        BeiDou = 4, ///< value @b BeiDou
+        Galileo = 5, ///< value @b Galileo
+        AidedData = 6, ///< value <b>Aided data</b>.
+        Configured = 7, ///< value @b Configured
+        Unknown = 255, ///< value @b Unknown
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 255, ///< Last defined value.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::NavTimelsFields::SrcOfCurrLs field.
+    struct SrcOfCurrLsCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(SrcOfCurrLsVal val)
+        {
+            using NameInfo = std::pair<SrcOfCurrLsVal, const char*>;
+            static const NameInfo Map[] = {
+                std::make_pair(SrcOfCurrLsVal::Default, "Default"),
+                std::make_pair(SrcOfCurrLsVal::Derived, "Derived"),
+                std::make_pair(SrcOfCurrLsVal::GPS, "GPS"),
+                std::make_pair(SrcOfCurrLsVal::SBAS, "SBAS"),
+                std::make_pair(SrcOfCurrLsVal::BeiDou, "BeiDou"),
+                std::make_pair(SrcOfCurrLsVal::Galileo, "Galileo"),
+                std::make_pair(SrcOfCurrLsVal::AidedData, "Aided data"),
+                std::make_pair(SrcOfCurrLsVal::Configured, "Configured"),
+                std::make_pair(SrcOfCurrLsVal::Unknown, "Unknown")
+            };
+            
+            auto iter = std::lower_bound(
+                std::begin(Map), std::end(Map), val,
+                [](const NameInfo& info, SrcOfCurrLsVal v) -> bool
+                {
+                    return info.first < v;
+                });
+            
+            if ((iter == std::end(Map)) || (iter->first != val)) {
+                return nullptr;
+            }
+            
+            return iter->second;
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::NavTimelsFields::SrcOfLsChange field.
+    enum class SrcOfLsChangeVal : std::uint8_t
+    {
+        NoSource = 0, ///< value <b>No source</b>.
+        GPS = 2, ///< value @b GPS
+        SBAS = 3, ///< value @b SBAS
+        BeiDou = 4, ///< value @b BeiDou
+        Galileo = 5, ///< value @b Galileo
+        GLONASS = 6, ///< value @b GLONASS
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 6, ///< Last defined value.
+        ValuesLimit = 7, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::NavTimelsFields::SrcOfLsChange field.
+    struct SrcOfLsChangeCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(SrcOfLsChangeVal val)
+        {
+            static const char* Map[] = {
+                "No source",
+                nullptr,
+                "GPS",
+                "SBAS",
+                "BeiDou",
+                "Galileo",
+                "GLONASS"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::NavTimelsFields::Valid field.
+    struct ValidCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "validCurrLs",
+                "validTimeToLsEvent"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref NavTimels.
 /// @tparam TOpt Extra options
 /// @see @ref NavTimels
@@ -69,20 +199,9 @@ struct NavTimelsFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::NavTimelsFields::SrcOfCurrLs field.
-    enum class SrcOfCurrLsVal : std::uint8_t
-    {
-        Default = 0, ///< value @b Default
-        Derived = 1, ///< value @b Derived
-        GPS = 2, ///< value @b GPS
-        SBAS = 3, ///< value @b SBAS
-        BeiDou = 4, ///< value @b BeiDou
-        Galileo = 5, ///< value @b Galileo
-        AidedData = 6, ///< value <b>Aided data</b>.
-        Configured = 7, ///< value @b Configured
-        Unknown = 255, ///< value @b Unknown
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::NavTimelsFields::SrcOfCurrLs field.
+    using SrcOfCurrLsVal = ublox::message::NavTimelsFieldsCommon::SrcOfCurrLsVal;
     
     /// @brief Definition of <b>"srcOfCurrLs"</b> field.
     /// @see @ref ublox::message::NavTimelsFields::SrcOfCurrLsVal
@@ -103,31 +222,7 @@ struct NavTimelsFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(SrcOfCurrLsVal val)
         {
-            using NameInfo = std::pair<SrcOfCurrLsVal, const char*>;
-            static const NameInfo Map[] = {
-                std::make_pair(SrcOfCurrLsVal::Default, "Default"),
-                std::make_pair(SrcOfCurrLsVal::Derived, "Derived"),
-                std::make_pair(SrcOfCurrLsVal::GPS, "GPS"),
-                std::make_pair(SrcOfCurrLsVal::SBAS, "SBAS"),
-                std::make_pair(SrcOfCurrLsVal::BeiDou, "BeiDou"),
-                std::make_pair(SrcOfCurrLsVal::Galileo, "Galileo"),
-                std::make_pair(SrcOfCurrLsVal::AidedData, "Aided data"),
-                std::make_pair(SrcOfCurrLsVal::Configured, "Configured"),
-                std::make_pair(SrcOfCurrLsVal::Unknown, "Unknown")
-            };
-            
-            auto iter = std::lower_bound(
-                std::begin(Map), std::end(Map), val,
-                [](const NameInfo& info, SrcOfCurrLsVal v) -> bool
-                {
-                    return info.first < v;
-                });
-            
-            if ((iter == std::end(Map)) || (iter->first != val)) {
-                return nullptr;
-            }
-            
-            return iter->second;
+            return ublox::message::NavTimelsFieldsCommon::SrcOfCurrLsCommon::valueName(val);
         }
         
     };
@@ -148,17 +243,9 @@ struct NavTimelsFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::NavTimelsFields::SrcOfLsChange field.
-    enum class SrcOfLsChangeVal : std::uint8_t
-    {
-        NoSource = 0, ///< value <b>No source</b>.
-        GPS = 2, ///< value @b GPS
-        SBAS = 3, ///< value @b SBAS
-        BeiDou = 4, ///< value @b BeiDou
-        Galileo = 5, ///< value @b Galileo
-        GLONASS = 6, ///< value @b GLONASS
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::NavTimelsFields::SrcOfLsChange field.
+    using SrcOfLsChangeVal = ublox::message::NavTimelsFieldsCommon::SrcOfLsChangeVal;
     
     /// @brief Definition of <b>"srcOfLsChange"</b> field.
     /// @see @ref ublox::message::NavTimelsFields::SrcOfLsChangeVal
@@ -179,22 +266,7 @@ struct NavTimelsFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(SrcOfLsChangeVal val)
         {
-            static const char* Map[] = {
-                "No source",
-                nullptr,
-                "GPS",
-                "SBAS",
-                "BeiDou",
-                "Galileo",
-                "GLONASS"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::NavTimelsFieldsCommon::SrcOfLsChangeCommon::valueName(val);
         }
         
     };
@@ -312,19 +384,9 @@ struct NavTimelsFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "validCurrLs",
-                "validTimeToLsEvent"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::NavTimelsFieldsCommon::ValidCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

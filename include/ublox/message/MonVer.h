@@ -57,7 +57,7 @@ struct MonVerFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
         /// @brief Definition of <b>"extension"</b> field.

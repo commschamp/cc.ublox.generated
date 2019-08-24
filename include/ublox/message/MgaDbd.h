@@ -26,7 +26,7 @@ namespace message
 template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaDbdFields
 {
-    /// @brief Scope for all the member fields of @ref Reserved1 list.
+    /// @brief Scope for all the member fields of ///     @ref Reserved1 list.
     struct Reserved1Members
     {
         /// @brief Definition of <b>""</b> field.

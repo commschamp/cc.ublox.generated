@@ -27,6 +27,234 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref NavSatFields.
+/// @see @ref NavSatFields
+/// @headerfile "ublox/message/NavSat.h"
+struct NavSatFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::NavSatFields::List list.
+    struct ListMembersCommon
+    {
+        /// @brief Scope for all the common definitions of the member fields of
+        ///     @ref ublox::message::NavSatFields::ListMembers::Element bundle.
+        struct ElementMembersCommon
+        {
+            /// @brief Scope for all the common definitions of the member fields of
+            ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::Flags bitfield.
+            struct FlagsMembersCommon
+            {
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::QualityInd field.
+                enum class QualityIndVal : std::uint8_t
+                {
+                    NoSignal = 0, ///< value <b>no signal</b>.
+                    Searching = 1, ///< value <b>searching</b>.
+                    Acquired = 2, ///< value <b>signal acquired</b>.
+                    Unusable = 3, ///< value <b>detected but unsable</b>.
+                    CodeLocked = 4, ///< value <b>code locked</b>.
+                    CodeCarrierLocked = 5, ///< value <b>code and carrier locked</b>.
+                    CodeCarrierLocked2 = 6, ///< value <b>code and carrier locked</b>.
+                    CodeCarrierLocked3 = 7, ///< value <b>code and carrier locked</b>.
+                    
+                    // --- Extra values generated for convenience ---
+                    FirstValue = 0, ///< First defined value.
+                    LastValue = 7, ///< Last defined value.
+                    ValuesLimit = 8, ///< Upper limit for defined values.
+                    
+                };
+                
+                /// @brief Common functions for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::QualityInd field.
+                struct QualityIndCommon
+                {
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(QualityIndVal val)
+                    {
+                        static const char* Map[] = {
+                            "no signal",
+                            "searching",
+                            "signal acquired",
+                            "detected but unsable",
+                            "code locked",
+                            "code and carrier locked",
+                            "code and carrier locked",
+                            "code and carrier locked"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
+                    }
+                    
+                };
+                
+                /// @brief Common functions for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::BitsLow field.
+                struct BitsLowCommon
+                {
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(std::size_t idx)
+                    {
+                        static const char* Map[] = {
+                            "svUsed"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        if (MapSize <= idx) {
+                            return nullptr;
+                        }
+                    
+                        return Map[idx];
+                    }
+                    
+                };
+                
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::Health field.
+                enum class HealthVal : std::uint8_t
+                {
+                    Unknown = 0, ///< value @b Unknown
+                    Healthy = 1, ///< value @b Healthy
+                    Unhealthy = 2, ///< value @b Unhealthy
+                    
+                    // --- Extra values generated for convenience ---
+                    FirstValue = 0, ///< First defined value.
+                    LastValue = 2, ///< Last defined value.
+                    ValuesLimit = 3, ///< Upper limit for defined values.
+                    
+                };
+                
+                /// @brief Common functions for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::Health field.
+                struct HealthCommon
+                {
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(HealthVal val)
+                    {
+                        static const char* Map[] = {
+                            "Unknown",
+                            "Healthy",
+                            "Unhealthy"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
+                    }
+                    
+                };
+                
+                /// @brief Common functions for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::BitsMid field.
+                struct BitsMidCommon
+                {
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(std::size_t idx)
+                    {
+                        static const char* Map[] = {
+                            "diffCorr",
+                            "smoothed"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        if (MapSize <= idx) {
+                            return nullptr;
+                        }
+                    
+                        return Map[idx];
+                    }
+                    
+                };
+                
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::OrbitSource field.
+                enum class OrbitSourceVal : std::uint8_t
+                {
+                    NoOrbit = 0, ///< value <b>No orbit</b>.
+                    Ephemeris = 1, ///< value @b Ephemeris
+                    Almanac = 2, ///< value @b Almanac
+                    AssistNowOffline = 3, ///< value <b>AssistNow Offline</b>.
+                    AssistNowAutonomous = 4, ///< value <b>AssistNow Autonomous</b>.
+                    
+                    // --- Extra values generated for convenience ---
+                    FirstValue = 0, ///< First defined value.
+                    LastValue = 4, ///< Last defined value.
+                    ValuesLimit = 5, ///< Upper limit for defined values.
+                    
+                };
+                
+                /// @brief Common functions for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::OrbitSource field.
+                struct OrbitSourceCommon
+                {
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(OrbitSourceVal val)
+                    {
+                        static const char* Map[] = {
+                            "No orbit",
+                            "Ephemeris",
+                            "Almanac",
+                            "AssistNow Offline",
+                            "AssistNow Autonomous"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
+                    }
+                    
+                };
+                
+                /// @brief Common functions for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::BitsHigh field.
+                struct BitsHighCommon
+                {
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(std::size_t idx)
+                    {
+                        static const char* Map[] = {
+                            "ephAvail",
+                            "almAvail",
+                            "anoAvail",
+                            "aopAvail",
+                            nullptr,
+                            "sbasCorrUsed",
+                            "rtcmCorrUsed",
+                            nullptr,
+                            nullptr,
+                            "prCorrUsed",
+                            "crCorrUsed",
+                            "doCorrUsed"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        if (MapSize <= idx) {
+                            return nullptr;
+                        }
+                    
+                        return Map[idx];
+                    }
+                    
+                };
+                
+            };
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref NavSat.
 /// @tparam TOpt Extra options
 /// @see @ref NavSat
@@ -86,10 +314,10 @@ struct NavSatFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
             /// @brief Definition of <b>"gnssId"</b> field.
@@ -182,19 +410,9 @@ struct NavSatFields
             /// @brief Scope for all the member fields of @ref Flags bitfield.
             struct FlagsMembers
             {
-                /// @brief Values enumerator for @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::QualityInd field.
-                enum class QualityIndVal : std::uint8_t
-                {
-                    NoSignal = 0, ///< value <b>no signal</b>.
-                    Searching = 1, ///< value <b>searching</b>.
-                    Acquired = 2, ///< value <b>signal acquired</b>.
-                    Unusable = 3, ///< value <b>detected but unsable</b>.
-                    CodeLocked = 4, ///< value <b>code locked</b>.
-                    CodeCarrierLocked = 5, ///< value <b>code and carrier locked</b>.
-                    CodeCarrierLocked2 = 6, ///< value <b>code and carrier locked</b>.
-                    CodeCarrierLocked3 = 7, ///< value <b>code and carrier locked</b>.
-                    
-                };
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::QualityInd field.
+                using QualityIndVal = ublox::message::NavSatFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::QualityIndVal;
                 
                 /// @brief Definition of <b>"qualityInd"</b> field.
                 /// @see @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::QualityIndVal
@@ -215,23 +433,7 @@ struct NavSatFields
                     /// @brief Retrieve name of the enum value
                     static const char* valueName(QualityIndVal val)
                     {
-                        static const char* Map[] = {
-                            "no signal",
-                            "searching",
-                            "signal acquired",
-                            "detected but unsable",
-                            "code locked",
-                            "code and carrier locked",
-                            "code and carrier locked",
-                            "code and carrier locked"
-                        };
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        
-                        if (MapSize <= static_cast<std::size_t>(val)) {
-                            return nullptr;
-                        }
-                        
-                        return Map[static_cast<std::size_t>(val)];
+                        return ublox::message::NavSatFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::QualityIndCommon::valueName(val);
                     }
                     
                 };
@@ -269,30 +471,16 @@ struct NavSatFields
                     /// @brief Retrieve name of the bit
                     static const char* bitName(BitIdx idx)
                     {
-                        static const char* Map[] = {
-                            "svUsed"
-                        };
-                    
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                    
-                        if (MapSize <= static_cast<std::size_t>(idx)) {
-                            return nullptr;
-                        }
-                    
-                        return Map[static_cast<std::size_t>(idx)];
+                        return
+                            ublox::message::NavSatFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::BitsLowCommon::bitName(
+                                static_cast<std::size_t>(idx));
                     }
                     
                 };
                 
-                /// @brief Values enumerator for @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::Health field.
-                enum class HealthVal : std::uint8_t
-                {
-                    Unknown = 0, ///< value @b Unknown
-                    Healthy = 1, ///< value @b Healthy
-                    Unhealthy = 2, ///< value @b Unhealthy
-                    
-                };
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::Health field.
+                using HealthVal = ublox::message::NavSatFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::HealthVal;
                 
                 /// @brief Definition of <b>"health"</b> field.
                 /// @see @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::HealthVal
@@ -313,18 +501,7 @@ struct NavSatFields
                     /// @brief Retrieve name of the enum value
                     static const char* valueName(HealthVal val)
                     {
-                        static const char* Map[] = {
-                            "Unknown",
-                            "Healthy",
-                            "Unhealthy"
-                        };
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        
-                        if (MapSize <= static_cast<std::size_t>(val)) {
-                            return nullptr;
-                        }
-                        
-                        return Map[static_cast<std::size_t>(val)];
+                        return ublox::message::NavSatFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::HealthCommon::valueName(val);
                     }
                     
                 };
@@ -364,33 +541,16 @@ struct NavSatFields
                     /// @brief Retrieve name of the bit
                     static const char* bitName(BitIdx idx)
                     {
-                        static const char* Map[] = {
-                            "diffCorr",
-                            "smoothed"
-                        };
-                    
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                    
-                        if (MapSize <= static_cast<std::size_t>(idx)) {
-                            return nullptr;
-                        }
-                    
-                        return Map[static_cast<std::size_t>(idx)];
+                        return
+                            ublox::message::NavSatFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::BitsMidCommon::bitName(
+                                static_cast<std::size_t>(idx));
                     }
                     
                 };
                 
-                /// @brief Values enumerator for @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::OrbitSource field.
-                enum class OrbitSourceVal : std::uint8_t
-                {
-                    NoOrbit = 0, ///< value <b>No orbit</b>.
-                    Ephemeris = 1, ///< value @b Ephemeris
-                    Almanac = 2, ///< value @b Almanac
-                    AssistNowOffline = 3, ///< value <b>AssistNow Offline</b>.
-                    AssistNowAutonomous = 4, ///< value <b>AssistNow Autonomous</b>.
-                    
-                };
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::OrbitSource field.
+                using OrbitSourceVal = ublox::message::NavSatFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::OrbitSourceVal;
                 
                 /// @brief Definition of <b>"orbitSource"</b> field.
                 /// @see @ref ublox::message::NavSatFields::ListMembers::ElementMembers::FlagsMembers::OrbitSourceVal
@@ -411,20 +571,7 @@ struct NavSatFields
                     /// @brief Retrieve name of the enum value
                     static const char* valueName(OrbitSourceVal val)
                     {
-                        static const char* Map[] = {
-                            "No orbit",
-                            "Ephemeris",
-                            "Almanac",
-                            "AssistNow Offline",
-                            "AssistNow Autonomous"
-                        };
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        
-                        if (MapSize <= static_cast<std::size_t>(val)) {
-                            return nullptr;
-                        }
-                        
-                        return Map[static_cast<std::size_t>(val)];
+                        return ublox::message::NavSatFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::OrbitSourceCommon::valueName(val);
                     }
                     
                 };
@@ -507,29 +654,9 @@ struct NavSatFields
                     /// @brief Retrieve name of the bit
                     static const char* bitName(BitIdx idx)
                     {
-                        static const char* Map[] = {
-                            "ephAvail",
-                            "almAvail",
-                            "anoAvail",
-                            "aopAvail",
-                            nullptr,
-                            "sbasCorrUsed",
-                            "rtcmCorrUsed",
-                            nullptr,
-                            nullptr,
-                            "prCorrUsed",
-                            "crCorrUsed",
-                            "doCorrUsed"
-                        };
-                    
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                    
-                        if (MapSize <= static_cast<std::size_t>(idx)) {
-                            return nullptr;
-                        }
-                    
-                        return Map[static_cast<std::size_t>(idx)];
+                        return
+                            ublox::message::NavSatFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::BitsHighCommon::bitName(
+                                static_cast<std::size_t>(idx));
                     }
                     
                 };

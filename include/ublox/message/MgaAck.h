@@ -21,6 +21,95 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref MgaAckFields.
+/// @see @ref MgaAckFields
+/// @headerfile "ublox/message/MgaAck.h"
+struct MgaAckFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MgaAckFields::Type field.
+    enum class TypeVal : std::uint8_t
+    {
+        NotUsed = 0, ///< value @b NotUsed
+        Accepted = 1, ///< value @b Accepted
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 1, ///< Last defined value.
+        ValuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::MgaAckFields::Type field.
+    struct TypeCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(TypeVal val)
+        {
+            static const char* Map[] = {
+                "NotUsed",
+                "Accepted"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MgaAckFields::InfoCode field.
+    enum class InfoCodeVal : std::uint8_t
+    {
+        Accepted = 0, ///< value @b Accepted
+        TimeNotKnown = 1, ///< value @b TimeNotKnown
+        BadVersion = 2, ///< value @b BadVersion
+        BadSize = 3, ///< value @b BadSize
+        StorageError = 4, ///< value @b StorageError
+        NotReady = 5, ///< value @b NotReady
+        UnknownType = 6, ///< value @b UnknownType
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 6, ///< Last defined value.
+        ValuesLimit = 7, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::MgaAckFields::InfoCode field.
+    struct InfoCodeCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(InfoCodeVal val)
+        {
+            static const char* Map[] = {
+                "Accepted",
+                "TimeNotKnown",
+                "BadVersion",
+                "BadSize",
+                "StorageError",
+                "NotReady",
+                "UnknownType"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref MgaAck.
 /// @tparam TOpt Extra options
 /// @see @ref MgaAck
@@ -28,13 +117,9 @@ namespace message
 template <typename TOpt = ublox::options::DefaultOptions>
 struct MgaAckFields
 {
-    /// @brief Values enumerator for @ref ublox::message::MgaAckFields::Type field.
-    enum class TypeVal : std::uint8_t
-    {
-        NotUsed = 0, ///< value @b NotUsed
-        Accepted = 1, ///< value @b Accepted
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MgaAckFields::Type field.
+    using TypeVal = ublox::message::MgaAckFieldsCommon::TypeVal;
     
     /// @brief Definition of <b>"type"</b> field.
     /// @see @ref ublox::message::MgaAckFields::TypeVal
@@ -54,17 +139,7 @@ struct MgaAckFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(TypeVal val)
         {
-            static const char* Map[] = {
-                "NotUsed",
-                "Accepted"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::MgaAckFieldsCommon::TypeCommon::valueName(val);
         }
         
     };
@@ -85,18 +160,9 @@ struct MgaAckFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::MgaAckFields::InfoCode field.
-    enum class InfoCodeVal : std::uint8_t
-    {
-        Accepted = 0, ///< value @b Accepted
-        TimeNotKnown = 1, ///< value @b TimeNotKnown
-        BadVersion = 2, ///< value @b BadVersion
-        BadSize = 3, ///< value @b BadSize
-        StorageError = 4, ///< value @b StorageError
-        NotReady = 5, ///< value @b NotReady
-        UnknownType = 6, ///< value @b UnknownType
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MgaAckFields::InfoCode field.
+    using InfoCodeVal = ublox::message::MgaAckFieldsCommon::InfoCodeVal;
     
     /// @brief Definition of <b>"infoCode"</b> field.
     /// @see @ref ublox::message::MgaAckFields::InfoCodeVal
@@ -116,22 +182,7 @@ struct MgaAckFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(InfoCodeVal val)
         {
-            static const char* Map[] = {
-                "Accepted",
-                "TimeNotKnown",
-                "BadVersion",
-                "BadSize",
-                "StorageError",
-                "NotReady",
-                "UnknownType"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::MgaAckFieldsCommon::InfoCodeCommon::valueName(val);
         }
         
     };

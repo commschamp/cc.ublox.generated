@@ -20,6 +20,35 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgRinvFields.
+/// @see @ref CfgRinvFields
+/// @headerfile "ublox/message/CfgRinv.h"
+struct CfgRinvFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgRinvFields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "dump",
+                "binary"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgRinv.
 /// @tparam TOpt Extra options
 /// @see @ref CfgRinv
@@ -64,19 +93,9 @@ struct CfgRinvFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "dump",
-                "binary"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgRinvFieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

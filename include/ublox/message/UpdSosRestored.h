@@ -21,6 +21,53 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref UpdSosRestoredFields.
+/// @see @ref UpdSosRestoredFields
+/// @headerfile "ublox/message/UpdSosRestored.h"
+struct UpdSosRestoredFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::UpdSosRestoredFields::Response field.
+    enum class ResponseVal : std::uint8_t
+    {
+        Unknown = 0, ///< value @b Unknown
+        Failed = 1, ///< value @b Failed
+        Restored = 2, ///< value @b Restored
+        NotRestored = 3, ///< value @b NotRestored
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 3, ///< Last defined value.
+        ValuesLimit = 4, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::UpdSosRestoredFields::Response field.
+    struct ResponseCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(ResponseVal val)
+        {
+            static const char* Map[] = {
+                "Unknown",
+                "Failed",
+                "Restored",
+                "NotRestored"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref UpdSosRestored.
 /// @tparam TOpt Extra options
 /// @see @ref UpdSosRestored
@@ -60,15 +107,9 @@ struct UpdSosRestoredFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::UpdSosRestoredFields::Response field.
-    enum class ResponseVal : std::uint8_t
-    {
-        Unknown = 0, ///< value @b Unknown
-        Failed = 1, ///< value @b Failed
-        Restored = 2, ///< value @b Restored
-        NotRestored = 3, ///< value @b NotRestored
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::UpdSosRestoredFields::Response field.
+    using ResponseVal = ublox::message::UpdSosRestoredFieldsCommon::ResponseVal;
     
     /// @brief Definition of <b>"response"</b> field.
     /// @see @ref ublox::message::UpdSosRestoredFields::ResponseVal
@@ -88,19 +129,7 @@ struct UpdSosRestoredFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(ResponseVal val)
         {
-            static const char* Map[] = {
-                "Unknown",
-                "Failed",
-                "Restored",
-                "NotRestored"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::UpdSosRestoredFieldsCommon::ResponseCommon::valueName(val);
         }
         
     };

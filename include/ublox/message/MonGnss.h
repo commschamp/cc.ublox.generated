@@ -21,6 +21,85 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref MonGnssFields.
+/// @see @ref MonGnssFields
+/// @headerfile "ublox/message/MonGnss.h"
+struct MonGnssFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::MonGnssFields::Supported field.
+    struct SupportedCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "GPSSup",
+                "GlonassSup",
+                "BeidouSup",
+                "GalileoSup"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::MonGnssFields::DefaultGnss field.
+    struct DefaultGnssCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "GPSDef",
+                "GlonassDef",
+                "BeidouDef",
+                "GalileoDef"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::MonGnssFields::Enabled field.
+    struct EnabledCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "GPSEna",
+                "GlonassEna",
+                "BeidouEna",
+                "GalileoEna"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref MonGnss.
 /// @tparam TOpt Extra options
 /// @see @ref MonGnss
@@ -86,21 +165,9 @@ struct MonGnssFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "GPSSup",
-                "GlonassSup",
-                "BeidouSup",
-                "GalileoSup"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::MonGnssFieldsCommon::SupportedCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -146,21 +213,9 @@ struct MonGnssFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "GPSDef",
-                "GlonassDef",
-                "BeidouDef",
-                "GalileoDef"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::MonGnssFieldsCommon::DefaultGnssCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -206,21 +261,9 @@ struct MonGnssFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "GPSEna",
-                "GlonassEna",
-                "BeidouEna",
-                "GalileoEna"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::MonGnssFieldsCommon::EnabledCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

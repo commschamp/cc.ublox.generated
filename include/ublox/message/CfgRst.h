@@ -21,6 +21,97 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgRstFields.
+/// @see @ref CfgRstFields
+/// @headerfile "ublox/message/CfgRst.h"
+struct CfgRstFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgRstFields::NavBbrMask field.
+    struct NavBbrMaskCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "eph",
+                "alm",
+                "health",
+                "klob",
+                "pos",
+                "clkd",
+                "osc",
+                "utc",
+                "rtc",
+                nullptr,
+                nullptr,
+                nullptr,
+                nullptr,
+                nullptr,
+                nullptr,
+                "aop"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgRstFields::ResetMode field.
+    enum class ResetModeVal : std::uint8_t
+    {
+        Hardware = 0, ///< value @b Hardware
+        Software = 1, ///< value @b Software
+        SoftwareGnssOnly = 2, ///< value <b>Software (GNSS only)</b>.
+        HardwareAfterShutdown = 4, ///< value <b>Hardware (after shutdown)</b>.
+        GnssStop = 8, ///< value <b>GNSS stop</b>.
+        GnssStart = 9, ///< value <b>GNSS start</b>.
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 9, ///< Last defined value.
+        ValuesLimit = 10, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgRstFields::ResetMode field.
+    struct ResetModeCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(ResetModeVal val)
+        {
+            static const char* Map[] = {
+                "Hardware",
+                "Software",
+                "Software (GNSS only)",
+                nullptr,
+                "Hardware (after shutdown)",
+                nullptr,
+                nullptr,
+                nullptr,
+                "GNSS stop",
+                "GNSS start"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgRst.
 /// @tparam TOpt Extra options
 /// @see @ref CfgRst
@@ -110,48 +201,16 @@ struct CfgRstFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "eph",
-                "alm",
-                "health",
-                "klob",
-                "pos",
-                "clkd",
-                "osc",
-                "utc",
-                "rtc",
-                nullptr,
-                nullptr,
-                nullptr,
-                nullptr,
-                nullptr,
-                nullptr,
-                "aop"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgRstFieldsCommon::NavBbrMaskCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgRstFields::ResetMode field.
-    enum class ResetModeVal : std::uint8_t
-    {
-        Hardware = 0, ///< value @b Hardware
-        Software = 1, ///< value @b Software
-        SoftwareGnssOnly = 2, ///< value <b>Software (GNSS only)</b>.
-        HardwareAfterShutdown = 4, ///< value <b>Hardware (after shutdown)</b>.
-        GnssStop = 8, ///< value <b>GNSS stop</b>.
-        GnssStart = 9, ///< value <b>GNSS start</b>.
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgRstFields::ResetMode field.
+    using ResetModeVal = ublox::message::CfgRstFieldsCommon::ResetModeVal;
     
     /// @brief Definition of <b>"resetMode"</b> field.
     /// @see @ref ublox::message::CfgRstFields::ResetModeVal
@@ -173,25 +232,7 @@ struct CfgRstFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(ResetModeVal val)
         {
-            static const char* Map[] = {
-                "Hardware",
-                "Software",
-                "Software (GNSS only)",
-                nullptr,
-                "Hardware (after shutdown)",
-                nullptr,
-                nullptr,
-                nullptr,
-                "GNSS stop",
-                "GNSS start"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgRstFieldsCommon::ResetModeCommon::valueName(val);
         }
         
     };

@@ -30,6 +30,79 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref MgaIniTimeUtcFields.
+/// @see @ref MgaIniTimeUtcFields
+/// @headerfile "ublox/message/MgaIniTimeUtc.h"
+struct MgaIniTimeUtcFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::MgaIniTimeUtcFields::Ref bitfield.
+    struct RefMembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::MgaIniTimeUtcFields::RefMembers::Source field.
+        enum class SourceVal : std::uint8_t
+        {
+            None = 0, ///< value @b None
+            EXTINT0 = 1, ///< value @b EXTINT0
+            EXTINT1 = 2, ///< value @b EXTINT1
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 2, ///< Last defined value.
+            ValuesLimit = 3, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::MgaIniTimeUtcFields::RefMembers::Source field.
+        struct SourceCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(SourceVal val)
+            {
+                static const char* Map[] = {
+                    "None",
+                    "EXTINT0",
+                    "EXTINT1"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::MgaIniTimeUtcFields::RefMembers::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "fall",
+                    "last"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref MgaIniTimeUtc.
 /// @tparam TOpt Extra options
 /// @see @ref MgaIniTimeUtc
@@ -74,14 +147,9 @@ struct MgaIniTimeUtcFields
     /// @brief Scope for all the member fields of @ref Ref bitfield.
     struct RefMembers
     {
-        /// @brief Values enumerator for @ref ublox::message::MgaIniTimeUtcFields::RefMembers::Source field.
-        enum class SourceVal : std::uint8_t
-        {
-            None = 0, ///< value @b None
-            EXTINT0 = 1, ///< value @b EXTINT0
-            EXTINT1 = 2, ///< value @b EXTINT1
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::MgaIniTimeUtcFields::RefMembers::Source field.
+        using SourceVal = ublox::message::MgaIniTimeUtcFieldsCommon::RefMembersCommon::SourceVal;
         
         /// @brief Definition of <b>"source"</b> field.
         /// @see @ref ublox::message::MgaIniTimeUtcFields::RefMembers::SourceVal
@@ -102,18 +170,7 @@ struct MgaIniTimeUtcFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(SourceVal val)
             {
-                static const char* Map[] = {
-                    "None",
-                    "EXTINT0",
-                    "EXTINT1"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::MgaIniTimeUtcFieldsCommon::RefMembersCommon::SourceCommon::valueName(val);
             }
             
         };
@@ -155,19 +212,9 @@ struct MgaIniTimeUtcFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "fall",
-                    "last"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::MgaIniTimeUtcFieldsCommon::RefMembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };

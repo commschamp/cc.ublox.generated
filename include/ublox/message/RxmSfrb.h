@@ -56,7 +56,7 @@ struct RxmSfrbFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref Dwrd list.
+    /// @brief Scope for all the member fields of ///     @ref Dwrd list.
     struct DwrdMembers
     {
         /// @brief Definition of <b>"element"</b> field.

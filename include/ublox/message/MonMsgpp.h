@@ -129,7 +129,7 @@ struct MonMsgppFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref Skipped list.
+    /// @brief Scope for all the member fields of ///     @ref Skipped list.
     struct SkippedMembers
     {
         /// @brief Definition of <b>""</b> field.

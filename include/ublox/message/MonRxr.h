@@ -18,6 +18,34 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref MonRxrFields.
+/// @see @ref MonRxrFields
+/// @headerfile "ublox/message/MonRxr.h"
+struct MonRxrFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::MonRxrFields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "awake"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref MonRxr.
 /// @tparam TOpt Extra options
 /// @see @ref MonRxr
@@ -60,18 +88,9 @@ struct MonRxrFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "awake"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::MonRxrFieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

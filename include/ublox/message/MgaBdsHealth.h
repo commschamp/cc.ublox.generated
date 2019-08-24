@@ -76,7 +76,7 @@ struct MgaBdsHealthFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref HealthCode list.
+    /// @brief Scope for all the member fields of ///     @ref HealthCode list.
     struct HealthCodeMembers
     {
         /// @brief Definition of <b>""</b> field.

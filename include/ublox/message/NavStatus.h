@@ -24,6 +24,190 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref NavStatusFields.
+/// @see @ref NavStatusFields
+/// @headerfile "ublox/message/NavStatus.h"
+struct NavStatusFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::NavStatusFields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "gpsFixOk",
+                "diffSoln",
+                "wknSet",
+                "towSet"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::NavStatusFields::FixStat bitfield.
+    struct FixStatMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavStatusFields::FixStatMembers::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "diffCorr"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavStatusFields::FixStatMembers::MapMatching field.
+        enum class MapMatchingVal : std::uint8_t
+        {
+            None = 0, ///< value <b>none</b>.
+            NotUsed = 1, ///< value <b>not used</b>.
+            Used = 2, ///< value <b>used</b>.
+            UsedDeadReckon = 3, ///< value <b>used + dead reckon</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 3, ///< Last defined value.
+            ValuesLimit = 4, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavStatusFields::FixStatMembers::MapMatching field.
+        struct MapMatchingCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(MapMatchingVal val)
+            {
+                static const char* Map[] = {
+                    "none",
+                    "not used",
+                    "used",
+                    "used + dead reckon"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::NavStatusFields::Flags2 bitfield.
+    struct Flags2MembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavStatusFields::Flags2Members::PsmState field.
+        enum class PsmStateVal : std::uint8_t
+        {
+            Acquisition = 0, ///< value <b>ACQUISITION</b>.
+            Tracking = 1, ///< value <b>TRAKING</b>.
+            PowerOptimizedTracking = 2, ///< value <b>POWER OPTIMIZED TRACKING</b>.
+            Inactive = 3, ///< value <b>INACTIVE</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 3, ///< Last defined value.
+            ValuesLimit = 4, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavStatusFields::Flags2Members::PsmState field.
+        struct PsmStateCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(PsmStateVal val)
+            {
+                static const char* Map[] = {
+                    "ACQUISITION",
+                    "TRAKING",
+                    "POWER OPTIMIZED TRACKING",
+                    "INACTIVE"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavStatusFields::Flags2Members::SpoofDetState field.
+        enum class SpoofDetStateVal : std::uint8_t
+        {
+            Unknown = 0, ///< value @b Unknown
+            NoSpoofing = 1, ///< value <b>No spoofing</b>.
+            Spoofing = 2, ///< value @b Spoofing
+            MultipleSpoofing = 3, ///< value <b>Multiple spoofing</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 3, ///< Last defined value.
+            ValuesLimit = 4, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavStatusFields::Flags2Members::SpoofDetState field.
+        struct SpoofDetStateCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(SpoofDetStateVal val)
+            {
+                static const char* Map[] = {
+                    "Unknown",
+                    "No spoofing",
+                    "Spoofing",
+                    "Multiple spoofing"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref NavStatus.
 /// @tparam TOpt Extra options
 /// @see @ref NavStatus
@@ -84,21 +268,9 @@ struct NavStatusFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "gpsFixOk",
-                "diffSoln",
-                "wknSet",
-                "towSet"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::NavStatusFieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -141,31 +313,16 @@ struct NavStatusFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "diffCorr"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::NavStatusFieldsCommon::FixStatMembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::NavStatusFields::FixStatMembers::MapMatching field.
-        enum class MapMatchingVal : std::uint8_t
-        {
-            None = 0, ///< value <b>none</b>.
-            NotUsed = 1, ///< value <b>not used</b>.
-            Used = 2, ///< value <b>used</b>.
-            UsedDeadReckon = 3, ///< value <b>used + dead reckon</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavStatusFields::FixStatMembers::MapMatching field.
+        using MapMatchingVal = ublox::message::NavStatusFieldsCommon::FixStatMembersCommon::MapMatchingVal;
         
         /// @brief Definition of <b>"mapMatching"</b> field.
         /// @see @ref ublox::message::NavStatusFields::FixStatMembers::MapMatchingVal
@@ -186,19 +343,7 @@ struct NavStatusFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(MapMatchingVal val)
             {
-                static const char* Map[] = {
-                    "none",
-                    "not used",
-                    "used",
-                    "used + dead reckon"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::NavStatusFieldsCommon::FixStatMembersCommon::MapMatchingCommon::valueName(val);
             }
             
         };
@@ -248,15 +393,9 @@ struct NavStatusFields
     /// @brief Scope for all the member fields of @ref Flags2 bitfield.
     struct Flags2Members
     {
-        /// @brief Values enumerator for @ref ublox::message::NavStatusFields::Flags2Members::PsmState field.
-        enum class PsmStateVal : std::uint8_t
-        {
-            Acquisition = 0, ///< value <b>ACQUISITION</b>.
-            Tracking = 1, ///< value <b>TRAKING</b>.
-            PowerOptimizedTracking = 2, ///< value <b>POWER OPTIMIZED TRACKING</b>.
-            Inactive = 3, ///< value <b>INACTIVE</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavStatusFields::Flags2Members::PsmState field.
+        using PsmStateVal = ublox::message::NavStatusFieldsCommon::Flags2MembersCommon::PsmStateVal;
         
         /// @brief Definition of <b>"psmState"</b> field.
         /// @see @ref ublox::message::NavStatusFields::Flags2Members::PsmStateVal
@@ -277,19 +416,7 @@ struct NavStatusFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(PsmStateVal val)
             {
-                static const char* Map[] = {
-                    "ACQUISITION",
-                    "TRAKING",
-                    "POWER OPTIMIZED TRACKING",
-                    "INACTIVE"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::NavStatusFieldsCommon::Flags2MembersCommon::PsmStateCommon::valueName(val);
             }
             
         };
@@ -313,15 +440,9 @@ struct NavStatusFields
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::NavStatusFields::Flags2Members::SpoofDetState field.
-        enum class SpoofDetStateVal : std::uint8_t
-        {
-            Unknown = 0, ///< value @b Unknown
-            NoSpoofing = 1, ///< value <b>No spoofing</b>.
-            Spoofing = 2, ///< value @b Spoofing
-            MultipleSpoofing = 3, ///< value <b>Multiple spoofing</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavStatusFields::Flags2Members::SpoofDetState field.
+        using SpoofDetStateVal = ublox::message::NavStatusFieldsCommon::Flags2MembersCommon::SpoofDetStateVal;
         
         /// @brief Definition of <b>"spoofDetState"</b> field.
         /// @see @ref ublox::message::NavStatusFields::Flags2Members::SpoofDetStateVal
@@ -342,19 +463,7 @@ struct NavStatusFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(SpoofDetStateVal val)
             {
-                static const char* Map[] = {
-                    "Unknown",
-                    "No spoofing",
-                    "Spoofing",
-                    "Multiple spoofing"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::NavStatusFieldsCommon::Flags2MembersCommon::SpoofDetStateCommon::valueName(val);
             }
             
         };

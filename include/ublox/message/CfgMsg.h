@@ -33,7 +33,7 @@ struct CfgMsgFields
             TOpt
         >;
     
-    /// @brief Scope for all the member fields of @ref Rates list.
+    /// @brief Scope for all the member fields of ///     @ref Rates list.
     struct RatesMembers
     {
         /// @brief Definition of <b>"element"</b> field.

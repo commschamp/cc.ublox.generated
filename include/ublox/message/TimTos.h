@@ -30,6 +30,158 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref TimTosFields.
+/// @see @ref TimTosFields
+/// @headerfile "ublox/message/TimTos.h"
+struct TimTosFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::TimTosFields::Flags bitfield.
+    struct FlagsMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::TimTosFields::FlagsMembers::BitsLow field.
+        struct BitsLowCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "leapNow",
+                    "leapSoon",
+                    "leapPositive",
+                    "timeInLimit",
+                    "intOscInLimit",
+                    "extOscInLimit",
+                    "gnssTimeValid",
+                    "UTCTimeValid"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::TimTosFields::FlagsMembers::DiscSrc field.
+        enum class DiscSrcVal : std::uint8_t
+        {
+            Internal = 0, ///< value @b Internal
+            GNSS = 1, ///< value @b GNSS
+            EXTINT0 = 2, ///< value @b EXTINT0
+            EXTINT1 = 3, ///< value @b EXTINT1
+            HostInternal = 4, ///< value @b HostInternal
+            HostExternal = 5, ///< value @b HostExternal
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 5, ///< Last defined value.
+            ValuesLimit = 6, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::TimTosFields::FlagsMembers::DiscSrc field.
+        struct DiscSrcCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(DiscSrcVal val)
+            {
+                static const char* Map[] = {
+                    "Internal",
+                    "GNSS",
+                    "EXTINT0",
+                    "EXTINT1",
+                    "HostInternal",
+                    "HostExternal"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::TimTosFields::FlagsMembers::BitsHigh field.
+        struct BitsHighCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "raim",
+                    "cohPulse",
+                    "lockedPulse"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::TimTosFields::UtcStandard field.
+    enum class UtcStandardVal : std::uint8_t
+    {
+        Unknown = 0, ///< value @b Unknown
+        USNO = 3, ///< value @b USNO
+        SU = 6, ///< value @b SU
+        NTSC = 7, ///< value @b NTSC
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 7, ///< Last defined value.
+        ValuesLimit = 8, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::TimTosFields::UtcStandard field.
+    struct UtcStandardCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(UtcStandardVal val)
+        {
+            static const char* Map[] = {
+                "Unknown",
+                nullptr,
+                nullptr,
+                "USNO",
+                nullptr,
+                nullptr,
+                "SU",
+                "NTSC"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref TimTos.
 /// @tparam TOpt Extra options
 /// @see @ref TimTos
@@ -123,40 +275,16 @@ struct TimTosFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "leapNow",
-                    "leapSoon",
-                    "leapPositive",
-                    "timeInLimit",
-                    "intOscInLimit",
-                    "extOscInLimit",
-                    "gnssTimeValid",
-                    "UTCTimeValid"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::TimTosFieldsCommon::FlagsMembersCommon::BitsLowCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::TimTosFields::FlagsMembers::DiscSrc field.
-        enum class DiscSrcVal : std::uint8_t
-        {
-            Internal = 0, ///< value @b Internal
-            GNSS = 1, ///< value @b GNSS
-            EXTINT0 = 2, ///< value @b EXTINT0
-            EXTINT1 = 3, ///< value @b EXTINT1
-            HostInternal = 4, ///< value @b HostInternal
-            HostExternal = 5, ///< value @b HostExternal
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::TimTosFields::FlagsMembers::DiscSrc field.
+        using DiscSrcVal = ublox::message::TimTosFieldsCommon::FlagsMembersCommon::DiscSrcVal;
         
         /// @brief Definition of <b>"DiscSrc"</b> field.
         /// @see @ref ublox::message::TimTosFields::FlagsMembers::DiscSrcVal
@@ -177,21 +305,7 @@ struct TimTosFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(DiscSrcVal val)
             {
-                static const char* Map[] = {
-                    "Internal",
-                    "GNSS",
-                    "EXTINT0",
-                    "EXTINT1",
-                    "HostInternal",
-                    "HostExternal"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::TimTosFieldsCommon::FlagsMembersCommon::DiscSrcCommon::valueName(val);
             }
             
         };
@@ -235,20 +349,9 @@ struct TimTosFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "raim",
-                    "cohPulse",
-                    "lockedPulse"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::TimTosFieldsCommon::FlagsMembersCommon::BitsHighCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
@@ -334,15 +437,9 @@ struct TimTosFields
             TOpt
         >;
     
-    /// @brief Values enumerator for @ref ublox::message::TimTosFields::UtcStandard field.
-    enum class UtcStandardVal : std::uint8_t
-    {
-        Unknown = 0, ///< value @b Unknown
-        USNO = 3, ///< value @b USNO
-        SU = 6, ///< value @b SU
-        NTSC = 7, ///< value @b NTSC
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::TimTosFields::UtcStandard field.
+    using UtcStandardVal = ublox::message::TimTosFieldsCommon::UtcStandardVal;
     
     /// @brief Definition of <b>"utcStandard"</b> field.
     /// @see @ref ublox::message::TimTosFields::UtcStandardVal
@@ -364,23 +461,7 @@ struct TimTosFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(UtcStandardVal val)
         {
-            static const char* Map[] = {
-                "Unknown",
-                nullptr,
-                nullptr,
-                "USNO",
-                nullptr,
-                nullptr,
-                "SU",
-                "NTSC"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::TimTosFieldsCommon::UtcStandardCommon::valueName(val);
         }
         
     };

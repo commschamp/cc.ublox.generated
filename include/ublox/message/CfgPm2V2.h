@@ -177,7 +177,7 @@ struct CfgPm2V2Fields
         
     };
     
-    /// @brief Scope for all the member fields of @ref Reserved3 list.
+    /// @brief Scope for all the member fields of ///     @ref Reserved3 list.
     struct Reserved3Members
     {
         /// @brief Definition of <b>""</b> field.

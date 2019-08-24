@@ -19,6 +19,34 @@ namespace ublox
 namespace field
 {
 
+/// @brief Scope for all the common definitions of the member fields of
+///     @ref ublox::field::CfgPrtTxReady bitfield.
+struct CfgPrtTxReadyMembersCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::field::CfgPrtTxReadyMembers::Bits field.
+    struct BitsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "en",
+                "pol"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Scope for all the member fields of @ref CfgPrtTxReady bitfield.
 /// @tparam TOpt Protocol options.
 template <typename TOpt = ublox::options::DefaultOptions>
@@ -59,19 +87,9 @@ struct CfgPrtTxReadyMembers
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "en",
-                "pol"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::field::CfgPrtTxReadyMembersCommon::BitsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

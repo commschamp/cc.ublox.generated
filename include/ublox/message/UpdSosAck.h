@@ -21,6 +21,49 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref UpdSosAckFields.
+/// @see @ref UpdSosAckFields
+/// @headerfile "ublox/message/UpdSosAck.h"
+struct UpdSosAckFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::UpdSosAckFields::Response field.
+    enum class ResponseVal : std::uint8_t
+    {
+        NotAcknowledged = 0, ///< value @b NotAcknowledged
+        Acknowledged = 1, ///< value @b Acknowledged
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 1, ///< Last defined value.
+        ValuesLimit = 2, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::UpdSosAckFields::Response field.
+    struct ResponseCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(ResponseVal val)
+        {
+            static const char* Map[] = {
+                "NotAcknowledged",
+                "Acknowledged"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref UpdSosAck.
 /// @tparam TOpt Extra options
 /// @see @ref UpdSosAck
@@ -60,13 +103,9 @@ struct UpdSosAckFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::UpdSosAckFields::Response field.
-    enum class ResponseVal : std::uint8_t
-    {
-        NotAcknowledged = 0, ///< value @b NotAcknowledged
-        Acknowledged = 1, ///< value @b Acknowledged
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::UpdSosAckFields::Response field.
+    using ResponseVal = ublox::message::UpdSosAckFieldsCommon::ResponseVal;
     
     /// @brief Definition of <b>"response"</b> field.
     /// @see @ref ublox::message::UpdSosAckFields::ResponseVal
@@ -86,17 +125,7 @@ struct UpdSosAckFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(ResponseVal val)
         {
-            static const char* Map[] = {
-                "NotAcknowledged",
-                "Acknowledged"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::UpdSosAckFieldsCommon::ResponseCommon::valueName(val);
         }
         
     };

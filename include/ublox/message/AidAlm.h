@@ -61,7 +61,7 @@ struct AidAlmFields
     /// @brief Scope for all the member fields of @ref Dwrd optional.
     struct DwrdMembers
     {
-        /// @brief Scope for all the member fields of @ref List list.
+        /// @brief Scope for all the member fields of ///     @ref List list.
         struct ListMembers
         {
             /// @brief Definition of <b>"element"</b> field.

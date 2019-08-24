@@ -16,11 +16,39 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref ublox::field::CfgNmeaGsvTalkerId field.
+/// @brief Values enumerator for
+///     @ref ublox::field::CfgNmeaGsvTalkerId field.
 enum class CfgNmeaGsvTalkerIdVal : std::uint8_t
 {
     GnssSpecific = 0, ///< value <b>GNSS Specific</b>.
     Main = 1, ///< value @b Main
+    
+    // --- Extra values generated for convenience ---
+    FirstValue = 0, ///< First defined value.
+    LastValue = 1, ///< Last defined value.
+    ValuesLimit = 2, ///< Upper limit for defined values.
+    
+};
+
+/// @brief Common functions for
+///     @ref ublox::field::CfgNmeaGsvTalkerId field.
+struct CfgNmeaGsvTalkerIdCommon
+{
+    /// @brief Retrieve name of the enum value
+    static const char* valueName(CfgNmeaGsvTalkerIdVal val)
+    {
+        static const char* Map[] = {
+            "GNSS Specific",
+            "Main"
+        };
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        
+        if (MapSize <= static_cast<std::size_t>(val)) {
+            return nullptr;
+        }
+        
+        return Map[static_cast<std::size_t>(val)];
+    }
     
 };
 
@@ -46,17 +74,7 @@ struct CfgNmeaGsvTalkerId : public
     /// @brief Retrieve name of the enum value
     static const char* valueName(CfgNmeaGsvTalkerIdVal val)
     {
-        static const char* Map[] = {
-            "GNSS Specific",
-            "Main"
-        };
-        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-        
-        if (MapSize <= static_cast<std::size_t>(val)) {
-            return nullptr;
-        }
-        
-        return Map[static_cast<std::size_t>(val)];
+        return ublox::field::CfgNmeaGsvTalkerIdCommon::valueName(val);
     }
     
 };

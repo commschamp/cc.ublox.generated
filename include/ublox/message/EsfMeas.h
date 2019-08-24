@@ -24,6 +24,79 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref EsfMeasFields.
+/// @see @ref EsfMeasFields
+/// @headerfile "ublox/message/EsfMeas.h"
+struct EsfMeasFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::EsfMeasFields::Flags bitfield.
+    struct FlagsMembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::EsfMeasFields::FlagsMembers::TimeMarkSent field.
+        enum class TimeMarkSentVal : std::uint8_t
+        {
+            None = 0, ///< value @b None
+            Ext0 = 1, ///< value @b Ext0
+            Ext1 = 2, ///< value @b Ext1
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 2, ///< Last defined value.
+            ValuesLimit = 3, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::EsfMeasFields::FlagsMembers::TimeMarkSent field.
+        struct TimeMarkSentCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(TimeMarkSentVal val)
+            {
+                static const char* Map[] = {
+                    "None",
+                    "Ext0",
+                    "Ext1"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::EsfMeasFields::FlagsMembers::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "timeMarkEdge",
+                    "calibTtagValid"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref EsfMeas.
 /// @tparam TOpt Extra options
 /// @see @ref EsfMeas
@@ -49,14 +122,9 @@ struct EsfMeasFields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref ublox::message::EsfMeasFields::FlagsMembers::TimeMarkSent field.
-        enum class TimeMarkSentVal : std::uint8_t
-        {
-            None = 0, ///< value @b None
-            Ext0 = 1, ///< value @b Ext0
-            Ext1 = 2, ///< value @b Ext1
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::EsfMeasFields::FlagsMembers::TimeMarkSent field.
+        using TimeMarkSentVal = ublox::message::EsfMeasFieldsCommon::FlagsMembersCommon::TimeMarkSentVal;
         
         /// @brief Definition of <b>"timeMarkSent"</b> field.
         /// @see @ref ublox::message::EsfMeasFields::FlagsMembers::TimeMarkSentVal
@@ -77,18 +145,7 @@ struct EsfMeasFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(TimeMarkSentVal val)
             {
-                static const char* Map[] = {
-                    "None",
-                    "Ext0",
-                    "Ext1"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::EsfMeasFieldsCommon::FlagsMembersCommon::TimeMarkSentCommon::valueName(val);
             }
             
         };
@@ -130,19 +187,9 @@ struct EsfMeasFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "timeMarkEdge",
-                    "calibTtagValid"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::EsfMeasFieldsCommon::FlagsMembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
@@ -204,7 +251,7 @@ struct EsfMeasFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
         /// @brief Scope for all the member fields of @ref Element bitfield.

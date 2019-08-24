@@ -25,6 +25,52 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgGnssFields.
+/// @see @ref CfgGnssFields
+/// @headerfile "ublox/message/CfgGnss.h"
+struct CfgGnssFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgGnssFields::List list.
+    struct ListMembersCommon
+    {
+        /// @brief Scope for all the common definitions of the member fields of
+        ///     @ref ublox::message::CfgGnssFields::ListMembers::Element bundle.
+        struct ElementMembersCommon
+        {
+            /// @brief Scope for all the common definitions of the member fields of
+            ///     @ref ublox::message::CfgGnssFields::ListMembers::ElementMembers::Flags bitfield.
+            struct FlagsMembersCommon
+            {
+                /// @brief Common functions for
+                ///     @ref ublox::message::CfgGnssFields::ListMembers::ElementMembers::FlagsMembers::BitsLow field.
+                struct BitsLowCommon
+                {
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(std::size_t idx)
+                    {
+                        static const char* Map[] = {
+                            "enable"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        if (MapSize <= idx) {
+                            return nullptr;
+                        }
+                    
+                        return Map[idx];
+                    }
+                    
+                };
+                
+            };
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgGnss.
 /// @tparam TOpt Extra options
 /// @see @ref CfgGnss
@@ -93,10 +139,10 @@ struct CfgGnssFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
             /// @brief Definition of <b>"gnssId"</b> field.
@@ -187,18 +233,9 @@ struct CfgGnssFields
                     /// @brief Retrieve name of the bit
                     static const char* bitName(BitIdx idx)
                     {
-                        static const char* Map[] = {
-                            "enable"
-                        };
-                    
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                    
-                        if (MapSize <= static_cast<std::size_t>(idx)) {
-                            return nullptr;
-                        }
-                    
-                        return Map[static_cast<std::size_t>(idx)];
+                        return
+                            ublox::message::CfgGnssFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsMembersCommon::BitsLowCommon::bitName(
+                                static_cast<std::size_t>(idx));
                     }
                     
                 };

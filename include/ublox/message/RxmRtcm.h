@@ -21,6 +21,34 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref RxmRtcmFields.
+/// @see @ref RxmRtcmFields
+/// @headerfile "ublox/message/RxmRtcm.h"
+struct RxmRtcmFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::RxmRtcmFields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "crcFailed"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref RxmRtcm.
 /// @tparam TOpt Extra options
 /// @see @ref RxmRtcm
@@ -80,18 +108,9 @@ struct RxmRtcmFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "crcFailed"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::RxmRtcmFieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

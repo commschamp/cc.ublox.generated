@@ -20,6 +20,55 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgRateFields.
+/// @see @ref CfgRateFields
+/// @headerfile "ublox/message/CfgRate.h"
+struct CfgRateFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgRateFields::TimeRef field.
+    enum class TimeRefVal : std::uint16_t
+    {
+        UTC = 0, ///< value @b UTC
+        GPS = 1, ///< value @b GPS
+        GLONASS = 2, ///< value @b GLONASS
+        BeiDou = 3, ///< value @b BeiDou
+        Galileo = 4, ///< value @b Galileo
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 4, ///< Last defined value.
+        ValuesLimit = 5, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgRateFields::TimeRef field.
+    struct TimeRefCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(TimeRefVal val)
+        {
+            static const char* Map[] = {
+                "UTC",
+                "GPS",
+                "GLONASS",
+                "BeiDou",
+                "Galileo"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgRate.
 /// @tparam TOpt Extra options
 /// @see @ref CfgRate
@@ -58,16 +107,9 @@ struct CfgRateFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgRateFields::TimeRef field.
-    enum class TimeRefVal : std::uint16_t
-    {
-        UTC = 0, ///< value @b UTC
-        GPS = 1, ///< value @b GPS
-        GLONASS = 2, ///< value @b GLONASS
-        BeiDou = 3, ///< value @b BeiDou
-        Galileo = 4, ///< value @b Galileo
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgRateFields::TimeRef field.
+    using TimeRefVal = ublox::message::CfgRateFieldsCommon::TimeRefVal;
     
     /// @brief Definition of <b>"timeRef"</b> field.
     /// @see @ref ublox::message::CfgRateFields::TimeRefVal
@@ -87,20 +129,7 @@ struct CfgRateFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(TimeRefVal val)
         {
-            static const char* Map[] = {
-                "UTC",
-                "GPS",
-                "GLONASS",
-                "BeiDou",
-                "Galileo"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgRateFieldsCommon::TimeRefCommon::valueName(val);
         }
         
     };

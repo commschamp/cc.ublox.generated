@@ -20,6 +20,137 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgSbasFields.
+/// @see @ref CfgSbasFields
+/// @headerfile "ublox/message/CfgSbas.h"
+struct CfgSbasFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgSbasFields::Mode field.
+    struct ModeCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "enabled",
+                "test"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgSbasFields::Usage field.
+    struct UsageCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "range",
+                "diffCorr",
+                "integrity"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgSbasFields::Scanmode2 field.
+    struct Scanmode2Common
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "PRN152",
+                "PRN153",
+                "PRN154",
+                "PRN155",
+                "PRN156",
+                "PRN157",
+                "PRN158"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgSbasFields::Scanmode1 field.
+    struct Scanmode1Common
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "PRN120",
+                "PRN121",
+                "PRN122",
+                "PRN123",
+                "PRN124",
+                "PRN125",
+                "PRN126",
+                "PRN127",
+                "PRN128",
+                "PRN129",
+                "PRN130",
+                "PRN131",
+                "PRN132",
+                "PRN133",
+                "PRN134",
+                "PRN135",
+                "PRN136",
+                "PRN137",
+                "PRN138",
+                "PRN139",
+                "PRN140",
+                "PRN141",
+                "PRN142",
+                "PRN143",
+                "PRN144",
+                "PRN145",
+                "PRN146",
+                "PRN147",
+                "PRN148",
+                "PRN149",
+                "PRN150",
+                "PRN151"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgSbas.
 /// @tparam TOpt Extra options
 /// @see @ref CfgSbas
@@ -64,19 +195,9 @@ struct CfgSbasFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "enabled",
-                "test"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgSbasFieldsCommon::ModeCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -120,20 +241,9 @@ struct CfgSbasFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "range",
-                "diffCorr",
-                "integrity"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgSbasFieldsCommon::UsageCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -201,24 +311,9 @@ struct CfgSbasFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "PRN152",
-                "PRN153",
-                "PRN154",
-                "PRN155",
-                "PRN156",
-                "PRN157",
-                "PRN158"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgSbasFieldsCommon::Scanmode2Common::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -318,49 +413,9 @@ struct CfgSbasFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "PRN120",
-                "PRN121",
-                "PRN122",
-                "PRN123",
-                "PRN124",
-                "PRN125",
-                "PRN126",
-                "PRN127",
-                "PRN128",
-                "PRN129",
-                "PRN130",
-                "PRN131",
-                "PRN132",
-                "PRN133",
-                "PRN134",
-                "PRN135",
-                "PRN136",
-                "PRN137",
-                "PRN138",
-                "PRN139",
-                "PRN140",
-                "PRN141",
-                "PRN142",
-                "PRN143",
-                "PRN144",
-                "PRN145",
-                "PRN146",
-                "PRN147",
-                "PRN148",
-                "PRN149",
-                "PRN150",
-                "PRN151"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgSbasFieldsCommon::Scanmode1Common::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

@@ -42,10 +42,10 @@ struct EsfRawFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref Data list.
+    /// @brief Scope for all the member fields of ///     @ref Data list.
     struct DataMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
             /// @brief Definition of <b>"dataField"</b> field.

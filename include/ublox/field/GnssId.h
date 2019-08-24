@@ -16,7 +16,8 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref ublox::field::GnssId field.
+/// @brief Values enumerator for
+///     @ref ublox::field::GnssId field.
 enum class GnssIdVal : std::uint8_t
 {
     GPS = 0, ///< value @b GPS
@@ -26,6 +27,38 @@ enum class GnssIdVal : std::uint8_t
     IMES = 4, ///< value @b IMES
     QZSS = 5, ///< value @b QZSS
     GLONASS = 6, ///< value @b GLONASS
+    
+    // --- Extra values generated for convenience ---
+    FirstValue = 0, ///< First defined value.
+    LastValue = 6, ///< Last defined value.
+    ValuesLimit = 7, ///< Upper limit for defined values.
+    
+};
+
+/// @brief Common functions for
+///     @ref ublox::field::GnssId field.
+struct GnssIdCommon
+{
+    /// @brief Retrieve name of the enum value
+    static const char* valueName(GnssIdVal val)
+    {
+        static const char* Map[] = {
+            "GPS",
+            "SBAS",
+            "Galileo",
+            "BeiDou",
+            "IMES",
+            "QZSS",
+            "GLONASS"
+        };
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        
+        if (MapSize <= static_cast<std::size_t>(val)) {
+            return nullptr;
+        }
+        
+        return Map[static_cast<std::size_t>(val)];
+    }
     
 };
 
@@ -51,22 +84,7 @@ struct GnssId : public
     /// @brief Retrieve name of the enum value
     static const char* valueName(GnssIdVal val)
     {
-        static const char* Map[] = {
-            "GPS",
-            "SBAS",
-            "Galileo",
-            "BeiDou",
-            "IMES",
-            "QZSS",
-            "GLONASS"
-        };
-        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-        
-        if (MapSize <= static_cast<std::size_t>(val)) {
-            return nullptr;
-        }
-        
-        return Map[static_cast<std::size_t>(val)];
+        return ublox::field::GnssIdCommon::valueName(val);
     }
     
 };

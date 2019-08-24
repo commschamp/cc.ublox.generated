@@ -15,6 +15,56 @@ namespace ublox
 namespace field
 {
 
+/// @brief Common functions for
+///     @ref ublox::field::CfgNvsMask field.
+struct CfgNvsMaskCommon
+{
+    /// @brief Retrieve name of the bit
+    static const char* bitName(std::size_t idx)
+    {
+        static const char* Map[] = {
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            "alm",
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            nullptr,
+            "aop"
+        };
+    
+        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+        if (MapSize <= idx) {
+            return nullptr;
+        }
+    
+        return Map[idx];
+    }
+    
+};
+
 /// @brief Definition of <b>"cfgNvsMask"</b> field.
 /// @tparam TOpt Protocol options.
 /// @tparam TExtraOpts Extra options.
@@ -70,47 +120,9 @@ public:
     /// @brief Retrieve name of the bit
     static const char* bitName(BitIdx idx)
     {
-        static const char* Map[] = {
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            "alm",
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            nullptr,
-            "aop"
-        };
-    
-        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-    
-        if (MapSize <= static_cast<std::size_t>(idx)) {
-            return nullptr;
-        }
-    
-        return Map[static_cast<std::size_t>(idx)];
+        return
+            ublox::field::CfgNvsMaskCommon::bitName(
+                static_cast<std::size_t>(idx));
     }
     
 };

@@ -23,6 +23,41 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref MonTxbufFields.
+/// @see @ref MonTxbufFields
+/// @headerfile "ublox/message/MonTxbuf.h"
+struct MonTxbufFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::MonTxbufFields::Errors bitfield.
+    struct ErrorsMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::MonTxbufFields::ErrorsMembers::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "mem",
+                    "alloc"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref MonTxbuf.
 /// @tparam TOpt Extra options
 /// @see @ref MonTxbuf
@@ -30,7 +65,7 @@ namespace message
 template <typename TOpt = ublox::options::DefaultOptions>
 struct MonTxbufFields
 {
-    /// @brief Scope for all the member fields of @ref Pending list.
+    /// @brief Scope for all the member fields of ///     @ref Pending list.
     struct PendingMembers
     {
         /// @brief Definition of <b>""</b> field.
@@ -67,7 +102,7 @@ struct MonTxbufFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref Usage list.
+    /// @brief Scope for all the member fields of ///     @ref Usage list.
     struct UsageMembers
     {
         /// @brief Definition of <b>""</b> field.
@@ -104,7 +139,7 @@ struct MonTxbufFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref PeakUsage list.
+    /// @brief Scope for all the member fields of ///     @ref PeakUsage list.
     struct PeakUsageMembers
     {
         /// @brief Definition of <b>""</b> field.
@@ -225,19 +260,9 @@ struct MonTxbufFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "mem",
-                    "alloc"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::MonTxbufFieldsCommon::ErrorsMembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };

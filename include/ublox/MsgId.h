@@ -161,6 +161,11 @@ enum MsgId : std::uint16_t
     MsgId_SecUniqid = 0x2703U, ///< message id of <b>SEC-UNIQID</b> message.
     MsgId_HnrPvt = 0x2800U, ///< message id of <b>HNR-PVT</b> message.
     
+    // --- Extra values generated for convenience ---
+    MsgId_FirstValue = 0x0101U, ///< First defined value.
+    MsgId_LastValue = 0x2800U, ///< Last defined value.
+    MsgId_ValuesLimit = 0x2801U, ///< Upper limit for defined values.
+    
 };
 
 } // namespace ublox

@@ -18,13 +18,50 @@ namespace ublox
 namespace field
 {
 
-/// @brief Values enumerator for @ref ublox::field::CfgNmeaVersion field.
+/// @brief Values enumerator for
+///     @ref ublox::field::CfgNmeaVersion field.
 enum class CfgNmeaVersionVal : std::uint8_t
 {
     V21 = 33, ///< value <b>v2.1</b>.
     V23 = 35, ///< value <b>v2.3</b>.
     V40 = 64, ///< value <b>v4.0</b>.
     V41 = 65, ///< value <b>v4.1</b>.
+    
+    // --- Extra values generated for convenience ---
+    FirstValue = 33, ///< First defined value.
+    LastValue = 65, ///< Last defined value.
+    ValuesLimit = 66, ///< Upper limit for defined values.
+    
+};
+
+/// @brief Common functions for
+///     @ref ublox::field::CfgNmeaVersion field.
+struct CfgNmeaVersionCommon
+{
+    /// @brief Retrieve name of the enum value
+    static const char* valueName(CfgNmeaVersionVal val)
+    {
+        using NameInfo = std::pair<CfgNmeaVersionVal, const char*>;
+        static const NameInfo Map[] = {
+            std::make_pair(CfgNmeaVersionVal::V21, "v2.1"),
+            std::make_pair(CfgNmeaVersionVal::V23, "v2.3"),
+            std::make_pair(CfgNmeaVersionVal::V40, "v4.0"),
+            std::make_pair(CfgNmeaVersionVal::V41, "v4.1")
+        };
+        
+        auto iter = std::lower_bound(
+            std::begin(Map), std::end(Map), val,
+            [](const NameInfo& info, CfgNmeaVersionVal v) -> bool
+            {
+                return info.first < v;
+            });
+        
+        if ((iter == std::end(Map)) || (iter->first != val)) {
+            return nullptr;
+        }
+        
+        return iter->second;
+    }
     
 };
 
@@ -52,26 +89,7 @@ struct CfgNmeaVersion : public
     /// @brief Retrieve name of the enum value
     static const char* valueName(CfgNmeaVersionVal val)
     {
-        using NameInfo = std::pair<CfgNmeaVersionVal, const char*>;
-        static const NameInfo Map[] = {
-            std::make_pair(CfgNmeaVersionVal::V21, "v2.1"),
-            std::make_pair(CfgNmeaVersionVal::V23, "v2.3"),
-            std::make_pair(CfgNmeaVersionVal::V40, "v4.0"),
-            std::make_pair(CfgNmeaVersionVal::V41, "v4.1")
-        };
-        
-        auto iter = std::lower_bound(
-            std::begin(Map), std::end(Map), val,
-            [](const NameInfo& info, CfgNmeaVersionVal v) -> bool
-            {
-                return info.first < v;
-            });
-        
-        if ((iter == std::end(Map)) || (iter->first != val)) {
-            return nullptr;
-        }
-        
-        return iter->second;
+        return ublox::field::CfgNmeaVersionCommon::valueName(val);
     }
     
 };

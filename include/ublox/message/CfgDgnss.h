@@ -20,6 +20,51 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgDgnssFields.
+/// @see @ref CfgDgnssFields
+/// @headerfile "ublox/message/CfgDgnss.h"
+struct CfgDgnssFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgDgnssFields::DgnssMode field.
+    enum class DgnssModeVal : std::uint8_t
+    {
+        Float = 2, ///< value @b Float
+        Fixed = 3, ///< value @b Fixed
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 2, ///< First defined value.
+        LastValue = 3, ///< Last defined value.
+        ValuesLimit = 4, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgDgnssFields::DgnssMode field.
+    struct DgnssModeCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(DgnssModeVal val)
+        {
+            static const char* Map[] = {
+                nullptr,
+                nullptr,
+                "Float",
+                "Fixed"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgDgnss.
 /// @tparam TOpt Extra options
 /// @see @ref CfgDgnss
@@ -27,13 +72,9 @@ namespace message
 template <typename TOpt = ublox::options::DefaultOptions>
 struct CfgDgnssFields
 {
-    /// @brief Values enumerator for @ref ublox::message::CfgDgnssFields::DgnssMode field.
-    enum class DgnssModeVal : std::uint8_t
-    {
-        Float = 2, ///< value @b Float
-        Fixed = 3, ///< value @b Fixed
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgDgnssFields::DgnssMode field.
+    using DgnssModeVal = ublox::message::CfgDgnssFieldsCommon::DgnssModeVal;
     
     /// @brief Definition of <b>"dgnssMode"</b> field.
     /// @see @ref ublox::message::CfgDgnssFields::DgnssModeVal
@@ -53,19 +94,7 @@ struct CfgDgnssFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(DgnssModeVal val)
         {
-            static const char* Map[] = {
-                nullptr,
-                nullptr,
-                "Float",
-                "Fixed"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::CfgDgnssFieldsCommon::DgnssModeCommon::valueName(val);
         }
         
     };

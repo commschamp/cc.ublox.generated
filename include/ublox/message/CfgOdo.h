@@ -25,6 +25,85 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgOdoFields.
+/// @see @ref CfgOdoFields
+/// @headerfile "ublox/message/CfgOdo.h"
+struct CfgOdoFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgOdoFields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "useODO",
+                "useCOG",
+                "outLPVel",
+                "outLPCog"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgOdoFields::OdoCfg bitfield.
+    struct OdoCfgMembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgOdoFields::OdoCfgMembers::Profile field.
+        enum class ProfileVal : std::uint8_t
+        {
+            Running = 0, ///< value @b Running
+            Cycling = 1, ///< value @b Cycling
+            Swimming = 2, ///< value @b Swimming
+            Car = 3, ///< value @b Car
+            Custom = 4, ///< value @b Custom
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 4, ///< Last defined value.
+            ValuesLimit = 5, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgOdoFields::OdoCfgMembers::Profile field.
+        struct ProfileCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(ProfileVal val)
+            {
+                static const char* Map[] = {
+                    "Running",
+                    "Cycling",
+                    "Swimming",
+                    "Car",
+                    "Custom"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgOdo.
 /// @tparam TOpt Extra options
 /// @see @ref CfgOdo
@@ -103,21 +182,9 @@ struct CfgOdoFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "useODO",
-                "useCOG",
-                "outLPVel",
-                "outLPCog"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgOdoFieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -125,16 +192,9 @@ struct CfgOdoFields
     /// @brief Scope for all the member fields of @ref OdoCfg bitfield.
     struct OdoCfgMembers
     {
-        /// @brief Values enumerator for @ref ublox::message::CfgOdoFields::OdoCfgMembers::Profile field.
-        enum class ProfileVal : std::uint8_t
-        {
-            Running = 0, ///< value @b Running
-            Cycling = 1, ///< value @b Cycling
-            Swimming = 2, ///< value @b Swimming
-            Car = 3, ///< value @b Car
-            Custom = 4, ///< value @b Custom
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgOdoFields::OdoCfgMembers::Profile field.
+        using ProfileVal = ublox::message::CfgOdoFieldsCommon::OdoCfgMembersCommon::ProfileVal;
         
         /// @brief Definition of <b>"profile"</b> field.
         /// @see @ref ublox::message::CfgOdoFields::OdoCfgMembers::ProfileVal
@@ -155,20 +215,7 @@ struct CfgOdoFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(ProfileVal val)
             {
-                static const char* Map[] = {
-                    "Running",
-                    "Cycling",
-                    "Swimming",
-                    "Car",
-                    "Custom"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::CfgOdoFieldsCommon::OdoCfgMembersCommon::ProfileCommon::valueName(val);
             }
             
         };

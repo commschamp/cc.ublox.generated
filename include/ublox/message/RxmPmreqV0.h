@@ -21,6 +21,64 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref RxmPmreqV0Fields.
+/// @see @ref RxmPmreqV0Fields
+/// @headerfile "ublox/message/RxmPmreqV0.h"
+struct RxmPmreqV0FieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::RxmPmreqV0Fields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                "backup",
+                "force"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::RxmPmreqV0Fields::WakeupSources field.
+    struct WakeupSourcesCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                nullptr,
+                nullptr,
+                "uartrx",
+                nullptr,
+                "extint0",
+                "extint1",
+                "spics"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref RxmPmreqV0.
 /// @tparam TOpt Extra options
 /// @see @ref RxmPmreqV0
@@ -125,20 +183,9 @@ struct RxmPmreqV0Fields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                nullptr,
-                "backup",
-                "force"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::RxmPmreqV0FieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -201,25 +248,9 @@ struct RxmPmreqV0Fields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                nullptr,
-                nullptr,
-                nullptr,
-                "uartrx",
-                nullptr,
-                "extint0",
-                "extint1",
-                "spics"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::RxmPmreqV0FieldsCommon::WakeupSourcesCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

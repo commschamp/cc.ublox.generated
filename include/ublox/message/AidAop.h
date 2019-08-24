@@ -63,7 +63,7 @@ struct AidAopFields
     /// @brief Scope for all the member fields of @ref Optionals optional.
     struct OptionalsMembers
     {
-        /// @brief Scope for all the member fields of @ref OptionalsWrap bitfield.
+        /// @brief Scope for all the member fields of @ref OptionalsWrap bundle.
         struct OptionalsWrapMembers
         {
             /// @brief Definition of <b>"optional0"</b> field.

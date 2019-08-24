@@ -23,6 +23,58 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgPwrFields.
+/// @see @ref CfgPwrFields
+/// @headerfile "ublox/message/CfgPwr.h"
+struct CfgPwrFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgPwrFields::State field.
+    enum class StateVal : std::uint32_t
+    {
+        Backup = 0x42434B50UL, ///< value @b Backup
+        Running = 0x52554E20UL, ///< value @b Running
+        Stopped = 0x53544F50UL, ///< value @b Stopped
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0x42434B50UL, ///< First defined value.
+        LastValue = 0x53544F50UL, ///< Last defined value.
+        ValuesLimit = 0x53544F51UL, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgPwrFields::State field.
+    struct StateCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(StateVal val)
+        {
+            using NameInfo = std::pair<StateVal, const char*>;
+            static const NameInfo Map[] = {
+                std::make_pair(StateVal::Backup, "Backup"),
+                std::make_pair(StateVal::Running, "Running"),
+                std::make_pair(StateVal::Stopped, "Stopped")
+            };
+            
+            auto iter = std::lower_bound(
+                std::begin(Map), std::end(Map), val,
+                [](const NameInfo& info, StateVal v) -> bool
+                {
+                    return info.first < v;
+                });
+            
+            if ((iter == std::end(Map)) || (iter->first != val)) {
+                return nullptr;
+            }
+            
+            return iter->second;
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgPwr.
 /// @tparam TOpt Extra options
 /// @see @ref CfgPwr
@@ -61,14 +113,9 @@ struct CfgPwrFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::CfgPwrFields::State field.
-    enum class StateVal : std::uint32_t
-    {
-        Backup = 0x42434B50UL, ///< value @b Backup
-        Running = 0x52554E20UL, ///< value @b Running
-        Stopped = 0x53544F50UL, ///< value @b Stopped
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::CfgPwrFields::State field.
+    using StateVal = ublox::message::CfgPwrFieldsCommon::StateVal;
     
     /// @brief Definition of <b>"state"</b> field.
     /// @see @ref ublox::message::CfgPwrFields::StateVal
@@ -91,25 +138,7 @@ struct CfgPwrFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(StateVal val)
         {
-            using NameInfo = std::pair<StateVal, const char*>;
-            static const NameInfo Map[] = {
-                std::make_pair(StateVal::Backup, "Backup"),
-                std::make_pair(StateVal::Running, "Running"),
-                std::make_pair(StateVal::Stopped, "Stopped")
-            };
-            
-            auto iter = std::lower_bound(
-                std::begin(Map), std::end(Map), val,
-                [](const NameInfo& info, StateVal v) -> bool
-                {
-                    return info.first < v;
-                });
-            
-            if ((iter == std::end(Map)) || (iter->first != val)) {
-                return nullptr;
-            }
-            
-            return iter->second;
+            return ublox::message::CfgPwrFieldsCommon::StateCommon::valueName(val);
         }
         
     };

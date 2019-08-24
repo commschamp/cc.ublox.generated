@@ -34,6 +34,37 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref NavSolFields.
+/// @see @ref NavSolFields
+/// @headerfile "ublox/message/NavSol.h"
+struct NavSolFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::NavSolFields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "GPSfixOK",
+                "DiffSoln",
+                "WKNSET",
+                "TOWSET"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref NavSol.
 /// @tparam TOpt Extra options
 /// @see @ref NavSol
@@ -116,21 +147,9 @@ struct NavSolFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "GPSfixOK",
-                "DiffSoln",
-                "WKNSET",
-                "TOWSET"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::NavSolFieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

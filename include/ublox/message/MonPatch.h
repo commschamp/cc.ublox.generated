@@ -24,6 +24,92 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref MonPatchFields.
+/// @see @ref MonPatchFields
+/// @headerfile "ublox/message/MonPatch.h"
+struct MonPatchFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::MonPatchFields::List list.
+    struct ListMembersCommon
+    {
+        /// @brief Scope for all the common definitions of the member fields of
+        ///     @ref ublox::message::MonPatchFields::ListMembers::Element bundle.
+        struct ElementMembersCommon
+        {
+            /// @brief Scope for all the common definitions of the member fields of
+            ///     @ref ublox::message::MonPatchFields::ListMembers::ElementMembers::PatchInfo bitfield.
+            struct PatchInfoMembersCommon
+            {
+                /// @brief Common functions for
+                ///     @ref ublox::message::MonPatchFields::ListMembers::ElementMembers::PatchInfoMembers::Bits field.
+                struct BitsCommon
+                {
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(std::size_t idx)
+                    {
+                        static const char* Map[] = {
+                            "activated"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        if (MapSize <= idx) {
+                            return nullptr;
+                        }
+                    
+                        return Map[idx];
+                    }
+                    
+                };
+                
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::MonPatchFields::ListMembers::ElementMembers::PatchInfoMembers::Location field.
+                enum class LocationVal : std::uint8_t
+                {
+                    eFuse = 0, ///< value @b eFuse
+                    ROM = 1, ///< value @b ROM
+                    BBR = 2, ///< value @b BBR
+                    FileSystem = 3, ///< value @b FileSystem
+                    
+                    // --- Extra values generated for convenience ---
+                    firstValue = 0, ///< First defined value.
+                    lastValue = 3, ///< Last defined value.
+                    valuesLimit = 4, ///< Upper limit for defined values.
+                    
+                };
+                
+                /// @brief Common functions for
+                ///     @ref ublox::message::MonPatchFields::ListMembers::ElementMembers::PatchInfoMembers::Location field.
+                struct LocationCommon
+                {
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(LocationVal val)
+                    {
+                        static const char* Map[] = {
+                            "eFuse",
+                            "ROM",
+                            "BBR",
+                            "FileSystem"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
+                    }
+                    
+                };
+                
+            };
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref MonPatch.
 /// @tparam TOpt Extra options
 /// @see @ref MonPatch
@@ -63,10 +149,10 @@ struct MonPatchFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
             /// @brief Scope for all the member fields of @ref PatchInfo bitfield.
@@ -105,31 +191,16 @@ struct MonPatchFields
                     /// @brief Retrieve name of the bit
                     static const char* bitName(BitIdx idx)
                     {
-                        static const char* Map[] = {
-                            "activated"
-                        };
-                    
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                    
-                        if (MapSize <= static_cast<std::size_t>(idx)) {
-                            return nullptr;
-                        }
-                    
-                        return Map[static_cast<std::size_t>(idx)];
+                        return
+                            ublox::message::MonPatchFieldsCommon::ListMembersCommon::ElementMembersCommon::PatchInfoMembersCommon::BitsCommon::bitName(
+                                static_cast<std::size_t>(idx));
                     }
                     
                 };
                 
-                /// @brief Values enumerator for @ref ublox::message::MonPatchFields::ListMembers::ElementMembers::PatchInfoMembers::Location field.
-                enum class LocationVal : std::uint8_t
-                {
-                    eFuse = 0, ///< value @b eFuse
-                    ROM = 1, ///< value @b ROM
-                    BBR = 2, ///< value @b BBR
-                    FileSystem = 3, ///< value @b FileSystem
-                    
-                };
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::MonPatchFields::ListMembers::ElementMembers::PatchInfoMembers::Location field.
+                using LocationVal = ublox::message::MonPatchFieldsCommon::ListMembersCommon::ElementMembersCommon::PatchInfoMembersCommon::LocationVal;
                 
                 /// @brief Definition of <b>"location"</b> field.
                 /// @see @ref ublox::message::MonPatchFields::ListMembers::ElementMembers::PatchInfoMembers::LocationVal
@@ -150,19 +221,7 @@ struct MonPatchFields
                     /// @brief Retrieve name of the enum value
                     static const char* valueName(LocationVal val)
                     {
-                        static const char* Map[] = {
-                            "eFuse",
-                            "ROM",
-                            "BBR",
-                            "FileSystem"
-                        };
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        
-                        if (MapSize <= static_cast<std::size_t>(val)) {
-                            return nullptr;
-                        }
-                        
-                        return Map[static_cast<std::size_t>(val)];
+                        return ublox::message::MonPatchFieldsCommon::ListMembersCommon::ElementMembersCommon::PatchInfoMembersCommon::LocationCommon::valueName(val);
                     }
                     
                 };

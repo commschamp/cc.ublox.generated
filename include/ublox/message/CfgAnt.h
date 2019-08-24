@@ -21,6 +21,65 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgAntFields.
+/// @see @ref CfgAntFields
+/// @headerfile "ublox/message/CfgAnt.h"
+struct CfgAntFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgAntFields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "svcs",
+                "scd",
+                "ocd",
+                "pdwnOnSCD",
+                "recovery"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgAntFields::Pins bitfield.
+    struct PinsMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgAntFields::PinsMembers::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "reconfig"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgAnt.
 /// @tparam TOpt Extra options
 /// @see @ref CfgAnt
@@ -71,22 +130,9 @@ struct CfgAntFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "svcs",
-                "scd",
-                "ocd",
-                "pdwnOnSCD",
-                "recovery"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgAntFieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -175,18 +221,9 @@ struct CfgAntFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "reconfig"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::CfgAntFieldsCommon::PinsMembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };

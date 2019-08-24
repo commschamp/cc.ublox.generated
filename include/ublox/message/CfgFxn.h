@@ -21,6 +21,38 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgFxnFields.
+/// @see @ref CfgFxnFields
+/// @headerfile "ublox/message/CfgFxn.h"
+struct CfgFxnFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::CfgFxnFields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                nullptr,
+                "sleep",
+                nullptr,
+                "absAlign",
+                "onOff"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgFxn.
 /// @tparam TOpt Extra options
 /// @see @ref CfgFxn
@@ -82,22 +114,9 @@ struct CfgFxnFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                nullptr,
-                "sleep",
-                nullptr,
-                "absAlign",
-                "onOff"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::CfgFxnFieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

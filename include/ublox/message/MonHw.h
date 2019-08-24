@@ -25,6 +25,182 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref MonHwFields.
+/// @see @ref MonHwFields
+/// @headerfile "ublox/message/MonHw.h"
+struct MonHwFieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MonHwFields::AStatus field.
+    enum class AStatusVal : std::uint8_t
+    {
+        INIT = 0, ///< value @b INIT
+        DONTKNOW = 1, ///< value @b DONTKNOW
+        OK = 2, ///< value @b OK
+        SHORT = 3, ///< value @b SHORT
+        OPEN = 4, ///< value @b OPEN
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 4, ///< Last defined value.
+        ValuesLimit = 5, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::MonHwFields::AStatus field.
+    struct AStatusCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(AStatusVal val)
+        {
+            static const char* Map[] = {
+                "INIT",
+                "DONTKNOW",
+                "OK",
+                "SHORT",
+                "OPEN"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MonHwFields::APower field.
+    enum class APowerVal : std::uint8_t
+    {
+        OFF = 0, ///< value @b OFF
+        ON = 1, ///< value @b ON
+        DONTKNOW = 2, ///< value @b DONTKNOW
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 2, ///< Last defined value.
+        ValuesLimit = 3, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::MonHwFields::APower field.
+    struct APowerCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(APowerVal val)
+        {
+            static const char* Map[] = {
+                "OFF",
+                "ON",
+                "DONTKNOW"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::MonHwFields::Flags bitfield.
+    struct FlagsMembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::MonHwFields::FlagsMembers::BitsLow field.
+        struct BitsLowCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "rtcCalib",
+                    "safeBoot"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::MonHwFields::FlagsMembers::JammingState field.
+        enum class JammingStateVal : std::uint8_t
+        {
+            Unknown = 0, ///< value @b Unknown
+            Ok = 1, ///< value @b Ok
+            Warning = 2, ///< value @b Warning
+            Critical = 3, ///< value @b Critical
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 3, ///< Last defined value.
+            ValuesLimit = 4, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::MonHwFields::FlagsMembers::JammingState field.
+        struct JammingStateCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(JammingStateVal val)
+            {
+                static const char* Map[] = {
+                    "Unknown",
+                    "Ok",
+                    "Warning",
+                    "Critical"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::MonHwFields::FlagsMembers::BitsHigh field.
+        struct BitsHighCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "xtalAbsent"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref MonHw.
 /// @tparam TOpt Extra options
 /// @see @ref MonHw
@@ -122,16 +298,9 @@ struct MonHwFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::MonHwFields::AStatus field.
-    enum class AStatusVal : std::uint8_t
-    {
-        INIT = 0, ///< value @b INIT
-        DONTKNOW = 1, ///< value @b DONTKNOW
-        OK = 2, ///< value @b OK
-        SHORT = 3, ///< value @b SHORT
-        OPEN = 4, ///< value @b OPEN
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MonHwFields::AStatus field.
+    using AStatusVal = ublox::message::MonHwFieldsCommon::AStatusVal;
     
     /// @brief Definition of <b>"aStatus"</b> field.
     /// @see @ref ublox::message::MonHwFields::AStatusVal
@@ -151,32 +320,14 @@ struct MonHwFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(AStatusVal val)
         {
-            static const char* Map[] = {
-                "INIT",
-                "DONTKNOW",
-                "OK",
-                "SHORT",
-                "OPEN"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::MonHwFieldsCommon::AStatusCommon::valueName(val);
         }
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::MonHwFields::APower field.
-    enum class APowerVal : std::uint8_t
-    {
-        OFF = 0, ///< value @b OFF
-        ON = 1, ///< value @b ON
-        DONTKNOW = 2, ///< value @b DONTKNOW
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MonHwFields::APower field.
+    using APowerVal = ublox::message::MonHwFieldsCommon::APowerVal;
     
     /// @brief Definition of <b>"aPower"</b> field.
     /// @see @ref ublox::message::MonHwFields::APowerVal
@@ -196,18 +347,7 @@ struct MonHwFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(APowerVal val)
         {
-            static const char* Map[] = {
-                "OFF",
-                "ON",
-                "DONTKNOW"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::MonHwFieldsCommon::APowerCommon::valueName(val);
         }
         
     };
@@ -250,32 +390,16 @@ struct MonHwFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "rtcCalib",
-                    "safeBoot"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::MonHwFieldsCommon::FlagsMembersCommon::BitsLowCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
         
-        /// @brief Values enumerator for @ref ublox::message::MonHwFields::FlagsMembers::JammingState field.
-        enum class JammingStateVal : std::uint8_t
-        {
-            Unknown = 0, ///< value @b Unknown
-            Ok = 1, ///< value @b Ok
-            Warning = 2, ///< value @b Warning
-            Critical = 3, ///< value @b Critical
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::MonHwFields::FlagsMembers::JammingState field.
+        using JammingStateVal = ublox::message::MonHwFieldsCommon::FlagsMembersCommon::JammingStateVal;
         
         /// @brief Definition of <b>"jammingState"</b> field.
         /// @see @ref ublox::message::MonHwFields::FlagsMembers::JammingStateVal
@@ -296,19 +420,7 @@ struct MonHwFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(JammingStateVal val)
             {
-                static const char* Map[] = {
-                    "Unknown",
-                    "Ok",
-                    "Warning",
-                    "Critical"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::MonHwFieldsCommon::FlagsMembersCommon::JammingStateCommon::valueName(val);
             }
             
         };
@@ -348,18 +460,9 @@ struct MonHwFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "xtalAbsent"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::MonHwFieldsCommon::FlagsMembersCommon::BitsHighCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };

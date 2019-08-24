@@ -26,6 +26,78 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref CfgTmode3Fields.
+/// @see @ref CfgTmode3Fields
+/// @headerfile "ublox/message/CfgTmode3.h"
+struct CfgTmode3FieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::CfgTmode3Fields::Flags bitfield.
+    struct FlagsMembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgTmode3Fields::FlagsMembers::Mode field.
+        enum class ModeVal : std::uint8_t
+        {
+            Disabled = 0, ///< value @b Disabled
+            SurveyIn = 1, ///< value <b>Survey In</b>.
+            FixedMode = 2, ///< value <b>Fixed Mode</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 2, ///< Last defined value.
+            ValuesLimit = 3, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgTmode3Fields::FlagsMembers::Mode field.
+        struct ModeCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(ModeVal val)
+            {
+                static const char* Map[] = {
+                    "Disabled",
+                    "Survey In",
+                    "Fixed Mode"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::CfgTmode3Fields::FlagsMembers::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "lla"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref CfgTmode3.
 /// @tparam TOpt Extra options
 /// @see @ref CfgTmode3
@@ -66,14 +138,9 @@ struct CfgTmode3Fields
     /// @brief Scope for all the member fields of @ref Flags bitfield.
     struct FlagsMembers
     {
-        /// @brief Values enumerator for @ref ublox::message::CfgTmode3Fields::FlagsMembers::Mode field.
-        enum class ModeVal : std::uint8_t
-        {
-            Disabled = 0, ///< value @b Disabled
-            SurveyIn = 1, ///< value <b>Survey In</b>.
-            FixedMode = 2, ///< value <b>Fixed Mode</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::CfgTmode3Fields::FlagsMembers::Mode field.
+        using ModeVal = ublox::message::CfgTmode3FieldsCommon::FlagsMembersCommon::ModeVal;
         
         /// @brief Definition of <b>"mode"</b> field.
         /// @see @ref ublox::message::CfgTmode3Fields::FlagsMembers::ModeVal
@@ -94,18 +161,7 @@ struct CfgTmode3Fields
             /// @brief Retrieve name of the enum value
             static const char* valueName(ModeVal val)
             {
-                static const char* Map[] = {
-                    "Disabled",
-                    "Survey In",
-                    "Fixed Mode"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::CfgTmode3FieldsCommon::FlagsMembersCommon::ModeCommon::valueName(val);
             }
             
         };
@@ -145,18 +201,9 @@ struct CfgTmode3Fields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "lla"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::CfgTmode3FieldsCommon::FlagsMembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };
@@ -206,7 +253,7 @@ struct CfgTmode3Fields
     /// @brief Scope for all the member fields of @ref Ecef optional.
     struct EcefMembers
     {
-        /// @brief Scope for all the member fields of @ref EcefWrap bitfield.
+        /// @brief Scope for all the member fields of @ref EcefWrap bundle.
         struct EcefWrapMembers
         {
             /// @brief Definition of <b>"ecefX"</b> field.
@@ -382,7 +429,7 @@ struct CfgTmode3Fields
     /// @brief Scope for all the member fields of @ref Lla optional.
     struct LlaMembers
     {
-        /// @brief Scope for all the member fields of @ref LlaWrap bitfield.
+        /// @brief Scope for all the member fields of @ref LlaWrap bundle.
         struct LlaWrapMembers
         {
             /// @brief Definition of <b>"lat"</b> field.

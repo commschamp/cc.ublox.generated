@@ -25,6 +25,60 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref MonHw2Fields.
+/// @see @ref MonHw2Fields
+/// @headerfile "ublox/message/MonHw2.h"
+struct MonHw2FieldsCommon
+{
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MonHw2Fields::CfgSource field.
+    enum class CfgSourceVal : std::uint8_t
+    {
+        FlashImage = 102, ///< value @b FlashImage
+        OTP = 111, ///< value @b OTP
+        ConfigPins = 112, ///< value @b ConfigPins
+        ROM = 114, ///< value @b ROM
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 102, ///< First defined value.
+        LastValue = 114, ///< Last defined value.
+        ValuesLimit = 115, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::MonHw2Fields::CfgSource field.
+    struct CfgSourceCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(CfgSourceVal val)
+        {
+            using NameInfo = std::pair<CfgSourceVal, const char*>;
+            static const NameInfo Map[] = {
+                std::make_pair(CfgSourceVal::FlashImage, "FlashImage"),
+                std::make_pair(CfgSourceVal::OTP, "OTP"),
+                std::make_pair(CfgSourceVal::ConfigPins, "ConfigPins"),
+                std::make_pair(CfgSourceVal::ROM, "ROM")
+            };
+            
+            auto iter = std::lower_bound(
+                std::begin(Map), std::end(Map), val,
+                [](const NameInfo& info, CfgSourceVal v) -> bool
+                {
+                    return info.first < v;
+                });
+            
+            if ((iter == std::end(Map)) || (iter->first != val)) {
+                return nullptr;
+            }
+            
+            return iter->second;
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref MonHw2.
 /// @tparam TOpt Extra options
 /// @see @ref MonHw2
@@ -92,15 +146,9 @@ struct MonHw2Fields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::MonHw2Fields::CfgSource field.
-    enum class CfgSourceVal : std::uint8_t
-    {
-        FlashImage = 102, ///< value @b FlashImage
-        OTP = 111, ///< value @b OTP
-        ConfigPins = 112, ///< value @b ConfigPins
-        ROM = 114, ///< value @b ROM
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::MonHw2Fields::CfgSource field.
+    using CfgSourceVal = ublox::message::MonHw2FieldsCommon::CfgSourceVal;
     
     /// @brief Definition of <b>"cfgSource"</b> field.
     /// @see @ref ublox::message::MonHw2Fields::CfgSourceVal
@@ -122,26 +170,7 @@ struct MonHw2Fields
         /// @brief Retrieve name of the enum value
         static const char* valueName(CfgSourceVal val)
         {
-            using NameInfo = std::pair<CfgSourceVal, const char*>;
-            static const NameInfo Map[] = {
-                std::make_pair(CfgSourceVal::FlashImage, "FlashImage"),
-                std::make_pair(CfgSourceVal::OTP, "OTP"),
-                std::make_pair(CfgSourceVal::ConfigPins, "ConfigPins"),
-                std::make_pair(CfgSourceVal::ROM, "ROM")
-            };
-            
-            auto iter = std::lower_bound(
-                std::begin(Map), std::end(Map), val,
-                [](const NameInfo& info, CfgSourceVal v) -> bool
-                {
-                    return info.first < v;
-                });
-            
-            if ((iter == std::end(Map)) || (iter->first != val)) {
-                return nullptr;
-            }
-            
-            return iter->second;
+            return ublox::message::MonHw2FieldsCommon::CfgSourceCommon::valueName(val);
         }
         
     };

@@ -61,10 +61,10 @@ struct AidEphFields
     /// @brief Scope for all the member fields of @ref Sfd optional.
     struct SfdMembers
     {
-        /// @brief Scope for all the member fields of @ref Lists bitfield.
+        /// @brief Scope for all the member fields of @ref Lists bundle.
         struct ListsMembers
         {
-            /// @brief Scope for all the member fields of @ref Sf1d list.
+            /// @brief Scope for all the member fields of ///     @ref Sf1d list.
             struct Sf1dMembers
             {
                 /// @brief Definition of <b>"element"</b> field.
@@ -101,7 +101,7 @@ struct AidEphFields
                 
             };
             
-            /// @brief Scope for all the member fields of @ref Sf2d list.
+            /// @brief Scope for all the member fields of ///     @ref Sf2d list.
             struct Sf2dMembers
             {
                 /// @brief Definition of <b>"element"</b> field.
@@ -138,7 +138,7 @@ struct AidEphFields
                 
             };
             
-            /// @brief Scope for all the member fields of @ref Sf3d list.
+            /// @brief Scope for all the member fields of ///     @ref Sf3d list.
             struct Sf3dMembers
             {
                 /// @brief Definition of <b>"element"</b> field.

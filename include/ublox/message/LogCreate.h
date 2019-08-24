@@ -22,6 +22,72 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref LogCreateFields.
+/// @see @ref LogCreateFields
+/// @headerfile "ublox/message/LogCreate.h"
+struct LogCreateFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::LogCreateFields::LogCfg field.
+    struct LogCfgCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "logCfg"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::LogCreateFields::LogSize field.
+    enum class LogSizeVal : std::uint8_t
+    {
+        Maximum = 0, ///< value @b Maximum
+        Minimum = 1, ///< value @b Minimum
+        UserDefined = 2, ///< value @b UserDefined
+        
+        // --- Extra values generated for convenience ---
+        FirstValue = 0, ///< First defined value.
+        LastValue = 2, ///< Last defined value.
+        ValuesLimit = 3, ///< Upper limit for defined values.
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::LogCreateFields::LogSize field.
+    struct LogSizeCommon
+    {
+        /// @brief Retrieve name of the enum value
+        static const char* valueName(LogSizeVal val)
+        {
+            static const char* Map[] = {
+                "Maximum",
+                "Minimum",
+                "UserDefined"
+            };
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            
+            if (MapSize <= static_cast<std::size_t>(val)) {
+                return nullptr;
+            }
+            
+            return Map[static_cast<std::size_t>(val)];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref LogCreate.
 /// @tparam TOpt Extra options
 /// @see @ref LogCreate
@@ -80,18 +146,9 @@ struct LogCreateFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "logCfg"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::LogCreateFieldsCommon::LogCfgCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -110,14 +167,9 @@ struct LogCreateFields
         
     };
     
-    /// @brief Values enumerator for @ref ublox::message::LogCreateFields::LogSize field.
-    enum class LogSizeVal : std::uint8_t
-    {
-        Maximum = 0, ///< value @b Maximum
-        Minimum = 1, ///< value @b Minimum
-        UserDefined = 2, ///< value @b UserDefined
-        
-    };
+    /// @brief Values enumerator for
+    ///     @ref ublox::message::LogCreateFields::LogSize field.
+    using LogSizeVal = ublox::message::LogCreateFieldsCommon::LogSizeVal;
     
     /// @brief Definition of <b>"logSize"</b> field.
     /// @see @ref ublox::message::LogCreateFields::LogSizeVal
@@ -137,18 +189,7 @@ struct LogCreateFields
         /// @brief Retrieve name of the enum value
         static const char* valueName(LogSizeVal val)
         {
-            static const char* Map[] = {
-                "Maximum",
-                "Minimum",
-                "UserDefined"
-            };
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            
-            if (MapSize <= static_cast<std::size_t>(val)) {
-                return nullptr;
-            }
-            
-            return Map[static_cast<std::size_t>(val)];
+            return ublox::message::LogCreateFieldsCommon::LogSizeCommon::valueName(val);
         }
         
     };

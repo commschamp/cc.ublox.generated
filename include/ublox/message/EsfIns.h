@@ -23,6 +23,45 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref EsfInsFields.
+/// @see @ref EsfInsFields
+/// @headerfile "ublox/message/EsfIns.h"
+struct EsfInsFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::EsfInsFields::Bitfield0 bitfield.
+    struct Bitfield0MembersCommon
+    {
+        /// @brief Common functions for
+        ///     @ref ublox::message::EsfInsFields::Bitfield0Members::Bits field.
+        struct BitsCommon
+        {
+            /// @brief Retrieve name of the bit
+            static const char* bitName(std::size_t idx)
+            {
+                static const char* Map[] = {
+                    "xAngRateValid",
+                    "yAngRateValid",
+                    "zAngRateValid",
+                    "xAccelValid",
+                    "yAccelValid",
+                    "zAccelValid"
+                };
+            
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                if (MapSize <= idx) {
+                    return nullptr;
+                }
+            
+                return Map[idx];
+            }
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref EsfIns.
 /// @tparam TOpt Extra options
 /// @see @ref EsfIns
@@ -96,23 +135,9 @@ struct EsfInsFields
             /// @brief Retrieve name of the bit
             static const char* bitName(BitIdx idx)
             {
-                static const char* Map[] = {
-                    "xAngRateValid",
-                    "yAngRateValid",
-                    "zAngRateValid",
-                    "xAccelValid",
-                    "yAccelValid",
-                    "zAccelValid"
-                };
-            
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-            
-                if (MapSize <= static_cast<std::size_t>(idx)) {
-                    return nullptr;
-                }
-            
-                return Map[static_cast<std::size_t>(idx)];
+                return
+                    ublox::message::EsfInsFieldsCommon::Bitfield0MembersCommon::BitsCommon::bitName(
+                        static_cast<std::size_t>(idx));
             }
             
         };

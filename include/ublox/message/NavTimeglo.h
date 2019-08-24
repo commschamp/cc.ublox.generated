@@ -21,6 +21,35 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref NavTimegloFields.
+/// @see @ref NavTimegloFields
+/// @headerfile "ublox/message/NavTimeglo.h"
+struct NavTimegloFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::NavTimegloFields::Valid field.
+    struct ValidCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "todValid",
+                "dateValid"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref NavTimeglo.
 /// @tparam TOpt Extra options
 /// @see @ref NavTimeglo
@@ -135,19 +164,9 @@ struct NavTimegloFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "todValid",
-                "dateValid"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::NavTimegloFieldsCommon::ValidCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

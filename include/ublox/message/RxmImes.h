@@ -27,6 +27,170 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref RxmImesFields.
+/// @see @ref RxmImesFields
+/// @headerfile "ublox/message/RxmImes.h"
+struct RxmImesFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::RxmImesFields::List list.
+    struct ListMembersCommon
+    {
+        /// @brief Scope for all the common definitions of the member fields of
+        ///     @ref ublox::message::RxmImesFields::ListMembers::Element bundle.
+        struct ElementMembersCommon
+        {
+            /// @brief Scope for all the common definitions of the member fields of
+            ///     @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position1_2 bitfield.
+            struct Position1_2MembersCommon
+            {
+                /// @brief Common functions for
+                ///     @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position1_2Members::Flags field.
+                struct FlagsCommon
+                {
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(std::size_t idx)
+                    {
+                        static const char* Map[] = {
+                            "pos1Valid"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        if (MapSize <= idx) {
+                            return nullptr;
+                        }
+                    
+                        return Map[idx];
+                    }
+                    
+                };
+                
+            };
+            
+            /// @brief Scope for all the common definitions of the member fields of
+            ///     @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position2_1 bitfield.
+            struct Position2_1MembersCommon
+            {
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position2_1Members::Pos2Acc field.
+                enum class Pos2AccVal : std::uint8_t
+                {
+                    Undef = 0, ///< value @b Undef
+                    LessThan7 = 1, ///< value <b><7m</b>.
+                    LessThan15 = 2, ///< value <b><15m</b>.
+                    GreaterThan15 = 3, ///< value <b>>15m</b>.
+                    
+                    // --- Extra values generated for convenience ---
+                    FirstValue = 0, ///< First defined value.
+                    LastValue = 3, ///< Last defined value.
+                    ValuesLimit = 4, ///< Upper limit for defined values.
+                    
+                };
+                
+                /// @brief Common functions for
+                ///     @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position2_1Members::Pos2Acc field.
+                struct Pos2AccCommon
+                {
+                    /// @brief Retrieve name of the enum value
+                    static const char* valueName(Pos2AccVal val)
+                    {
+                        static const char* Map[] = {
+                            "Undef",
+                            "<7m",
+                            "<15m",
+                            ">15m"
+                        };
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        
+                        if (MapSize <= static_cast<std::size_t>(val)) {
+                            return nullptr;
+                        }
+                        
+                        return Map[static_cast<std::size_t>(val)];
+                    }
+                    
+                };
+                
+                /// @brief Common functions for
+                ///     @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position2_1Members::Bits field.
+                struct BitsCommon
+                {
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(std::size_t idx)
+                    {
+                        static const char* Map[] = {
+                            "pos2Valid"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        if (MapSize <= idx) {
+                            return nullptr;
+                        }
+                    
+                        return Map[idx];
+                    }
+                    
+                };
+                
+            };
+            
+            /// @brief Scope for all the common definitions of the member fields of
+            ///     @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::ShortIdFrame bitfield.
+            struct ShortIdFrameMembersCommon
+            {
+                /// @brief Common functions for
+                ///     @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::ShortIdFrameMembers::Bits field.
+                struct BitsCommon
+                {
+                    /// @brief Retrieve name of the bit
+                    static const char* bitName(std::size_t idx)
+                    {
+                        static const char* Map[] = {
+                            "shortValid",
+                            "shortBoundary"
+                        };
+                    
+                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                        if (MapSize <= idx) {
+                            return nullptr;
+                        }
+                    
+                        return Map[idx];
+                    }
+                    
+                };
+                
+            };
+            
+            /// @brief Common functions for
+            ///     @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::MediumId_2 field.
+            struct MediumId_2Common
+            {
+                /// @brief Retrieve name of the bit
+                static const char* bitName(std::size_t idx)
+                {
+                    static const char* Map[] = {
+                        "mediumIdMSB",
+                        "mediumValid",
+                        "mediumboundary"
+                    };
+                
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    if (MapSize <= idx) {
+                        return nullptr;
+                    }
+                
+                    return Map[idx];
+                }
+                
+            };
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref RxmImes.
 /// @tparam TOpt Extra options
 /// @see @ref RxmImes
@@ -80,10 +244,10 @@ struct RxmImesFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
             /// @brief Definition of <b>"reserved2"</b> field.
@@ -327,18 +491,9 @@ struct RxmImesFields
                     /// @brief Retrieve name of the bit
                     static const char* bitName(BitIdx idx)
                     {
-                        static const char* Map[] = {
-                            "pos1Valid"
-                        };
-                    
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                    
-                        if (MapSize <= static_cast<std::size_t>(idx)) {
-                            return nullptr;
-                        }
-                    
-                        return Map[static_cast<std::size_t>(idx)];
+                        return
+                            ublox::message::RxmImesFieldsCommon::ListMembersCommon::ElementMembersCommon::Position1_2MembersCommon::FlagsCommon::bitName(
+                                static_cast<std::size_t>(idx));
                     }
                     
                 };
@@ -420,15 +575,9 @@ struct RxmImesFields
                     
                 };
                 
-                /// @brief Values enumerator for @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position2_1Members::Pos2Acc field.
-                enum class Pos2AccVal : std::uint8_t
-                {
-                    Undef = 0, ///< value @b Undef
-                    LessThan7 = 1, ///< value <b><7m</b>.
-                    LessThan15 = 2, ///< value <b><15m</b>.
-                    GreaterThan15 = 3, ///< value <b>>15m</b>.
-                    
-                };
+                /// @brief Values enumerator for
+                ///     @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position2_1Members::Pos2Acc field.
+                using Pos2AccVal = ublox::message::RxmImesFieldsCommon::ListMembersCommon::ElementMembersCommon::Position2_1MembersCommon::Pos2AccVal;
                 
                 /// @brief Definition of <b>"pos2Acc"</b> field.
                 /// @see @ref ublox::message::RxmImesFields::ListMembers::ElementMembers::Position2_1Members::Pos2AccVal
@@ -449,19 +598,7 @@ struct RxmImesFields
                     /// @brief Retrieve name of the enum value
                     static const char* valueName(Pos2AccVal val)
                     {
-                        static const char* Map[] = {
-                            "Undef",
-                            "<7m",
-                            "<15m",
-                            ">15m"
-                        };
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        
-                        if (MapSize <= static_cast<std::size_t>(val)) {
-                            return nullptr;
-                        }
-                        
-                        return Map[static_cast<std::size_t>(val)];
+                        return ublox::message::RxmImesFieldsCommon::ListMembersCommon::ElementMembersCommon::Position2_1MembersCommon::Pos2AccCommon::valueName(val);
                     }
                     
                 };
@@ -501,18 +638,9 @@ struct RxmImesFields
                     /// @brief Retrieve name of the bit
                     static const char* bitName(BitIdx idx)
                     {
-                        static const char* Map[] = {
-                            "pos2Valid"
-                        };
-                    
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                    
-                        if (MapSize <= static_cast<std::size_t>(idx)) {
-                            return nullptr;
-                        }
-                    
-                        return Map[static_cast<std::size_t>(idx)];
+                        return
+                            ublox::message::RxmImesFieldsCommon::ListMembersCommon::ElementMembersCommon::Position2_1MembersCommon::BitsCommon::bitName(
+                                static_cast<std::size_t>(idx));
                     }
                     
                 };
@@ -655,19 +783,9 @@ struct RxmImesFields
                     /// @brief Retrieve name of the bit
                     static const char* bitName(BitIdx idx)
                     {
-                        static const char* Map[] = {
-                            "shortValid",
-                            "shortBoundary"
-                        };
-                    
-                        static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                        static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                    
-                        if (MapSize <= static_cast<std::size_t>(idx)) {
-                            return nullptr;
-                        }
-                    
-                        return Map[static_cast<std::size_t>(idx)];
+                        return
+                            ublox::message::RxmImesFieldsCommon::ListMembersCommon::ElementMembersCommon::ShortIdFrameMembersCommon::BitsCommon::bitName(
+                                static_cast<std::size_t>(idx));
                     }
                     
                 };
@@ -768,20 +886,9 @@ struct RxmImesFields
                 /// @brief Retrieve name of the bit
                 static const char* bitName(BitIdx idx)
                 {
-                    static const char* Map[] = {
-                        "mediumIdMSB",
-                        "mediumValid",
-                        "mediumboundary"
-                    };
-                
-                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                    static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                
-                    if (MapSize <= static_cast<std::size_t>(idx)) {
-                        return nullptr;
-                    }
-                
-                    return Map[static_cast<std::size_t>(idx)];
+                    return
+                        ublox::message::RxmImesFieldsCommon::ListMembersCommon::ElementMembersCommon::MediumId_2Common::bitName(
+                            static_cast<std::size_t>(idx));
                 }
                 
             };

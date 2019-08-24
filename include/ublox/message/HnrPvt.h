@@ -38,6 +38,61 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref HnrPvtFields.
+/// @see @ref HnrPvtFields
+/// @headerfile "ublox/message/HnrPvt.h"
+struct HnrPvtFieldsCommon
+{
+    /// @brief Common functions for
+    ///     @ref ublox::message::HnrPvtFields::Valid field.
+    struct ValidCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "validDate",
+                "validTime",
+                "fullyResolved"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+    /// @brief Common functions for
+    ///     @ref ublox::message::HnrPvtFields::Flags field.
+    struct FlagsCommon
+    {
+        /// @brief Retrieve name of the bit
+        static const char* bitName(std::size_t idx)
+        {
+            static const char* Map[] = {
+                "GPSfixOK",
+                "DiffSoln",
+                "WKNSET",
+                "TOWSET",
+                "headVehValid"
+            };
+        
+            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+            if (MapSize <= idx) {
+                return nullptr;
+            }
+        
+            return Map[idx];
+        }
+        
+    };
+    
+};
+
 /// @brief Fields of @ref HnrPvt.
 /// @tparam TOpt Extra options
 /// @see @ref HnrPvt
@@ -126,20 +181,9 @@ struct HnrPvtFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "validDate",
-                "validTime",
-                "fullyResolved"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::HnrPvtFieldsCommon::ValidCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };
@@ -217,22 +261,9 @@ struct HnrPvtFields
         /// @brief Retrieve name of the bit
         static const char* bitName(BitIdx idx)
         {
-            static const char* Map[] = {
-                "GPSfixOK",
-                "DiffSoln",
-                "WKNSET",
-                "TOWSET",
-                "headVehValid"
-            };
-        
-            static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-            static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-        
-            if (MapSize <= static_cast<std::size_t>(idx)) {
-                return nullptr;
-            }
-        
-            return Map[static_cast<std::size_t>(idx)];
+            return
+                ublox::message::HnrPvtFieldsCommon::FlagsCommon::bitName(
+                    static_cast<std::size_t>(idx));
         }
         
     };

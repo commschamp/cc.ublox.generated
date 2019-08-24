@@ -26,6 +26,149 @@ namespace ublox
 namespace message
 {
 
+/// @brief Common definitions for fields from @ref NavSvinfoFields.
+/// @see @ref NavSvinfoFields
+/// @headerfile "ublox/message/NavSvinfo.h"
+struct NavSvinfoFieldsCommon
+{
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::NavSvinfoFields::GlobalFlags bitfield.
+    struct GlobalFlagsMembersCommon
+    {
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavSvinfoFields::GlobalFlagsMembers::ChipGen field.
+        enum class ChipGenVal : std::uint8_t
+        {
+            Antaris = 0, ///< value @b Antaris
+            Ublox5 = 1, ///< value <b>u-blox 5</b>.
+            Ublox6 = 2, ///< value <b>u-blox 6</b>.
+            Ublox7 = 3, ///< value <b>u-blox 7</b>.
+            Ublox8 = 4, ///< value <b>u-blox 8</b>.
+            
+            // --- Extra values generated for convenience ---
+            FirstValue = 0, ///< First defined value.
+            LastValue = 4, ///< Last defined value.
+            ValuesLimit = 5, ///< Upper limit for defined values.
+            
+        };
+        
+        /// @brief Common functions for
+        ///     @ref ublox::message::NavSvinfoFields::GlobalFlagsMembers::ChipGen field.
+        struct ChipGenCommon
+        {
+            /// @brief Retrieve name of the enum value
+            static const char* valueName(ChipGenVal val)
+            {
+                static const char* Map[] = {
+                    "Antaris",
+                    "u-blox 5",
+                    "u-blox 6",
+                    "u-blox 7",
+                    "u-blox 8"
+                };
+                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                
+                if (MapSize <= static_cast<std::size_t>(val)) {
+                    return nullptr;
+                }
+                
+                return Map[static_cast<std::size_t>(val)];
+            }
+            
+        };
+        
+    };
+    
+    /// @brief Scope for all the common definitions of the member fields of
+    ///     @ref ublox::message::NavSvinfoFields::List list.
+    struct ListMembersCommon
+    {
+        /// @brief Scope for all the common definitions of the member fields of
+        ///     @ref ublox::message::NavSvinfoFields::ListMembers::Element bundle.
+        struct ElementMembersCommon
+        {
+            /// @brief Common functions for
+            ///     @ref ublox::message::NavSvinfoFields::ListMembers::ElementMembers::Flags field.
+            struct FlagsCommon
+            {
+                /// @brief Retrieve name of the bit
+                static const char* bitName(std::size_t idx)
+                {
+                    static const char* Map[] = {
+                        "svUsed",
+                        "diffCorr",
+                        "orbitAvail",
+                        "orbitEph",
+                        "unhealthy",
+                        "orbitAlm",
+                        "orbitAop",
+                        "smoothed"
+                    };
+                
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    if (MapSize <= idx) {
+                        return nullptr;
+                    }
+                
+                    return Map[idx];
+                }
+                
+            };
+            
+            /// @brief Values enumerator for
+            ///     @ref ublox::message::NavSvinfoFields::ListMembers::ElementMembers::Quality field.
+            enum class QualityVal : std::uint8_t
+            {
+                NoSignal = 0, ///< value <b>no signal</b>.
+                Searching = 1, ///< value <b>searching signal</b>.
+                Acquired = 2, ///< value <b>signal acquired</b>.
+                DetectedUnusable = 3, ///< value <b>signal detected but unusable</b>.
+                CodeLocked = 4, ///< value <b>code locked</b>.
+                CodeCarrierLocked = 5, ///< value <b>code and carrier locked</b>.
+                CodeCarrierLocked2 = 6, ///< value <b>code and carrier locked</b>.
+                CodeCarrierLocked3 = 7, ///< value <b>code and carrier locked</b>.
+                
+                // --- Extra values generated for convenience ---
+                FirstValue = 0, ///< First defined value.
+                LastValue = 7, ///< Last defined value.
+                ValuesLimit = 8, ///< Upper limit for defined values.
+                
+            };
+            
+            /// @brief Common functions for
+            ///     @ref ublox::message::NavSvinfoFields::ListMembers::ElementMembers::Quality field.
+            struct QualityCommon
+            {
+                /// @brief Retrieve name of the enum value
+                static const char* valueName(QualityVal val)
+                {
+                    static const char* Map[] = {
+                        "no signal",
+                        "searching signal",
+                        "signal acquired",
+                        "signal detected but unusable",
+                        "code locked",
+                        "code and carrier locked",
+                        "code and carrier locked",
+                        "code and carrier locked"
+                    };
+                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
+                    
+                    if (MapSize <= static_cast<std::size_t>(val)) {
+                        return nullptr;
+                    }
+                    
+                    return Map[static_cast<std::size_t>(val)];
+                }
+                
+            };
+            
+        };
+        
+    };
+    
+};
+
 /// @brief Fields of @ref NavSvinfo.
 /// @tparam TOpt Extra options
 /// @see @ref NavSvinfo
@@ -57,16 +200,9 @@ struct NavSvinfoFields
     /// @brief Scope for all the member fields of @ref GlobalFlags bitfield.
     struct GlobalFlagsMembers
     {
-        /// @brief Values enumerator for @ref ublox::message::NavSvinfoFields::GlobalFlagsMembers::ChipGen field.
-        enum class ChipGenVal : std::uint8_t
-        {
-            Antaris = 0, ///< value @b Antaris
-            Ublox5 = 1, ///< value <b>u-blox 5</b>.
-            Ublox6 = 2, ///< value <b>u-blox 6</b>.
-            Ublox7 = 3, ///< value <b>u-blox 7</b>.
-            Ublox8 = 4, ///< value <b>u-blox 8</b>.
-            
-        };
+        /// @brief Values enumerator for
+        ///     @ref ublox::message::NavSvinfoFields::GlobalFlagsMembers::ChipGen field.
+        using ChipGenVal = ublox::message::NavSvinfoFieldsCommon::GlobalFlagsMembersCommon::ChipGenVal;
         
         /// @brief Definition of <b>"chipGen"</b> field.
         /// @see @ref ublox::message::NavSvinfoFields::GlobalFlagsMembers::ChipGenVal
@@ -87,20 +223,7 @@ struct NavSvinfoFields
             /// @brief Retrieve name of the enum value
             static const char* valueName(ChipGenVal val)
             {
-                static const char* Map[] = {
-                    "Antaris",
-                    "u-blox 5",
-                    "u-blox 6",
-                    "u-blox 7",
-                    "u-blox 8"
-                };
-                static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                
-                if (MapSize <= static_cast<std::size_t>(val)) {
-                    return nullptr;
-                }
-                
-                return Map[static_cast<std::size_t>(val)];
+                return ublox::message::NavSvinfoFieldsCommon::GlobalFlagsMembersCommon::ChipGenCommon::valueName(val);
             }
             
         };
@@ -180,10 +303,10 @@ struct NavSvinfoFields
         
     };
     
-    /// @brief Scope for all the member fields of @ref List list.
+    /// @brief Scope for all the member fields of ///     @ref List list.
     struct ListMembers
     {
-        /// @brief Scope for all the member fields of @ref Element bitfield.
+        /// @brief Scope for all the member fields of @ref Element bundle.
         struct ElementMembers
         {
             /// @brief Definition of <b>"chn"</b> field.
@@ -263,42 +386,16 @@ struct NavSvinfoFields
                 /// @brief Retrieve name of the bit
                 static const char* bitName(BitIdx idx)
                 {
-                    static const char* Map[] = {
-                        "svUsed",
-                        "diffCorr",
-                        "orbitAvail",
-                        "orbitEph",
-                        "unhealthy",
-                        "orbitAlm",
-                        "orbitAop",
-                        "smoothed"
-                    };
-                
-                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                    static_assert(MapSize == BitIdx_numOfValues, "Invalid map");
-                
-                    if (MapSize <= static_cast<std::size_t>(idx)) {
-                        return nullptr;
-                    }
-                
-                    return Map[static_cast<std::size_t>(idx)];
+                    return
+                        ublox::message::NavSvinfoFieldsCommon::ListMembersCommon::ElementMembersCommon::FlagsCommon::bitName(
+                            static_cast<std::size_t>(idx));
                 }
                 
             };
             
-            /// @brief Values enumerator for @ref ublox::message::NavSvinfoFields::ListMembers::ElementMembers::Quality field.
-            enum class QualityVal : std::uint8_t
-            {
-                NoSignal = 0, ///< value <b>no signal</b>.
-                Searching = 1, ///< value <b>searching signal</b>.
-                Acquired = 2, ///< value <b>signal acquired</b>.
-                DetectedUnusable = 3, ///< value <b>signal detected but unusable</b>.
-                CodeLocked = 4, ///< value <b>code locked</b>.
-                CodeCarrierLocked = 5, ///< value <b>code and carrier locked</b>.
-                CodeCarrierLocked2 = 6, ///< value <b>code and carrier locked</b>.
-                CodeCarrierLocked3 = 7, ///< value <b>code and carrier locked</b>.
-                
-            };
+            /// @brief Values enumerator for
+            ///     @ref ublox::message::NavSvinfoFields::ListMembers::ElementMembers::Quality field.
+            using QualityVal = ublox::message::NavSvinfoFieldsCommon::ListMembersCommon::ElementMembersCommon::QualityVal;
             
             /// @brief Definition of <b>"quality"</b> field.
             /// @see @ref ublox::message::NavSvinfoFields::ListMembers::ElementMembers::QualityVal
@@ -318,23 +415,7 @@ struct NavSvinfoFields
                 /// @brief Retrieve name of the enum value
                 static const char* valueName(QualityVal val)
                 {
-                    static const char* Map[] = {
-                        "no signal",
-                        "searching signal",
-                        "signal acquired",
-                        "signal detected but unusable",
-                        "code locked",
-                        "code and carrier locked",
-                        "code and carrier locked",
-                        "code and carrier locked"
-                    };
-                    static const std::size_t MapSize = std::extent<decltype(Map)>::value;
-                    
-                    if (MapSize <= static_cast<std::size_t>(val)) {
-                        return nullptr;
-                    }
-                    
-                    return Map[static_cast<std::size_t>(val)];
+                    return ublox::message::NavSvinfoFieldsCommon::ListMembersCommon::ElementMembersCommon::QualityCommon::valueName(val);
                 }
                 
             };
