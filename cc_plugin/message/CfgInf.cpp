@@ -66,6 +66,7 @@ static QVariantMap createProps_infMsgMask()
             .name(Field::name())
             .add(InfMsgMaskMembers::createProps_element())
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }

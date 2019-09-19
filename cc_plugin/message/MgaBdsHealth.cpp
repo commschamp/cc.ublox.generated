@@ -71,6 +71,7 @@ static QVariantMap createProps_healthCode()
             .name(Field::name())
             .add(HealthCodeMembers::createProps_element())
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }

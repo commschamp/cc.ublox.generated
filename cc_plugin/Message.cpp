@@ -22,7 +22,7 @@ QVariantList createProps()
 
 QString Message::idAsStringImpl() const
 {
-    return QString("0x%1").arg(static_cast<unsigned long long>(getId()), 4, 16, QChar('0')).toUpper();
+    return "0x" + QString("%1").arg(static_cast<unsigned long long>(getId()), 4, 16, QChar('0')).toUpper();
 }
 
 const QVariantList& Message::extraTransportFieldsPropertiesImpl() const

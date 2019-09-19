@@ -49,6 +49,7 @@ static QVariantMap createProps_rates()
             .name(Field::name())
             .add(RatesMembers::createProps_element())
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }

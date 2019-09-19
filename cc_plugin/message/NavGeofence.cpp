@@ -114,6 +114,7 @@ static QVariantMap createProps_list()
             .name(Field::name())
             .add(ListMembers::createProps_element())
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }

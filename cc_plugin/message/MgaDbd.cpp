@@ -39,6 +39,7 @@ static QVariantMap createProps_reserved1()
             .name(Field::name())
             .add(Reserved1Members::createProps_element())
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }

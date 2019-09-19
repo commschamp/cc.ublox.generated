@@ -10,24 +10,24 @@ function (cc_plugin_all_messages)
         field/CfgNavx5Mask1.cpp
         field/CfgNavx5Mask2.cpp
         field/CfgNavx5SigAttenCompMode.cpp
-        field/CfgCfgMask.cpp
         field/GeofenceState.cpp
         field/MsgId.cpp
+        field/CfgCfgMask.cpp
         field/CfgDatD.cpp
-        field/CfgDatFlat.cpp
         field/CfgDatDatumNum.cpp
+        field/CfgDatFlat.cpp
         field/CfgDatMajA.cpp
         field/CfgDatRot.cpp
         field/CfgDatScale.cpp
-        field/CfgNmeaFilter.cpp
         field/CfgMainTalkerId.cpp
+        field/CfgNmeaFilter.cpp
         field/CfgNmeaFlags.cpp
         field/CfgNmeaGnssToFilter.cpp
-        field/CfgNmeaNumSV.cpp
         field/CfgNmeaGsvTalkerId.cpp
-        field/CfgNvsMask.cpp
+        field/CfgNmeaNumSV.cpp
         field/CfgNmeaSvNumbering.cpp
         field/CfgNmeaVersion.cpp
+        field/CfgNvsMask.cpp
         field/CfgPm2Flags.cpp
         field/CfgPrtFlags.cpp
         field/CfgPrtInProtoMask.cpp
@@ -45,9 +45,9 @@ function (cc_plugin_all_messages)
         field/EcefY.cpp
         field/EcefZ.cpp
         field/Ftow.cpp
-        field/HAcc.cpp
         field/GnssId.cpp
         field/GpsFix.cpp
+        field/HAcc.cpp
         field/HMSL.cpp
         field/Heading.cpp
         field/HeadingAcc.cpp
@@ -70,8 +70,8 @@ function (cc_plugin_all_messages)
         field/Res8.cpp
         field/SAcc.cpp
         field/SbasService.cpp
-        field/Sec.cpp
         field/SbasSys.cpp
+        field/Sec.cpp
         field/VAcc.cpp
         field/Vel.cpp
         field/Year.cpp

@@ -23,6 +23,7 @@ QVariantMap createProps_cfgNmeaNumSV(const char* name, bool serHidden)
         cc::property::field::ForField<Field>()
             .name(name)
             .serialisedHidden(serHidden)
+            .addSpecial("Unlimited", 0)
             .asMap();
     
 }
