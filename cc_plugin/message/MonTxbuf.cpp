@@ -41,6 +41,7 @@ static QVariantMap createProps_pending()
             .name(Field::name())
             .add(PendingMembers::createProps_element())
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }
@@ -67,6 +68,7 @@ static QVariantMap createProps_usage()
             .name(Field::name())
             .add(UsageMembers::createProps_element())
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }
@@ -93,6 +95,7 @@ static QVariantMap createProps_peakUsage()
             .name(Field::name())
             .add(PeakUsageMembers::createProps_element())
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }

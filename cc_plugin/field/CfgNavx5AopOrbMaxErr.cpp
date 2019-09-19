@@ -23,6 +23,7 @@ QVariantMap createProps_cfgNavx5AopOrbMaxErr(const char* name, bool serHidden)
         cc::property::field::ForField<Field>()
             .name(name)
             .serialisedHidden(serHidden)
+            .addSpecial("Reset", 0)
             .asMap();
     
 }

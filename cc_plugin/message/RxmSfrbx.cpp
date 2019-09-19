@@ -116,6 +116,7 @@ static QVariantMap createProps_dwrd()
             .name(Field::name())
             .add(DwrdMembers::createProps_element())
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }

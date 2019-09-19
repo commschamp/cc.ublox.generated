@@ -63,6 +63,7 @@ struct SfdMembers
                     .name(Field::name())
                     .add(Sf1dMembers::createProps_element())
                     .serialisedHidden()
+                    .appendIndexToElementName()
                     .asMap();
             
         }
@@ -89,6 +90,7 @@ struct SfdMembers
                     .name(Field::name())
                     .add(Sf2dMembers::createProps_element())
                     .serialisedHidden()
+                    .appendIndexToElementName()
                     .asMap();
             
         }
@@ -115,6 +117,7 @@ struct SfdMembers
                     .name(Field::name())
                     .add(Sf3dMembers::createProps_element())
                     .serialisedHidden()
+                    .appendIndexToElementName()
                     .asMap();
             
         }

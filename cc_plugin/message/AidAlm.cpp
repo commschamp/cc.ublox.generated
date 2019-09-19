@@ -61,6 +61,7 @@ struct DwrdMembers
                 .name(Field::name())
                 .add(ListMembers::createProps_element())
                 .serialisedHidden()
+                .appendIndexToElementName()
                 .asMap();
         
     }

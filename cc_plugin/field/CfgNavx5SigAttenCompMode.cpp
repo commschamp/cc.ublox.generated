@@ -23,6 +23,8 @@ QVariantMap createProps_cfgNavx5SigAttenCompMode(const char* name, bool serHidde
         cc::property::field::ForField<Field>()
             .name(name)
             .serialisedHidden(serHidden)
+            .addSpecial("Automatic", 255)
+            .addSpecial("Disabled", 0)
             .asMap();
     
 }

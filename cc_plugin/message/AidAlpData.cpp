@@ -39,6 +39,7 @@ static QVariantMap createProps_alpData()
             .name(Field::name())
             .add(AlpDataMembers::createProps_element())
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }

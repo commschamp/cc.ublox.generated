@@ -27,6 +27,7 @@ static QVariantMap createProps_msg1()
             .name(Field::name())
             .add(cc_plugin::field::createProps_monMsgppCount(Field::ValueType::value_type::name()))
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }
@@ -39,6 +40,7 @@ static QVariantMap createProps_msg2()
             .name(Field::name())
             .add(cc_plugin::field::createProps_monMsgppCount(Field::ValueType::value_type::name()))
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }
@@ -51,6 +53,7 @@ static QVariantMap createProps_msg3()
             .name(Field::name())
             .add(cc_plugin::field::createProps_monMsgppCount(Field::ValueType::value_type::name()))
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }
@@ -63,6 +66,7 @@ static QVariantMap createProps_msg4()
             .name(Field::name())
             .add(cc_plugin::field::createProps_monMsgppCount(Field::ValueType::value_type::name()))
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }
@@ -75,6 +79,7 @@ static QVariantMap createProps_msg5()
             .name(Field::name())
             .add(cc_plugin::field::createProps_monMsgppCount(Field::ValueType::value_type::name()))
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }
@@ -87,6 +92,7 @@ static QVariantMap createProps_msg6()
             .name(Field::name())
             .add(cc_plugin::field::createProps_monMsgppCount(Field::ValueType::value_type::name()))
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }
@@ -113,6 +119,7 @@ static QVariantMap createProps_skipped()
             .name(Field::name())
             .add(SkippedMembers::createProps_element())
             .serialisedHidden()
+            .appendIndexToElementName()
             .asMap();
     
 }
