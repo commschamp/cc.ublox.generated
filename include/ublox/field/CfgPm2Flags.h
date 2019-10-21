@@ -397,7 +397,7 @@ public:
     ///     related to @b comms::field::Bitfield class from COMMS library
     ///     for details.
     ///
-    ///      The generated access functions are:
+    ///     The generated access functions are:
     ///     @li @b field_bitsLow() - for CfgPm2FlagsMembers::BitsLow member field.
     ///     @li @b field_limitPeakCurr() - for CfgPm2FlagsMembers::LimitPeakCurr member field.
     ///     @li @b field_bitsMid() - for CfgPm2FlagsMembers::BitsMid member field.

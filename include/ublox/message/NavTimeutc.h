@@ -311,7 +311,7 @@ struct NavTimeutcFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_bits() - for ValidMembers::Bits member field.
         ///     @li @b field_utcStandard() - for ValidMembers::UtcStandard member field.
         COMMS_FIELD_MEMBERS_ACCESS(

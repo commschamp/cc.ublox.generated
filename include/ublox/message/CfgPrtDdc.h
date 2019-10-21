@@ -163,7 +163,7 @@ struct CfgPrtDdcFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_reservedLow() - for ModeMembers::ReservedLow member field.
         ///     @li @b field_slaveAddr() - for ModeMembers::SlaveAddr member field.
         ///     @li @b field_reservedHigh() - for ModeMembers::ReservedHigh member field.

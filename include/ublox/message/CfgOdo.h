@@ -265,7 +265,7 @@ struct CfgOdoFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_profile() - for OdoCfgMembers::Profile member field.
         ///     @li @b field_reserved() - for OdoCfgMembers::Reserved member field.
         COMMS_FIELD_MEMBERS_ACCESS(

@@ -227,7 +227,7 @@ struct TimVrfyFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_src() - for FlagsMembers::Src member field.
         ///     @li @b field_reserved() - for FlagsMembers::Reserved member field.
         COMMS_FIELD_MEMBERS_ACCESS(

@@ -302,7 +302,7 @@ struct CfgGnssFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_bitsLow() - for FlagsMembers::BitsLow member field.
                 ///     @li @b field_sigCfgMask() - for FlagsMembers::SigCfgMask member field.
                 ///     @li @b field_reserved() - for FlagsMembers::Reserved member field.

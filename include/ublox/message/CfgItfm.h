@@ -249,7 +249,7 @@ struct CfgItfmFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_bbThreshold() - for ConfigMembers::BbThreshold member field.
         ///     @li @b field_cwThreshold() - for ConfigMembers::CwThreshold member field.
         ///     @li @b field_algorithmBits() - for ConfigMembers::AlgorithmBits member field.
@@ -387,7 +387,7 @@ struct CfgItfmFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_generalBits() - for Config2Members::GeneralBits member field.
         ///     @li @b field_antSetting() - for Config2Members::AntSetting member field.
         ///     @li @b field_bitsHigh() - for Config2Members::BitsHigh member field.

@@ -272,7 +272,7 @@ struct MonPatchFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_bits() - for PatchInfoMembers::Bits member field.
                 ///     @li @b field_location() - for PatchInfoMembers::Location member field.
                 ///     @li @b field_res4() - for PatchInfoMembers::Res4 member field.

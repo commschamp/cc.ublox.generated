@@ -168,7 +168,7 @@ struct EsfInsFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_version() - for Bitfield0Members::Version member field.
         ///     @li @b field_bits() - for Bitfield0Members::Bits member field.
         COMMS_FIELD_MEMBERS_ACCESS(

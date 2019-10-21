@@ -364,7 +364,7 @@ struct CfgPmFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_res1() - for FlagsMembers::Res1 member field.
         ///     @li @b field_internal() - for FlagsMembers::Internal member field.
         ///     @li @b field_bitsMid() - for FlagsMembers::BitsMid member field.

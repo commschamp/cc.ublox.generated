@@ -220,7 +220,7 @@ struct EsfMeasFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_timeMarkSent() - for FlagsMembers::TimeMarkSent member field.
         ///     @li @b field_bits() - for FlagsMembers::Bits member field.
         COMMS_FIELD_MEMBERS_ACCESS(
@@ -335,7 +335,7 @@ struct EsfMeasFields
             ///     related to @b comms::field::Bitfield class from COMMS library
             ///     for details.
             ///
-            ///      The generated access functions are:
+            ///     The generated access functions are:
             ///     @li @b field_dataField() - for ElementMembers::DataField member field.
             ///     @li @b field_dataType() - for ElementMembers::DataType member field.
             ///     @li @b field_reserved() - for ElementMembers::Reserved member field.

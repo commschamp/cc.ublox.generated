@@ -425,7 +425,7 @@ struct MonSmgrFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_intOscState() - for IntOscMembers::IntOscState member field.
         ///     @li @b field_bits() - for IntOscMembers::Bits member field.
         COMMS_FIELD_MEMBERS_ACCESS(
@@ -543,7 +543,7 @@ struct MonSmgrFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_extOscState() - for ExtOscMembers::ExtOscState member field.
         ///     @li @b field_bits() - for ExtOscMembers::Bits member field.
         COMMS_FIELD_MEMBERS_ACCESS(

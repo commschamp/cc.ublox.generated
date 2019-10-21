@@ -541,7 +541,7 @@ struct NavPvt_u8Fields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_lowBits() - for FlagsMembers::LowBits member field.
         ///     @li @b field_psmState() - for FlagsMembers::PsmState member field.
         ///     @li @b field_midBits() - for FlagsMembers::MidBits member field.
