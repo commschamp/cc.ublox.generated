@@ -633,7 +633,7 @@ struct CfgTp5Fields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_bits() - for FlagsMembers::Bits member field.
         ///     @li @b field_gridUtcGnss() - for FlagsMembers::GridUtcGnss member field.
         ///     @li @b field_syncMode() - for FlagsMembers::SyncMode member field.

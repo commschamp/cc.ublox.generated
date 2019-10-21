@@ -234,7 +234,7 @@ struct CfgTmode3Fields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_mode() - for FlagsMembers::Mode member field.
         ///     @li @b field_bits() - for FlagsMembers::Bits member field.
         COMMS_FIELD_MEMBERS_ACCESS(

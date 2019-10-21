@@ -256,7 +256,7 @@ struct CfgAntFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_pinSwitch() - for PinsMembers::PinSwitch member field.
         ///     @li @b field_pinSCD() - for PinsMembers::PinSCD member field.
         ///     @li @b field_pinOCD() - for PinsMembers::PinOCD member field.

@@ -326,7 +326,7 @@ struct CfgPrtSpiFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_reservedLow() - for ModeMembers::ReservedLow member field.
         ///     @li @b field_spiMode() - for ModeMembers::SpiMode member field.
         ///     @li @b field_bits() - for ModeMembers::Bits member field.

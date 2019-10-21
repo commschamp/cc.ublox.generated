@@ -392,7 +392,7 @@ struct CfgPrtUartFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_reservedLow() - for ModeMembers::ReservedLow member field.
         ///     @li @b field_charLen() - for ModeMembers::CharLen member field.
         ///     @li @b field_reservedMid() - for ModeMembers::ReservedMid member field.

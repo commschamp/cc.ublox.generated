@@ -158,7 +158,7 @@ public:
     ///     related to @b comms::field::Bitfield class from COMMS library
     ///     for details.
     ///
-    ///      The generated access functions are:
+    ///     The generated access functions are:
     ///     @li @b field_bits() - for CfgPrtTxReadyMembers::Bits member field.
     ///     @li @b field_pin() - for CfgPrtTxReadyMembers::Pin member field.
     ///     @li @b field_thres() - for CfgPrtTxReadyMembers::Thres member field.

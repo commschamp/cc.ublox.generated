@@ -417,7 +417,7 @@ struct EsfStatusFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_type() - for SensStatus1Members::Type member field.
                 ///     @li @b field_bits() - for SensStatus1Members::Bits member field.
                 COMMS_FIELD_MEMBERS_ACCESS(
@@ -538,7 +538,7 @@ struct EsfStatusFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_calibStatus() - for SensStatus2Members::CalibStatus member field.
                 ///     @li @b field_timeStatus() - for SensStatus2Members::TimeStatus member field.
                 ///     @li @b field_reserved() - for SensStatus2Members::Reserved member field.

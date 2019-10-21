@@ -452,7 +452,7 @@ struct NavOrbFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_health() - for SvFlagMembers::Health member field.
                 ///     @li @b field_visibility() - for SvFlagMembers::Visibility member field.
                 ///     @li @b field_reserved() - for SvFlagMembers::Reserved member field.
@@ -543,7 +543,7 @@ struct NavOrbFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_ephUsability() - for EphMembers::EphUsability member field.
                 ///     @li @b field_ephSource() - for EphMembers::EphSource member field.
                 COMMS_FIELD_MEMBERS_ACCESS(
@@ -632,7 +632,7 @@ struct NavOrbFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_almUsability() - for AlmMembers::AlmUsability member field.
                 ///     @li @b field_almSource() - for AlmMembers::AlmSource member field.
                 COMMS_FIELD_MEMBERS_ACCESS(
@@ -721,7 +721,7 @@ struct NavOrbFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_anoAopUsability() - for OtherOrbMembers::AnoAopUsability member field.
                 ///     @li @b field_type() - for OtherOrbMembers::Type member field.
                 COMMS_FIELD_MEMBERS_ACCESS(

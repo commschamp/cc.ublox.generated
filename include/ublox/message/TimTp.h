@@ -396,7 +396,7 @@ struct TimTpFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_bits() - for FlagsMembers::Bits member field.
         ///     @li @b field_raim() - for FlagsMembers::Raim member field.
         ///     @li @b field_reserved() - for FlagsMembers::Reserved member field.
@@ -501,7 +501,7 @@ struct TimTpFields
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
-        ///      The generated access functions are:
+        ///     The generated access functions are:
         ///     @li @b field_timeRefGnss() - for RefInfoMembers::TimeRefGnss member field.
         ///     @li @b field_utcStandard() - for RefInfoMembers::UtcStandard member field.
         COMMS_FIELD_MEMBERS_ACCESS(

@@ -418,7 +418,7 @@ struct RxmImesFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_pos1Floor() - for Position1_1Members::Pos1Floor member field.
                 ///     @li @b field_pos1Lat() - for Position1_1Members::Pos1Lat member field.
                 ///     @li @b field_reserved() - for Position1_1Members::Reserved member field.
@@ -524,7 +524,7 @@ struct RxmImesFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_pos1Lon() - for Position1_2Members::Pos1Lon member field.
                 ///     @li @b field_flags() - for Position1_2Members::Flags member field.
                 COMMS_FIELD_MEMBERS_ACCESS(
@@ -673,7 +673,7 @@ struct RxmImesFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_pos2Floor() - for Position2_1Members::Pos2Floor member field.
                 ///     @li @b field_pos2Alt() - for Position2_1Members::Pos2Alt member field.
                 ///     @li @b field_pos2Acc() - for Position2_1Members::Pos2Acc member field.
@@ -816,7 +816,7 @@ struct RxmImesFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_shortId() - for ShortIdFrameMembers::ShortId member field.
                 ///     @li @b field_bits() - for ShortIdFrameMembers::Bits member field.
                 COMMS_FIELD_MEMBERS_ACCESS(

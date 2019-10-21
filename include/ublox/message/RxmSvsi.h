@@ -244,7 +244,7 @@ struct RxmSvsiFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_ura() - for SvFlagMembers::Ura member field.
                 ///     @li @b field_bits() - for SvFlagMembers::Bits member field.
                 COMMS_FIELD_MEMBERS_ACCESS(
@@ -351,7 +351,7 @@ struct RxmSvsiFields
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
-                ///      The generated access functions are:
+                ///     The generated access functions are:
                 ///     @li @b field_almAge() - for AgeMembers::AlmAge member field.
                 ///     @li @b field_ephAge() - for AgeMembers::EphAge member field.
                 COMMS_FIELD_MEMBERS_ACCESS(
