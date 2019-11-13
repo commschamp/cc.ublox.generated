@@ -50,98 +50,82 @@ auto dispatchUblox6ServerInputMessage(
     case ublox::MsgId_NavPosecef:
     {
         using MsgType = ublox::message::NavPosecefPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavPosllh:
     {
         using MsgType = ublox::message::NavPosllhPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavStatus:
     {
         using MsgType = ublox::message::NavStatusPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavDop:
     {
         using MsgType = ublox::message::NavDopPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavSol:
     {
         using MsgType = ublox::message::NavSolPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavVelecef:
     {
         using MsgType = ublox::message::NavVelecefPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavVelned:
     {
         using MsgType = ublox::message::NavVelnedPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavTimegps:
     {
         using MsgType = ublox::message::NavTimegpsPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavTimeutc:
     {
         using MsgType = ublox::message::NavTimeutcPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavClock:
     {
         using MsgType = ublox::message::NavClockPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavSvinfo:
     {
         using MsgType = ublox::message::NavSvinfoPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavDgps:
     {
         using MsgType = ublox::message::NavDgpsPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavSbas:
     {
         using MsgType = ublox::message::NavSbasPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavAopstatus:
     {
         using MsgType = ublox::message::NavAopstatusPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_RxmRaw:
     {
         using MsgType = ublox::message::RxmRawPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_RxmSvsi:
     {
         using MsgType = ublox::message::RxmSvsiPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_RxmAlm:
     {
@@ -149,14 +133,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::RxmAlmPollSv<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::RxmAlmPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -169,14 +151,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::RxmEphPollSv<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::RxmEphPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -186,8 +166,7 @@ auto dispatchUblox6ServerInputMessage(
     case ublox::MsgId_RxmPmreq:
     {
         using MsgType = ublox::message::RxmPmreq<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgPrt:
     {
@@ -195,38 +174,32 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgPrtDdc<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgPrtUart<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 2U:
         {
             using MsgType = ublox::message::CfgPrtUsb<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 3U:
         {
             using MsgType = ublox::message::CfgPrtSpi<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 4U:
         {
             using MsgType = ublox::message::CfgPrtPortPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 5U:
         {
             using MsgType = ublox::message::CfgPrtPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -239,20 +212,17 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgMsg<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgMsgCurrent<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 2U:
         {
             using MsgType = ublox::message::CfgMsgPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -265,14 +235,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgInf<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgInfPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -282,8 +250,7 @@ auto dispatchUblox6ServerInputMessage(
     case ublox::MsgId_CfgRst:
     {
         using MsgType = ublox::message::CfgRst<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgDat:
     {
@@ -291,20 +258,17 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgDatUser<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgDatStandard<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 2U:
         {
             using MsgType = ublox::message::CfgDatPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -317,14 +281,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgTp<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgTpPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -337,14 +299,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgRate<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgRatePoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -354,8 +314,7 @@ auto dispatchUblox6ServerInputMessage(
     case ublox::MsgId_CfgCfg:
     {
         using MsgType = ublox::message::CfgCfg<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgFxn:
     {
@@ -363,14 +322,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgFxn<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgFxnPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -383,14 +340,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgRxm<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgRxmPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -403,14 +358,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgEkf<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgEkfPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -423,14 +376,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgAnt<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgAntPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -443,14 +394,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgSbas<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgSbasPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -463,14 +412,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgNmea<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgNmeaPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -483,14 +430,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgUsb<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgUsbPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -503,14 +448,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgTmode<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgTmodePoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -520,8 +463,7 @@ auto dispatchUblox6ServerInputMessage(
     case ublox::MsgId_CfgNvs:
     {
         using MsgType = ublox::message::CfgNvs<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgNavx5:
     {
@@ -529,14 +471,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgNavx5<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgNavx5Poll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -549,14 +489,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgNav5<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgNav5Poll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -569,20 +507,17 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgTp5<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgTp5PollSelect<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 2U:
         {
             using MsgType = ublox::message::CfgTp5Poll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -595,14 +530,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgPm<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgPmPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -615,14 +548,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgRinv<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgRinvPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -635,14 +566,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgItfm<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgItfmPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -655,14 +584,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgPm2<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgPm2Poll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -675,14 +602,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::CfgTmode2<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::CfgTmode2Poll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -692,50 +617,42 @@ auto dispatchUblox6ServerInputMessage(
     case ublox::MsgId_MonIo:
     {
         using MsgType = ublox::message::MonIoPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonVer:
     {
         using MsgType = ublox::message::MonVerPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonMsgpp:
     {
         using MsgType = ublox::message::MonMsgppPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonRxbuf:
     {
         using MsgType = ublox::message::MonRxbufPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonTxbuf:
     {
         using MsgType = ublox::message::MonTxbufPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonHw:
     {
         using MsgType = ublox::message::MonHwPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonHw2:
     {
         using MsgType = ublox::message::MonHw2Poll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_AidReq:
     {
         using MsgType = ublox::message::AidReq<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_AidIni:
     {
@@ -743,14 +660,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::AidIni<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::AidIniPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -763,14 +678,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::AidHui<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::AidHuiPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -780,8 +693,7 @@ auto dispatchUblox6ServerInputMessage(
     case ublox::MsgId_AidData:
     {
         using MsgType = ublox::message::AidData<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_AidAlm:
     {
@@ -789,14 +701,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::AidAlmPollSv<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::AidAlmPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -809,14 +719,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::AidEphPollSv<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::AidEphPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -826,8 +734,7 @@ auto dispatchUblox6ServerInputMessage(
     case ublox::MsgId_AidAlpsrv:
     {
         using MsgType = ublox::message::AidAlpsrv<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_AidAop:
     {
@@ -835,20 +742,17 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::AidAop<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::AidAopPollSv<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 2U:
         {
             using MsgType = ublox::message::AidAopPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -861,20 +765,17 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::AidAlp<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::AidAlpStatus<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 2U:
         {
             using MsgType = ublox::message::AidAlpData<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -884,26 +785,22 @@ auto dispatchUblox6ServerInputMessage(
     case ublox::MsgId_TimTp:
     {
         using MsgType = ublox::message::TimTpPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_TimTm2:
     {
         using MsgType = ublox::message::TimTm2Poll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_TimVrfy:
     {
         using MsgType = ublox::message::TimVrfyPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_TimSvin:
     {
         using MsgType = ublox::message::TimSvinPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_EsfMeas:
     {
@@ -911,14 +808,12 @@ auto dispatchUblox6ServerInputMessage(
         case 0U:
         {
             using MsgType = ublox::message::EsfMeas<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
             using MsgType = ublox::message::EsfMeasPoll<InterfaceType, TProtOptions>;
-            auto& castedMsg = static_cast<MsgType&>(msg);
-            return handler.handle(castedMsg);
+            return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
@@ -928,8 +823,7 @@ auto dispatchUblox6ServerInputMessage(
     case ublox::MsgId_EsfStatus:
     {
         using MsgType = ublox::message::EsfStatusPoll<InterfaceType, TProtOptions>;
-        auto& castedMsg = static_cast<MsgType&>(msg);
-        return handler.handle(castedMsg);
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     default:
         break;

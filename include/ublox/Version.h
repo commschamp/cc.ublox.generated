@@ -12,7 +12,7 @@
 #define UBLOX_MAJOR_VERSION (0U)
 
 /// @brief Minor version of the protocol library.
-#define UBLOX_MINOR_VERSION (12U)
+#define UBLOX_MINOR_VERSION (13U)
 
 /// @brief Patch version of the protocol library.
 #define UBLOX_PATCH_VERSION (0U)
@@ -59,6 +59,6 @@ inline constexpr unsigned version()
 
 
 // Generated compile time check for minimal supported version of the COMMS library
-static_assert(COMMS_MAKE_VERSION(2, 2, 0) <= comms::version(),
+static_assert(COMMS_MAKE_VERSION(2, 2, 1) <= comms::version(),
     "The version of COMMS library is too old");
 
