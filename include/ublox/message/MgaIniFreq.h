@@ -243,14 +243,16 @@ struct MgaIniFreqFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_source() - for FlagsMembers::Source member field.
-        ///     @li @b field_bits() - for FlagsMembers::Bits member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_source @b field_source() -
+        ///         for FlagsMembers::Source member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for FlagsMembers::Bits member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             source,
             bits
         );
@@ -335,19 +337,25 @@ class MgaIniFreq : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaIniFreqFields::Type field.
-    ///     @li @b field_version() for @ref MgaIniFreqFields::Version field.
-    ///     @li @b field_reserved1() for @ref MgaIniFreqFields::Reserved1 field.
-    ///     @li @b field_flags() for @ref MgaIniFreqFields::Flags field.
-    ///     @li @b field_freq() for @ref MgaIniFreqFields::Freq field.
-    ///     @li @b field_freqAcc() for @ref MgaIniFreqFields::FreqAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaIniFreqFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaIniFreqFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaIniFreqFields::Reserved1 field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref MgaIniFreqFields::Flags field.
+    ///     @li @b Field_freq type and @b field_freq() fuction
+    ///         for @ref MgaIniFreqFields::Freq field.
+    ///     @li @b Field_freqAcc type and @b field_freqAcc() fuction
+    ///         for @ref MgaIniFreqFields::FreqAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         reserved1,

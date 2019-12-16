@@ -370,14 +370,16 @@ struct NavStatusFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_bits() - for FixStatMembers::Bits member field.
-        ///     @li @b field_mapMatching() - for FixStatMembers::MapMatching member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for FixStatMembers::Bits member field.
+        ///     @li @b Field_mapMatching @b field_mapMatching() -
+        ///         for FixStatMembers::MapMatching member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             bits,
             mapMatching
         );
@@ -511,16 +513,20 @@ struct NavStatusFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_psmState() - for Flags2Members::PsmState member field.
-        ///     @li @b field_res1() - for Flags2Members::Res1 member field.
-        ///     @li @b field_spoofDetState() - for Flags2Members::SpoofDetState member field.
-        ///     @li @b field_res2() - for Flags2Members::Res2 member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_psmState @b field_psmState() -
+        ///         for Flags2Members::PsmState member field.
+        ///     @li @b Field_res1 @b field_res1() -
+        ///         for Flags2Members::Res1 member field.
+        ///     @li @b Field_spoofDetState @b field_spoofDetState() -
+        ///         for Flags2Members::SpoofDetState member field.
+        ///     @li @b Field_res2 @b field_res2() -
+        ///         for Flags2Members::Res2 member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             psmState,
             res1,
             spoofDetState,
@@ -608,20 +614,27 @@ class NavStatus : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavStatusFields::Itow field.
-    ///     @li @b field_gpsFix() for @ref NavStatusFields::GpsFix field.
-    ///     @li @b field_flags() for @ref NavStatusFields::Flags field.
-    ///     @li @b field_fixStat() for @ref NavStatusFields::FixStat field.
-    ///     @li @b field_flags2() for @ref NavStatusFields::Flags2 field.
-    ///     @li @b field_ttff() for @ref NavStatusFields::Ttff field.
-    ///     @li @b field_msss() for @ref NavStatusFields::Msss field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavStatusFields::Itow field.
+    ///     @li @b Field_gpsFix type and @b field_gpsFix() fuction
+    ///         for @ref NavStatusFields::GpsFix field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref NavStatusFields::Flags field.
+    ///     @li @b Field_fixStat type and @b field_fixStat() fuction
+    ///         for @ref NavStatusFields::FixStat field.
+    ///     @li @b Field_flags2 type and @b field_flags2() fuction
+    ///         for @ref NavStatusFields::Flags2 field.
+    ///     @li @b Field_ttff type and @b field_ttff() fuction
+    ///         for @ref NavStatusFields::Ttff field.
+    ///     @li @b Field_msss type and @b field_msss() fuction
+    ///         for @ref NavStatusFields::Msss field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         gpsFix,
         flags,

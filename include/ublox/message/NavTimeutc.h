@@ -307,14 +307,16 @@ struct NavTimeutcFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_bits() - for ValidMembers::Bits member field.
-        ///     @li @b field_utcStandard() - for ValidMembers::UtcStandard member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for ValidMembers::Bits member field.
+        ///     @li @b Field_utcStandard @b field_utcStandard() -
+        ///         for ValidMembers::UtcStandard member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             bits,
             utcStandard
         );
@@ -371,23 +373,33 @@ class NavTimeutc : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavTimeutcFields::Itow field.
-    ///     @li @b field_tAcc() for @ref NavTimeutcFields::TAcc field.
-    ///     @li @b field_nano() for @ref NavTimeutcFields::Nano field.
-    ///     @li @b field_year() for @ref NavTimeutcFields::Year field.
-    ///     @li @b field_month() for @ref NavTimeutcFields::Month field.
-    ///     @li @b field_day() for @ref NavTimeutcFields::Day field.
-    ///     @li @b field_hour() for @ref NavTimeutcFields::Hour field.
-    ///     @li @b field_min() for @ref NavTimeutcFields::Min field.
-    ///     @li @b field_sec() for @ref NavTimeutcFields::Sec field.
-    ///     @li @b field_valid() for @ref NavTimeutcFields::Valid field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavTimeutcFields::Itow field.
+    ///     @li @b Field_tAcc type and @b field_tAcc() fuction
+    ///         for @ref NavTimeutcFields::TAcc field.
+    ///     @li @b Field_nano type and @b field_nano() fuction
+    ///         for @ref NavTimeutcFields::Nano field.
+    ///     @li @b Field_year type and @b field_year() fuction
+    ///         for @ref NavTimeutcFields::Year field.
+    ///     @li @b Field_month type and @b field_month() fuction
+    ///         for @ref NavTimeutcFields::Month field.
+    ///     @li @b Field_day type and @b field_day() fuction
+    ///         for @ref NavTimeutcFields::Day field.
+    ///     @li @b Field_hour type and @b field_hour() fuction
+    ///         for @ref NavTimeutcFields::Hour field.
+    ///     @li @b Field_min type and @b field_min() fuction
+    ///         for @ref NavTimeutcFields::Min field.
+    ///     @li @b Field_sec type and @b field_sec() fuction
+    ///         for @ref NavTimeutcFields::Sec field.
+    ///     @li @b Field_valid type and @b field_valid() fuction
+    ///         for @ref NavTimeutcFields::Valid field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         tAcc,
         nano,

@@ -164,14 +164,16 @@ struct EsfInsFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_version() - for Bitfield0Members::Version member field.
-        ///     @li @b field_bits() - for Bitfield0Members::Bits member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_version @b field_version() -
+        ///         for Bitfield0Members::Version member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for Bitfield0Members::Bits member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             version,
             bits
         );
@@ -343,22 +345,31 @@ class EsfIns : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_bitfield0() for @ref EsfInsFields::Bitfield0 field.
-    ///     @li @b field_reserved1() for @ref EsfInsFields::Reserved1 field.
-    ///     @li @b field_itow() for @ref EsfInsFields::Itow field.
-    ///     @li @b field_xAngRate() for @ref EsfInsFields::XAngRate field.
-    ///     @li @b field_yAngRate() for @ref EsfInsFields::YAngRate field.
-    ///     @li @b field_zAngRate() for @ref EsfInsFields::ZAngRate field.
-    ///     @li @b field_xAccel() for @ref EsfInsFields::XAccel field.
-    ///     @li @b field_yAccel() for @ref EsfInsFields::YAccel field.
-    ///     @li @b field_zAccel() for @ref EsfInsFields::ZAccel field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_bitfield0 type and @b field_bitfield0() fuction
+    ///         for @ref EsfInsFields::Bitfield0 field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref EsfInsFields::Reserved1 field.
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref EsfInsFields::Itow field.
+    ///     @li @b Field_xAngRate type and @b field_xAngRate() fuction
+    ///         for @ref EsfInsFields::XAngRate field.
+    ///     @li @b Field_yAngRate type and @b field_yAngRate() fuction
+    ///         for @ref EsfInsFields::YAngRate field.
+    ///     @li @b Field_zAngRate type and @b field_zAngRate() fuction
+    ///         for @ref EsfInsFields::ZAngRate field.
+    ///     @li @b Field_xAccel type and @b field_xAccel() fuction
+    ///         for @ref EsfInsFields::XAccel field.
+    ///     @li @b Field_yAccel type and @b field_yAccel() fuction
+    ///         for @ref EsfInsFields::YAccel field.
+    ///     @li @b Field_zAccel type and @b field_zAccel() fuction
+    ///         for @ref EsfInsFields::ZAccel field.
+    COMMS_MSG_FIELDS_NAMES(
         bitfield0,
         reserved1,
         itow,

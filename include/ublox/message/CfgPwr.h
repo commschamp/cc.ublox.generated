@@ -180,16 +180,19 @@ class CfgPwr : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgPwrFields::Version field.
-    ///     @li @b field_reserved1() for @ref CfgPwrFields::Reserved1 field.
-    ///     @li @b field_state() for @ref CfgPwrFields::State field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgPwrFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgPwrFields::Reserved1 field.
+    ///     @li @b Field_state type and @b field_state() fuction
+    ///         for @ref CfgPwrFields::State field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         state

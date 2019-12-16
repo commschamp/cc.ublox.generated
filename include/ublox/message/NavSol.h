@@ -310,30 +310,47 @@ class NavSol : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavSolFields::Itow field.
-    ///     @li @b field_ftow() for @ref NavSolFields::Ftow field.
-    ///     @li @b field_week() for @ref NavSolFields::Week field.
-    ///     @li @b field_gpsFix() for @ref NavSolFields::GpsFix field.
-    ///     @li @b field_flags() for @ref NavSolFields::Flags field.
-    ///     @li @b field_ecefX() for @ref NavSolFields::EcefX field.
-    ///     @li @b field_ecefY() for @ref NavSolFields::EcefY field.
-    ///     @li @b field_ecefZ() for @ref NavSolFields::EcefZ field.
-    ///     @li @b field_pAcc() for @ref NavSolFields::PAcc field.
-    ///     @li @b field_ecefVX() for @ref NavSolFields::EcefVX field.
-    ///     @li @b field_ecefVY() for @ref NavSolFields::EcefVY field.
-    ///     @li @b field_ecefVZ() for @ref NavSolFields::EcefVZ field.
-    ///     @li @b field_sAcc() for @ref NavSolFields::SAcc field.
-    ///     @li @b field_pDOP() for @ref NavSolFields::PDOP field.
-    ///     @li @b field_reserved1() for @ref NavSolFields::Reserved1 field.
-    ///     @li @b field_numSV() for @ref NavSolFields::NumSV field.
-    ///     @li @b field_reserved2() for @ref NavSolFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavSolFields::Itow field.
+    ///     @li @b Field_ftow type and @b field_ftow() fuction
+    ///         for @ref NavSolFields::Ftow field.
+    ///     @li @b Field_week type and @b field_week() fuction
+    ///         for @ref NavSolFields::Week field.
+    ///     @li @b Field_gpsFix type and @b field_gpsFix() fuction
+    ///         for @ref NavSolFields::GpsFix field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref NavSolFields::Flags field.
+    ///     @li @b Field_ecefX type and @b field_ecefX() fuction
+    ///         for @ref NavSolFields::EcefX field.
+    ///     @li @b Field_ecefY type and @b field_ecefY() fuction
+    ///         for @ref NavSolFields::EcefY field.
+    ///     @li @b Field_ecefZ type and @b field_ecefZ() fuction
+    ///         for @ref NavSolFields::EcefZ field.
+    ///     @li @b Field_pAcc type and @b field_pAcc() fuction
+    ///         for @ref NavSolFields::PAcc field.
+    ///     @li @b Field_ecefVX type and @b field_ecefVX() fuction
+    ///         for @ref NavSolFields::EcefVX field.
+    ///     @li @b Field_ecefVY type and @b field_ecefVY() fuction
+    ///         for @ref NavSolFields::EcefVY field.
+    ///     @li @b Field_ecefVZ type and @b field_ecefVZ() fuction
+    ///         for @ref NavSolFields::EcefVZ field.
+    ///     @li @b Field_sAcc type and @b field_sAcc() fuction
+    ///         for @ref NavSolFields::SAcc field.
+    ///     @li @b Field_pDOP type and @b field_pDOP() fuction
+    ///         for @ref NavSolFields::PDOP field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavSolFields::Reserved1 field.
+    ///     @li @b Field_numSV type and @b field_numSV() fuction
+    ///         for @ref NavSolFields::NumSV field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref NavSolFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         ftow,
         week,

@@ -231,24 +231,35 @@ class CfgDat : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_datumNum() for @ref CfgDatFields::DatumNum field.
-    ///     @li @b field_datumName() for @ref CfgDatFields::DatumName field.
-    ///     @li @b field_majA() for @ref CfgDatFields::MajA field.
-    ///     @li @b field_flat() for @ref CfgDatFields::Flat field.
-    ///     @li @b field_dX() for @ref CfgDatFields::DX field.
-    ///     @li @b field_dY() for @ref CfgDatFields::DY field.
-    ///     @li @b field_dZ() for @ref CfgDatFields::DZ field.
-    ///     @li @b field_rotX() for @ref CfgDatFields::RotX field.
-    ///     @li @b field_rotY() for @ref CfgDatFields::RotY field.
-    ///     @li @b field_rotZ() for @ref CfgDatFields::RotZ field.
-    ///     @li @b field_scale() for @ref CfgDatFields::Scale field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_datumNum type and @b field_datumNum() fuction
+    ///         for @ref CfgDatFields::DatumNum field.
+    ///     @li @b Field_datumName type and @b field_datumName() fuction
+    ///         for @ref CfgDatFields::DatumName field.
+    ///     @li @b Field_majA type and @b field_majA() fuction
+    ///         for @ref CfgDatFields::MajA field.
+    ///     @li @b Field_flat type and @b field_flat() fuction
+    ///         for @ref CfgDatFields::Flat field.
+    ///     @li @b Field_dX type and @b field_dX() fuction
+    ///         for @ref CfgDatFields::DX field.
+    ///     @li @b Field_dY type and @b field_dY() fuction
+    ///         for @ref CfgDatFields::DY field.
+    ///     @li @b Field_dZ type and @b field_dZ() fuction
+    ///         for @ref CfgDatFields::DZ field.
+    ///     @li @b Field_rotX type and @b field_rotX() fuction
+    ///         for @ref CfgDatFields::RotX field.
+    ///     @li @b Field_rotY type and @b field_rotY() fuction
+    ///         for @ref CfgDatFields::RotY field.
+    ///     @li @b Field_rotZ type and @b field_rotZ() fuction
+    ///         for @ref CfgDatFields::RotZ field.
+    ///     @li @b Field_scale type and @b field_scale() fuction
+    ///         for @ref CfgDatFields::Scale field.
+    COMMS_MSG_FIELDS_NAMES(
         datumNum,
         datumName,
         majA,

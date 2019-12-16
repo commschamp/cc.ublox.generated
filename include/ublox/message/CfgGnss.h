@@ -298,15 +298,18 @@ struct CfgGnssFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_bitsLow() - for FlagsMembers::BitsLow member field.
-                ///     @li @b field_sigCfgMask() - for FlagsMembers::SigCfgMask member field.
-                ///     @li @b field_reserved() - for FlagsMembers::Reserved member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_bitsLow @b field_bitsLow() -
+                ///         for FlagsMembers::BitsLow member field.
+                ///     @li @b Field_sigCfgMask @b field_sigCfgMask() -
+                ///         for FlagsMembers::SigCfgMask member field.
+                ///     @li @b Field_reserved @b field_reserved() -
+                ///         for FlagsMembers::Reserved member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     bitsLow,
                     sigCfgMask,
                     reserved
@@ -345,17 +348,22 @@ struct CfgGnssFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_gnssId() - for ElementMembers::GnssId member field.
-            ///     @li @b field_resTrkCh() - for ElementMembers::ResTrkCh member field.
-            ///     @li @b field_maxTrkCh() - for ElementMembers::MaxTrkCh member field.
-            ///     @li @b field_reserved1() - for ElementMembers::Reserved1 member field.
-            ///     @li @b field_flags() - for ElementMembers::Flags member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_gnssId @b field_gnssId() -
+            ///         for ElementMembers::GnssId member field.
+            ///     @li @b Field_resTrkCh @b field_resTrkCh() -
+            ///         for ElementMembers::ResTrkCh member field.
+            ///     @li @b Field_maxTrkCh @b field_maxTrkCh() -
+            ///         for ElementMembers::MaxTrkCh member field.
+            ///     @li @b Field_reserved1 @b field_reserved1() -
+            ///         for ElementMembers::Reserved1 member field.
+            ///     @li @b Field_flags @b field_flags() -
+            ///         for ElementMembers::Flags member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 gnssId,
                 resTrkCh,
                 maxTrkCh,
@@ -429,18 +437,23 @@ class CfgGnss : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_msgVer() for @ref CfgGnssFields::MsgVer field.
-    ///     @li @b field_numTrkChHw() for @ref CfgGnssFields::NumTrkChHw field.
-    ///     @li @b field_numTrkChUse() for @ref CfgGnssFields::NumTrkChUse field.
-    ///     @li @b field_numConfigBlocks() for @ref CfgGnssFields::NumConfigBlocks field.
-    ///     @li @b field_list() for @ref CfgGnssFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_msgVer type and @b field_msgVer() fuction
+    ///         for @ref CfgGnssFields::MsgVer field.
+    ///     @li @b Field_numTrkChHw type and @b field_numTrkChHw() fuction
+    ///         for @ref CfgGnssFields::NumTrkChHw field.
+    ///     @li @b Field_numTrkChUse type and @b field_numTrkChUse() fuction
+    ///         for @ref CfgGnssFields::NumTrkChUse field.
+    ///     @li @b Field_numConfigBlocks type and @b field_numConfigBlocks() fuction
+    ///         for @ref CfgGnssFields::NumConfigBlocks field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref CfgGnssFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         msgVer,
         numTrkChHw,
         numTrkChUse,

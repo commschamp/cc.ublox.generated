@@ -300,21 +300,29 @@ class TimVcocalExt : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref TimVcocalExtFields::Type field.
-    ///     @li @b field_version() for @ref TimVcocalExtFields::Version field.
-    ///     @li @b field_oscId() for @ref TimVcocalExtFields::OscId field.
-    ///     @li @b field_srcId() for @ref TimVcocalExtFields::SrcId field.
-    ///     @li @b field_reserved1() for @ref TimVcocalExtFields::Reserved1 field.
-    ///     @li @b field_raw0() for @ref TimVcocalExtFields::Raw0 field.
-    ///     @li @b field_raw1() for @ref TimVcocalExtFields::Raw1 field.
-    ///     @li @b field_maxStepSize() for @ref TimVcocalExtFields::MaxStepSize field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref TimVcocalExtFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref TimVcocalExtFields::Version field.
+    ///     @li @b Field_oscId type and @b field_oscId() fuction
+    ///         for @ref TimVcocalExtFields::OscId field.
+    ///     @li @b Field_srcId type and @b field_srcId() fuction
+    ///         for @ref TimVcocalExtFields::SrcId field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref TimVcocalExtFields::Reserved1 field.
+    ///     @li @b Field_raw0 type and @b field_raw0() fuction
+    ///         for @ref TimVcocalExtFields::Raw0 field.
+    ///     @li @b Field_raw1 type and @b field_raw1() fuction
+    ///         for @ref TimVcocalExtFields::Raw1 field.
+    ///     @li @b Field_maxStepSize type and @b field_maxStepSize() fuction
+    ///         for @ref TimVcocalExtFields::MaxStepSize field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         oscId,

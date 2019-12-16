@@ -245,16 +245,20 @@ struct CfgItfmFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_bbThreshold() - for ConfigMembers::BbThreshold member field.
-        ///     @li @b field_cwThreshold() - for ConfigMembers::CwThreshold member field.
-        ///     @li @b field_algorithmBits() - for ConfigMembers::AlgorithmBits member field.
-        ///     @li @b field_bits() - for ConfigMembers::Bits member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_bbThreshold @b field_bbThreshold() -
+        ///         for ConfigMembers::BbThreshold member field.
+        ///     @li @b Field_cwThreshold @b field_cwThreshold() -
+        ///         for ConfigMembers::CwThreshold member field.
+        ///     @li @b Field_algorithmBits @b field_algorithmBits() -
+        ///         for ConfigMembers::AlgorithmBits member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for ConfigMembers::Bits member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             bbThreshold,
             cwThreshold,
             algorithmBits,
@@ -383,15 +387,18 @@ struct CfgItfmFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_generalBits() - for Config2Members::GeneralBits member field.
-        ///     @li @b field_antSetting() - for Config2Members::AntSetting member field.
-        ///     @li @b field_bitsHigh() - for Config2Members::BitsHigh member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_generalBits @b field_generalBits() -
+        ///         for Config2Members::GeneralBits member field.
+        ///     @li @b Field_antSetting @b field_antSetting() -
+        ///         for Config2Members::AntSetting member field.
+        ///     @li @b Field_bitsHigh @b field_bitsHigh() -
+        ///         for Config2Members::BitsHigh member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             generalBits,
             antSetting,
             bitsHigh
@@ -439,15 +446,17 @@ class CfgItfm : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_config() for @ref CfgItfmFields::Config field.
-    ///     @li @b field_config2() for @ref CfgItfmFields::Config2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_config type and @b field_config() fuction
+    ///         for @ref CfgItfmFields::Config field.
+    ///     @li @b Field_config2 type and @b field_config2() fuction
+    ///         for @ref CfgItfmFields::Config2 field.
+    COMMS_MSG_FIELDS_NAMES(
         config,
         config2
     );

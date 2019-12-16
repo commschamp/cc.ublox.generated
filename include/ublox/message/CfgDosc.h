@@ -376,15 +376,18 @@ struct CfgDoscFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_bits() - for FlagsMembers::Bits member field.
-                ///     @li @b field_controlIf() - for FlagsMembers::ControlIf member field.
-                ///     @li @b field_reserved() - for FlagsMembers::Reserved member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_bits @b field_bits() -
+                ///         for FlagsMembers::Bits member field.
+                ///     @li @b Field_controlIf @b field_controlIf() -
+                ///         for FlagsMembers::ControlIf member field.
+                ///     @li @b Field_reserved @b field_reserved() -
+                ///         for FlagsMembers::Reserved member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     bits,
                     controlIf,
                     reserved
@@ -570,24 +573,36 @@ struct CfgDoscFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_oscId() - for ElementMembers::OscId member field.
-            ///     @li @b field_reserved2() - for ElementMembers::Reserved2 member field.
-            ///     @li @b field_flags() - for ElementMembers::Flags member field.
-            ///     @li @b field_freq() - for ElementMembers::Freq member field.
-            ///     @li @b field_phaseOffset() - for ElementMembers::PhaseOffset member field.
-            ///     @li @b field_withTemp() - for ElementMembers::WithTemp member field.
-            ///     @li @b field_withAge() - for ElementMembers::WithAge member field.
-            ///     @li @b field_timeToTemp() - for ElementMembers::TimeToTemp member field.
-            ///     @li @b field_reserved3() - for ElementMembers::Reserved3 member field.
-            ///     @li @b field_gainVco() - for ElementMembers::GainVco member field.
-            ///     @li @b field_gainUncertainty() - for ElementMembers::GainUncertainty member field.
-            ///     @li @b field_reserved4() - for ElementMembers::Reserved4 member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_oscId @b field_oscId() -
+            ///         for ElementMembers::OscId member field.
+            ///     @li @b Field_reserved2 @b field_reserved2() -
+            ///         for ElementMembers::Reserved2 member field.
+            ///     @li @b Field_flags @b field_flags() -
+            ///         for ElementMembers::Flags member field.
+            ///     @li @b Field_freq @b field_freq() -
+            ///         for ElementMembers::Freq member field.
+            ///     @li @b Field_phaseOffset @b field_phaseOffset() -
+            ///         for ElementMembers::PhaseOffset member field.
+            ///     @li @b Field_withTemp @b field_withTemp() -
+            ///         for ElementMembers::WithTemp member field.
+            ///     @li @b Field_withAge @b field_withAge() -
+            ///         for ElementMembers::WithAge member field.
+            ///     @li @b Field_timeToTemp @b field_timeToTemp() -
+            ///         for ElementMembers::TimeToTemp member field.
+            ///     @li @b Field_reserved3 @b field_reserved3() -
+            ///         for ElementMembers::Reserved3 member field.
+            ///     @li @b Field_gainVco @b field_gainVco() -
+            ///         for ElementMembers::GainVco member field.
+            ///     @li @b Field_gainUncertainty @b field_gainUncertainty() -
+            ///         for ElementMembers::GainUncertainty member field.
+            ///     @li @b Field_reserved4 @b field_reserved4() -
+            ///         for ElementMembers::Reserved4 member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 oscId,
                 reserved2,
                 flags,
@@ -667,17 +682,21 @@ class CfgDosc : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgDoscFields::Version field.
-    ///     @li @b field_numOsc() for @ref CfgDoscFields::NumOsc field.
-    ///     @li @b field_reserved1() for @ref CfgDoscFields::Reserved1 field.
-    ///     @li @b field_list() for @ref CfgDoscFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgDoscFields::Version field.
+    ///     @li @b Field_numOsc type and @b field_numOsc() fuction
+    ///         for @ref CfgDoscFields::NumOsc field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgDoscFields::Reserved1 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref CfgDoscFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         numOsc,
         reserved1,

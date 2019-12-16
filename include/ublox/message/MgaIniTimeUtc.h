@@ -241,14 +241,16 @@ struct MgaIniTimeUtcFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_source() - for RefMembers::Source member field.
-        ///     @li @b field_bits() - for RefMembers::Bits member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_source @b field_source() -
+        ///         for RefMembers::Source member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for RefMembers::Bits member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             source,
             bits
         );
@@ -454,28 +456,43 @@ class MgaIniTimeUtc : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaIniTimeUtcFields::Type field.
-    ///     @li @b field_version() for @ref MgaIniTimeUtcFields::Version field.
-    ///     @li @b field_ref() for @ref MgaIniTimeUtcFields::Ref field.
-    ///     @li @b field_leapSecs() for @ref MgaIniTimeUtcFields::LeapSecs field.
-    ///     @li @b field_year() for @ref MgaIniTimeUtcFields::Year field.
-    ///     @li @b field_month() for @ref MgaIniTimeUtcFields::Month field.
-    ///     @li @b field_day() for @ref MgaIniTimeUtcFields::Day field.
-    ///     @li @b field_hour() for @ref MgaIniTimeUtcFields::Hour field.
-    ///     @li @b field_minute() for @ref MgaIniTimeUtcFields::Minute field.
-    ///     @li @b field_second() for @ref MgaIniTimeUtcFields::Second field.
-    ///     @li @b field_reserved1() for @ref MgaIniTimeUtcFields::Reserved1 field.
-    ///     @li @b field_ns() for @ref MgaIniTimeUtcFields::Ns field.
-    ///     @li @b field_tAccS() for @ref MgaIniTimeUtcFields::TAccS field.
-    ///     @li @b field_reserved2() for @ref MgaIniTimeUtcFields::Reserved2 field.
-    ///     @li @b field_tAccNs() for @ref MgaIniTimeUtcFields::TAccNs field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaIniTimeUtcFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaIniTimeUtcFields::Version field.
+    ///     @li @b Field_ref type and @b field_ref() fuction
+    ///         for @ref MgaIniTimeUtcFields::Ref field.
+    ///     @li @b Field_leapSecs type and @b field_leapSecs() fuction
+    ///         for @ref MgaIniTimeUtcFields::LeapSecs field.
+    ///     @li @b Field_year type and @b field_year() fuction
+    ///         for @ref MgaIniTimeUtcFields::Year field.
+    ///     @li @b Field_month type and @b field_month() fuction
+    ///         for @ref MgaIniTimeUtcFields::Month field.
+    ///     @li @b Field_day type and @b field_day() fuction
+    ///         for @ref MgaIniTimeUtcFields::Day field.
+    ///     @li @b Field_hour type and @b field_hour() fuction
+    ///         for @ref MgaIniTimeUtcFields::Hour field.
+    ///     @li @b Field_minute type and @b field_minute() fuction
+    ///         for @ref MgaIniTimeUtcFields::Minute field.
+    ///     @li @b Field_second type and @b field_second() fuction
+    ///         for @ref MgaIniTimeUtcFields::Second field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaIniTimeUtcFields::Reserved1 field.
+    ///     @li @b Field_ns type and @b field_ns() fuction
+    ///         for @ref MgaIniTimeUtcFields::Ns field.
+    ///     @li @b Field_tAccS type and @b field_tAccS() fuction
+    ///         for @ref MgaIniTimeUtcFields::TAccS field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaIniTimeUtcFields::Reserved2 field.
+    ///     @li @b Field_tAccNs type and @b field_tAccNs() fuction
+    ///         for @ref MgaIniTimeUtcFields::TAccNs field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         ref,

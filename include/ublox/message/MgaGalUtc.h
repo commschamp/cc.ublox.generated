@@ -264,25 +264,37 @@ class MgaGalUtc : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaGalUtcFields::Type field.
-    ///     @li @b field_version() for @ref MgaGalUtcFields::Version field.
-    ///     @li @b field_reserved1() for @ref MgaGalUtcFields::Reserved1 field.
-    ///     @li @b field_a0() for @ref MgaGalUtcFields::A0 field.
-    ///     @li @b field_a1() for @ref MgaGalUtcFields::A1 field.
-    ///     @li @b field_dtLS() for @ref MgaGalUtcFields::DtLS field.
-    ///     @li @b field_tot() for @ref MgaGalUtcFields::Tot field.
-    ///     @li @b field_wnt() for @ref MgaGalUtcFields::Wnt field.
-    ///     @li @b field_wnLSF() for @ref MgaGalUtcFields::WnLSF field.
-    ///     @li @b field_dN() for @ref MgaGalUtcFields::DN field.
-    ///     @li @b field_dTLSF() for @ref MgaGalUtcFields::DTLSF field.
-    ///     @li @b field_reserved2() for @ref MgaGalUtcFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaGalUtcFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaGalUtcFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaGalUtcFields::Reserved1 field.
+    ///     @li @b Field_a0 type and @b field_a0() fuction
+    ///         for @ref MgaGalUtcFields::A0 field.
+    ///     @li @b Field_a1 type and @b field_a1() fuction
+    ///         for @ref MgaGalUtcFields::A1 field.
+    ///     @li @b Field_dtLS type and @b field_dtLS() fuction
+    ///         for @ref MgaGalUtcFields::DtLS field.
+    ///     @li @b Field_tot type and @b field_tot() fuction
+    ///         for @ref MgaGalUtcFields::Tot field.
+    ///     @li @b Field_wnt type and @b field_wnt() fuction
+    ///         for @ref MgaGalUtcFields::Wnt field.
+    ///     @li @b Field_wnLSF type and @b field_wnLSF() fuction
+    ///         for @ref MgaGalUtcFields::WnLSF field.
+    ///     @li @b Field_dN type and @b field_dN() fuction
+    ///         for @ref MgaGalUtcFields::DN field.
+    ///     @li @b Field_dTLSF type and @b field_dTLSF() fuction
+    ///         for @ref MgaGalUtcFields::DTLSF field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaGalUtcFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         reserved1,

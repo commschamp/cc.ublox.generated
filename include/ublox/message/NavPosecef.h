@@ -97,18 +97,23 @@ class NavPosecef : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavPosecefFields::Itow field.
-    ///     @li @b field_ecefX() for @ref NavPosecefFields::EcefX field.
-    ///     @li @b field_ecefY() for @ref NavPosecefFields::EcefY field.
-    ///     @li @b field_ecefZ() for @ref NavPosecefFields::EcefZ field.
-    ///     @li @b field_pAcc() for @ref NavPosecefFields::PAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavPosecefFields::Itow field.
+    ///     @li @b Field_ecefX type and @b field_ecefX() fuction
+    ///         for @ref NavPosecefFields::EcefX field.
+    ///     @li @b Field_ecefY type and @b field_ecefY() fuction
+    ///         for @ref NavPosecefFields::EcefY field.
+    ///     @li @b Field_ecefZ type and @b field_ecefZ() fuction
+    ///         for @ref NavPosecefFields::EcefZ field.
+    ///     @li @b Field_pAcc type and @b field_pAcc() fuction
+    ///         for @ref NavPosecefFields::PAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         ecefX,
         ecefY,

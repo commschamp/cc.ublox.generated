@@ -239,24 +239,35 @@ class CfgNmeaV1 : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_filter() for @ref CfgNmeaV1Fields::Filter field.
-    ///     @li @b field_nmeaVersion() for @ref CfgNmeaV1Fields::NmeaVersion field.
-    ///     @li @b field_numSV() for @ref CfgNmeaV1Fields::NumSV field.
-    ///     @li @b field_flags() for @ref CfgNmeaV1Fields::Flags field.
-    ///     @li @b field_gnssToFilter() for @ref CfgNmeaV1Fields::GnssToFilter field.
-    ///     @li @b field_svNumbering() for @ref CfgNmeaV1Fields::SvNumbering field.
-    ///     @li @b field_mainTalkerId() for @ref CfgNmeaV1Fields::MainTalkerId field.
-    ///     @li @b field_gsvTalkerId() for @ref CfgNmeaV1Fields::GsvTalkerId field.
-    ///     @li @b field_version() for @ref CfgNmeaV1Fields::Version field.
-    ///     @li @b field_bdsTalkerId() for @ref CfgNmeaV1Fields::BdsTalkerId field.
-    ///     @li @b field_reserved1() for @ref CfgNmeaV1Fields::Reserved1 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_filter type and @b field_filter() fuction
+    ///         for @ref CfgNmeaV1Fields::Filter field.
+    ///     @li @b Field_nmeaVersion type and @b field_nmeaVersion() fuction
+    ///         for @ref CfgNmeaV1Fields::NmeaVersion field.
+    ///     @li @b Field_numSV type and @b field_numSV() fuction
+    ///         for @ref CfgNmeaV1Fields::NumSV field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgNmeaV1Fields::Flags field.
+    ///     @li @b Field_gnssToFilter type and @b field_gnssToFilter() fuction
+    ///         for @ref CfgNmeaV1Fields::GnssToFilter field.
+    ///     @li @b Field_svNumbering type and @b field_svNumbering() fuction
+    ///         for @ref CfgNmeaV1Fields::SvNumbering field.
+    ///     @li @b Field_mainTalkerId type and @b field_mainTalkerId() fuction
+    ///         for @ref CfgNmeaV1Fields::MainTalkerId field.
+    ///     @li @b Field_gsvTalkerId type and @b field_gsvTalkerId() fuction
+    ///         for @ref CfgNmeaV1Fields::GsvTalkerId field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgNmeaV1Fields::Version field.
+    ///     @li @b Field_bdsTalkerId type and @b field_bdsTalkerId() fuction
+    ///         for @ref CfgNmeaV1Fields::BdsTalkerId field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgNmeaV1Fields::Reserved1 field.
+    COMMS_MSG_FIELDS_NAMES(
         filter,
         nmeaVersion,
         numSV,

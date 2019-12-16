@@ -262,25 +262,37 @@ class MgaBdsUtc : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaBdsUtcFields::Type field.
-    ///     @li @b field_version() for @ref MgaBdsUtcFields::Version field.
-    ///     @li @b field_reserved1() for @ref MgaBdsUtcFields::Reserved1 field.
-    ///     @li @b field_a0UTC() for @ref MgaBdsUtcFields::A0UTC field.
-    ///     @li @b field_a1UTC() for @ref MgaBdsUtcFields::A1UTC field.
-    ///     @li @b field_dtLS() for @ref MgaBdsUtcFields::DtLS field.
-    ///     @li @b field_reserved2() for @ref MgaBdsUtcFields::Reserved2 field.
-    ///     @li @b field_wnRec() for @ref MgaBdsUtcFields::WnRec field.
-    ///     @li @b field_wnLSF() for @ref MgaBdsUtcFields::WnLSF field.
-    ///     @li @b field_dN() for @ref MgaBdsUtcFields::DN field.
-    ///     @li @b field_dtLSF() for @ref MgaBdsUtcFields::DtLSF field.
-    ///     @li @b field_reserved3() for @ref MgaBdsUtcFields::Reserved3 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaBdsUtcFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaBdsUtcFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaBdsUtcFields::Reserved1 field.
+    ///     @li @b Field_a0UTC type and @b field_a0UTC() fuction
+    ///         for @ref MgaBdsUtcFields::A0UTC field.
+    ///     @li @b Field_a1UTC type and @b field_a1UTC() fuction
+    ///         for @ref MgaBdsUtcFields::A1UTC field.
+    ///     @li @b Field_dtLS type and @b field_dtLS() fuction
+    ///         for @ref MgaBdsUtcFields::DtLS field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaBdsUtcFields::Reserved2 field.
+    ///     @li @b Field_wnRec type and @b field_wnRec() fuction
+    ///         for @ref MgaBdsUtcFields::WnRec field.
+    ///     @li @b Field_wnLSF type and @b field_wnLSF() fuction
+    ///         for @ref MgaBdsUtcFields::WnLSF field.
+    ///     @li @b Field_dN type and @b field_dN() fuction
+    ///         for @ref MgaBdsUtcFields::DN field.
+    ///     @li @b Field_dtLSF type and @b field_dtLSF() fuction
+    ///         for @ref MgaBdsUtcFields::DtLSF field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref MgaBdsUtcFields::Reserved3 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         reserved1,

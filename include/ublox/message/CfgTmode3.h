@@ -230,14 +230,16 @@ struct CfgTmode3Fields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_mode() - for FlagsMembers::Mode member field.
-        ///     @li @b field_bits() - for FlagsMembers::Bits member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_mode @b field_mode() -
+        ///         for FlagsMembers::Mode member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for FlagsMembers::Bits member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             mode,
             bits
         );
@@ -381,18 +383,24 @@ struct CfgTmode3Fields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_ecefX() - for EcefWrapMembers::EcefX member field.
-            ///     @li @b field_ecefY() - for EcefWrapMembers::EcefY member field.
-            ///     @li @b field_ecefZ() - for EcefWrapMembers::EcefZ member field.
-            ///     @li @b field_ecefXHP() - for EcefWrapMembers::EcefXHP member field.
-            ///     @li @b field_ecefYHP() - for EcefWrapMembers::EcefYHP member field.
-            ///     @li @b field_ecefZHP() - for EcefWrapMembers::EcefZHP member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_ecefX @b field_ecefX() -
+            ///         for EcefWrapMembers::EcefX member field.
+            ///     @li @b Field_ecefY @b field_ecefY() -
+            ///         for EcefWrapMembers::EcefY member field.
+            ///     @li @b Field_ecefZ @b field_ecefZ() -
+            ///         for EcefWrapMembers::EcefZ member field.
+            ///     @li @b Field_ecefXHP @b field_ecefXHP() -
+            ///         for EcefWrapMembers::EcefXHP member field.
+            ///     @li @b Field_ecefYHP @b field_ecefYHP() -
+            ///         for EcefWrapMembers::EcefYHP member field.
+            ///     @li @b Field_ecefZHP @b field_ecefZHP() -
+            ///         for EcefWrapMembers::EcefZHP member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 ecefX,
                 ecefY,
                 ecefZ,
@@ -559,18 +567,24 @@ struct CfgTmode3Fields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_lat() - for LlaWrapMembers::Lat member field.
-            ///     @li @b field_lon() - for LlaWrapMembers::Lon member field.
-            ///     @li @b field_alt() - for LlaWrapMembers::Alt member field.
-            ///     @li @b field_latHP() - for LlaWrapMembers::LatHP member field.
-            ///     @li @b field_lonHP() - for LlaWrapMembers::LonHP member field.
-            ///     @li @b field_altHP() - for LlaWrapMembers::AltHP member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_lat @b field_lat() -
+            ///         for LlaWrapMembers::Lat member field.
+            ///     @li @b Field_lon @b field_lon() -
+            ///         for LlaWrapMembers::Lon member field.
+            ///     @li @b Field_alt @b field_alt() -
+            ///         for LlaWrapMembers::Alt member field.
+            ///     @li @b Field_latHP @b field_latHP() -
+            ///         for LlaWrapMembers::LatHP member field.
+            ///     @li @b Field_lonHP @b field_lonHP() -
+            ///         for LlaWrapMembers::LonHP member field.
+            ///     @li @b Field_altHP @b field_altHP() -
+            ///         for LlaWrapMembers::AltHP member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 lat,
                 lon,
                 alt,
@@ -726,23 +740,33 @@ class CfgTmode3 : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgTmode3Fields::Version field.
-    ///     @li @b field_reserved1() for @ref CfgTmode3Fields::Reserved1 field.
-    ///     @li @b field_flags() for @ref CfgTmode3Fields::Flags field.
-    ///     @li @b field_ecef() for @ref CfgTmode3Fields::Ecef field.
-    ///     @li @b field_lla() for @ref CfgTmode3Fields::Lla field.
-    ///     @li @b field_reserved2() for @ref CfgTmode3Fields::Reserved2 field.
-    ///     @li @b field_fixedPosAcc() for @ref CfgTmode3Fields::FixedPosAcc field.
-    ///     @li @b field_svinMinDur() for @ref CfgTmode3Fields::SvinMinDur field.
-    ///     @li @b field_svinVarLimit() for @ref CfgTmode3Fields::SvinVarLimit field.
-    ///     @li @b field_reserved3() for @ref CfgTmode3Fields::Reserved3 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgTmode3Fields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgTmode3Fields::Reserved1 field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgTmode3Fields::Flags field.
+    ///     @li @b Field_ecef type and @b field_ecef() fuction
+    ///         for @ref CfgTmode3Fields::Ecef field.
+    ///     @li @b Field_lla type and @b field_lla() fuction
+    ///         for @ref CfgTmode3Fields::Lla field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref CfgTmode3Fields::Reserved2 field.
+    ///     @li @b Field_fixedPosAcc type and @b field_fixedPosAcc() fuction
+    ///         for @ref CfgTmode3Fields::FixedPosAcc field.
+    ///     @li @b Field_svinMinDur type and @b field_svinMinDur() fuction
+    ///         for @ref CfgTmode3Fields::SvinMinDur field.
+    ///     @li @b Field_svinVarLimit type and @b field_svinVarLimit() fuction
+    ///         for @ref CfgTmode3Fields::SvinVarLimit field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref CfgTmode3Fields::Reserved3 field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         flags,

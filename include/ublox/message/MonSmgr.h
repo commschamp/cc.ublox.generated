@@ -421,14 +421,16 @@ struct MonSmgrFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_intOscState() - for IntOscMembers::IntOscState member field.
-        ///     @li @b field_bits() - for IntOscMembers::Bits member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_intOscState @b field_intOscState() -
+        ///         for IntOscMembers::IntOscState member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for IntOscMembers::Bits member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             intOscState,
             bits
         );
@@ -539,14 +541,16 @@ struct MonSmgrFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_extOscState() - for ExtOscMembers::ExtOscState member field.
-        ///     @li @b field_bits() - for ExtOscMembers::Bits member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_extOscState @b field_extOscState() -
+        ///         for ExtOscMembers::ExtOscState member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for ExtOscMembers::Bits member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             extOscState,
             bits
         );
@@ -763,22 +767,31 @@ class MonSmgr : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref MonSmgrFields::Version field.
-    ///     @li @b field_reserved1() for @ref MonSmgrFields::Reserved1 field.
-    ///     @li @b field_itow() for @ref MonSmgrFields::Itow field.
-    ///     @li @b field_intOsc() for @ref MonSmgrFields::IntOsc field.
-    ///     @li @b field_extOsc() for @ref MonSmgrFields::ExtOsc field.
-    ///     @li @b field_discSrc() for @ref MonSmgrFields::DiscSrc field.
-    ///     @li @b field_gnss() for @ref MonSmgrFields::Gnss field.
-    ///     @li @b field_extInt0() for @ref MonSmgrFields::ExtInt0 field.
-    ///     @li @b field_extInt1() for @ref MonSmgrFields::ExtInt1 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MonSmgrFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MonSmgrFields::Reserved1 field.
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref MonSmgrFields::Itow field.
+    ///     @li @b Field_intOsc type and @b field_intOsc() fuction
+    ///         for @ref MonSmgrFields::IntOsc field.
+    ///     @li @b Field_extOsc type and @b field_extOsc() fuction
+    ///         for @ref MonSmgrFields::ExtOsc field.
+    ///     @li @b Field_discSrc type and @b field_discSrc() fuction
+    ///         for @ref MonSmgrFields::DiscSrc field.
+    ///     @li @b Field_gnss type and @b field_gnss() fuction
+    ///         for @ref MonSmgrFields::Gnss field.
+    ///     @li @b Field_extInt0 type and @b field_extInt0() fuction
+    ///         for @ref MonSmgrFields::ExtInt0 field.
+    ///     @li @b Field_extInt1 type and @b field_extInt1() fuction
+    ///         for @ref MonSmgrFields::ExtInt1 field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         itow,

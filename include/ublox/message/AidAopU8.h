@@ -116,17 +116,21 @@ class AidAopU8 : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_gnssId() for @ref AidAopU8Fields::GnssId field.
-    ///     @li @b field_svid() for @ref AidAopU8Fields::Svid field.
-    ///     @li @b field_reserved1() for @ref AidAopU8Fields::Reserved1 field.
-    ///     @li @b field_data() for @ref AidAopU8Fields::Data field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_gnssId type and @b field_gnssId() fuction
+    ///         for @ref AidAopU8Fields::GnssId field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref AidAopU8Fields::Svid field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref AidAopU8Fields::Reserved1 field.
+    ///     @li @b Field_data type and @b field_data() fuction
+    ///         for @ref AidAopU8Fields::Data field.
+    COMMS_MSG_FIELDS_NAMES(
         gnssId,
         svid,
         reserved1,

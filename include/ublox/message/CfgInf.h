@@ -251,16 +251,19 @@ class CfgInf : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_protocolId() for @ref CfgInfFields::ProtocolId field.
-    ///     @li @b field_reserved1() for @ref CfgInfFields::Reserved1 field.
-    ///     @li @b field_infMsgMask() for @ref CfgInfFields::InfMsgMask field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_protocolId type and @b field_protocolId() fuction
+    ///         for @ref CfgInfFields::ProtocolId field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgInfFields::Reserved1 field.
+    ///     @li @b Field_infMsgMask type and @b field_infMsgMask() fuction
+    ///         for @ref CfgInfFields::InfMsgMask field.
+    COMMS_MSG_FIELDS_NAMES(
         protocolId,
         reserved1,
         infMsgMask

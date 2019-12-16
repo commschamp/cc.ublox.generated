@@ -661,32 +661,51 @@ class CfgNav5 : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_mask() for @ref CfgNav5Fields::Mask field.
-    ///     @li @b field_dynModel() for @ref CfgNav5Fields::DynModel field.
-    ///     @li @b field_fixMode() for @ref CfgNav5Fields::FixMode field.
-    ///     @li @b field_fixedAlt() for @ref CfgNav5Fields::FixedAlt field.
-    ///     @li @b field_fixedAltVar() for @ref CfgNav5Fields::FixedAltVar field.
-    ///     @li @b field_minElev() for @ref CfgNav5Fields::MinElev field.
-    ///     @li @b field_drLimit() for @ref CfgNav5Fields::DrLimit field.
-    ///     @li @b field_pDop() for @ref CfgNav5Fields::PDop field.
-    ///     @li @b field_tDop() for @ref CfgNav5Fields::TDop field.
-    ///     @li @b field_pAcc() for @ref CfgNav5Fields::PAcc field.
-    ///     @li @b field_tAcc() for @ref CfgNav5Fields::TAcc field.
-    ///     @li @b field_staticHoldThresh() for @ref CfgNav5Fields::StaticHoldThresh field.
-    ///     @li @b field_dgnssTimeout() for @ref CfgNav5Fields::DgnssTimeout field.
-    ///     @li @b field_cnoThreshNumSVs() for @ref CfgNav5Fields::CnoThreshNumSVs field.
-    ///     @li @b field_cnoThresh() for @ref CfgNav5Fields::CnoThresh field.
-    ///     @li @b field_reserved1() for @ref CfgNav5Fields::Reserved1 field.
-    ///     @li @b field_staticHoldMaxDist() for @ref CfgNav5Fields::StaticHoldMaxDist field.
-    ///     @li @b field_utcStandard() for @ref CfgNav5Fields::UtcStandard field.
-    ///     @li @b field_reserved2() for @ref CfgNav5Fields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_mask type and @b field_mask() fuction
+    ///         for @ref CfgNav5Fields::Mask field.
+    ///     @li @b Field_dynModel type and @b field_dynModel() fuction
+    ///         for @ref CfgNav5Fields::DynModel field.
+    ///     @li @b Field_fixMode type and @b field_fixMode() fuction
+    ///         for @ref CfgNav5Fields::FixMode field.
+    ///     @li @b Field_fixedAlt type and @b field_fixedAlt() fuction
+    ///         for @ref CfgNav5Fields::FixedAlt field.
+    ///     @li @b Field_fixedAltVar type and @b field_fixedAltVar() fuction
+    ///         for @ref CfgNav5Fields::FixedAltVar field.
+    ///     @li @b Field_minElev type and @b field_minElev() fuction
+    ///         for @ref CfgNav5Fields::MinElev field.
+    ///     @li @b Field_drLimit type and @b field_drLimit() fuction
+    ///         for @ref CfgNav5Fields::DrLimit field.
+    ///     @li @b Field_pDop type and @b field_pDop() fuction
+    ///         for @ref CfgNav5Fields::PDop field.
+    ///     @li @b Field_tDop type and @b field_tDop() fuction
+    ///         for @ref CfgNav5Fields::TDop field.
+    ///     @li @b Field_pAcc type and @b field_pAcc() fuction
+    ///         for @ref CfgNav5Fields::PAcc field.
+    ///     @li @b Field_tAcc type and @b field_tAcc() fuction
+    ///         for @ref CfgNav5Fields::TAcc field.
+    ///     @li @b Field_staticHoldThresh type and @b field_staticHoldThresh() fuction
+    ///         for @ref CfgNav5Fields::StaticHoldThresh field.
+    ///     @li @b Field_dgnssTimeout type and @b field_dgnssTimeout() fuction
+    ///         for @ref CfgNav5Fields::DgnssTimeout field.
+    ///     @li @b Field_cnoThreshNumSVs type and @b field_cnoThreshNumSVs() fuction
+    ///         for @ref CfgNav5Fields::CnoThreshNumSVs field.
+    ///     @li @b Field_cnoThresh type and @b field_cnoThresh() fuction
+    ///         for @ref CfgNav5Fields::CnoThresh field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgNav5Fields::Reserved1 field.
+    ///     @li @b Field_staticHoldMaxDist type and @b field_staticHoldMaxDist() fuction
+    ///         for @ref CfgNav5Fields::StaticHoldMaxDist field.
+    ///     @li @b Field_utcStandard type and @b field_utcStandard() fuction
+    ///         for @ref CfgNav5Fields::UtcStandard field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref CfgNav5Fields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         mask,
         dynModel,
         fixMode,

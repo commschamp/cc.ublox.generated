@@ -287,25 +287,37 @@ class MgaIniEop : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaIniEopFields::Type field.
-    ///     @li @b field_version() for @ref MgaIniEopFields::Version field.
-    ///     @li @b field_reserved1() for @ref MgaIniEopFields::Reserved1 field.
-    ///     @li @b field_d2kRef() for @ref MgaIniEopFields::D2kRef field.
-    ///     @li @b field_d2kMax() for @ref MgaIniEopFields::D2kMax field.
-    ///     @li @b field_xpP0() for @ref MgaIniEopFields::XpP0 field.
-    ///     @li @b field_xpP1() for @ref MgaIniEopFields::XpP1 field.
-    ///     @li @b field_ypP0() for @ref MgaIniEopFields::YpP0 field.
-    ///     @li @b field_ypP1() for @ref MgaIniEopFields::YpP1 field.
-    ///     @li @b field_dUT1() for @ref MgaIniEopFields::DUT1 field.
-    ///     @li @b field_ddUT1() for @ref MgaIniEopFields::DdUT1 field.
-    ///     @li @b field_reserved2() for @ref MgaIniEopFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaIniEopFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaIniEopFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaIniEopFields::Reserved1 field.
+    ///     @li @b Field_d2kRef type and @b field_d2kRef() fuction
+    ///         for @ref MgaIniEopFields::D2kRef field.
+    ///     @li @b Field_d2kMax type and @b field_d2kMax() fuction
+    ///         for @ref MgaIniEopFields::D2kMax field.
+    ///     @li @b Field_xpP0 type and @b field_xpP0() fuction
+    ///         for @ref MgaIniEopFields::XpP0 field.
+    ///     @li @b Field_xpP1 type and @b field_xpP1() fuction
+    ///         for @ref MgaIniEopFields::XpP1 field.
+    ///     @li @b Field_ypP0 type and @b field_ypP0() fuction
+    ///         for @ref MgaIniEopFields::YpP0 field.
+    ///     @li @b Field_ypP1 type and @b field_ypP1() fuction
+    ///         for @ref MgaIniEopFields::YpP1 field.
+    ///     @li @b Field_dUT1 type and @b field_dUT1() fuction
+    ///         for @ref MgaIniEopFields::DUT1 field.
+    ///     @li @b Field_ddUT1 type and @b field_ddUT1() fuction
+    ///         for @ref MgaIniEopFields::DdUT1 field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaIniEopFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         reserved1,

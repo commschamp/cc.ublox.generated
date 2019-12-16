@@ -414,15 +414,18 @@ struct RxmImesFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_pos1Floor() - for Position1_1Members::Pos1Floor member field.
-                ///     @li @b field_pos1Lat() - for Position1_1Members::Pos1Lat member field.
-                ///     @li @b field_reserved() - for Position1_1Members::Reserved member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_pos1Floor @b field_pos1Floor() -
+                ///         for Position1_1Members::Pos1Floor member field.
+                ///     @li @b Field_pos1Lat @b field_pos1Lat() -
+                ///         for Position1_1Members::Pos1Lat member field.
+                ///     @li @b Field_reserved @b field_reserved() -
+                ///         for Position1_1Members::Reserved member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     pos1Floor,
                     pos1Lat,
                     reserved
@@ -520,14 +523,16 @@ struct RxmImesFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_pos1Lon() - for Position1_2Members::Pos1Lon member field.
-                ///     @li @b field_flags() - for Position1_2Members::Flags member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_pos1Lon @b field_pos1Lon() -
+                ///         for Position1_2Members::Pos1Lon member field.
+                ///     @li @b Field_flags @b field_flags() -
+                ///         for Position1_2Members::Flags member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     pos1Lon,
                     flags
                 );
@@ -669,16 +674,20 @@ struct RxmImesFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_pos2Floor() - for Position2_1Members::Pos2Floor member field.
-                ///     @li @b field_pos2Alt() - for Position2_1Members::Pos2Alt member field.
-                ///     @li @b field_pos2Acc() - for Position2_1Members::Pos2Acc member field.
-                ///     @li @b field_bits() - for Position2_1Members::Bits member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_pos2Floor @b field_pos2Floor() -
+                ///         for Position2_1Members::Pos2Floor member field.
+                ///     @li @b Field_pos2Alt @b field_pos2Alt() -
+                ///         for Position2_1Members::Pos2Alt member field.
+                ///     @li @b Field_pos2Acc @b field_pos2Acc() -
+                ///         for Position2_1Members::Pos2Acc member field.
+                ///     @li @b Field_bits @b field_bits() -
+                ///         for Position2_1Members::Bits member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     pos2Floor,
                     pos2Alt,
                     pos2Acc,
@@ -812,14 +821,16 @@ struct RxmImesFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_shortId() - for ShortIdFrameMembers::ShortId member field.
-                ///     @li @b field_bits() - for ShortIdFrameMembers::Bits member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_shortId @b field_shortId() -
+                ///         for ShortIdFrameMembers::ShortId member field.
+                ///     @li @b Field_bits @b field_bits() -
+                ///         for ShortIdFrameMembers::Bits member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     shortId,
                     bits
                 );
@@ -927,26 +938,40 @@ struct RxmImesFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_reserved2() - for ElementMembers::Reserved2 member field.
-            ///     @li @b field_txId() - for ElementMembers::TxId member field.
-            ///     @li @b field_reserved3() - for ElementMembers::Reserved3 member field.
-            ///     @li @b field_cno() - for ElementMembers::Cno member field.
-            ///     @li @b field_reserved4() - for ElementMembers::Reserved4 member field.
-            ///     @li @b field_doppler() - for ElementMembers::Doppler member field.
-            ///     @li @b field_position1_1() - for ElementMembers::Position1_1 member field.
-            ///     @li @b field_position1_2() - for ElementMembers::Position1_2 member field.
-            ///     @li @b field_position2_1() - for ElementMembers::Position2_1 member field.
-            ///     @li @b field_lat() - for ElementMembers::Lat member field.
-            ///     @li @b field_lon() - for ElementMembers::Lon member field.
-            ///     @li @b field_shortIdFrame() - for ElementMembers::ShortIdFrame member field.
-            ///     @li @b field_mediumIdLSB() - for ElementMembers::MediumIdLSB member field.
-            ///     @li @b field_mediumId_2() - for ElementMembers::MediumId_2 member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_reserved2 @b field_reserved2() -
+            ///         for ElementMembers::Reserved2 member field.
+            ///     @li @b Field_txId @b field_txId() -
+            ///         for ElementMembers::TxId member field.
+            ///     @li @b Field_reserved3 @b field_reserved3() -
+            ///         for ElementMembers::Reserved3 member field.
+            ///     @li @b Field_cno @b field_cno() -
+            ///         for ElementMembers::Cno member field.
+            ///     @li @b Field_reserved4 @b field_reserved4() -
+            ///         for ElementMembers::Reserved4 member field.
+            ///     @li @b Field_doppler @b field_doppler() -
+            ///         for ElementMembers::Doppler member field.
+            ///     @li @b Field_position1_1 @b field_position1_1() -
+            ///         for ElementMembers::Position1_1 member field.
+            ///     @li @b Field_position1_2 @b field_position1_2() -
+            ///         for ElementMembers::Position1_2 member field.
+            ///     @li @b Field_position2_1 @b field_position2_1() -
+            ///         for ElementMembers::Position2_1 member field.
+            ///     @li @b Field_lat @b field_lat() -
+            ///         for ElementMembers::Lat member field.
+            ///     @li @b Field_lon @b field_lon() -
+            ///         for ElementMembers::Lon member field.
+            ///     @li @b Field_shortIdFrame @b field_shortIdFrame() -
+            ///         for ElementMembers::ShortIdFrame member field.
+            ///     @li @b Field_mediumIdLSB @b field_mediumIdLSB() -
+            ///         for ElementMembers::MediumIdLSB member field.
+            ///     @li @b Field_mediumId_2 @b field_mediumId_2() -
+            ///         for ElementMembers::MediumId_2 member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 reserved2,
                 txId,
                 reserved3,
@@ -1030,17 +1055,21 @@ class RxmImes : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_numTx() for @ref RxmImesFields::NumTx field.
-    ///     @li @b field_version() for @ref RxmImesFields::Version field.
-    ///     @li @b field_reserved1() for @ref RxmImesFields::Reserved1 field.
-    ///     @li @b field_list() for @ref RxmImesFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_numTx type and @b field_numTx() fuction
+    ///         for @ref RxmImesFields::NumTx field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref RxmImesFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref RxmImesFields::Reserved1 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref RxmImesFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         numTx,
         version,
         reserved1,

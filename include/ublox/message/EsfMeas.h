@@ -216,14 +216,16 @@ struct EsfMeasFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_timeMarkSent() - for FlagsMembers::TimeMarkSent member field.
-        ///     @li @b field_bits() - for FlagsMembers::Bits member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_timeMarkSent @b field_timeMarkSent() -
+        ///         for FlagsMembers::TimeMarkSent member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for FlagsMembers::Bits member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             timeMarkSent,
             bits
         );
@@ -331,15 +333,18 @@ struct EsfMeasFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bitfield class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_dataField() - for ElementMembers::DataField member field.
-            ///     @li @b field_dataType() - for ElementMembers::DataType member field.
-            ///     @li @b field_reserved() - for ElementMembers::Reserved member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_dataField @b field_dataField() -
+            ///         for ElementMembers::DataField member field.
+            ///     @li @b Field_dataType @b field_dataType() -
+            ///         for ElementMembers::DataType member field.
+            ///     @li @b Field_reserved @b field_reserved() -
+            ///         for ElementMembers::Reserved member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 dataField,
                 dataType,
                 reserved
@@ -445,18 +450,23 @@ class EsfMeas : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_timeTag() for @ref EsfMeasFields::TimeTag field.
-    ///     @li @b field_flags() for @ref EsfMeasFields::Flags field.
-    ///     @li @b field_id() for @ref EsfMeasFields::Id field.
-    ///     @li @b field_list() for @ref EsfMeasFields::List field.
-    ///     @li @b field_calibTtag() for @ref EsfMeasFields::CalibTtag field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_timeTag type and @b field_timeTag() fuction
+    ///         for @ref EsfMeasFields::TimeTag field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref EsfMeasFields::Flags field.
+    ///     @li @b Field_id type and @b field_id() fuction
+    ///         for @ref EsfMeasFields::Id field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref EsfMeasFields::List field.
+    ///     @li @b Field_calibTtag type and @b field_calibTtag() fuction
+    ///         for @ref EsfMeasFields::CalibTtag field.
+    COMMS_MSG_FIELDS_NAMES(
         timeTag,
         flags,
         id,

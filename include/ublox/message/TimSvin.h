@@ -207,22 +207,31 @@ class TimSvin : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_dur() for @ref TimSvinFields::Dur field.
-    ///     @li @b field_meanX() for @ref TimSvinFields::MeanX field.
-    ///     @li @b field_meanY() for @ref TimSvinFields::MeanY field.
-    ///     @li @b field_meanZ() for @ref TimSvinFields::MeanZ field.
-    ///     @li @b field_meanV() for @ref TimSvinFields::MeanV field.
-    ///     @li @b field_obs() for @ref TimSvinFields::Obs field.
-    ///     @li @b field_valid() for @ref TimSvinFields::Valid field.
-    ///     @li @b field_active() for @ref TimSvinFields::Active field.
-    ///     @li @b field_reserved1() for @ref TimSvinFields::Reserved1 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_dur type and @b field_dur() fuction
+    ///         for @ref TimSvinFields::Dur field.
+    ///     @li @b Field_meanX type and @b field_meanX() fuction
+    ///         for @ref TimSvinFields::MeanX field.
+    ///     @li @b Field_meanY type and @b field_meanY() fuction
+    ///         for @ref TimSvinFields::MeanY field.
+    ///     @li @b Field_meanZ type and @b field_meanZ() fuction
+    ///         for @ref TimSvinFields::MeanZ field.
+    ///     @li @b Field_meanV type and @b field_meanV() fuction
+    ///         for @ref TimSvinFields::MeanV field.
+    ///     @li @b Field_obs type and @b field_obs() fuction
+    ///         for @ref TimSvinFields::Obs field.
+    ///     @li @b Field_valid type and @b field_valid() fuction
+    ///         for @ref TimSvinFields::Valid field.
+    ///     @li @b Field_active type and @b field_active() fuction
+    ///         for @ref TimSvinFields::Active field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref TimSvinFields::Reserved1 field.
+    COMMS_MSG_FIELDS_NAMES(
         dur,
         meanX,
         meanY,

@@ -143,18 +143,23 @@ class MgaIniClkd : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaIniClkdFields::Type field.
-    ///     @li @b field_version() for @ref MgaIniClkdFields::Version field.
-    ///     @li @b field_reserved1() for @ref MgaIniClkdFields::Reserved1 field.
-    ///     @li @b field_clkD() for @ref MgaIniClkdFields::ClkD field.
-    ///     @li @b field_clkDAcc() for @ref MgaIniClkdFields::ClkDAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaIniClkdFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaIniClkdFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaIniClkdFields::Reserved1 field.
+    ///     @li @b Field_clkD type and @b field_clkD() fuction
+    ///         for @ref MgaIniClkdFields::ClkD field.
+    ///     @li @b Field_clkDAcc type and @b field_clkDAcc() fuction
+    ///         for @ref MgaIniClkdFields::ClkDAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         reserved1,

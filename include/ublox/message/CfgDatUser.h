@@ -197,22 +197,31 @@ class CfgDatUser : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_majA() for @ref CfgDatUserFields::MajA field.
-    ///     @li @b field_flat() for @ref CfgDatUserFields::Flat field.
-    ///     @li @b field_dX() for @ref CfgDatUserFields::DX field.
-    ///     @li @b field_dY() for @ref CfgDatUserFields::DY field.
-    ///     @li @b field_dZ() for @ref CfgDatUserFields::DZ field.
-    ///     @li @b field_rotX() for @ref CfgDatUserFields::RotX field.
-    ///     @li @b field_rotY() for @ref CfgDatUserFields::RotY field.
-    ///     @li @b field_rotZ() for @ref CfgDatUserFields::RotZ field.
-    ///     @li @b field_scale() for @ref CfgDatUserFields::Scale field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_majA type and @b field_majA() fuction
+    ///         for @ref CfgDatUserFields::MajA field.
+    ///     @li @b Field_flat type and @b field_flat() fuction
+    ///         for @ref CfgDatUserFields::Flat field.
+    ///     @li @b Field_dX type and @b field_dX() fuction
+    ///         for @ref CfgDatUserFields::DX field.
+    ///     @li @b Field_dY type and @b field_dY() fuction
+    ///         for @ref CfgDatUserFields::DY field.
+    ///     @li @b Field_dZ type and @b field_dZ() fuction
+    ///         for @ref CfgDatUserFields::DZ field.
+    ///     @li @b Field_rotX type and @b field_rotX() fuction
+    ///         for @ref CfgDatUserFields::RotX field.
+    ///     @li @b Field_rotY type and @b field_rotY() fuction
+    ///         for @ref CfgDatUserFields::RotY field.
+    ///     @li @b Field_rotZ type and @b field_rotZ() fuction
+    ///         for @ref CfgDatUserFields::RotZ field.
+    ///     @li @b Field_scale type and @b field_scale() fuction
+    ///         for @ref CfgDatUserFields::Scale field.
+    COMMS_MSG_FIELDS_NAMES(
         majA,
         flat,
         dX,

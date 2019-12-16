@@ -197,21 +197,30 @@ struct MonIoFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_rxBytes() - for ElementMembers::RxBytes member field.
-            ///     @li @b field_txBytes() - for ElementMembers::TxBytes member field.
-            ///     @li @b field_parityErrs() - for ElementMembers::ParityErrs member field.
-            ///     @li @b field_framingErrs() - for ElementMembers::FramingErrs member field.
-            ///     @li @b field_overrunErrs() - for ElementMembers::OverrunErrs member field.
-            ///     @li @b field_breakCond() - for ElementMembers::BreakCond member field.
-            ///     @li @b field_rxBusy() - for ElementMembers::RxBusy member field.
-            ///     @li @b field_txBusy() - for ElementMembers::TxBusy member field.
-            ///     @li @b field_reserved1() - for ElementMembers::Reserved1 member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_rxBytes @b field_rxBytes() -
+            ///         for ElementMembers::RxBytes member field.
+            ///     @li @b Field_txBytes @b field_txBytes() -
+            ///         for ElementMembers::TxBytes member field.
+            ///     @li @b Field_parityErrs @b field_parityErrs() -
+            ///         for ElementMembers::ParityErrs member field.
+            ///     @li @b Field_framingErrs @b field_framingErrs() -
+            ///         for ElementMembers::FramingErrs member field.
+            ///     @li @b Field_overrunErrs @b field_overrunErrs() -
+            ///         for ElementMembers::OverrunErrs member field.
+            ///     @li @b Field_breakCond @b field_breakCond() -
+            ///         for ElementMembers::BreakCond member field.
+            ///     @li @b Field_rxBusy @b field_rxBusy() -
+            ///         for ElementMembers::RxBusy member field.
+            ///     @li @b Field_txBusy @b field_txBusy() -
+            ///         for ElementMembers::TxBusy member field.
+            ///     @li @b Field_reserved1 @b field_reserved1() -
+            ///         for ElementMembers::Reserved1 member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 rxBytes,
                 txBytes,
                 parityErrs,
@@ -284,14 +293,15 @@ class MonIo : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_list() for @ref MonIoFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref MonIoFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         list
     );
     

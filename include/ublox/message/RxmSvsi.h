@@ -240,14 +240,16 @@ struct RxmSvsiFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_ura() - for SvFlagMembers::Ura member field.
-                ///     @li @b field_bits() - for SvFlagMembers::Bits member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_ura @b field_ura() -
+                ///         for SvFlagMembers::Ura member field.
+                ///     @li @b Field_bits @b field_bits() -
+                ///         for SvFlagMembers::Bits member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     ura,
                     bits
                 );
@@ -347,14 +349,16 @@ struct RxmSvsiFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_almAge() - for AgeMembers::AlmAge member field.
-                ///     @li @b field_ephAge() - for AgeMembers::EphAge member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_almAge @b field_almAge() -
+                ///         for AgeMembers::AlmAge member field.
+                ///     @li @b Field_ephAge @b field_ephAge() -
+                ///         for AgeMembers::EphAge member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     almAge,
                     ephAge
                 );
@@ -392,17 +396,22 @@ struct RxmSvsiFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_svid() - for ElementMembers::Svid member field.
-            ///     @li @b field_svFlag() - for ElementMembers::SvFlag member field.
-            ///     @li @b field_azim() - for ElementMembers::Azim member field.
-            ///     @li @b field_elev() - for ElementMembers::Elev member field.
-            ///     @li @b field_age() - for ElementMembers::Age member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_svid @b field_svid() -
+            ///         for ElementMembers::Svid member field.
+            ///     @li @b Field_svFlag @b field_svFlag() -
+            ///         for ElementMembers::SvFlag member field.
+            ///     @li @b Field_azim @b field_azim() -
+            ///         for ElementMembers::Azim member field.
+            ///     @li @b Field_elev @b field_elev() -
+            ///         for ElementMembers::Elev member field.
+            ///     @li @b Field_age @b field_age() -
+            ///         for ElementMembers::Age member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 svid,
                 svFlag,
                 azim,
@@ -478,18 +487,23 @@ class RxmSvsi : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref RxmSvsiFields::Itow field.
-    ///     @li @b field_week() for @ref RxmSvsiFields::Week field.
-    ///     @li @b field_numVis() for @ref RxmSvsiFields::NumVis field.
-    ///     @li @b field_numSV() for @ref RxmSvsiFields::NumSV field.
-    ///     @li @b field_list() for @ref RxmSvsiFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref RxmSvsiFields::Itow field.
+    ///     @li @b Field_week type and @b field_week() fuction
+    ///         for @ref RxmSvsiFields::Week field.
+    ///     @li @b Field_numVis type and @b field_numVis() fuction
+    ///         for @ref RxmSvsiFields::NumVis field.
+    ///     @li @b Field_numSV type and @b field_numSV() fuction
+    ///         for @ref RxmSvsiFields::NumSV field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref RxmSvsiFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         week,
         numVis,

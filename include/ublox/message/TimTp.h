@@ -392,15 +392,18 @@ struct TimTpFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_bits() - for FlagsMembers::Bits member field.
-        ///     @li @b field_raim() - for FlagsMembers::Raim member field.
-        ///     @li @b field_reserved() - for FlagsMembers::Reserved member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for FlagsMembers::Bits member field.
+        ///     @li @b Field_raim @b field_raim() -
+        ///         for FlagsMembers::Raim member field.
+        ///     @li @b Field_reserved @b field_reserved() -
+        ///         for FlagsMembers::Reserved member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             bits,
             raim,
             reserved
@@ -497,14 +500,16 @@ struct TimTpFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_timeRefGnss() - for RefInfoMembers::TimeRefGnss member field.
-        ///     @li @b field_utcStandard() - for RefInfoMembers::UtcStandard member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_timeRefGnss @b field_timeRefGnss() -
+        ///         for RefInfoMembers::TimeRefGnss member field.
+        ///     @li @b Field_utcStandard @b field_utcStandard() -
+        ///         for RefInfoMembers::UtcStandard member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             timeRefGnss,
             utcStandard
         );
@@ -557,19 +562,25 @@ class TimTp : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_towMS() for @ref TimTpFields::TowMS field.
-    ///     @li @b field_towSubMS() for @ref TimTpFields::TowSubMS field.
-    ///     @li @b field_qErr() for @ref TimTpFields::QErr field.
-    ///     @li @b field_week() for @ref TimTpFields::Week field.
-    ///     @li @b field_flags() for @ref TimTpFields::Flags field.
-    ///     @li @b field_refInfo() for @ref TimTpFields::RefInfo field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_towMS type and @b field_towMS() fuction
+    ///         for @ref TimTpFields::TowMS field.
+    ///     @li @b Field_towSubMS type and @b field_towSubMS() fuction
+    ///         for @ref TimTpFields::TowSubMS field.
+    ///     @li @b Field_qErr type and @b field_qErr() fuction
+    ///         for @ref TimTpFields::QErr field.
+    ///     @li @b Field_week type and @b field_week() fuction
+    ///         for @ref TimTpFields::Week field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref TimTpFields::Flags field.
+    ///     @li @b Field_refInfo type and @b field_refInfo() fuction
+    ///         for @ref TimTpFields::RefInfo field.
+    COMMS_MSG_FIELDS_NAMES(
         towMS,
         towSubMS,
         qErr,

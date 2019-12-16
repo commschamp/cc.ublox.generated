@@ -537,16 +537,20 @@ struct NavPvtFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_lowBits() - for FlagsMembers::LowBits member field.
-        ///     @li @b field_psmState() - for FlagsMembers::PsmState member field.
-        ///     @li @b field_midBits() - for FlagsMembers::MidBits member field.
-        ///     @li @b field_carrSoln() - for FlagsMembers::CarrSoln member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_lowBits @b field_lowBits() -
+        ///         for FlagsMembers::LowBits member field.
+        ///     @li @b Field_psmState @b field_psmState() -
+        ///         for FlagsMembers::PsmState member field.
+        ///     @li @b Field_midBits @b field_midBits() -
+        ///         for FlagsMembers::MidBits member field.
+        ///     @li @b Field_carrSoln @b field_carrSoln() -
+        ///         for FlagsMembers::CarrSoln member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             lowBits,
             psmState,
             midBits,
@@ -863,43 +867,73 @@ class NavPvt : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavPvtFields::Itow field.
-    ///     @li @b field_year() for @ref NavPvtFields::Year field.
-    ///     @li @b field_month() for @ref NavPvtFields::Month field.
-    ///     @li @b field_day() for @ref NavPvtFields::Day field.
-    ///     @li @b field_hour() for @ref NavPvtFields::Hour field.
-    ///     @li @b field_min() for @ref NavPvtFields::Min field.
-    ///     @li @b field_sec() for @ref NavPvtFields::Sec field.
-    ///     @li @b field_valid() for @ref NavPvtFields::Valid field.
-    ///     @li @b field_tAcc() for @ref NavPvtFields::TAcc field.
-    ///     @li @b field_nano() for @ref NavPvtFields::Nano field.
-    ///     @li @b field_fixType() for @ref NavPvtFields::FixType field.
-    ///     @li @b field_flags() for @ref NavPvtFields::Flags field.
-    ///     @li @b field_flags2() for @ref NavPvtFields::Flags2 field.
-    ///     @li @b field_numSV() for @ref NavPvtFields::NumSV field.
-    ///     @li @b field_lon() for @ref NavPvtFields::Lon field.
-    ///     @li @b field_lat() for @ref NavPvtFields::Lat field.
-    ///     @li @b field_height() for @ref NavPvtFields::Height field.
-    ///     @li @b field_hMSL() for @ref NavPvtFields::HMSL field.
-    ///     @li @b field_hAcc() for @ref NavPvtFields::HAcc field.
-    ///     @li @b field_vAcc() for @ref NavPvtFields::VAcc field.
-    ///     @li @b field_velN() for @ref NavPvtFields::VelN field.
-    ///     @li @b field_velE() for @ref NavPvtFields::VelE field.
-    ///     @li @b field_velD() for @ref NavPvtFields::VelD field.
-    ///     @li @b field_gSpeed() for @ref NavPvtFields::GSpeed field.
-    ///     @li @b field_heading() for @ref NavPvtFields::Heading field.
-    ///     @li @b field_sAcc() for @ref NavPvtFields::SAcc field.
-    ///     @li @b field_headingAcc() for @ref NavPvtFields::HeadingAcc field.
-    ///     @li @b field_pDop() for @ref NavPvtFields::PDop field.
-    ///     @li @b field_reserved2() for @ref NavPvtFields::Reserved2 field.
-    ///     @li @b field_reserved3() for @ref NavPvtFields::Reserved3 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavPvtFields::Itow field.
+    ///     @li @b Field_year type and @b field_year() fuction
+    ///         for @ref NavPvtFields::Year field.
+    ///     @li @b Field_month type and @b field_month() fuction
+    ///         for @ref NavPvtFields::Month field.
+    ///     @li @b Field_day type and @b field_day() fuction
+    ///         for @ref NavPvtFields::Day field.
+    ///     @li @b Field_hour type and @b field_hour() fuction
+    ///         for @ref NavPvtFields::Hour field.
+    ///     @li @b Field_min type and @b field_min() fuction
+    ///         for @ref NavPvtFields::Min field.
+    ///     @li @b Field_sec type and @b field_sec() fuction
+    ///         for @ref NavPvtFields::Sec field.
+    ///     @li @b Field_valid type and @b field_valid() fuction
+    ///         for @ref NavPvtFields::Valid field.
+    ///     @li @b Field_tAcc type and @b field_tAcc() fuction
+    ///         for @ref NavPvtFields::TAcc field.
+    ///     @li @b Field_nano type and @b field_nano() fuction
+    ///         for @ref NavPvtFields::Nano field.
+    ///     @li @b Field_fixType type and @b field_fixType() fuction
+    ///         for @ref NavPvtFields::FixType field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref NavPvtFields::Flags field.
+    ///     @li @b Field_flags2 type and @b field_flags2() fuction
+    ///         for @ref NavPvtFields::Flags2 field.
+    ///     @li @b Field_numSV type and @b field_numSV() fuction
+    ///         for @ref NavPvtFields::NumSV field.
+    ///     @li @b Field_lon type and @b field_lon() fuction
+    ///         for @ref NavPvtFields::Lon field.
+    ///     @li @b Field_lat type and @b field_lat() fuction
+    ///         for @ref NavPvtFields::Lat field.
+    ///     @li @b Field_height type and @b field_height() fuction
+    ///         for @ref NavPvtFields::Height field.
+    ///     @li @b Field_hMSL type and @b field_hMSL() fuction
+    ///         for @ref NavPvtFields::HMSL field.
+    ///     @li @b Field_hAcc type and @b field_hAcc() fuction
+    ///         for @ref NavPvtFields::HAcc field.
+    ///     @li @b Field_vAcc type and @b field_vAcc() fuction
+    ///         for @ref NavPvtFields::VAcc field.
+    ///     @li @b Field_velN type and @b field_velN() fuction
+    ///         for @ref NavPvtFields::VelN field.
+    ///     @li @b Field_velE type and @b field_velE() fuction
+    ///         for @ref NavPvtFields::VelE field.
+    ///     @li @b Field_velD type and @b field_velD() fuction
+    ///         for @ref NavPvtFields::VelD field.
+    ///     @li @b Field_gSpeed type and @b field_gSpeed() fuction
+    ///         for @ref NavPvtFields::GSpeed field.
+    ///     @li @b Field_heading type and @b field_heading() fuction
+    ///         for @ref NavPvtFields::Heading field.
+    ///     @li @b Field_sAcc type and @b field_sAcc() fuction
+    ///         for @ref NavPvtFields::SAcc field.
+    ///     @li @b Field_headingAcc type and @b field_headingAcc() fuction
+    ///         for @ref NavPvtFields::HeadingAcc field.
+    ///     @li @b Field_pDop type and @b field_pDop() fuction
+    ///         for @ref NavPvtFields::PDop field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref NavPvtFields::Reserved2 field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref NavPvtFields::Reserved3 field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         year,
         month,

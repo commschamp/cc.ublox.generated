@@ -148,18 +148,23 @@ class MgaFlashEph : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaFlashEphFields::Type field.
-    ///     @li @b field_version() for @ref MgaFlashEphFields::Version field.
-    ///     @li @b field_sequence() for @ref MgaFlashEphFields::Sequence field.
-    ///     @li @b field_size() for @ref MgaFlashEphFields::Size field.
-    ///     @li @b field_data() for @ref MgaFlashEphFields::Data field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaFlashEphFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaFlashEphFields::Version field.
+    ///     @li @b Field_sequence type and @b field_sequence() fuction
+    ///         for @ref MgaFlashEphFields::Sequence field.
+    ///     @li @b Field_size type and @b field_size() fuction
+    ///         for @ref MgaFlashEphFields::Size field.
+    ///     @li @b Field_data type and @b field_data() fuction
+    ///         for @ref MgaFlashEphFields::Data field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         sequence,

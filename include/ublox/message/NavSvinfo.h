@@ -269,14 +269,16 @@ struct NavSvinfoFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_chipGen() - for GlobalFlagsMembers::ChipGen member field.
-        ///     @li @b field_reserved() - for GlobalFlagsMembers::Reserved member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_chipGen @b field_chipGen() -
+        ///         for GlobalFlagsMembers::ChipGen member field.
+        ///     @li @b Field_reserved @b field_reserved() -
+        ///         for GlobalFlagsMembers::Reserved member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             chipGen,
             reserved
         );
@@ -511,20 +513,28 @@ struct NavSvinfoFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_chn() - for ElementMembers::Chn member field.
-            ///     @li @b field_svid() - for ElementMembers::Svid member field.
-            ///     @li @b field_flags() - for ElementMembers::Flags member field.
-            ///     @li @b field_quality() - for ElementMembers::Quality member field.
-            ///     @li @b field_cno() - for ElementMembers::Cno member field.
-            ///     @li @b field_elev() - for ElementMembers::Elev member field.
-            ///     @li @b field_azim() - for ElementMembers::Azim member field.
-            ///     @li @b field_prRes() - for ElementMembers::PrRes member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_chn @b field_chn() -
+            ///         for ElementMembers::Chn member field.
+            ///     @li @b Field_svid @b field_svid() -
+            ///         for ElementMembers::Svid member field.
+            ///     @li @b Field_flags @b field_flags() -
+            ///         for ElementMembers::Flags member field.
+            ///     @li @b Field_quality @b field_quality() -
+            ///         for ElementMembers::Quality member field.
+            ///     @li @b Field_cno @b field_cno() -
+            ///         for ElementMembers::Cno member field.
+            ///     @li @b Field_elev @b field_elev() -
+            ///         for ElementMembers::Elev member field.
+            ///     @li @b Field_azim @b field_azim() -
+            ///         for ElementMembers::Azim member field.
+            ///     @li @b Field_prRes @b field_prRes() -
+            ///         for ElementMembers::PrRes member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 chn,
                 svid,
                 flags,
@@ -603,18 +613,23 @@ class NavSvinfo : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavSvinfoFields::Itow field.
-    ///     @li @b field_numCh() for @ref NavSvinfoFields::NumCh field.
-    ///     @li @b field_globalFlags() for @ref NavSvinfoFields::GlobalFlags field.
-    ///     @li @b field_reserved1() for @ref NavSvinfoFields::Reserved1 field.
-    ///     @li @b field_list() for @ref NavSvinfoFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavSvinfoFields::Itow field.
+    ///     @li @b Field_numCh type and @b field_numCh() fuction
+    ///         for @ref NavSvinfoFields::NumCh field.
+    ///     @li @b Field_globalFlags type and @b field_globalFlags() fuction
+    ///         for @ref NavSvinfoFields::GlobalFlags field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavSvinfoFields::Reserved1 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref NavSvinfoFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         numCh,
         globalFlags,

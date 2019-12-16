@@ -273,25 +273,37 @@ class CfgPm2V2 : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgPm2V2Fields::Version field.
-    ///     @li @b field_reserved1() for @ref CfgPm2V2Fields::Reserved1 field.
-    ///     @li @b field_maxStartupStateDur() for @ref CfgPm2V2Fields::MaxStartupStateDur field.
-    ///     @li @b field_reserved2() for @ref CfgPm2V2Fields::Reserved2 field.
-    ///     @li @b field_flags() for @ref CfgPm2V2Fields::Flags field.
-    ///     @li @b field_updatePeriod() for @ref CfgPm2V2Fields::UpdatePeriod field.
-    ///     @li @b field_searchPeriod() for @ref CfgPm2V2Fields::SearchPeriod field.
-    ///     @li @b field_gridOffset() for @ref CfgPm2V2Fields::GridOffset field.
-    ///     @li @b field_onTime() for @ref CfgPm2V2Fields::OnTime field.
-    ///     @li @b field_minAcqTime() for @ref CfgPm2V2Fields::MinAcqTime field.
-    ///     @li @b field_reserved3() for @ref CfgPm2V2Fields::Reserved3 field.
-    ///     @li @b field_extintInactivityMs() for @ref CfgPm2V2Fields::ExtintInactivityMs field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgPm2V2Fields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgPm2V2Fields::Reserved1 field.
+    ///     @li @b Field_maxStartupStateDur type and @b field_maxStartupStateDur() fuction
+    ///         for @ref CfgPm2V2Fields::MaxStartupStateDur field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref CfgPm2V2Fields::Reserved2 field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgPm2V2Fields::Flags field.
+    ///     @li @b Field_updatePeriod type and @b field_updatePeriod() fuction
+    ///         for @ref CfgPm2V2Fields::UpdatePeriod field.
+    ///     @li @b Field_searchPeriod type and @b field_searchPeriod() fuction
+    ///         for @ref CfgPm2V2Fields::SearchPeriod field.
+    ///     @li @b Field_gridOffset type and @b field_gridOffset() fuction
+    ///         for @ref CfgPm2V2Fields::GridOffset field.
+    ///     @li @b Field_onTime type and @b field_onTime() fuction
+    ///         for @ref CfgPm2V2Fields::OnTime field.
+    ///     @li @b Field_minAcqTime type and @b field_minAcqTime() fuction
+    ///         for @ref CfgPm2V2Fields::MinAcqTime field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref CfgPm2V2Fields::Reserved3 field.
+    ///     @li @b Field_extintInactivityMs type and @b field_extintInactivityMs() fuction
+    ///         for @ref CfgPm2V2Fields::ExtintInactivityMs field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         maxStartupStateDur,

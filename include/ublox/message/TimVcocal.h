@@ -218,19 +218,25 @@ class TimVcocal : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref TimVcocalFields::Type field.
-    ///     @li @b field_version() for @ref TimVcocalFields::Version field.
-    ///     @li @b field_oscId() for @ref TimVcocalFields::OscId field.
-    ///     @li @b field_reserved1() for @ref TimVcocalFields::Reserved1 field.
-    ///     @li @b field_gainUncertainty() for @ref TimVcocalFields::GainUncertainty field.
-    ///     @li @b field_gainVco() for @ref TimVcocalFields::GainVco field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref TimVcocalFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref TimVcocalFields::Version field.
+    ///     @li @b Field_oscId type and @b field_oscId() fuction
+    ///         for @ref TimVcocalFields::OscId field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref TimVcocalFields::Reserved1 field.
+    ///     @li @b Field_gainUncertainty type and @b field_gainUncertainty() fuction
+    ///         for @ref TimVcocalFields::GainUncertainty field.
+    ///     @li @b Field_gainVco type and @b field_gainVco() fuction
+    ///         for @ref TimVcocalFields::GainVco field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         oscId,

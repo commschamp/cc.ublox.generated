@@ -374,22 +374,31 @@ class CfgTp : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_interval() for @ref CfgTpFields::Interval field.
-    ///     @li @b field_length() for @ref CfgTpFields::Length field.
-    ///     @li @b field_status() for @ref CfgTpFields::Status field.
-    ///     @li @b field_timeRef() for @ref CfgTpFields::TimeRef field.
-    ///     @li @b field_flags() for @ref CfgTpFields::Flags field.
-    ///     @li @b field_res() for @ref CfgTpFields::Res field.
-    ///     @li @b field_antennaCableDelay() for @ref CfgTpFields::AntennaCableDelay field.
-    ///     @li @b field_rfGroupDelay() for @ref CfgTpFields::RfGroupDelay field.
-    ///     @li @b field_userDelay() for @ref CfgTpFields::UserDelay field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_interval type and @b field_interval() fuction
+    ///         for @ref CfgTpFields::Interval field.
+    ///     @li @b Field_length type and @b field_length() fuction
+    ///         for @ref CfgTpFields::Length field.
+    ///     @li @b Field_status type and @b field_status() fuction
+    ///         for @ref CfgTpFields::Status field.
+    ///     @li @b Field_timeRef type and @b field_timeRef() fuction
+    ///         for @ref CfgTpFields::TimeRef field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgTpFields::Flags field.
+    ///     @li @b Field_res type and @b field_res() fuction
+    ///         for @ref CfgTpFields::Res field.
+    ///     @li @b Field_antennaCableDelay type and @b field_antennaCableDelay() fuction
+    ///         for @ref CfgTpFields::AntennaCableDelay field.
+    ///     @li @b Field_rfGroupDelay type and @b field_rfGroupDelay() fuction
+    ///         for @ref CfgTpFields::RfGroupDelay field.
+    ///     @li @b Field_userDelay type and @b field_userDelay() fuction
+    ///         for @ref CfgTpFields::UserDelay field.
+    COMMS_MSG_FIELDS_NAMES(
         interval,
         length,
         status,

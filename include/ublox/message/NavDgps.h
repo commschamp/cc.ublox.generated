@@ -328,14 +328,16 @@ struct NavDgpsFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_channel() - for FlagsMembers::Channel member field.
-                ///     @li @b field_bits() - for FlagsMembers::Bits member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_channel @b field_channel() -
+                ///         for FlagsMembers::Channel member field.
+                ///     @li @b Field_bits @b field_bits() -
+                ///         for FlagsMembers::Bits member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     channel,
                     bits
                 );
@@ -421,17 +423,22 @@ struct NavDgpsFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_svid() - for ElementMembers::Svid member field.
-            ///     @li @b field_flags() - for ElementMembers::Flags member field.
-            ///     @li @b field_ageC() - for ElementMembers::AgeC member field.
-            ///     @li @b field_prc() - for ElementMembers::Prc member field.
-            ///     @li @b field_prrc() - for ElementMembers::Prrc member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_svid @b field_svid() -
+            ///         for ElementMembers::Svid member field.
+            ///     @li @b Field_flags @b field_flags() -
+            ///         for ElementMembers::Flags member field.
+            ///     @li @b Field_ageC @b field_ageC() -
+            ///         for ElementMembers::AgeC member field.
+            ///     @li @b Field_prc @b field_prc() -
+            ///         for ElementMembers::Prc member field.
+            ///     @li @b Field_prrc @b field_prrc() -
+            ///         for ElementMembers::Prrc member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 svid,
                 flags,
                 ageC,
@@ -510,21 +517,29 @@ class NavDgps : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavDgpsFields::Itow field.
-    ///     @li @b field_age() for @ref NavDgpsFields::Age field.
-    ///     @li @b field_baseId() for @ref NavDgpsFields::BaseId field.
-    ///     @li @b field_baseHealth() for @ref NavDgpsFields::BaseHealth field.
-    ///     @li @b field_numCh() for @ref NavDgpsFields::NumCh field.
-    ///     @li @b field_status() for @ref NavDgpsFields::Status field.
-    ///     @li @b field_reserved1() for @ref NavDgpsFields::Reserved1 field.
-    ///     @li @b field_list() for @ref NavDgpsFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavDgpsFields::Itow field.
+    ///     @li @b Field_age type and @b field_age() fuction
+    ///         for @ref NavDgpsFields::Age field.
+    ///     @li @b Field_baseId type and @b field_baseId() fuction
+    ///         for @ref NavDgpsFields::BaseId field.
+    ///     @li @b Field_baseHealth type and @b field_baseHealth() fuction
+    ///         for @ref NavDgpsFields::BaseHealth field.
+    ///     @li @b Field_numCh type and @b field_numCh() fuction
+    ///         for @ref NavDgpsFields::NumCh field.
+    ///     @li @b Field_status type and @b field_status() fuction
+    ///         for @ref NavDgpsFields::Status field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavDgpsFields::Reserved1 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref NavDgpsFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         age,
         baseId,

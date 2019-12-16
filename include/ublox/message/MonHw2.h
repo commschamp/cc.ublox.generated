@@ -291,23 +291,33 @@ class MonHw2 : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_ofsI() for @ref MonHw2Fields::OfsI field.
-    ///     @li @b field_magI() for @ref MonHw2Fields::MagI field.
-    ///     @li @b field_ofsQ() for @ref MonHw2Fields::OfsQ field.
-    ///     @li @b field_magQ() for @ref MonHw2Fields::MagQ field.
-    ///     @li @b field_cfgSource() for @ref MonHw2Fields::CfgSource field.
-    ///     @li @b field_reserved1() for @ref MonHw2Fields::Reserved1 field.
-    ///     @li @b field_lowLevCfg() for @ref MonHw2Fields::LowLevCfg field.
-    ///     @li @b field_reserved2() for @ref MonHw2Fields::Reserved2 field.
-    ///     @li @b field_postStatus() for @ref MonHw2Fields::PostStatus field.
-    ///     @li @b field_reserved3() for @ref MonHw2Fields::Reserved3 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_ofsI type and @b field_ofsI() fuction
+    ///         for @ref MonHw2Fields::OfsI field.
+    ///     @li @b Field_magI type and @b field_magI() fuction
+    ///         for @ref MonHw2Fields::MagI field.
+    ///     @li @b Field_ofsQ type and @b field_ofsQ() fuction
+    ///         for @ref MonHw2Fields::OfsQ field.
+    ///     @li @b Field_magQ type and @b field_magQ() fuction
+    ///         for @ref MonHw2Fields::MagQ field.
+    ///     @li @b Field_cfgSource type and @b field_cfgSource() fuction
+    ///         for @ref MonHw2Fields::CfgSource field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MonHw2Fields::Reserved1 field.
+    ///     @li @b Field_lowLevCfg type and @b field_lowLevCfg() fuction
+    ///         for @ref MonHw2Fields::LowLevCfg field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MonHw2Fields::Reserved2 field.
+    ///     @li @b Field_postStatus type and @b field_postStatus() fuction
+    ///         for @ref MonHw2Fields::PostStatus field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref MonHw2Fields::Reserved3 field.
+    COMMS_MSG_FIELDS_NAMES(
         ofsI,
         magI,
         ofsQ,

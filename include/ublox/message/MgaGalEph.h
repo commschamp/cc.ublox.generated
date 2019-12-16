@@ -620,46 +620,79 @@ class MgaGalEph : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaGalEphFields::Type field.
-    ///     @li @b field_version() for @ref MgaGalEphFields::Version field.
-    ///     @li @b field_svid() for @ref MgaGalEphFields::Svid field.
-    ///     @li @b field_reserved1() for @ref MgaGalEphFields::Reserved1 field.
-    ///     @li @b field_iodNav() for @ref MgaGalEphFields::IodNav field.
-    ///     @li @b field_deltaN() for @ref MgaGalEphFields::DeltaN field.
-    ///     @li @b field_m0() for @ref MgaGalEphFields::M0 field.
-    ///     @li @b field_e() for @ref MgaGalEphFields::E field.
-    ///     @li @b field_sqrtA() for @ref MgaGalEphFields::SqrtA field.
-    ///     @li @b field_omega0() for @ref MgaGalEphFields::Omega0 field.
-    ///     @li @b field_i0() for @ref MgaGalEphFields::I0 field.
-    ///     @li @b field_omega() for @ref MgaGalEphFields::Omega field.
-    ///     @li @b field_omegaDot() for @ref MgaGalEphFields::OmegaDot field.
-    ///     @li @b field_iDot() for @ref MgaGalEphFields::IDot field.
-    ///     @li @b field_cuc() for @ref MgaGalEphFields::Cuc field.
-    ///     @li @b field_cus() for @ref MgaGalEphFields::Cus field.
-    ///     @li @b field_crc() for @ref MgaGalEphFields::Crc field.
-    ///     @li @b field_crs() for @ref MgaGalEphFields::Crs field.
-    ///     @li @b field_cic() for @ref MgaGalEphFields::Cic field.
-    ///     @li @b field_cis() for @ref MgaGalEphFields::Cis field.
-    ///     @li @b field_toe() for @ref MgaGalEphFields::Toe field.
-    ///     @li @b field_af0() for @ref MgaGalEphFields::Af0 field.
-    ///     @li @b field_af1() for @ref MgaGalEphFields::Af1 field.
-    ///     @li @b field_af2() for @ref MgaGalEphFields::Af2 field.
-    ///     @li @b field_sisaIndexE1E5b() for @ref MgaGalEphFields::SisaIndexE1E5b field.
-    ///     @li @b field_toc() for @ref MgaGalEphFields::Toc field.
-    ///     @li @b field_bgdE1E5b() for @ref MgaGalEphFields::BgdE1E5b field.
-    ///     @li @b field_reserved2() for @ref MgaGalEphFields::Reserved2 field.
-    ///     @li @b field_healthE1B() for @ref MgaGalEphFields::HealthE1B field.
-    ///     @li @b field_dataValidityE1B() for @ref MgaGalEphFields::DataValidityE1B field.
-    ///     @li @b field_healthE5b() for @ref MgaGalEphFields::HealthE5b field.
-    ///     @li @b field_dataValidityE5b() for @ref MgaGalEphFields::DataValidityE5b field.
-    ///     @li @b field_reserved3() for @ref MgaGalEphFields::Reserved3 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaGalEphFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaGalEphFields::Version field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref MgaGalEphFields::Svid field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaGalEphFields::Reserved1 field.
+    ///     @li @b Field_iodNav type and @b field_iodNav() fuction
+    ///         for @ref MgaGalEphFields::IodNav field.
+    ///     @li @b Field_deltaN type and @b field_deltaN() fuction
+    ///         for @ref MgaGalEphFields::DeltaN field.
+    ///     @li @b Field_m0 type and @b field_m0() fuction
+    ///         for @ref MgaGalEphFields::M0 field.
+    ///     @li @b Field_e type and @b field_e() fuction
+    ///         for @ref MgaGalEphFields::E field.
+    ///     @li @b Field_sqrtA type and @b field_sqrtA() fuction
+    ///         for @ref MgaGalEphFields::SqrtA field.
+    ///     @li @b Field_omega0 type and @b field_omega0() fuction
+    ///         for @ref MgaGalEphFields::Omega0 field.
+    ///     @li @b Field_i0 type and @b field_i0() fuction
+    ///         for @ref MgaGalEphFields::I0 field.
+    ///     @li @b Field_omega type and @b field_omega() fuction
+    ///         for @ref MgaGalEphFields::Omega field.
+    ///     @li @b Field_omegaDot type and @b field_omegaDot() fuction
+    ///         for @ref MgaGalEphFields::OmegaDot field.
+    ///     @li @b Field_iDot type and @b field_iDot() fuction
+    ///         for @ref MgaGalEphFields::IDot field.
+    ///     @li @b Field_cuc type and @b field_cuc() fuction
+    ///         for @ref MgaGalEphFields::Cuc field.
+    ///     @li @b Field_cus type and @b field_cus() fuction
+    ///         for @ref MgaGalEphFields::Cus field.
+    ///     @li @b Field_crc type and @b field_crc() fuction
+    ///         for @ref MgaGalEphFields::Crc field.
+    ///     @li @b Field_crs type and @b field_crs() fuction
+    ///         for @ref MgaGalEphFields::Crs field.
+    ///     @li @b Field_cic type and @b field_cic() fuction
+    ///         for @ref MgaGalEphFields::Cic field.
+    ///     @li @b Field_cis type and @b field_cis() fuction
+    ///         for @ref MgaGalEphFields::Cis field.
+    ///     @li @b Field_toe type and @b field_toe() fuction
+    ///         for @ref MgaGalEphFields::Toe field.
+    ///     @li @b Field_af0 type and @b field_af0() fuction
+    ///         for @ref MgaGalEphFields::Af0 field.
+    ///     @li @b Field_af1 type and @b field_af1() fuction
+    ///         for @ref MgaGalEphFields::Af1 field.
+    ///     @li @b Field_af2 type and @b field_af2() fuction
+    ///         for @ref MgaGalEphFields::Af2 field.
+    ///     @li @b Field_sisaIndexE1E5b type and @b field_sisaIndexE1E5b() fuction
+    ///         for @ref MgaGalEphFields::SisaIndexE1E5b field.
+    ///     @li @b Field_toc type and @b field_toc() fuction
+    ///         for @ref MgaGalEphFields::Toc field.
+    ///     @li @b Field_bgdE1E5b type and @b field_bgdE1E5b() fuction
+    ///         for @ref MgaGalEphFields::BgdE1E5b field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaGalEphFields::Reserved2 field.
+    ///     @li @b Field_healthE1B type and @b field_healthE1B() fuction
+    ///         for @ref MgaGalEphFields::HealthE1B field.
+    ///     @li @b Field_dataValidityE1B type and @b field_dataValidityE1B() fuction
+    ///         for @ref MgaGalEphFields::DataValidityE1B field.
+    ///     @li @b Field_healthE5b type and @b field_healthE5b() fuction
+    ///         for @ref MgaGalEphFields::HealthE5b field.
+    ///     @li @b Field_dataValidityE5b type and @b field_dataValidityE5b() fuction
+    ///         for @ref MgaGalEphFields::DataValidityE5b field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref MgaGalEphFields::Reserved3 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         svid,

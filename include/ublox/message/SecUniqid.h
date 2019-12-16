@@ -112,16 +112,19 @@ class SecUniqid : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref SecUniqidFields::Version field.
-    ///     @li @b field_reserved1() for @ref SecUniqidFields::Reserved1 field.
-    ///     @li @b field_uniqueId() for @ref SecUniqidFields::UniqueId field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref SecUniqidFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref SecUniqidFields::Reserved1 field.
+    ///     @li @b Field_uniqueId type and @b field_uniqueId() fuction
+    ///         for @ref SecUniqidFields::UniqueId field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         uniqueId

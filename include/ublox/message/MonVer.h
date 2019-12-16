@@ -131,16 +131,19 @@ class MonVer : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_swVersion() for @ref MonVerFields::SwVersion field.
-    ///     @li @b field_hwVersion() for @ref MonVerFields::HwVersion field.
-    ///     @li @b field_list() for @ref MonVerFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_swVersion type and @b field_swVersion() fuction
+    ///         for @ref MonVerFields::SwVersion field.
+    ///     @li @b Field_hwVersion type and @b field_hwVersion() fuction
+    ///         for @ref MonVerFields::HwVersion field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref MonVerFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         swVersion,
         hwVersion,
         list

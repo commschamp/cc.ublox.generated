@@ -524,15 +524,18 @@ struct CfgSmgrFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_bitsLow() - for FlagsMembers::BitsLow member field.
-        ///     @li @b field_tPCoherent() - for FlagsMembers::TPCoherent member field.
-        ///     @li @b field_bitsHigh() - for FlagsMembers::BitsHigh member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_bitsLow @b field_bitsLow() -
+        ///         for FlagsMembers::BitsLow member field.
+        ///     @li @b Field_tPCoherent @b field_tPCoherent() -
+        ///         for FlagsMembers::TPCoherent member field.
+        ///     @li @b Field_bitsHigh @b field_bitsHigh() -
+        ///         for FlagsMembers::BitsHigh member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             bitsLow,
             tPCoherent,
             bitsHigh
@@ -588,23 +591,33 @@ class CfgSmgr : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgSmgrFields::Version field.
-    ///     @li @b field_minGNSSFix() for @ref CfgSmgrFields::MinGNSSFix field.
-    ///     @li @b field_maxFreqChangeRate() for @ref CfgSmgrFields::MaxFreqChangeRate field.
-    ///     @li @b field_maxPhaseCorrRate() for @ref CfgSmgrFields::MaxPhaseCorrRate field.
-    ///     @li @b field_reserved1() for @ref CfgSmgrFields::Reserved1 field.
-    ///     @li @b field_freqTolerance() for @ref CfgSmgrFields::FreqTolerance field.
-    ///     @li @b field_timeTolerance() for @ref CfgSmgrFields::TimeTolerance field.
-    ///     @li @b field_messageCfg() for @ref CfgSmgrFields::MessageCfg field.
-    ///     @li @b field_maxSlewRate() for @ref CfgSmgrFields::MaxSlewRate field.
-    ///     @li @b field_flags() for @ref CfgSmgrFields::Flags field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgSmgrFields::Version field.
+    ///     @li @b Field_minGNSSFix type and @b field_minGNSSFix() fuction
+    ///         for @ref CfgSmgrFields::MinGNSSFix field.
+    ///     @li @b Field_maxFreqChangeRate type and @b field_maxFreqChangeRate() fuction
+    ///         for @ref CfgSmgrFields::MaxFreqChangeRate field.
+    ///     @li @b Field_maxPhaseCorrRate type and @b field_maxPhaseCorrRate() fuction
+    ///         for @ref CfgSmgrFields::MaxPhaseCorrRate field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgSmgrFields::Reserved1 field.
+    ///     @li @b Field_freqTolerance type and @b field_freqTolerance() fuction
+    ///         for @ref CfgSmgrFields::FreqTolerance field.
+    ///     @li @b Field_timeTolerance type and @b field_timeTolerance() fuction
+    ///         for @ref CfgSmgrFields::TimeTolerance field.
+    ///     @li @b Field_messageCfg type and @b field_messageCfg() fuction
+    ///         for @ref CfgSmgrFields::MessageCfg field.
+    ///     @li @b Field_maxSlewRate type and @b field_maxSlewRate() fuction
+    ///         for @ref CfgSmgrFields::MaxSlewRate field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgSmgrFields::Flags field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         minGNSSFix,
         maxFreqChangeRate,

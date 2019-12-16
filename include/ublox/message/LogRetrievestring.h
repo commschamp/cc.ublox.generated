@@ -223,25 +223,37 @@ class LogRetrievestring : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_entryIndex() for @ref LogRetrievestringFields::EntryIndex field.
-    ///     @li @b field_version() for @ref LogRetrievestringFields::Version field.
-    ///     @li @b field_reserved1() for @ref LogRetrievestringFields::Reserved1 field.
-    ///     @li @b field_year() for @ref LogRetrievestringFields::Year field.
-    ///     @li @b field_month() for @ref LogRetrievestringFields::Month field.
-    ///     @li @b field_day() for @ref LogRetrievestringFields::Day field.
-    ///     @li @b field_hour() for @ref LogRetrievestringFields::Hour field.
-    ///     @li @b field_minute() for @ref LogRetrievestringFields::Minute field.
-    ///     @li @b field_second() for @ref LogRetrievestringFields::Second field.
-    ///     @li @b field_reserved2() for @ref LogRetrievestringFields::Reserved2 field.
-    ///     @li @b field_byteCount() for @ref LogRetrievestringFields::ByteCount field.
-    ///     @li @b field_bytes() for @ref LogRetrievestringFields::Bytes field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_entryIndex type and @b field_entryIndex() fuction
+    ///         for @ref LogRetrievestringFields::EntryIndex field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref LogRetrievestringFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref LogRetrievestringFields::Reserved1 field.
+    ///     @li @b Field_year type and @b field_year() fuction
+    ///         for @ref LogRetrievestringFields::Year field.
+    ///     @li @b Field_month type and @b field_month() fuction
+    ///         for @ref LogRetrievestringFields::Month field.
+    ///     @li @b Field_day type and @b field_day() fuction
+    ///         for @ref LogRetrievestringFields::Day field.
+    ///     @li @b Field_hour type and @b field_hour() fuction
+    ///         for @ref LogRetrievestringFields::Hour field.
+    ///     @li @b Field_minute type and @b field_minute() fuction
+    ///         for @ref LogRetrievestringFields::Minute field.
+    ///     @li @b Field_second type and @b field_second() fuction
+    ///         for @ref LogRetrievestringFields::Second field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref LogRetrievestringFields::Reserved2 field.
+    ///     @li @b Field_byteCount type and @b field_byteCount() fuction
+    ///         for @ref LogRetrievestringFields::ByteCount field.
+    ///     @li @b Field_bytes type and @b field_bytes() fuction
+    ///         for @ref LogRetrievestringFields::Bytes field.
+    COMMS_MSG_FIELDS_NAMES(
         entryIndex,
         version,
         reserved1,

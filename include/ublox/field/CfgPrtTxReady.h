@@ -154,15 +154,18 @@ class CfgPrtTxReady : public
         >;
 public:
     /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+    /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
     ///     related to @b comms::field::Bitfield class from COMMS library
     ///     for details.
     ///
     ///     The generated access functions are:
-    ///     @li @b field_bits() - for CfgPrtTxReadyMembers::Bits member field.
-    ///     @li @b field_pin() - for CfgPrtTxReadyMembers::Pin member field.
-    ///     @li @b field_thres() - for CfgPrtTxReadyMembers::Thres member field.
-    COMMS_FIELD_MEMBERS_ACCESS(
+    ///     @li @b Field_bits @b field_bits() -
+    ///         for CfgPrtTxReadyMembers::Bits member field.
+    ///     @li @b Field_pin @b field_pin() -
+    ///         for CfgPrtTxReadyMembers::Pin member field.
+    ///     @li @b Field_thres @b field_thres() -
+    ///         for CfgPrtTxReadyMembers::Thres member field.
+    COMMS_FIELD_MEMBERS_NAMES(
         bits,
         pin,
         thres

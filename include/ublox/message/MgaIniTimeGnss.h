@@ -236,14 +236,16 @@ struct MgaIniTimeGnssFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_source() - for RefMembers::Source member field.
-        ///     @li @b field_bits() - for RefMembers::Bits member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_source @b field_source() -
+        ///         for RefMembers::Source member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for RefMembers::Bits member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             source,
             bits
         );
@@ -404,24 +406,35 @@ class MgaIniTimeGnss : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaIniTimeGnssFields::Type field.
-    ///     @li @b field_version() for @ref MgaIniTimeGnssFields::Version field.
-    ///     @li @b field_ref() for @ref MgaIniTimeGnssFields::Ref field.
-    ///     @li @b field_gnssId() for @ref MgaIniTimeGnssFields::GnssId field.
-    ///     @li @b field_reserved1() for @ref MgaIniTimeGnssFields::Reserved1 field.
-    ///     @li @b field_week() for @ref MgaIniTimeGnssFields::Week field.
-    ///     @li @b field_tow() for @ref MgaIniTimeGnssFields::Tow field.
-    ///     @li @b field_ns() for @ref MgaIniTimeGnssFields::Ns field.
-    ///     @li @b field_tAccS() for @ref MgaIniTimeGnssFields::TAccS field.
-    ///     @li @b field_reserved2() for @ref MgaIniTimeGnssFields::Reserved2 field.
-    ///     @li @b field_tAccNs() for @ref MgaIniTimeGnssFields::TAccNs field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaIniTimeGnssFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaIniTimeGnssFields::Version field.
+    ///     @li @b Field_ref type and @b field_ref() fuction
+    ///         for @ref MgaIniTimeGnssFields::Ref field.
+    ///     @li @b Field_gnssId type and @b field_gnssId() fuction
+    ///         for @ref MgaIniTimeGnssFields::GnssId field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaIniTimeGnssFields::Reserved1 field.
+    ///     @li @b Field_week type and @b field_week() fuction
+    ///         for @ref MgaIniTimeGnssFields::Week field.
+    ///     @li @b Field_tow type and @b field_tow() fuction
+    ///         for @ref MgaIniTimeGnssFields::Tow field.
+    ///     @li @b Field_ns type and @b field_ns() fuction
+    ///         for @ref MgaIniTimeGnssFields::Ns field.
+    ///     @li @b Field_tAccS type and @b field_tAccS() fuction
+    ///         for @ref MgaIniTimeGnssFields::TAccS field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaIniTimeGnssFields::Reserved2 field.
+    ///     @li @b Field_tAccNs type and @b field_tAccNs() fuction
+    ///         for @ref MgaIniTimeGnssFields::TAccNs field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         ref,

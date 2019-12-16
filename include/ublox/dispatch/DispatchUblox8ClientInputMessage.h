@@ -740,7 +740,7 @@ auto dispatchUblox8ClientInputMessage(
     TMsg& msg,
     THandler& handler) -> decltype(handler.handle(msg))
 {
-    return dispatchUblox8ClientInputMessage(id, 0U, msg, handler);
+    return dispatchUblox8ClientInputMessage<TProtOptions>(id, 0U, msg, handler);
 }
 
 /// @brief Dispatch message object to its appropriate handling function.
@@ -778,6 +778,73 @@ auto dispatchUblox8ClientInputMessageDefaultOptions(
 {
     return dispatchUblox8ClientInputMessage<ublox::options::DefaultOptions>(id, msg, handler);
 }
+
+/// @brief Message dispatcher class to be used with
+///     @b comms::processAllWithDispatchViaDispatcher() function (or similar).
+/// @tparam TProtOptions Protocol options struct used for the application,
+///     like @ref ublox::options::DefaultOptions.
+/// @headerfile "ublox/dispatch/DispatchUblox8ClientInputMessage.h"
+template <typename TProtOptions>
+struct Ublox8ClientInputMsgDispatcher
+{
+    /// @brief Class detection tag
+    using MsgDispatcherTag = void;
+
+    /// @brief Dispatch message to its handler.
+    /// @details Uses appropriate @ref dispatchUblox8ClientInputMessage() function.
+    /// @param[in] id ID of the message.
+    /// @param[in] idx Index (or offset) of the message among those having the same numeric ID.
+    /// @param[in] msg Reference to message object.
+    /// @param[in] handler Reference to handler object.
+    /// @return What the @ref dispatchUblox8ClientInputMessage() function returns.
+    template <typename TMsg, typename THandler>
+    static auto dispatch(ublox::MsgId id, std::size_t idx, TMsg& msg, THandler& handler) ->
+        decltype(ublox::dispatch::dispatchUblox8ClientInputMessage<TProtOptions>(id, idx, msg, handler))
+    {
+        return ublox::dispatch::dispatchUblox8ClientInputMessage<TProtOptions>(id, idx, msg, handler);
+    }
+
+    /// @brief Complementary dispatch function.
+    /// @details Same as other dispatch without @b TAllMessages template parameter,
+    ///     used by  @b comms::processAllWithDispatchViaDispatcher().
+    template <typename TAllMessages, typename TMsg, typename THandler>
+    static auto dispatch(ublox::MsgId id, std::size_t idx, TMsg& msg, THandler& handler) ->
+        decltype(dispatch(id, idx, msg, handler))
+    {
+        return dispatch(id, idx, msg, handler);
+    }
+
+    /// @brief Dispatch message to its handler.
+    /// @details Uses appropriate @ref dispatchUblox8ClientInputMessage() function.
+    /// @param[in] id ID of the message.
+    /// @param[in] msg Reference to message object.
+    /// @param[in] handler Reference to handler object.
+    /// @return What the @ref dispatchUblox8ClientInputMessage() function returns.
+    template <typename TMsg, typename THandler>
+    static auto dispatch(ublox::MsgId id, TMsg& msg, THandler& handler) ->
+        decltype(ublox::dispatch::dispatchUblox8ClientInputMessage<TProtOptions>(id, msg, handler))
+    {
+        return ublox::dispatch::dispatchUblox8ClientInputMessage<TProtOptions>(id, msg, handler);
+    }
+
+    /// @brief Complementary dispatch function.
+    /// @details Same as other dispatch without @b TAllMessages template parameter,
+    ///     used by  @b comms::processAllWithDispatchViaDispatcher().
+    template <typename TAllMessages, typename TMsg, typename THandler>
+    static auto dispatch(ublox::MsgId id, TMsg& msg, THandler& handler) ->
+        decltype(dispatch(id, msg, handler))
+    {
+        return dispatch(id, msg, handler);
+    }
+};
+
+/// @brief Message dispatcher class to be used with
+///     @b comms::processAllWithDispatchViaDispatcher() function (or similar).
+/// @details Same as @ref Ublox8ClientInputMsgDispatcher, but passing
+///     @ref ublox::options::DefaultOptions as template parameter.
+/// @note Defined in "ublox/dispatch/DispatchUblox8ClientInputMessage.h"
+using Ublox8ClientInputMsgDispatcherDefaultOptions =
+    Ublox8ClientInputMsgDispatcher<ublox::options::DefaultOptions>;
 
 } // namespace dispatch
 

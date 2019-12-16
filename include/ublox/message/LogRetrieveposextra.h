@@ -242,25 +242,37 @@ class LogRetrieveposextra : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_entryIndex() for @ref LogRetrieveposextraFields::EntryIndex field.
-    ///     @li @b field_version() for @ref LogRetrieveposextraFields::Version field.
-    ///     @li @b field_reserved1() for @ref LogRetrieveposextraFields::Reserved1 field.
-    ///     @li @b field_year() for @ref LogRetrieveposextraFields::Year field.
-    ///     @li @b field_month() for @ref LogRetrieveposextraFields::Month field.
-    ///     @li @b field_day() for @ref LogRetrieveposextraFields::Day field.
-    ///     @li @b field_hour() for @ref LogRetrieveposextraFields::Hour field.
-    ///     @li @b field_minute() for @ref LogRetrieveposextraFields::Minute field.
-    ///     @li @b field_second() for @ref LogRetrieveposextraFields::Second field.
-    ///     @li @b field_reserved2() for @ref LogRetrieveposextraFields::Reserved2 field.
-    ///     @li @b field_distance() for @ref LogRetrieveposextraFields::Distance field.
-    ///     @li @b field_reserved3() for @ref LogRetrieveposextraFields::Reserved3 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_entryIndex type and @b field_entryIndex() fuction
+    ///         for @ref LogRetrieveposextraFields::EntryIndex field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref LogRetrieveposextraFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref LogRetrieveposextraFields::Reserved1 field.
+    ///     @li @b Field_year type and @b field_year() fuction
+    ///         for @ref LogRetrieveposextraFields::Year field.
+    ///     @li @b Field_month type and @b field_month() fuction
+    ///         for @ref LogRetrieveposextraFields::Month field.
+    ///     @li @b Field_day type and @b field_day() fuction
+    ///         for @ref LogRetrieveposextraFields::Day field.
+    ///     @li @b Field_hour type and @b field_hour() fuction
+    ///         for @ref LogRetrieveposextraFields::Hour field.
+    ///     @li @b Field_minute type and @b field_minute() fuction
+    ///         for @ref LogRetrieveposextraFields::Minute field.
+    ///     @li @b Field_second type and @b field_second() fuction
+    ///         for @ref LogRetrieveposextraFields::Second field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref LogRetrieveposextraFields::Reserved2 field.
+    ///     @li @b Field_distance type and @b field_distance() fuction
+    ///         for @ref LogRetrieveposextraFields::Distance field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref LogRetrieveposextraFields::Reserved3 field.
+    COMMS_MSG_FIELDS_NAMES(
         entryIndex,
         version,
         reserved1,

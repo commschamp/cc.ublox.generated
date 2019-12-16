@@ -232,20 +232,27 @@ class CfgTmode : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_timeMode() for @ref CfgTmodeFields::TimeMode field.
-    ///     @li @b field_fixedPosX() for @ref CfgTmodeFields::FixedPosX field.
-    ///     @li @b field_fixedPosY() for @ref CfgTmodeFields::FixedPosY field.
-    ///     @li @b field_fixedPosZ() for @ref CfgTmodeFields::FixedPosZ field.
-    ///     @li @b field_fixedPosVar() for @ref CfgTmodeFields::FixedPosVar field.
-    ///     @li @b field_svinMinDur() for @ref CfgTmodeFields::SvinMinDur field.
-    ///     @li @b field_svinVarLimit() for @ref CfgTmodeFields::SvinVarLimit field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_timeMode type and @b field_timeMode() fuction
+    ///         for @ref CfgTmodeFields::TimeMode field.
+    ///     @li @b Field_fixedPosX type and @b field_fixedPosX() fuction
+    ///         for @ref CfgTmodeFields::FixedPosX field.
+    ///     @li @b Field_fixedPosY type and @b field_fixedPosY() fuction
+    ///         for @ref CfgTmodeFields::FixedPosY field.
+    ///     @li @b Field_fixedPosZ type and @b field_fixedPosZ() fuction
+    ///         for @ref CfgTmodeFields::FixedPosZ field.
+    ///     @li @b Field_fixedPosVar type and @b field_fixedPosVar() fuction
+    ///         for @ref CfgTmodeFields::FixedPosVar field.
+    ///     @li @b Field_svinMinDur type and @b field_svinMinDur() fuction
+    ///         for @ref CfgTmodeFields::SvinMinDur field.
+    ///     @li @b Field_svinVarLimit type and @b field_svinVarLimit() fuction
+    ///         for @ref CfgTmodeFields::SvinVarLimit field.
+    COMMS_MSG_FIELDS_NAMES(
         timeMode,
         fixedPosX,
         fixedPosY,

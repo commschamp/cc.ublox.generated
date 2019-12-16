@@ -190,23 +190,33 @@ class LogFindtime : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref LogFindtimeFields::Version field.
-    ///     @li @b field_type() for @ref LogFindtimeFields::Type field.
-    ///     @li @b field_reserved1() for @ref LogFindtimeFields::Reserved1 field.
-    ///     @li @b field_year() for @ref LogFindtimeFields::Year field.
-    ///     @li @b field_month() for @ref LogFindtimeFields::Month field.
-    ///     @li @b field_day() for @ref LogFindtimeFields::Day field.
-    ///     @li @b field_hour() for @ref LogFindtimeFields::Hour field.
-    ///     @li @b field_minute() for @ref LogFindtimeFields::Minute field.
-    ///     @li @b field_second() for @ref LogFindtimeFields::Second field.
-    ///     @li @b field_reserved2() for @ref LogFindtimeFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref LogFindtimeFields::Version field.
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref LogFindtimeFields::Type field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref LogFindtimeFields::Reserved1 field.
+    ///     @li @b Field_year type and @b field_year() fuction
+    ///         for @ref LogFindtimeFields::Year field.
+    ///     @li @b Field_month type and @b field_month() fuction
+    ///         for @ref LogFindtimeFields::Month field.
+    ///     @li @b Field_day type and @b field_day() fuction
+    ///         for @ref LogFindtimeFields::Day field.
+    ///     @li @b Field_hour type and @b field_hour() fuction
+    ///         for @ref LogFindtimeFields::Hour field.
+    ///     @li @b Field_minute type and @b field_minute() fuction
+    ///         for @ref LogFindtimeFields::Minute field.
+    ///     @li @b Field_second type and @b field_second() fuction
+    ///         for @ref LogFindtimeFields::Second field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref LogFindtimeFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         type,
         reserved1,

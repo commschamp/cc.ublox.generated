@@ -140,15 +140,18 @@ struct AidAopFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_optional0() - for OptionalsWrapMembers::Optional0 member field.
-            ///     @li @b field_optional1() - for OptionalsWrapMembers::Optional1 member field.
-            ///     @li @b field_optional2() - for OptionalsWrapMembers::Optional2 member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_optional0 @b field_optional0() -
+            ///         for OptionalsWrapMembers::Optional0 member field.
+            ///     @li @b Field_optional1 @b field_optional1() -
+            ///         for OptionalsWrapMembers::Optional1 member field.
+            ///     @li @b Field_optional2 @b field_optional2() -
+            ///         for OptionalsWrapMembers::Optional2 member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 optional0,
                 optional1,
                 optional2
@@ -213,16 +216,19 @@ class AidAop : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_svid() for @ref AidAopFields::Svid field.
-    ///     @li @b field_data() for @ref AidAopFields::Data field.
-    ///     @li @b field_optionals() for @ref AidAopFields::Optionals field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref AidAopFields::Svid field.
+    ///     @li @b Field_data type and @b field_data() fuction
+    ///         for @ref AidAopFields::Data field.
+    ///     @li @b Field_optionals type and @b field_optionals() fuction
+    ///         for @ref AidAopFields::Optionals field.
+    COMMS_MSG_FIELDS_NAMES(
         svid,
         data,
         optionals

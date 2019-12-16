@@ -198,15 +198,18 @@ struct RxmEphFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_sf1d() - for ListsMembers::Sf1d member field.
-            ///     @li @b field_sf2d() - for ListsMembers::Sf2d member field.
-            ///     @li @b field_sf3d() - for ListsMembers::Sf3d member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_sf1d @b field_sf1d() -
+            ///         for ListsMembers::Sf1d member field.
+            ///     @li @b Field_sf2d @b field_sf2d() -
+            ///         for ListsMembers::Sf2d member field.
+            ///     @li @b Field_sf3d @b field_sf3d() -
+            ///         for ListsMembers::Sf3d member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 sf1d,
                 sf2d,
                 sf3d
@@ -275,16 +278,19 @@ class RxmEph : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_svid() for @ref RxmEphFields::Svid field.
-    ///     @li @b field_how() for @ref RxmEphFields::How field.
-    ///     @li @b field_sfd() for @ref RxmEphFields::Sfd field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref RxmEphFields::Svid field.
+    ///     @li @b Field_how type and @b field_how() fuction
+    ///         for @ref RxmEphFields::How field.
+    ///     @li @b Field_sfd type and @b field_sfd() fuction
+    ///         for @ref RxmEphFields::Sfd field.
+    COMMS_MSG_FIELDS_NAMES(
         svid,
         how,
         sfd

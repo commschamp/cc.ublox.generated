@@ -375,7 +375,7 @@ function (cc_plugin_all_messages)
 
     add_library (${name} STATIC ${src})
     target_link_libraries (${name} PUBLIC ublox cc::comms cc::comms_champion Qt5::Widgets Qt5::Core)
-    target_include_directories (${name} PUBLIC ${CMAKE_SOURCE_DIR})
+    target_include_directories (${name} PUBLIC ${PROJECT_SOURCE_DIR})
     if (CC_COMMS_CHAMPION_FOUND)
         if (CC_PLUGIN_DIR)
             file (RELATIVE_PATH rel_plugin_install_path "${CC_ROOT_DIR}" "${CC_PLUGIN_DIR}")

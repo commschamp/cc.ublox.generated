@@ -629,16 +629,20 @@ struct CfgTp5Fields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_bits() - for FlagsMembers::Bits member field.
-        ///     @li @b field_gridUtcGnss() - for FlagsMembers::GridUtcGnss member field.
-        ///     @li @b field_syncMode() - for FlagsMembers::SyncMode member field.
-        ///     @li @b field_reserved() - for FlagsMembers::Reserved member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for FlagsMembers::Bits member field.
+        ///     @li @b Field_gridUtcGnss @b field_gridUtcGnss() -
+        ///         for FlagsMembers::GridUtcGnss member field.
+        ///     @li @b Field_syncMode @b field_syncMode() -
+        ///         for FlagsMembers::SyncMode member field.
+        ///     @li @b Field_reserved @b field_reserved() -
+        ///         for FlagsMembers::Reserved member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             bits,
             gridUtcGnss,
             syncMode,
@@ -702,28 +706,43 @@ class CfgTp5 : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_tpIdx() for @ref CfgTp5Fields::TpIdx field.
-    ///     @li @b field_version() for @ref CfgTp5Fields::Version field.
-    ///     @li @b field_reserved1() for @ref CfgTp5Fields::Reserved1 field.
-    ///     @li @b field_antCableDelay() for @ref CfgTp5Fields::AntCableDelay field.
-    ///     @li @b field_rfGroupDelay() for @ref CfgTp5Fields::RfGroupDelay field.
-    ///     @li @b field_freq() for @ref CfgTp5Fields::Freq field.
-    ///     @li @b field_period() for @ref CfgTp5Fields::Period field.
-    ///     @li @b field_freqLock() for @ref CfgTp5Fields::FreqLock field.
-    ///     @li @b field_periodLock() for @ref CfgTp5Fields::PeriodLock field.
-    ///     @li @b field_pulseLen() for @ref CfgTp5Fields::PulseLen field.
-    ///     @li @b field_ratio() for @ref CfgTp5Fields::Ratio field.
-    ///     @li @b field_pulseLenLock() for @ref CfgTp5Fields::PulseLenLock field.
-    ///     @li @b field_ratioLock() for @ref CfgTp5Fields::RatioLock field.
-    ///     @li @b field_userConfigDelay() for @ref CfgTp5Fields::UserConfigDelay field.
-    ///     @li @b field_flags() for @ref CfgTp5Fields::Flags field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_tpIdx type and @b field_tpIdx() fuction
+    ///         for @ref CfgTp5Fields::TpIdx field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgTp5Fields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgTp5Fields::Reserved1 field.
+    ///     @li @b Field_antCableDelay type and @b field_antCableDelay() fuction
+    ///         for @ref CfgTp5Fields::AntCableDelay field.
+    ///     @li @b Field_rfGroupDelay type and @b field_rfGroupDelay() fuction
+    ///         for @ref CfgTp5Fields::RfGroupDelay field.
+    ///     @li @b Field_freq type and @b field_freq() fuction
+    ///         for @ref CfgTp5Fields::Freq field.
+    ///     @li @b Field_period type and @b field_period() fuction
+    ///         for @ref CfgTp5Fields::Period field.
+    ///     @li @b Field_freqLock type and @b field_freqLock() fuction
+    ///         for @ref CfgTp5Fields::FreqLock field.
+    ///     @li @b Field_periodLock type and @b field_periodLock() fuction
+    ///         for @ref CfgTp5Fields::PeriodLock field.
+    ///     @li @b Field_pulseLen type and @b field_pulseLen() fuction
+    ///         for @ref CfgTp5Fields::PulseLen field.
+    ///     @li @b Field_ratio type and @b field_ratio() fuction
+    ///         for @ref CfgTp5Fields::Ratio field.
+    ///     @li @b Field_pulseLenLock type and @b field_pulseLenLock() fuction
+    ///         for @ref CfgTp5Fields::PulseLenLock field.
+    ///     @li @b Field_ratioLock type and @b field_ratioLock() fuction
+    ///         for @ref CfgTp5Fields::RatioLock field.
+    ///     @li @b Field_userConfigDelay type and @b field_userConfigDelay() fuction
+    ///         for @ref CfgTp5Fields::UserConfigDelay field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgTp5Fields::Flags field.
+    COMMS_MSG_FIELDS_NAMES(
         tpIdx,
         version,
         reserved1,

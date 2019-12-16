@@ -252,16 +252,20 @@ struct CfgAntFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_pinSwitch() - for PinsMembers::PinSwitch member field.
-        ///     @li @b field_pinSCD() - for PinsMembers::PinSCD member field.
-        ///     @li @b field_pinOCD() - for PinsMembers::PinOCD member field.
-        ///     @li @b field_bits() - for PinsMembers::Bits member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_pinSwitch @b field_pinSwitch() -
+        ///         for PinsMembers::PinSwitch member field.
+        ///     @li @b Field_pinSCD @b field_pinSCD() -
+        ///         for PinsMembers::PinSCD member field.
+        ///     @li @b Field_pinOCD @b field_pinOCD() -
+        ///         for PinsMembers::PinOCD member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for PinsMembers::Bits member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             pinSwitch,
             pinSCD,
             pinOCD,
@@ -310,15 +314,17 @@ class CfgAnt : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_flags() for @ref CfgAntFields::Flags field.
-    ///     @li @b field_pins() for @ref CfgAntFields::Pins field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgAntFields::Flags field.
+    ///     @li @b Field_pins type and @b field_pins() fuction
+    ///         for @ref CfgAntFields::Pins field.
+    COMMS_MSG_FIELDS_NAMES(
         flags,
         pins
     );

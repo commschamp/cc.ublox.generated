@@ -345,30 +345,47 @@ class MgaGloAlm : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaGloAlmFields::Type field.
-    ///     @li @b field_version() for @ref MgaGloAlmFields::Version field.
-    ///     @li @b field_svid() for @ref MgaGloAlmFields::Svid field.
-    ///     @li @b field_reserved1() for @ref MgaGloAlmFields::Reserved1 field.
-    ///     @li @b field_n() for @ref MgaGloAlmFields::N field.
-    ///     @li @b field_m() for @ref MgaGloAlmFields::M field.
-    ///     @li @b field_c() for @ref MgaGloAlmFields::C field.
-    ///     @li @b field_tau() for @ref MgaGloAlmFields::Tau field.
-    ///     @li @b field_epsilon() for @ref MgaGloAlmFields::Epsilon field.
-    ///     @li @b field_lambda() for @ref MgaGloAlmFields::Lambda field.
-    ///     @li @b field_deltaI() for @ref MgaGloAlmFields::DeltaI field.
-    ///     @li @b field_tLambda() for @ref MgaGloAlmFields::TLambda field.
-    ///     @li @b field_deltaT() for @ref MgaGloAlmFields::DeltaT field.
-    ///     @li @b field_deltaDT() for @ref MgaGloAlmFields::DeltaDT field.
-    ///     @li @b field_h() for @ref MgaGloAlmFields::H field.
-    ///     @li @b field_omega() for @ref MgaGloAlmFields::Omega field.
-    ///     @li @b field_reserved2() for @ref MgaGloAlmFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaGloAlmFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaGloAlmFields::Version field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref MgaGloAlmFields::Svid field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaGloAlmFields::Reserved1 field.
+    ///     @li @b Field_n type and @b field_n() fuction
+    ///         for @ref MgaGloAlmFields::N field.
+    ///     @li @b Field_m type and @b field_m() fuction
+    ///         for @ref MgaGloAlmFields::M field.
+    ///     @li @b Field_c type and @b field_c() fuction
+    ///         for @ref MgaGloAlmFields::C field.
+    ///     @li @b Field_tau type and @b field_tau() fuction
+    ///         for @ref MgaGloAlmFields::Tau field.
+    ///     @li @b Field_epsilon type and @b field_epsilon() fuction
+    ///         for @ref MgaGloAlmFields::Epsilon field.
+    ///     @li @b Field_lambda type and @b field_lambda() fuction
+    ///         for @ref MgaGloAlmFields::Lambda field.
+    ///     @li @b Field_deltaI type and @b field_deltaI() fuction
+    ///         for @ref MgaGloAlmFields::DeltaI field.
+    ///     @li @b Field_tLambda type and @b field_tLambda() fuction
+    ///         for @ref MgaGloAlmFields::TLambda field.
+    ///     @li @b Field_deltaT type and @b field_deltaT() fuction
+    ///         for @ref MgaGloAlmFields::DeltaT field.
+    ///     @li @b Field_deltaDT type and @b field_deltaDT() fuction
+    ///         for @ref MgaGloAlmFields::DeltaDT field.
+    ///     @li @b Field_h type and @b field_h() fuction
+    ///         for @ref MgaGloAlmFields::H field.
+    ///     @li @b Field_omega type and @b field_omega() fuction
+    ///         for @ref MgaGloAlmFields::Omega field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaGloAlmFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         svid,

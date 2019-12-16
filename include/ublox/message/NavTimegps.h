@@ -205,19 +205,25 @@ class NavTimegps : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavTimegpsFields::Itow field.
-    ///     @li @b field_ftow() for @ref NavTimegpsFields::Ftow field.
-    ///     @li @b field_weeks() for @ref NavTimegpsFields::Weeks field.
-    ///     @li @b field_leapS() for @ref NavTimegpsFields::LeapS field.
-    ///     @li @b field_valid() for @ref NavTimegpsFields::Valid field.
-    ///     @li @b field_tAcc() for @ref NavTimegpsFields::TAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavTimegpsFields::Itow field.
+    ///     @li @b Field_ftow type and @b field_ftow() fuction
+    ///         for @ref NavTimegpsFields::Ftow field.
+    ///     @li @b Field_weeks type and @b field_weeks() fuction
+    ///         for @ref NavTimegpsFields::Weeks field.
+    ///     @li @b Field_leapS type and @b field_leapS() fuction
+    ///         for @ref NavTimegpsFields::LeapS field.
+    ///     @li @b Field_valid type and @b field_valid() fuction
+    ///         for @ref NavTimegpsFields::Valid field.
+    ///     @li @b Field_tAcc type and @b field_tAcc() fuction
+    ///         for @ref NavTimegpsFields::TAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         ftow,
         weeks,

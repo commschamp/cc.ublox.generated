@@ -412,14 +412,16 @@ struct RxmMeasxFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_towSet() - for FlagsMembers::TowSet member field.
-        ///     @li @b field_reserved() - for FlagsMembers::Reserved member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_towSet @b field_towSet() -
+        ///         for FlagsMembers::TowSet member field.
+        ///     @li @b Field_reserved @b field_reserved() -
+        ///         for FlagsMembers::Reserved member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             towSet,
             reserved
         );
@@ -677,24 +679,36 @@ struct RxmMeasxFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_gnssId() - for ElementMembers::GnssId member field.
-            ///     @li @b field_svid() - for ElementMembers::Svid member field.
-            ///     @li @b field_cNo() - for ElementMembers::CNo member field.
-            ///     @li @b field_mpathIndic() - for ElementMembers::MpathIndic member field.
-            ///     @li @b field_dopplerMS() - for ElementMembers::DopplerMS member field.
-            ///     @li @b field_dopplerHz() - for ElementMembers::DopplerHz member field.
-            ///     @li @b field_wholeChips() - for ElementMembers::WholeChips member field.
-            ///     @li @b field_fracChips() - for ElementMembers::FracChips member field.
-            ///     @li @b field_codePhase() - for ElementMembers::CodePhase member field.
-            ///     @li @b field_intCodePhase() - for ElementMembers::IntCodePhase member field.
-            ///     @li @b field_pseuRangeRMSErr() - for ElementMembers::PseuRangeRMSErr member field.
-            ///     @li @b field_reserved5() - for ElementMembers::Reserved5 member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_gnssId @b field_gnssId() -
+            ///         for ElementMembers::GnssId member field.
+            ///     @li @b Field_svid @b field_svid() -
+            ///         for ElementMembers::Svid member field.
+            ///     @li @b Field_cNo @b field_cNo() -
+            ///         for ElementMembers::CNo member field.
+            ///     @li @b Field_mpathIndic @b field_mpathIndic() -
+            ///         for ElementMembers::MpathIndic member field.
+            ///     @li @b Field_dopplerMS @b field_dopplerMS() -
+            ///         for ElementMembers::DopplerMS member field.
+            ///     @li @b Field_dopplerHz @b field_dopplerHz() -
+            ///         for ElementMembers::DopplerHz member field.
+            ///     @li @b Field_wholeChips @b field_wholeChips() -
+            ///         for ElementMembers::WholeChips member field.
+            ///     @li @b Field_fracChips @b field_fracChips() -
+            ///         for ElementMembers::FracChips member field.
+            ///     @li @b Field_codePhase @b field_codePhase() -
+            ///         for ElementMembers::CodePhase member field.
+            ///     @li @b Field_intCodePhase @b field_intCodePhase() -
+            ///         for ElementMembers::IntCodePhase member field.
+            ///     @li @b Field_pseuRangeRMSErr @b field_pseuRangeRMSErr() -
+            ///         for ElementMembers::PseuRangeRMSErr member field.
+            ///     @li @b Field_reserved5 @b field_reserved5() -
+            ///         for ElementMembers::Reserved5 member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 gnssId,
                 svid,
                 cNo,
@@ -788,29 +802,45 @@ class RxmMeasx : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref RxmMeasxFields::Version field.
-    ///     @li @b field_reserved1() for @ref RxmMeasxFields::Reserved1 field.
-    ///     @li @b field_gpsTOW() for @ref RxmMeasxFields::GpsTOW field.
-    ///     @li @b field_gloTOW() for @ref RxmMeasxFields::GloTOW field.
-    ///     @li @b field_bdsTOW() for @ref RxmMeasxFields::BdsTOW field.
-    ///     @li @b field_reserved2() for @ref RxmMeasxFields::Reserved2 field.
-    ///     @li @b field_qzssTOW() for @ref RxmMeasxFields::QzssTOW field.
-    ///     @li @b field_gpsTOWacc() for @ref RxmMeasxFields::GpsTOWacc field.
-    ///     @li @b field_gloTOWacc() for @ref RxmMeasxFields::GloTOWacc field.
-    ///     @li @b field_bdsTOWacc() for @ref RxmMeasxFields::BdsTOWacc field.
-    ///     @li @b field_reserved3() for @ref RxmMeasxFields::Reserved3 field.
-    ///     @li @b field_qzssTOWacc() for @ref RxmMeasxFields::QzssTOWacc field.
-    ///     @li @b field_numSV() for @ref RxmMeasxFields::NumSV field.
-    ///     @li @b field_flags() for @ref RxmMeasxFields::Flags field.
-    ///     @li @b field_reserved4() for @ref RxmMeasxFields::Reserved4 field.
-    ///     @li @b field_list() for @ref RxmMeasxFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref RxmMeasxFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref RxmMeasxFields::Reserved1 field.
+    ///     @li @b Field_gpsTOW type and @b field_gpsTOW() fuction
+    ///         for @ref RxmMeasxFields::GpsTOW field.
+    ///     @li @b Field_gloTOW type and @b field_gloTOW() fuction
+    ///         for @ref RxmMeasxFields::GloTOW field.
+    ///     @li @b Field_bdsTOW type and @b field_bdsTOW() fuction
+    ///         for @ref RxmMeasxFields::BdsTOW field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref RxmMeasxFields::Reserved2 field.
+    ///     @li @b Field_qzssTOW type and @b field_qzssTOW() fuction
+    ///         for @ref RxmMeasxFields::QzssTOW field.
+    ///     @li @b Field_gpsTOWacc type and @b field_gpsTOWacc() fuction
+    ///         for @ref RxmMeasxFields::GpsTOWacc field.
+    ///     @li @b Field_gloTOWacc type and @b field_gloTOWacc() fuction
+    ///         for @ref RxmMeasxFields::GloTOWacc field.
+    ///     @li @b Field_bdsTOWacc type and @b field_bdsTOWacc() fuction
+    ///         for @ref RxmMeasxFields::BdsTOWacc field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref RxmMeasxFields::Reserved3 field.
+    ///     @li @b Field_qzssTOWacc type and @b field_qzssTOWacc() fuction
+    ///         for @ref RxmMeasxFields::QzssTOWacc field.
+    ///     @li @b Field_numSV type and @b field_numSV() fuction
+    ///         for @ref RxmMeasxFields::NumSV field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref RxmMeasxFields::Flags field.
+    ///     @li @b Field_reserved4 type and @b field_reserved4() fuction
+    ///         for @ref RxmMeasxFields::Reserved4 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref RxmMeasxFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         gpsTOW,

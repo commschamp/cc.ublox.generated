@@ -151,20 +151,27 @@ class MgaIniPosXyz : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaIniPosXyzFields::Type field.
-    ///     @li @b field_version() for @ref MgaIniPosXyzFields::Version field.
-    ///     @li @b field_reserved1() for @ref MgaIniPosXyzFields::Reserved1 field.
-    ///     @li @b field_ecefX() for @ref MgaIniPosXyzFields::EcefX field.
-    ///     @li @b field_ecefY() for @ref MgaIniPosXyzFields::EcefY field.
-    ///     @li @b field_ecefZ() for @ref MgaIniPosXyzFields::EcefZ field.
-    ///     @li @b field_posAcc() for @ref MgaIniPosXyzFields::PosAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaIniPosXyzFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaIniPosXyzFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaIniPosXyzFields::Reserved1 field.
+    ///     @li @b Field_ecefX type and @b field_ecefX() fuction
+    ///         for @ref MgaIniPosXyzFields::EcefX field.
+    ///     @li @b Field_ecefY type and @b field_ecefY() fuction
+    ///         for @ref MgaIniPosXyzFields::EcefY field.
+    ///     @li @b Field_ecefZ type and @b field_ecefZ() fuction
+    ///         for @ref MgaIniPosXyzFields::EcefZ field.
+    ///     @li @b Field_posAcc type and @b field_posAcc() fuction
+    ///         for @ref MgaIniPosXyzFields::PosAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         reserved1,

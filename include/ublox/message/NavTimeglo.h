@@ -228,20 +228,27 @@ class NavTimeglo : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavTimegloFields::Itow field.
-    ///     @li @b field_tOD() for @ref NavTimegloFields::TOD field.
-    ///     @li @b field_fTOD() for @ref NavTimegloFields::FTOD field.
-    ///     @li @b field_nt() for @ref NavTimegloFields::Nt field.
-    ///     @li @b field_n4() for @ref NavTimegloFields::N4 field.
-    ///     @li @b field_valid() for @ref NavTimegloFields::Valid field.
-    ///     @li @b field_tAcc() for @ref NavTimegloFields::TAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavTimegloFields::Itow field.
+    ///     @li @b Field_tOD type and @b field_tOD() fuction
+    ///         for @ref NavTimegloFields::TOD field.
+    ///     @li @b Field_fTOD type and @b field_fTOD() fuction
+    ///         for @ref NavTimegloFields::FTOD field.
+    ///     @li @b Field_nt type and @b field_nt() fuction
+    ///         for @ref NavTimegloFields::Nt field.
+    ///     @li @b Field_n4 type and @b field_n4() fuction
+    ///         for @ref NavTimegloFields::N4 field.
+    ///     @li @b Field_valid type and @b field_valid() fuction
+    ///         for @ref NavTimegloFields::Valid field.
+    ///     @li @b Field_tAcc type and @b field_tAcc() fuction
+    ///         for @ref NavTimegloFields::TAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         tOD,
         fTOD,

@@ -312,15 +312,18 @@ struct CfgGeofenceFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_lat() - for ElementMembers::Lat member field.
-            ///     @li @b field_lon() - for ElementMembers::Lon member field.
-            ///     @li @b field_radius() - for ElementMembers::Radius member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_lat @b field_lat() -
+            ///         for ElementMembers::Lat member field.
+            ///     @li @b Field_lon @b field_lon() -
+            ///         for ElementMembers::Lon member field.
+            ///     @li @b Field_radius @b field_radius() -
+            ///         for ElementMembers::Radius member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 lat,
                 lon,
                 radius
@@ -396,22 +399,31 @@ class CfgGeofence : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgGeofenceFields::Version field.
-    ///     @li @b field_numFences() for @ref CfgGeofenceFields::NumFences field.
-    ///     @li @b field_confLvl() for @ref CfgGeofenceFields::ConfLvl field.
-    ///     @li @b field_reserved1() for @ref CfgGeofenceFields::Reserved1 field.
-    ///     @li @b field_pioEnabled() for @ref CfgGeofenceFields::PioEnabled field.
-    ///     @li @b field_pinPolarity() for @ref CfgGeofenceFields::PinPolarity field.
-    ///     @li @b field_pin() for @ref CfgGeofenceFields::Pin field.
-    ///     @li @b field_reserved2() for @ref CfgGeofenceFields::Reserved2 field.
-    ///     @li @b field_list() for @ref CfgGeofenceFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgGeofenceFields::Version field.
+    ///     @li @b Field_numFences type and @b field_numFences() fuction
+    ///         for @ref CfgGeofenceFields::NumFences field.
+    ///     @li @b Field_confLvl type and @b field_confLvl() fuction
+    ///         for @ref CfgGeofenceFields::ConfLvl field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgGeofenceFields::Reserved1 field.
+    ///     @li @b Field_pioEnabled type and @b field_pioEnabled() fuction
+    ///         for @ref CfgGeofenceFields::PioEnabled field.
+    ///     @li @b Field_pinPolarity type and @b field_pinPolarity() fuction
+    ///         for @ref CfgGeofenceFields::PinPolarity field.
+    ///     @li @b Field_pin type and @b field_pin() fuction
+    ///         for @ref CfgGeofenceFields::Pin field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref CfgGeofenceFields::Reserved2 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref CfgGeofenceFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         numFences,
         confLvl,

@@ -589,44 +589,75 @@ class MgaGpsEph : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaGpsEphFields::Type field.
-    ///     @li @b field_version() for @ref MgaGpsEphFields::Version field.
-    ///     @li @b field_svid() for @ref MgaGpsEphFields::Svid field.
-    ///     @li @b field_reserved1() for @ref MgaGpsEphFields::Reserved1 field.
-    ///     @li @b field_fitInterval() for @ref MgaGpsEphFields::FitInterval field.
-    ///     @li @b field_uraIndex() for @ref MgaGpsEphFields::UraIndex field.
-    ///     @li @b field_svHealth() for @ref MgaGpsEphFields::SvHealth field.
-    ///     @li @b field_tgd() for @ref MgaGpsEphFields::Tgd field.
-    ///     @li @b field_iodc() for @ref MgaGpsEphFields::Iodc field.
-    ///     @li @b field_toc() for @ref MgaGpsEphFields::Toc field.
-    ///     @li @b field_reserved2() for @ref MgaGpsEphFields::Reserved2 field.
-    ///     @li @b field_af2() for @ref MgaGpsEphFields::Af2 field.
-    ///     @li @b field_af1() for @ref MgaGpsEphFields::Af1 field.
-    ///     @li @b field_af0() for @ref MgaGpsEphFields::Af0 field.
-    ///     @li @b field_crs() for @ref MgaGpsEphFields::Crs field.
-    ///     @li @b field_deltaN() for @ref MgaGpsEphFields::DeltaN field.
-    ///     @li @b field_m0() for @ref MgaGpsEphFields::M0 field.
-    ///     @li @b field_cuc() for @ref MgaGpsEphFields::Cuc field.
-    ///     @li @b field_cus() for @ref MgaGpsEphFields::Cus field.
-    ///     @li @b field_e() for @ref MgaGpsEphFields::E field.
-    ///     @li @b field_sqrtA() for @ref MgaGpsEphFields::SqrtA field.
-    ///     @li @b field_toe() for @ref MgaGpsEphFields::Toe field.
-    ///     @li @b field_cic() for @ref MgaGpsEphFields::Cic field.
-    ///     @li @b field_omega0() for @ref MgaGpsEphFields::Omega0 field.
-    ///     @li @b field_cis() for @ref MgaGpsEphFields::Cis field.
-    ///     @li @b field_crc() for @ref MgaGpsEphFields::Crc field.
-    ///     @li @b field_i0() for @ref MgaGpsEphFields::I0 field.
-    ///     @li @b field_omega() for @ref MgaGpsEphFields::Omega field.
-    ///     @li @b field_omegaDot() for @ref MgaGpsEphFields::OmegaDot field.
-    ///     @li @b field_idot() for @ref MgaGpsEphFields::Idot field.
-    ///     @li @b field_reserved3() for @ref MgaGpsEphFields::Reserved3 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaGpsEphFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaGpsEphFields::Version field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref MgaGpsEphFields::Svid field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaGpsEphFields::Reserved1 field.
+    ///     @li @b Field_fitInterval type and @b field_fitInterval() fuction
+    ///         for @ref MgaGpsEphFields::FitInterval field.
+    ///     @li @b Field_uraIndex type and @b field_uraIndex() fuction
+    ///         for @ref MgaGpsEphFields::UraIndex field.
+    ///     @li @b Field_svHealth type and @b field_svHealth() fuction
+    ///         for @ref MgaGpsEphFields::SvHealth field.
+    ///     @li @b Field_tgd type and @b field_tgd() fuction
+    ///         for @ref MgaGpsEphFields::Tgd field.
+    ///     @li @b Field_iodc type and @b field_iodc() fuction
+    ///         for @ref MgaGpsEphFields::Iodc field.
+    ///     @li @b Field_toc type and @b field_toc() fuction
+    ///         for @ref MgaGpsEphFields::Toc field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaGpsEphFields::Reserved2 field.
+    ///     @li @b Field_af2 type and @b field_af2() fuction
+    ///         for @ref MgaGpsEphFields::Af2 field.
+    ///     @li @b Field_af1 type and @b field_af1() fuction
+    ///         for @ref MgaGpsEphFields::Af1 field.
+    ///     @li @b Field_af0 type and @b field_af0() fuction
+    ///         for @ref MgaGpsEphFields::Af0 field.
+    ///     @li @b Field_crs type and @b field_crs() fuction
+    ///         for @ref MgaGpsEphFields::Crs field.
+    ///     @li @b Field_deltaN type and @b field_deltaN() fuction
+    ///         for @ref MgaGpsEphFields::DeltaN field.
+    ///     @li @b Field_m0 type and @b field_m0() fuction
+    ///         for @ref MgaGpsEphFields::M0 field.
+    ///     @li @b Field_cuc type and @b field_cuc() fuction
+    ///         for @ref MgaGpsEphFields::Cuc field.
+    ///     @li @b Field_cus type and @b field_cus() fuction
+    ///         for @ref MgaGpsEphFields::Cus field.
+    ///     @li @b Field_e type and @b field_e() fuction
+    ///         for @ref MgaGpsEphFields::E field.
+    ///     @li @b Field_sqrtA type and @b field_sqrtA() fuction
+    ///         for @ref MgaGpsEphFields::SqrtA field.
+    ///     @li @b Field_toe type and @b field_toe() fuction
+    ///         for @ref MgaGpsEphFields::Toe field.
+    ///     @li @b Field_cic type and @b field_cic() fuction
+    ///         for @ref MgaGpsEphFields::Cic field.
+    ///     @li @b Field_omega0 type and @b field_omega0() fuction
+    ///         for @ref MgaGpsEphFields::Omega0 field.
+    ///     @li @b Field_cis type and @b field_cis() fuction
+    ///         for @ref MgaGpsEphFields::Cis field.
+    ///     @li @b Field_crc type and @b field_crc() fuction
+    ///         for @ref MgaGpsEphFields::Crc field.
+    ///     @li @b Field_i0 type and @b field_i0() fuction
+    ///         for @ref MgaGpsEphFields::I0 field.
+    ///     @li @b Field_omega type and @b field_omega() fuction
+    ///         for @ref MgaGpsEphFields::Omega field.
+    ///     @li @b Field_omegaDot type and @b field_omegaDot() fuction
+    ///         for @ref MgaGpsEphFields::OmegaDot field.
+    ///     @li @b Field_idot type and @b field_idot() fuction
+    ///         for @ref MgaGpsEphFields::Idot field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref MgaGpsEphFields::Reserved3 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         svid,

@@ -413,14 +413,16 @@ struct EsfStatusFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_type() - for SensStatus1Members::Type member field.
-                ///     @li @b field_bits() - for SensStatus1Members::Bits member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_type @b field_type() -
+                ///         for SensStatus1Members::Type member field.
+                ///     @li @b Field_bits @b field_bits() -
+                ///         for SensStatus1Members::Bits member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     type,
                     bits
                 );
@@ -534,15 +536,18 @@ struct EsfStatusFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_calibStatus() - for SensStatus2Members::CalibStatus member field.
-                ///     @li @b field_timeStatus() - for SensStatus2Members::TimeStatus member field.
-                ///     @li @b field_reserved() - for SensStatus2Members::Reserved member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_calibStatus @b field_calibStatus() -
+                ///         for SensStatus2Members::CalibStatus member field.
+                ///     @li @b Field_timeStatus @b field_timeStatus() -
+                ///         for SensStatus2Members::TimeStatus member field.
+                ///     @li @b Field_reserved @b field_reserved() -
+                ///         for SensStatus2Members::Reserved member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     calibStatus,
                     timeStatus,
                     reserved
@@ -644,16 +649,20 @@ struct EsfStatusFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_sensStatus1() - for ElementMembers::SensStatus1 member field.
-            ///     @li @b field_sensStatus2() - for ElementMembers::SensStatus2 member field.
-            ///     @li @b field_freq() - for ElementMembers::Freq member field.
-            ///     @li @b field_faults() - for ElementMembers::Faults member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_sensStatus1 @b field_sensStatus1() -
+            ///         for ElementMembers::SensStatus1 member field.
+            ///     @li @b Field_sensStatus2 @b field_sensStatus2() -
+            ///         for ElementMembers::SensStatus2 member field.
+            ///     @li @b Field_freq @b field_freq() -
+            ///         for ElementMembers::Freq member field.
+            ///     @li @b Field_faults @b field_faults() -
+            ///         for ElementMembers::Faults member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 sensStatus1,
                 sensStatus2,
                 freq,
@@ -730,20 +739,27 @@ class EsfStatus : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref EsfStatusFields::Itow field.
-    ///     @li @b field_version() for @ref EsfStatusFields::Version field.
-    ///     @li @b field_reserved1() for @ref EsfStatusFields::Reserved1 field.
-    ///     @li @b field_fusionMode() for @ref EsfStatusFields::FusionMode field.
-    ///     @li @b field_reserved2() for @ref EsfStatusFields::Reserved2 field.
-    ///     @li @b field_numSens() for @ref EsfStatusFields::NumSens field.
-    ///     @li @b field_list() for @ref EsfStatusFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref EsfStatusFields::Itow field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref EsfStatusFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref EsfStatusFields::Reserved1 field.
+    ///     @li @b Field_fusionMode type and @b field_fusionMode() fuction
+    ///         for @ref EsfStatusFields::FusionMode field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref EsfStatusFields::Reserved2 field.
+    ///     @li @b Field_numSens type and @b field_numSens() fuction
+    ///         for @ref EsfStatusFields::NumSens field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref EsfStatusFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         version,
         reserved1,
