@@ -199,21 +199,29 @@ class MgaGloTimeoffset : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaGloTimeoffsetFields::Type field.
-    ///     @li @b field_version() for @ref MgaGloTimeoffsetFields::Version field.
-    ///     @li @b field_n() for @ref MgaGloTimeoffsetFields::N field.
-    ///     @li @b field_tauC() for @ref MgaGloTimeoffsetFields::TauC field.
-    ///     @li @b field_tauGps() for @ref MgaGloTimeoffsetFields::TauGps field.
-    ///     @li @b field_b1() for @ref MgaGloTimeoffsetFields::B1 field.
-    ///     @li @b field_b2() for @ref MgaGloTimeoffsetFields::B2 field.
-    ///     @li @b field_reserved1() for @ref MgaGloTimeoffsetFields::Reserved1 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaGloTimeoffsetFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaGloTimeoffsetFields::Version field.
+    ///     @li @b Field_n type and @b field_n() fuction
+    ///         for @ref MgaGloTimeoffsetFields::N field.
+    ///     @li @b Field_tauC type and @b field_tauC() fuction
+    ///         for @ref MgaGloTimeoffsetFields::TauC field.
+    ///     @li @b Field_tauGps type and @b field_tauGps() fuction
+    ///         for @ref MgaGloTimeoffsetFields::TauGps field.
+    ///     @li @b Field_b1 type and @b field_b1() fuction
+    ///         for @ref MgaGloTimeoffsetFields::B1 field.
+    ///     @li @b Field_b2 type and @b field_b2() fuction
+    ///         for @ref MgaGloTimeoffsetFields::B2 field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaGloTimeoffsetFields::Reserved1 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         n,

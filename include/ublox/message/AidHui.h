@@ -433,32 +433,51 @@ class AidHui : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_health() for @ref AidHuiFields::Health field.
-    ///     @li @b field_utcA0() for @ref AidHuiFields::UtcA0 field.
-    ///     @li @b field_utcA1() for @ref AidHuiFields::UtcA1 field.
-    ///     @li @b field_utcTOW() for @ref AidHuiFields::UtcTOW field.
-    ///     @li @b field_utcWNT() for @ref AidHuiFields::UtcWNT field.
-    ///     @li @b field_utcLS() for @ref AidHuiFields::UtcLS field.
-    ///     @li @b field_utcWNF() for @ref AidHuiFields::UtcWNF field.
-    ///     @li @b field_utcDN() for @ref AidHuiFields::UtcDN field.
-    ///     @li @b field_utcLSF() for @ref AidHuiFields::UtcLSF field.
-    ///     @li @b field_utcSpare() for @ref AidHuiFields::UtcSpare field.
-    ///     @li @b field_klobA0() for @ref AidHuiFields::KlobA0 field.
-    ///     @li @b field_klobA1() for @ref AidHuiFields::KlobA1 field.
-    ///     @li @b field_klobA2() for @ref AidHuiFields::KlobA2 field.
-    ///     @li @b field_klobA3() for @ref AidHuiFields::KlobA3 field.
-    ///     @li @b field_klobB0() for @ref AidHuiFields::KlobB0 field.
-    ///     @li @b field_klobB1() for @ref AidHuiFields::KlobB1 field.
-    ///     @li @b field_klobB2() for @ref AidHuiFields::KlobB2 field.
-    ///     @li @b field_klobB3() for @ref AidHuiFields::KlobB3 field.
-    ///     @li @b field_flags() for @ref AidHuiFields::Flags field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_health type and @b field_health() fuction
+    ///         for @ref AidHuiFields::Health field.
+    ///     @li @b Field_utcA0 type and @b field_utcA0() fuction
+    ///         for @ref AidHuiFields::UtcA0 field.
+    ///     @li @b Field_utcA1 type and @b field_utcA1() fuction
+    ///         for @ref AidHuiFields::UtcA1 field.
+    ///     @li @b Field_utcTOW type and @b field_utcTOW() fuction
+    ///         for @ref AidHuiFields::UtcTOW field.
+    ///     @li @b Field_utcWNT type and @b field_utcWNT() fuction
+    ///         for @ref AidHuiFields::UtcWNT field.
+    ///     @li @b Field_utcLS type and @b field_utcLS() fuction
+    ///         for @ref AidHuiFields::UtcLS field.
+    ///     @li @b Field_utcWNF type and @b field_utcWNF() fuction
+    ///         for @ref AidHuiFields::UtcWNF field.
+    ///     @li @b Field_utcDN type and @b field_utcDN() fuction
+    ///         for @ref AidHuiFields::UtcDN field.
+    ///     @li @b Field_utcLSF type and @b field_utcLSF() fuction
+    ///         for @ref AidHuiFields::UtcLSF field.
+    ///     @li @b Field_utcSpare type and @b field_utcSpare() fuction
+    ///         for @ref AidHuiFields::UtcSpare field.
+    ///     @li @b Field_klobA0 type and @b field_klobA0() fuction
+    ///         for @ref AidHuiFields::KlobA0 field.
+    ///     @li @b Field_klobA1 type and @b field_klobA1() fuction
+    ///         for @ref AidHuiFields::KlobA1 field.
+    ///     @li @b Field_klobA2 type and @b field_klobA2() fuction
+    ///         for @ref AidHuiFields::KlobA2 field.
+    ///     @li @b Field_klobA3 type and @b field_klobA3() fuction
+    ///         for @ref AidHuiFields::KlobA3 field.
+    ///     @li @b Field_klobB0 type and @b field_klobB0() fuction
+    ///         for @ref AidHuiFields::KlobB0 field.
+    ///     @li @b Field_klobB1 type and @b field_klobB1() fuction
+    ///         for @ref AidHuiFields::KlobB1 field.
+    ///     @li @b Field_klobB2 type and @b field_klobB2() fuction
+    ///         for @ref AidHuiFields::KlobB2 field.
+    ///     @li @b Field_klobB3 type and @b field_klobB3() fuction
+    ///         for @ref AidHuiFields::KlobB3 field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref AidHuiFields::Flags field.
+    COMMS_MSG_FIELDS_NAMES(
         health,
         utcA0,
         utcA1,

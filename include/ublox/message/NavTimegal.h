@@ -232,20 +232,27 @@ class NavTimegal : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavTimegalFields::Itow field.
-    ///     @li @b field_galTow() for @ref NavTimegalFields::GalTow field.
-    ///     @li @b field_fGalTow() for @ref NavTimegalFields::FGalTow field.
-    ///     @li @b field_galWno() for @ref NavTimegalFields::GalWno field.
-    ///     @li @b field_leapS() for @ref NavTimegalFields::LeapS field.
-    ///     @li @b field_valid() for @ref NavTimegalFields::Valid field.
-    ///     @li @b field_tAcc() for @ref NavTimegalFields::TAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavTimegalFields::Itow field.
+    ///     @li @b Field_galTow type and @b field_galTow() fuction
+    ///         for @ref NavTimegalFields::GalTow field.
+    ///     @li @b Field_fGalTow type and @b field_fGalTow() fuction
+    ///         for @ref NavTimegalFields::FGalTow field.
+    ///     @li @b Field_galWno type and @b field_galWno() fuction
+    ///         for @ref NavTimegalFields::GalWno field.
+    ///     @li @b Field_leapS type and @b field_leapS() fuction
+    ///         for @ref NavTimegalFields::LeapS field.
+    ///     @li @b Field_valid type and @b field_valid() fuction
+    ///         for @ref NavTimegalFields::Valid field.
+    ///     @li @b Field_tAcc type and @b field_tAcc() fuction
+    ///         for @ref NavTimegalFields::TAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         galTow,
         fGalTow,

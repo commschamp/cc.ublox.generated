@@ -164,19 +164,25 @@ class CfgFixseed : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgFixseedFields::Version field.
-    ///     @li @b field_length() for @ref CfgFixseedFields::Length field.
-    ///     @li @b field_reserved1() for @ref CfgFixseedFields::Reserved1 field.
-    ///     @li @b field_seedHi() for @ref CfgFixseedFields::SeedHi field.
-    ///     @li @b field_seedLo() for @ref CfgFixseedFields::SeedLo field.
-    ///     @li @b field_list() for @ref CfgFixseedFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgFixseedFields::Version field.
+    ///     @li @b Field_length type and @b field_length() fuction
+    ///         for @ref CfgFixseedFields::Length field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgFixseedFields::Reserved1 field.
+    ///     @li @b Field_seedHi type and @b field_seedHi() fuction
+    ///         for @ref CfgFixseedFields::SeedHi field.
+    ///     @li @b Field_seedLo type and @b field_seedLo() fuction
+    ///         for @ref CfgFixseedFields::SeedLo field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref CfgFixseedFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         length,
         reserved1,

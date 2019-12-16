@@ -467,23 +467,33 @@ class CfgEkf : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_disableEkf() for @ref CfgEkfFields::DisableEkf field.
-    ///     @li @b field_actionFlags() for @ref CfgEkfFields::ActionFlags field.
-    ///     @li @b field_configFlags() for @ref CfgEkfFields::ConfigFlags field.
-    ///     @li @b field_inverseFlags() for @ref CfgEkfFields::InverseFlags field.
-    ///     @li @b field_reserved2() for @ref CfgEkfFields::Reserved2 field.
-    ///     @li @b field_nomPPDist() for @ref CfgEkfFields::NomPPDist field.
-    ///     @li @b field_nomZero() for @ref CfgEkfFields::NomZero field.
-    ///     @li @b field_nomSens() for @ref CfgEkfFields::NomSens field.
-    ///     @li @b field_rmsTemp() for @ref CfgEkfFields::RmsTemp field.
-    ///     @li @b field_tempUpdate() for @ref CfgEkfFields::TempUpdate field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_disableEkf type and @b field_disableEkf() fuction
+    ///         for @ref CfgEkfFields::DisableEkf field.
+    ///     @li @b Field_actionFlags type and @b field_actionFlags() fuction
+    ///         for @ref CfgEkfFields::ActionFlags field.
+    ///     @li @b Field_configFlags type and @b field_configFlags() fuction
+    ///         for @ref CfgEkfFields::ConfigFlags field.
+    ///     @li @b Field_inverseFlags type and @b field_inverseFlags() fuction
+    ///         for @ref CfgEkfFields::InverseFlags field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref CfgEkfFields::Reserved2 field.
+    ///     @li @b Field_nomPPDist type and @b field_nomPPDist() fuction
+    ///         for @ref CfgEkfFields::NomPPDist field.
+    ///     @li @b Field_nomZero type and @b field_nomZero() fuction
+    ///         for @ref CfgEkfFields::NomZero field.
+    ///     @li @b Field_nomSens type and @b field_nomSens() fuction
+    ///         for @ref CfgEkfFields::NomSens field.
+    ///     @li @b Field_rmsTemp type and @b field_rmsTemp() fuction
+    ///         for @ref CfgEkfFields::RmsTemp field.
+    ///     @li @b Field_tempUpdate type and @b field_tempUpdate() fuction
+    ///         for @ref CfgEkfFields::TempUpdate field.
+    COMMS_MSG_FIELDS_NAMES(
         disableEkf,
         actionFlags,
         configFlags,

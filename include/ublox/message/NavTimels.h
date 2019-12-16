@@ -437,25 +437,37 @@ class NavTimels : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavTimelsFields::Itow field.
-    ///     @li @b field_version() for @ref NavTimelsFields::Version field.
-    ///     @li @b field_reserved1() for @ref NavTimelsFields::Reserved1 field.
-    ///     @li @b field_srcOfCurrLs() for @ref NavTimelsFields::SrcOfCurrLs field.
-    ///     @li @b field_currLs() for @ref NavTimelsFields::CurrLs field.
-    ///     @li @b field_srcOfLsChange() for @ref NavTimelsFields::SrcOfLsChange field.
-    ///     @li @b field_lsChange() for @ref NavTimelsFields::LsChange field.
-    ///     @li @b field_timeToLsEvent() for @ref NavTimelsFields::TimeToLsEvent field.
-    ///     @li @b field_dateOfLsGpsWn() for @ref NavTimelsFields::DateOfLsGpsWn field.
-    ///     @li @b field_dateOfLsGpsDn() for @ref NavTimelsFields::DateOfLsGpsDn field.
-    ///     @li @b field_reserved2() for @ref NavTimelsFields::Reserved2 field.
-    ///     @li @b field_valid() for @ref NavTimelsFields::Valid field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavTimelsFields::Itow field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref NavTimelsFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavTimelsFields::Reserved1 field.
+    ///     @li @b Field_srcOfCurrLs type and @b field_srcOfCurrLs() fuction
+    ///         for @ref NavTimelsFields::SrcOfCurrLs field.
+    ///     @li @b Field_currLs type and @b field_currLs() fuction
+    ///         for @ref NavTimelsFields::CurrLs field.
+    ///     @li @b Field_srcOfLsChange type and @b field_srcOfLsChange() fuction
+    ///         for @ref NavTimelsFields::SrcOfLsChange field.
+    ///     @li @b Field_lsChange type and @b field_lsChange() fuction
+    ///         for @ref NavTimelsFields::LsChange field.
+    ///     @li @b Field_timeToLsEvent type and @b field_timeToLsEvent() fuction
+    ///         for @ref NavTimelsFields::TimeToLsEvent field.
+    ///     @li @b Field_dateOfLsGpsWn type and @b field_dateOfLsGpsWn() fuction
+    ///         for @ref NavTimelsFields::DateOfLsGpsWn field.
+    ///     @li @b Field_dateOfLsGpsDn type and @b field_dateOfLsGpsDn() fuction
+    ///         for @ref NavTimelsFields::DateOfLsGpsDn field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref NavTimelsFields::Reserved2 field.
+    ///     @li @b Field_valid type and @b field_valid() fuction
+    ///         for @ref NavTimelsFields::Valid field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         version,
         reserved1,

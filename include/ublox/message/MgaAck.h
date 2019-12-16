@@ -258,18 +258,23 @@ class MgaAck : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaAckFields::Type field.
-    ///     @li @b field_version() for @ref MgaAckFields::Version field.
-    ///     @li @b field_infoCode() for @ref MgaAckFields::InfoCode field.
-    ///     @li @b field_msgId() for @ref MgaAckFields::MsgId field.
-    ///     @li @b field_msgPayloadStart() for @ref MgaAckFields::MsgPayloadStart field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaAckFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaAckFields::Version field.
+    ///     @li @b Field_infoCode type and @b field_infoCode() fuction
+    ///         for @ref MgaAckFields::InfoCode field.
+    ///     @li @b Field_msgId type and @b field_msgId() fuction
+    ///         for @ref MgaAckFields::MsgId field.
+    ///     @li @b Field_msgPayloadStart type and @b field_msgPayloadStart() fuction
+    ///         for @ref MgaAckFields::MsgPayloadStart field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         infoCode,

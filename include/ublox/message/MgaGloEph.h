@@ -454,36 +454,59 @@ class MgaGloEph : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaGloEphFields::Type field.
-    ///     @li @b field_version() for @ref MgaGloEphFields::Version field.
-    ///     @li @b field_svid() for @ref MgaGloEphFields::Svid field.
-    ///     @li @b field_reserved1() for @ref MgaGloEphFields::Reserved1 field.
-    ///     @li @b field_fT() for @ref MgaGloEphFields::FT field.
-    ///     @li @b field_b() for @ref MgaGloEphFields::B field.
-    ///     @li @b field_m() for @ref MgaGloEphFields::M field.
-    ///     @li @b field_h() for @ref MgaGloEphFields::H field.
-    ///     @li @b field_x() for @ref MgaGloEphFields::X field.
-    ///     @li @b field_y() for @ref MgaGloEphFields::Y field.
-    ///     @li @b field_z() for @ref MgaGloEphFields::Z field.
-    ///     @li @b field_dx() for @ref MgaGloEphFields::Dx field.
-    ///     @li @b field_dy() for @ref MgaGloEphFields::Dy field.
-    ///     @li @b field_dz() for @ref MgaGloEphFields::Dz field.
-    ///     @li @b field_ddx() for @ref MgaGloEphFields::Ddx field.
-    ///     @li @b field_ddy() for @ref MgaGloEphFields::Ddy field.
-    ///     @li @b field_ddz() for @ref MgaGloEphFields::Ddz field.
-    ///     @li @b field_tb() for @ref MgaGloEphFields::Tb field.
-    ///     @li @b field_gamma() for @ref MgaGloEphFields::Gamma field.
-    ///     @li @b field_e() for @ref MgaGloEphFields::E field.
-    ///     @li @b field_deltaTau() for @ref MgaGloEphFields::DeltaTau field.
-    ///     @li @b field_tau() for @ref MgaGloEphFields::Tau field.
-    ///     @li @b field_reserved2() for @ref MgaGloEphFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaGloEphFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaGloEphFields::Version field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref MgaGloEphFields::Svid field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaGloEphFields::Reserved1 field.
+    ///     @li @b Field_fT type and @b field_fT() fuction
+    ///         for @ref MgaGloEphFields::FT field.
+    ///     @li @b Field_b type and @b field_b() fuction
+    ///         for @ref MgaGloEphFields::B field.
+    ///     @li @b Field_m type and @b field_m() fuction
+    ///         for @ref MgaGloEphFields::M field.
+    ///     @li @b Field_h type and @b field_h() fuction
+    ///         for @ref MgaGloEphFields::H field.
+    ///     @li @b Field_x type and @b field_x() fuction
+    ///         for @ref MgaGloEphFields::X field.
+    ///     @li @b Field_y type and @b field_y() fuction
+    ///         for @ref MgaGloEphFields::Y field.
+    ///     @li @b Field_z type and @b field_z() fuction
+    ///         for @ref MgaGloEphFields::Z field.
+    ///     @li @b Field_dx type and @b field_dx() fuction
+    ///         for @ref MgaGloEphFields::Dx field.
+    ///     @li @b Field_dy type and @b field_dy() fuction
+    ///         for @ref MgaGloEphFields::Dy field.
+    ///     @li @b Field_dz type and @b field_dz() fuction
+    ///         for @ref MgaGloEphFields::Dz field.
+    ///     @li @b Field_ddx type and @b field_ddx() fuction
+    ///         for @ref MgaGloEphFields::Ddx field.
+    ///     @li @b Field_ddy type and @b field_ddy() fuction
+    ///         for @ref MgaGloEphFields::Ddy field.
+    ///     @li @b Field_ddz type and @b field_ddz() fuction
+    ///         for @ref MgaGloEphFields::Ddz field.
+    ///     @li @b Field_tb type and @b field_tb() fuction
+    ///         for @ref MgaGloEphFields::Tb field.
+    ///     @li @b Field_gamma type and @b field_gamma() fuction
+    ///         for @ref MgaGloEphFields::Gamma field.
+    ///     @li @b Field_e type and @b field_e() fuction
+    ///         for @ref MgaGloEphFields::E field.
+    ///     @li @b Field_deltaTau type and @b field_deltaTau() fuction
+    ///         for @ref MgaGloEphFields::DeltaTau field.
+    ///     @li @b Field_tau type and @b field_tau() fuction
+    ///         for @ref MgaGloEphFields::Tau field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaGloEphFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         svid,

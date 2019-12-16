@@ -169,16 +169,19 @@ class CfgRate : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_measRate() for @ref CfgRateFields::MeasRate field.
-    ///     @li @b field_navRate() for @ref CfgRateFields::NavRate field.
-    ///     @li @b field_timeRef() for @ref CfgRateFields::TimeRef field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_measRate type and @b field_measRate() fuction
+    ///         for @ref CfgRateFields::MeasRate field.
+    ///     @li @b Field_navRate type and @b field_navRate() fuction
+    ///         for @ref CfgRateFields::NavRate field.
+    ///     @li @b Field_timeRef type and @b field_timeRef() fuction
+    ///         for @ref CfgRateFields::TimeRef field.
+    COMMS_MSG_FIELDS_NAMES(
         measRate,
         navRate,
         timeRef

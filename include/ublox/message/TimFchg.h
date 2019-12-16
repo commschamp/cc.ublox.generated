@@ -200,22 +200,31 @@ class TimFchg : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref TimFchgFields::Version field.
-    ///     @li @b field_reserved1() for @ref TimFchgFields::Reserved1 field.
-    ///     @li @b field_itow() for @ref TimFchgFields::Itow field.
-    ///     @li @b field_intDeltaFreq() for @ref TimFchgFields::IntDeltaFreq field.
-    ///     @li @b field_intDeltaFreqUnc() for @ref TimFchgFields::IntDeltaFreqUnc field.
-    ///     @li @b field_intRaw() for @ref TimFchgFields::IntRaw field.
-    ///     @li @b field_extDeltaFreq() for @ref TimFchgFields::ExtDeltaFreq field.
-    ///     @li @b field_extDeltaFreqUnc() for @ref TimFchgFields::ExtDeltaFreqUnc field.
-    ///     @li @b field_extRaw() for @ref TimFchgFields::ExtRaw field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref TimFchgFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref TimFchgFields::Reserved1 field.
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref TimFchgFields::Itow field.
+    ///     @li @b Field_intDeltaFreq type and @b field_intDeltaFreq() fuction
+    ///         for @ref TimFchgFields::IntDeltaFreq field.
+    ///     @li @b Field_intDeltaFreqUnc type and @b field_intDeltaFreqUnc() fuction
+    ///         for @ref TimFchgFields::IntDeltaFreqUnc field.
+    ///     @li @b Field_intRaw type and @b field_intRaw() fuction
+    ///         for @ref TimFchgFields::IntRaw field.
+    ///     @li @b Field_extDeltaFreq type and @b field_extDeltaFreq() fuction
+    ///         for @ref TimFchgFields::ExtDeltaFreq field.
+    ///     @li @b Field_extDeltaFreqUnc type and @b field_extDeltaFreqUnc() fuction
+    ///         for @ref TimFchgFields::ExtDeltaFreqUnc field.
+    ///     @li @b Field_extRaw type and @b field_extRaw() fuction
+    ///         for @ref TimFchgFields::ExtRaw field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         itow,

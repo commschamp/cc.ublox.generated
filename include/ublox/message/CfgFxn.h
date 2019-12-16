@@ -288,22 +288,31 @@ class CfgFxn : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_flags() for @ref CfgFxnFields::Flags field.
-    ///     @li @b field_tReacq() for @ref CfgFxnFields::TReacq field.
-    ///     @li @b field_tAcq() for @ref CfgFxnFields::TAcq field.
-    ///     @li @b field_tReacqOff() for @ref CfgFxnFields::TReacqOff field.
-    ///     @li @b field_tAcqOff() for @ref CfgFxnFields::TAcqOff field.
-    ///     @li @b field_tOn() for @ref CfgFxnFields::TOn field.
-    ///     @li @b field_tOff() for @ref CfgFxnFields::TOff field.
-    ///     @li @b field_res() for @ref CfgFxnFields::Res field.
-    ///     @li @b field_baseTow() for @ref CfgFxnFields::BaseTow field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgFxnFields::Flags field.
+    ///     @li @b Field_tReacq type and @b field_tReacq() fuction
+    ///         for @ref CfgFxnFields::TReacq field.
+    ///     @li @b Field_tAcq type and @b field_tAcq() fuction
+    ///         for @ref CfgFxnFields::TAcq field.
+    ///     @li @b Field_tReacqOff type and @b field_tReacqOff() fuction
+    ///         for @ref CfgFxnFields::TReacqOff field.
+    ///     @li @b Field_tAcqOff type and @b field_tAcqOff() fuction
+    ///         for @ref CfgFxnFields::TAcqOff field.
+    ///     @li @b Field_tOn type and @b field_tOn() fuction
+    ///         for @ref CfgFxnFields::TOn field.
+    ///     @li @b Field_tOff type and @b field_tOff() fuction
+    ///         for @ref CfgFxnFields::TOff field.
+    ///     @li @b Field_res type and @b field_res() fuction
+    ///         for @ref CfgFxnFields::Res field.
+    ///     @li @b Field_baseTow type and @b field_baseTow() fuction
+    ///         for @ref CfgFxnFields::BaseTow field.
+    COMMS_MSG_FIELDS_NAMES(
         flags,
         tReacq,
         tAcq,

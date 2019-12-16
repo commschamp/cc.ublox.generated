@@ -265,25 +265,37 @@ class MgaGpsUtc : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaGpsUtcFields::Type field.
-    ///     @li @b field_version() for @ref MgaGpsUtcFields::Version field.
-    ///     @li @b field_reserved1() for @ref MgaGpsUtcFields::Reserved1 field.
-    ///     @li @b field_utcA0() for @ref MgaGpsUtcFields::UtcA0 field.
-    ///     @li @b field_utcA1() for @ref MgaGpsUtcFields::UtcA1 field.
-    ///     @li @b field_utcDtLS() for @ref MgaGpsUtcFields::UtcDtLS field.
-    ///     @li @b field_utcTot() for @ref MgaGpsUtcFields::UtcTot field.
-    ///     @li @b field_utcWNt() for @ref MgaGpsUtcFields::UtcWNt field.
-    ///     @li @b field_utcWNlsf() for @ref MgaGpsUtcFields::UtcWNlsf field.
-    ///     @li @b field_utcDn() for @ref MgaGpsUtcFields::UtcDn field.
-    ///     @li @b field_utcDtLSF() for @ref MgaGpsUtcFields::UtcDtLSF field.
-    ///     @li @b field_reserved2() for @ref MgaGpsUtcFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaGpsUtcFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaGpsUtcFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaGpsUtcFields::Reserved1 field.
+    ///     @li @b Field_utcA0 type and @b field_utcA0() fuction
+    ///         for @ref MgaGpsUtcFields::UtcA0 field.
+    ///     @li @b Field_utcA1 type and @b field_utcA1() fuction
+    ///         for @ref MgaGpsUtcFields::UtcA1 field.
+    ///     @li @b Field_utcDtLS type and @b field_utcDtLS() fuction
+    ///         for @ref MgaGpsUtcFields::UtcDtLS field.
+    ///     @li @b Field_utcTot type and @b field_utcTot() fuction
+    ///         for @ref MgaGpsUtcFields::UtcTot field.
+    ///     @li @b Field_utcWNt type and @b field_utcWNt() fuction
+    ///         for @ref MgaGpsUtcFields::UtcWNt field.
+    ///     @li @b Field_utcWNlsf type and @b field_utcWNlsf() fuction
+    ///         for @ref MgaGpsUtcFields::UtcWNlsf field.
+    ///     @li @b Field_utcDn type and @b field_utcDn() fuction
+    ///         for @ref MgaGpsUtcFields::UtcDn field.
+    ///     @li @b Field_utcDtLSF type and @b field_utcDtLSF() fuction
+    ///         for @ref MgaGpsUtcFields::UtcDtLSF field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaGpsUtcFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         reserved1,

@@ -117,15 +117,18 @@ struct EsfRawFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_dataField() - for ElementMembers::DataField member field.
-            ///     @li @b field_dataType() - for ElementMembers::DataType member field.
-            ///     @li @b field_sTtag() - for ElementMembers::STtag member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_dataField @b field_dataField() -
+            ///         for ElementMembers::DataField member field.
+            ///     @li @b Field_dataType @b field_dataType() -
+            ///         for ElementMembers::DataType member field.
+            ///     @li @b Field_sTtag @b field_sTtag() -
+            ///         for ElementMembers::STtag member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 dataField,
                 dataType,
                 sTtag
@@ -193,15 +196,17 @@ class EsfRaw : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_reserved1() for @ref EsfRawFields::Reserved1 field.
-    ///     @li @b field_data() for @ref EsfRawFields::Data field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref EsfRawFields::Reserved1 field.
+    ///     @li @b Field_data type and @b field_data() fuction
+    ///         for @ref EsfRawFields::Data field.
+    COMMS_MSG_FIELDS_NAMES(
         reserved1,
         data
     );

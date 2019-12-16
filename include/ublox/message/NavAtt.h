@@ -205,22 +205,31 @@ class NavAtt : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavAttFields::Itow field.
-    ///     @li @b field_version() for @ref NavAttFields::Version field.
-    ///     @li @b field_reserved1() for @ref NavAttFields::Reserved1 field.
-    ///     @li @b field_roll() for @ref NavAttFields::Roll field.
-    ///     @li @b field_pitch() for @ref NavAttFields::Pitch field.
-    ///     @li @b field_heading() for @ref NavAttFields::Heading field.
-    ///     @li @b field_accRoll() for @ref NavAttFields::AccRoll field.
-    ///     @li @b field_accPitch() for @ref NavAttFields::AccPitch field.
-    ///     @li @b field_accHeading() for @ref NavAttFields::AccHeading field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavAttFields::Itow field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref NavAttFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavAttFields::Reserved1 field.
+    ///     @li @b Field_roll type and @b field_roll() fuction
+    ///         for @ref NavAttFields::Roll field.
+    ///     @li @b Field_pitch type and @b field_pitch() fuction
+    ///         for @ref NavAttFields::Pitch field.
+    ///     @li @b Field_heading type and @b field_heading() fuction
+    ///         for @ref NavAttFields::Heading field.
+    ///     @li @b Field_accRoll type and @b field_accRoll() fuction
+    ///         for @ref NavAttFields::AccRoll field.
+    ///     @li @b Field_accPitch type and @b field_accPitch() fuction
+    ///         for @ref NavAttFields::AccPitch field.
+    ///     @li @b Field_accHeading type and @b field_accHeading() fuction
+    ///         for @ref NavAttFields::AccHeading field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         version,
         reserved1,

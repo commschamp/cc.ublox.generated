@@ -283,15 +283,18 @@ struct TimTm2Fields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_bitsLow() - for FlagsMembers::BitsLow member field.
-        ///     @li @b field_timeBase() - for FlagsMembers::TimeBase member field.
-        ///     @li @b field_bitsHigh() - for FlagsMembers::BitsHigh member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_bitsLow @b field_bitsLow() -
+        ///         for FlagsMembers::BitsLow member field.
+        ///     @li @b Field_timeBase @b field_timeBase() -
+        ///         for FlagsMembers::TimeBase member field.
+        ///     @li @b Field_bitsHigh @b field_bitsHigh() -
+        ///         for FlagsMembers::BitsHigh member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             bitsLow,
             timeBase,
             bitsHigh
@@ -474,23 +477,33 @@ class TimTm2 : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_ch() for @ref TimTm2Fields::Ch field.
-    ///     @li @b field_flags() for @ref TimTm2Fields::Flags field.
-    ///     @li @b field_count() for @ref TimTm2Fields::Count field.
-    ///     @li @b field_wnR() for @ref TimTm2Fields::WnR field.
-    ///     @li @b field_wnF() for @ref TimTm2Fields::WnF field.
-    ///     @li @b field_towMsR() for @ref TimTm2Fields::TowMsR field.
-    ///     @li @b field_towSubMsR() for @ref TimTm2Fields::TowSubMsR field.
-    ///     @li @b field_towMsF() for @ref TimTm2Fields::TowMsF field.
-    ///     @li @b field_towSubMsF() for @ref TimTm2Fields::TowSubMsF field.
-    ///     @li @b field_accEst() for @ref TimTm2Fields::AccEst field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_ch type and @b field_ch() fuction
+    ///         for @ref TimTm2Fields::Ch field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref TimTm2Fields::Flags field.
+    ///     @li @b Field_count type and @b field_count() fuction
+    ///         for @ref TimTm2Fields::Count field.
+    ///     @li @b Field_wnR type and @b field_wnR() fuction
+    ///         for @ref TimTm2Fields::WnR field.
+    ///     @li @b Field_wnF type and @b field_wnF() fuction
+    ///         for @ref TimTm2Fields::WnF field.
+    ///     @li @b Field_towMsR type and @b field_towMsR() fuction
+    ///         for @ref TimTm2Fields::TowMsR field.
+    ///     @li @b Field_towSubMsR type and @b field_towSubMsR() fuction
+    ///         for @ref TimTm2Fields::TowSubMsR field.
+    ///     @li @b Field_towMsF type and @b field_towMsF() fuction
+    ///         for @ref TimTm2Fields::TowMsF field.
+    ///     @li @b Field_towSubMsF type and @b field_towSubMsF() fuction
+    ///         for @ref TimTm2Fields::TowSubMsF field.
+    ///     @li @b Field_accEst type and @b field_accEst() fuction
+    ///         for @ref TimTm2Fields::AccEst field.
+    COMMS_MSG_FIELDS_NAMES(
         ch,
         flags,
         count,

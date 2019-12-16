@@ -195,22 +195,31 @@ class CfgPrtUsb : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_portId() for @ref CfgPrtUsbFields::PortId field.
-    ///     @li @b field_reserved1() for @ref CfgPrtUsbFields::Reserved1 field.
-    ///     @li @b field_txReady() for @ref CfgPrtUsbFields::TxReady field.
-    ///     @li @b field_reserved2() for @ref CfgPrtUsbFields::Reserved2 field.
-    ///     @li @b field_inProtoMask() for @ref CfgPrtUsbFields::InProtoMask field.
-    ///     @li @b field_outProtoMask() for @ref CfgPrtUsbFields::OutProtoMask field.
-    ///     @li @b field_cfgPrtFlags() for @ref CfgPrtUsbFields::CfgPrtFlags field.
-    ///     @li @b field_reserved3() for @ref CfgPrtUsbFields::Reserved3 field.
-    ///     @li @b field_reserved4() for @ref CfgPrtUsbFields::Reserved4 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_portId type and @b field_portId() fuction
+    ///         for @ref CfgPrtUsbFields::PortId field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgPrtUsbFields::Reserved1 field.
+    ///     @li @b Field_txReady type and @b field_txReady() fuction
+    ///         for @ref CfgPrtUsbFields::TxReady field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref CfgPrtUsbFields::Reserved2 field.
+    ///     @li @b Field_inProtoMask type and @b field_inProtoMask() fuction
+    ///         for @ref CfgPrtUsbFields::InProtoMask field.
+    ///     @li @b Field_outProtoMask type and @b field_outProtoMask() fuction
+    ///         for @ref CfgPrtUsbFields::OutProtoMask field.
+    ///     @li @b Field_cfgPrtFlags type and @b field_cfgPrtFlags() fuction
+    ///         for @ref CfgPrtUsbFields::CfgPrtFlags field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref CfgPrtUsbFields::Reserved3 field.
+    ///     @li @b Field_reserved4 type and @b field_reserved4() fuction
+    ///         for @ref CfgPrtUsbFields::Reserved4 field.
+    COMMS_MSG_FIELDS_NAMES(
         portId,
         reserved1,
         txReady,

@@ -130,16 +130,19 @@ class RxmSfrb : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_cno() for @ref RxmSfrbFields::Cno field.
-    ///     @li @b field_svid() for @ref RxmSfrbFields::Svid field.
-    ///     @li @b field_dwrd() for @ref RxmSfrbFields::Dwrd field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_cno type and @b field_cno() fuction
+    ///         for @ref RxmSfrbFields::Cno field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref RxmSfrbFields::Svid field.
+    ///     @li @b Field_dwrd type and @b field_dwrd() fuction
+    ///         for @ref RxmSfrbFields::Dwrd field.
+    COMMS_MSG_FIELDS_NAMES(
         cno,
         svid,
         dwrd

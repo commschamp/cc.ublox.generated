@@ -171,21 +171,29 @@ class NavDop : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavDopFields::Itow field.
-    ///     @li @b field_gDOP() for @ref NavDopFields::GDOP field.
-    ///     @li @b field_pDOP() for @ref NavDopFields::PDOP field.
-    ///     @li @b field_tDOP() for @ref NavDopFields::TDOP field.
-    ///     @li @b field_vDOP() for @ref NavDopFields::VDOP field.
-    ///     @li @b field_hDOP() for @ref NavDopFields::HDOP field.
-    ///     @li @b field_nDOP() for @ref NavDopFields::NDOP field.
-    ///     @li @b field_eDOP() for @ref NavDopFields::EDOP field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavDopFields::Itow field.
+    ///     @li @b Field_gDOP type and @b field_gDOP() fuction
+    ///         for @ref NavDopFields::GDOP field.
+    ///     @li @b Field_pDOP type and @b field_pDOP() fuction
+    ///         for @ref NavDopFields::PDOP field.
+    ///     @li @b Field_tDOP type and @b field_tDOP() fuction
+    ///         for @ref NavDopFields::TDOP field.
+    ///     @li @b Field_vDOP type and @b field_vDOP() fuction
+    ///         for @ref NavDopFields::VDOP field.
+    ///     @li @b Field_hDOP type and @b field_hDOP() fuction
+    ///         for @ref NavDopFields::HDOP field.
+    ///     @li @b Field_nDOP type and @b field_nDOP() fuction
+    ///         for @ref NavDopFields::NDOP field.
+    ///     @li @b Field_eDOP type and @b field_eDOP() fuction
+    ///         for @ref NavDopFields::EDOP field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         gDOP,
         pDOP,

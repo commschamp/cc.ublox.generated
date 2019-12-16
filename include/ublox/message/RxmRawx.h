@@ -515,26 +515,40 @@ struct RxmRawxFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_prMes() - for ElementMembers::PrMes member field.
-            ///     @li @b field_cpMes() - for ElementMembers::CpMes member field.
-            ///     @li @b field_doMes() - for ElementMembers::DoMes member field.
-            ///     @li @b field_gnssId() - for ElementMembers::GnssId member field.
-            ///     @li @b field_svid() - for ElementMembers::Svid member field.
-            ///     @li @b field_reserved2() - for ElementMembers::Reserved2 member field.
-            ///     @li @b field_freqId() - for ElementMembers::FreqId member field.
-            ///     @li @b field_locktime() - for ElementMembers::Locktime member field.
-            ///     @li @b field_cno() - for ElementMembers::Cno member field.
-            ///     @li @b field_prStdev() - for ElementMembers::PrStdev member field.
-            ///     @li @b field_cpStdev() - for ElementMembers::CpStdev member field.
-            ///     @li @b field_doStdev() - for ElementMembers::DoStdev member field.
-            ///     @li @b field_trkStat() - for ElementMembers::TrkStat member field.
-            ///     @li @b field_reserved3() - for ElementMembers::Reserved3 member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_prMes @b field_prMes() -
+            ///         for ElementMembers::PrMes member field.
+            ///     @li @b Field_cpMes @b field_cpMes() -
+            ///         for ElementMembers::CpMes member field.
+            ///     @li @b Field_doMes @b field_doMes() -
+            ///         for ElementMembers::DoMes member field.
+            ///     @li @b Field_gnssId @b field_gnssId() -
+            ///         for ElementMembers::GnssId member field.
+            ///     @li @b Field_svid @b field_svid() -
+            ///         for ElementMembers::Svid member field.
+            ///     @li @b Field_reserved2 @b field_reserved2() -
+            ///         for ElementMembers::Reserved2 member field.
+            ///     @li @b Field_freqId @b field_freqId() -
+            ///         for ElementMembers::FreqId member field.
+            ///     @li @b Field_locktime @b field_locktime() -
+            ///         for ElementMembers::Locktime member field.
+            ///     @li @b Field_cno @b field_cno() -
+            ///         for ElementMembers::Cno member field.
+            ///     @li @b Field_prStdev @b field_prStdev() -
+            ///         for ElementMembers::PrStdev member field.
+            ///     @li @b Field_cpStdev @b field_cpStdev() -
+            ///         for ElementMembers::CpStdev member field.
+            ///     @li @b Field_doStdev @b field_doStdev() -
+            ///         for ElementMembers::DoStdev member field.
+            ///     @li @b Field_trkStat @b field_trkStat() -
+            ///         for ElementMembers::TrkStat member field.
+            ///     @li @b Field_reserved3 @b field_reserved3() -
+            ///         for ElementMembers::Reserved3 member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 prMes,
                 cpMes,
                 doMes,
@@ -622,21 +636,29 @@ class RxmRawx : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_rcvTow() for @ref RxmRawxFields::RcvTow field.
-    ///     @li @b field_week() for @ref RxmRawxFields::Week field.
-    ///     @li @b field_leapS() for @ref RxmRawxFields::LeapS field.
-    ///     @li @b field_numMeas() for @ref RxmRawxFields::NumMeas field.
-    ///     @li @b field_recStat() for @ref RxmRawxFields::RecStat field.
-    ///     @li @b field_version() for @ref RxmRawxFields::Version field.
-    ///     @li @b field_reserved1() for @ref RxmRawxFields::Reserved1 field.
-    ///     @li @b field_list() for @ref RxmRawxFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_rcvTow type and @b field_rcvTow() fuction
+    ///         for @ref RxmRawxFields::RcvTow field.
+    ///     @li @b Field_week type and @b field_week() fuction
+    ///         for @ref RxmRawxFields::Week field.
+    ///     @li @b Field_leapS type and @b field_leapS() fuction
+    ///         for @ref RxmRawxFields::LeapS field.
+    ///     @li @b Field_numMeas type and @b field_numMeas() fuction
+    ///         for @ref RxmRawxFields::NumMeas field.
+    ///     @li @b Field_recStat type and @b field_recStat() fuction
+    ///         for @ref RxmRawxFields::RecStat field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref RxmRawxFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref RxmRawxFields::Reserved1 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref RxmRawxFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         rcvTow,
         week,
         leapS,

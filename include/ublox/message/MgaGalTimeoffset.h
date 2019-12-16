@@ -196,21 +196,29 @@ class MgaGalTimeoffset : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaGalTimeoffsetFields::Type field.
-    ///     @li @b field_version() for @ref MgaGalTimeoffsetFields::Version field.
-    ///     @li @b field_reserved1() for @ref MgaGalTimeoffsetFields::Reserved1 field.
-    ///     @li @b field_a0G() for @ref MgaGalTimeoffsetFields::A0G field.
-    ///     @li @b field_a1G() for @ref MgaGalTimeoffsetFields::A1G field.
-    ///     @li @b field_t0G() for @ref MgaGalTimeoffsetFields::T0G field.
-    ///     @li @b field_wn0G() for @ref MgaGalTimeoffsetFields::Wn0G field.
-    ///     @li @b field_reserved2() for @ref MgaGalTimeoffsetFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaGalTimeoffsetFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaGalTimeoffsetFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaGalTimeoffsetFields::Reserved1 field.
+    ///     @li @b Field_a0G type and @b field_a0G() fuction
+    ///         for @ref MgaGalTimeoffsetFields::A0G field.
+    ///     @li @b Field_a1G type and @b field_a1G() fuction
+    ///         for @ref MgaGalTimeoffsetFields::A1G field.
+    ///     @li @b Field_t0G type and @b field_t0G() fuction
+    ///         for @ref MgaGalTimeoffsetFields::T0G field.
+    ///     @li @b Field_wn0G type and @b field_wn0G() fuction
+    ///         for @ref MgaGalTimeoffsetFields::Wn0G field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaGalTimeoffsetFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         reserved1,

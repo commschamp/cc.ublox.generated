@@ -491,15 +491,18 @@ struct NavRelposnedFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_bitsLow() - for FlagsMembers::BitsLow member field.
-        ///     @li @b field_carrSoln() - for FlagsMembers::CarrSoln member field.
-        ///     @li @b field_bitsHigh() - for FlagsMembers::BitsHigh member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_bitsLow @b field_bitsLow() -
+        ///         for FlagsMembers::BitsLow member field.
+        ///     @li @b Field_carrSoln @b field_carrSoln() -
+        ///         for FlagsMembers::CarrSoln member field.
+        ///     @li @b Field_bitsHigh @b field_bitsHigh() -
+        ///         for FlagsMembers::BitsHigh member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             bitsLow,
             carrSoln,
             bitsHigh
@@ -562,28 +565,43 @@ class NavRelposned : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref NavRelposnedFields::Version field.
-    ///     @li @b field_reserved1() for @ref NavRelposnedFields::Reserved1 field.
-    ///     @li @b field_refStationId() for @ref NavRelposnedFields::RefStationId field.
-    ///     @li @b field_itow() for @ref NavRelposnedFields::Itow field.
-    ///     @li @b field_relPosN() for @ref NavRelposnedFields::RelPosN field.
-    ///     @li @b field_relPosE() for @ref NavRelposnedFields::RelPosE field.
-    ///     @li @b field_relPosD() for @ref NavRelposnedFields::RelPosD field.
-    ///     @li @b field_relPosHPN() for @ref NavRelposnedFields::RelPosHPN field.
-    ///     @li @b field_relPosHPE() for @ref NavRelposnedFields::RelPosHPE field.
-    ///     @li @b field_relPosHPD() for @ref NavRelposnedFields::RelPosHPD field.
-    ///     @li @b field_reserved2() for @ref NavRelposnedFields::Reserved2 field.
-    ///     @li @b field_accN() for @ref NavRelposnedFields::AccN field.
-    ///     @li @b field_accE() for @ref NavRelposnedFields::AccE field.
-    ///     @li @b field_accD() for @ref NavRelposnedFields::AccD field.
-    ///     @li @b field_flags() for @ref NavRelposnedFields::Flags field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref NavRelposnedFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavRelposnedFields::Reserved1 field.
+    ///     @li @b Field_refStationId type and @b field_refStationId() fuction
+    ///         for @ref NavRelposnedFields::RefStationId field.
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavRelposnedFields::Itow field.
+    ///     @li @b Field_relPosN type and @b field_relPosN() fuction
+    ///         for @ref NavRelposnedFields::RelPosN field.
+    ///     @li @b Field_relPosE type and @b field_relPosE() fuction
+    ///         for @ref NavRelposnedFields::RelPosE field.
+    ///     @li @b Field_relPosD type and @b field_relPosD() fuction
+    ///         for @ref NavRelposnedFields::RelPosD field.
+    ///     @li @b Field_relPosHPN type and @b field_relPosHPN() fuction
+    ///         for @ref NavRelposnedFields::RelPosHPN field.
+    ///     @li @b Field_relPosHPE type and @b field_relPosHPE() fuction
+    ///         for @ref NavRelposnedFields::RelPosHPE field.
+    ///     @li @b Field_relPosHPD type and @b field_relPosHPD() fuction
+    ///         for @ref NavRelposnedFields::RelPosHPD field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref NavRelposnedFields::Reserved2 field.
+    ///     @li @b Field_accN type and @b field_accN() fuction
+    ///         for @ref NavRelposnedFields::AccN field.
+    ///     @li @b Field_accE type and @b field_accE() fuction
+    ///         for @ref NavRelposnedFields::AccE field.
+    ///     @li @b Field_accD type and @b field_accD() fuction
+    ///         for @ref NavRelposnedFields::AccD field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref NavRelposnedFields::Flags field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         refStationId,

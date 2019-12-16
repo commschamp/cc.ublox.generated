@@ -230,19 +230,26 @@ struct RxmRawFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_cpMes() - for ElementMembers::CpMes member field.
-            ///     @li @b field_prMes() - for ElementMembers::PrMes member field.
-            ///     @li @b field_doMes() - for ElementMembers::DoMes member field.
-            ///     @li @b field_sv() - for ElementMembers::Sv member field.
-            ///     @li @b field_mesQI() - for ElementMembers::MesQI member field.
-            ///     @li @b field_cno() - for ElementMembers::Cno member field.
-            ///     @li @b field_lli() - for ElementMembers::Lli member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_cpMes @b field_cpMes() -
+            ///         for ElementMembers::CpMes member field.
+            ///     @li @b Field_prMes @b field_prMes() -
+            ///         for ElementMembers::PrMes member field.
+            ///     @li @b Field_doMes @b field_doMes() -
+            ///         for ElementMembers::DoMes member field.
+            ///     @li @b Field_sv @b field_sv() -
+            ///         for ElementMembers::Sv member field.
+            ///     @li @b Field_mesQI @b field_mesQI() -
+            ///         for ElementMembers::MesQI member field.
+            ///     @li @b Field_cno @b field_cno() -
+            ///         for ElementMembers::Cno member field.
+            ///     @li @b Field_lli @b field_lli() -
+            ///         for ElementMembers::Lli member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 cpMes,
                 prMes,
                 doMes,
@@ -320,18 +327,23 @@ class RxmRaw : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_rcvTow() for @ref RxmRawFields::RcvTow field.
-    ///     @li @b field_week() for @ref RxmRawFields::Week field.
-    ///     @li @b field_numSV() for @ref RxmRawFields::NumSV field.
-    ///     @li @b field_reserved1() for @ref RxmRawFields::Reserved1 field.
-    ///     @li @b field_list() for @ref RxmRawFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_rcvTow type and @b field_rcvTow() fuction
+    ///         for @ref RxmRawFields::RcvTow field.
+    ///     @li @b Field_week type and @b field_week() fuction
+    ///         for @ref RxmRawFields::Week field.
+    ///     @li @b Field_numSV type and @b field_numSV() fuction
+    ///         for @ref RxmRawFields::NumSV field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref RxmRawFields::Reserved1 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref RxmRawFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         rcvTow,
         week,
         numSV,

@@ -332,29 +332,45 @@ class MgaBdsAlm : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaBdsAlmFields::Type field.
-    ///     @li @b field_version() for @ref MgaBdsAlmFields::Version field.
-    ///     @li @b field_svid() for @ref MgaBdsAlmFields::Svid field.
-    ///     @li @b field_reserved1() for @ref MgaBdsAlmFields::Reserved1 field.
-    ///     @li @b field_wna() for @ref MgaBdsAlmFields::Wna field.
-    ///     @li @b field_toa() for @ref MgaBdsAlmFields::Toa field.
-    ///     @li @b field_deltaI() for @ref MgaBdsAlmFields::DeltaI field.
-    ///     @li @b field_sqrtA() for @ref MgaBdsAlmFields::SqrtA field.
-    ///     @li @b field_e() for @ref MgaBdsAlmFields::E field.
-    ///     @li @b field_omega() for @ref MgaBdsAlmFields::Omega field.
-    ///     @li @b field_m0() for @ref MgaBdsAlmFields::M0 field.
-    ///     @li @b field_omega0() for @ref MgaBdsAlmFields::Omega0 field.
-    ///     @li @b field_omegaDot() for @ref MgaBdsAlmFields::OmegaDot field.
-    ///     @li @b field_a0() for @ref MgaBdsAlmFields::A0 field.
-    ///     @li @b field_a1() for @ref MgaBdsAlmFields::A1 field.
-    ///     @li @b field_reserved2() for @ref MgaBdsAlmFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaBdsAlmFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaBdsAlmFields::Version field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref MgaBdsAlmFields::Svid field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaBdsAlmFields::Reserved1 field.
+    ///     @li @b Field_wna type and @b field_wna() fuction
+    ///         for @ref MgaBdsAlmFields::Wna field.
+    ///     @li @b Field_toa type and @b field_toa() fuction
+    ///         for @ref MgaBdsAlmFields::Toa field.
+    ///     @li @b Field_deltaI type and @b field_deltaI() fuction
+    ///         for @ref MgaBdsAlmFields::DeltaI field.
+    ///     @li @b Field_sqrtA type and @b field_sqrtA() fuction
+    ///         for @ref MgaBdsAlmFields::SqrtA field.
+    ///     @li @b Field_e type and @b field_e() fuction
+    ///         for @ref MgaBdsAlmFields::E field.
+    ///     @li @b Field_omega type and @b field_omega() fuction
+    ///         for @ref MgaBdsAlmFields::Omega field.
+    ///     @li @b Field_m0 type and @b field_m0() fuction
+    ///         for @ref MgaBdsAlmFields::M0 field.
+    ///     @li @b Field_omega0 type and @b field_omega0() fuction
+    ///         for @ref MgaBdsAlmFields::Omega0 field.
+    ///     @li @b Field_omegaDot type and @b field_omegaDot() fuction
+    ///         for @ref MgaBdsAlmFields::OmegaDot field.
+    ///     @li @b Field_a0 type and @b field_a0() fuction
+    ///         for @ref MgaBdsAlmFields::A0 field.
+    ///     @li @b Field_a1 type and @b field_a1() fuction
+    ///         for @ref MgaBdsAlmFields::A1 field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaBdsAlmFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         svid,

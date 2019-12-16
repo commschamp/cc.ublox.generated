@@ -489,14 +489,16 @@ struct AidIniFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_year() - for DateBundleMembers::Year member field.
-            ///     @li @b field_month() - for DateBundleMembers::Month member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_year @b field_year() -
+            ///         for DateBundleMembers::Year member field.
+            ///     @li @b Field_month @b field_month() -
+            ///         for DateBundleMembers::Month member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 year,
                 month
             );
@@ -656,16 +658,20 @@ struct AidIniFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_day() - for TimeBundleMembers::Day member field.
-            ///     @li @b field_hour() - for TimeBundleMembers::Hour member field.
-            ///     @li @b field_min() - for TimeBundleMembers::Min member field.
-            ///     @li @b field_sec() - for TimeBundleMembers::Sec member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_day @b field_day() -
+            ///         for TimeBundleMembers::Day member field.
+            ///     @li @b Field_hour @b field_hour() -
+            ///         for TimeBundleMembers::Hour member field.
+            ///     @li @b Field_min @b field_min() -
+            ///         for TimeBundleMembers::Min member field.
+            ///     @li @b Field_sec @b field_sec() -
+            ///         for TimeBundleMembers::Sec member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 day,
                 hour,
                 min,
@@ -1028,33 +1034,53 @@ class AidIni : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_ecefX() for @ref AidIniFields::EcefX field.
-    ///     @li @b field_lat() for @ref AidIniFields::Lat field.
-    ///     @li @b field_ecefY() for @ref AidIniFields::EcefY field.
-    ///     @li @b field_lon() for @ref AidIniFields::Lon field.
-    ///     @li @b field_ecefZ() for @ref AidIniFields::EcefZ field.
-    ///     @li @b field_alt() for @ref AidIniFields::Alt field.
-    ///     @li @b field_posAcc() for @ref AidIniFields::PosAcc field.
-    ///     @li @b field_tmCfg() for @ref AidIniFields::TmCfg field.
-    ///     @li @b field_wno() for @ref AidIniFields::Wno field.
-    ///     @li @b field_date() for @ref AidIniFields::Date field.
-    ///     @li @b field_tow() for @ref AidIniFields::Tow field.
-    ///     @li @b field_time() for @ref AidIniFields::Time field.
-    ///     @li @b field_towNs() for @ref AidIniFields::TowNs field.
-    ///     @li @b field_tAccMs() for @ref AidIniFields::TAccMs field.
-    ///     @li @b field_tAccNs() for @ref AidIniFields::TAccNs field.
-    ///     @li @b field_clkD() for @ref AidIniFields::ClkD field.
-    ///     @li @b field_freq() for @ref AidIniFields::Freq field.
-    ///     @li @b field_clkDAcc() for @ref AidIniFields::ClkDAcc field.
-    ///     @li @b field_freqAcc() for @ref AidIniFields::FreqAcc field.
-    ///     @li @b field_flags() for @ref AidIniFields::Flags field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_ecefX type and @b field_ecefX() fuction
+    ///         for @ref AidIniFields::EcefX field.
+    ///     @li @b Field_lat type and @b field_lat() fuction
+    ///         for @ref AidIniFields::Lat field.
+    ///     @li @b Field_ecefY type and @b field_ecefY() fuction
+    ///         for @ref AidIniFields::EcefY field.
+    ///     @li @b Field_lon type and @b field_lon() fuction
+    ///         for @ref AidIniFields::Lon field.
+    ///     @li @b Field_ecefZ type and @b field_ecefZ() fuction
+    ///         for @ref AidIniFields::EcefZ field.
+    ///     @li @b Field_alt type and @b field_alt() fuction
+    ///         for @ref AidIniFields::Alt field.
+    ///     @li @b Field_posAcc type and @b field_posAcc() fuction
+    ///         for @ref AidIniFields::PosAcc field.
+    ///     @li @b Field_tmCfg type and @b field_tmCfg() fuction
+    ///         for @ref AidIniFields::TmCfg field.
+    ///     @li @b Field_wno type and @b field_wno() fuction
+    ///         for @ref AidIniFields::Wno field.
+    ///     @li @b Field_date type and @b field_date() fuction
+    ///         for @ref AidIniFields::Date field.
+    ///     @li @b Field_tow type and @b field_tow() fuction
+    ///         for @ref AidIniFields::Tow field.
+    ///     @li @b Field_time type and @b field_time() fuction
+    ///         for @ref AidIniFields::Time field.
+    ///     @li @b Field_towNs type and @b field_towNs() fuction
+    ///         for @ref AidIniFields::TowNs field.
+    ///     @li @b Field_tAccMs type and @b field_tAccMs() fuction
+    ///         for @ref AidIniFields::TAccMs field.
+    ///     @li @b Field_tAccNs type and @b field_tAccNs() fuction
+    ///         for @ref AidIniFields::TAccNs field.
+    ///     @li @b Field_clkD type and @b field_clkD() fuction
+    ///         for @ref AidIniFields::ClkD field.
+    ///     @li @b Field_freq type and @b field_freq() fuction
+    ///         for @ref AidIniFields::Freq field.
+    ///     @li @b Field_clkDAcc type and @b field_clkDAcc() fuction
+    ///         for @ref AidIniFields::ClkDAcc field.
+    ///     @li @b Field_freqAcc type and @b field_freqAcc() fuction
+    ///         for @ref AidIniFields::FreqAcc field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref AidIniFields::Flags field.
+    COMMS_MSG_FIELDS_NAMES(
         ecefX,
         lat,
         ecefY,

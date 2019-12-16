@@ -276,31 +276,49 @@ class LogRetrievepos : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_entryIndex() for @ref LogRetrieveposFields::EntryIndex field.
-    ///     @li @b field_lon() for @ref LogRetrieveposFields::Lon field.
-    ///     @li @b field_lat() for @ref LogRetrieveposFields::Lat field.
-    ///     @li @b field_hMSL() for @ref LogRetrieveposFields::HMSL field.
-    ///     @li @b field_hAcc() for @ref LogRetrieveposFields::HAcc field.
-    ///     @li @b field_gSpeed() for @ref LogRetrieveposFields::GSpeed field.
-    ///     @li @b field_heading() for @ref LogRetrieveposFields::Heading field.
-    ///     @li @b field_version() for @ref LogRetrieveposFields::Version field.
-    ///     @li @b field_fixType() for @ref LogRetrieveposFields::FixType field.
-    ///     @li @b field_year() for @ref LogRetrieveposFields::Year field.
-    ///     @li @b field_month() for @ref LogRetrieveposFields::Month field.
-    ///     @li @b field_day() for @ref LogRetrieveposFields::Day field.
-    ///     @li @b field_hour() for @ref LogRetrieveposFields::Hour field.
-    ///     @li @b field_minute() for @ref LogRetrieveposFields::Minute field.
-    ///     @li @b field_second() for @ref LogRetrieveposFields::Second field.
-    ///     @li @b field_reserved1() for @ref LogRetrieveposFields::Reserved1 field.
-    ///     @li @b field_numSV() for @ref LogRetrieveposFields::NumSV field.
-    ///     @li @b field_reserved2() for @ref LogRetrieveposFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_entryIndex type and @b field_entryIndex() fuction
+    ///         for @ref LogRetrieveposFields::EntryIndex field.
+    ///     @li @b Field_lon type and @b field_lon() fuction
+    ///         for @ref LogRetrieveposFields::Lon field.
+    ///     @li @b Field_lat type and @b field_lat() fuction
+    ///         for @ref LogRetrieveposFields::Lat field.
+    ///     @li @b Field_hMSL type and @b field_hMSL() fuction
+    ///         for @ref LogRetrieveposFields::HMSL field.
+    ///     @li @b Field_hAcc type and @b field_hAcc() fuction
+    ///         for @ref LogRetrieveposFields::HAcc field.
+    ///     @li @b Field_gSpeed type and @b field_gSpeed() fuction
+    ///         for @ref LogRetrieveposFields::GSpeed field.
+    ///     @li @b Field_heading type and @b field_heading() fuction
+    ///         for @ref LogRetrieveposFields::Heading field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref LogRetrieveposFields::Version field.
+    ///     @li @b Field_fixType type and @b field_fixType() fuction
+    ///         for @ref LogRetrieveposFields::FixType field.
+    ///     @li @b Field_year type and @b field_year() fuction
+    ///         for @ref LogRetrieveposFields::Year field.
+    ///     @li @b Field_month type and @b field_month() fuction
+    ///         for @ref LogRetrieveposFields::Month field.
+    ///     @li @b Field_day type and @b field_day() fuction
+    ///         for @ref LogRetrieveposFields::Day field.
+    ///     @li @b Field_hour type and @b field_hour() fuction
+    ///         for @ref LogRetrieveposFields::Hour field.
+    ///     @li @b Field_minute type and @b field_minute() fuction
+    ///         for @ref LogRetrieveposFields::Minute field.
+    ///     @li @b Field_second type and @b field_second() fuction
+    ///         for @ref LogRetrieveposFields::Second field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref LogRetrieveposFields::Reserved1 field.
+    ///     @li @b Field_numSV type and @b field_numSV() fuction
+    ///         for @ref LogRetrieveposFields::NumSV field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref LogRetrieveposFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         entryIndex,
         lon,
         lat,

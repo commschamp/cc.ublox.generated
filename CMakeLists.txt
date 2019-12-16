@@ -25,7 +25,7 @@ option (OPT_USE_CCACHE "Use of ccache on UNIX system" ON)
 #       defaults to ublox::input::AllMessages.
 
 if ("${OPT_CC_TAG}" STREQUAL "")
-    set (OPT_CC_TAG "v2.2.1")
+    set (OPT_CC_TAG "v2.3")
 endif()
 
 if (NOT CMAKE_CXX_STANDARD)
@@ -196,7 +196,7 @@ if (DOXYGEN_FOUND)
     add_custom_target ("${doc_tgt}"
         COMMAND ${CMAKE_COMMAND} -E make_directory ${doc_output_dir}
         COMMAND ${DOXYGEN_EXECUTABLE} ${OPT_DOXYGEN_CONFIG_FILE}
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
 endif ()
 
 ######################################################################
@@ -232,7 +232,7 @@ install (
     DESTINATION ${INC_INSTALL_DIR}
 )
 
-file (READ "${CMAKE_SOURCE_DIR}/include/ublox/Version.h" version_file)
+file (READ "${PROJECT_SOURCE_DIR}/include/ublox/Version.h" version_file)
 string (REGEX MATCH "UBLOX_MAJOR_VERSION[^0-9]*([0-9]*)U*" _ ${version_file})
 set (major_ver ${CMAKE_MATCH_1})
 string (REGEX MATCH "UBLOX_MINOR_VERSION[^0-9]*([0-9]*)U*" _ ${version_file})

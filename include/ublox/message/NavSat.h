@@ -687,18 +687,24 @@ struct NavSatFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_qualityInd() - for FlagsMembers::QualityInd member field.
-                ///     @li @b field_bitsLow() - for FlagsMembers::BitsLow member field.
-                ///     @li @b field_health() - for FlagsMembers::Health member field.
-                ///     @li @b field_bitsMid() - for FlagsMembers::BitsMid member field.
-                ///     @li @b field_orbitSource() - for FlagsMembers::OrbitSource member field.
-                ///     @li @b field_bitsHigh() - for FlagsMembers::BitsHigh member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_qualityInd @b field_qualityInd() -
+                ///         for FlagsMembers::QualityInd member field.
+                ///     @li @b Field_bitsLow @b field_bitsLow() -
+                ///         for FlagsMembers::BitsLow member field.
+                ///     @li @b Field_health @b field_health() -
+                ///         for FlagsMembers::Health member field.
+                ///     @li @b Field_bitsMid @b field_bitsMid() -
+                ///         for FlagsMembers::BitsMid member field.
+                ///     @li @b Field_orbitSource @b field_orbitSource() -
+                ///         for FlagsMembers::OrbitSource member field.
+                ///     @li @b Field_bitsHigh @b field_bitsHigh() -
+                ///         for FlagsMembers::BitsHigh member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     qualityInd,
                     bitsLow,
                     health,
@@ -742,19 +748,26 @@ struct NavSatFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_gnssId() - for ElementMembers::GnssId member field.
-            ///     @li @b field_svid() - for ElementMembers::Svid member field.
-            ///     @li @b field_cno() - for ElementMembers::Cno member field.
-            ///     @li @b field_elev() - for ElementMembers::Elev member field.
-            ///     @li @b field_azim() - for ElementMembers::Azim member field.
-            ///     @li @b field_prRes() - for ElementMembers::PrRes member field.
-            ///     @li @b field_flags() - for ElementMembers::Flags member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_gnssId @b field_gnssId() -
+            ///         for ElementMembers::GnssId member field.
+            ///     @li @b Field_svid @b field_svid() -
+            ///         for ElementMembers::Svid member field.
+            ///     @li @b Field_cno @b field_cno() -
+            ///         for ElementMembers::Cno member field.
+            ///     @li @b Field_elev @b field_elev() -
+            ///         for ElementMembers::Elev member field.
+            ///     @li @b Field_azim @b field_azim() -
+            ///         for ElementMembers::Azim member field.
+            ///     @li @b Field_prRes @b field_prRes() -
+            ///         for ElementMembers::PrRes member field.
+            ///     @li @b Field_flags @b field_flags() -
+            ///         for ElementMembers::Flags member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 gnssId,
                 svid,
                 cno,
@@ -832,18 +845,23 @@ class NavSat : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavSatFields::Itow field.
-    ///     @li @b field_version() for @ref NavSatFields::Version field.
-    ///     @li @b field_numSvs() for @ref NavSatFields::NumSvs field.
-    ///     @li @b field_reserved1() for @ref NavSatFields::Reserved1 field.
-    ///     @li @b field_list() for @ref NavSatFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavSatFields::Itow field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref NavSatFields::Version field.
+    ///     @li @b Field_numSvs type and @b field_numSvs() fuction
+    ///         for @ref NavSatFields::NumSvs field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavSatFields::Reserved1 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref NavSatFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         version,
         numSvs,

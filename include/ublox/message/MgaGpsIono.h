@@ -265,25 +265,37 @@ class MgaGpsIono : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaGpsIonoFields::Type field.
-    ///     @li @b field_version() for @ref MgaGpsIonoFields::Version field.
-    ///     @li @b field_reserved1() for @ref MgaGpsIonoFields::Reserved1 field.
-    ///     @li @b field_ionoAlpha0() for @ref MgaGpsIonoFields::IonoAlpha0 field.
-    ///     @li @b field_ionoAlpha1() for @ref MgaGpsIonoFields::IonoAlpha1 field.
-    ///     @li @b field_ionoAlpha2() for @ref MgaGpsIonoFields::IonoAlpha2 field.
-    ///     @li @b field_ionoAlpha3() for @ref MgaGpsIonoFields::IonoAlpha3 field.
-    ///     @li @b field_ionoBeta0() for @ref MgaGpsIonoFields::IonoBeta0 field.
-    ///     @li @b field_ionoBeta1() for @ref MgaGpsIonoFields::IonoBeta1 field.
-    ///     @li @b field_ionoBeta2() for @ref MgaGpsIonoFields::IonoBeta2 field.
-    ///     @li @b field_ionoBeta3() for @ref MgaGpsIonoFields::IonoBeta3 field.
-    ///     @li @b field_reserved2() for @ref MgaGpsIonoFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaGpsIonoFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaGpsIonoFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaGpsIonoFields::Reserved1 field.
+    ///     @li @b Field_ionoAlpha0 type and @b field_ionoAlpha0() fuction
+    ///         for @ref MgaGpsIonoFields::IonoAlpha0 field.
+    ///     @li @b Field_ionoAlpha1 type and @b field_ionoAlpha1() fuction
+    ///         for @ref MgaGpsIonoFields::IonoAlpha1 field.
+    ///     @li @b Field_ionoAlpha2 type and @b field_ionoAlpha2() fuction
+    ///         for @ref MgaGpsIonoFields::IonoAlpha2 field.
+    ///     @li @b Field_ionoAlpha3 type and @b field_ionoAlpha3() fuction
+    ///         for @ref MgaGpsIonoFields::IonoAlpha3 field.
+    ///     @li @b Field_ionoBeta0 type and @b field_ionoBeta0() fuction
+    ///         for @ref MgaGpsIonoFields::IonoBeta0 field.
+    ///     @li @b Field_ionoBeta1 type and @b field_ionoBeta1() fuction
+    ///         for @ref MgaGpsIonoFields::IonoBeta1 field.
+    ///     @li @b Field_ionoBeta2 type and @b field_ionoBeta2() fuction
+    ///         for @ref MgaGpsIonoFields::IonoBeta2 field.
+    ///     @li @b Field_ionoBeta3 type and @b field_ionoBeta3() fuction
+    ///         for @ref MgaGpsIonoFields::IonoBeta3 field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaGpsIonoFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         reserved1,

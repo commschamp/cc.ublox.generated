@@ -481,38 +481,63 @@ class HnrPvt : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref HnrPvtFields::Itow field.
-    ///     @li @b field_year() for @ref HnrPvtFields::Year field.
-    ///     @li @b field_month() for @ref HnrPvtFields::Month field.
-    ///     @li @b field_day() for @ref HnrPvtFields::Day field.
-    ///     @li @b field_hour() for @ref HnrPvtFields::Hour field.
-    ///     @li @b field_min() for @ref HnrPvtFields::Min field.
-    ///     @li @b field_sec() for @ref HnrPvtFields::Sec field.
-    ///     @li @b field_valid() for @ref HnrPvtFields::Valid field.
-    ///     @li @b field_nano() for @ref HnrPvtFields::Nano field.
-    ///     @li @b field_fixType() for @ref HnrPvtFields::FixType field.
-    ///     @li @b field_flags() for @ref HnrPvtFields::Flags field.
-    ///     @li @b field_reserved1() for @ref HnrPvtFields::Reserved1 field.
-    ///     @li @b field_lon() for @ref HnrPvtFields::Lon field.
-    ///     @li @b field_lat() for @ref HnrPvtFields::Lat field.
-    ///     @li @b field_height() for @ref HnrPvtFields::Height field.
-    ///     @li @b field_hMSL() for @ref HnrPvtFields::HMSL field.
-    ///     @li @b field_gSpeed() for @ref HnrPvtFields::GSpeed field.
-    ///     @li @b field_speed() for @ref HnrPvtFields::Speed field.
-    ///     @li @b field_headMot() for @ref HnrPvtFields::HeadMot field.
-    ///     @li @b field_headVeh() for @ref HnrPvtFields::HeadVeh field.
-    ///     @li @b field_hAcc() for @ref HnrPvtFields::HAcc field.
-    ///     @li @b field_vAcc() for @ref HnrPvtFields::VAcc field.
-    ///     @li @b field_sAcc() for @ref HnrPvtFields::SAcc field.
-    ///     @li @b field_headAcc() for @ref HnrPvtFields::HeadAcc field.
-    ///     @li @b field_reserved2() for @ref HnrPvtFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref HnrPvtFields::Itow field.
+    ///     @li @b Field_year type and @b field_year() fuction
+    ///         for @ref HnrPvtFields::Year field.
+    ///     @li @b Field_month type and @b field_month() fuction
+    ///         for @ref HnrPvtFields::Month field.
+    ///     @li @b Field_day type and @b field_day() fuction
+    ///         for @ref HnrPvtFields::Day field.
+    ///     @li @b Field_hour type and @b field_hour() fuction
+    ///         for @ref HnrPvtFields::Hour field.
+    ///     @li @b Field_min type and @b field_min() fuction
+    ///         for @ref HnrPvtFields::Min field.
+    ///     @li @b Field_sec type and @b field_sec() fuction
+    ///         for @ref HnrPvtFields::Sec field.
+    ///     @li @b Field_valid type and @b field_valid() fuction
+    ///         for @ref HnrPvtFields::Valid field.
+    ///     @li @b Field_nano type and @b field_nano() fuction
+    ///         for @ref HnrPvtFields::Nano field.
+    ///     @li @b Field_fixType type and @b field_fixType() fuction
+    ///         for @ref HnrPvtFields::FixType field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref HnrPvtFields::Flags field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref HnrPvtFields::Reserved1 field.
+    ///     @li @b Field_lon type and @b field_lon() fuction
+    ///         for @ref HnrPvtFields::Lon field.
+    ///     @li @b Field_lat type and @b field_lat() fuction
+    ///         for @ref HnrPvtFields::Lat field.
+    ///     @li @b Field_height type and @b field_height() fuction
+    ///         for @ref HnrPvtFields::Height field.
+    ///     @li @b Field_hMSL type and @b field_hMSL() fuction
+    ///         for @ref HnrPvtFields::HMSL field.
+    ///     @li @b Field_gSpeed type and @b field_gSpeed() fuction
+    ///         for @ref HnrPvtFields::GSpeed field.
+    ///     @li @b Field_speed type and @b field_speed() fuction
+    ///         for @ref HnrPvtFields::Speed field.
+    ///     @li @b Field_headMot type and @b field_headMot() fuction
+    ///         for @ref HnrPvtFields::HeadMot field.
+    ///     @li @b Field_headVeh type and @b field_headVeh() fuction
+    ///         for @ref HnrPvtFields::HeadVeh field.
+    ///     @li @b Field_hAcc type and @b field_hAcc() fuction
+    ///         for @ref HnrPvtFields::HAcc field.
+    ///     @li @b Field_vAcc type and @b field_vAcc() fuction
+    ///         for @ref HnrPvtFields::VAcc field.
+    ///     @li @b Field_sAcc type and @b field_sAcc() fuction
+    ///         for @ref HnrPvtFields::SAcc field.
+    ///     @li @b Field_headAcc type and @b field_headAcc() fuction
+    ///         for @ref HnrPvtFields::HeadAcc field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref HnrPvtFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         year,
         month,

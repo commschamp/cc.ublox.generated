@@ -353,21 +353,30 @@ struct NavSbasFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_svid() - for ElementMembers::Svid member field.
-            ///     @li @b field_flags() - for ElementMembers::Flags member field.
-            ///     @li @b field_udre() - for ElementMembers::Udre member field.
-            ///     @li @b field_svSys() - for ElementMembers::SvSys member field.
-            ///     @li @b field_svService() - for ElementMembers::SvService member field.
-            ///     @li @b field_reserved2() - for ElementMembers::Reserved2 member field.
-            ///     @li @b field_prc() - for ElementMembers::Prc member field.
-            ///     @li @b field_reserved3() - for ElementMembers::Reserved3 member field.
-            ///     @li @b field_ic() - for ElementMembers::Ic member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_svid @b field_svid() -
+            ///         for ElementMembers::Svid member field.
+            ///     @li @b Field_flags @b field_flags() -
+            ///         for ElementMembers::Flags member field.
+            ///     @li @b Field_udre @b field_udre() -
+            ///         for ElementMembers::Udre member field.
+            ///     @li @b Field_svSys @b field_svSys() -
+            ///         for ElementMembers::SvSys member field.
+            ///     @li @b Field_svService @b field_svService() -
+            ///         for ElementMembers::SvService member field.
+            ///     @li @b Field_reserved2 @b field_reserved2() -
+            ///         for ElementMembers::Reserved2 member field.
+            ///     @li @b Field_prc @b field_prc() -
+            ///         for ElementMembers::Prc member field.
+            ///     @li @b Field_reserved3 @b field_reserved3() -
+            ///         for ElementMembers::Reserved3 member field.
+            ///     @li @b Field_ic @b field_ic() -
+            ///         for ElementMembers::Ic member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 svid,
                 flags,
                 udre,
@@ -450,21 +459,29 @@ class NavSbas : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavSbasFields::Itow field.
-    ///     @li @b field_geo() for @ref NavSbasFields::Geo field.
-    ///     @li @b field_mode() for @ref NavSbasFields::Mode field.
-    ///     @li @b field_sys() for @ref NavSbasFields::Sys field.
-    ///     @li @b field_service() for @ref NavSbasFields::Service field.
-    ///     @li @b field_cnt() for @ref NavSbasFields::Cnt field.
-    ///     @li @b field_reserved1() for @ref NavSbasFields::Reserved1 field.
-    ///     @li @b field_list() for @ref NavSbasFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavSbasFields::Itow field.
+    ///     @li @b Field_geo type and @b field_geo() fuction
+    ///         for @ref NavSbasFields::Geo field.
+    ///     @li @b Field_mode type and @b field_mode() fuction
+    ///         for @ref NavSbasFields::Mode field.
+    ///     @li @b Field_sys type and @b field_sys() fuction
+    ///         for @ref NavSbasFields::Sys field.
+    ///     @li @b Field_service type and @b field_service() fuction
+    ///         for @ref NavSbasFields::Service field.
+    ///     @li @b Field_cnt type and @b field_cnt() fuction
+    ///         for @ref NavSbasFields::Cnt field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavSbasFields::Reserved1 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref NavSbasFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         geo,
         mode,

@@ -186,17 +186,21 @@ class UpdSosRestored : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_cmd() for @ref UpdSosRestoredFields::Cmd field.
-    ///     @li @b field_reserved1() for @ref UpdSosRestoredFields::Reserved1 field.
-    ///     @li @b field_response() for @ref UpdSosRestoredFields::Response field.
-    ///     @li @b field_reserved2() for @ref UpdSosRestoredFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_cmd type and @b field_cmd() fuction
+    ///         for @ref UpdSosRestoredFields::Cmd field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref UpdSosRestoredFields::Reserved1 field.
+    ///     @li @b Field_response type and @b field_response() fuction
+    ///         for @ref UpdSosRestoredFields::Response field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref UpdSosRestoredFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         cmd,
         reserved1,
         response,

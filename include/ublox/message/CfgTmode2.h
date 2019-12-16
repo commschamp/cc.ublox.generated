@@ -494,25 +494,37 @@ class CfgTmode2 : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_timeMode() for @ref CfgTmode2Fields::TimeMode field.
-    ///     @li @b field_reserved1() for @ref CfgTmode2Fields::Reserved1 field.
-    ///     @li @b field_flags() for @ref CfgTmode2Fields::Flags field.
-    ///     @li @b field_ecefX() for @ref CfgTmode2Fields::EcefX field.
-    ///     @li @b field_lat() for @ref CfgTmode2Fields::Lat field.
-    ///     @li @b field_ecefY() for @ref CfgTmode2Fields::EcefY field.
-    ///     @li @b field_lon() for @ref CfgTmode2Fields::Lon field.
-    ///     @li @b field_ecefZ() for @ref CfgTmode2Fields::EcefZ field.
-    ///     @li @b field_alt() for @ref CfgTmode2Fields::Alt field.
-    ///     @li @b field_fixedPosAcc() for @ref CfgTmode2Fields::FixedPosAcc field.
-    ///     @li @b field_svinMinDur() for @ref CfgTmode2Fields::SvinMinDur field.
-    ///     @li @b field_svinVarLimit() for @ref CfgTmode2Fields::SvinVarLimit field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_timeMode type and @b field_timeMode() fuction
+    ///         for @ref CfgTmode2Fields::TimeMode field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgTmode2Fields::Reserved1 field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgTmode2Fields::Flags field.
+    ///     @li @b Field_ecefX type and @b field_ecefX() fuction
+    ///         for @ref CfgTmode2Fields::EcefX field.
+    ///     @li @b Field_lat type and @b field_lat() fuction
+    ///         for @ref CfgTmode2Fields::Lat field.
+    ///     @li @b Field_ecefY type and @b field_ecefY() fuction
+    ///         for @ref CfgTmode2Fields::EcefY field.
+    ///     @li @b Field_lon type and @b field_lon() fuction
+    ///         for @ref CfgTmode2Fields::Lon field.
+    ///     @li @b Field_ecefZ type and @b field_ecefZ() fuction
+    ///         for @ref CfgTmode2Fields::EcefZ field.
+    ///     @li @b Field_alt type and @b field_alt() fuction
+    ///         for @ref CfgTmode2Fields::Alt field.
+    ///     @li @b Field_fixedPosAcc type and @b field_fixedPosAcc() fuction
+    ///         for @ref CfgTmode2Fields::FixedPosAcc field.
+    ///     @li @b Field_svinMinDur type and @b field_svinMinDur() fuction
+    ///         for @ref CfgTmode2Fields::SvinMinDur field.
+    ///     @li @b Field_svinVarLimit type and @b field_svinVarLimit() fuction
+    ///         for @ref CfgTmode2Fields::SvinVarLimit field.
+    COMMS_MSG_FIELDS_NAMES(
         timeMode,
         reserved1,
         flags,

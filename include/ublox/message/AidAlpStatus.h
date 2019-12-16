@@ -130,14 +130,15 @@ class AidAlpStatus : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_status() for @ref AidAlpStatusFields::Status field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_status type and @b field_status() fuction
+    ///         for @ref AidAlpStatusFields::Status field.
+    COMMS_MSG_FIELDS_NAMES(
         status
     );
     

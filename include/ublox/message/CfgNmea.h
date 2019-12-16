@@ -119,17 +119,21 @@ class CfgNmea : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_filter() for @ref CfgNmeaFields::Filter field.
-    ///     @li @b field_nmeaVersion() for @ref CfgNmeaFields::NmeaVersion field.
-    ///     @li @b field_numSV() for @ref CfgNmeaFields::NumSV field.
-    ///     @li @b field_flags() for @ref CfgNmeaFields::Flags field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_filter type and @b field_filter() fuction
+    ///         for @ref CfgNmeaFields::Filter field.
+    ///     @li @b Field_nmeaVersion type and @b field_nmeaVersion() fuction
+    ///         for @ref CfgNmeaFields::NmeaVersion field.
+    ///     @li @b Field_numSV type and @b field_numSV() fuction
+    ///         for @ref CfgNmeaFields::NumSV field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgNmeaFields::Flags field.
+    COMMS_MSG_FIELDS_NAMES(
         filter,
         nmeaVersion,
         numSV,

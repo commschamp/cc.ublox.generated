@@ -333,29 +333,45 @@ class MgaGpsAlm : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaGpsAlmFields::Type field.
-    ///     @li @b field_version() for @ref MgaGpsAlmFields::Version field.
-    ///     @li @b field_svid() for @ref MgaGpsAlmFields::Svid field.
-    ///     @li @b field_svHealth() for @ref MgaGpsAlmFields::SvHealth field.
-    ///     @li @b field_e() for @ref MgaGpsAlmFields::E field.
-    ///     @li @b field_almWNa() for @ref MgaGpsAlmFields::AlmWNa field.
-    ///     @li @b field_toa() for @ref MgaGpsAlmFields::Toa field.
-    ///     @li @b field_deltaI() for @ref MgaGpsAlmFields::DeltaI field.
-    ///     @li @b field_omegaDot() for @ref MgaGpsAlmFields::OmegaDot field.
-    ///     @li @b field_sqrtA() for @ref MgaGpsAlmFields::SqrtA field.
-    ///     @li @b field_omega0() for @ref MgaGpsAlmFields::Omega0 field.
-    ///     @li @b field_omega() for @ref MgaGpsAlmFields::Omega field.
-    ///     @li @b field_m0() for @ref MgaGpsAlmFields::M0 field.
-    ///     @li @b field_af0() for @ref MgaGpsAlmFields::Af0 field.
-    ///     @li @b field_af1() for @ref MgaGpsAlmFields::Af1 field.
-    ///     @li @b field_reserved1() for @ref MgaGpsAlmFields::Reserved1 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaGpsAlmFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaGpsAlmFields::Version field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref MgaGpsAlmFields::Svid field.
+    ///     @li @b Field_svHealth type and @b field_svHealth() fuction
+    ///         for @ref MgaGpsAlmFields::SvHealth field.
+    ///     @li @b Field_e type and @b field_e() fuction
+    ///         for @ref MgaGpsAlmFields::E field.
+    ///     @li @b Field_almWNa type and @b field_almWNa() fuction
+    ///         for @ref MgaGpsAlmFields::AlmWNa field.
+    ///     @li @b Field_toa type and @b field_toa() fuction
+    ///         for @ref MgaGpsAlmFields::Toa field.
+    ///     @li @b Field_deltaI type and @b field_deltaI() fuction
+    ///         for @ref MgaGpsAlmFields::DeltaI field.
+    ///     @li @b Field_omegaDot type and @b field_omegaDot() fuction
+    ///         for @ref MgaGpsAlmFields::OmegaDot field.
+    ///     @li @b Field_sqrtA type and @b field_sqrtA() fuction
+    ///         for @ref MgaGpsAlmFields::SqrtA field.
+    ///     @li @b Field_omega0 type and @b field_omega0() fuction
+    ///         for @ref MgaGpsAlmFields::Omega0 field.
+    ///     @li @b Field_omega type and @b field_omega() fuction
+    ///         for @ref MgaGpsAlmFields::Omega field.
+    ///     @li @b Field_m0 type and @b field_m0() fuction
+    ///         for @ref MgaGpsAlmFields::M0 field.
+    ///     @li @b Field_af0 type and @b field_af0() fuction
+    ///         for @ref MgaGpsAlmFields::Af0 field.
+    ///     @li @b Field_af1 type and @b field_af1() fuction
+    ///         for @ref MgaGpsAlmFields::Af1 field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaGpsAlmFields::Reserved1 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         svid,

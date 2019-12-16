@@ -216,18 +216,23 @@ class CfgPms : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgPmsFields::Version field.
-    ///     @li @b field_powerSetupValue() for @ref CfgPmsFields::PowerSetupValue field.
-    ///     @li @b field_period() for @ref CfgPmsFields::Period field.
-    ///     @li @b field_onTime() for @ref CfgPmsFields::OnTime field.
-    ///     @li @b field_reserved1() for @ref CfgPmsFields::Reserved1 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgPmsFields::Version field.
+    ///     @li @b Field_powerSetupValue type and @b field_powerSetupValue() fuction
+    ///         for @ref CfgPmsFields::PowerSetupValue field.
+    ///     @li @b Field_period type and @b field_period() fuction
+    ///         for @ref CfgPmsFields::Period field.
+    ///     @li @b Field_onTime type and @b field_onTime() fuction
+    ///         for @ref CfgPmsFields::OnTime field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgPmsFields::Reserved1 field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         powerSetupValue,
         period,

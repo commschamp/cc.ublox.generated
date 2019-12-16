@@ -232,20 +232,27 @@ class NavTimebds : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavTimebdsFields::Itow field.
-    ///     @li @b field_sOW() for @ref NavTimebdsFields::SOW field.
-    ///     @li @b field_fSOW() for @ref NavTimebdsFields::FSOW field.
-    ///     @li @b field_week() for @ref NavTimebdsFields::Week field.
-    ///     @li @b field_leapS() for @ref NavTimebdsFields::LeapS field.
-    ///     @li @b field_valid() for @ref NavTimebdsFields::Valid field.
-    ///     @li @b field_tAcc() for @ref NavTimebdsFields::TAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavTimebdsFields::Itow field.
+    ///     @li @b Field_sOW type and @b field_sOW() fuction
+    ///         for @ref NavTimebdsFields::SOW field.
+    ///     @li @b Field_fSOW type and @b field_fSOW() fuction
+    ///         for @ref NavTimebdsFields::FSOW field.
+    ///     @li @b Field_week type and @b field_week() fuction
+    ///         for @ref NavTimebdsFields::Week field.
+    ///     @li @b Field_leapS type and @b field_leapS() fuction
+    ///         for @ref NavTimebdsFields::LeapS field.
+    ///     @li @b Field_valid type and @b field_valid() fuction
+    ///         for @ref NavTimebdsFields::Valid field.
+    ///     @li @b Field_tAcc type and @b field_tAcc() fuction
+    ///         for @ref NavTimebdsFields::TAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         sOW,
         fSOW,

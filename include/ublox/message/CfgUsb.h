@@ -265,22 +265,31 @@ class CfgUsb : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_vendorId() for @ref CfgUsbFields::VendorId field.
-    ///     @li @b field_productId() for @ref CfgUsbFields::ProductId field.
-    ///     @li @b field_reserved1() for @ref CfgUsbFields::Reserved1 field.
-    ///     @li @b field_reserved2() for @ref CfgUsbFields::Reserved2 field.
-    ///     @li @b field_powerConsumption() for @ref CfgUsbFields::PowerConsumption field.
-    ///     @li @b field_flags() for @ref CfgUsbFields::Flags field.
-    ///     @li @b field_vendorString() for @ref CfgUsbFields::VendorString field.
-    ///     @li @b field_productString() for @ref CfgUsbFields::ProductString field.
-    ///     @li @b field_serialNumber() for @ref CfgUsbFields::SerialNumber field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_vendorId type and @b field_vendorId() fuction
+    ///         for @ref CfgUsbFields::VendorId field.
+    ///     @li @b Field_productId type and @b field_productId() fuction
+    ///         for @ref CfgUsbFields::ProductId field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgUsbFields::Reserved1 field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref CfgUsbFields::Reserved2 field.
+    ///     @li @b Field_powerConsumption type and @b field_powerConsumption() fuction
+    ///         for @ref CfgUsbFields::PowerConsumption field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgUsbFields::Flags field.
+    ///     @li @b Field_vendorString type and @b field_vendorString() fuction
+    ///         for @ref CfgUsbFields::VendorString field.
+    ///     @li @b Field_productString type and @b field_productString() fuction
+    ///         for @ref CfgUsbFields::ProductString field.
+    ///     @li @b Field_serialNumber type and @b field_serialNumber() fuction
+    ///         for @ref CfgUsbFields::SerialNumber field.
+    COMMS_MSG_FIELDS_NAMES(
         vendorId,
         productId,
         reserved1,

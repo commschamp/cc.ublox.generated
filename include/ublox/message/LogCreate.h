@@ -248,18 +248,23 @@ class LogCreate : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref LogCreateFields::Version field.
-    ///     @li @b field_logCfg() for @ref LogCreateFields::LogCfg field.
-    ///     @li @b field_reserved1() for @ref LogCreateFields::Reserved1 field.
-    ///     @li @b field_logSize() for @ref LogCreateFields::LogSize field.
-    ///     @li @b field_userDefinedSize() for @ref LogCreateFields::UserDefinedSize field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref LogCreateFields::Version field.
+    ///     @li @b Field_logCfg type and @b field_logCfg() fuction
+    ///         for @ref LogCreateFields::LogCfg field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref LogCreateFields::Reserved1 field.
+    ///     @li @b Field_logSize type and @b field_logSize() fuction
+    ///         for @ref LogCreateFields::LogSize field.
+    ///     @li @b Field_userDefinedSize type and @b field_userDefinedSize() fuction
+    ///         for @ref LogCreateFields::UserDefinedSize field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         logCfg,
         reserved1,

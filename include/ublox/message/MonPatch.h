@@ -268,15 +268,18 @@ struct MonPatchFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_bits() - for PatchInfoMembers::Bits member field.
-                ///     @li @b field_location() - for PatchInfoMembers::Location member field.
-                ///     @li @b field_res4() - for PatchInfoMembers::Res4 member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_bits @b field_bits() -
+                ///         for PatchInfoMembers::Bits member field.
+                ///     @li @b Field_location @b field_location() -
+                ///         for PatchInfoMembers::Location member field.
+                ///     @li @b Field_res4 @b field_res4() -
+                ///         for PatchInfoMembers::Res4 member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     bits,
                     location,
                     res4
@@ -359,16 +362,20 @@ struct MonPatchFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_patchInfo() - for ElementMembers::PatchInfo member field.
-            ///     @li @b field_comparatorNumber() - for ElementMembers::ComparatorNumber member field.
-            ///     @li @b field_patchAddress() - for ElementMembers::PatchAddress member field.
-            ///     @li @b field_patchData() - for ElementMembers::PatchData member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_patchInfo @b field_patchInfo() -
+            ///         for ElementMembers::PatchInfo member field.
+            ///     @li @b Field_comparatorNumber @b field_comparatorNumber() -
+            ///         for ElementMembers::ComparatorNumber member field.
+            ///     @li @b Field_patchAddress @b field_patchAddress() -
+            ///         for ElementMembers::PatchAddress member field.
+            ///     @li @b Field_patchData @b field_patchData() -
+            ///         for ElementMembers::PatchData member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 patchInfo,
                 comparatorNumber,
                 patchAddress,
@@ -441,16 +448,19 @@ class MonPatch : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref MonPatchFields::Version field.
-    ///     @li @b field_nEntries() for @ref MonPatchFields::NEntries field.
-    ///     @li @b field_list() for @ref MonPatchFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MonPatchFields::Version field.
+    ///     @li @b Field_nEntries type and @b field_nEntries() fuction
+    ///         for @ref MonPatchFields::NEntries field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref MonPatchFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         nEntries,
         list

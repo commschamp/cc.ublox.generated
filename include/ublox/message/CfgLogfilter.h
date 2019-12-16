@@ -222,19 +222,25 @@ class CfgLogfilter : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgLogfilterFields::Version field.
-    ///     @li @b field_flags() for @ref CfgLogfilterFields::Flags field.
-    ///     @li @b field_minInterval() for @ref CfgLogfilterFields::MinInterval field.
-    ///     @li @b field_timeThreshold() for @ref CfgLogfilterFields::TimeThreshold field.
-    ///     @li @b field_speedThreshold() for @ref CfgLogfilterFields::SpeedThreshold field.
-    ///     @li @b field_positionThres() for @ref CfgLogfilterFields::PositionThres field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgLogfilterFields::Version field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgLogfilterFields::Flags field.
+    ///     @li @b Field_minInterval type and @b field_minInterval() fuction
+    ///         for @ref CfgLogfilterFields::MinInterval field.
+    ///     @li @b Field_timeThreshold type and @b field_timeThreshold() fuction
+    ///         for @ref CfgLogfilterFields::TimeThreshold field.
+    ///     @li @b Field_speedThreshold type and @b field_speedThreshold() fuction
+    ///         for @ref CfgLogfilterFields::SpeedThreshold field.
+    ///     @li @b Field_positionThres type and @b field_positionThres() fuction
+    ///         for @ref CfgLogfilterFields::PositionThres field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         flags,
         minInterval,

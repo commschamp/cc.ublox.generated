@@ -180,19 +180,25 @@ class AidAlpsrvToServer : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_idSize() for @ref AidAlpsrvToServerFields::IdSize field.
-    ///     @li @b field_type() for @ref AidAlpsrvToServerFields::Type field.
-    ///     @li @b field_ofs() for @ref AidAlpsrvToServerFields::Ofs field.
-    ///     @li @b field_size() for @ref AidAlpsrvToServerFields::Size field.
-    ///     @li @b field_fileId() for @ref AidAlpsrvToServerFields::FileId field.
-    ///     @li @b field_data() for @ref AidAlpsrvToServerFields::Data field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_idSize type and @b field_idSize() fuction
+    ///         for @ref AidAlpsrvToServerFields::IdSize field.
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref AidAlpsrvToServerFields::Type field.
+    ///     @li @b Field_ofs type and @b field_ofs() fuction
+    ///         for @ref AidAlpsrvToServerFields::Ofs field.
+    ///     @li @b Field_size type and @b field_size() fuction
+    ///         for @ref AidAlpsrvToServerFields::Size field.
+    ///     @li @b Field_fileId type and @b field_fileId() fuction
+    ///         for @ref AidAlpsrvToServerFields::FileId field.
+    ///     @li @b Field_data type and @b field_data() fuction
+    ///         for @ref AidAlpsrvToServerFields::Data field.
+    COMMS_MSG_FIELDS_NAMES(
         idSize,
         type,
         ofs,

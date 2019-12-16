@@ -161,20 +161,27 @@ class MgaIniPosLlh : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaIniPosLlhFields::Type field.
-    ///     @li @b field_version() for @ref MgaIniPosLlhFields::Version field.
-    ///     @li @b field_reserved1() for @ref MgaIniPosLlhFields::Reserved1 field.
-    ///     @li @b field_lat() for @ref MgaIniPosLlhFields::Lat field.
-    ///     @li @b field_lon() for @ref MgaIniPosLlhFields::Lon field.
-    ///     @li @b field_alt() for @ref MgaIniPosLlhFields::Alt field.
-    ///     @li @b field_posAcc() for @ref MgaIniPosLlhFields::PosAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaIniPosLlhFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaIniPosLlhFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaIniPosLlhFields::Reserved1 field.
+    ///     @li @b Field_lat type and @b field_lat() fuction
+    ///         for @ref MgaIniPosLlhFields::Lat field.
+    ///     @li @b Field_lon type and @b field_lon() fuction
+    ///         for @ref MgaIniPosLlhFields::Lon field.
+    ///     @li @b Field_alt type and @b field_alt() fuction
+    ///         for @ref MgaIniPosLlhFields::Alt field.
+    ///     @li @b Field_posAcc type and @b field_posAcc() fuction
+    ///         for @ref MgaIniPosLlhFields::PosAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         reserved1,

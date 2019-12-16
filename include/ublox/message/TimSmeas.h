@@ -344,21 +344,30 @@ struct TimSmeasFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_sourceId() - for ElementMembers::SourceId member field.
-            ///     @li @b field_flags() - for ElementMembers::Flags member field.
-            ///     @li @b field_phaseOffsetFrac() - for ElementMembers::PhaseOffsetFrac member field.
-            ///     @li @b field_phaseUncFrac() - for ElementMembers::PhaseUncFrac member field.
-            ///     @li @b field_phaseOffset() - for ElementMembers::PhaseOffset member field.
-            ///     @li @b field_phaseUnc() - for ElementMembers::PhaseUnc member field.
-            ///     @li @b field_reserved3() - for ElementMembers::Reserved3 member field.
-            ///     @li @b field_freqOffset() - for ElementMembers::FreqOffset member field.
-            ///     @li @b field_freqUnc() - for ElementMembers::FreqUnc member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_sourceId @b field_sourceId() -
+            ///         for ElementMembers::SourceId member field.
+            ///     @li @b Field_flags @b field_flags() -
+            ///         for ElementMembers::Flags member field.
+            ///     @li @b Field_phaseOffsetFrac @b field_phaseOffsetFrac() -
+            ///         for ElementMembers::PhaseOffsetFrac member field.
+            ///     @li @b Field_phaseUncFrac @b field_phaseUncFrac() -
+            ///         for ElementMembers::PhaseUncFrac member field.
+            ///     @li @b Field_phaseOffset @b field_phaseOffset() -
+            ///         for ElementMembers::PhaseOffset member field.
+            ///     @li @b Field_phaseUnc @b field_phaseUnc() -
+            ///         for ElementMembers::PhaseUnc member field.
+            ///     @li @b Field_reserved3 @b field_reserved3() -
+            ///         for ElementMembers::Reserved3 member field.
+            ///     @li @b Field_freqOffset @b field_freqOffset() -
+            ///         for ElementMembers::FreqOffset member field.
+            ///     @li @b Field_freqUnc @b field_freqUnc() -
+            ///         for ElementMembers::FreqUnc member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 sourceId,
                 flags,
                 phaseOffsetFrac,
@@ -437,19 +446,25 @@ class TimSmeas : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref TimSmeasFields::Version field.
-    ///     @li @b field_numMeas() for @ref TimSmeasFields::NumMeas field.
-    ///     @li @b field_reserved1() for @ref TimSmeasFields::Reserved1 field.
-    ///     @li @b field_itow() for @ref TimSmeasFields::Itow field.
-    ///     @li @b field_reserved2() for @ref TimSmeasFields::Reserved2 field.
-    ///     @li @b field_list() for @ref TimSmeasFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref TimSmeasFields::Version field.
+    ///     @li @b Field_numMeas type and @b field_numMeas() fuction
+    ///         for @ref TimSmeasFields::NumMeas field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref TimSmeasFields::Reserved1 field.
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref TimSmeasFields::Itow field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref TimSmeasFields::Reserved2 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref TimSmeasFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         numMeas,
         reserved1,

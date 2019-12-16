@@ -186,22 +186,31 @@ class NavVelned : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavVelnedFields::Itow field.
-    ///     @li @b field_velN() for @ref NavVelnedFields::VelN field.
-    ///     @li @b field_velE() for @ref NavVelnedFields::VelE field.
-    ///     @li @b field_velD() for @ref NavVelnedFields::VelD field.
-    ///     @li @b field_speed() for @ref NavVelnedFields::Speed field.
-    ///     @li @b field_gSpeed() for @ref NavVelnedFields::GSpeed field.
-    ///     @li @b field_heading() for @ref NavVelnedFields::Heading field.
-    ///     @li @b field_sAcc() for @ref NavVelnedFields::SAcc field.
-    ///     @li @b field_cAcc() for @ref NavVelnedFields::CAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavVelnedFields::Itow field.
+    ///     @li @b Field_velN type and @b field_velN() fuction
+    ///         for @ref NavVelnedFields::VelN field.
+    ///     @li @b Field_velE type and @b field_velE() fuction
+    ///         for @ref NavVelnedFields::VelE field.
+    ///     @li @b Field_velD type and @b field_velD() fuction
+    ///         for @ref NavVelnedFields::VelD field.
+    ///     @li @b Field_speed type and @b field_speed() fuction
+    ///         for @ref NavVelnedFields::Speed field.
+    ///     @li @b Field_gSpeed type and @b field_gSpeed() fuction
+    ///         for @ref NavVelnedFields::GSpeed field.
+    ///     @li @b Field_heading type and @b field_heading() fuction
+    ///         for @ref NavVelnedFields::Heading field.
+    ///     @li @b Field_sAcc type and @b field_sAcc() fuction
+    ///         for @ref NavVelnedFields::SAcc field.
+    ///     @li @b Field_cAcc type and @b field_cAcc() fuction
+    ///         for @ref NavVelnedFields::CAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         velN,
         velE,

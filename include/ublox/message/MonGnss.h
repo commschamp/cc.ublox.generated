@@ -337,19 +337,25 @@ class MonGnss : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref MonGnssFields::Version field.
-    ///     @li @b field_supported() for @ref MonGnssFields::Supported field.
-    ///     @li @b field_defaultGnss() for @ref MonGnssFields::DefaultGnss field.
-    ///     @li @b field_enabled() for @ref MonGnssFields::Enabled field.
-    ///     @li @b field_simultaneous() for @ref MonGnssFields::Simultaneous field.
-    ///     @li @b field_reserved1() for @ref MonGnssFields::Reserved1 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MonGnssFields::Version field.
+    ///     @li @b Field_supported type and @b field_supported() fuction
+    ///         for @ref MonGnssFields::Supported field.
+    ///     @li @b Field_defaultGnss type and @b field_defaultGnss() fuction
+    ///         for @ref MonGnssFields::DefaultGnss field.
+    ///     @li @b Field_enabled type and @b field_enabled() fuction
+    ///         for @ref MonGnssFields::Enabled field.
+    ///     @li @b Field_simultaneous type and @b field_simultaneous() fuction
+    ///         for @ref MonGnssFields::Simultaneous field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MonGnssFields::Reserved1 field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         supported,
         defaultGnss,

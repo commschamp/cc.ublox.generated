@@ -261,14 +261,16 @@ struct CfgOdoFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_profile() - for OdoCfgMembers::Profile member field.
-        ///     @li @b field_reserved() - for OdoCfgMembers::Reserved member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_profile @b field_profile() -
+        ///         for OdoCfgMembers::Profile member field.
+        ///     @li @b Field_reserved @b field_reserved() -
+        ///         for OdoCfgMembers::Reserved member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             profile,
             reserved
         );
@@ -429,24 +431,35 @@ class CfgOdo : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgOdoFields::Version field.
-    ///     @li @b field_reserved1() for @ref CfgOdoFields::Reserved1 field.
-    ///     @li @b field_flags() for @ref CfgOdoFields::Flags field.
-    ///     @li @b field_odoCfg() for @ref CfgOdoFields::OdoCfg field.
-    ///     @li @b field_reserved2() for @ref CfgOdoFields::Reserved2 field.
-    ///     @li @b field_cogMaxSpeed() for @ref CfgOdoFields::CogMaxSpeed field.
-    ///     @li @b field_cogMaxPosAcc() for @ref CfgOdoFields::CogMaxPosAcc field.
-    ///     @li @b field_reserved3() for @ref CfgOdoFields::Reserved3 field.
-    ///     @li @b field_velLpGain() for @ref CfgOdoFields::VelLpGain field.
-    ///     @li @b field_cogLpGain() for @ref CfgOdoFields::CogLpGain field.
-    ///     @li @b field_reserved4() for @ref CfgOdoFields::Reserved4 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgOdoFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgOdoFields::Reserved1 field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgOdoFields::Flags field.
+    ///     @li @b Field_odoCfg type and @b field_odoCfg() fuction
+    ///         for @ref CfgOdoFields::OdoCfg field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref CfgOdoFields::Reserved2 field.
+    ///     @li @b Field_cogMaxSpeed type and @b field_cogMaxSpeed() fuction
+    ///         for @ref CfgOdoFields::CogMaxSpeed field.
+    ///     @li @b Field_cogMaxPosAcc type and @b field_cogMaxPosAcc() fuction
+    ///         for @ref CfgOdoFields::CogMaxPosAcc field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref CfgOdoFields::Reserved3 field.
+    ///     @li @b Field_velLpGain type and @b field_velLpGain() fuction
+    ///         for @ref CfgOdoFields::VelLpGain field.
+    ///     @li @b Field_cogLpGain type and @b field_cogLpGain() fuction
+    ///         for @ref CfgOdoFields::CogLpGain field.
+    ///     @li @b Field_reserved4 type and @b field_reserved4() fuction
+    ///         for @ref CfgOdoFields::Reserved4 field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         flags,

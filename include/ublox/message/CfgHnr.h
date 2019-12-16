@@ -90,15 +90,17 @@ class CfgHnr : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_highNavRate() for @ref CfgHnrFields::HighNavRate field.
-    ///     @li @b field_reserved1() for @ref CfgHnrFields::Reserved1 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_highNavRate type and @b field_highNavRate() fuction
+    ///         for @ref CfgHnrFields::HighNavRate field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgHnrFields::Reserved1 field.
+    COMMS_MSG_FIELDS_NAMES(
         highNavRate,
         reserved1
     );

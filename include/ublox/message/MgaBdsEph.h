@@ -567,43 +567,73 @@ class MgaBdsEph : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaBdsEphFields::Type field.
-    ///     @li @b field_version() for @ref MgaBdsEphFields::Version field.
-    ///     @li @b field_svid() for @ref MgaBdsEphFields::Svid field.
-    ///     @li @b field_reserved1() for @ref MgaBdsEphFields::Reserved1 field.
-    ///     @li @b field_satH1() for @ref MgaBdsEphFields::SatH1 field.
-    ///     @li @b field_iODC() for @ref MgaBdsEphFields::IODC field.
-    ///     @li @b field_a2() for @ref MgaBdsEphFields::A2 field.
-    ///     @li @b field_a1() for @ref MgaBdsEphFields::A1 field.
-    ///     @li @b field_a0() for @ref MgaBdsEphFields::A0 field.
-    ///     @li @b field_toc() for @ref MgaBdsEphFields::Toc field.
-    ///     @li @b field_tGD1() for @ref MgaBdsEphFields::TGD1 field.
-    ///     @li @b field_uRAI() for @ref MgaBdsEphFields::URAI field.
-    ///     @li @b field_iODE() for @ref MgaBdsEphFields::IODE field.
-    ///     @li @b field_toe() for @ref MgaBdsEphFields::Toe field.
-    ///     @li @b field_sqrtA() for @ref MgaBdsEphFields::SqrtA field.
-    ///     @li @b field_e() for @ref MgaBdsEphFields::E field.
-    ///     @li @b field_omega() for @ref MgaBdsEphFields::Omega field.
-    ///     @li @b field_deltan() for @ref MgaBdsEphFields::Deltan field.
-    ///     @li @b field_iDOT() for @ref MgaBdsEphFields::IDOT field.
-    ///     @li @b field_m0() for @ref MgaBdsEphFields::M0 field.
-    ///     @li @b field_omega0() for @ref MgaBdsEphFields::Omega0 field.
-    ///     @li @b field_omegaDot() for @ref MgaBdsEphFields::OmegaDot field.
-    ///     @li @b field_i0() for @ref MgaBdsEphFields::I0 field.
-    ///     @li @b field_cuc() for @ref MgaBdsEphFields::Cuc field.
-    ///     @li @b field_cus() for @ref MgaBdsEphFields::Cus field.
-    ///     @li @b field_crc() for @ref MgaBdsEphFields::Crc field.
-    ///     @li @b field_crs() for @ref MgaBdsEphFields::Crs field.
-    ///     @li @b field_cic() for @ref MgaBdsEphFields::Cic field.
-    ///     @li @b field_cis() for @ref MgaBdsEphFields::Cis field.
-    ///     @li @b field_reserved2() for @ref MgaBdsEphFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaBdsEphFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaBdsEphFields::Version field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref MgaBdsEphFields::Svid field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaBdsEphFields::Reserved1 field.
+    ///     @li @b Field_satH1 type and @b field_satH1() fuction
+    ///         for @ref MgaBdsEphFields::SatH1 field.
+    ///     @li @b Field_iODC type and @b field_iODC() fuction
+    ///         for @ref MgaBdsEphFields::IODC field.
+    ///     @li @b Field_a2 type and @b field_a2() fuction
+    ///         for @ref MgaBdsEphFields::A2 field.
+    ///     @li @b Field_a1 type and @b field_a1() fuction
+    ///         for @ref MgaBdsEphFields::A1 field.
+    ///     @li @b Field_a0 type and @b field_a0() fuction
+    ///         for @ref MgaBdsEphFields::A0 field.
+    ///     @li @b Field_toc type and @b field_toc() fuction
+    ///         for @ref MgaBdsEphFields::Toc field.
+    ///     @li @b Field_tGD1 type and @b field_tGD1() fuction
+    ///         for @ref MgaBdsEphFields::TGD1 field.
+    ///     @li @b Field_uRAI type and @b field_uRAI() fuction
+    ///         for @ref MgaBdsEphFields::URAI field.
+    ///     @li @b Field_iODE type and @b field_iODE() fuction
+    ///         for @ref MgaBdsEphFields::IODE field.
+    ///     @li @b Field_toe type and @b field_toe() fuction
+    ///         for @ref MgaBdsEphFields::Toe field.
+    ///     @li @b Field_sqrtA type and @b field_sqrtA() fuction
+    ///         for @ref MgaBdsEphFields::SqrtA field.
+    ///     @li @b Field_e type and @b field_e() fuction
+    ///         for @ref MgaBdsEphFields::E field.
+    ///     @li @b Field_omega type and @b field_omega() fuction
+    ///         for @ref MgaBdsEphFields::Omega field.
+    ///     @li @b Field_deltan type and @b field_deltan() fuction
+    ///         for @ref MgaBdsEphFields::Deltan field.
+    ///     @li @b Field_iDOT type and @b field_iDOT() fuction
+    ///         for @ref MgaBdsEphFields::IDOT field.
+    ///     @li @b Field_m0 type and @b field_m0() fuction
+    ///         for @ref MgaBdsEphFields::M0 field.
+    ///     @li @b Field_omega0 type and @b field_omega0() fuction
+    ///         for @ref MgaBdsEphFields::Omega0 field.
+    ///     @li @b Field_omegaDot type and @b field_omegaDot() fuction
+    ///         for @ref MgaBdsEphFields::OmegaDot field.
+    ///     @li @b Field_i0 type and @b field_i0() fuction
+    ///         for @ref MgaBdsEphFields::I0 field.
+    ///     @li @b Field_cuc type and @b field_cuc() fuction
+    ///         for @ref MgaBdsEphFields::Cuc field.
+    ///     @li @b Field_cus type and @b field_cus() fuction
+    ///         for @ref MgaBdsEphFields::Cus field.
+    ///     @li @b Field_crc type and @b field_crc() fuction
+    ///         for @ref MgaBdsEphFields::Crc field.
+    ///     @li @b Field_crs type and @b field_crs() fuction
+    ///         for @ref MgaBdsEphFields::Crs field.
+    ///     @li @b Field_cic type and @b field_cic() fuction
+    ///         for @ref MgaBdsEphFields::Cic field.
+    ///     @li @b Field_cis type and @b field_cis() fuction
+    ///         for @ref MgaBdsEphFields::Cis field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaBdsEphFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         svid,

@@ -244,26 +244,39 @@ class NavHpposllh : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref NavHpposllhFields::Version field.
-    ///     @li @b field_reserved1() for @ref NavHpposllhFields::Reserved1 field.
-    ///     @li @b field_itow() for @ref NavHpposllhFields::Itow field.
-    ///     @li @b field_lon() for @ref NavHpposllhFields::Lon field.
-    ///     @li @b field_lat() for @ref NavHpposllhFields::Lat field.
-    ///     @li @b field_height() for @ref NavHpposllhFields::Height field.
-    ///     @li @b field_hMSL() for @ref NavHpposllhFields::HMSL field.
-    ///     @li @b field_lonHp() for @ref NavHpposllhFields::LonHp field.
-    ///     @li @b field_latHp() for @ref NavHpposllhFields::LatHp field.
-    ///     @li @b field_heigthHp() for @ref NavHpposllhFields::HeigthHp field.
-    ///     @li @b field_hMSLHp() for @ref NavHpposllhFields::HMSLHp field.
-    ///     @li @b field_hAcc() for @ref NavHpposllhFields::HAcc field.
-    ///     @li @b field_vAcc() for @ref NavHpposllhFields::VAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref NavHpposllhFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavHpposllhFields::Reserved1 field.
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavHpposllhFields::Itow field.
+    ///     @li @b Field_lon type and @b field_lon() fuction
+    ///         for @ref NavHpposllhFields::Lon field.
+    ///     @li @b Field_lat type and @b field_lat() fuction
+    ///         for @ref NavHpposllhFields::Lat field.
+    ///     @li @b Field_height type and @b field_height() fuction
+    ///         for @ref NavHpposllhFields::Height field.
+    ///     @li @b Field_hMSL type and @b field_hMSL() fuction
+    ///         for @ref NavHpposllhFields::HMSL field.
+    ///     @li @b Field_lonHp type and @b field_lonHp() fuction
+    ///         for @ref NavHpposllhFields::LonHp field.
+    ///     @li @b Field_latHp type and @b field_latHp() fuction
+    ///         for @ref NavHpposllhFields::LatHp field.
+    ///     @li @b Field_heigthHp type and @b field_heigthHp() fuction
+    ///         for @ref NavHpposllhFields::HeigthHp field.
+    ///     @li @b Field_hMSLHp type and @b field_hMSLHp() fuction
+    ///         for @ref NavHpposllhFields::HMSLHp field.
+    ///     @li @b Field_hAcc type and @b field_hAcc() fuction
+    ///         for @ref NavHpposllhFields::HAcc field.
+    ///     @li @b Field_vAcc type and @b field_vAcc() fuction
+    ///         for @ref NavHpposllhFields::VAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         itow,

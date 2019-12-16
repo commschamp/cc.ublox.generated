@@ -206,22 +206,31 @@ class AidAlp : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_predTow() for @ref AidAlpFields::PredTow field.
-    ///     @li @b field_predDur() for @ref AidAlpFields::PredDur field.
-    ///     @li @b field_age() for @ref AidAlpFields::Age field.
-    ///     @li @b field_predWno() for @ref AidAlpFields::PredWno field.
-    ///     @li @b field_almWno() for @ref AidAlpFields::AlmWno field.
-    ///     @li @b field_reserved1() for @ref AidAlpFields::Reserved1 field.
-    ///     @li @b field_svs() for @ref AidAlpFields::Svs field.
-    ///     @li @b field_reserved2() for @ref AidAlpFields::Reserved2 field.
-    ///     @li @b field_reserved3() for @ref AidAlpFields::Reserved3 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_predTow type and @b field_predTow() fuction
+    ///         for @ref AidAlpFields::PredTow field.
+    ///     @li @b Field_predDur type and @b field_predDur() fuction
+    ///         for @ref AidAlpFields::PredDur field.
+    ///     @li @b Field_age type and @b field_age() fuction
+    ///         for @ref AidAlpFields::Age field.
+    ///     @li @b Field_predWno type and @b field_predWno() fuction
+    ///         for @ref AidAlpFields::PredWno field.
+    ///     @li @b Field_almWno type and @b field_almWno() fuction
+    ///         for @ref AidAlpFields::AlmWno field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref AidAlpFields::Reserved1 field.
+    ///     @li @b Field_svs type and @b field_svs() fuction
+    ///         for @ref AidAlpFields::Svs field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref AidAlpFields::Reserved2 field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref AidAlpFields::Reserved3 field.
+    COMMS_MSG_FIELDS_NAMES(
         predTow,
         predDur,
         age,

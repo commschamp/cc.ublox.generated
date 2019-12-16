@@ -209,14 +209,16 @@ struct NavGeofenceFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_state() - for ElementMembers::State member field.
-            ///     @li @b field_reserved1() - for ElementMembers::Reserved1 member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_state @b field_state() -
+            ///         for ElementMembers::State member field.
+            ///     @li @b Field_reserved1 @b field_reserved1() -
+            ///         for ElementMembers::Reserved1 member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 state,
                 reserved1
             );
@@ -290,19 +292,25 @@ class NavGeofence : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavGeofenceFields::Itow field.
-    ///     @li @b field_version() for @ref NavGeofenceFields::Version field.
-    ///     @li @b field_status() for @ref NavGeofenceFields::Status field.
-    ///     @li @b field_numFences() for @ref NavGeofenceFields::NumFences field.
-    ///     @li @b field_combState() for @ref NavGeofenceFields::CombState field.
-    ///     @li @b field_list() for @ref NavGeofenceFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavGeofenceFields::Itow field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref NavGeofenceFields::Version field.
+    ///     @li @b Field_status type and @b field_status() fuction
+    ///         for @ref NavGeofenceFields::Status field.
+    ///     @li @b Field_numFences type and @b field_numFences() fuction
+    ///         for @ref NavGeofenceFields::NumFences field.
+    ///     @li @b Field_combState type and @b field_combState() fuction
+    ///         for @ref NavGeofenceFields::CombState field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref NavGeofenceFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         version,
         status,

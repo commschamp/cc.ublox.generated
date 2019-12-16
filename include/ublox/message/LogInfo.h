@@ -502,36 +502,59 @@ class LogInfo : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref LogInfoFields::Version field.
-    ///     @li @b field_reserved1() for @ref LogInfoFields::Reserved1 field.
-    ///     @li @b field_filestoreCapacity() for @ref LogInfoFields::FilestoreCapacity field.
-    ///     @li @b field_reserved2() for @ref LogInfoFields::Reserved2 field.
-    ///     @li @b field_currentMaxLogSize() for @ref LogInfoFields::CurrentMaxLogSize field.
-    ///     @li @b field_currentLogSize() for @ref LogInfoFields::CurrentLogSize field.
-    ///     @li @b field_entryCount() for @ref LogInfoFields::EntryCount field.
-    ///     @li @b field_oldestYear() for @ref LogInfoFields::OldestYear field.
-    ///     @li @b field_oldestMonth() for @ref LogInfoFields::OldestMonth field.
-    ///     @li @b field_oldestDay() for @ref LogInfoFields::OldestDay field.
-    ///     @li @b field_oldestHour() for @ref LogInfoFields::OldestHour field.
-    ///     @li @b field_oldestMinute() for @ref LogInfoFields::OldestMinute field.
-    ///     @li @b field_oldestSecond() for @ref LogInfoFields::OldestSecond field.
-    ///     @li @b field_reserved3() for @ref LogInfoFields::Reserved3 field.
-    ///     @li @b field_newestYear() for @ref LogInfoFields::NewestYear field.
-    ///     @li @b field_newestMonth() for @ref LogInfoFields::NewestMonth field.
-    ///     @li @b field_newestDay() for @ref LogInfoFields::NewestDay field.
-    ///     @li @b field_newestHour() for @ref LogInfoFields::NewestHour field.
-    ///     @li @b field_newestMinute() for @ref LogInfoFields::NewestMinute field.
-    ///     @li @b field_newestSecond() for @ref LogInfoFields::NewestSecond field.
-    ///     @li @b field_reserved4() for @ref LogInfoFields::Reserved4 field.
-    ///     @li @b field_status() for @ref LogInfoFields::Status field.
-    ///     @li @b field_reserved5() for @ref LogInfoFields::Reserved5 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref LogInfoFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref LogInfoFields::Reserved1 field.
+    ///     @li @b Field_filestoreCapacity type and @b field_filestoreCapacity() fuction
+    ///         for @ref LogInfoFields::FilestoreCapacity field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref LogInfoFields::Reserved2 field.
+    ///     @li @b Field_currentMaxLogSize type and @b field_currentMaxLogSize() fuction
+    ///         for @ref LogInfoFields::CurrentMaxLogSize field.
+    ///     @li @b Field_currentLogSize type and @b field_currentLogSize() fuction
+    ///         for @ref LogInfoFields::CurrentLogSize field.
+    ///     @li @b Field_entryCount type and @b field_entryCount() fuction
+    ///         for @ref LogInfoFields::EntryCount field.
+    ///     @li @b Field_oldestYear type and @b field_oldestYear() fuction
+    ///         for @ref LogInfoFields::OldestYear field.
+    ///     @li @b Field_oldestMonth type and @b field_oldestMonth() fuction
+    ///         for @ref LogInfoFields::OldestMonth field.
+    ///     @li @b Field_oldestDay type and @b field_oldestDay() fuction
+    ///         for @ref LogInfoFields::OldestDay field.
+    ///     @li @b Field_oldestHour type and @b field_oldestHour() fuction
+    ///         for @ref LogInfoFields::OldestHour field.
+    ///     @li @b Field_oldestMinute type and @b field_oldestMinute() fuction
+    ///         for @ref LogInfoFields::OldestMinute field.
+    ///     @li @b Field_oldestSecond type and @b field_oldestSecond() fuction
+    ///         for @ref LogInfoFields::OldestSecond field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref LogInfoFields::Reserved3 field.
+    ///     @li @b Field_newestYear type and @b field_newestYear() fuction
+    ///         for @ref LogInfoFields::NewestYear field.
+    ///     @li @b Field_newestMonth type and @b field_newestMonth() fuction
+    ///         for @ref LogInfoFields::NewestMonth field.
+    ///     @li @b Field_newestDay type and @b field_newestDay() fuction
+    ///         for @ref LogInfoFields::NewestDay field.
+    ///     @li @b Field_newestHour type and @b field_newestHour() fuction
+    ///         for @ref LogInfoFields::NewestHour field.
+    ///     @li @b Field_newestMinute type and @b field_newestMinute() fuction
+    ///         for @ref LogInfoFields::NewestMinute field.
+    ///     @li @b Field_newestSecond type and @b field_newestSecond() fuction
+    ///         for @ref LogInfoFields::NewestSecond field.
+    ///     @li @b Field_reserved4 type and @b field_reserved4() fuction
+    ///         for @ref LogInfoFields::Reserved4 field.
+    ///     @li @b Field_status type and @b field_status() fuction
+    ///         for @ref LogInfoFields::Status field.
+    ///     @li @b Field_reserved5 type and @b field_reserved5() fuction
+    ///         for @ref LogInfoFields::Reserved5 field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         filestoreCapacity,

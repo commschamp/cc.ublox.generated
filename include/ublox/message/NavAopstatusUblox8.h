@@ -203,19 +203,25 @@ class NavAopstatusUblox8 : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavAopstatusUblox8Fields::Itow field.
-    ///     @li @b field_aopCfg() for @ref NavAopstatusUblox8Fields::AopCfg field.
-    ///     @li @b field_status() for @ref NavAopstatusUblox8Fields::Status field.
-    ///     @li @b field_reserved1() for @ref NavAopstatusUblox8Fields::Reserved1 field.
-    ///     @li @b field_reserved2() for @ref NavAopstatusUblox8Fields::Reserved2 field.
-    ///     @li @b field_reserved3() for @ref NavAopstatusUblox8Fields::Reserved3 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavAopstatusUblox8Fields::Itow field.
+    ///     @li @b Field_aopCfg type and @b field_aopCfg() fuction
+    ///         for @ref NavAopstatusUblox8Fields::AopCfg field.
+    ///     @li @b Field_status type and @b field_status() fuction
+    ///         for @ref NavAopstatusUblox8Fields::Status field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavAopstatusUblox8Fields::Reserved1 field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref NavAopstatusUblox8Fields::Reserved2 field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref NavAopstatusUblox8Fields::Reserved3 field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         aopCfg,
         status,

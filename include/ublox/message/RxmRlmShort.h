@@ -195,21 +195,29 @@ class RxmRlmShort : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref RxmRlmShortFields::Version field.
-    ///     @li @b field_type() for @ref RxmRlmShortFields::Type field.
-    ///     @li @b field_svid() for @ref RxmRlmShortFields::Svid field.
-    ///     @li @b field_reserved1() for @ref RxmRlmShortFields::Reserved1 field.
-    ///     @li @b field_beacon() for @ref RxmRlmShortFields::Beacon field.
-    ///     @li @b field_message() for @ref RxmRlmShortFields::Message field.
-    ///     @li @b field_params() for @ref RxmRlmShortFields::Params field.
-    ///     @li @b field_reserved2() for @ref RxmRlmShortFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref RxmRlmShortFields::Version field.
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref RxmRlmShortFields::Type field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref RxmRlmShortFields::Svid field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref RxmRlmShortFields::Reserved1 field.
+    ///     @li @b Field_beacon type and @b field_beacon() fuction
+    ///         for @ref RxmRlmShortFields::Beacon field.
+    ///     @li @b Field_message type and @b field_message() fuction
+    ///         for @ref RxmRlmShortFields::Message field.
+    ///     @li @b Field_params type and @b field_params() fuction
+    ///         for @ref RxmRlmShortFields::Params field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref RxmRlmShortFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         type,
         svid,

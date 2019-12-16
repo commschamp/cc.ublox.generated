@@ -207,20 +207,27 @@ class MonMsgpp : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_msg1() for @ref MonMsgppFields::Msg1 field.
-    ///     @li @b field_msg2() for @ref MonMsgppFields::Msg2 field.
-    ///     @li @b field_msg3() for @ref MonMsgppFields::Msg3 field.
-    ///     @li @b field_msg4() for @ref MonMsgppFields::Msg4 field.
-    ///     @li @b field_msg5() for @ref MonMsgppFields::Msg5 field.
-    ///     @li @b field_msg6() for @ref MonMsgppFields::Msg6 field.
-    ///     @li @b field_skipped() for @ref MonMsgppFields::Skipped field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_msg1 type and @b field_msg1() fuction
+    ///         for @ref MonMsgppFields::Msg1 field.
+    ///     @li @b Field_msg2 type and @b field_msg2() fuction
+    ///         for @ref MonMsgppFields::Msg2 field.
+    ///     @li @b Field_msg3 type and @b field_msg3() fuction
+    ///         for @ref MonMsgppFields::Msg3 field.
+    ///     @li @b Field_msg4 type and @b field_msg4() fuction
+    ///         for @ref MonMsgppFields::Msg4 field.
+    ///     @li @b Field_msg5 type and @b field_msg5() fuction
+    ///         for @ref MonMsgppFields::Msg5 field.
+    ///     @li @b Field_msg6 type and @b field_msg6() fuction
+    ///         for @ref MonMsgppFields::Msg6 field.
+    ///     @li @b Field_skipped type and @b field_skipped() fuction
+    ///         for @ref MonMsgppFields::Skipped field.
+    COMMS_MSG_FIELDS_NAMES(
         msg1,
         msg2,
         msg3,

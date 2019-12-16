@@ -222,22 +222,31 @@ class RxmSfrbx : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_gnssId() for @ref RxmSfrbxFields::GnssId field.
-    ///     @li @b field_svid() for @ref RxmSfrbxFields::Svid field.
-    ///     @li @b field_reserved1() for @ref RxmSfrbxFields::Reserved1 field.
-    ///     @li @b field_freqId() for @ref RxmSfrbxFields::FreqId field.
-    ///     @li @b field_numWords() for @ref RxmSfrbxFields::NumWords field.
-    ///     @li @b field_reserved2() for @ref RxmSfrbxFields::Reserved2 field.
-    ///     @li @b field_version() for @ref RxmSfrbxFields::Version field.
-    ///     @li @b field_reserved3() for @ref RxmSfrbxFields::Reserved3 field.
-    ///     @li @b field_dwrd() for @ref RxmSfrbxFields::Dwrd field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_gnssId type and @b field_gnssId() fuction
+    ///         for @ref RxmSfrbxFields::GnssId field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref RxmSfrbxFields::Svid field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref RxmSfrbxFields::Reserved1 field.
+    ///     @li @b Field_freqId type and @b field_freqId() fuction
+    ///         for @ref RxmSfrbxFields::FreqId field.
+    ///     @li @b Field_numWords type and @b field_numWords() fuction
+    ///         for @ref RxmSfrbxFields::NumWords field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref RxmSfrbxFields::Reserved2 field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref RxmSfrbxFields::Version field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref RxmSfrbxFields::Reserved3 field.
+    ///     @li @b Field_dwrd type and @b field_dwrd() fuction
+    ///         for @ref RxmSfrbxFields::Dwrd field.
+    COMMS_MSG_FIELDS_NAMES(
         gnssId,
         svid,
         reserved1,

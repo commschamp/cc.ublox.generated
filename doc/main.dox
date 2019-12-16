@@ -139,6 +139,69 @@
 /// @li @ref ublox::dispatch::dispatchUblox8ClientInputMessageDefaultOptions
 /// (defined in @b ublox/dispatch/DispatchUblox8ClientInputMessage.h header file).
 ///
+/// There are also some dispatcher objects to be used with
+/// @b comms::processAllWithDispatchViaDispatcher() function or similar.
+/// @li @ref ublox::dispatch::MsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchMessage.h header file).
+/// @li @ref ublox::dispatch::MsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchMessage.h header file).
+/// @li @ref ublox::dispatch::ServerInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::ServerInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::ClientInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::ClientInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox5MsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox5Message.h header file).
+/// @li @ref ublox::dispatch::Ublox5MsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox5Message.h header file).
+/// @li @ref ublox::dispatch::Ublox5ServerInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox5ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox5ServerInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox5ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox5ClientInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox5ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox5ClientInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox5ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox6MsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox6Message.h header file).
+/// @li @ref ublox::dispatch::Ublox6MsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox6Message.h header file).
+/// @li @ref ublox::dispatch::Ublox6ServerInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox6ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox6ServerInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox6ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox6ClientInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox6ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox6ClientInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox6ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox7MsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox7Message.h header file).
+/// @li @ref ublox::dispatch::Ublox7MsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox7Message.h header file).
+/// @li @ref ublox::dispatch::Ublox7ServerInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox7ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox7ServerInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox7ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox7ClientInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox7ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox7ClientInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox7ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox8MsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox8Message.h header file).
+/// @li @ref ublox::dispatch::Ublox8MsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox8Message.h header file).
+/// @li @ref ublox::dispatch::Ublox8ServerInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox8ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox8ServerInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox8ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox8ClientInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox8ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox8ClientInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox8ClientInputMessage.h header file).
+///
 /// @section main_customization Customization
 /// Depending on the value of @b customization option passed to the @b commsdsl2comms
 /// code generator, the latter generates @ref ublox::options::DefaultOptions

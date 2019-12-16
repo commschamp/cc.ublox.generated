@@ -379,32 +379,51 @@ class MgaGalAlm : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaGalAlmFields::Type field.
-    ///     @li @b field_version() for @ref MgaGalAlmFields::Version field.
-    ///     @li @b field_svid() for @ref MgaGalAlmFields::Svid field.
-    ///     @li @b field_reserved1() for @ref MgaGalAlmFields::Reserved1 field.
-    ///     @li @b field_ioda() for @ref MgaGalAlmFields::Ioda field.
-    ///     @li @b field_almWNa() for @ref MgaGalAlmFields::AlmWNa field.
-    ///     @li @b field_toa() for @ref MgaGalAlmFields::Toa field.
-    ///     @li @b field_deltaSqrtA() for @ref MgaGalAlmFields::DeltaSqrtA field.
-    ///     @li @b field_e() for @ref MgaGalAlmFields::E field.
-    ///     @li @b field_deltaI() for @ref MgaGalAlmFields::DeltaI field.
-    ///     @li @b field_omega0() for @ref MgaGalAlmFields::Omega0 field.
-    ///     @li @b field_omegaDot() for @ref MgaGalAlmFields::OmegaDot field.
-    ///     @li @b field_omega() for @ref MgaGalAlmFields::Omega field.
-    ///     @li @b field_m0() for @ref MgaGalAlmFields::M0 field.
-    ///     @li @b field_af0() for @ref MgaGalAlmFields::Af0 field.
-    ///     @li @b field_af1() for @ref MgaGalAlmFields::Af1 field.
-    ///     @li @b field_healthE1B() for @ref MgaGalAlmFields::HealthE1B field.
-    ///     @li @b field_healthE5b() for @ref MgaGalAlmFields::HealthE5b field.
-    ///     @li @b field_reserved2() for @ref MgaGalAlmFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaGalAlmFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaGalAlmFields::Version field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref MgaGalAlmFields::Svid field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaGalAlmFields::Reserved1 field.
+    ///     @li @b Field_ioda type and @b field_ioda() fuction
+    ///         for @ref MgaGalAlmFields::Ioda field.
+    ///     @li @b Field_almWNa type and @b field_almWNa() fuction
+    ///         for @ref MgaGalAlmFields::AlmWNa field.
+    ///     @li @b Field_toa type and @b field_toa() fuction
+    ///         for @ref MgaGalAlmFields::Toa field.
+    ///     @li @b Field_deltaSqrtA type and @b field_deltaSqrtA() fuction
+    ///         for @ref MgaGalAlmFields::DeltaSqrtA field.
+    ///     @li @b Field_e type and @b field_e() fuction
+    ///         for @ref MgaGalAlmFields::E field.
+    ///     @li @b Field_deltaI type and @b field_deltaI() fuction
+    ///         for @ref MgaGalAlmFields::DeltaI field.
+    ///     @li @b Field_omega0 type and @b field_omega0() fuction
+    ///         for @ref MgaGalAlmFields::Omega0 field.
+    ///     @li @b Field_omegaDot type and @b field_omegaDot() fuction
+    ///         for @ref MgaGalAlmFields::OmegaDot field.
+    ///     @li @b Field_omega type and @b field_omega() fuction
+    ///         for @ref MgaGalAlmFields::Omega field.
+    ///     @li @b Field_m0 type and @b field_m0() fuction
+    ///         for @ref MgaGalAlmFields::M0 field.
+    ///     @li @b Field_af0 type and @b field_af0() fuction
+    ///         for @ref MgaGalAlmFields::Af0 field.
+    ///     @li @b Field_af1 type and @b field_af1() fuction
+    ///         for @ref MgaGalAlmFields::Af1 field.
+    ///     @li @b Field_healthE1B type and @b field_healthE1B() fuction
+    ///         for @ref MgaGalAlmFields::HealthE1B field.
+    ///     @li @b Field_healthE5b type and @b field_healthE5b() fuction
+    ///         for @ref MgaGalAlmFields::HealthE5b field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaGalAlmFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         svid,

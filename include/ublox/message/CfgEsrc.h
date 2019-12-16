@@ -472,24 +472,36 @@ struct CfgEsrcFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_extInt() - for ElementMembers::ExtInt member field.
-            ///     @li @b field_sourceType() - for ElementMembers::SourceType member field.
-            ///     @li @b field_flags() - for ElementMembers::Flags member field.
-            ///     @li @b field_freq() - for ElementMembers::Freq member field.
-            ///     @li @b field_reserved2() - for ElementMembers::Reserved2 member field.
-            ///     @li @b field_withTemp() - for ElementMembers::WithTemp member field.
-            ///     @li @b field_withAge() - for ElementMembers::WithAge member field.
-            ///     @li @b field_timeToTemp() - for ElementMembers::TimeToTemp member field.
-            ///     @li @b field_maxDevLifeTime() - for ElementMembers::MaxDevLifeTime member field.
-            ///     @li @b field_offset() - for ElementMembers::Offset member field.
-            ///     @li @b field_offsetUncertainty() - for ElementMembers::OffsetUncertainty member field.
-            ///     @li @b field_jitter() - for ElementMembers::Jitter member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_extInt @b field_extInt() -
+            ///         for ElementMembers::ExtInt member field.
+            ///     @li @b Field_sourceType @b field_sourceType() -
+            ///         for ElementMembers::SourceType member field.
+            ///     @li @b Field_flags @b field_flags() -
+            ///         for ElementMembers::Flags member field.
+            ///     @li @b Field_freq @b field_freq() -
+            ///         for ElementMembers::Freq member field.
+            ///     @li @b Field_reserved2 @b field_reserved2() -
+            ///         for ElementMembers::Reserved2 member field.
+            ///     @li @b Field_withTemp @b field_withTemp() -
+            ///         for ElementMembers::WithTemp member field.
+            ///     @li @b Field_withAge @b field_withAge() -
+            ///         for ElementMembers::WithAge member field.
+            ///     @li @b Field_timeToTemp @b field_timeToTemp() -
+            ///         for ElementMembers::TimeToTemp member field.
+            ///     @li @b Field_maxDevLifeTime @b field_maxDevLifeTime() -
+            ///         for ElementMembers::MaxDevLifeTime member field.
+            ///     @li @b Field_offset @b field_offset() -
+            ///         for ElementMembers::Offset member field.
+            ///     @li @b Field_offsetUncertainty @b field_offsetUncertainty() -
+            ///         for ElementMembers::OffsetUncertainty member field.
+            ///     @li @b Field_jitter @b field_jitter() -
+            ///         for ElementMembers::Jitter member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 extInt,
                 sourceType,
                 flags,
@@ -569,17 +581,21 @@ class CfgEsrc : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgEsrcFields::Version field.
-    ///     @li @b field_numSources() for @ref CfgEsrcFields::NumSources field.
-    ///     @li @b field_reserved1() for @ref CfgEsrcFields::Reserved1 field.
-    ///     @li @b field_list() for @ref CfgEsrcFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgEsrcFields::Version field.
+    ///     @li @b Field_numSources type and @b field_numSources() fuction
+    ///         for @ref CfgEsrcFields::NumSources field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgEsrcFields::Reserved1 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref CfgEsrcFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         numSources,
         reserved1,

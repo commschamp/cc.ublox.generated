@@ -457,18 +457,23 @@ class CfgSbas : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_mode() for @ref CfgSbasFields::Mode field.
-    ///     @li @b field_usage() for @ref CfgSbasFields::Usage field.
-    ///     @li @b field_maxSBAS() for @ref CfgSbasFields::MaxSBAS field.
-    ///     @li @b field_scanmode2() for @ref CfgSbasFields::Scanmode2 field.
-    ///     @li @b field_scanmode1() for @ref CfgSbasFields::Scanmode1 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_mode type and @b field_mode() fuction
+    ///         for @ref CfgSbasFields::Mode field.
+    ///     @li @b Field_usage type and @b field_usage() fuction
+    ///         for @ref CfgSbasFields::Usage field.
+    ///     @li @b Field_maxSBAS type and @b field_maxSBAS() fuction
+    ///         for @ref CfgSbasFields::MaxSBAS field.
+    ///     @li @b Field_scanmode2 type and @b field_scanmode2() fuction
+    ///         for @ref CfgSbasFields::Scanmode2 field.
+    ///     @li @b Field_scanmode1 type and @b field_scanmode1() fuction
+    ///         for @ref CfgSbasFields::Scanmode1 field.
+    COMMS_MSG_FIELDS_NAMES(
         mode,
         usage,
         maxSBAS,

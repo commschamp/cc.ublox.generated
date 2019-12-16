@@ -204,24 +204,35 @@ class NavHpposecef : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref NavHpposecefFields::Version field.
-    ///     @li @b field_reserved1() for @ref NavHpposecefFields::Reserved1 field.
-    ///     @li @b field_itow() for @ref NavHpposecefFields::Itow field.
-    ///     @li @b field_ecefX() for @ref NavHpposecefFields::EcefX field.
-    ///     @li @b field_ecefY() for @ref NavHpposecefFields::EcefY field.
-    ///     @li @b field_ecefZ() for @ref NavHpposecefFields::EcefZ field.
-    ///     @li @b field_ecefXHp() for @ref NavHpposecefFields::EcefXHp field.
-    ///     @li @b field_ecefYHp() for @ref NavHpposecefFields::EcefYHp field.
-    ///     @li @b field_ecefZHp() for @ref NavHpposecefFields::EcefZHp field.
-    ///     @li @b field_reserved2() for @ref NavHpposecefFields::Reserved2 field.
-    ///     @li @b field_pAcc() for @ref NavHpposecefFields::PAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref NavHpposecefFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavHpposecefFields::Reserved1 field.
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavHpposecefFields::Itow field.
+    ///     @li @b Field_ecefX type and @b field_ecefX() fuction
+    ///         for @ref NavHpposecefFields::EcefX field.
+    ///     @li @b Field_ecefY type and @b field_ecefY() fuction
+    ///         for @ref NavHpposecefFields::EcefY field.
+    ///     @li @b Field_ecefZ type and @b field_ecefZ() fuction
+    ///         for @ref NavHpposecefFields::EcefZ field.
+    ///     @li @b Field_ecefXHp type and @b field_ecefXHp() fuction
+    ///         for @ref NavHpposecefFields::EcefXHp field.
+    ///     @li @b Field_ecefYHp type and @b field_ecefYHp() fuction
+    ///         for @ref NavHpposecefFields::EcefYHp field.
+    ///     @li @b Field_ecefZHp type and @b field_ecefZHp() fuction
+    ///         for @ref NavHpposecefFields::EcefZHp field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref NavHpposecefFields::Reserved2 field.
+    ///     @li @b Field_pAcc type and @b field_pAcc() fuction
+    ///         for @ref NavHpposecefFields::PAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         itow,

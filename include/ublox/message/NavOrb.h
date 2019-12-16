@@ -448,15 +448,18 @@ struct NavOrbFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_health() - for SvFlagMembers::Health member field.
-                ///     @li @b field_visibility() - for SvFlagMembers::Visibility member field.
-                ///     @li @b field_reserved() - for SvFlagMembers::Reserved member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_health @b field_health() -
+                ///         for SvFlagMembers::Health member field.
+                ///     @li @b Field_visibility @b field_visibility() -
+                ///         for SvFlagMembers::Visibility member field.
+                ///     @li @b Field_reserved @b field_reserved() -
+                ///         for SvFlagMembers::Reserved member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     health,
                     visibility,
                     reserved
@@ -539,14 +542,16 @@ struct NavOrbFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_ephUsability() - for EphMembers::EphUsability member field.
-                ///     @li @b field_ephSource() - for EphMembers::EphSource member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_ephUsability @b field_ephUsability() -
+                ///         for EphMembers::EphUsability member field.
+                ///     @li @b Field_ephSource @b field_ephSource() -
+                ///         for EphMembers::EphSource member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     ephUsability,
                     ephSource
                 );
@@ -628,14 +633,16 @@ struct NavOrbFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_almUsability() - for AlmMembers::AlmUsability member field.
-                ///     @li @b field_almSource() - for AlmMembers::AlmSource member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_almUsability @b field_almUsability() -
+                ///         for AlmMembers::AlmUsability member field.
+                ///     @li @b Field_almSource @b field_almSource() -
+                ///         for AlmMembers::AlmSource member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     almUsability,
                     almSource
                 );
@@ -717,14 +724,16 @@ struct NavOrbFields
                     >;
             public:
                 /// @brief Allow access to internal fields.
-                /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+                /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
                 ///     related to @b comms::field::Bitfield class from COMMS library
                 ///     for details.
                 ///
                 ///     The generated access functions are:
-                ///     @li @b field_anoAopUsability() - for OtherOrbMembers::AnoAopUsability member field.
-                ///     @li @b field_type() - for OtherOrbMembers::Type member field.
-                COMMS_FIELD_MEMBERS_ACCESS(
+                ///     @li @b Field_anoAopUsability @b field_anoAopUsability() -
+                ///         for OtherOrbMembers::AnoAopUsability member field.
+                ///     @li @b Field_type @b field_type() -
+                ///         for OtherOrbMembers::Type member field.
+                COMMS_FIELD_MEMBERS_NAMES(
                     anoAopUsability,
                     type
                 );
@@ -763,18 +772,24 @@ struct NavOrbFields
                 >;
         public:
             /// @brief Allow access to internal fields.
-            /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+            /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
             ///     related to @b comms::field::Bundle class from COMMS library
             ///     for details.
             ///
             ///     The generated access functions are:
-            ///     @li @b field_gnssId() - for ElementMembers::GnssId member field.
-            ///     @li @b field_svid() - for ElementMembers::Svid member field.
-            ///     @li @b field_svFlag() - for ElementMembers::SvFlag member field.
-            ///     @li @b field_eph() - for ElementMembers::Eph member field.
-            ///     @li @b field_alm() - for ElementMembers::Alm member field.
-            ///     @li @b field_otherOrb() - for ElementMembers::OtherOrb member field.
-            COMMS_FIELD_MEMBERS_ACCESS(
+            ///     @li @b Field_gnssId @b field_gnssId() -
+            ///         for ElementMembers::GnssId member field.
+            ///     @li @b Field_svid @b field_svid() -
+            ///         for ElementMembers::Svid member field.
+            ///     @li @b Field_svFlag @b field_svFlag() -
+            ///         for ElementMembers::SvFlag member field.
+            ///     @li @b Field_eph @b field_eph() -
+            ///         for ElementMembers::Eph member field.
+            ///     @li @b Field_alm @b field_alm() -
+            ///         for ElementMembers::Alm member field.
+            ///     @li @b Field_otherOrb @b field_otherOrb() -
+            ///         for ElementMembers::OtherOrb member field.
+            COMMS_FIELD_MEMBERS_NAMES(
                 gnssId,
                 svid,
                 svFlag,
@@ -851,18 +866,23 @@ class NavOrb : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavOrbFields::Itow field.
-    ///     @li @b field_version() for @ref NavOrbFields::Version field.
-    ///     @li @b field_numSv() for @ref NavOrbFields::NumSv field.
-    ///     @li @b field_reserved1() for @ref NavOrbFields::Reserved1 field.
-    ///     @li @b field_list() for @ref NavOrbFields::List field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavOrbFields::Itow field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref NavOrbFields::Version field.
+    ///     @li @b Field_numSv type and @b field_numSv() fuction
+    ///         for @ref NavOrbFields::NumSv field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavOrbFields::Reserved1 field.
+    ///     @li @b Field_list type and @b field_list() fuction
+    ///         for @ref NavOrbFields::List field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         version,
         numSv,

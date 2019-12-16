@@ -151,19 +151,25 @@ class NavOdo : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref NavOdoFields::Version field.
-    ///     @li @b field_reserved1() for @ref NavOdoFields::Reserved1 field.
-    ///     @li @b field_itow() for @ref NavOdoFields::Itow field.
-    ///     @li @b field_distance() for @ref NavOdoFields::Distance field.
-    ///     @li @b field_totalDistance() for @ref NavOdoFields::TotalDistance field.
-    ///     @li @b field_distanceStd() for @ref NavOdoFields::DistanceStd field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref NavOdoFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref NavOdoFields::Reserved1 field.
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavOdoFields::Itow field.
+    ///     @li @b Field_distance type and @b field_distance() fuction
+    ///         for @ref NavOdoFields::Distance field.
+    ///     @li @b Field_totalDistance type and @b field_totalDistance() fuction
+    ///         for @ref NavOdoFields::TotalDistance field.
+    ///     @li @b Field_distanceStd type and @b field_distanceStd() fuction
+    ///         for @ref NavOdoFields::DistanceStd field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         reserved1,
         itow,

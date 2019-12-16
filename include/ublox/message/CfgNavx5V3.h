@@ -413,38 +413,63 @@ class CfgNavx5V3 : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgNavx5V3Fields::Version field.
-    ///     @li @b field_mask1() for @ref CfgNavx5V3Fields::Mask1 field.
-    ///     @li @b field_mask2() for @ref CfgNavx5V3Fields::Mask2 field.
-    ///     @li @b field_reserved1() for @ref CfgNavx5V3Fields::Reserved1 field.
-    ///     @li @b field_minSVs() for @ref CfgNavx5V3Fields::MinSVs field.
-    ///     @li @b field_maxSVs() for @ref CfgNavx5V3Fields::MaxSVs field.
-    ///     @li @b field_minCNO() for @ref CfgNavx5V3Fields::MinCNO field.
-    ///     @li @b field_reserved2() for @ref CfgNavx5V3Fields::Reserved2 field.
-    ///     @li @b field_iniFix3D() for @ref CfgNavx5V3Fields::IniFix3D field.
-    ///     @li @b field_reserved3() for @ref CfgNavx5V3Fields::Reserved3 field.
-    ///     @li @b field_ackAiding() for @ref CfgNavx5V3Fields::AckAiding field.
-    ///     @li @b field_wknRollover() for @ref CfgNavx5V3Fields::WknRollover field.
-    ///     @li @b field_sigAttenCompMode() for @ref CfgNavx5V3Fields::SigAttenCompMode field.
-    ///     @li @b field_reserved4() for @ref CfgNavx5V3Fields::Reserved4 field.
-    ///     @li @b field_reserved5() for @ref CfgNavx5V3Fields::Reserved5 field.
-    ///     @li @b field_reserved6() for @ref CfgNavx5V3Fields::Reserved6 field.
-    ///     @li @b field_usePPP() for @ref CfgNavx5V3Fields::UsePPP field.
-    ///     @li @b field_aopCfg() for @ref CfgNavx5V3Fields::AopCfg field.
-    ///     @li @b field_reserved7() for @ref CfgNavx5V3Fields::Reserved7 field.
-    ///     @li @b field_aopOrbMaxErr() for @ref CfgNavx5V3Fields::AopOrbMaxErr field.
-    ///     @li @b field_reserved8() for @ref CfgNavx5V3Fields::Reserved8 field.
-    ///     @li @b field_reserved9() for @ref CfgNavx5V3Fields::Reserved9 field.
-    ///     @li @b field_useAdr() for @ref CfgNavx5V3Fields::UseAdr field.
-    ///     @li @b field_reserved10() for @ref CfgNavx5V3Fields::Reserved10 field.
-    ///     @li @b field_reserved11() for @ref CfgNavx5V3Fields::Reserved11 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgNavx5V3Fields::Version field.
+    ///     @li @b Field_mask1 type and @b field_mask1() fuction
+    ///         for @ref CfgNavx5V3Fields::Mask1 field.
+    ///     @li @b Field_mask2 type and @b field_mask2() fuction
+    ///         for @ref CfgNavx5V3Fields::Mask2 field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgNavx5V3Fields::Reserved1 field.
+    ///     @li @b Field_minSVs type and @b field_minSVs() fuction
+    ///         for @ref CfgNavx5V3Fields::MinSVs field.
+    ///     @li @b Field_maxSVs type and @b field_maxSVs() fuction
+    ///         for @ref CfgNavx5V3Fields::MaxSVs field.
+    ///     @li @b Field_minCNO type and @b field_minCNO() fuction
+    ///         for @ref CfgNavx5V3Fields::MinCNO field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref CfgNavx5V3Fields::Reserved2 field.
+    ///     @li @b Field_iniFix3D type and @b field_iniFix3D() fuction
+    ///         for @ref CfgNavx5V3Fields::IniFix3D field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref CfgNavx5V3Fields::Reserved3 field.
+    ///     @li @b Field_ackAiding type and @b field_ackAiding() fuction
+    ///         for @ref CfgNavx5V3Fields::AckAiding field.
+    ///     @li @b Field_wknRollover type and @b field_wknRollover() fuction
+    ///         for @ref CfgNavx5V3Fields::WknRollover field.
+    ///     @li @b Field_sigAttenCompMode type and @b field_sigAttenCompMode() fuction
+    ///         for @ref CfgNavx5V3Fields::SigAttenCompMode field.
+    ///     @li @b Field_reserved4 type and @b field_reserved4() fuction
+    ///         for @ref CfgNavx5V3Fields::Reserved4 field.
+    ///     @li @b Field_reserved5 type and @b field_reserved5() fuction
+    ///         for @ref CfgNavx5V3Fields::Reserved5 field.
+    ///     @li @b Field_reserved6 type and @b field_reserved6() fuction
+    ///         for @ref CfgNavx5V3Fields::Reserved6 field.
+    ///     @li @b Field_usePPP type and @b field_usePPP() fuction
+    ///         for @ref CfgNavx5V3Fields::UsePPP field.
+    ///     @li @b Field_aopCfg type and @b field_aopCfg() fuction
+    ///         for @ref CfgNavx5V3Fields::AopCfg field.
+    ///     @li @b Field_reserved7 type and @b field_reserved7() fuction
+    ///         for @ref CfgNavx5V3Fields::Reserved7 field.
+    ///     @li @b Field_aopOrbMaxErr type and @b field_aopOrbMaxErr() fuction
+    ///         for @ref CfgNavx5V3Fields::AopOrbMaxErr field.
+    ///     @li @b Field_reserved8 type and @b field_reserved8() fuction
+    ///         for @ref CfgNavx5V3Fields::Reserved8 field.
+    ///     @li @b Field_reserved9 type and @b field_reserved9() fuction
+    ///         for @ref CfgNavx5V3Fields::Reserved9 field.
+    ///     @li @b Field_useAdr type and @b field_useAdr() fuction
+    ///         for @ref CfgNavx5V3Fields::UseAdr field.
+    ///     @li @b Field_reserved10 type and @b field_reserved10() fuction
+    ///         for @ref CfgNavx5V3Fields::Reserved10 field.
+    ///     @li @b Field_reserved11 type and @b field_reserved11() fuction
+    ///         for @ref CfgNavx5V3Fields::Reserved11 field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         mask1,
         mask2,

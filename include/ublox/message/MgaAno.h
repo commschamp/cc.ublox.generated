@@ -203,23 +203,33 @@ class MgaAno : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaAnoFields::Type field.
-    ///     @li @b field_version() for @ref MgaAnoFields::Version field.
-    ///     @li @b field_svid() for @ref MgaAnoFields::Svid field.
-    ///     @li @b field_gnssId() for @ref MgaAnoFields::GnssId field.
-    ///     @li @b field_year() for @ref MgaAnoFields::Year field.
-    ///     @li @b field_month() for @ref MgaAnoFields::Month field.
-    ///     @li @b field_day() for @ref MgaAnoFields::Day field.
-    ///     @li @b field_reserved1() for @ref MgaAnoFields::Reserved1 field.
-    ///     @li @b field_data() for @ref MgaAnoFields::Data field.
-    ///     @li @b field_reserved2() for @ref MgaAnoFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaAnoFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaAnoFields::Version field.
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref MgaAnoFields::Svid field.
+    ///     @li @b Field_gnssId type and @b field_gnssId() fuction
+    ///         for @ref MgaAnoFields::GnssId field.
+    ///     @li @b Field_year type and @b field_year() fuction
+    ///         for @ref MgaAnoFields::Year field.
+    ///     @li @b Field_month type and @b field_month() fuction
+    ///         for @ref MgaAnoFields::Month field.
+    ///     @li @b Field_day type and @b field_day() fuction
+    ///         for @ref MgaAnoFields::Day field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaAnoFields::Reserved1 field.
+    ///     @li @b Field_data type and @b field_data() fuction
+    ///         for @ref MgaAnoFields::Data field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaAnoFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         svid,

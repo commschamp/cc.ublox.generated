@@ -153,16 +153,19 @@ class RxmAlm : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_svid() for @ref RxmAlmFields::Svid field.
-    ///     @li @b field_week() for @ref RxmAlmFields::Week field.
-    ///     @li @b field_dwrd() for @ref RxmAlmFields::Dwrd field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_svid type and @b field_svid() fuction
+    ///         for @ref RxmAlmFields::Svid field.
+    ///     @li @b Field_week type and @b field_week() fuction
+    ///         for @ref RxmAlmFields::Week field.
+    ///     @li @b Field_dwrd type and @b field_dwrd() fuction
+    ///         for @ref RxmAlmFields::Dwrd field.
+    COMMS_MSG_FIELDS_NAMES(
         svid,
         week,
         dwrd

@@ -490,15 +490,18 @@ struct MonHwFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_bitsLow() - for FlagsMembers::BitsLow member field.
-        ///     @li @b field_jammingState() - for FlagsMembers::JammingState member field.
-        ///     @li @b field_bitsHigh() - for FlagsMembers::BitsHigh member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_bitsLow @b field_bitsLow() -
+        ///         for FlagsMembers::BitsLow member field.
+        ///     @li @b Field_jammingState @b field_jammingState() -
+        ///         for FlagsMembers::JammingState member field.
+        ///     @li @b Field_bitsHigh @b field_bitsHigh() -
+        ///         for FlagsMembers::BitsHigh member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             bitsLow,
             jammingState,
             bitsHigh
@@ -683,30 +686,47 @@ class MonHw : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_pinSel() for @ref MonHwFields::PinSel field.
-    ///     @li @b field_pinBank() for @ref MonHwFields::PinBank field.
-    ///     @li @b field_pinDir() for @ref MonHwFields::PinDir field.
-    ///     @li @b field_pinVal() for @ref MonHwFields::PinVal field.
-    ///     @li @b field_noisePerMS() for @ref MonHwFields::NoisePerMS field.
-    ///     @li @b field_agcCnt() for @ref MonHwFields::AgcCnt field.
-    ///     @li @b field_aStatus() for @ref MonHwFields::AStatus field.
-    ///     @li @b field_aPower() for @ref MonHwFields::APower field.
-    ///     @li @b field_flags() for @ref MonHwFields::Flags field.
-    ///     @li @b field_reserved1() for @ref MonHwFields::Reserved1 field.
-    ///     @li @b field_usedMask() for @ref MonHwFields::UsedMask field.
-    ///     @li @b field_vP() for @ref MonHwFields::VP field.
-    ///     @li @b field_jamInd() for @ref MonHwFields::JamInd field.
-    ///     @li @b field_reserved2() for @ref MonHwFields::Reserved2 field.
-    ///     @li @b field_pinIrq() for @ref MonHwFields::PinIrq field.
-    ///     @li @b field_pullH() for @ref MonHwFields::PullH field.
-    ///     @li @b field_pullL() for @ref MonHwFields::PullL field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_pinSel type and @b field_pinSel() fuction
+    ///         for @ref MonHwFields::PinSel field.
+    ///     @li @b Field_pinBank type and @b field_pinBank() fuction
+    ///         for @ref MonHwFields::PinBank field.
+    ///     @li @b Field_pinDir type and @b field_pinDir() fuction
+    ///         for @ref MonHwFields::PinDir field.
+    ///     @li @b Field_pinVal type and @b field_pinVal() fuction
+    ///         for @ref MonHwFields::PinVal field.
+    ///     @li @b Field_noisePerMS type and @b field_noisePerMS() fuction
+    ///         for @ref MonHwFields::NoisePerMS field.
+    ///     @li @b Field_agcCnt type and @b field_agcCnt() fuction
+    ///         for @ref MonHwFields::AgcCnt field.
+    ///     @li @b Field_aStatus type and @b field_aStatus() fuction
+    ///         for @ref MonHwFields::AStatus field.
+    ///     @li @b Field_aPower type and @b field_aPower() fuction
+    ///         for @ref MonHwFields::APower field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref MonHwFields::Flags field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MonHwFields::Reserved1 field.
+    ///     @li @b Field_usedMask type and @b field_usedMask() fuction
+    ///         for @ref MonHwFields::UsedMask field.
+    ///     @li @b Field_vP type and @b field_vP() fuction
+    ///         for @ref MonHwFields::VP field.
+    ///     @li @b Field_jamInd type and @b field_jamInd() fuction
+    ///         for @ref MonHwFields::JamInd field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MonHwFields::Reserved2 field.
+    ///     @li @b Field_pinIrq type and @b field_pinIrq() fuction
+    ///         for @ref MonHwFields::PinIrq field.
+    ///     @li @b Field_pullH type and @b field_pullH() fuction
+    ///         for @ref MonHwFields::PullH field.
+    ///     @li @b Field_pullL type and @b field_pullL() fuction
+    ///         for @ref MonHwFields::PullL field.
+    COMMS_MSG_FIELDS_NAMES(
         pinSel,
         pinBank,
         pinDir,

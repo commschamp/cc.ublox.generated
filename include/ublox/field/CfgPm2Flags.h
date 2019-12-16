@@ -393,17 +393,22 @@ class CfgPm2Flags : public
         >;
 public:
     /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+    /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
     ///     related to @b comms::field::Bitfield class from COMMS library
     ///     for details.
     ///
     ///     The generated access functions are:
-    ///     @li @b field_bitsLow() - for CfgPm2FlagsMembers::BitsLow member field.
-    ///     @li @b field_limitPeakCurr() - for CfgPm2FlagsMembers::LimitPeakCurr member field.
-    ///     @li @b field_bitsMid() - for CfgPm2FlagsMembers::BitsMid member field.
-    ///     @li @b field_mode() - for CfgPm2FlagsMembers::Mode member field.
-    ///     @li @b field_reserved() - for CfgPm2FlagsMembers::Reserved member field.
-    COMMS_FIELD_MEMBERS_ACCESS(
+    ///     @li @b Field_bitsLow @b field_bitsLow() -
+    ///         for CfgPm2FlagsMembers::BitsLow member field.
+    ///     @li @b Field_limitPeakCurr @b field_limitPeakCurr() -
+    ///         for CfgPm2FlagsMembers::LimitPeakCurr member field.
+    ///     @li @b Field_bitsMid @b field_bitsMid() -
+    ///         for CfgPm2FlagsMembers::BitsMid member field.
+    ///     @li @b Field_mode @b field_mode() -
+    ///         for CfgPm2FlagsMembers::Mode member field.
+    ///     @li @b Field_reserved @b field_reserved() -
+    ///         for CfgPm2FlagsMembers::Reserved member field.
+    COMMS_FIELD_MEMBERS_NAMES(
         bitsLow,
         limitPeakCurr,
         bitsMid,

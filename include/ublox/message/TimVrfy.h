@@ -223,14 +223,16 @@ struct TimVrfyFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_src() - for FlagsMembers::Src member field.
-        ///     @li @b field_reserved() - for FlagsMembers::Reserved member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_src @b field_src() -
+        ///         for FlagsMembers::Src member field.
+        ///     @li @b Field_reserved @b field_reserved() -
+        ///         for FlagsMembers::Reserved member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             src,
             reserved
         );
@@ -298,20 +300,27 @@ class TimVrfy : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref TimVrfyFields::Itow field.
-    ///     @li @b field_frac() for @ref TimVrfyFields::Frac field.
-    ///     @li @b field_deltaMs() for @ref TimVrfyFields::DeltaMs field.
-    ///     @li @b field_deltaNs() for @ref TimVrfyFields::DeltaNs field.
-    ///     @li @b field_wno() for @ref TimVrfyFields::Wno field.
-    ///     @li @b field_flags() for @ref TimVrfyFields::Flags field.
-    ///     @li @b field_reserved1() for @ref TimVrfyFields::Reserved1 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref TimVrfyFields::Itow field.
+    ///     @li @b Field_frac type and @b field_frac() fuction
+    ///         for @ref TimVrfyFields::Frac field.
+    ///     @li @b Field_deltaMs type and @b field_deltaMs() fuction
+    ///         for @ref TimVrfyFields::DeltaMs field.
+    ///     @li @b Field_deltaNs type and @b field_deltaNs() fuction
+    ///         for @ref TimVrfyFields::DeltaNs field.
+    ///     @li @b Field_wno type and @b field_wno() fuction
+    ///         for @ref TimVrfyFields::Wno field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref TimVrfyFields::Flags field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref TimVrfyFields::Reserved1 field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         frac,
         deltaMs,

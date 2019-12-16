@@ -113,20 +113,27 @@ class NavPosllh : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_itow() for @ref NavPosllhFields::Itow field.
-    ///     @li @b field_lon() for @ref NavPosllhFields::Lon field.
-    ///     @li @b field_lat() for @ref NavPosllhFields::Lat field.
-    ///     @li @b field_height() for @ref NavPosllhFields::Height field.
-    ///     @li @b field_hMSL() for @ref NavPosllhFields::HMSL field.
-    ///     @li @b field_hAcc() for @ref NavPosllhFields::HAcc field.
-    ///     @li @b field_vAcc() for @ref NavPosllhFields::VAcc field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_itow type and @b field_itow() fuction
+    ///         for @ref NavPosllhFields::Itow field.
+    ///     @li @b Field_lon type and @b field_lon() fuction
+    ///         for @ref NavPosllhFields::Lon field.
+    ///     @li @b Field_lat type and @b field_lat() fuction
+    ///         for @ref NavPosllhFields::Lat field.
+    ///     @li @b Field_height type and @b field_height() fuction
+    ///         for @ref NavPosllhFields::Height field.
+    ///     @li @b Field_hMSL type and @b field_hMSL() fuction
+    ///         for @ref NavPosllhFields::HMSL field.
+    ///     @li @b Field_hAcc type and @b field_hAcc() fuction
+    ///         for @ref NavPosllhFields::HAcc field.
+    ///     @li @b Field_vAcc type and @b field_vAcc() fuction
+    ///         for @ref NavPosllhFields::VAcc field.
+    COMMS_MSG_FIELDS_NAMES(
         itow,
         lon,
         lat,

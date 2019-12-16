@@ -265,25 +265,37 @@ class MgaBdsIono : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_type() for @ref MgaBdsIonoFields::Type field.
-    ///     @li @b field_version() for @ref MgaBdsIonoFields::Version field.
-    ///     @li @b field_reserved1() for @ref MgaBdsIonoFields::Reserved1 field.
-    ///     @li @b field_alpha0() for @ref MgaBdsIonoFields::Alpha0 field.
-    ///     @li @b field_alpha1() for @ref MgaBdsIonoFields::Alpha1 field.
-    ///     @li @b field_alpha2() for @ref MgaBdsIonoFields::Alpha2 field.
-    ///     @li @b field_alpha3() for @ref MgaBdsIonoFields::Alpha3 field.
-    ///     @li @b field_beta0() for @ref MgaBdsIonoFields::Beta0 field.
-    ///     @li @b field_beta1() for @ref MgaBdsIonoFields::Beta1 field.
-    ///     @li @b field_beta2() for @ref MgaBdsIonoFields::Beta2 field.
-    ///     @li @b field_beta3() for @ref MgaBdsIonoFields::Beta3 field.
-    ///     @li @b field_reserved2() for @ref MgaBdsIonoFields::Reserved2 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_type type and @b field_type() fuction
+    ///         for @ref MgaBdsIonoFields::Type field.
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref MgaBdsIonoFields::Version field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MgaBdsIonoFields::Reserved1 field.
+    ///     @li @b Field_alpha0 type and @b field_alpha0() fuction
+    ///         for @ref MgaBdsIonoFields::Alpha0 field.
+    ///     @li @b Field_alpha1 type and @b field_alpha1() fuction
+    ///         for @ref MgaBdsIonoFields::Alpha1 field.
+    ///     @li @b Field_alpha2 type and @b field_alpha2() fuction
+    ///         for @ref MgaBdsIonoFields::Alpha2 field.
+    ///     @li @b Field_alpha3 type and @b field_alpha3() fuction
+    ///         for @ref MgaBdsIonoFields::Alpha3 field.
+    ///     @li @b Field_beta0 type and @b field_beta0() fuction
+    ///         for @ref MgaBdsIonoFields::Beta0 field.
+    ///     @li @b Field_beta1 type and @b field_beta1() fuction
+    ///         for @ref MgaBdsIonoFields::Beta1 field.
+    ///     @li @b Field_beta2 type and @b field_beta2() fuction
+    ///         for @ref MgaBdsIonoFields::Beta2 field.
+    ///     @li @b Field_beta3 type and @b field_beta3() fuction
+    ///         for @ref MgaBdsIonoFields::Beta3 field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref MgaBdsIonoFields::Reserved2 field.
+    COMMS_MSG_FIELDS_NAMES(
         type,
         version,
         reserved1,

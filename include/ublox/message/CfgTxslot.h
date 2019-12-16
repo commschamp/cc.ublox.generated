@@ -281,18 +281,23 @@ class CfgTxslot : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgTxslotFields::Version field.
-    ///     @li @b field_enable() for @ref CfgTxslotFields::Enable field.
-    ///     @li @b field_refTp() for @ref CfgTxslotFields::RefTp field.
-    ///     @li @b field_reserved1() for @ref CfgTxslotFields::Reserved1 field.
-    ///     @li @b field_end() for @ref CfgTxslotFields::End field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgTxslotFields::Version field.
+    ///     @li @b Field_enable type and @b field_enable() fuction
+    ///         for @ref CfgTxslotFields::Enable field.
+    ///     @li @b Field_refTp type and @b field_refTp() fuction
+    ///         for @ref CfgTxslotFields::RefTp field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgTxslotFields::Reserved1 field.
+    ///     @li @b Field_end type and @b field_end() fuction
+    ///         for @ref CfgTxslotFields::End field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         enable,
         refTp,

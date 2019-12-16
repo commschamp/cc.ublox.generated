@@ -379,15 +379,18 @@ struct TimTosFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_bitsLow() - for FlagsMembers::BitsLow member field.
-        ///     @li @b field_discSrc() - for FlagsMembers::DiscSrc member field.
-        ///     @li @b field_bitsHigh() - for FlagsMembers::BitsHigh member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_bitsLow @b field_bitsLow() -
+        ///         for FlagsMembers::BitsLow member field.
+        ///     @li @b Field_discSrc @b field_discSrc() -
+        ///         for FlagsMembers::DiscSrc member field.
+        ///     @li @b Field_bitsHigh @b field_bitsHigh() -
+        ///         for FlagsMembers::BitsHigh member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             bitsLow,
             discSrc,
             bitsHigh
@@ -681,34 +684,55 @@ class TimTos : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref TimTosFields::Version field.
-    ///     @li @b field_gnssId() for @ref TimTosFields::GnssId field.
-    ///     @li @b field_reserved1() for @ref TimTosFields::Reserved1 field.
-    ///     @li @b field_flags() for @ref TimTosFields::Flags field.
-    ///     @li @b field_year() for @ref TimTosFields::Year field.
-    ///     @li @b field_month() for @ref TimTosFields::Month field.
-    ///     @li @b field_day() for @ref TimTosFields::Day field.
-    ///     @li @b field_hour() for @ref TimTosFields::Hour field.
-    ///     @li @b field_min() for @ref TimTosFields::Min field.
-    ///     @li @b field_sec() for @ref TimTosFields::Sec field.
-    ///     @li @b field_utcStandard() for @ref TimTosFields::UtcStandard field.
-    ///     @li @b field_utcOffset() for @ref TimTosFields::UtcOffset field.
-    ///     @li @b field_utcUncertainty() for @ref TimTosFields::UtcUncertainty field.
-    ///     @li @b field_week() for @ref TimTosFields::Week field.
-    ///     @li @b field_tOW() for @ref TimTosFields::TOW field.
-    ///     @li @b field_gnssOffset() for @ref TimTosFields::GnssOffset field.
-    ///     @li @b field_gnssUncertainy() for @ref TimTosFields::GnssUncertainy field.
-    ///     @li @b field_intOscOffset() for @ref TimTosFields::IntOscOffset field.
-    ///     @li @b field_intOscUncertainty() for @ref TimTosFields::IntOscUncertainty field.
-    ///     @li @b field_extOscOffset() for @ref TimTosFields::ExtOscOffset field.
-    ///     @li @b field_extOscUncertainty() for @ref TimTosFields::ExtOscUncertainty field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref TimTosFields::Version field.
+    ///     @li @b Field_gnssId type and @b field_gnssId() fuction
+    ///         for @ref TimTosFields::GnssId field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref TimTosFields::Reserved1 field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref TimTosFields::Flags field.
+    ///     @li @b Field_year type and @b field_year() fuction
+    ///         for @ref TimTosFields::Year field.
+    ///     @li @b Field_month type and @b field_month() fuction
+    ///         for @ref TimTosFields::Month field.
+    ///     @li @b Field_day type and @b field_day() fuction
+    ///         for @ref TimTosFields::Day field.
+    ///     @li @b Field_hour type and @b field_hour() fuction
+    ///         for @ref TimTosFields::Hour field.
+    ///     @li @b Field_min type and @b field_min() fuction
+    ///         for @ref TimTosFields::Min field.
+    ///     @li @b Field_sec type and @b field_sec() fuction
+    ///         for @ref TimTosFields::Sec field.
+    ///     @li @b Field_utcStandard type and @b field_utcStandard() fuction
+    ///         for @ref TimTosFields::UtcStandard field.
+    ///     @li @b Field_utcOffset type and @b field_utcOffset() fuction
+    ///         for @ref TimTosFields::UtcOffset field.
+    ///     @li @b Field_utcUncertainty type and @b field_utcUncertainty() fuction
+    ///         for @ref TimTosFields::UtcUncertainty field.
+    ///     @li @b Field_week type and @b field_week() fuction
+    ///         for @ref TimTosFields::Week field.
+    ///     @li @b Field_tOW type and @b field_tOW() fuction
+    ///         for @ref TimTosFields::TOW field.
+    ///     @li @b Field_gnssOffset type and @b field_gnssOffset() fuction
+    ///         for @ref TimTosFields::GnssOffset field.
+    ///     @li @b Field_gnssUncertainy type and @b field_gnssUncertainy() fuction
+    ///         for @ref TimTosFields::GnssUncertainy field.
+    ///     @li @b Field_intOscOffset type and @b field_intOscOffset() fuction
+    ///         for @ref TimTosFields::IntOscOffset field.
+    ///     @li @b Field_intOscUncertainty type and @b field_intOscUncertainty() fuction
+    ///         for @ref TimTosFields::IntOscUncertainty field.
+    ///     @li @b Field_extOscOffset type and @b field_extOscOffset() fuction
+    ///         for @ref TimTosFields::ExtOscOffset field.
+    ///     @li @b Field_extOscUncertainty type and @b field_extOscUncertainty() fuction
+    ///         for @ref TimTosFields::ExtOscUncertainty field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         gnssId,
         reserved1,

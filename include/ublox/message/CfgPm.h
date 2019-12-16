@@ -360,17 +360,22 @@ struct CfgPmFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_res1() - for FlagsMembers::Res1 member field.
-        ///     @li @b field_internal() - for FlagsMembers::Internal member field.
-        ///     @li @b field_bitsMid() - for FlagsMembers::BitsMid member field.
-        ///     @li @b field_limitPeakCurr() - for FlagsMembers::LimitPeakCurr member field.
-        ///     @li @b field_bitsHigh() - for FlagsMembers::BitsHigh member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_res1 @b field_res1() -
+        ///         for FlagsMembers::Res1 member field.
+        ///     @li @b Field_internal @b field_internal() -
+        ///         for FlagsMembers::Internal member field.
+        ///     @li @b Field_bitsMid @b field_bitsMid() -
+        ///         for FlagsMembers::BitsMid member field.
+        ///     @li @b Field_limitPeakCurr @b field_limitPeakCurr() -
+        ///         for FlagsMembers::LimitPeakCurr member field.
+        ///     @li @b Field_bitsHigh @b field_bitsHigh() -
+        ///         for FlagsMembers::BitsHigh member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             res1,
             internal,
             bitsMid,
@@ -508,23 +513,33 @@ class CfgPm : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_version() for @ref CfgPmFields::Version field.
-    ///     @li @b field_res1() for @ref CfgPmFields::Res1 field.
-    ///     @li @b field_res2() for @ref CfgPmFields::Res2 field.
-    ///     @li @b field_res3() for @ref CfgPmFields::Res3 field.
-    ///     @li @b field_flags() for @ref CfgPmFields::Flags field.
-    ///     @li @b field_updatePeriod() for @ref CfgPmFields::UpdatePeriod field.
-    ///     @li @b field_searchPeriod() for @ref CfgPmFields::SearchPeriod field.
-    ///     @li @b field_gridOffset() for @ref CfgPmFields::GridOffset field.
-    ///     @li @b field_onTime() for @ref CfgPmFields::OnTime field.
-    ///     @li @b field_minAcqTime() for @ref CfgPmFields::MinAcqTime field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_version type and @b field_version() fuction
+    ///         for @ref CfgPmFields::Version field.
+    ///     @li @b Field_res1 type and @b field_res1() fuction
+    ///         for @ref CfgPmFields::Res1 field.
+    ///     @li @b Field_res2 type and @b field_res2() fuction
+    ///         for @ref CfgPmFields::Res2 field.
+    ///     @li @b Field_res3 type and @b field_res3() fuction
+    ///         for @ref CfgPmFields::Res3 field.
+    ///     @li @b Field_flags type and @b field_flags() fuction
+    ///         for @ref CfgPmFields::Flags field.
+    ///     @li @b Field_updatePeriod type and @b field_updatePeriod() fuction
+    ///         for @ref CfgPmFields::UpdatePeriod field.
+    ///     @li @b Field_searchPeriod type and @b field_searchPeriod() fuction
+    ///         for @ref CfgPmFields::SearchPeriod field.
+    ///     @li @b Field_gridOffset type and @b field_gridOffset() fuction
+    ///         for @ref CfgPmFields::GridOffset field.
+    ///     @li @b Field_onTime type and @b field_onTime() fuction
+    ///         for @ref CfgPmFields::OnTime field.
+    ///     @li @b Field_minAcqTime type and @b field_minAcqTime() fuction
+    ///         for @ref CfgPmFields::MinAcqTime field.
+    COMMS_MSG_FIELDS_NAMES(
         version,
         res1,
         res2,

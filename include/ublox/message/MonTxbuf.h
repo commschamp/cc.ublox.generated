@@ -289,14 +289,16 @@ struct MonTxbufFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_limit() - for ErrorsMembers::Limit member field.
-        ///     @li @b field_bits() - for ErrorsMembers::Bits member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_limit @b field_limit() -
+        ///         for ErrorsMembers::Limit member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for ErrorsMembers::Bits member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             limit,
             bits
         );
@@ -364,20 +366,27 @@ class MonTxbuf : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_pending() for @ref MonTxbufFields::Pending field.
-    ///     @li @b field_usage() for @ref MonTxbufFields::Usage field.
-    ///     @li @b field_peakUsage() for @ref MonTxbufFields::PeakUsage field.
-    ///     @li @b field_tUsage() for @ref MonTxbufFields::TUsage field.
-    ///     @li @b field_tPeakusage() for @ref MonTxbufFields::TPeakusage field.
-    ///     @li @b field_errors() for @ref MonTxbufFields::Errors field.
-    ///     @li @b field_reserved1() for @ref MonTxbufFields::Reserved1 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_pending type and @b field_pending() fuction
+    ///         for @ref MonTxbufFields::Pending field.
+    ///     @li @b Field_usage type and @b field_usage() fuction
+    ///         for @ref MonTxbufFields::Usage field.
+    ///     @li @b Field_peakUsage type and @b field_peakUsage() fuction
+    ///         for @ref MonTxbufFields::PeakUsage field.
+    ///     @li @b Field_tUsage type and @b field_tUsage() fuction
+    ///         for @ref MonTxbufFields::TUsage field.
+    ///     @li @b Field_tPeakusage type and @b field_tPeakusage() fuction
+    ///         for @ref MonTxbufFields::TPeakusage field.
+    ///     @li @b Field_errors type and @b field_errors() fuction
+    ///         for @ref MonTxbufFields::Errors field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref MonTxbufFields::Reserved1 field.
+    COMMS_MSG_FIELDS_NAMES(
         pending,
         usage,
         peakUsage,

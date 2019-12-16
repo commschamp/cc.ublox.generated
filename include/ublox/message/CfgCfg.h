@@ -229,17 +229,21 @@ class CfgCfg : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_clearMask() for @ref CfgCfgFields::ClearMask field.
-    ///     @li @b field_saveMask() for @ref CfgCfgFields::SaveMask field.
-    ///     @li @b field_loadMask() for @ref CfgCfgFields::LoadMask field.
-    ///     @li @b field_deviceMask() for @ref CfgCfgFields::DeviceMask field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_clearMask type and @b field_clearMask() fuction
+    ///         for @ref CfgCfgFields::ClearMask field.
+    ///     @li @b Field_saveMask type and @b field_saveMask() fuction
+    ///         for @ref CfgCfgFields::SaveMask field.
+    ///     @li @b Field_loadMask type and @b field_loadMask() fuction
+    ///         for @ref CfgCfgFields::LoadMask field.
+    ///     @li @b Field_deviceMask type and @b field_deviceMask() fuction
+    ///         for @ref CfgCfgFields::DeviceMask field.
+    COMMS_MSG_FIELDS_NAMES(
         clearMask,
         saveMask,
         loadMask,

@@ -322,17 +322,22 @@ struct CfgPrtSpiFields
             >;
     public:
         /// @brief Allow access to internal fields.
-        /// @details See definition of @b COMMS_FIELD_MEMBERS_ACCESS macro
+        /// @details See definition of @b COMMS_FIELD_MEMBERS_NAMES macro
         ///     related to @b comms::field::Bitfield class from COMMS library
         ///     for details.
         ///
         ///     The generated access functions are:
-        ///     @li @b field_reservedLow() - for ModeMembers::ReservedLow member field.
-        ///     @li @b field_spiMode() - for ModeMembers::SpiMode member field.
-        ///     @li @b field_bits() - for ModeMembers::Bits member field.
-        ///     @li @b field_ffCnt() - for ModeMembers::FfCnt member field.
-        ///     @li @b field_reservedHigh() - for ModeMembers::ReservedHigh member field.
-        COMMS_FIELD_MEMBERS_ACCESS(
+        ///     @li @b Field_reservedLow @b field_reservedLow() -
+        ///         for ModeMembers::ReservedLow member field.
+        ///     @li @b Field_spiMode @b field_spiMode() -
+        ///         for ModeMembers::SpiMode member field.
+        ///     @li @b Field_bits @b field_bits() -
+        ///         for ModeMembers::Bits member field.
+        ///     @li @b Field_ffCnt @b field_ffCnt() -
+        ///         for ModeMembers::FfCnt member field.
+        ///     @li @b Field_reservedHigh @b field_reservedHigh() -
+        ///         for ModeMembers::ReservedHigh member field.
+        COMMS_FIELD_MEMBERS_NAMES(
             reservedLow,
             spiMode,
             bits,
@@ -451,22 +456,31 @@ class CfgPrtSpi : public
         >;
 
 public:
-    /// @brief Allow access to internal fields.
-    /// @details See definition of @b COMMS_MSG_FIELDS_ACCESS macro
+    /// @brief Provide names and allow access to internal fields.
+    /// @details See definition of @b COMMS_MSG_FIELDS_NAMES macro
     ///     related to @b comms::MessageBase class from COMMS library
     ///     for details.
     ///
-    ///     The generated functions are:
-    ///     @li @b field_portId() for @ref CfgPrtSpiFields::PortId field.
-    ///     @li @b field_reserved1() for @ref CfgPrtSpiFields::Reserved1 field.
-    ///     @li @b field_txReady() for @ref CfgPrtSpiFields::TxReady field.
-    ///     @li @b field_mode() for @ref CfgPrtSpiFields::Mode field.
-    ///     @li @b field_reserved2() for @ref CfgPrtSpiFields::Reserved2 field.
-    ///     @li @b field_inProtoMask() for @ref CfgPrtSpiFields::InProtoMask field.
-    ///     @li @b field_outProtoMask() for @ref CfgPrtSpiFields::OutProtoMask field.
-    ///     @li @b field_cfgPrtFlags() for @ref CfgPrtSpiFields::CfgPrtFlags field.
-    ///     @li @b field_reserved3() for @ref CfgPrtSpiFields::Reserved3 field.
-    COMMS_MSG_FIELDS_ACCESS(
+    ///     The generated types and functions are:
+    ///     @li @b Field_portId type and @b field_portId() fuction
+    ///         for @ref CfgPrtSpiFields::PortId field.
+    ///     @li @b Field_reserved1 type and @b field_reserved1() fuction
+    ///         for @ref CfgPrtSpiFields::Reserved1 field.
+    ///     @li @b Field_txReady type and @b field_txReady() fuction
+    ///         for @ref CfgPrtSpiFields::TxReady field.
+    ///     @li @b Field_mode type and @b field_mode() fuction
+    ///         for @ref CfgPrtSpiFields::Mode field.
+    ///     @li @b Field_reserved2 type and @b field_reserved2() fuction
+    ///         for @ref CfgPrtSpiFields::Reserved2 field.
+    ///     @li @b Field_inProtoMask type and @b field_inProtoMask() fuction
+    ///         for @ref CfgPrtSpiFields::InProtoMask field.
+    ///     @li @b Field_outProtoMask type and @b field_outProtoMask() fuction
+    ///         for @ref CfgPrtSpiFields::OutProtoMask field.
+    ///     @li @b Field_cfgPrtFlags type and @b field_cfgPrtFlags() fuction
+    ///         for @ref CfgPrtSpiFields::CfgPrtFlags field.
+    ///     @li @b Field_reserved3 type and @b field_reserved3() fuction
+    ///         for @ref CfgPrtSpiFields::Reserved3 field.
+    COMMS_MSG_FIELDS_NAMES(
         portId,
         reserved1,
         txReady,
