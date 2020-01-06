@@ -25,7 +25,7 @@ option (OPT_USE_CCACHE "Use of ccache on UNIX system" ON)
 #       defaults to ublox::input::AllMessages.
 
 if ("${OPT_CC_TAG}" STREQUAL "")
-    set (OPT_CC_TAG "v2.3")
+    set (OPT_CC_TAG "v2.3.1")
 endif()
 
 if (NOT CMAKE_CXX_STANDARD)
