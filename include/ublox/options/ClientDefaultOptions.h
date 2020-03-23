@@ -1796,6 +1796,14 @@ struct ClientDefaultOptions : public DefaultOptions
             >;
         
         /// @brief Extra options for
+        ///     @ref ublox::message::SecUniqidPoll message.
+        using SecUniqidPoll =
+            std::tuple<
+                comms::option::app::NoReadImpl,
+                comms::option::app::NoDispatchImpl
+            >;
+        
+        /// @brief Extra options for
         ///     @ref ublox::message::TimDosc message.
         using TimDosc =
             std::tuple<

@@ -243,6 +243,7 @@
 #include "cc_plugin/message/RxmSvsiPoll.h"
 #include "cc_plugin/message/SecSign.h"
 #include "cc_plugin/message/SecUniqid.h"
+#include "cc_plugin/message/SecUniqidPoll.h"
 #include "cc_plugin/message/TimDosc.h"
 #include "cc_plugin/message/TimFchg.h"
 #include "cc_plugin/message/TimFchgPoll.h"
@@ -537,6 +538,7 @@ using Ublox8Messages =
         ublox::cc_plugin::message::LogRetrieveposextra,
         ublox::cc_plugin::message::SecSign,
         ublox::cc_plugin::message::SecUniqid,
+        ublox::cc_plugin::message::SecUniqidPoll,
         ublox::cc_plugin::message::HnrPvt,
         ublox::cc_plugin::message::HnrPvtPoll
     >;

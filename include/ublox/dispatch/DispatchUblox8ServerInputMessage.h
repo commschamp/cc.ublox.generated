@@ -1314,6 +1314,11 @@ auto dispatchUblox8ServerInputMessage(
         using MsgType = ublox::message::LogFindtime<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
+    case ublox::MsgId_SecUniqid:
+    {
+        using MsgType = ublox::message::SecUniqidPoll<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
     case ublox::MsgId_HnrPvt:
     {
         using MsgType = ublox::message::HnrPvtPoll<InterfaceType, TProtOptions>;

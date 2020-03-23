@@ -278,6 +278,7 @@
 #include "ublox/message/RxmSvsiPoll.h"
 #include "ublox/message/SecSign.h"
 #include "ublox/message/SecUniqid.h"
+#include "ublox/message/SecUniqidPoll.h"
 #include "ublox/message/TimDosc.h"
 #include "ublox/message/TimFchg.h"
 #include "ublox/message/TimFchgPoll.h"
@@ -606,6 +607,7 @@ using AllMessages =
         ublox::message::LogRetrieveposextra<TBase, TOpt>,
         ublox::message::SecSign<TBase, TOpt>,
         ublox::message::SecUniqid<TBase, TOpt>,
+        ublox::message::SecUniqidPoll<TBase, TOpt>,
         ublox::message::HnrPvt<TBase, TOpt>,
         ublox::message::HnrPvtPoll<TBase, TOpt>
     >;

@@ -201,6 +201,7 @@
 #include "ublox/message/RxmRawPoll.h"
 #include "ublox/message/RxmRawxPoll.h"
 #include "ublox/message/RxmSvsiPoll.h"
+#include "ublox/message/SecUniqidPoll.h"
 #include "ublox/message/TimFchgPoll.h"
 #include "ublox/message/TimSmeas.h"
 #include "ublox/message/TimSvinPoll.h"
@@ -433,6 +434,7 @@ using ServerInputMessages =
         ublox::message::LogInfoPoll<TBase, TOpt>,
         ublox::message::LogRetrieve<TBase, TOpt>,
         ublox::message::LogFindtime<TBase, TOpt>,
+        ublox::message::SecUniqidPoll<TBase, TOpt>,
         ublox::message::HnrPvtPoll<TBase, TOpt>
     >;
 

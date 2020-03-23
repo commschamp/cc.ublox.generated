@@ -2106,8 +2106,21 @@ auto dispatchUblox8Message(
     }
     case ublox::MsgId_SecUniqid:
     {
-        using MsgType = ublox::message::SecUniqid<InterfaceType, TProtOptions>;
-        return handler.handle(static_cast<MsgType&>(msg));
+        switch (idx) {
+        case 0U:
+        {
+            using MsgType = ublox::message::SecUniqid<InterfaceType, TProtOptions>;
+            return handler.handle(static_cast<MsgType&>(msg));
+        }
+        case 1U:
+        {
+            using MsgType = ublox::message::SecUniqidPoll<InterfaceType, TProtOptions>;
+            return handler.handle(static_cast<MsgType&>(msg));
+        }
+        default:
+            return handler.handle(msg);
+        };
+        break;
     }
     case ublox::MsgId_HnrPvt:
     {

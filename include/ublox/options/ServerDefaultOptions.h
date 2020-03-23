@@ -1796,6 +1796,14 @@ struct ServerDefaultOptions : public DefaultOptions
             >;
         
         /// @brief Extra options for
+        ///     @ref ublox::message::SecUniqidPoll message.
+        using SecUniqidPoll =
+            std::tuple<
+                comms::option::app::NoWriteImpl,
+                comms::option::app::NoRefreshImpl
+            >;
+        
+        /// @brief Extra options for
         ///     @ref ublox::message::TimDosc message.
         using TimDosc =
             std::tuple<
