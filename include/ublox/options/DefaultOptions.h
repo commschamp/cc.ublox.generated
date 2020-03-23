@@ -1827,6 +1827,10 @@ struct DefaultOptions
         using SecUniqid = comms::option::app::EmptyOption;
         
         /// @brief Extra options for
+        ///     @ref ublox::message::SecUniqidPoll message.
+        using SecUniqidPoll = comms::option::app::EmptyOption;
+        
+        /// @brief Extra options for
         ///     @ref ublox::message::TimDosc message.
         using TimDosc = comms::option::app::EmptyOption;
         

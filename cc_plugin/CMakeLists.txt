@@ -348,6 +348,7 @@ function (cc_plugin_all_messages)
         message/RxmSvsiPoll.cpp
         message/SecSign.cpp
         message/SecUniqid.cpp
+        message/SecUniqidPoll.cpp
         message/TimDosc.cpp
         message/TimFchg.cpp
         message/TimFchgPoll.cpp
