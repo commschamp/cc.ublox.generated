@@ -6,28 +6,28 @@ function (cc_plugin_all_messages)
     set (name "${ALL_MESSAGES_LIB}")
     set (src
         field/CfgNavx5AopCfg.cpp
-        field/CfgNavx5AopOrbMaxErr.cpp
         field/CfgNavx5Mask1.cpp
+        field/CfgNavx5AopOrbMaxErr.cpp
         field/CfgNavx5Mask2.cpp
+        field/CfgCfgMask.cpp
         field/CfgNavx5SigAttenCompMode.cpp
         field/GeofenceState.cpp
         field/MsgId.cpp
-        field/CfgCfgMask.cpp
         field/CfgDatD.cpp
         field/CfgDatDatumNum.cpp
+        field/CfgNmeaFilter.cpp
         field/CfgDatFlat.cpp
         field/CfgDatMajA.cpp
         field/CfgDatRot.cpp
         field/CfgDatScale.cpp
         field/CfgMainTalkerId.cpp
-        field/CfgNmeaFilter.cpp
         field/CfgNmeaFlags.cpp
         field/CfgNmeaGnssToFilter.cpp
+        field/CfgNvsMask.cpp
         field/CfgNmeaGsvTalkerId.cpp
         field/CfgNmeaNumSV.cpp
         field/CfgNmeaSvNumbering.cpp
         field/CfgNmeaVersion.cpp
-        field/CfgNvsMask.cpp
         field/CfgPm2Flags.cpp
         field/CfgPrtFlags.cpp
         field/CfgPrtInProtoMask.cpp
@@ -35,6 +35,7 @@ function (cc_plugin_all_messages)
         field/CfgPrtPortId.cpp
         field/CfgPrtTxReady.cpp
         field/CfgTp5TpIdx.cpp
+        field/SbasService.cpp
         field/Day.cpp
         field/Dop.cpp
         field/EcefHP.cpp
@@ -69,7 +70,6 @@ function (cc_plugin_all_messages)
         field/Res7.cpp
         field/Res8.cpp
         field/SAcc.cpp
-        field/SbasService.cpp
         field/SbasSys.cpp
         field/Sec.cpp
         field/VAcc.cpp

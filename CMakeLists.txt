@@ -23,13 +23,19 @@ option (OPT_USE_CCACHE "Use of ccache on UNIX system" ON)
 #       defaults to ublox::frame::UbloxFrame.
 # OPT_TEST_INPUT_MESSAGES - All input messages bundle for test applications,
 #       defaults to ublox::input::AllMessages.
+# OPT_EXTERNALS_DIR - Directory where externals (comms_champion) are checked out,
+#       defaults to ${PROJECT_BINARY_DIR}/externals.
 
 if ("${OPT_CC_TAG}" STREQUAL "")
-    set (OPT_CC_TAG "v2.3.3")
+    set (OPT_CC_TAG "v2.4")
 endif()
 
 if (NOT CMAKE_CXX_STANDARD)
     set (CMAKE_CXX_STANDARD 11)
+endif()
+
+if ("${OPT_EXTERNALS_DIR}" STREQUAL "")
+    set (OPT_EXTERNALS_DIR "${PROJECT_BINARY_DIR}/externals")
 endif()
 
 include(GNUInstallDirs)
@@ -106,8 +112,8 @@ endif ()
 if ((external_cc_needed OR (NOT OPT_NO_COMMS)) AND ("${OPT_CC_MAIN_INSTALL_DIR}" STREQUAL ""))
     set (cc_repo "https://github.com/arobenko/comms_champion.git")
     set (cc_tag "${OPT_CC_TAG}")
-    set (cc_main_dir "${CMAKE_BINARY_DIR}/comms_champion")
-    set (cc_src_dir "${cc_main_dir}/src")
+    set (cc_main_dir "${PROJECT_BINARY_DIR}/externals/comms_champion-build")
+    set (cc_src_dir "${OPT_EXTERNALS_DIR}/comms_champion")
     set (cc_bin_dir "${cc_main_dir}/build")
     set (cc_install_dir "${CMAKE_INSTALL_PREFIX}")
 
