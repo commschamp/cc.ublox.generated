@@ -7,6 +7,7 @@ option (OPT_NO_COMMS "Forcefully exclude checkout and install of COMMS library. 
     Works only if OPT_BUILD_TEST and OPT_BUILD_PLUGIN options weren't used" OFF)
 option (OPT_WARN_AS_ERR "Treat warning as error" ON)
 option (OPT_USE_CCACHE "Use of ccache on UNIX system" ON)
+option (OPT_EXTERNALS_UPDATE_DISCONNECTED "Allow skip of external projects update." OFF)
 
 # Other parameters:
 # OPT_CMAKE_EXPORT_NAMESPACE - Set namespace for a protocol library
@@ -26,8 +27,14 @@ option (OPT_USE_CCACHE "Use of ccache on UNIX system" ON)
 # OPT_EXTERNALS_DIR - Directory where externals (comms_champion) are checked out,
 #       defaults to ${PROJECT_BINARY_DIR}/externals.
 
+set (COMPILER_OPTIONS -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER})
+if (CMAKE_TOOLCHAIN_FILE AND EXISTS ${CMAKE_TOOLCHAIN_FILE})
+    message(STATUS "Loading toolchain from ${CMAKE_TOOLCHAIN_FILE}")
+    set (COMPILER_OPTIONS -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE})
+endif()
+
 if ("${OPT_CC_TAG}" STREQUAL "")
-    set (OPT_CC_TAG "v2.4")
+    set (OPT_CC_TAG "v2.4.1")
 endif()
 
 if (NOT CMAKE_CXX_STANDARD)
@@ -123,8 +130,12 @@ if ((external_cc_needed OR (NOT OPT_NO_COMMS)) AND ("${OPT_CC_MAIN_INSTALL_DIR}"
     endif ()
 
     if (NOT ${OPT_BUILD_PLUGIN})
-        set (ct_lib_only_opt -DCC_COMMS_LIB_ONLY=ON)
+        set (cc_lib_only_opt -DCC_COMMS_LIB_ONLY=ON)
         set (EXT_CC_NO_COMMS_CHAMPION TRUE)
+    endif ()
+
+    if (${OPT_EXTERNALS_UPDATE_DISCONNECTED})
+        set (cc_update_disconnected_opt UPDATE_DISCONNECTED 1)
     endif ()
 
     find_package (Git REQUIRED)
@@ -163,11 +174,11 @@ if ((external_cc_needed OR (NOT OPT_NO_COMMS)) AND ("${OPT_CC_MAIN_INSTALL_DIR}"
         SOURCE_DIR "${cc_src_dir}"
         BINARY_DIR "${cc_bin_dir}"
         INSTALL_DIR "${cc_install_dir}"
+        ${cc_update_disconnected_opt}
         CMAKE_ARGS
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${cc_install_dir}
             -DCC_NO_UNIT_TESTS=ON -DCC_NO_WARN_AS_ERR=ON -DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}
-            -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-            ${cc_qt_dir_opt} ${ct_lib_only_opt}
+            ${COMPILER_OPTIONS} ${cc_qt_dir_opt} ${cc_lib_only_opt}
     )
 
     if (WIN32 AND (NOT "${OPT_QT_DIR}" STREQUAL ""))

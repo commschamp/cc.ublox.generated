@@ -240,7 +240,7 @@
 /// using MyOutputMsg =
 ///    ublox::Message<
 ///        comms::option::app::WriteIterator<std::uint8_t*>, // for polymorphic write
-///        comms::option::app::LengthInfoInterface, // for polymorphic serialisation length retrieval
+///        comms::option::app::LengthInfoInterface, // for polymorphic serialization length retrieval
 ///        comms::option::app::IdInfoInterface // for polymorphic message ID retrieval
 ///    >;
 /// @endcode
@@ -252,7 +252,7 @@
 ///        comms::option::app::ReadIterator<const std::uint8_t*>, // for polymorphic read
 ///        comms::option::app::Handler<MyHandler> // for polymorphic dispatch
 ///        comms::option::app::WriteIterator<std::uint8_t*>, // for polymorphic write
-///        comms::option::app::LengthInfoInterface, // for polymorphic serialisation length retrieval
+///        comms::option::app::LengthInfoInterface, // for polymorphic serialization length retrieval
 ///        comms::option::app::IdInfoInterface // for polymorphic message ID retrieval
 ///    >;
 /// @endcode
