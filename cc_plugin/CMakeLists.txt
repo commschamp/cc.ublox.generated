@@ -458,8 +458,15 @@ if (CMAKE_COMPILER_IS_GNUCC)
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-backtrace-limit=0")
 endif ()
 
-if (CC_COMMS_CHAMPION_FOUND)
-    include_directories (${CC_INCLUDE_DIRS})
+if (TARGET cc::comms_champion)
+    get_target_property(cc_inc cc::comms_champion INTERFACE_INCLUDE_DIRECTORIES)
+
+    if (NOT cc_inc)
+        message (FATAL_ERROR "No include directories are specified for cc::comms_champion")
+    endif ()
+
+    # Global include is required for "moc"
+    include_directories (${cc_inc})
 endif ()
 
 cc_plugin_all_messages()

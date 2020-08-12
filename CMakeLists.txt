@@ -27,14 +27,12 @@ option (OPT_EXTERNALS_UPDATE_DISCONNECTED "Allow skip of external projects updat
 # OPT_EXTERNALS_DIR - Directory where externals (comms_champion) are checked out,
 #       defaults to ${PROJECT_BINARY_DIR}/externals.
 
-set (COMPILER_OPTIONS -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER})
 if (CMAKE_TOOLCHAIN_FILE AND EXISTS ${CMAKE_TOOLCHAIN_FILE})
     message(STATUS "Loading toolchain from ${CMAKE_TOOLCHAIN_FILE}")
-    set (COMPILER_OPTIONS -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE})
 endif()
 
 if ("${OPT_CC_TAG}" STREQUAL "")
-    set (OPT_CC_TAG "v2.4.1")
+    set (OPT_CC_TAG "v3.0")
 endif()
 
 if (NOT CMAKE_CXX_STANDARD)
@@ -117,79 +115,35 @@ if (OPT_BUILD_TEST OR OPT_BUILD_PLUGIN)
 endif ()
 
 if ((external_cc_needed OR (NOT OPT_NO_COMMS)) AND ("${OPT_CC_MAIN_INSTALL_DIR}" STREQUAL ""))
-    set (cc_repo "https://github.com/arobenko/comms_champion.git")
-    set (cc_tag "${OPT_CC_TAG}")
-    set (cc_main_dir "${PROJECT_BINARY_DIR}/externals/comms_champion-build")
-    set (cc_src_dir "${OPT_EXTERNALS_DIR}/comms_champion")
-    set (cc_bin_dir "${cc_main_dir}/build")
-    set (cc_install_dir "${CMAKE_INSTALL_PREFIX}")
+    include (${PROJECT_SOURCE_DIR}/cmake/CC_Prefetch.cmake)
+    cc_prefetch(SRC_DIR "${OPT_EXTERNALS_DIR}/comms_champion" TAG "${OPT_CC_TAG}")
+    include(${OPT_EXTERNALS_DIR}/comms_champion/cmake/CC_External.cmake)
 
+    set (qt_dir_opt)
     if (NOT "${OPT_QT_DIR}" STREQUAL "")
-        set (cc_qt_dir_opt -DCC_QT_DIR=${OPT_QT_DIR})
-        set (EXT_QT_DIR ${OPT_QT_DIR})
+        set (qt_dir_opt QT_DIR "${OPT_QT_DIR}")
     endif ()
 
+    set (no_tools_opt)
     if (NOT ${OPT_BUILD_PLUGIN})
-        set (cc_lib_only_opt -DCC_COMMS_LIB_ONLY=ON)
-        set (EXT_CC_NO_COMMS_CHAMPION TRUE)
+        set (no_tools_opt NO_TOOLS)
     endif ()
 
+    set (cc_update_disconnected_opt)
     if (${OPT_EXTERNALS_UPDATE_DISCONNECTED})
-        set (cc_update_disconnected_opt UPDATE_DISCONNECTED 1)
+        set (cc_update_disconnected_opt "UPDATE_DISCONNECTED")
     endif ()
 
-    find_package (Git REQUIRED)
-    set (ext_targets_inc_file "${cc_src_dir}/cmake/DefineExternalProjectTargets.cmake")
-    if (NOT EXISTS "${ext_targets_inc_file}")
-        execute_process (
-            COMMAND ${CMAKE_COMMAND} -E remove_directory "${cc_src_dir}"
-        )
-
-        execute_process (
-            COMMAND 
-                ${GIT_EXECUTABLE} clone -b ${cc_tag} --depth 1 ${cc_repo} ${cc_src_dir}
-            RESULT_VARIABLE git_result
-        )
-
-        if (NOT "${git_result}" STREQUAL "0")
-            message (FATAL_ERROR "git clone/checkout failed")
-        endif ()
-
-        if (NOT EXISTS "${ext_targets_inc_file}")
-             message (FATAL_ERROR "Incompatible version of ${cc_repo}, please use different tag.")
-        endif ()
-
-    endif ()
-
-    set (EXT_CC_INSTALL_DIR ${cc_install_dir})
-    include (${ext_targets_inc_file})
-
-    include(ExternalProject)
-    ExternalProject_Add(
-        "${CC_EXTERNAL_TGT}"
-        PREFIX "${cc_main_dir}"
-        STAMP_DIR "${cc_bin_dir}"
-        GIT_REPOSITORY ${cc_repo}
-        GIT_TAG ${cc_tag}
-        SOURCE_DIR "${cc_src_dir}"
-        BINARY_DIR "${cc_bin_dir}"
-        INSTALL_DIR "${cc_install_dir}"
-        ${cc_update_disconnected_opt}
+    cc_build_as_external_project(
+        SRC_DIR ${OPT_EXTERNALS_DIR}/comms_champion
+        BUILD_DIR ${PROJECT_BINARY_DIR}/comms_champion
+        INSTALL_DIR "${CMAKE_INSTALL_PREFIX}"
+        TAG ${OPT_CC_TAG}
+        TGT ${CC_EXTERNAL_TGT}
+        ${qt_dir_opt} ${no_tools_opt} ${cc_update_disconnected_opt}
         CMAKE_ARGS
-            -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCMAKE_INSTALL_PREFIX=${cc_install_dir}
-            -DCC_NO_UNIT_TESTS=ON -DCC_NO_WARN_AS_ERR=ON -DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}
-            ${COMPILER_OPTIONS} ${cc_qt_dir_opt} ${cc_lib_only_opt}
-    )
-
-    if (WIN32 AND (NOT "${OPT_QT_DIR}" STREQUAL ""))
-        message (STATUS "Qt5 deployment is available by building \"deploy_qt\" target")
-        add_custom_target ("deploy_qt"
-            COMMAND ${CMAKE_COMMAND} --build ${cc_bin_dir} --target deploy_qt
-            WORKING_DIRECTORY ${cc_bin_dir}
-        )
-
-        add_dependencies("deploy_qt" ${CC_EXTERNAL_TGT})
-    endif ()
+            -DCC_NO_UNIT_TESTS=ON -DCC_NO_WARN_AS_ERR=ON
+)
 elseif (external_cc_needed)
     list (APPEND CMAKE_PREFIX_PATH "${OPT_CC_MAIN_INSTALL_DIR}")
     find_package(CommsChampion NO_MODULE)
