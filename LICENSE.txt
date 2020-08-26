@@ -9,11 +9,11 @@ used componets provided by the comms_champion[2] project.
   GPLv3[7]. It means that any relevant plugin code must remain open source and is not
   really available to be used in the closed source commercial products.
 
-[1]: https://github.com/arobenko/commsdsl
-[2]: https://github.com/arobenko/comms_champion
-[3]: https://github.com/arobenko/comms_champion#comms-library
+[1]: https://github.com/commschamp/commsdsl
+[2]: https://github.com/commschamp/comms_champion
+[3]: https://github.com/commschamp/comms_champion#comms-library
 [4]: https://www.mozilla.org/en-US/MPL/2.0/
-[5]: https://github.com/arobenko/comms_champion#commschampion-tools
+[5]: https://github.com/commschamp/comms_champion#commschampion-tools
 [6]: https://www.qt.io/
 [7]: https://www.gnu.org/licenses/gpl-3.0.en.html
 

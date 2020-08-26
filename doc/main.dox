@@ -2,7 +2,7 @@
 /// @tableofcontents
 /// This generated code implements "ublox" binary protocol using various
 /// classes from
-/// <a href="https://github.com/arobenko/comms_champion#comms-library">COMMS Library</a>.@n
+/// <a href="https://github.com/commschamp/comms_champion#comms-library">COMMS Library</a>.@n
 /// Below is a short summary of generated classes.
 /// Please refer to <b>"How to Use Defined Custom Protocol"</b> page of its documentation
 /// for detailed explanation on how to use them.
