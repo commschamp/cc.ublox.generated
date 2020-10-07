@@ -2,7 +2,7 @@
 function (define_test name)
     set (src ${name}.cpp)
     add_executable(${name} ${src})
-    target_link_libraries(${name} PRIVATE cc::comms ublox)
+    target_link_libraries(${name} PRIVATE ublox cc::comms)
 
     set (extra_defs)
     if (NOT "${OPT_TEST_INTERFACE}" STREQUAL "")
@@ -49,6 +49,12 @@ function (define_test name)
     if (TARGET ${CC_EXTERNAL_TGT})
         add_dependencies(${name} ${CC_EXTERNAL_TGT})
     endif ()
+
+    target_compile_options(${name} PRIVATE
+        $<$<CXX_COMPILER_ID:MSVC>:/wd4996 /bigobj>
+        $<$<CXX_COMPILER_ID:GNU>:-Wno-unused-function -ftemplate-depth=2048>
+        $<$<CXX_COMPILER_ID:Clang>:-Wno-unused-function -Wno-unneeded-internal-declaration -ftemplate-depth=2048>
+    )
 endfunction ()
 
 ######################################################################
@@ -73,13 +79,5 @@ string (REPLACE "::" "/" OPT_TEST_INTERFACE_HEADER "${OPT_TEST_INTERFACE}.h")
 string (REPLACE "::" "/" OPT_TEST_FRAME_HEADER "${OPT_TEST_FRAME}.h")
 string (REPLACE "::" "/" OPT_TEST_OPTIONS_HEADER "${OPT_TEST_OPTIONS}.h")
 string (REPLACE "::" "/" OPT_TEST_INPUT_MESSAGES_HEADER "${OPT_TEST_INPUT_MESSAGES}.h")
-
-if ((CMAKE_COMPILER_IS_GNUCC) OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-function")
-endif ()
-
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unneeded-internal-declaration")
-endif ()
 
 define_test(ublox_input_test)
