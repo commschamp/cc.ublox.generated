@@ -32,7 +32,7 @@ if (CMAKE_TOOLCHAIN_FILE AND EXISTS ${CMAKE_TOOLCHAIN_FILE})
 endif()
 
 if ("${OPT_CC_TAG}" STREQUAL "")
-    set (OPT_CC_TAG "v3.0.1")
+    set (OPT_CC_TAG "v3.1")
 endif()
 
 if (NOT CMAKE_CXX_STANDARD)
@@ -60,50 +60,6 @@ if (OPT_BUILD_PLUGIN)
 
     find_package(Qt5Core)
     find_package(Qt5Widgets)
-endif ()
-
-######################################################################
-
-# Set compiler flags
-if ((CMAKE_COMPILER_IS_GNUCC) OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
-    set (extra_flags_list
-        "-Wall" "-Wextra" "-Wcast-align" "-Wcast-qual" "-Wctor-dtor-privacy"
-        "-Wmissing-include-dirs"
-        "-Woverloaded-virtual" "-Wredundant-decls" "-Wshadow" "-Wundef" "-Wunused"
-        "-Wno-unknown-pragmas" "-fdiagnostics-show-option"
-    )
-
-    if (CMAKE_COMPILER_IS_GNUCC)
-        list (APPEND extra_flags_list
-            "-Wnoexcept" "-Wlogical-op" "-Wstrict-null-sentinel" "-ftemplate-backtrace-limit=0"
-        )
-    endif ()
-
-    if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-        list (APPEND extra_flags_list
-        "-Wno-dangling-field" "-Wno-unused-command-line-argument"
-        "-ftemplate-depth=1024")
-    endif ()
-
-    if (OPT_WARN_AS_ERR)
-        list (APPEND extra_flags_list "-Werror")
-    endif ()
-
-    string(REPLACE ";" " " extra_flags "${extra_flags_list}")
-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${extra_flags}")
-elseif (MSVC)
-    add_definitions("/bigobj" "-D_CRT_SECURE_NO_WARNINGS")
-    if (OPT_WARN_AS_ERR)
-        add_definitions("/WX")
-    endif ()
-endif ()
-
-if ((UNIX) AND (OPT_USE_CCACHE))
-    find_program(CCACHE_FOUND ccache)
-    if(CCACHE_FOUND)
-        set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
-        set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
-    endif()
 endif ()
 
 ######################################################################
@@ -143,10 +99,28 @@ if ((external_cc_needed OR (NOT OPT_NO_COMMS)) AND ("${OPT_CC_MAIN_INSTALL_DIR}"
         ${qt_dir_opt} ${no_tools_opt} ${cc_update_disconnected_opt}
         CMAKE_ARGS
             -DCC_NO_UNIT_TESTS=ON -DCC_NO_WARN_AS_ERR=ON
-)
+    )
+    set (cc_compile_file "${OPT_EXTERNALS_DIR}/comms_champion/cmake/CC_Compile.cmake")
 elseif (external_cc_needed)
     list (APPEND CMAKE_PREFIX_PATH "${OPT_CC_MAIN_INSTALL_DIR}")
     find_package(CommsChampion NO_MODULE)
+    set (cc_compile_file "${OPT_CC_MAIN_INSTALL_DIR}/lib/LibComms/cmake/CC_Compile.cmake")
+endif ()
+
+if (EXISTS ${cc_compile_file})
+    # Set compiler flags
+    set (warn_as_err_opt)
+    if (OPT_WARN_AS_ERR)
+        set (warn_as_err_opt "WARN_AS_ERR")
+    endif ()
+
+    set (ccache_opt)
+    if (OPT_USE_CCACHE)
+        set (ccache_opt "USE_CCACHE")
+    endif ()
+
+    include(${cc_compile_file})
+    cc_compile(${warn_as_err_opt} ${ccache_opt})
 endif ()
 
 ######################################################################
@@ -176,8 +150,8 @@ endif ()
 add_library(ublox INTERFACE)
 
 target_include_directories(ublox INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 )
 
 if (external_cc_needed AND (NOT TARGET ${CC_EXTERNAL_TGT}))

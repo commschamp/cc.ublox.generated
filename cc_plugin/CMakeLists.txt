@@ -428,9 +428,11 @@ function (cc_plugin protocol has_config_widget)
 
     add_library (${name} MODULE ${src} ${moc})
     target_link_libraries (${name} ${ALL_MESSAGES_LIB} cc::comms_champion Qt5::Widgets Qt5::Core ${extra_link_opts})
-    if (CMAKE_COMPILER_IS_GNUCC)
-        target_compile_options(${name} PRIVATE "-ftemplate-backtrace-limit=0")
-    endif ()
+    target_compile_options(${name} PRIVATE
+        $<$<CXX_COMPILER_ID:MSVC>:/bigobj>
+        $<$<CXX_COMPILER_ID:GNU>:-ftemplate-depth=2048>
+        $<$<CXX_COMPILER_ID:Clang>:-ftemplate-depth=2048>
+    )
 
     install (
         TARGETS ${name}
@@ -452,10 +454,6 @@ endif ()
 if (NOT Qt5Widgets_FOUND)
     message (WARNING "Can NOT compile protocol plugin due to missing QT5 Widgets library")
     return ()
-endif ()
-
-if (CMAKE_COMPILER_IS_GNUCC)
-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftemplate-backtrace-limit=0")
 endif ()
 
 if (TARGET cc::comms_champion)
