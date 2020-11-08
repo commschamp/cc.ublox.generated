@@ -26,13 +26,14 @@ option (OPT_EXTERNALS_UPDATE_DISCONNECTED "Allow skip of external projects updat
 #       defaults to ublox::input::AllMessages.
 # OPT_EXTERNALS_DIR - Directory where externals (comms_champion) are checked out,
 #       defaults to ${PROJECT_BINARY_DIR}/externals.
+# OPT_MSVC_FORCE_WARN_LEVEL - Force msvc warning level
 
 if (CMAKE_TOOLCHAIN_FILE AND EXISTS ${CMAKE_TOOLCHAIN_FILE})
     message(STATUS "Loading toolchain from ${CMAKE_TOOLCHAIN_FILE}")
 endif()
 
 if ("${OPT_CC_TAG}" STREQUAL "")
-    set (OPT_CC_TAG "v3.1")
+    set (OPT_CC_TAG "v3.1.2")
 endif()
 
 if (NOT CMAKE_CXX_STANDARD)
@@ -121,6 +122,9 @@ if (EXISTS ${cc_compile_file})
 
     include(${cc_compile_file})
     cc_compile(${warn_as_err_opt} ${ccache_opt})
+    if (NOT "${OPT_MSVC_FORCE_WARN_LEVEL}" STREQUAL "")
+        cc_msvc_force_warn_opt("/${OPT_MSVC_FORCE_WARN_LEVEL}")
+    endif()
 endif ()
 
 ######################################################################
