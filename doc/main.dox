@@ -46,6 +46,8 @@
 /// @li @ref ublox::input::Ublox7ClientInputMessages (from @b ublox/input/Ublox7ClientInputMessages.h).
 /// @li @ref ublox::input::Ublox8ServerInputMessages (from @b ublox/input/Ublox8ServerInputMessages.h).
 /// @li @ref ublox::input::Ublox8ClientInputMessages (from @b ublox/input/Ublox8ClientInputMessages.h).
+/// @li @ref ublox::input::Ublox9ServerInputMessages (from @b ublox/input/Ublox9ServerInputMessages.h).
+/// @li @ref ublox::input::Ublox9ClientInputMessages (from @b ublox/input/Ublox9ClientInputMessages.h).
 ///
 /// @b NOTE, that the frame definition does not exactly follow the recommended
 /// instructions from <b>Protocol Stack Definition Tutorial</b> page of @b COMMS
@@ -68,6 +70,9 @@
 /// @li @ref ublox::input::Ublox8Messages (from @b ublox/input/Ublox8Messages.h header file).
 /// @li @ref ublox::input::Ublox8ServerInputMessages (from @b ublox/input/Ublox8ServerInputMessages.h header file).
 /// @li @ref ublox::input::Ublox8ClientInputMessages (from @b ublox/input/Ublox8ClientInputMessages.h header file).
+/// @li @ref ublox::input::Ublox9Messages (from @b ublox/input/Ublox9Messages.h header file).
+/// @li @ref ublox::input::Ublox9ServerInputMessages (from @b ublox/input/Ublox9ServerInputMessages.h header file).
+/// @li @ref ublox::input::Ublox9ClientInputMessages (from @b ublox/input/Ublox9ClientInputMessages.h header file).
 ///
 /// @section main_dispatch Dispatching Message Objects
 /// While the @b COMMS library provides various built-in ways of 
@@ -138,6 +143,18 @@
 /// (defined in @b ublox/dispatch/DispatchUblox8ClientInputMessage.h header file).
 /// @li @ref ublox::dispatch::dispatchUblox8ClientInputMessageDefaultOptions
 /// (defined in @b ublox/dispatch/DispatchUblox8ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox9Message
+/// (defined in @b ublox/dispatch/DispatchUblox9Message.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox9MessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox9Message.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox9ServerInputMessage
+/// (defined in @b ublox/dispatch/DispatchUblox9ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox9ServerInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox9ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox9ClientInputMessage
+/// (defined in @b ublox/dispatch/DispatchUblox9ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::dispatchUblox9ClientInputMessageDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox9ClientInputMessage.h header file).
 ///
 /// There are also some dispatcher objects to be used with
 /// @b comms::processAllWithDispatchViaDispatcher() function or similar.
@@ -201,6 +218,18 @@
 /// (defined in @b ublox/dispatch/DispatchUblox8ClientInputMessage.h header file).
 /// @li @ref ublox::dispatch::Ublox8ClientInputMsgDispatcherDefaultOptions
 /// (defined in @b ublox/dispatch/DispatchUblox8ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox9MsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox9Message.h header file).
+/// @li @ref ublox::dispatch::Ublox9MsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox9Message.h header file).
+/// @li @ref ublox::dispatch::Ublox9ServerInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox9ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox9ServerInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox9ServerInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox9ClientInputMsgDispatcher
+/// (defined in @b ublox/dispatch/DispatchUblox9ClientInputMessage.h header file).
+/// @li @ref ublox::dispatch::Ublox9ClientInputMsgDispatcherDefaultOptions
+/// (defined in @b ublox/dispatch/DispatchUblox9ClientInputMessage.h header file).
 ///
 /// @section main_customization Customization
 /// Depending on the value of @b customization option passed to the @b commsdsl2comms

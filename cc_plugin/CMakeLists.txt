@@ -9,10 +9,33 @@ function (cc_plugin_all_messages)
         field/CfgNavx5Mask1.cpp
         field/CfgNavx5AopOrbMaxErr.cpp
         field/CfgNavx5Mask2.cpp
-        field/CfgCfgMask.cpp
         field/CfgNavx5SigAttenCompMode.cpp
+        field/CfgValData8.cpp
+        field/CfgValKeyId.cpp
+        field/CfgValL.cpp
+        field/CfgValLayer.cpp
+        field/CfgValPairSimple.cpp
+        field/CfgValR4.cpp
+        field/CfgValR8.cpp
+        field/CfgValSat.cpp
+        field/CfgValU1.cpp
+        field/CfgValU2.cpp
+        field/CfgValU4.cpp
+        field/CfgValU8.cpp
+        field/CfgValUartDataBits.cpp
+        field/InfMask.cpp
+        field/CfgValUartParity.cpp
+        field/CfgValUartStopBits.cpp
+        field/GeofenceRadius.cpp
         field/GeofenceState.cpp
+        field/MonAntPower.cpp
+        field/CfgCfgMask.cpp
+        field/MonAntStatus.cpp
+        field/MonJammingState.cpp
         field/MsgId.cpp
+        field/NmeaVersion.cpp
+        field/Alt.cpp
+        field/AltHP.cpp
         field/CfgDatD.cpp
         field/CfgDatDatumNum.cpp
         field/CfgNmeaFilter.cpp
@@ -27,7 +50,6 @@ function (cc_plugin_all_messages)
         field/CfgNmeaGsvTalkerId.cpp
         field/CfgNmeaNumSV.cpp
         field/CfgNmeaSvNumbering.cpp
-        field/CfgNmeaVersion.cpp
         field/CfgPm2Flags.cpp
         field/CfgPrtFlags.cpp
         field/CfgPrtInProtoMask.cpp
@@ -45,6 +67,7 @@ function (cc_plugin_all_messages)
         field/EcefX.cpp
         field/EcefY.cpp
         field/EcefZ.cpp
+        field/FixedPosAcc.cpp
         field/Ftow.cpp
         field/GnssId.cpp
         field/GpsFix.cpp
@@ -56,11 +79,14 @@ function (cc_plugin_all_messages)
         field/Hour.cpp
         field/Itow.cpp
         field/Lat.cpp
+        field/LatHP.cpp
         field/Lon.cpp
+        field/LonHP.cpp
         field/Min.cpp
         field/MonMsgppCount.cpp
         field/Month.cpp
         field/PAcc.cpp
+        field/PsmState.cpp
         field/Res1.cpp
         field/Res2.cpp
         field/Res3.cpp
@@ -184,6 +210,10 @@ function (cc_plugin_all_messages)
         message/CfgTxslot.cpp
         message/CfgUsb.cpp
         message/CfgUsbPoll.cpp
+        message/CfgValdel.cpp
+        message/CfgValget.cpp
+        message/CfgValgetPoll.cpp
+        message/CfgValset.cpp
         message/EsfIns.cpp
         message/EsfInsPoll.cpp
         message/EsfMeas.cpp
@@ -198,6 +228,7 @@ function (cc_plugin_all_messages)
         message/InfNotice.cpp
         message/InfTest.cpp
         message/InfWarning.cpp
+        message/LogBatch.cpp
         message/LogCreate.cpp
         message/LogErase.cpp
         message/LogFindtime.cpp
@@ -205,6 +236,7 @@ function (cc_plugin_all_messages)
         message/LogInfo.cpp
         message/LogInfoPoll.cpp
         message/LogRetrieve.cpp
+        message/LogRetrievebatch.cpp
         message/LogRetrievepos.cpp
         message/LogRetrieveposextra.cpp
         message/LogRetrievestring.cpp
@@ -243,11 +275,15 @@ function (cc_plugin_all_messages)
         message/MgaQzssAlm.cpp
         message/MgaQzssEph.cpp
         message/MgaQzssHealth.cpp
+        message/MonComms.cpp
+        message/MonCommsPoll.cpp
         message/MonGnss.cpp
         message/MonGnssPoll.cpp
         message/MonHw.cpp
         message/MonHw2.cpp
         message/MonHw2Poll.cpp
+        message/MonHw3.cpp
+        message/MonHw3Poll.cpp
         message/MonHwPoll.cpp
         message/MonIo.cpp
         message/MonIoPoll.cpp
@@ -255,11 +291,15 @@ function (cc_plugin_all_messages)
         message/MonMsgppPoll.cpp
         message/MonPatch.cpp
         message/MonPatchPoll.cpp
+        message/MonRf.cpp
+        message/MonRfPoll.cpp
         message/MonRxbuf.cpp
         message/MonRxbufPoll.cpp
         message/MonRxr.cpp
         message/MonSmgr.cpp
         message/MonSmgrPoll.cpp
+        message/MonSpan.cpp
+        message/MonSpanPoll.cpp
         message/MonTxbuf.cpp
         message/MonTxbufPoll.cpp
         message/MonVer.cpp
@@ -295,11 +335,16 @@ function (cc_plugin_all_messages)
         message/NavPvt_u8.cpp
         message/NavRelposned.cpp
         message/NavRelposnedPoll.cpp
+        message/NavRelposned_v1.cpp
         message/NavResetodo.cpp
         message/NavSat.cpp
         message/NavSatPoll.cpp
         message/NavSbas.cpp
         message/NavSbasPoll.cpp
+        message/NavSig.cpp
+        message/NavSigPoll.cpp
+        message/NavSlas.cpp
+        message/NavSlasPoll.cpp
         message/NavSol.cpp
         message/NavSolPoll.cpp
         message/NavStatus.cpp
@@ -377,6 +422,12 @@ function (cc_plugin_all_messages)
     add_library (${name} STATIC ${src})
     target_link_libraries (${name} PUBLIC ublox cc::comms cc::comms_champion Qt5::Widgets Qt5::Core)
     target_include_directories (${name} PUBLIC ${PROJECT_SOURCE_DIR})
+    target_compile_options(${name} PRIVATE
+        $<$<CXX_COMPILER_ID:MSVC>:/bigobj /wd4127 /wd5054>
+        $<$<CXX_COMPILER_ID:GNU>:-ftemplate-depth=2048>
+        $<$<CXX_COMPILER_ID:Clang>:-ftemplate-depth=2048>
+    )
+
     if (CC_COMMS_CHAMPION_FOUND)
         if (CC_PLUGIN_DIR)
             file (RELATIVE_PATH rel_plugin_install_path "${CC_ROOT_DIR}" "${CC_PLUGIN_DIR}")
@@ -429,7 +480,7 @@ function (cc_plugin protocol has_config_widget)
     add_library (${name} MODULE ${src} ${moc})
     target_link_libraries (${name} ${ALL_MESSAGES_LIB} cc::comms_champion Qt5::Widgets Qt5::Core ${extra_link_opts})
     target_compile_options(${name} PRIVATE
-        $<$<CXX_COMPILER_ID:MSVC>:/bigobj>
+        $<$<CXX_COMPILER_ID:MSVC>:/bigobj /wd4127 /wd5054>
         $<$<CXX_COMPILER_ID:GNU>:-ftemplate-depth=2048>
         $<$<CXX_COMPILER_ID:Clang>:-ftemplate-depth=2048>
     )
