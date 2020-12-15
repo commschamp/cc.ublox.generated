@@ -33,7 +33,7 @@ if (CMAKE_TOOLCHAIN_FILE AND EXISTS ${CMAKE_TOOLCHAIN_FILE})
 endif()
 
 if ("${OPT_CC_TAG}" STREQUAL "")
-    set (OPT_CC_TAG "v3.1.2")
+    set (OPT_CC_TAG "v3.1.3")
 endif()
 
 if (NOT CMAKE_CXX_STANDARD)
@@ -123,7 +123,7 @@ if (EXISTS ${cc_compile_file})
     include(${cc_compile_file})
     cc_compile(${warn_as_err_opt} ${ccache_opt})
     if (NOT "${OPT_MSVC_FORCE_WARN_LEVEL}" STREQUAL "")
-        cc_msvc_force_warn_opt("/${OPT_MSVC_FORCE_WARN_LEVEL}")
+        cc_msvc_force_warn_opt("${OPT_MSVC_FORCE_WARN_LEVEL}")
     endif()
 endif ()
 
