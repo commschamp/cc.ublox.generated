@@ -33,7 +33,7 @@ if (CMAKE_TOOLCHAIN_FILE AND EXISTS ${CMAKE_TOOLCHAIN_FILE})
 endif()
 
 if ("${OPT_CC_TAG}" STREQUAL "")
-    set (OPT_CC_TAG "v3.2")
+    set (OPT_CC_TAG "v3.4")
 endif()
 
 if (NOT CMAKE_CXX_STANDARD)
@@ -99,7 +99,7 @@ if ((external_cc_needed OR (NOT OPT_NO_COMMS)) AND ("${OPT_CC_MAIN_INSTALL_DIR}"
         TGT ${CC_EXTERNAL_TGT}
         ${qt_dir_opt} ${no_tools_opt} ${cc_update_disconnected_opt}
         CMAKE_ARGS
-            -DCC_NO_UNIT_TESTS=ON -DCC_NO_WARN_AS_ERR=ON
+            -DCC_BUILD_UNIT_TESTS=OFF -DCC_WARN_AS_ERR=OFF
     )
     set (cc_compile_file "${OPT_EXTERNALS_DIR}/comms_champion/cmake/CC_Compile.cmake")
 elseif (external_cc_needed)
