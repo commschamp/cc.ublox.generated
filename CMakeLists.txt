@@ -33,7 +33,7 @@ if (CMAKE_TOOLCHAIN_FILE AND EXISTS ${CMAKE_TOOLCHAIN_FILE})
 endif()
 
 if ("${OPT_CC_TAG}" STREQUAL "")
-    set (OPT_CC_TAG "v3.4")
+    set (OPT_CC_TAG "v3.4.1")
 endif()
 
 if (NOT CMAKE_CXX_STANDARD)
