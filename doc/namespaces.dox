@@ -1,20 +1,21 @@
 /// @namespace ublox
-/// @brief Main namespace for all classes / functions of this protocol library.
+/// @brief Protocol specific namespace.
 
 /// @namespace ublox::message
-/// @brief Main namespace for all the messages defined in this protocol.
+/// @brief Namespace for all the messages in @ref ublox namespace.
 
 /// @namespace ublox::field
-/// @brief Main namespace for all the stand alone fields defined in this protocol.
+/// @brief Namespace for all the stand alone fields defined in @ref ublox namespace.
 
 /// @namespace ublox::frame
-/// @brief Main namespace for all the frames.
+/// @brief Namespace for all the frames defined in @ref ublox namespace.
 
 /// @namespace ublox::frame::layer
-/// @brief Main namespace for the custom frame layers.
+/// @brief Namespace for the custom frame layers defined in @ref ublox namespace.
 
 /// @namespace ublox::frame::checksum
-/// @brief Main namespace for the custom frame layers.
+/// @brief Namespace for the custom frame layers defined in @ref ublox namespace.
+
 
 /// @namespace ublox::options
 /// @brief Main namespace for the various protocol options.
