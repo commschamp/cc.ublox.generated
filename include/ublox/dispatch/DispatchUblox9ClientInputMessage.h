@@ -27,11 +27,11 @@ namespace dispatch
 ///     to handle and one for the interface class as well.
 ///     @code
 ///     using MyInterface = ublox::Message<...>;
-///     using MyNavPosecefPoll = ublox::message::NavPosecefPoll<MyInterface, ublox::options::DefaultOptions>;
-///     using MyNavPosllhPoll = ublox::message::NavPosllhPoll<MyInterface, ublox::options::DefaultOptions>;
+///     using MyNavPosecef = ublox::message::NavPosecef<MyInterface, ublox::options::DefaultOptions>;
+///     using MyNavPosllh = ublox::message::NavPosllh<MyInterface, ublox::options::DefaultOptions>;
 ///     struct MyHandler {
-///         void handle(MyNavPosecefPoll& msg) {...}
-///         void handle(MyNavPosllhPoll& msg) {...}
+///         void handle(MyNavPosecef& msg) {...}
+///         void handle(MyNavPosllh& msg) {...}
 ///         ...
 ///         // Handle all unexpected or irrelevant messages.
 ///         void handle(MyInterface& msg) {...}
@@ -51,156 +51,201 @@ auto dispatchUblox9ClientInputMessage(
     switch(id) {
     case ublox::MsgId_NavPosecef:
     {
-        using MsgType = ublox::message::NavPosecefPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavPosecef<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavPosllh:
     {
-        using MsgType = ublox::message::NavPosllhPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavPosllh<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavStatus:
     {
-        using MsgType = ublox::message::NavStatusPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavStatus<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavDop:
     {
-        using MsgType = ublox::message::NavDopPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavDop<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavPvt:
     {
-        using MsgType = ublox::message::NavPvtPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavPvt_u8<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavOdo:
     {
-        using MsgType = ublox::message::NavOdoPoll<InterfaceType, TProtOptions>;
-        return handler.handle(static_cast<MsgType&>(msg));
-    }
-    case ublox::MsgId_NavResetodo:
-    {
-        using MsgType = ublox::message::NavResetodo<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavOdo<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavVelecef:
     {
-        using MsgType = ublox::message::NavVelecefPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavVelecef<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavVelned:
     {
-        using MsgType = ublox::message::NavVelnedPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavVelned<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavHpposecef:
     {
-        using MsgType = ublox::message::NavHpposecefPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavHpposecef<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavHpposllh:
     {
-        using MsgType = ublox::message::NavHpposllhPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavHpposllh<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavTimeutc:
     {
-        using MsgType = ublox::message::NavTimeutcPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavTimeutc<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavClock:
     {
-        using MsgType = ublox::message::NavClockPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavClock<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavTimeglo:
     {
-        using MsgType = ublox::message::NavTimegloPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavTimeglo<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavTimebds:
     {
-        using MsgType = ublox::message::NavTimebdsPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavTimebds<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavTimegal:
     {
-        using MsgType = ublox::message::NavTimegalPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavTimegal<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavTimels:
     {
-        using MsgType = ublox::message::NavTimelsPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavTimels<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavSbas:
     {
-        using MsgType = ublox::message::NavSbasPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavSbas<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavOrb:
     {
-        using MsgType = ublox::message::NavOrbPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavOrb<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavSat:
     {
-        using MsgType = ublox::message::NavSatPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavSat<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavGeofence:
     {
-        using MsgType = ublox::message::NavGeofencePoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavGeofence<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavSvin:
     {
-        using MsgType = ublox::message::NavSvinPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavSvin<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavRelposned:
     {
-        using MsgType = ublox::message::NavRelposnedPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavRelposned_v1<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavSlas:
     {
-        using MsgType = ublox::message::NavSlasPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavSlas<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_NavSig:
     {
-        using MsgType = ublox::message::NavSigPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavSig<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
-    case ublox::MsgId_NavAopstatus:
+    case ublox::MsgId_NavEoe:
     {
-        using MsgType = ublox::message::NavAopstatusPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::NavEoe<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_RxmSfrbx:
+    {
+        using MsgType = ublox::message::RxmSfrbx<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_RxmMeasx:
+    {
+        using MsgType = ublox::message::RxmMeasx<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_RxmRawx:
     {
-        using MsgType = ublox::message::RxmRawxPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::RxmRawx<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
-    case ublox::MsgId_RxmPmreq:
+    case ublox::MsgId_RxmRtcm:
+    {
+        using MsgType = ublox::message::RxmRtcm<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_RxmRlm:
     {
         switch (idx) {
         case 0U:
         {
-            using MsgType = ublox::message::RxmPmreqV0<InterfaceType, TProtOptions>;
+            using MsgType = ublox::message::RxmRlmLong<InterfaceType, TProtOptions>;
             return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
-            using MsgType = ublox::message::RxmPmreq<InterfaceType, TProtOptions>;
+            using MsgType = ublox::message::RxmRlmShort<InterfaceType, TProtOptions>;
             return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
             return handler.handle(msg);
         };
         break;
+    }
+    case ublox::MsgId_InfError:
+    {
+        using MsgType = ublox::message::InfError<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_InfWarning:
+    {
+        using MsgType = ublox::message::InfWarning<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_InfNotice:
+    {
+        using MsgType = ublox::message::InfNotice<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_InfTest:
+    {
+        using MsgType = ublox::message::InfTest<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_InfDebug:
+    {
+        using MsgType = ublox::message::InfDebug<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_AckNak:
+    {
+        using MsgType = ublox::message::AckNak<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_AckAck:
+    {
+        using MsgType = ublox::message::AckAck<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgPrt:
     {
@@ -225,16 +270,6 @@ auto dispatchUblox9ClientInputMessage(
             using MsgType = ublox::message::CfgPrtSpi<InterfaceType, TProtOptions>;
             return handler.handle(static_cast<MsgType&>(msg));
         }
-        case 4U:
-        {
-            using MsgType = ublox::message::CfgPrtPortPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 5U:
-        {
-            using MsgType = ublox::message::CfgPrtPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
         default:
             return handler.handle(msg);
         };
@@ -253,11 +288,6 @@ auto dispatchUblox9ClientInputMessage(
             using MsgType = ublox::message::CfgMsgCurrent<InterfaceType, TProtOptions>;
             return handler.handle(static_cast<MsgType&>(msg));
         }
-        case 2U:
-        {
-            using MsgType = ublox::message::CfgMsgPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
         default:
             return handler.handle(msg);
         };
@@ -265,361 +295,97 @@ auto dispatchUblox9ClientInputMessage(
     }
     case ublox::MsgId_CfgInf:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgInf<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgInfPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
-    }
-    case ublox::MsgId_CfgRst:
-    {
-        using MsgType = ublox::message::CfgRst<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::CfgInf<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgDat:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgDatUser<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgDatPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgDat<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgRate:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgRate<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgRatePoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
-    }
-    case ublox::MsgId_CfgCfg:
-    {
-        using MsgType = ublox::message::CfgCfg<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::CfgRate<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgAnt:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgAnt<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgAntPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgAnt<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgSbas:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgSbas<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgSbasPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgSbas<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgNmea:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgNmeaV1<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgNmeaPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgNmeaV1<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgUsb:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgUsb<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgUsbPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgUsb<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgOdo:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgOdo<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgOdoPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgOdo<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgNavx5:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgNavx5V2<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgNavx5Poll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgNavx5V2<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgNav5:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgNav5<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgNav5Poll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgNav5<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgTp5:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgTp5<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgTp5PollSelect<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 2U:
-        {
-            using MsgType = ublox::message::CfgTp5Poll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgTp5<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgRinv:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgRinv<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgRinvPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgRinv<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgItfm:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgItfm<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgItfmPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgItfm<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgGnss:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgGnss<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgGnssPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgGnss<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgLogfilter:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgLogfilter<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgLogfilterPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
-    }
-    case ublox::MsgId_CfgPwr:
-    {
-        using MsgType = ublox::message::CfgPwr<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::CfgLogfilter<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgGeofence:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgGeofence<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgGeofencePoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgGeofence<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgDgnss:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgDgnss<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgDgnssPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
+        using MsgType = ublox::message::CfgDgnss<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgTmode3:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::CfgTmode3<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::CfgTmode3Poll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
-    }
-    case ublox::MsgId_CfgValset:
-    {
-        using MsgType = ublox::message::CfgValset<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::CfgTmode3<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_CfgValget:
     {
-        using MsgType = ublox::message::CfgValgetPoll<InterfaceType, TProtOptions>;
-        return handler.handle(static_cast<MsgType&>(msg));
-    }
-    case ublox::MsgId_CfgValdel:
-    {
-        using MsgType = ublox::message::CfgValdel<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::CfgValget<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_UpdSos:
@@ -627,17 +393,12 @@ auto dispatchUblox9ClientInputMessage(
         switch (idx) {
         case 0U:
         {
-            using MsgType = ublox::message::UpdSosClear<InterfaceType, TProtOptions>;
+            using MsgType = ublox::message::UpdSosRestored<InterfaceType, TProtOptions>;
             return handler.handle(static_cast<MsgType&>(msg));
         }
         case 1U:
         {
-            using MsgType = ublox::message::UpdSosCreate<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 2U:
-        {
-            using MsgType = ublox::message::UpdSosPoll<InterfaceType, TProtOptions>;
+            using MsgType = ublox::message::UpdSosAck<InterfaceType, TProtOptions>;
             return handler.handle(static_cast<MsgType&>(msg));
         }
         default:
@@ -647,328 +408,132 @@ auto dispatchUblox9ClientInputMessage(
     }
     case ublox::MsgId_MonIo:
     {
-        using MsgType = ublox::message::MonIoPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonIo<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonVer:
     {
-        using MsgType = ublox::message::MonVerPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonVer<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonMsgpp:
     {
-        using MsgType = ublox::message::MonMsgppPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonMsgpp<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonRxbuf:
     {
-        using MsgType = ublox::message::MonRxbufPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonRxbuf<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonTxbuf:
     {
-        using MsgType = ublox::message::MonTxbufPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonTxbuf<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonHw:
     {
-        using MsgType = ublox::message::MonHwPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonHw<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonHw2:
     {
-        using MsgType = ublox::message::MonHw2Poll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonHw2<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_MonRxr:
+    {
+        using MsgType = ublox::message::MonRxr<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonPatch:
     {
-        using MsgType = ublox::message::MonPatchPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonPatch<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonGnss:
     {
-        using MsgType = ublox::message::MonGnssPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonGnss<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonSpan:
     {
-        using MsgType = ublox::message::MonSpanPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonSpan<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonComms:
     {
-        using MsgType = ublox::message::MonCommsPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonComms<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonHw3:
     {
-        using MsgType = ublox::message::MonHw3Poll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonHw3<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_MonRf:
     {
-        using MsgType = ublox::message::MonRfPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MonRf<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_TimTp:
     {
-        using MsgType = ublox::message::TimTpPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::TimTp<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_TimTm2:
     {
-        using MsgType = ublox::message::TimTm2Poll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::TimTm2<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_TimVrfy:
     {
-        using MsgType = ublox::message::TimVrfyPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::TimVrfy<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
-    case ublox::MsgId_MgaGps:
+    case ublox::MsgId_MgaAck:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::MgaGpsEph<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::MgaGpsAlm<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 2U:
-        {
-            using MsgType = ublox::message::MgaGpsHealth<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 3U:
-        {
-            using MsgType = ublox::message::MgaGpsUtc<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 4U:
-        {
-            using MsgType = ublox::message::MgaGpsIono<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
-    }
-    case ublox::MsgId_MgaGal:
-    {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::MgaGalEph<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::MgaGalAlm<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 2U:
-        {
-            using MsgType = ublox::message::MgaGalTimeoffset<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 3U:
-        {
-            using MsgType = ublox::message::MgaGalUtc<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
-    }
-    case ublox::MsgId_MgaBds:
-    {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::MgaBdsEph<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::MgaBdsAlm<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 2U:
-        {
-            using MsgType = ublox::message::MgaBdsHealth<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 3U:
-        {
-            using MsgType = ublox::message::MgaBdsUtc<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 4U:
-        {
-            using MsgType = ublox::message::MgaBdsIono<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
-    }
-    case ublox::MsgId_MgaQzss:
-    {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::MgaQzssEph<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::MgaQzssAlm<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 2U:
-        {
-            using MsgType = ublox::message::MgaQzssHealth<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
-    }
-    case ublox::MsgId_MgaGlo:
-    {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::MgaGloEph<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::MgaGloAlm<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 2U:
-        {
-            using MsgType = ublox::message::MgaGloTimeoffset<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
-    }
-    case ublox::MsgId_MgaAno:
-    {
-        using MsgType = ublox::message::MgaAno<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MgaAck<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
-    }
-    case ublox::MsgId_MgaIni:
-    {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::MgaIniPosXyz<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::MgaIniPosLlh<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 2U:
-        {
-            using MsgType = ublox::message::MgaIniTimeUtc<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 3U:
-        {
-            using MsgType = ublox::message::MgaIniTimeGnss<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 4U:
-        {
-            using MsgType = ublox::message::MgaIniClkd<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 5U:
-        {
-            using MsgType = ublox::message::MgaIniFreq<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 6U:
-        {
-            using MsgType = ublox::message::MgaIniEop<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
     }
     case ublox::MsgId_MgaDbd:
     {
-        switch (idx) {
-        case 0U:
-        {
-            using MsgType = ublox::message::MgaDbd<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        case 1U:
-        {
-            using MsgType = ublox::message::MgaDbdPoll<InterfaceType, TProtOptions>;
-            return handler.handle(static_cast<MsgType&>(msg));
-        }
-        default:
-            return handler.handle(msg);
-        };
-        break;
-    }
-    case ublox::MsgId_LogErase:
-    {
-        using MsgType = ublox::message::LogErase<InterfaceType, TProtOptions>;
-        return handler.handle(static_cast<MsgType&>(msg));
-    }
-    case ublox::MsgId_LogString:
-    {
-        using MsgType = ublox::message::LogString<InterfaceType, TProtOptions>;
-        return handler.handle(static_cast<MsgType&>(msg));
-    }
-    case ublox::MsgId_LogCreate:
-    {
-        using MsgType = ublox::message::LogCreate<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::MgaDbd<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_LogInfo:
     {
-        using MsgType = ublox::message::LogInfoPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::LogInfo<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
-    case ublox::MsgId_LogRetrieve:
+    case ublox::MsgId_LogRetrievepos:
     {
-        using MsgType = ublox::message::LogRetrieve<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::LogRetrievepos<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_LogRetrievestring:
+    {
+        using MsgType = ublox::message::LogRetrievestring<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_LogFindtime:
     {
-        using MsgType = ublox::message::LogFindtime<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::LogFindtimeResp<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
-    case ublox::MsgId_LogRetrievebatch:
+    case ublox::MsgId_LogRetrieveposextra:
     {
-        using MsgType = ublox::message::LogRetrievebatch<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::LogRetrieveposextra<InterfaceType, TProtOptions>;
+        return handler.handle(static_cast<MsgType&>(msg));
+    }
+    case ublox::MsgId_LogBatch:
+    {
+        using MsgType = ublox::message::LogBatch<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     case ublox::MsgId_SecUniqid:
     {
-        using MsgType = ublox::message::SecUniqidPoll<InterfaceType, TProtOptions>;
+        using MsgType = ublox::message::SecUniqid<InterfaceType, TProtOptions>;
         return handler.handle(static_cast<MsgType&>(msg));
     }
     default:
