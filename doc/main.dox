@@ -38,16 +38,16 @@
 /// or @ref ublox::input::ClientInputMessages  (from @b ublox/input/ClientInputMessages.h)
 ///
 /// There are also platform specific definitions:
-/// @li @ref ublox::input::Ublox5ServerInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full/output.tmp/include/ublox/input/Ublox5ServerInputMessages.h).
-/// @li @ref ublox::input::Ublox5ClientInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full/output.tmp/include/ublox/input/Ublox5ClientInputMessages.h).
-/// @li @ref ublox::input::Ublox6ServerInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full/output.tmp/include/ublox/input/Ublox6ServerInputMessages.h).
-/// @li @ref ublox::input::Ublox6ClientInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full/output.tmp/include/ublox/input/Ublox6ClientInputMessages.h).
-/// @li @ref ublox::input::Ublox7ServerInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full/output.tmp/include/ublox/input/Ublox7ServerInputMessages.h).
-/// @li @ref ublox::input::Ublox7ClientInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full/output.tmp/include/ublox/input/Ublox7ClientInputMessages.h).
-/// @li @ref ublox::input::Ublox8ServerInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full/output.tmp/include/ublox/input/Ublox8ServerInputMessages.h).
-/// @li @ref ublox::input::Ublox8ClientInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full/output.tmp/include/ublox/input/Ublox8ClientInputMessages.h).
-/// @li @ref ublox::input::Ublox9ServerInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full/output.tmp/include/ublox/input/Ublox9ServerInputMessages.h).
-/// @li @ref ublox::input::Ublox9ClientInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full/output.tmp/include/ublox/input/Ublox9ClientInputMessages.h).
+/// @li @ref ublox::input::Ublox5ServerInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full.clang/output.tmp/include/ublox/input/Ublox5ServerInputMessages.h).
+/// @li @ref ublox::input::Ublox5ClientInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full.clang/output.tmp/include/ublox/input/Ublox5ClientInputMessages.h).
+/// @li @ref ublox::input::Ublox6ServerInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full.clang/output.tmp/include/ublox/input/Ublox6ServerInputMessages.h).
+/// @li @ref ublox::input::Ublox6ClientInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full.clang/output.tmp/include/ublox/input/Ublox6ClientInputMessages.h).
+/// @li @ref ublox::input::Ublox7ServerInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full.clang/output.tmp/include/ublox/input/Ublox7ServerInputMessages.h).
+/// @li @ref ublox::input::Ublox7ClientInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full.clang/output.tmp/include/ublox/input/Ublox7ClientInputMessages.h).
+/// @li @ref ublox::input::Ublox8ServerInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full.clang/output.tmp/include/ublox/input/Ublox8ServerInputMessages.h).
+/// @li @ref ublox::input::Ublox8ClientInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full.clang/output.tmp/include/ublox/input/Ublox8ClientInputMessages.h).
+/// @li @ref ublox::input::Ublox9ServerInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full.clang/output.tmp/include/ublox/input/Ublox9ServerInputMessages.h).
+/// @li @ref ublox::input::Ublox9ClientInputMessages (from @b /mnt/data/Work/P017-cc.ublox.commsdsl/build.full.clang/output.tmp/include/ublox/input/Ublox9ClientInputMessages.h).
 ///
 /// @b NOTE, that the frame definition does not exactly follow the recommended
 /// instructions from <b>Protocol Stack Definition Tutorial</b> page of @b COMMS
