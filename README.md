@@ -1,13 +1,11 @@
 # Overview
-This repository contains **generated** definition of 
-**UBX** protocol used by [u-blox GPS receivers](https://www.u-blox.com/en/position-time). 
+This repository contains code **generated** by the [commsdsl2comms](https://github.com/commschamp/commsdsl)
+using the [CommsDSL](https://github.com/commschamp/CommsDSL-Specification) protocol definition schema files
+residing in the [cc.ublox.commsdsl](https://github.com/commschamp/cc.ublox.commsdsl) project.
 
-Please read the
-[Generated CMake Project Walkthrough](https://github.com/commschamp/commsdsl/blob/master/doc/GeneratedProjectWalkthrough.md)
-documentation page for details on this repository internals.
+Applicable Documentation:
 
-Please refer to [cc.ublox.commsdsl](https://github.com/commschamp/cc.ublox.commsdsl)
-origin protocol definition repository, which uses
-[CommsDSL](https://github.com/commschamp/CommsDSL-Specification) schema 
-file(s). Any issues, questions and/or feature requests
-should be submitted against it.
+- [Generated CMake Project Walkthrough](https://github.com/commschamp/commsdsl/blob/master/doc/GeneratedProjectWalkthrough.md)
+
+Any issues, questions and/or feature requests
+should be submitted against [cc.ublox.commsdsl](https://github.com/commschamp/cc.ublox.commsdsl) project.

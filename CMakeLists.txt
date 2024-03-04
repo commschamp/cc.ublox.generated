@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.1)
+cmake_minimum_required (VERSION 3.10)
 project ("cc_ublox")
 
 option (OPT_REQUIRE_COMMS_LIB "Require COMMS library, find it and set as dependency to the protocol library" ON)
@@ -87,7 +87,7 @@ if ((NOT "${major_ver}" STREQUAL "") AND
     (NOT "${patch_ver}" STREQUAL ""))
     set (CC_UBLOX_VERSION "${major_ver}.${minor_ver}.${patch_ver}")
 
-    message (STATUS "Detected version ${CC_UBLOX_VERSION} of the protocol")
+    message (STATUS "Detected version ${CC_UBLOX_VERSION} of the protocol library.")
     include(CMakePackageConfigHelpers)
     write_basic_package_version_file(
         ${CMAKE_BINARY_DIR}/${OPT_CMAKE_EXPORT_CONFIG_NAME}ConfigVersion.cmake
