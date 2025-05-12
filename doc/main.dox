@@ -26,16 +26,16 @@
 /// The available common interface classes are:
 /// @li @ref cc_ublox::Message (defined in @b cc_ublox/Message.h header file).
 ///
-/// @section main_frames Frame (Protocol Stack) Classes
-/// The available frame (protocol stack) classes are:
+/// @section main_frames Frame Classes
+/// The available frame classes are:
 /// @li @ref cc_ublox::frame::UbloxFrame (from @b cc_ublox/frame/UbloxFrame.h header file).
 ///
 /// Every frame class/type definition receives (as a template parameter) a list of
 /// @b input message types it is expected to recognize. Default defintion
-/// uses @ref cc_ublox::input::AllMessages (defined in @b cc_ublox/input/AllMessages.h).
+/// uses @b All messages bundle (for example @ref cc_ublox::input::AllMessages defined in @b cc_ublox/input/AllMessages.h).
 /// @n If protocol defines any uni-directional message, then it is recommended to use
-/// either @ref cc_ublox::input::ServerInputMessages (from @b cc_ublox/input/ServerInputMessages.h)
-/// or @ref cc_ublox::input::ClientInputMessages  (from @b cc_ublox/input/ClientInputMessages.h)
+/// either @b Server messages bundle (for example @ref cc_ublox::input::ServerInputMessages from @b cc_ublox/input/ServerInputMessages.h)
+/// or @b Client messages bundle (for example @ref cc_ublox::input::ClientInputMessages from @b cc_ublox/input/ClientInputMessages.h)
 ///
 /// There are also platform specific definitions:
 /// @li @ref cc_ublox::input::Ublox5ServerInputMessages (from @b cc_ublox/input/Ublox5ServerInputMessages.h).
