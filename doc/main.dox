@@ -1,8 +1,9 @@
 /// @mainpage "cc_ublox" Binary Protocol Library
 /// @tableofcontents
-/// This generated code implements "cc_ublox" binary protocol using various
-/// classes from
-/// <a href="https://github.com/commschamp/comms">COMMS Library</a>.@n
+/// This generated code implements "cc_ublox" binary protocol
+/// using various classes from
+/// <a href="https://github.com/commschamp/comms">COMMS
+/// Library</a>.@n
 /// Below is a short summary of generated classes.
 /// Please refer to <b>"How to Use Defined Custom Protocol"</b> page of its documentation
 /// for detailed explanation on how to use them.
