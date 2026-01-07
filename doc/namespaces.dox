@@ -16,7 +16,6 @@
 /// @namespace cc_ublox::frame::checksum
 /// @brief Namespace for the custom frame layers defined in cc_ublox namespace.
 
-
 /// @namespace cc_ublox::options
 /// @brief Main namespace for the various protocol options.
 
@@ -25,5 +24,3 @@
 
 /// @namespace cc_ublox::dispatch
 /// @brief Main namespace for the various message dispatch functions.
-
-

@@ -325,4 +325,3 @@
 ///         cc_ublox::options::ClientDefaultOptions
 ///     >;
 /// @endcode
-
